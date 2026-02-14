@@ -1,32 +1,154 @@
 <!DOCTYPE html>
-<html>
+<html lang="hr">
 <head>
-  <title>VisitLogic MVP</title>
-  <meta charset="UTF-8" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>VisitLogic – Digitalni turistički informator</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: #f4f6f8;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+header {
+  background: #1f2937;
+  color: white;
+  padding: 16px;
+  font-size: 18px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.chat-container {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.message {
+  max-width: 75%;
+  padding: 14px 16px;
+  border-radius: 16px;
+  line-height: 1.5;
+  white-space: pre-wrap;
+}
+
+.user {
+  align-self: flex-end;
+  background: #2563eb;
+  color: white;
+  border-bottom-right-radius: 4px;
+}
+
+.bot {
+  align-self: flex-start;
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-bottom-left-radius: 4px;
+}
+
+.input-container {
+  display: flex;
+  padding: 16px;
+  background: white;
+  border-top: 1px solid #e5e7eb;
+}
+
+input {
+  flex: 1;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid #d1d5db;
+  font-size: 16px;
+}
+
+button {
+  margin-left: 10px;
+  padding: 12px 18px;
+  border-radius: 12px;
+  border: none;
+  background: #2563eb;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #1d4ed8;
+}
+
+.loading {
+  font-style: italic;
+  opacity: 0.7;
+}
+</style>
 </head>
+
 <body>
-  <h1>VisitLogic – Digital Tourist Informer</h1>
-  <textarea id="userInput" placeholder="Postavite pitanje..." rows="4" cols="50"></textarea><br><br>
+
+<header>
+VisitLogic – Službeni digitalni turistički informator
+</header>
+
+<div class="chat-container" id="chat"></div>
+
+<div class="input-container">
+  <input type="text" id="userInput" placeholder="Postavite pitanje..." />
   <button onclick="sendMessage()">Pošalji</button>
+</div>
 
-  <h3>Odgovor:</h3>
-  <div id="response"></div>
+<script>
+const chat = document.getElementById("chat");
 
-  <script>
-    async function sendMessage() {
-      const input = document.getElementById("userInput").value;
+function addMessage(content, type) {
+  const msg = document.createElement("div");
+  msg.className = "message " + type;
+  msg.innerText = content;
+  chat.appendChild(msg);
+  chat.scrollTop = chat.scrollHeight;
+}
 
-      const res = await fetch("/api/chat", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ message: input })
-      });
+async function sendMessage() {
+  const inputField = document.getElementById("userInput");
+  const message = inputField.value.trim();
+  if (!message) return;
 
-      const data = await res.json();
-      document.getElementById("response").innerText = data.reply;
-    }
-  </script>
+  addMessage(message, "user");
+  inputField.value = "";
+
+  const loadingMsg = document.createElement("div");
+  loadingMsg.className = "message bot loading";
+  loadingMsg.innerText = "VisitLogic razmišlja...";
+  chat.appendChild(loadingMsg);
+  chat.scrollTop = chat.scrollHeight;
+
+  try {
+    const response = await fetch("/api/chat", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ message })
+    });
+
+    const data = await response.json();
+    loadingMsg.remove();
+    addMessage(data.reply, "bot");
+
+  } catch (error) {
+    loadingMsg.remove();
+    addMessage("Došlo je do pogreške. Molimo pokušajte ponovno.", "bot");
+  }
+}
+</script>
+
 </body>
 </html>
