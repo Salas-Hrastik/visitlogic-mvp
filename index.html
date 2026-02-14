@@ -16,9 +16,9 @@ body {
 }
 
 header {
-  background: #1f2937;
+  background: linear-gradient(90deg,#1f2937,#2563eb);
   color: white;
-  padding: 16px;
+  padding: 18px;
   font-size: 18px;
   font-weight: 600;
   text-align: center;
@@ -33,33 +33,55 @@ header {
   gap: 16px;
 }
 
+.message-wrapper {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+}
+
+.avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #2563eb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  font-size: 14px;
+}
+
 .message {
   max-width: 75%;
   padding: 14px 16px;
   border-radius: 16px;
-  line-height: 1.5;
+  line-height: 1.6;
   white-space: pre-wrap;
+  font-size: 15px;
 }
 
 .user {
-  align-self: flex-end;
   background: #2563eb;
   color: white;
   border-bottom-right-radius: 4px;
 }
 
 .bot {
-  align-self: flex-start;
   background: white;
   border: 1px solid #e5e7eb;
   border-bottom-left-radius: 4px;
 }
 
 .input-container {
-  display: flex;
   padding: 16px;
   background: white;
   border-top: 1px solid #e5e7eb;
+}
+
+.input-row {
+  display: flex;
+  gap: 10px;
 }
 
 input {
@@ -71,7 +93,6 @@ input {
 }
 
 button {
-  margin-left: 10px;
   padding: 12px 18px;
   border-radius: 12px;
   border: none;
@@ -85,9 +106,27 @@ button:hover {
   background: #1d4ed8;
 }
 
-.loading {
+.quick-buttons {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+
+.quick-buttons button {
+  background: #e5e7eb;
+  color: #111827;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.quick-buttons button:hover {
+  background: #d1d5db;
+}
+
+.typing {
   font-style: italic;
-  opacity: 0.7;
+  opacity: 0.6;
 }
 </style>
 </head>
@@ -95,24 +134,58 @@ button:hover {
 <body>
 
 <header>
-VisitLogic – Službeni digitalni turistički informator
+VisitLogic – Službeni digitalni turistički informator Valpova
 </header>
 
 <div class="chat-container" id="chat"></div>
 
 <div class="input-container">
-  <input type="text" id="userInput" placeholder="Postavite pitanje..." />
-  <button onclick="sendMessage()">Pošalji</button>
+
+  <div class="quick-buttons">
+    <button onclick="quickAsk('Imam 1 sat u Valpovu, što da vidim?')">⏱ 1 sat</button>
+    <button onclick="quickAsk('Preporuči gastro opciju u centru.')">🍽 Gastro</button>
+    <button onclick="quickAsk('Koja su aktualna događanja?')">🎉 Događanja</button>
+    <button onclick="quickAsk('Što raditi kada pada kiša?')">🌧 Loše vrijeme</button>
+  </div>
+
+  <div class="input-row">
+    <input type="text" id="userInput" placeholder="Postavite pitanje..." />
+    <button onclick="sendMessage()">Pošalji</button>
+  </div>
+
 </div>
 
 <script>
 const chat = document.getElementById("chat");
 
+function formatMarkdown(text) {
+  return text
+    .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
+    .replace(/\n/g, "<br>");
+}
+
 function addMessage(content, type) {
+  const wrapper = document.createElement("div");
+  wrapper.className = "message-wrapper";
+
   const msg = document.createElement("div");
   msg.className = "message " + type;
-  msg.innerText = content;
-  chat.appendChild(msg);
+  msg.innerHTML = formatMarkdown(content);
+
+  if (type === "bot") {
+    const avatar = document.createElement("div");
+    avatar.className = "avatar";
+    avatar.innerText = "VL";
+    wrapper.appendChild(avatar);
+  }
+
+  wrapper.appendChild(msg);
+
+  if (type === "user") {
+    wrapper.style.justifyContent = "flex-end";
+  }
+
+  chat.appendChild(wrapper);
   chat.scrollTop = chat.scrollHeight;
 }
 
@@ -124,29 +197,32 @@ async function sendMessage() {
   addMessage(message, "user");
   inputField.value = "";
 
-  const loadingMsg = document.createElement("div");
-  loadingMsg.className = "message bot loading";
-  loadingMsg.innerText = "VisitLogic razmišlja...";
-  chat.appendChild(loadingMsg);
+  const typingMsg = document.createElement("div");
+  typingMsg.className = "message bot typing";
+  typingMsg.innerText = "VisitLogic tipka...";
+  chat.appendChild(typingMsg);
   chat.scrollTop = chat.scrollHeight;
 
   try {
     const response = await fetch("/api/chat", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ message })
     });
 
     const data = await response.json();
-    loadingMsg.remove();
+    typingMsg.remove();
     addMessage(data.reply, "bot");
 
   } catch (error) {
-    loadingMsg.remove();
+    typingMsg.remove();
     addMessage("Došlo je do pogreške. Molimo pokušajte ponovno.", "bot");
   }
+}
+
+function quickAsk(text) {
+  document.getElementById("userInput").value = text;
+  sendMessage();
 }
 </script>
 
