@@ -3,23 +3,23 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>VisitLogic – Digitalni turistički informator</title>
+<title>VisitLogic – Turistička zajednica grada Valpova</title>
 
 <style>
-:root {
+:root{
   --primary:#2563eb;
   --bg:#f4f6f8;
   --text:#111827;
   --card:#ffffff;
 }
 
-body.dark {
+body.dark{
   --bg:#111827;
   --text:#f3f4f6;
   --card:#1f2937;
 }
 
-body {
+body{
   margin:0;
   font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
   background:var(--bg);
@@ -27,36 +27,38 @@ body {
   display:flex;
   flex-direction:column;
   height:100vh;
-  transition:all .3s ease;
+  transition:.3s ease;
 }
 
-header {
+/* HEADER */
+
+header{
   background:linear-gradient(90deg,#1f2937,var(--primary));
   color:white;
-  padding:18px 20px;
+  padding:16px 24px;
   display:flex;
   justify-content:space-between;
   align-items:center;
 }
 
-.header-left {
+.header-left{
   display:flex;
   align-items:center;
-  gap:12px;
+  gap:16px;
 }
 
-.logo {
-  width:36px;
-  height:36px;
-  background:white;
-  border-radius:8px;
-}
-
-.header-title {
+.header-title{
   font-weight:600;
+  line-height:1.3;
 }
 
-.toggle-btn {
+.header-sub{
+  font-size:13px;
+  font-weight:400;
+  opacity:0.85;
+}
+
+.toggle-btn{
   background:rgba(255,255,255,0.2);
   border:none;
   color:white;
@@ -66,35 +68,42 @@ header {
   font-size:13px;
 }
 
-.chat-container {
+.toggle-btn:hover{
+  background:rgba(255,255,255,0.35);
+}
+
+/* CHAT */
+
+.chat-container{
   flex:1;
   overflow-y:auto;
   padding:30px;
   display:flex;
   flex-direction:column;
-  gap:18px;
+  gap:20px;
 }
 
-.welcome {
+.welcome{
   text-align:center;
-  margin-top:40px;
-  opacity:.8;
+  margin-top:60px;
+  opacity:.75;
+  font-size:18px;
 }
 
-.message-wrapper {
+.message-wrapper{
   display:flex;
   gap:10px;
-  animation:fadeIn .3s ease;
+  animation:fadeIn .25s ease;
 }
 
-@keyframes fadeIn {
-  from {opacity:0; transform:translateY(6px);}
-  to {opacity:1; transform:translateY(0);}
+@keyframes fadeIn{
+  from{opacity:0;transform:translateY(6px);}
+  to{opacity:1;transform:translateY(0);}
 }
 
-.avatar {
-  width:34px;
-  height:34px;
+.avatar{
+  width:36px;
+  height:36px;
   border-radius:50%;
   background:var(--primary);
   display:flex;
@@ -105,70 +114,72 @@ header {
   font-size:14px;
 }
 
-.message {
+.message{
   max-width:70%;
   padding:16px 18px;
   border-radius:16px;
   line-height:1.7;
   font-size:15px;
-  box-shadow:0 4px 10px rgba(0,0,0,0.05);
+  box-shadow:0 6px 18px rgba(0,0,0,0.05);
   white-space:pre-wrap;
 }
 
-.bot {
+.bot{
   background:var(--card);
   border-bottom-left-radius:4px;
 }
 
-.user {
+.user{
   background:var(--primary);
   color:white;
   margin-left:auto;
   border-bottom-right-radius:4px;
 }
 
-.input-container {
-  padding:20px;
+/* INPUT */
+
+.input-container{
+  padding:22px;
   background:var(--card);
   border-top:1px solid rgba(0,0,0,0.05);
 }
 
-.quick-buttons {
+.quick-buttons{
   display:flex;
-  gap:8px;
+  gap:10px;
   flex-wrap:wrap;
-  margin-bottom:14px;
+  margin-bottom:16px;
 }
 
-.quick-buttons button {
+.quick-buttons button{
   background:#e5e7eb;
   border:none;
-  padding:8px 12px;
-  border-radius:10px;
+  padding:8px 14px;
+  border-radius:12px;
   font-size:13px;
   cursor:pointer;
 }
 
-.quick-buttons button:hover {
+.quick-buttons button:hover{
   background:#d1d5db;
 }
 
-.input-row {
+.input-row{
   display:flex;
-  gap:10px;
+  gap:12px;
 }
 
-input {
+input{
   flex:1;
   padding:14px;
-  border-radius:12px;
+  border-radius:14px;
   border:1px solid #d1d5db;
   font-size:15px;
 }
 
-button.send {
-  padding:14px 18px;
-  border-radius:12px;
+button.send{
+  padding:14px 20px;
+  border-radius:14px;
   border:none;
   background:var(--primary);
   color:white;
@@ -176,10 +187,10 @@ button.send {
   cursor:pointer;
 }
 
-footer {
+footer{
   text-align:center;
   font-size:12px;
-  padding:8px;
+  padding:10px;
   opacity:.6;
 }
 </style>
@@ -189,18 +200,25 @@ footer {
 
 <header>
   <div class="header-left">
-    <div class="logo"></div>
-    <div class="header-title">
-      Službeni digitalni turistički informator Valpova
-    </div>
+    <a href="https://tz.valpovo.hr/" target="_blank" style="display:flex;align-items:center;gap:16px;text-decoration:none;color:white;">
+      <img src="tz-logo.png" alt="Turistička zajednica grada Valpova" style="height:48px;">
+      <div>
+        <div class="header-title">Turistička zajednica grada Valpova</div>
+        <div class="header-sub">Službeni digitalni turistički informator</div>
+      </div>
+    </a>
   </div>
-  <button class="toggle-btn" onclick="toggleDarkMode()">Dark</button>
+
+  <div style="display:flex;gap:10px;">
+    <button class="toggle-btn" onclick="toggleDarkMode()">Dark</button>
+    <button class="toggle-btn" onclick="resetChat()">Reset</button>
+  </div>
 </header>
 
 <div class="chat-container" id="chat">
   <div class="welcome" id="welcome">
-    Dobrodošli u VisitLogic.<br>
-    Postavite pitanje ili odaberite prijedlog ispod.
+    Dobrodošli u službeni digitalni turistički informator.<br>
+    Postavite pitanje ili odaberite jednu od opcija ispod.
   </div>
 </div>
 
@@ -221,22 +239,22 @@ footer {
 </div>
 
 <footer>
-Powered by VisitLogic
+© Turistička zajednica grada Valpova – Powered by VisitLogic
 </footer>
 
 <script>
-const chat = document.getElementById("chat");
-const welcome = document.getElementById("welcome");
-let conversationHistory = JSON.parse(localStorage.getItem("visitlogic_history")) || [];
+const chat=document.getElementById("chat");
+const welcome=document.getElementById("welcome");
+let conversationHistory=JSON.parse(localStorage.getItem("visitlogic_history"))||[];
 
-function formatMarkdown(text) {
+function formatMarkdown(text){
   return text
-    .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
-    .replace(/\n/g, "<br>");
+    .replace(/\*\*(.*?)\*\*/g,"<strong>$1</strong>")
+    .replace(/\n/g,"<br>");
 }
 
-function addMessage(content, type) {
-  if (welcome) welcome.style.display="none";
+function addMessage(content,type){
+  if(welcome)welcome.style.display="none";
 
   const wrapper=document.createElement("div");
   wrapper.className="message-wrapper";
@@ -273,7 +291,7 @@ async function sendMessage(){
   localStorage.setItem("visitlogic_history",JSON.stringify(conversationHistory));
   input.value="";
 
-  addMessage("VisitLogic razmišlja...","bot");
+  addMessage("VisitLogic obrađuje upit...","bot");
 
   const response=await fetch("/api/chat",{
     method:"POST",
@@ -297,7 +315,14 @@ function quickAsk(text){
 function toggleDarkMode(){
   document.body.classList.toggle("dark");
 }
+
+function resetChat(){
+  localStorage.removeItem("visitlogic_history");
+  conversationHistory=[];
+  location.reload();
+}
 </script>
 
 </body>
 </html>
+
