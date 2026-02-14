@@ -22,6 +22,24 @@ header {
   font-size: 18px;
   font-weight: 600;
   text-align: center;
+  position: relative;
+}
+
+.reset-btn {
+  position: absolute;
+  right: 20px;
+  top: 18px;
+  background: rgba(255,255,255,0.2);
+  border: none;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.reset-btn:hover {
+  background: rgba(255,255,255,0.35);
 }
 
 .chat-container {
@@ -135,6 +153,7 @@ button:hover {
 
 <header>
 VisitLogic – Službeni digitalni turistički informator Valpova
+<button class="reset-btn" onclick="resetChat()">Reset</button>
 </header>
 
 <div class="chat-container" id="chat"></div>
@@ -157,7 +176,7 @@ VisitLogic – Službeni digitalni turistički informator Valpova
 
 <script>
 const chat = document.getElementById("chat");
-let conversationHistory = [];
+let conversationHistory = JSON.parse(localStorage.getItem("visitlogic_history")) || [];
 
 function formatMarkdown(text) {
   return text
@@ -190,6 +209,14 @@ function addMessage(content, type) {
   chat.scrollTop = chat.scrollHeight;
 }
 
+window.onload = function() {
+  conversationHistory.forEach(msg => {
+    if (msg.role !== "system") {
+      addMessage(msg.content, msg.role === "user" ? "user" : "bot");
+    }
+  });
+};
+
 async function sendMessage() {
   const inputField = document.getElementById("userInput");
   const message = inputField.value.trim();
@@ -197,6 +224,7 @@ async function sendMessage() {
 
   addMessage(message, "user");
   conversationHistory.push({ role: "user", content: message });
+  localStorage.setItem("visitlogic_history", JSON.stringify(conversationHistory));
 
   inputField.value = "";
 
@@ -221,6 +249,7 @@ async function sendMessage() {
 
     addMessage(data.reply, "bot");
     conversationHistory.push({ role: "assistant", content: data.reply });
+    localStorage.setItem("visitlogic_history", JSON.stringify(conversationHistory));
 
   } catch (error) {
     typingMsg.remove();
@@ -231,6 +260,12 @@ async function sendMessage() {
 function quickAsk(text) {
   document.getElementById("userInput").value = text;
   sendMessage();
+}
+
+function resetChat() {
+  localStorage.removeItem("visitlogic_history");
+  conversationHistory = [];
+  chat.innerHTML = "";
 }
 </script>
 
