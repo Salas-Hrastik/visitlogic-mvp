@@ -157,6 +157,7 @@ VisitLogic – Službeni digitalni turistički informator Valpova
 
 <script>
 const chat = document.getElementById("chat");
+let conversationHistory = [];
 
 function formatMarkdown(text) {
   return text
@@ -195,6 +196,8 @@ async function sendMessage() {
   if (!message) return;
 
   addMessage(message, "user");
+  conversationHistory.push({ role: "user", content: message });
+
   inputField.value = "";
 
   const typingMsg = document.createElement("div");
@@ -207,12 +210,17 @@ async function sendMessage() {
     const response = await fetch("/api/chat", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ message })
+      body: JSON.stringify({ 
+        message: message,
+        history: conversationHistory
+      })
     });
 
     const data = await response.json();
     typingMsg.remove();
+
     addMessage(data.reply, "bot");
+    conversationHistory.push({ role: "assistant", content: data.reply });
 
   } catch (error) {
     typingMsg.remove();
