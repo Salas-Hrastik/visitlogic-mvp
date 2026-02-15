@@ -9,120 +9,163 @@
 * { box-sizing: border-box; }
 
 body {
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    background: #f2f4f8;
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: #f4f6f9;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
 }
 
+/* HEADER */
 header {
-    background: linear-gradient(90deg, #1e3c72, #2a5298);
-    color: white;
-    padding: 14px 24px;
-    display: flex;
-    align-items: center;
-    gap: 16px;
+  background: linear-gradient(90deg, #1e3c72, #2a5298);
+  color: white;
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
 }
 
 header img {
-    height: 60px;
+  height: 55px;
 }
 
-.header-text h1 {
-    margin: 0;
-    font-size: 20px;
-    font-weight: 600;
+header h1 {
+  margin: 0;
+  font-size: 20px;
 }
 
-.header-text p {
-    margin: 2px 0 0 0;
-    font-size: 14px;
-    opacity: 0.85;
+header p {
+  margin: 0;
+  font-size: 13px;
+  opacity: 0.85;
 }
 
+/* MAIN LAYOUT */
 .main {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    padding: 20px;
-    overflow: hidden;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  padding: 20px;
 }
 
 .container {
-    width: 100%;
-    max-width: 1100px;
-    display: flex;
-    flex-direction: column;
+  width: 100%;
+  max-width: 1000px;
+  display: flex;
+  flex-direction: column;
 }
 
+/* CHAT BOX */
 .chat-box {
-    background: white;
-    border-radius: 14px;
-    padding: 20px;
-    flex: 1;
-    overflow-y: auto;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.05);
-    margin-bottom: 15px;
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  flex: 1;
+  overflow-y: auto;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.05);
+  margin-bottom: 15px;
 }
 
-.chat-box p {
-    margin: 10px 0;
-    line-height: 1.5;
+.message {
+  margin: 12px 0;
+  line-height: 1.6;
 }
 
+.message.user {
+  font-weight: 600;
+  text-align: right;
+}
+
+.message.bot {
+  text-align: left;
+}
+
+/* TYPING */
+.typing-indicator {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-style: italic;
+  color: #4b5563;
+}
+
+.typing-dots {
+  display: inline-flex;
+  gap: 4px;
+}
+
+.typing-dots span {
+  width: 6px;
+  height: 6px;
+  background: #2563eb;
+  border-radius: 50%;
+  animation: blink 1.4s infinite both;
+}
+
+.typing-dots span:nth-child(1) { animation-delay: 0s; }
+.typing-dots span:nth-child(2) { animation-delay: 0.2s; }
+.typing-dots span:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes blink {
+  0% { opacity: 0.2; transform: scale(1); }
+  20% { opacity: 1; transform: scale(1.2); }
+  100% { opacity: 0.2; transform: scale(1); }
+}
+
+/* BUTTONS */
 .buttons {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 15px;
-    flex-wrap: wrap;
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+  flex-wrap: wrap;
 }
 
 .buttons button {
-    padding: 8px 14px;
-    border: none;
-    border-radius: 20px;
-    background: #e0e4ea;
-    cursor: pointer;
-    transition: 0.2s;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 20px;
+  background: #e5e7eb;
+  cursor: pointer;
 }
 
 .buttons button:hover {
-    background: #d0d6dd;
+  background: #d1d5db;
 }
 
+/* INPUT */
 .input-area {
-    display: flex;
-    gap: 10px;
+  display: flex;
+  gap: 10px;
 }
 
 input {
-    flex: 1;
-    padding: 12px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    font-size: 14px;
+  flex: 1;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
 }
 
 button.send {
-    padding: 12px 18px;
-    border: none;
-    border-radius: 8px;
-    background: #2a5298;
-    color: white;
-    cursor: pointer;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  background: #2a5298;
+  color: white;
+  cursor: pointer;
 }
 
 button.send:hover {
-    background: #1e3c72;
+  background: #1e3c72;
 }
 
+/* FOOTER */
 footer {
-    text-align: center;
-    padding: 12px;
-    font-size: 13px;
-    background: #f2f4f8;
+  text-align: center;
+  padding: 12px;
+  font-size: 13px;
+  background: #f4f6f9;
 }
 </style>
 </head>
@@ -130,31 +173,33 @@ footer {
 <body>
 
 <header>
-    <img src="tz-logo-Valpovo.png" alt="Turistička zajednica grada Valpova">
-    <div class="header-text">
-        <h1>Turistički informator</h1>
-        <p>Turistička zajednica grada Valpova</p>
-    </div>
+  <img src="tz-logo-Valpovo.png" alt="TZ Valpovo">
+  <div>
+    <h1>Turistički informator</h1>
+    <p>Turistička zajednica grada Valpova</p>
+  </div>
 </header>
 
 <div class="main">
 <div class="container">
 
 <div class="chat-box" id="chatBox">
-    <p><strong>Dobrodošli!</strong></p>
-    <p>Postavite pitanje ili odaberite opciju:</p>
+  <div class="message bot">
+    <strong>Dobrodošli!</strong><br>
+    Postavite pitanje ili odaberite opciju:
+  </div>
 </div>
 
 <div class="buttons">
-    <button onclick="quickQuestion('Koje su znamenitosti u Valpovu?')">Znamenitosti</button>
-    <button onclick="quickQuestion('Preporuči gastronomiju u Valpovu.')">Gastro</button>
-    <button onclick="quickQuestion('Koja su aktualna događanja u Valpovu?')">Događanja</button>
-    <button onclick="quickQuestion('Što raditi u Valpovu kada je loše vrijeme?')">Loše vrijeme</button>
+  <button onclick="quickQuestion('Koje su znamenitosti u Valpovu?')">Znamenitosti</button>
+  <button onclick="quickQuestion('Preporuči gastronomiju u Valpovu.')">Gastro</button>
+  <button onclick="quickQuestion('Koja su aktualna događanja u Valpovu?')">Događanja</button>
+  <button onclick="quickQuestion('Što raditi u Valpovu kada je loše vrijeme?')">Loše vrijeme</button>
 </div>
 
 <div class="input-area">
-    <input type="text" id="userInput" placeholder="Postavite pitanje...">
-    <button class="send" onclick="sendMessage()">Pošalji</button>
+  <input type="text" id="userInput" placeholder="Postavite pitanje...">
+  <button class="send" onclick="sendMessage()">Pošalji</button>
 </div>
 
 </div>
@@ -166,30 +211,47 @@ footer {
 
 <script>
 async function sendMessage(messageOverride = null) {
-    const input = document.getElementById("userInput");
-    const message = messageOverride || input.value.trim();
-    if (!message) return;
+  const input = document.getElementById("userInput");
+  const message = messageOverride || input.value.trim();
+  if (!message) return;
 
-    const chatBox = document.getElementById("chatBox");
+  const chatBox = document.getElementById("chatBox");
 
-    chatBox.innerHTML += `<p><strong>Vi:</strong> ${message}</p>`;
-    input.value = "";
-    chatBox.scrollTop = chatBox.scrollHeight;
+  chatBox.innerHTML += `<div class="message user">${message}</div>`;
+  input.value = "";
+  chatBox.scrollTop = chatBox.scrollHeight;
 
-    const response = await fetch("/api/chat", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message })
-    });
+  // SHOW TYPING
+  const typing = document.createElement("div");
+  typing.id = "typing";
+  typing.className = "typing-indicator";
+  typing.innerHTML = `
+    Informator tipka
+    <div class="typing-dots">
+      <span></span><span></span><span></span>
+    </div>
+  `;
+  chatBox.appendChild(typing);
+  chatBox.scrollTop = chatBox.scrollHeight;
 
-    const data = await response.json();
+  const response = await fetch("/api/chat", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ message })
+  });
 
-    chatBox.innerHTML += `<p><strong>Informator:</strong> ${data.reply}</p>`;
-    chatBox.scrollTop = chatBox.scrollHeight;
+  const data = await response.json();
+
+  // REMOVE TYPING
+  const typingElement = document.getElementById("typing");
+  if (typingElement) typingElement.remove();
+
+  chatBox.innerHTML += `<div class="message bot">${data.reply}</div>`;
+  chatBox.scrollTop = chatBox.scrollHeight;
 }
 
 function quickQuestion(text) {
-    sendMessage(text);
+  sendMessage(text);
 }
 </script>
 
