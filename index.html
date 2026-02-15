@@ -1,192 +1,206 @@
 <!DOCTYPE html>
 <html lang="hr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Turistički informator – Turistička zajednica grada Valpova</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Turistički informator – TZ Valpovo</title>
 
-<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+}
+
 body {
-  margin:0;
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
-  background:#f4f6f9;
-  display:flex;
-  flex-direction:column;
-  height:100vh;
+  background: #f3f4f6;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
 }
 
 /* HEADER */
+
 .header {
-  background:#0f2a5a;
-  color:white;
-  padding:12px 40px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
+  background: linear-gradient(135deg, #1e3a8a, #1d4ed8);
+  color: white;
+  padding: 12px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .header-left {
-  display:flex;
-  align-items:center;
-  gap:16px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }
 
 .logo {
-  height:60px;
+  height: 65px;
+  width: auto;
 }
 
-.title-group {
-  display:flex;
-  flex-direction:column;
+.title h1 {
+  font-size: 20px;
+  font-weight: 600;
 }
 
-.title-main {
-  font-size:20px;
-  font-weight:600;
-}
-
-.title-sub {
-  font-size:13px;
-  opacity:0.85;
+.title p {
+  font-size: 13px;
+  opacity: 0.9;
 }
 
 .header-actions button {
-  background:transparent;
-  border:1px solid rgba(255,255,255,0.4);
-  color:white;
-  padding:6px 14px;
-  border-radius:20px;
-  cursor:pointer;
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.4);
+  color: white;
+  padding: 6px 14px;
+  border-radius: 20px;
+  cursor: pointer;
+  margin-left: 10px;
+  transition: 0.2s;
 }
 
-/* CHAT WRAPPER */
-.chat-wrapper {
-  flex:1;
-  display:flex;
-  flex-direction:column;
-  max-width:1100px;
-  width:100%;
-  margin:0 auto;
-  padding:20px 30px;
+.header-actions button:hover {
+  background: rgba(255,255,255,0.2);
 }
 
 /* CHAT AREA */
-.chat {
-  flex:1;
-  overflow-y:auto;
-  display:flex;
-  flex-direction:column;
-  gap:18px;
+
+.chat-container {
+  flex: 1;
+  max-width: 1100px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.messages {
+  flex: 1;
+  overflow-y: auto;
+  padding-bottom: 20px;
 }
 
 .message {
-  max-width:75%;
-  padding:16px 20px;
-  border-radius:18px;
-  line-height:1.6;
-  font-size:15px;
+  margin-bottom: 20px;
+  padding: 16px 20px;
+  border-radius: 14px;
+  max-width: 85%;
+  line-height: 1.6;
 }
 
 .user {
-  align-self:flex-end;
-  background:#2563eb;
-  color:white;
+  background: #2563eb;
+  color: white;
+  align-self: flex-end;
 }
 
 .bot {
-  align-self:flex-start;
-  background:white;
-  box-shadow:0 6px 18px rgba(0,0,0,0.05);
-}
-
-.typing {
-  font-style:italic;
-  opacity:0.6;
+  background: white;
+  color: #111827;
+  border: 1px solid #e5e7eb;
+  align-self: flex-start;
 }
 
 /* QUICK BUTTONS */
+
 .quick-buttons {
-  display:flex;
-  gap:10px;
-  margin:15px 0;
+  margin-bottom: 15px;
 }
 
 .quick-buttons button {
-  background:#e6ebf3;
-  border:none;
-  padding:8px 16px;
-  border-radius:20px;
-  cursor:pointer;
-  font-size:14px;
+  background: #e5e7eb;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 20px;
+  margin-right: 10px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.quick-buttons button:hover {
+  background: #d1d5db;
 }
 
 /* INPUT */
+
 .input-area {
-  display:flex;
-  gap:10px;
-  margin-top:10px;
+  display: flex;
+  gap: 10px;
 }
 
-textarea {
-  flex:1;
-  padding:14px;
-  border-radius:12px;
-  border:1px solid #ccc;
-  resize:none;
-  font-size:15px;
+input {
+  flex: 1;
+  padding: 14px;
+  border-radius: 12px;
+  border: 1px solid #d1d5db;
+  font-size: 15px;
 }
 
 button.send {
-  padding:14px 26px;
-  background:#2563eb;
-  color:white;
-  border:none;
-  border-radius:12px;
-  cursor:pointer;
+  background: #1d4ed8;
+  color: white;
+  border: none;
+  padding: 14px 20px;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+button.send:hover {
+  background: #1e40af;
 }
 
 /* FOOTER */
+
 .footer {
-  text-align:center;
-  padding:12px;
-  font-size:12px;
-  background:#f9fafb;
-  border-top:1px solid #e5e7eb;
-  color:#6b7280;
+  text-align: center;
+  padding: 10px;
+  font-size: 12px;
+  color: #6b7280;
+  border-top: 1px solid #e5e7eb;
 }
 </style>
 </head>
+
 <body>
 
 <header class="header">
   <div class="header-left">
-    <img src="tz-logo.png" class="logo">
-    <div class="title-group">
-      <div class="title-main">Turistički informator</div>
-      <div class="title-sub">Turistička zajednica grada Valpova</div>
+    <img src="/tz-logo-new-465x331.png" alt="TZ Valpovo" class="logo">
+    <div class="title">
+      <h1>Turistički informator</h1>
+      <p>Turistička zajednica grada Valpova</p>
     </div>
   </div>
+
   <div class="header-actions">
+    <button onclick="toggleDark()">Dark</button>
     <button onclick="resetChat()">Reset</button>
   </div>
 </header>
 
-<div class="chat-wrapper">
-  <div class="chat" id="chat"></div>
+<div class="chat-container">
+
+  <div class="messages" id="messages"></div>
 
   <div class="quick-buttons">
-    <button onclick="quickAsk('Koje su najvažnije znamenitosti u Valpovu?')">Znamenitosti</button>
-    <button onclick="quickAsk('Preporučite gastro ponudu u Valpovu.')">Gastro</button>
-    <button onclick="quickAsk('Koja su aktualna događanja?')">Događanja</button>
-    <button onclick="quickAsk('Što raditi kada je loše vrijeme?')">Loše vrijeme</button>
+    <button onclick="quick('Znamenitosti u Valpovu')">Znamenitosti</button>
+    <button onclick="quick('Gastronomija Valpova')">Gastro</button>
+    <button onclick="quick('Aktualna događanja u Valpovu')">Događanja</button>
+    <button onclick="quick('Što raditi po lošem vremenu u Valpovu')">Loše vrijeme</button>
   </div>
 
   <div class="input-area">
-    <textarea id="input" placeholder="Postavite pitanje..."></textarea>
+    <input type="text" id="userInput" placeholder="Postavite pitanje..." />
     <button class="send" onclick="sendMessage()">Pošalji</button>
   </div>
+
 </div>
 
 <div class="footer">
@@ -194,75 +208,46 @@ button.send {
 </div>
 
 <script>
-const chat = document.getElementById("chat");
+async function sendMessage() {
+  const input = document.getElementById("userInput");
+  const text = input.value.trim();
+  if (!text) return;
 
-function saveChat() {
-  localStorage.setItem("chatHistory", chat.innerHTML);
-}
+  addMessage(text, "user");
+  input.value = "";
 
-function loadChat() {
-  const history = localStorage.getItem("chatHistory");
-  if (history) {
-    chat.innerHTML = history;
-  } else {
-    addMessage("Dobrodošli u službeni digitalni turistički informator Valpova. Kako Vam mogu pomoći?", "bot");
-  }
-}
+  const res = await fetch("/api/chat", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ message: text })
+  });
 
-function resetChat() {
-  localStorage.removeItem("chatHistory");
-  chat.innerHTML="";
-  loadChat();
+  const data = await res.json();
+  addMessage(data.reply, "bot");
 }
 
 function addMessage(text, type) {
+  const container = document.getElementById("messages");
   const div = document.createElement("div");
-  div.className="message "+type;
-  div.innerHTML=marked.parse(text);
-  chat.appendChild(div);
-  chat.scrollTop = chat.scrollHeight;
-  saveChat();
+  div.className = "message " + type;
+  div.innerHTML = text;
+  container.appendChild(div);
+  container.scrollTop = container.scrollHeight;
 }
 
-function showTyping() {
-  const div=document.createElement("div");
-  div.className="message bot typing";
-  div.id="typing";
-  div.innerText="Informator piše...";
-  chat.appendChild(div);
-}
-
-function removeTyping(){
-  const t=document.getElementById("typing");
-  if(t) t.remove();
-}
-
-async function sendMessage(){
-  const input=document.getElementById("input");
-  const message=input.value.trim();
-  if(!message) return;
-
-  addMessage(message,"user");
-  input.value="";
-  showTyping();
-
-  const response=await fetch("/api/chat",{
-    method:"POST",
-    headers:{"Content-Type":"application/json"},
-    body:JSON.stringify({message})
-  });
-
-  const data=await response.json();
-  removeTyping();
-  addMessage(data.reply,"bot");
-}
-
-function quickAsk(text){
-  document.getElementById("input").value=text;
+function quick(text) {
+  document.getElementById("userInput").value = text;
   sendMessage();
 }
 
-loadChat();
+function resetChat() {
+  document.getElementById("messages").innerHTML = "";
+}
+
+function toggleDark() {
+  document.body.style.background =
+    document.body.style.background === "black" ? "#f3f4f6" : "black";
+}
 </script>
 
 </body>
