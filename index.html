@@ -18,10 +18,10 @@ body {
 }
 
 /* HEADER */
-.main-header {
+.header {
   background:#0f2a5a;
   color:white;
-  padding:10px 40px;
+  padding:12px 40px;
   display:flex;
   justify-content:space-between;
   align-items:center;
@@ -30,25 +30,25 @@ body {
 .header-left {
   display:flex;
   align-items:center;
-  gap:20px;
+  gap:16px;
 }
 
 .logo {
-  height:70px;
+  height:60px;
 }
 
-.header-text {
+.title-group {
   display:flex;
   flex-direction:column;
 }
 
-.ai-title {
-  font-size:22px;
+.title-main {
+  font-size:20px;
   font-weight:600;
 }
 
-.ai-subtitle {
-  font-size:14px;
+.title-sub {
+  font-size:13px;
   opacity:0.85;
 }
 
@@ -61,47 +61,32 @@ body {
   cursor:pointer;
 }
 
-/* HERO */
-.hero {
-  background:linear-gradient(rgba(15,42,90,0.85), rgba(15,42,90,0.85)),
-  url('https://upload.wikimedia.org/wikipedia/commons/0/0a/Dvorac_Prandaunormann_Valpovo.jpg');
-  background-size:cover;
-  background-position:center;
-  color:white;
-  text-align:center;
-  padding:50px 20px;
-}
-
-.hero h1 {
-  margin:0;
-  font-size:32px;
-}
-
-.hero p {
-  margin-top:10px;
-  font-size:16px;
-  opacity:0.9;
-}
-
-/* CHAT */
-.chat-container {
+/* CHAT WRAPPER */
+.chat-wrapper {
   flex:1;
-  overflow-y:auto;
-  padding:30px;
-  max-width:1200px;
-  margin:0 auto;
-  width:100%;
   display:flex;
   flex-direction:column;
-  gap:20px;
+  max-width:1100px;
+  width:100%;
+  margin:0 auto;
+  padding:20px 30px;
+}
+
+/* CHAT AREA */
+.chat {
+  flex:1;
+  overflow-y:auto;
+  display:flex;
+  flex-direction:column;
+  gap:18px;
 }
 
 .message {
   max-width:75%;
-  padding:18px 22px;
+  padding:16px 20px;
   border-radius:18px;
   line-height:1.6;
-  font-size:16px;
+  font-size:15px;
 }
 
 .user {
@@ -113,7 +98,7 @@ body {
 .bot {
   align-self:flex-start;
   background:white;
-  box-shadow:0 8px 22px rgba(0,0,0,0.06);
+  box-shadow:0 6px 18px rgba(0,0,0,0.05);
 }
 
 .typing {
@@ -124,37 +109,24 @@ body {
 /* QUICK BUTTONS */
 .quick-buttons {
   display:flex;
-  gap:12px;
-  padding:15px 30px;
-  max-width:1200px;
-  margin:0 auto;
-  width:100%;
+  gap:10px;
+  margin:15px 0;
 }
 
 .quick-buttons button {
   background:#e6ebf3;
   border:none;
-  padding:10px 18px;
+  padding:8px 16px;
   border-radius:20px;
   cursor:pointer;
   font-size:14px;
-  transition:0.2s;
-}
-
-.quick-buttons button:hover {
-  background:#d4dae4;
 }
 
 /* INPUT */
-.input-container {
+.input-area {
   display:flex;
   gap:10px;
-  padding:20px 30px;
-  max-width:1200px;
-  margin:0 auto;
-  width:100%;
-  background:white;
-  border-top:1px solid #e5e7eb;
+  margin-top:10px;
 }
 
 textarea {
@@ -178,134 +150,115 @@ button.send {
 /* FOOTER */
 .footer {
   text-align:center;
-  padding:14px;
-  font-size:13px;
+  padding:12px;
+  font-size:12px;
   background:#f9fafb;
   border-top:1px solid #e5e7eb;
   color:#6b7280;
 }
-
-/* DARK MODE */
-.dark body {
-  background:#111827;
-}
-
-.dark .bot {
-  background:#1f2937;
-  color:white;
-}
-
-.dark .input-container {
-  background:#1f2937;
-}
-
 </style>
 </head>
 <body>
 
-<header class="main-header">
+<header class="header">
   <div class="header-left">
     <img src="tz-logo.png" class="logo">
-    <div class="header-text">
-      <div class="ai-title">Turistički informator</div>
-      <div class="ai-subtitle">Turistička zajednica grada Valpova</div>
+    <div class="title-group">
+      <div class="title-main">Turistički informator</div>
+      <div class="title-sub">Turistička zajednica grada Valpova</div>
     </div>
   </div>
   <div class="header-actions">
-    <button onclick="toggleDarkMode()">Dark</button>
     <button onclick="resetChat()">Reset</button>
   </div>
 </header>
 
-<section class="hero">
-  <h1>Dobrodošli u Valpovo</h1>
-  <p>Službeni digitalni informator destinacije</p>
-</section>
+<div class="chat-wrapper">
+  <div class="chat" id="chat"></div>
 
-<div class="chat-container" id="chat"></div>
+  <div class="quick-buttons">
+    <button onclick="quickAsk('Koje su najvažnije znamenitosti u Valpovu?')">Znamenitosti</button>
+    <button onclick="quickAsk('Preporučite gastro ponudu u Valpovu.')">Gastro</button>
+    <button onclick="quickAsk('Koja su aktualna događanja?')">Događanja</button>
+    <button onclick="quickAsk('Što raditi kada je loše vrijeme?')">Loše vrijeme</button>
+  </div>
 
-<div class="quick-buttons">
-  <button onclick="quickAsk('Koje su najvažnije znamenitosti u Valpovu?')">Znamenitosti</button>
-  <button onclick="quickAsk('Preporučite gastro ponudu u Valpovu.')">Gastro</button>
-  <button onclick="quickAsk('Koja su aktualna događanja u Valpovu?')">Događanja</button>
-  <button onclick="quickAsk('Što raditi u Valpovu kada je loše vrijeme?')">Loše vrijeme</button>
-</div>
-
-<div class="input-container">
-  <textarea id="input" placeholder="Postavite pitanje..."></textarea>
-  <button class="send" onclick="sendMessage()">Pošalji</button>
+  <div class="input-area">
+    <textarea id="input" placeholder="Postavite pitanje..."></textarea>
+    <button class="send" onclick="sendMessage()">Pošalji</button>
+  </div>
 </div>
 
 <div class="footer">
-  © Turistička zajednica grada Valpova – Powered by VisitLogic AI
+© Turistička zajednica grada Valpova – Powered by VisitLogic AI
 </div>
 
 <script>
-const chatContainer = document.getElementById("chat");
+const chat = document.getElementById("chat");
 
 function saveChat() {
-  localStorage.setItem("chatHistory", chatContainer.innerHTML);
+  localStorage.setItem("chatHistory", chat.innerHTML);
 }
 
 function loadChat() {
   const history = localStorage.getItem("chatHistory");
-  if (history) chatContainer.innerHTML = history;
+  if (history) {
+    chat.innerHTML = history;
+  } else {
+    addMessage("Dobrodošli u službeni digitalni turistički informator Valpova. Kako Vam mogu pomoći?", "bot");
+  }
 }
 
 function resetChat() {
   localStorage.removeItem("chatHistory");
-  chatContainer.innerHTML = "";
+  chat.innerHTML="";
+  loadChat();
 }
 
-function toggleDarkMode() {
-  document.body.classList.toggle("dark");
-}
-
-function addMessage(text, className) {
-  const msg = document.createElement("div");
-  msg.className = "message " + className;
-  msg.innerHTML = marked.parse(text);
-  chatContainer.appendChild(msg);
-  chatContainer.scrollTop = chatContainer.scrollHeight;
+function addMessage(text, type) {
+  const div = document.createElement("div");
+  div.className="message "+type;
+  div.innerHTML=marked.parse(text);
+  chat.appendChild(div);
+  chat.scrollTop = chat.scrollHeight;
   saveChat();
 }
 
 function showTyping() {
-  const typing = document.createElement("div");
-  typing.className = "message bot typing";
-  typing.id = "typing";
-  typing.innerText = "Informator piše...";
-  chatContainer.appendChild(typing);
+  const div=document.createElement("div");
+  div.className="message bot typing";
+  div.id="typing";
+  div.innerText="Informator piše...";
+  chat.appendChild(div);
 }
 
-function removeTyping() {
-  const typing = document.getElementById("typing");
-  if (typing) typing.remove();
+function removeTyping(){
+  const t=document.getElementById("typing");
+  if(t) t.remove();
 }
 
-async function sendMessage() {
-  const input = document.getElementById("input");
-  const message = input.value.trim();
-  if (!message) return;
+async function sendMessage(){
+  const input=document.getElementById("input");
+  const message=input.value.trim();
+  if(!message) return;
 
-  addMessage(message, "user");
-  input.value = "";
-
+  addMessage(message,"user");
+  input.value="";
   showTyping();
 
-  const response = await fetch("/api/chat", {
+  const response=await fetch("/api/chat",{
     method:"POST",
-    headers:{ "Content-Type":"application/json" },
-    body:JSON.stringify({ message })
+    headers:{"Content-Type":"application/json"},
+    body:JSON.stringify({message})
   });
 
-  const data = await response.json();
+  const data=await response.json();
   removeTyping();
-  addMessage(data.reply, "bot");
+  addMessage(data.reply,"bot");
 }
 
-function quickAsk(text) {
-  document.getElementById("input").value = text;
+function quickAsk(text){
+  document.getElementById("input").value=text;
   sendMessage();
 }
 
