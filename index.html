@@ -68,6 +68,25 @@ header h1{
     width:100%;
 }
 
+.quickButtons{
+    margin-top:20px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+}
+
+.quickButtons button{
+    background:#e1e8f6;
+    border:none;
+    padding:10px 16px;
+    border-radius:24px;
+    cursor:pointer;
+}
+
+.quickButtons button:hover{
+    background:#cdd9ee;
+}
+
 #inputArea{
     background:white;
     padding:18px 40px;
@@ -81,7 +100,6 @@ header h1{
     padding:14px;
     border-radius:8px;
     border:1px solid #cfd6e4;
-    font-size:15px;
 }
 
 #send{
@@ -112,7 +130,25 @@ footer{
 </div>
 </header>
 
-<div id="chat"></div>
+<div id="chat">
+
+<div class="message">
+<div class="avatar">AI</div>
+<div class="bubble">
+<strong>Dobrodošli!</strong><br><br>
+Kako vam mogu pomoći danas?
+
+<div class="quickButtons">
+<button onclick="quickAsk('Gdje na romantičnu večeru?')">Romantična večera</button>
+<button onclick="quickAsk('Brza hrana navečer')">Brza hrana</button>
+<button onclick="quickAsk('Najbolji kafići u centru')">Kafići</button>
+<button onclick="quickAsk('Noćni izlazak u Valpovu')">Noćni život</button>
+</div>
+
+</div>
+</div>
+
+</div>
 
 <div id="inputArea">
 <input id="input" placeholder="Postavite pitanje...">
@@ -152,15 +188,13 @@ function renderAIResponse(data){
     }
 
     let html = `<h2>${data.title}</h2>`;
-    html += `<p>${data.intro}</p>`;
-    html += `<ul>`;
+    html += `<p>${data.intro}</p><ul>`;
 
     data.recommendations.forEach(r => {
         html += `<li><strong>${r.name}</strong><br>${r.reason}</li>`;
     });
 
     html += `</ul>`;
-
     html += `<p><em>${data.followUpQuestion}</em></p>`;
 
     addMessage(html);
@@ -170,14 +204,12 @@ async function sendMessage(){
 
     const input = document.getElementById("input");
     const message = input.value.trim();
-
     if(message === "") return;
 
     addMessage(`<strong>Vi:</strong> ${message}`);
     addMessage("<em>Razmišljam...</em>");
 
     try {
-
         const response = await fetch("/api/chat", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -185,6 +217,9 @@ async function sendMessage(){
         });
 
         const data = await response.json();
+
+        /* uklanjamo 'Razmišljam...' poruku */
+        chat.removeChild(chat.lastChild);
 
         renderAIResponse(data);
 
@@ -195,11 +230,18 @@ async function sendMessage(){
     input.value="";
 }
 
+function quickAsk(text){
+    document.getElementById("input").value = text;
+    sendMessage();
+}
+
 document.getElementById("input").addEventListener("keypress", function(e){
     if(e.key === "Enter"){
         sendMessage();
     }
 });
+
+window.onload = scrollToBottom;
 
 </script>
 
