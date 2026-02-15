@@ -16,8 +16,16 @@ export default async function handler(req, res) {
 
     const { message } = req.body;
 
+    /* RESET KOMANDA */
+
+    if(message === "__RESET__"){
+      conversationMemory = [];
+      userPreferences = {};
+      return res.status(200).json({ reset: true });
+    }
+
     /* ---------------------------
-       1️⃣ AI KLASIFIKACIJA TEME
+       1️⃣ AI KLASIFIKACIJA
     ----------------------------*/
 
     const classificationResponse = await fetch("https://api.openai.com/v1/chat/completions", {
@@ -33,8 +41,7 @@ export default async function handler(req, res) {
           {
             role: "system",
             content: `
-Ti klasificiraš turističke upite za grad Valpovo.
-Vrati isključivo jednu riječ:
+Vrati samo jednu riječ:
 gastronomija
 smještaj
 znamenitosti
@@ -57,7 +64,7 @@ priroda
     const selectedData = valpovoData[category] || [];
 
     /* ---------------------------
-       2️⃣ DETEKCIJA PREFERENCIJA
+       PREFERENCIJE
     ----------------------------*/
 
     const lower = message.toLowerCase();
@@ -69,35 +76,22 @@ priroda
     if(lower.includes("centar")) userPreferences.lokacija = "centar";
 
     /* ---------------------------
-       3️⃣ TON
+       TON
     ----------------------------*/
 
     let toneInstruction = "";
 
-    if (TONE === "formal") {
-      toneInstruction = "Komuniciraj profesionalno i službeno.";
-    }
-    else if (TONE === "neutral") {
-      toneInstruction = "Komuniciraj jasno i informativno.";
-    }
-    else if (TONE === "friendly") {
-      toneInstruction = "Komuniciraj toplo i prijateljski.";
-    }
-
-    /* ---------------------------
-       4️⃣ GLAVNI AI ODGOVOR
-    ----------------------------*/
+    if (TONE === "formal") toneInstruction = "Komuniciraj profesionalno.";
+    if (TONE === "neutral") toneInstruction = "Komuniciraj informativno.";
+    if (TONE === "friendly") toneInstruction = "Komuniciraj toplo i prijateljski.";
 
     const systemPrompt = `
-Ti si službeni AI turistički savjetnik za Valpovo.
+Ti si AI turistički savjetnik za Valpovo.
 
 ${toneInstruction}
 
 Tema: ${category}
 Preferencije: ${JSON.stringify(userPreferences)}
-
-Ako baza nema konkretne objekte, daj informativni odgovor
-i ponudi alternativnu temu.
 
 Vrati JSON:
 
@@ -139,33 +133,20 @@ ${JSON.stringify(selectedData)}
 
     let parsed;
 
-    try {
+    try{
       parsed = JSON.parse(content);
-    } catch {
+    }catch{
       parsed = null;
     }
 
-    /* ---------------------------
-       5️⃣ FALLBACK AKO PRAZNO
-    ----------------------------*/
-
-    if(!parsed || !parsed.recommendations || parsed.recommendations.length === 0){
-
+    if(!parsed){
       return res.status(200).json({
-        title: "Opće informacije o Valpovu",
-        intro: "Rado ću vam pomoći. Možda vas zanimaju znamenitosti, gastronomija ili smještaj?",
+        title: "Informacije",
+        intro: "Rado ću pomoći. Koju vrstu informacija trebate?",
         recommendations: [],
-        followUpQuestion: "Koju vrstu informacija biste željeli?"
+        followUpQuestion: "Znamenitosti, gastronomija ili smještaj?"
       });
     }
-
-    /* VALIDACIJA */
-
-    const allowedNames = selectedData.map(o => o.name);
-
-    parsed.recommendations = parsed.recommendations.filter(r =>
-      allowedNames.includes(r.name)
-    );
 
     conversationMemory.push({
       role: "assistant",
