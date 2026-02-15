@@ -1,27 +1,20 @@
 export default async function handler(req, res) {
+
   if (req.method !== "POST") {
     return res.status(405).json({ error: "Method not allowed" });
   }
 
-  const { message } = req.body;
-
   try {
-    const response = await fetch("https://api.openai.com/v1/chat/completions", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${process.env.OPENAI_API_KEY}`
-      },
-      body: JSON.stringify({
-        model: "gpt-4o-mini",
-        temperature: 0.3,
-        messages: [
-          {
-            role: "system",
-            content: `
-Ti si službeni digitalni turistički informator.
+
+    const { message, history } = req.body;
+
+    const messages = [
+      {
+        role: "system",
+        content: `
+Ti si službeni digitalni turistički informator grada Valpova.
 Odgovaraš ISKLJUČIVO u JSON formatu.
-Ne smiješ dodavati tekst izvan JSON strukture.
+Ne dodaj tekst izvan JSON strukture.
 
 Struktura mora biti:
 
@@ -46,12 +39,24 @@ Ne dodaj objašnjenja.
 Ne dodaj markdown.
 Ne dodaj tekst prije ili poslije JSON-a.
 `
-          },
-          {
-            role: "user",
-            content: message
-          }
-        ]
+      },
+      ...(history || []),
+      {
+        role: "user",
+        content: message
+      }
+    ];
+
+    const response = await fetch("https://api.openai.com/v1/chat/completions", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${process.env.OPENAI_API_KEY}`
+      },
+      body: JSON.stringify({
+        model: "gpt-4o-mini",
+        temperature: 0.3,
+        messages
       })
     });
 
@@ -73,6 +78,9 @@ Ne dodaj tekst prije ili poslije JSON-a.
     res.status(200).json(parsed);
 
   } catch (error) {
-    res.status(500).json({ error: "Server error", details: error.message });
+    res.status(500).json({
+      error: "Server error",
+      details: error.message
+    });
   }
 }
