@@ -8,52 +8,74 @@ export default async function handler(req, res) {
 
     const { message, history } = req.body;
 
-    const today = new Date();
+    /* ===============================
+       WHITELIST PODACI (DOZVOLJENO)
+       =============================== */
+
+    const allowedData = {
+      znamenitosti: [
+        {
+          name: "Dvorac Prandau-Normann",
+          description: "Barokni dvorac iz 18. stoljeća okružen perivojem.",
+          link: "https://tz.valpovo.hr"
+        },
+        {
+          name: "Muzej Valpovštine",
+          description: "Muzej smješten u sklopu dvorca s povijesnom zbirkom.",
+          link: "https://tz.valpovo.hr"
+        },
+        {
+          name: "Crkva sv. Roka",
+          description: "Povijesna crkva iz 18. stoljeća u centru grada.",
+          link: "https://tz.valpovo.hr"
+        }
+      ],
+      priroda: [
+        {
+          name: "Perivoj dvorca",
+          description: "Uređeni park oko dvorca idealan za šetnju.",
+          link: "https://tz.valpovo.hr"
+        }
+      ]
+    };
+
+    /* ===============================
+       SYSTEM PROMPT
+       =============================== */
 
     const systemPrompt = `
 Ti si službeni digitalni turistički informator grada Valpova.
 
 STROGO PRAVILO:
-Ne smiješ izmišljati restorane, događaje, lokacije ili povijesne činjenice.
-Ako nisi siguran u podatak, napiši da informacija trenutno nije dostupna.
-Ne smiješ nagađati.
+Smiješ koristiti ISKLJUČIVO podatke koji su ti dostavljeni u listi ALLOWED DATA.
+Ne smiješ izmišljati nove lokacije.
+Ne smiješ dodavati objekte koji nisu na listi.
 
-Odgovaraš ISKLJUČIVO o Valpovu i okolici.
-
-Koristi samo opće poznate i realne informacije.
-Ne izmišljaj nazive objekata.
-Ne izmišljaj URL adrese.
+Ako korisnik pita za nešto što nije na listi:
+vrati praznu listu items.
 
 Odgovaraš ISKLJUČIVO u JSON formatu.
 
 Struktura mora biti:
 
 {
-  "category": "jedna_od_kategorija",
+  "category": "znamenitosti | priroda | općenito",
   "title": "Naslov odgovora",
   "intro": "Kratki uvodni tekst",
   "sections": [
     {
       "heading": "Naziv sekcije",
-      "items": [
-        {
-          "name": "Naziv stavke",
-          "description": "Kratki opis",
-          "link": "https://tz.valpovo.hr"
-        }
-      ]
+      "items": [ DOZVOLJENI_OBJEKTI ]
     }
   ]
 }
-
-Ako ne znaš informaciju:
-vrati praznu listu items.
-
-Ne dodaj tekst izvan JSON strukture.
 `;
 
     const messages = [
-      { role: "system", content: systemPrompt },
+      {
+        role: "system",
+        content: systemPrompt + "\n\nALLOWED DATA:\n" + JSON.stringify(allowedData)
+      },
       ...(history || []),
       { role: "user", content: message }
     ];
@@ -66,7 +88,7 @@ Ne dodaj tekst izvan JSON strukture.
       },
       body: JSON.stringify({
         model: "gpt-4o-mini",
-        temperature: 0.0, /* KLJUČNO – MINIMALNA HALUCINACIJA */
+        temperature: 0.0,
         messages
       })
     });
@@ -85,14 +107,15 @@ Ne dodaj tekst izvan JSON strukture.
       });
     }
 
-    /* VALIDACIJA LINKOVA */
+    /* ===============================
+       SERVER VALIDACIJA
+       =============================== */
 
     parsed.sections?.forEach(section => {
-      section.items?.forEach(item => {
-        if (!item.link || !item.link.startsWith("https://")) {
-          item.link = "https://tz.valpovo.hr";
-        }
-      });
+      section.items = section.items.filter(item =>
+        allowedData.znamenitosti.some(a => a.name === item.name) ||
+        allowedData.priroda.some(a => a.name === item.name)
+      );
     });
 
     res.status(200).json(parsed);
