@@ -2,198 +2,102 @@
 <html lang="hr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Turistički informator Valpovo</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Turistički informator</title>
 
 <style>
 *{box-sizing:border-box;}
-
 body{
-    margin:0;
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
-    background:#eef2f7;
-    display:flex;
-    flex-direction:column;
-    height:100vh;
+margin:0;
+font-family:Arial, sans-serif;
+background:#eef2f7;
+display:flex;
+flex-direction:column;
+height:100vh;
 }
-
-/* HEADER */
-
 header{
-    background:linear-gradient(135deg,#2f5597,#3f6fb6);
-    color:white;
-    padding:14px 18px;
-    display:flex;
-    align-items:center;
-    gap:12px;
-    flex-shrink:0;
+background:#2f5597;
+color:white;
+padding:12px 16px;
+display:flex;
+justify-content:space-between;
+align-items:center;
 }
-
-header img{ height:36px; }
-header h2{ margin:0; font-size:18px; }
-
-/* CHAT */
-
 #chat{
-    flex:1;
-    overflow-y:auto;
-    padding:16px;
-    display:flex;
-    flex-direction:column;
-    gap:16px;
+flex:1;
+overflow-y:auto;
+padding:15px;
+display:flex;
+flex-direction:column;
+gap:15px;
 }
-
-/* MESSAGE */
-
 .message{
-    display:flex;
-    align-items:flex-end;
-    gap:8px;
+display:flex;
+gap:8px;
 }
-
-.message.user{ justify-content:flex-end; }
-
+.message.user{
+justify-content:flex-end;
+}
 .avatar{
-    width:30px;
-    height:30px;
-    border-radius:50%;
-    background:#2f5597;
-    color:white;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:11px;
-    flex-shrink:0;
+width:28px;
+height:28px;
+border-radius:50%;
+background:#2f5597;
+color:white;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:11px;
 }
-
 .bubble{
-    background:white;
-    padding:14px;
-    border-radius:16px;
-    box-shadow:0 3px 10px rgba(0,0,0,0.08);
-    max-width:75%;
-    word-wrap:break-word;
-    font-size:14px;
+background:white;
+padding:12px;
+border-radius:14px;
+max-width:75%;
 }
-
 .message.user .bubble{
-    background:#2f5597;
-    color:white;
+background:#2f5597;
+color:white;
 }
-
-/* TYPING DOTS */
-
-.typing{
-    display:flex;
-    gap:4px;
-}
-
-.typing span{
-    width:6px;
-    height:6px;
-    background:#999;
-    border-radius:50%;
-    animation:blink 1.4s infinite both;
-}
-
-.typing span:nth-child(2){
-    animation-delay:.2s;
-}
-
-.typing span:nth-child(3){
-    animation-delay:.4s;
-}
-
-@keyframes blink{
-    0%{opacity:.2;}
-    20%{opacity:1;}
-    100%{opacity:.2;}
-}
-
-/* QUICK BUTTONS */
-
-.quickButtons{
-    margin-top:12px;
-    display:flex;
-    flex-wrap:wrap;
-    gap:6px;
-}
-
-.quickButtons button{
-    background:#e1e8f6;
-    border:none;
-    padding:6px 10px;
-    border-radius:16px;
-    font-size:12px;
-    cursor:pointer;
-}
-
-/* INPUT */
-
 #inputArea{
-    background:white;
-    padding:10px;
-    border-top:1px solid #ddd;
-    display:flex;
-    gap:6px;
-    flex-shrink:0;
+display:flex;
+padding:10px;
+background:white;
+border-top:1px solid #ddd;
+gap:5px;
 }
-
 #input{
-    flex:1;
-    padding:10px;
-    border-radius:20px;
-    border:1px solid #ccc;
-    font-size:14px;
+flex:1;
+padding:8px;
+border-radius:20px;
+border:1px solid #ccc;
 }
-
 #send{
-    padding:8px 14px;
-    background:#2f5597;
-    color:white;
-    border:none;
-    border-radius:20px;
-    font-size:13px;
-    cursor:pointer;
+padding:8px 14px;
+background:#2f5597;
+color:white;
+border:none;
+border-radius:20px;
 }
-
-/* DESKTOP */
-
-@media (min-width:768px){
-    #chat{ padding:40px 60px; gap:28px; }
-    .bubble{ max-width:800px; }
-    header img{ height:60px; }
-    header h2{ font-size:22px; }
+button.reset{
+background:#c0392b;
+color:white;
+border:none;
+padding:6px 10px;
+border-radius:6px;
+cursor:pointer;
 }
-
 </style>
 </head>
 
 <body>
 
 <header>
-<img src="tz-logo-Valpovo.png">
-<h2>Turistički informator – Valpovo</h2>
+<span>Turistički informator – Valpovo</span>
+<button class="reset" onclick="resetChat()">Novi razgovor</button>
 </header>
 
-<div id="chat">
-<div class="message">
-<div class="avatar">AI</div>
-<div class="bubble">
-<strong>Dobrodošli!</strong><br><br>
-Kako vam mogu pomoći?
-
-<div class="quickButtons">
-<button onclick="quickAsk('Što vrijedi vidjeti u Valpovu?')">Znamenitosti</button>
-<button onclick="quickAsk('Gdje mogu jesti u Valpovu?')">Gastronomija</button>
-<button onclick="quickAsk('Koja su aktualna događanja?')">Događanja</button>
-<button onclick="quickAsk('Gdje mogu prespavati?')">Smještaj</button>
-<button onclick="quickAsk('Gdje prošetati?')">Priroda</button>
-</div>
-
-</div>
-</div>
-</div>
+<div id="chat"></div>
 
 <div id="inputArea">
 <input id="input" placeholder="Postavite pitanje...">
@@ -202,94 +106,77 @@ Kako vam mogu pomoći?
 
 <script>
 
-document.addEventListener("DOMContentLoaded", function(){
+const chat = document.getElementById("chat");
+const input = document.getElementById("input");
+const sendBtn = document.getElementById("send");
 
-    const chat = document.getElementById("chat");
-    const input = document.getElementById("input");
-    const sendBtn = document.getElementById("send");
+function scrollToBottom(){
+chat.scrollTop = chat.scrollHeight;
+}
 
-    function scrollToBottom(){
-        chat.scrollTop = chat.scrollHeight;
-    }
+function addMessage(text, role="ai"){
+const wrapper = document.createElement("div");
+wrapper.className = role === "user" ? "message user" : "message";
+wrapper.innerHTML = `
+${role === "ai" ? `<div class="avatar">AI</div>` : ""}
+<div class="bubble">${text}</div>
+${role === "user" ? `<div class="avatar">Vi</div>` : ""}
+`;
+chat.appendChild(wrapper);
+scrollToBottom();
+}
 
-    function addMessage(text, role="ai"){
+async function sendMessage(){
+const message = input.value.trim();
+if(!message) return;
 
-        const wrapper = document.createElement("div");
-        wrapper.className = role === "user" ? "message user" : "message";
+addMessage(message, "user");
 
-        wrapper.innerHTML = `
-            ${role === "ai" ? `<div class="avatar">AI</div>` : ""}
-            <div class="bubble">${text}</div>
-            ${role === "user" ? `<div class="avatar">Vi</div>` : ""}
-        `;
-
-        chat.appendChild(wrapper);
-        scrollToBottom();
-    }
-
-    async function sendMessage(){
-
-        const message = input.value.trim();
-        if(message === "") return;
-
-        addMessage(message, "user");
-
-        const thinking = document.createElement("div");
-        thinking.className="message";
-        thinking.innerHTML = `
-            <div class="avatar">AI</div>
-            <div class="bubble">
-                <div class="typing">
-                    <span></span><span></span><span></span>
-                </div>
-            </div>
-        `;
-        chat.appendChild(thinking);
-        scrollToBottom();
-
-        try{
-
-            const response = await fetch("/api/chat", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ message })
-            });
-
-            const data = await response.json();
-            chat.removeChild(thinking);
-
-            if(data.recommendations){
-                let html = `<strong>${data.title}</strong><br><br>${data.intro}<ul>`;
-                data.recommendations.forEach(r=>{
-                    html += `<li><strong>${r.name}</strong><br>${r.reason}</li>`;
-                });
-                html += `</ul><em>${data.followUpQuestion}</em>`;
-                addMessage(html);
-            } else {
-                addMessage("Trenutno nemam dovoljno podataka za taj upit.");
-            }
-
-        } catch(error){
-            chat.removeChild(thinking);
-            addMessage("Došlo je do tehničke pogreške.");
-        }
-
-        input.value="";
-    }
-
-    sendBtn.addEventListener("click", sendMessage);
-    input.addEventListener("keypress", function(e){
-        if(e.key === "Enter"){ sendMessage(); }
-    });
-
-    window.quickAsk = function(text){
-        input.value = text;
-        sendMessage();
-    }
-
-    scrollToBottom();
-
+const response = await fetch("/api/chat", {
+method:"POST",
+headers:{ "Content-Type":"application/json" },
+body:JSON.stringify({ message })
 });
+
+const data = await response.json();
+
+if(data.reset){
+chat.innerHTML="";
+addMessage("Započnimo novi razgovor. Kako vam mogu pomoći?");
+return;
+}
+
+let html = `<strong>${data.title}</strong><br><br>${data.intro}`;
+if(data.recommendations && data.recommendations.length){
+html += "<ul>";
+data.recommendations.forEach(r=>{
+html += `<li><strong>${r.name}</strong><br>${r.reason}</li>`;
+});
+html += "</ul>";
+}
+html += `<br><em>${data.followUpQuestion}</em>`;
+
+addMessage(html);
+
+input.value="";
+}
+
+async function resetChat(){
+await fetch("/api/chat", {
+method:"POST",
+headers:{ "Content-Type":"application/json" },
+body:JSON.stringify({ message: "__RESET__" })
+});
+chat.innerHTML="";
+addMessage("Započnimo novi razgovor. Kako vam mogu pomoći?");
+}
+
+sendBtn.addEventListener("click", sendMessage);
+input.addEventListener("keypress", e=>{
+if(e.key==="Enter") sendMessage();
+});
+
+addMessage("Dobrodošli! Kako vam mogu pomoći?");
 
 </script>
 
