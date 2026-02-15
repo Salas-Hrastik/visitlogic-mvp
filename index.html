@@ -12,10 +12,12 @@ body{
     margin:0;
     font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
     background:#eef2f7;
+    height:100vh;
     display:flex;
     flex-direction:column;
-    height:100vh;
 }
+
+/* HEADER */
 
 header{
     background:linear-gradient(135deg,#2f5597,#3f6fb6);
@@ -29,21 +31,20 @@ header{
 
 header img{ height:50px; }
 
+/* CHAT CONTAINER */
+
 #chat{
     flex:1;
     overflow-y:auto;
     padding:30px 40px;
-    display:flex;
-    flex-direction:column;
-    gap:24px;
 }
 
-/* MESSAGE */
+/* MESSAGE BLOCK (NO FLEX COLUMN!) */
 
 .message{
+    margin-bottom:24px;
     display:flex;
     gap:10px;
-    align-items:flex-start;
 }
 
 .message.user{
@@ -69,7 +70,6 @@ header img{ height:50px; }
     border-radius:18px;
     box-shadow:0 4px 14px rgba(0,0,0,0.08);
     max-width:70%;
-    word-wrap:break-word;
 }
 
 .message.user .bubble{
@@ -101,6 +101,8 @@ header img{ height:50px; }
     100%{opacity:.2;}
 }
 
+/* QUICK BUTTONS */
+
 .quickButtons{
     margin-top:14px;
     display:flex;
@@ -115,6 +117,8 @@ header img{ height:50px; }
     border-radius:18px;
     cursor:pointer;
 }
+
+/* INPUT */
 
 #inputArea{
     background:white;
@@ -190,13 +194,7 @@ document.addEventListener("DOMContentLoaded", function(){
     const input = document.getElementById("input");
     const sendBtn = document.getElementById("send");
 
-    function isNearBottom(){
-        return chat.scrollHeight - chat.scrollTop - chat.clientHeight < 100;
-    }
-
     function addMessage(text, role="ai"){
-
-        const shouldAutoScroll = isNearBottom();
 
         const wrapper = document.createElement("div");
         wrapper.className = role === "user" ? "message user" : "message";
@@ -208,10 +206,6 @@ document.addEventListener("DOMContentLoaded", function(){
         `;
 
         chat.appendChild(wrapper);
-
-        if(shouldAutoScroll){
-            chat.scrollTop = chat.scrollHeight;
-        }
     }
 
     async function sendMessage(){
@@ -220,6 +214,9 @@ document.addEventListener("DOMContentLoaded", function(){
         if(!message) return;
 
         addMessage(message, "user");
+
+        /* Scroll only when user sends */
+        chat.scrollTop = chat.scrollHeight;
 
         const typing = document.createElement("div");
         typing.className="message";
@@ -232,8 +229,6 @@ document.addEventListener("DOMContentLoaded", function(){
             </div>
         `;
         chat.appendChild(typing);
-
-        chat.scrollTop = chat.scrollHeight;
 
         try{
 
