@@ -1,82 +1,240 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Turistički informator Valpovo</title>
+
+<style>
+body{
+    margin:0;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+    background:#eef2f7;
+    display:flex;
+    flex-direction:column;
+    height:100vh;
+}
+
+header{
+    background:linear-gradient(135deg,#2f5597,#3f6fb6);
+    color:white;
+    padding:22px 40px;
+    display:flex;
+    align-items:center;
+    gap:20px;
+}
+
+header img{
+    height:60px;
+}
+
+#chat{
+    flex:1;
+    overflow-y:auto;
+    padding:40px 60px;
+    display:flex;
+    flex-direction:column;
+    gap:24px;
+}
+
+.message{
+    display:flex;
+    gap:14px;
+}
+
+.avatar{
+    width:38px;
+    height:38px;
+    border-radius:50%;
+    background:#2f5597;
+    color:white;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:14px;
+}
+
+.bubble{
+    background:white;
+    padding:20px;
+    border-radius:12px;
+    box-shadow:0 4px 14px rgba(0,0,0,0.08);
+    max-width:800px;
+}
+
+.quickButtons{
+    margin-top:18px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+}
+
+.quickButtons button{
+    background:#e1e8f6;
+    border:none;
+    padding:8px 14px;
+    border-radius:20px;
+    cursor:pointer;
+}
+
+#inputArea{
+    background:white;
+    padding:16px 40px;
+    border-top:1px solid #ddd;
+    display:flex;
+    gap:10px;
+}
+
+#input{
+    flex:1;
+    padding:12px;
+    border-radius:6px;
+    border:1px solid #ccc;
+}
+
+#send{
+    padding:12px 22px;
+    background:#2f5597;
+    color:white;
+    border:none;
+    border-radius:6px;
+    cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<img src="tz-logo-Valpovo.png">
+<div>
+<h2>Turistički informator – Valpovo</h2>
+</div>
+</header>
+
+<div id="chat">
+<div class="message">
+<div class="avatar">AI</div>
+<div class="bubble">
+<strong>Dobrodošli!</strong><br><br>
+Kako vam mogu pomoći?
+
+<div class="quickButtons">
+<button onclick="quickAsk('Što vrijedi vidjeti u Valpovu?')">Znamenitosti</button>
+<button onclick="quickAsk('Gdje mogu jesti u Valpovu?')">Gastronomija</button>
+<button onclick="quickAsk('Koja su aktualna događanja?')">Događanja</button>
+<button onclick="quickAsk('Gdje mogu prespavati?')">Smještaj</button>
+<button onclick="quickAsk('Gdje prošetati?')">Priroda</button>
+</div>
+
+</div>
+</div>
+</div>
+
+<div id="inputArea">
+<input id="input" placeholder="Postavite pitanje...">
+<button id="send">Pošalji</button>
+</div>
+
+<footer style="text-align:center;padding:10px;background:#f4f6fa;">
+© Turistička zajednica grada Valpova
+</footer>
+
 <script>
 
-const chat = document.getElementById("chat");
+document.addEventListener("DOMContentLoaded", function(){
 
-function scrollToBottom(){
-    setTimeout(() => {
-        chat.scrollTop = chat.scrollHeight;
-    }, 50);
-}
-
-function addMessage(html, role="ai"){
-
-    const wrapper = document.createElement("div");
-    wrapper.className="message";
-
-    wrapper.innerHTML = `
-        <div class="avatar">${role === "user" ? "Vi" : "AI"}</div>
-        <div class="bubble">${html}</div>
-    `;
-
-    chat.appendChild(wrapper);
-    scrollToBottom();
-}
-
-async function sendMessage(){
-
+    const chat = document.getElementById("chat");
     const input = document.getElementById("input");
-    const message = input.value.trim();
-    if(message === "") return;
+    const sendBtn = document.getElementById("send");
 
-    addMessage(message, "user");
-
-    const thinking = document.createElement("div");
-    thinking.className="message";
-    thinking.innerHTML = `
-        <div class="avatar">AI</div>
-        <div class="bubble"><em>Razmišljam...</em></div>
-    `;
-    chat.appendChild(thinking);
-    scrollToBottom();
-
-    try {
-
-        const response = await fetch("/api/chat", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ message })
-        });
-
-        const data = await response.json();
-
-        chat.removeChild(thinking);
-
-        let html = `<h2>${data.title}</h2>`;
-        html += `<p>${data.intro}</p><ul>`;
-
-        data.recommendations.forEach(r => {
-            html += `<li><strong>${r.name}</strong><br>${r.reason}</li>`;
-        });
-
-        html += `</ul>`;
-        html += `<p><em>${data.followUpQuestion}</em></p>`;
-
-        addMessage(html);
-
-    } catch(error){
-        chat.removeChild(thinking);
-        addMessage("Došlo je do pogreške.");
+    function scrollToBottom(){
+        chat.scrollTop = chat.scrollHeight;
     }
 
-    input.value="";
-}
+    function addMessage(text, role="ai"){
 
-document.getElementById("input").addEventListener("keypress", function(e){
-    if(e.key === "Enter"){
+        const wrapper = document.createElement("div");
+        wrapper.className="message";
+
+        wrapper.innerHTML = `
+            <div class="avatar">${role === "user" ? "Vi" : "AI"}</div>
+            <div class="bubble">${text}</div>
+        `;
+
+        chat.appendChild(wrapper);
+        scrollToBottom();
+    }
+
+    async function sendMessage(){
+
+        const message = input.value.trim();
+        if(message === "") return;
+
+        addMessage(message, "user");
+
+        const thinking = document.createElement("div");
+        thinking.className="message";
+        thinking.innerHTML = `
+            <div class="avatar">AI</div>
+            <div class="bubble"><em>Razmišljam...</em></div>
+        `;
+        chat.appendChild(thinking);
+        scrollToBottom();
+
+        try{
+
+            const response = await fetch("/api/chat", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ message })
+            });
+
+            const data = await response.json();
+
+            chat.removeChild(thinking);
+
+            if(data.recommendations){
+
+                let html = `<h3>${data.title}</h3><p>${data.intro}</p><ul>`;
+
+                data.recommendations.forEach(r=>{
+                    html += `<li><strong>${r.name}</strong><br>${r.reason}</li>`;
+                });
+
+                html += `</ul><p><em>${data.followUpQuestion}</em></p>`;
+
+                addMessage(html);
+
+            } else {
+                addMessage("Trenutno nemam dovoljno podataka za taj upit.");
+            }
+
+        } catch(error){
+            chat.removeChild(thinking);
+            addMessage("Došlo je do tehničke pogreške.");
+        }
+
+        input.value="";
+    }
+
+    sendBtn.addEventListener("click", sendMessage);
+    input.addEventListener("keypress", function(e){
+        if(e.key === "Enter"){
+            sendMessage();
+        }
+    });
+
+    window.quickAsk = function(text){
+        input.value = text;
         sendMessage();
     }
+
+    scrollToBottom();
+
 });
 
-window.onload = scrollToBottom;
-
 </script>
+
+</body>
+</html>
