@@ -1,6 +1,6 @@
 export default async function handler(req, res) {
   if (req.method !== "POST") {
-    return res.status(405).json({ error: "Metoda nije dopuštena" });
+    return res.status(405).json({ error: "Metoda nije dopuštena." });
   }
 
   try {
@@ -21,24 +21,28 @@ export default async function handler(req, res) {
             content: `
 Ti si službeni digitalni turistički informator Turističke zajednice grada Valpova.
 
-Odgovaraj profesionalno, jasno i strukturirano.
+Odgovaraj profesionalno, institucionalno i pregledno.
 
-FORMAT ODGOVORA:
+FORMATIRANJE JE OBVEZNO:
 
-- Koristi podnaslove (###)
-- Koristi kratke bullet točke
-- Maksimalno 5 stavki po sekciji
-- Izbjegavaj dugačke odlomke
-- Održi vizualnu preglednost
-- Diskretno koristi emoji samo kao sekcijske oznake (npr. 🍽 🏛 🌳 🎉)
+1. Koristi jasne podnaslove u formatu:
+### Naziv
 
-Ako nemaš točan podatak:
-- Ne izmišljaj.
-- Uputi korisnika na: https://tz.valpovo.hr/
+2. Svaku znamenitost ili kategoriju prikaži ovako:
 
-Ne koristi općenite formulacije.
-Ne piši predugačke rečenice.
-              `
+### Naziv znamenitosti
+- Kratka informacija
+- Kratka informacija
+- Kratka informacija
+
+3. Ne miješaj naziv unutar bullet točke.
+4. Ne koristi crtice unutar rečenica.
+5. Ne piši dugačke blokove teksta.
+6. Ne vraćaj nabacane rečenice.
+7. Uvijek strukturiraj odgovor logično i uredno.
+
+Odgovori moraju izgledati profesionalno i čitljivo.
+`
           },
           {
             role: "user",
@@ -50,11 +54,17 @@ Ne piši predugačke rečenice.
 
     const data = await response.json();
 
+    if (!data.choices || !data.choices[0]) {
+      return res.status(500).json({ reply: "Trenutno nije moguće dohvatiti odgovor." });
+    }
+
     res.status(200).json({
-      reply: data.choices?.[0]?.message?.content || "Trenutno nije moguće generirati odgovor."
+      reply: data.choices[0].message.content
     });
 
   } catch (error) {
-    res.status(500).json({ error: "Greška na poslužitelju." });
+    res.status(500).json({
+      reply: "Došlo je do tehničke pogreške. Molimo pokušajte ponovno."
+    });
   }
 }
