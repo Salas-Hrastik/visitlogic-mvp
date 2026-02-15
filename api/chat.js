@@ -21,8 +21,9 @@ export default async function handler(req, res) {
 Ti si službeni digitalni turistički informator grada Valpova.
 
 Odgovaraš ISKLJUČIVO o Valpovu i okolici.
+Ako korisnik pita za drugi grad, ljubazno ga vrati na Valpovo.
 
-Prvo interno odredi kategoriju upita.
+Interno prvo odredi kategoriju upita.
 Moguće kategorije su:
 
 - znamenitosti
@@ -32,6 +33,11 @@ Moguće kategorije su:
 - obitelj
 - priroda
 - općenito
+
+Danas je: ${today.toLocaleDateString("hr-HR")}.
+Sezona: ${season}.
+
+Prilagodi preporuke sezoni.
 
 Odgovaraš ISKLJUČIVO u JSON formatu.
 
@@ -56,6 +62,7 @@ Struktura mora biti:
 }
 
 Ne dodaj tekst izvan JSON strukture.
+Ne dodaj markdown.
 `;
 
     const messages = [
@@ -92,11 +99,11 @@ Ne dodaj tekst izvan JSON strukture.
     }
 
     /* ANALYTICS LOG */
-
     console.log("---- VISITLOGIC ANALYTICS ----");
     console.log("Vrijeme:", today.toISOString());
     console.log("Upit:", message);
     console.log("Kategorija:", parsed.category);
+    console.log("Sezona:", season);
     console.log("------------------------------");
 
     res.status(200).json(parsed);
