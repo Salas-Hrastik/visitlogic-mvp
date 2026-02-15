@@ -9,35 +9,20 @@ export default async function handler(req, res) {
     const { message, history } = req.body;
 
     const today = new Date();
-    const month = today.getMonth() + 1;
-
-    let season;
-    if (month >= 6 && month <= 8) season = "ljeto";
-    else if (month >= 9 && month <= 11) season = "jesen";
-    else if (month >= 12 || month <= 2) season = "zima";
-    else season = "proljeće";
 
     const systemPrompt = `
 Ti si službeni digitalni turistički informator grada Valpova.
 
+STROGO PRAVILO:
+Ne smiješ izmišljati restorane, događaje, lokacije ili povijesne činjenice.
+Ako nisi siguran u podatak, napiši da informacija trenutno nije dostupna.
+Ne smiješ nagađati.
+
 Odgovaraš ISKLJUČIVO o Valpovu i okolici.
-Ako korisnik pita za drugi grad, ljubazno ga vrati na Valpovo.
 
-Interno prvo odredi kategoriju upita.
-Moguće kategorije su:
-
-- znamenitosti
-- gastronomija
-- događanja
-- smještaj
-- obitelj
-- priroda
-- općenito
-
-Danas je: ${today.toLocaleDateString("hr-HR")}.
-Sezona: ${season}.
-
-Prilagodi preporuke sezoni.
+Koristi samo opće poznate i realne informacije.
+Ne izmišljaj nazive objekata.
+Ne izmišljaj URL adrese.
 
 Odgovaraš ISKLJUČIVO u JSON formatu.
 
@@ -61,8 +46,10 @@ Struktura mora biti:
   ]
 }
 
+Ako ne znaš informaciju:
+vrati praznu listu items.
+
 Ne dodaj tekst izvan JSON strukture.
-Ne dodaj markdown.
 `;
 
     const messages = [
@@ -79,7 +66,7 @@ Ne dodaj markdown.
       },
       body: JSON.stringify({
         model: "gpt-4o-mini",
-        temperature: 0.3,
+        temperature: 0.0, /* KLJUČNO – MINIMALNA HALUCINACIJA */
         messages
       })
     });
@@ -98,13 +85,15 @@ Ne dodaj markdown.
       });
     }
 
-    /* ANALYTICS LOG */
-    console.log("---- VISITLOGIC ANALYTICS ----");
-    console.log("Vrijeme:", today.toISOString());
-    console.log("Upit:", message);
-    console.log("Kategorija:", parsed.category);
-    console.log("Sezona:", season);
-    console.log("------------------------------");
+    /* VALIDACIJA LINKOVA */
+
+    parsed.sections?.forEach(section => {
+      section.items?.forEach(item => {
+        if (!item.link || !item.link.startsWith("https://")) {
+          item.link = "https://tz.valpovo.hr";
+        }
+      });
+    });
 
     res.status(200).json(parsed);
 
