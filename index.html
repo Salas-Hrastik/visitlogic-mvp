@@ -45,7 +45,7 @@ header p{
     overflow-y:auto;
     padding:40px 60px;
     display:flex;
-    flex-direction:column; /* NORMALNO */
+    flex-direction:column;
     gap:28px;
 }
 
@@ -74,11 +74,6 @@ header p{
     box-shadow:0 6px 18px rgba(0,0,0,0.08);
     width:100%;
     max-width:800px;
-}
-
-.bubble h2{
-    margin-top:0;
-    color:#2f5597;
 }
 
 .quickButtons{
@@ -190,12 +185,13 @@ function addMessage(html){
     `;
 
     chat.appendChild(wrapper);
-    scrollToBottom(); /* KLJUČNO */
+    scrollToBottom();
 }
 
 function renderStructuredResponse(data){
 
-    let html = `<h2>${data.title}</h2>`;
+    let html = `<small>Kategorija: ${data.category}</small>`;
+    html += `<h2>${data.title}</h2>`;
     html += `<p>${data.intro}</p>`;
 
     data.sections.forEach(section => {
