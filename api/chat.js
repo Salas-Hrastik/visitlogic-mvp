@@ -1,11 +1,11 @@
 export default async function handler(req, res) {
   if (req.method !== "POST") {
-    return res.status(405).json({ error: "Metoda nije dopuštena." });
+    return res.status(405).json({ error: "Method not allowed" });
   }
 
-  try {
-    const { message } = req.body;
+  const { message } = req.body;
 
+  try {
     const response = await fetch("https://api.openai.com/v1/chat/completions", {
       method: "POST",
       headers: {
@@ -19,29 +19,32 @@ export default async function handler(req, res) {
           {
             role: "system",
             content: `
-Ti si službeni digitalni turistički informator Turističke zajednice grada Valpova.
+Ti si službeni digitalni turistički informator.
+Odgovaraš ISKLJUČIVO u JSON formatu.
+Ne smiješ dodavati tekst izvan JSON strukture.
 
-Odgovaraj profesionalno, institucionalno i pregledno.
+Struktura mora biti:
 
-FORMATIRANJE JE OBVEZNO:
+{
+  "title": "Naslov odgovora",
+  "intro": "Kratki uvodni tekst",
+  "sections": [
+    {
+      "heading": "Naziv sekcije",
+      "items": [
+        {
+          "name": "Naziv stavke",
+          "description": "Kratki opis",
+          "link": "https://tz.valpovo.hr"
+        }
+      ]
+    }
+  ]
+}
 
-1. Koristi jasne podnaslove u formatu:
-### Naziv
-
-2. Svaku znamenitost ili kategoriju prikaži ovako:
-
-### Naziv znamenitosti
-- Kratka informacija
-- Kratka informacija
-- Kratka informacija
-
-3. Ne miješaj naziv unutar bullet točke.
-4. Ne koristi crtice unutar rečenica.
-5. Ne piši dugačke blokove teksta.
-6. Ne vraćaj nabacane rečenice.
-7. Uvijek strukturiraj odgovor logično i uredno.
-
-Odgovori moraju izgledati profesionalno i čitljivo.
+Ne dodaj objašnjenja.
+Ne dodaj markdown.
+Ne dodaj tekst prije ili poslije JSON-a.
 `
           },
           {
@@ -54,17 +57,22 @@ Odgovori moraju izgledati profesionalno i čitljivo.
 
     const data = await response.json();
 
-    if (!data.choices || !data.choices[0]) {
-      return res.status(500).json({ reply: "Trenutno nije moguće dohvatiti odgovor." });
+    const content = data.choices?.[0]?.message?.content;
+
+    let parsed;
+
+    try {
+      parsed = JSON.parse(content);
+    } catch (err) {
+      return res.status(500).json({
+        error: "Model nije vratio validni JSON.",
+        raw: content
+      });
     }
 
-    res.status(200).json({
-      reply: data.choices[0].message.content
-    });
+    res.status(200).json(parsed);
 
   } catch (error) {
-    res.status(500).json({
-      reply: "Došlo je do tehničke pogreške. Molimo pokušajte ponovno."
-    });
+    res.status(500).json({ error: "Server error", details: error.message });
   }
 }
