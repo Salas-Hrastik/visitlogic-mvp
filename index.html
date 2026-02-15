@@ -1,149 +1,152 @@
 <!DOCTYPE html>
 <html lang="hr">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Turistički informator Valpovo</title>
 
 <style>
-body {
+body{
     margin:0;
-    font-family: system-ui, -apple-system, sans-serif;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
     background:#eef2f7;
     display:flex;
     flex-direction:column;
     height:100vh;
 }
 
-header {
-    background: linear-gradient(135deg,#2f5597,#3f6fb6);
+header{
+    background:linear-gradient(135deg,#2f5597,#3f6fb6);
     color:white;
-    padding:20px 30px;
+    padding:22px 40px;
     display:flex;
     align-items:center;
     gap:20px;
 }
 
-header img {
-    height:70px;
+header img{
+    height:72px;
 }
 
-header h1 {
+header h1{
     margin:0;
     font-size:26px;
+    font-weight:600;
 }
 
-header p {
+header p{
     margin:4px 0 0 0;
     font-size:14px;
-    opacity:0.9;
+    opacity:.9;
 }
 
-#chatContainer {
+#chat{
     flex:1;
     overflow-y:auto;
-    padding:30px;
+    padding:40px 60px;
     display:flex;
     flex-direction:column;
-    gap:20px;
+    gap:28px;
 }
 
-.messageRow {
+.message{
     display:flex;
-    align-items:flex-start;
-    gap:12px;
+    gap:18px;
 }
 
-.aiAvatar {
+.avatar{
+    width:42px;
+    height:42px;
+    border-radius:50%;
     background:#2f5597;
     color:white;
-    width:40px;
-    height:40px;
-    border-radius:50%;
     display:flex;
     align-items:center;
     justify-content:center;
-    font-weight:bold;
+    font-weight:600;
+    flex-shrink:0;
 }
 
-.userBubble {
-    align-self:flex-end;
-    background:#2f5597;
-    color:white;
-    padding:14px 18px;
-    border-radius:20px;
-    max-width:70%;
-}
-
-.aiBubble {
+.bubble{
     background:white;
-    padding:20px;
+    padding:28px 34px;
     border-radius:14px;
-    max-width:85%;
-    box-shadow:0 4px 12px rgba(0,0,0,0.08);
+    box-shadow:0 6px 18px rgba(0,0,0,0.08);
+    width:100%;
+    max-width:100%;
 }
 
-.aiBubble h3 {
+.bubble h2{
     margin-top:0;
     color:#2f5597;
+    font-size:22px;
 }
 
-.aiBubble ul {
-    padding-left:20px;
+.bubble ul{
+    margin:15px 0 0 0;
+    padding-left:22px;
+    line-height:1.7;
 }
 
-.buttons {
+.bubble li{
+    margin-bottom:10px;
+}
+
+.quickButtons{
     display:flex;
-    gap:12px;
-    margin-top:10px;
+    gap:16px;
+    margin-top:20px;
     flex-wrap:wrap;
 }
 
-.buttons button {
-    background:#e2e8f5;
+.quickButtons button{
+    background:#e1e8f6;
     border:none;
-    padding:10px 18px;
-    border-radius:20px;
+    padding:12px 22px;
+    border-radius:24px;
+    cursor:pointer;
+    font-weight:500;
+    transition:.2s;
+}
+
+.quickButtons button:hover{
+    background:#cdd9ee;
+}
+
+#inputArea{
+    background:white;
+    padding:18px 40px;
+    border-top:1px solid #ddd;
+    display:flex;
+    gap:14px;
+}
+
+#input{
+    flex:1;
+    padding:14px;
+    border-radius:8px;
+    border:1px solid #cfd6e4;
+    font-size:15px;
+}
+
+#send{
+    padding:14px 28px;
+    background:#2f5597;
+    color:white;
+    border:none;
+    border-radius:8px;
     cursor:pointer;
     font-weight:500;
 }
 
-.buttons button:hover {
-    background:#cdd9ee;
-}
-
-#inputArea {
-    display:flex;
-    padding:20px;
-    background:white;
-    border-top:1px solid #ddd;
-    gap:10px;
-}
-
-#userInput {
-    flex:1;
-    padding:12px;
-    border-radius:8px;
-    border:1px solid #ccc;
-}
-
-#sendBtn {
-    padding:12px 22px;
-    background:#2f5597;
-    color:white;
-    border:none;
-    border-radius:8px;
-    cursor:pointer;
-}
-
-#sendBtn:hover {
+#send:hover{
     background:#24447a;
 }
 
-footer {
+footer{
     text-align:center;
-    padding:10px;
     font-size:13px;
+    padding:10px;
     background:#f4f6fa;
 }
 </style>
@@ -152,24 +155,24 @@ footer {
 <body>
 
 <header>
-<img src="tz-logo-Valpovo.png" alt="Logo TZ Valpovo">
+<img src="tz-logo-Valpovo.png">
 <div>
 <h1>Turistički informator</h1>
 <p>Turistička zajednica grada Valpova</p>
 </div>
 </header>
 
-<div id="chatContainer">
+<div id="chat">
 
-<div class="messageRow">
-<div class="aiAvatar">AI</div>
-<div class="aiBubble">
+<div class="message">
+<div class="avatar">AI</div>
+<div class="bubble">
 <strong>Dobrodošli!</strong><br><br>
 Postavite pitanje ili odaberite opciju:
-<div class="buttons">
-<button onclick="quickQuestion('znamenitosti')">Znamenitosti</button>
-<button onclick="quickQuestion('gastro')">Gastro</button>
-<button onclick="quickQuestion('dogadanja')">Događanja</button>
+<div class="quickButtons">
+<button onclick="showContent('znamenitosti')">Znamenitosti</button>
+<button onclick="showContent('gastro')">Gastronomija</button>
+<button onclick="showContent('dogadanja')">Događanja</button>
 </div>
 </div>
 </div>
@@ -177,8 +180,8 @@ Postavite pitanje ili odaberite opciju:
 </div>
 
 <div id="inputArea">
-<input id="userInput" placeholder="Postavite pitanje..." />
-<button id="sendBtn" onclick="sendMessage()">Pošalji</button>
+<input id="input" placeholder="Postavite pitanje...">
+<button id="send" onclick="sendMessage()">Pošalji</button>
 </div>
 
 <footer>
@@ -186,20 +189,20 @@ Postavite pitanje ili odaberite opciju:
 </footer>
 
 <script>
-const chatContainer = document.getElementById("chatContainer");
+const chat = document.getElementById("chat");
 
-const responses = {
+const content = {
 znamenitosti: `
-<h3>Znamenitosti u Valpovu</h3>
+<h2>Znamenitosti u Valpovu</h2>
 <ul>
-<li><strong>Dvorac Valpovo</strong> – Barokna arhitektura okružena prekrasnim parkom.</li>
+<li><strong>Dvorac Valpovo</strong> – Barokna arhitektura okružena prekrasnim perivojem.</li>
 <li><strong>Crkva sv. Roka</strong> – Povijesna sakralna građevina iz 18. stoljeća.</li>
-<li><strong>Muzej Valpovštine</strong> – Bogata zbirka lokalne povijesti.</li>
+<li><strong>Muzej Valpovštine</strong> – Bogata zbirka lokalne povijesti i tradicije.</li>
 <li><strong>Valpovačka utvrda</strong> – Ostaci srednjovjekovne fortifikacije.</li>
 </ul>
 `,
 gastro: `
-<h3>Gastronomija</h3>
+<h2>Gastronomija</h2>
 <ul>
 <li><strong>Čobanac</strong> – Tradicionalno slavonsko mesno jelo.</li>
 <li><strong>Fiš paprikaš</strong> – Riblji specijalitet pripremljen na otvorenoj vatri.</li>
@@ -207,53 +210,34 @@ gastro: `
 </ul>
 `,
 dogadanja: `
-<h3>Aktualna događanja</h3>
-<p>Za najnovije informacije o manifestacijama i kulturnim događanjima posjetite:</p>
+<h2>Aktualna događanja</h2>
+<p>Za najnovije informacije posjetite službenu stranicu:</p>
 <p><a href="https://tz.valpovo.hr" target="_blank">tz.valpovo.hr</a></p>
 `
 };
 
-function quickQuestion(type){
-addUserMessage(type);
-addAIResponse(responses[type]);
+function showContent(type){
+addMessage(content[type]);
 }
 
 function sendMessage(){
-const input = document.getElementById("userInput");
+const input = document.getElementById("input");
 if(input.value.trim()==="") return;
-addUserMessage(input.value);
-addAIResponse("<p>Za detaljnije informacije koristite ponuđene opcije.</p>");
+addMessage("<p>Hvala na upitu. Molimo koristite ponuđene opcije za strukturirane informacije.</p>");
 input.value="";
 }
 
-function addUserMessage(text){
-const bubble = document.createElement("div");
-bubble.className="userBubble";
-bubble.innerText=text;
-chatContainer.appendChild(bubble);
-scrollToBottom();
-}
+function addMessage(html){
+const wrapper = document.createElement("div");
+wrapper.className="message";
 
-function addAIResponse(html){
-const row = document.createElement("div");
-row.className="messageRow";
+wrapper.innerHTML = `
+<div class="avatar">AI</div>
+<div class="bubble">${html}</div>
+`;
 
-const avatar = document.createElement("div");
-avatar.className="aiAvatar";
-avatar.innerText="AI";
-
-const bubble = document.createElement("div");
-bubble.className="aiBubble";
-bubble.innerHTML=html;
-
-row.appendChild(avatar);
-row.appendChild(bubble);
-chatContainer.appendChild(row);
-scrollToBottom();
-}
-
-function scrollToBottom(){
-chatContainer.scrollTop = chatContainer.scrollHeight;
+chat.appendChild(wrapper);
+chat.scrollTop = chat.scrollHeight;
 }
 </script>
 
