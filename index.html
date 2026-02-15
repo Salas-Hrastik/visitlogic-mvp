@@ -6,9 +6,7 @@
 <title>Turistički informator Valpovo</title>
 
 <style>
-*{
-    box-sizing:border-box;
-}
+*{box-sizing:border-box;}
 
 body{
     margin:0;
@@ -19,18 +17,20 @@ body{
     height:100vh;
 }
 
+/* HEADER */
+
 header{
     background:linear-gradient(135deg,#2f5597,#3f6fb6);
     color:white;
-    padding:16px 20px;
+    padding:14px 18px;
     display:flex;
     align-items:center;
-    gap:15px;
+    gap:12px;
     flex-shrink:0;
 }
 
 header img{
-    height:40px;
+    height:36px;
 }
 
 header h2{
@@ -38,91 +38,105 @@ header h2{
     font-size:18px;
 }
 
+/* CHAT */
+
 #chat{
     flex:1;
     overflow-y:auto;
-    padding:20px;
+    padding:16px;
     display:flex;
     flex-direction:column;
-    gap:18px;
+    gap:16px;
 }
+
+/* MESSAGE */
 
 .message{
     display:flex;
-    gap:10px;
-    align-items:flex-start;
+    align-items:flex-end;
+    gap:8px;
+}
+
+.message.user{
+    justify-content:flex-end;
 }
 
 .avatar{
-    width:32px;
-    height:32px;
+    width:30px;
+    height:30px;
     border-radius:50%;
     background:#2f5597;
     color:white;
     display:flex;
     align-items:center;
     justify-content:center;
-    font-size:12px;
+    font-size:11px;
     flex-shrink:0;
 }
 
 .bubble{
     background:white;
-    padding:16px;
-    border-radius:12px;
+    padding:14px;
+    border-radius:16px;
     box-shadow:0 3px 10px rgba(0,0,0,0.08);
-    max-width:100%;
+    max-width:75%;
     word-wrap:break-word;
+    font-size:14px;
 }
 
+.message.user .bubble{
+    background:#2f5597;
+    color:white;
+}
+
+/* QUICK BUTTONS */
+
 .quickButtons{
-    margin-top:14px;
+    margin-top:12px;
     display:flex;
     flex-wrap:wrap;
-    gap:8px;
+    gap:6px;
 }
 
 .quickButtons button{
     background:#e1e8f6;
     border:none;
-    padding:6px 12px;
-    border-radius:18px;
+    padding:6px 10px;
+    border-radius:16px;
     font-size:12px;
     cursor:pointer;
 }
 
+/* INPUT */
+
 #inputArea{
     background:white;
-    padding:12px 15px;
+    padding:10px;
     border-top:1px solid #ddd;
     display:flex;
-    gap:8px;
+    gap:6px;
     flex-shrink:0;
 }
 
 #input{
     flex:1;
     padding:10px;
-    border-radius:6px;
+    border-radius:20px;
     border:1px solid #ccc;
     font-size:14px;
 }
 
 #send{
-    padding:10px 16px;
+    padding:8px 14px;
     background:#2f5597;
     color:white;
     border:none;
-    border-radius:6px;
-    font-size:14px;
+    border-radius:20px;
+    font-size:13px;
     cursor:pointer;
 }
 
-footer{
-    display:none;
-}
-
-/* Desktop optimizacija */
+/* DESKTOP */
 
 @media (min-width:768px){
 
@@ -145,20 +159,13 @@ footer{
 
     .bubble{
         max-width:800px;
-        padding:22px;
+        font-size:15px;
     }
 
     #inputArea{
-        padding:18px 40px;
+        padding:16px 40px;
     }
 
-    footer{
-        display:block;
-        text-align:center;
-        font-size:13px;
-        padding:10px;
-        background:#f4f6fa;
-    }
 }
 
 </style>
@@ -195,10 +202,6 @@ Kako vam mogu pomoći?
 <button id="send">Pošalji</button>
 </div>
 
-<footer>
-© Turistička zajednica grada Valpova
-</footer>
-
 <script>
 
 document.addEventListener("DOMContentLoaded", function(){
@@ -214,11 +217,12 @@ document.addEventListener("DOMContentLoaded", function(){
     function addMessage(text, role="ai"){
 
         const wrapper = document.createElement("div");
-        wrapper.className="message";
+        wrapper.className = role === "user" ? "message user" : "message";
 
         wrapper.innerHTML = `
-            <div class="avatar">${role === "user" ? "Vi" : "AI"}</div>
+            ${role === "ai" ? `<div class="avatar">AI</div>` : ""}
             <div class="bubble">${text}</div>
+            ${role === "user" ? `<div class="avatar">Vi</div>` : ""}
         `;
 
         chat.appendChild(wrapper);
@@ -253,11 +257,11 @@ document.addEventListener("DOMContentLoaded", function(){
             chat.removeChild(thinking);
 
             if(data.recommendations){
-                let html = `<h3>${data.title}</h3><p>${data.intro}</p><ul>`;
+                let html = `<strong>${data.title}</strong><br><br>${data.intro}<ul>`;
                 data.recommendations.forEach(r=>{
                     html += `<li><strong>${r.name}</strong><br>${r.reason}</li>`;
                 });
-                html += `</ul><p><em>${data.followUpQuestion}</em></p>`;
+                html += `</ul><em>${data.followUpQuestion}</em>`;
                 addMessage(html);
             } else {
                 addMessage("Trenutno nemam dovoljno podataka za taj upit.");
