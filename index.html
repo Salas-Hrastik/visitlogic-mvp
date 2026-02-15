@@ -1,171 +1,11 @@
-<!DOCTYPE html>
-<html lang="hr">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Turistički informator Valpovo</title>
-
-<style>
-body{
-    margin:0;
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
-    background:#eef2f7;
-    display:flex;
-    flex-direction:column;
-    height:100vh;
-}
-
-header{
-    background:linear-gradient(135deg,#2f5597,#3f6fb6);
-    color:white;
-    padding:22px 40px;
-    display:flex;
-    align-items:center;
-    gap:20px;
-}
-
-header img{
-    height:60px;
-}
-
-header h1{
-    margin:0;
-    font-size:24px;
-}
-
-#chat{
-    flex:1;
-    overflow-y:auto;
-    padding:40px 60px;
-    display:flex;
-    flex-direction:column;
-    gap:28px;
-}
-
-.message{
-    display:flex;
-    gap:18px;
-}
-
-.avatar{
-    width:42px;
-    height:42px;
-    border-radius:50%;
-    background:#2f5597;
-    color:white;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-weight:600;
-}
-
-.bubble{
-    background:white;
-    padding:28px;
-    border-radius:14px;
-    box-shadow:0 6px 18px rgba(0,0,0,0.08);
-    max-width:800px;
-    width:100%;
-}
-
-.quickButtons{
-    margin-top:20px;
-    display:flex;
-    flex-wrap:wrap;
-    gap:12px;
-}
-
-.quickButtons button{
-    background:#e1e8f6;
-    border:none;
-    padding:10px 18px;
-    border-radius:24px;
-    cursor:pointer;
-}
-
-.quickButtons button:hover{
-    background:#cdd9ee;
-}
-
-#inputArea{
-    background:white;
-    padding:18px 40px;
-    border-top:1px solid #ddd;
-    display:flex;
-    gap:14px;
-}
-
-#input{
-    flex:1;
-    padding:14px;
-    border-radius:8px;
-    border:1px solid #cfd6e4;
-}
-
-#send{
-    padding:14px 28px;
-    background:#2f5597;
-    color:white;
-    border:none;
-    border-radius:8px;
-    cursor:pointer;
-}
-
-footer{
-    text-align:center;
-    font-size:13px;
-    padding:10px;
-    background:#f4f6fa;
-}
-</style>
-</head>
-
-<body>
-
-<header>
-<img src="tz-logo-Valpovo.png">
-<div>
-<h1>Turistički informator</h1>
-<p>Turistička zajednica grada Valpova</p>
-</div>
-</header>
-
-<div id="chat">
-
-<div class="message">
-<div class="avatar">AI</div>
-<div class="bubble">
-<strong>Dobrodošli!</strong><br><br>
-Kako vam mogu pomoći?
-
-<div class="quickButtons">
-<button onclick="quickAsk('Što vrijedi vidjeti u Valpovu?')">Znamenitosti</button>
-<button onclick="quickAsk('Gdje mogu jesti u Valpovu?')">Gastronomija</button>
-<button onclick="quickAsk('Koja su aktualna događanja?')">Događanja</button>
-<button onclick="quickAsk('Gdje mogu prespavati u Valpovu?')">Smještaj</button>
-<button onclick="quickAsk('Gdje prošetati u prirodi?')">Priroda</button>
-</div>
-
-</div>
-</div>
-
-</div>
-
-<div id="inputArea">
-<input id="input" placeholder="Postavite pitanje...">
-<button id="send" onclick="sendMessage()">Pošalji</button>
-</div>
-
-<footer>
-© Turistička zajednica grada Valpova – Digitalni informator
-</footer>
-
 <script>
 
 const chat = document.getElementById("chat");
 
 function scrollToBottom(){
-    chat.scrollTop = chat.scrollHeight;
+    setTimeout(() => {
+        chat.scrollTop = chat.scrollHeight;
+    }, 50);
 }
 
 function addMessage(html, role="ai"){
@@ -180,51 +20,6 @@ function addMessage(html, role="ai"){
 
     chat.appendChild(wrapper);
     scrollToBottom();
-}
-
-function renderAIResponse(data){
-
-    if(!data){
-        addMessage("Došlo je do pogreške.");
-        return;
-    }
-
-    /* NOVI FORMAT (AI model s recommendations) */
-    if(data.recommendations){
-
-        let html = `<h2>${data.title}</h2>`;
-        html += `<p>${data.intro}</p><ul>`;
-
-        data.recommendations.forEach(r => {
-            html += `<li><strong>${r.name}</strong><br>${r.reason}</li>`;
-        });
-
-        html += `</ul>`;
-        html += `<p><em>${data.followUpQuestion}</em></p>`;
-
-        addMessage(html);
-        return;
-    }
-
-    /* STARI FORMAT (baza sekcije) */
-    if(data.sections){
-
-        let html = `<h2>${data.title}</h2>`;
-        html += `<p>${data.intro}</p>`;
-
-        data.sections.forEach(section => {
-            html += `<h3>${section.heading}</h3><ul>`;
-
-            section.items.forEach(item => {
-                html += `<li><strong>${item.name}</strong></li>`;
-            });
-
-            html += `</ul>`;
-        });
-
-        addMessage(html);
-    }
-
 }
 
 async function sendMessage(){
@@ -256,7 +51,17 @@ async function sendMessage(){
 
         chat.removeChild(thinking);
 
-        renderAIResponse(data);
+        let html = `<h2>${data.title}</h2>`;
+        html += `<p>${data.intro}</p><ul>`;
+
+        data.recommendations.forEach(r => {
+            html += `<li><strong>${r.name}</strong><br>${r.reason}</li>`;
+        });
+
+        html += `</ul>`;
+        html += `<p><em>${data.followUpQuestion}</em></p>`;
+
+        addMessage(html);
 
     } catch(error){
         chat.removeChild(thinking);
@@ -264,11 +69,6 @@ async function sendMessage(){
     }
 
     input.value="";
-}
-
-function quickAsk(text){
-    document.getElementById("input").value = text;
-    sendMessage();
 }
 
 document.getElementById("input").addEventListener("keypress", function(e){
@@ -280,6 +80,3 @@ document.getElementById("input").addEventListener("keypress", function(e){
 window.onload = scrollToBottom;
 
 </script>
-
-</body>
-</html>
