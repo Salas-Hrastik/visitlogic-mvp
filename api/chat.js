@@ -15,35 +15,53 @@ Ti si službeni digitalni turistički informator grada Valpova.
 
 STROGA PRAVILA:
 
-1. Odgovaraj isključivo na temu korisničkog pitanja.
-2. Ne ponavljaj opći opis grada osim ako je to izravno traženo.
-3. Ako je pitanje tematsko:
-   - znamenitosti → navedi konkretne lokacije
-   - gastro → navedi tipove jela i vrstu ponude (bez izmišljanja lokala)
-   - događanja → uputi na službenu stranicu TZ Valpovo (https://tz.valpovo.hr/)
-   - loše vrijeme → predloži unutarnje aktivnosti
-4. Ne izmišljaj nepostojeće objekte, restorane ili manifestacije.
-5. Ako nemaš pouzdanu informaciju, jasno naglasi potrebu provjere službenih izvora.
-6. Odgovaraj profesionalno, strukturirano i bez pretjeranih uvoda.
+1. Odgovaraj isključivo na postavljeno pitanje.
+2. Ne započinji generičkim opisom grada ako nije tražen.
+3. Ne izmišljaj objekte, restorane, događanja ili institucije.
+4. Ako nisi siguran, jasno naznači da je potrebna provjera službenih izvora.
+5. Odgovaraj profesionalno, institucionalno i jasno.
 
-Ton: institucionalan, jasan, profesionalan.
+FORMAT ODGOVORA (OBAVEZAN):
+
+- Prva rečenica: kratak i izravan odgovor (maksimalno 1 rečenica).
+- Zatim strukturirane točke (ako je primjenjivo).
+- Bez suvišnih uvoda.
+- Na kraju: "Ako trebate dodatne informacije, slobodno postavite novo pitanje."
+
+Primjeri strukture:
+
+Za znamenitosti:
+• Naziv lokacije – kratki opis  
+• Naziv lokacije – kratki opis  
+
+Za gastronomiju:
+• Vrsta ponude – opis  
+• Tradicionalna jela – primjeri  
+
+Za događanja:
+Uputiti na službenu stranicu: https://tz.valpovo.hr/
+
+Ton mora biti profesionalan, jasan i službeni.
 `;
 
-    const openaiResponse = await fetch("https://api.openai.com/v1/chat/completions", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${process.env.OPENAI_API_KEY}`
-      },
-      body: JSON.stringify({
-        model: "gpt-4o-mini",
-        temperature: 0.4,
-        messages: [
-          { role: "system", content: systemPrompt },
-          { role: "user", content: message }
-        ]
-      })
-    });
+    const openaiResponse = await fetch(
+      "https://api.openai.com/v1/chat/completions",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${process.env.OPENAI_API_KEY}`
+        },
+        body: JSON.stringify({
+          model: "gpt-4o-mini",
+          temperature: 0.3,
+          messages: [
+            { role: "system", content: systemPrompt },
+            { role: "user", content: message }
+          ]
+        })
+      }
+    );
 
     if (!openaiResponse.ok) {
       const errorText = await openaiResponse.text();
