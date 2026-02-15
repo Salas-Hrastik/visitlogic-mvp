@@ -29,14 +29,8 @@ header{
     flex-shrink:0;
 }
 
-header img{
-    height:36px;
-}
-
-header h2{
-    margin:0;
-    font-size:18px;
-}
+header img{ height:36px; }
+header h2{ margin:0; font-size:18px; }
 
 /* CHAT */
 
@@ -57,9 +51,7 @@ header h2{
     gap:8px;
 }
 
-.message.user{
-    justify-content:flex-end;
-}
+.message.user{ justify-content:flex-end; }
 
 .avatar{
     width:30px;
@@ -87,6 +79,35 @@ header h2{
 .message.user .bubble{
     background:#2f5597;
     color:white;
+}
+
+/* TYPING DOTS */
+
+.typing{
+    display:flex;
+    gap:4px;
+}
+
+.typing span{
+    width:6px;
+    height:6px;
+    background:#999;
+    border-radius:50%;
+    animation:blink 1.4s infinite both;
+}
+
+.typing span:nth-child(2){
+    animation-delay:.2s;
+}
+
+.typing span:nth-child(3){
+    animation-delay:.4s;
+}
+
+@keyframes blink{
+    0%{opacity:.2;}
+    20%{opacity:1;}
+    100%{opacity:.2;}
 }
 
 /* QUICK BUTTONS */
@@ -139,33 +160,10 @@ header h2{
 /* DESKTOP */
 
 @media (min-width:768px){
-
-    header{
-        padding:22px 40px;
-    }
-
-    header img{
-        height:60px;
-    }
-
-    header h2{
-        font-size:22px;
-    }
-
-    #chat{
-        padding:40px 60px;
-        gap:28px;
-    }
-
-    .bubble{
-        max-width:800px;
-        font-size:15px;
-    }
-
-    #inputArea{
-        padding:16px 40px;
-    }
-
+    #chat{ padding:40px 60px; gap:28px; }
+    .bubble{ max-width:800px; }
+    header img{ height:60px; }
+    header h2{ font-size:22px; }
 }
 
 </style>
@@ -240,7 +238,11 @@ document.addEventListener("DOMContentLoaded", function(){
         thinking.className="message";
         thinking.innerHTML = `
             <div class="avatar">AI</div>
-            <div class="bubble"><em>Razmišljam...</em></div>
+            <div class="bubble">
+                <div class="typing">
+                    <span></span><span></span><span></span>
+                </div>
+            </div>
         `;
         chat.appendChild(thinking);
         scrollToBottom();
@@ -277,9 +279,7 @@ document.addEventListener("DOMContentLoaded", function(){
 
     sendBtn.addEventListener("click", sendMessage);
     input.addEventListener("keypress", function(e){
-        if(e.key === "Enter"){
-            sendMessage();
-        }
+        if(e.key === "Enter"){ sendMessage(); }
     });
 
     window.quickAsk = function(text){
