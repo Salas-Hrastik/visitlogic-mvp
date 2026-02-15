@@ -17,56 +17,28 @@ export default async function handler(req, res) {
     else if (month >= 12 || month <= 2) season = "zima";
     else season = "proljeće";
 
-    /* ===============================
-       REAL TIME WEATHER (OpenWeather)
-       =============================== */
-
-    let weatherInfo = "Nepoznato vrijeme.";
-
-    try {
-      const weatherResponse = await fetch(
-        `https://api.openweathermap.org/data/2.5/weather?q=Valpovo,HR&units=metric&lang=hr&appid=${process.env.OPENWEATHER_API_KEY}`
-      );
-
-      const weatherData = await weatherResponse.json();
-
-      if (weatherData?.main?.temp) {
-        weatherInfo = `
-Trenutna temperatura: ${weatherData.main.temp}°C.
-Vrijeme: ${weatherData.weather[0].description}.
-`;
-      }
-
-    } catch (weatherError) {
-      weatherInfo = "Vremenska prognoza trenutno nije dostupna.";
-    }
-
-    /* ===============================
-       SYSTEM PROMPT
-       =============================== */
-
     const systemPrompt = `
 Ti si službeni digitalni turistički informator grada Valpova.
 
 Odgovaraš ISKLJUČIVO o Valpovu i okolici.
-Ako korisnik pita za drugi grad, ljubazno ga vrati na Valpovo.
 
-Danas je: ${today.toLocaleDateString("hr-HR")}.
-Sezona: ${season}.
+Prvo interno odredi kategoriju upita.
+Moguće kategorije su:
 
-${weatherInfo}
-
-Prilagodi preporuke sezoni i vremenskim uvjetima.
-
-Ako je kiša → fokusiraj indoor aktivnosti.
-Ako je hladno → izbjegavaj dugotrajne šetnje.
-Ako je lijepo vrijeme → predloži park, šetnje i otvorene prostore.
+- znamenitosti
+- gastronomija
+- događanja
+- smještaj
+- obitelj
+- priroda
+- općenito
 
 Odgovaraš ISKLJUČIVO u JSON formatu.
 
 Struktura mora biti:
 
 {
+  "category": "jedna_od_kategorija",
   "title": "Naslov odgovora",
   "intro": "Kratki uvodni tekst",
   "sections": [
@@ -83,9 +55,7 @@ Struktura mora biti:
   ]
 }
 
-Ne dodaj objašnjenja.
-Ne dodaj markdown.
-Ne dodaj tekst prije ili poslije JSON-a.
+Ne dodaj tekst izvan JSON strukture.
 `;
 
     const messages = [
@@ -121,16 +91,13 @@ Ne dodaj tekst prije ili poslije JSON-a.
       });
     }
 
-    /* ===============================
-       ANALYTICS LOGGING
-       =============================== */
+    /* ANALYTICS LOG */
 
-    console.log("---- VISITLOGIC LOG ----");
+    console.log("---- VISITLOGIC ANALYTICS ----");
     console.log("Vrijeme:", today.toISOString());
     console.log("Upit:", message);
-    console.log("Sezona:", season);
-    console.log("Vrijeme info:", weatherInfo);
-    console.log("------------------------");
+    console.log("Kategorija:", parsed.category);
+    console.log("------------------------------");
 
     res.status(200).json(parsed);
 
