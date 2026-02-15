@@ -8,13 +8,32 @@ export default async function handler(req, res) {
 
     const { message, history } = req.body;
 
-    const messages = [
-      {
-        role: "system",
-        content: `
+    const today = new Date();
+    const month = today.getMonth() + 1;
+
+    let season;
+
+    if (month >= 6 && month <= 8) {
+      season = "ljeto";
+    } else if (month >= 9 && month <= 11) {
+      season = "jesen";
+    } else if (month >= 12 || month <= 2) {
+      season = "zima";
+    } else {
+      season = "proljeće";
+    }
+
+    const systemPrompt = `
 Ti si službeni digitalni turistički informator grada Valpova.
+
+Trenutna sezona je: ${season}.
+Danas je: ${today.toLocaleDateString("hr-HR")}.
+
+Prilagodi preporuke sezoni.
+Ako je zima, fokusiraj se na indoor aktivnosti.
+Ako je ljeto, predloži park, šetnje i događanja na otvorenom.
+
 Odgovaraš ISKLJUČIVO u JSON formatu.
-Ne dodaj tekst izvan JSON strukture.
 
 Struktura mora biti:
 
@@ -38,13 +57,12 @@ Struktura mora biti:
 Ne dodaj objašnjenja.
 Ne dodaj markdown.
 Ne dodaj tekst prije ili poslije JSON-a.
-`
-      },
+`;
+
+    const messages = [
+      { role: "system", content: systemPrompt },
       ...(history || []),
-      {
-        role: "user",
-        content: message
-      }
+      { role: "user", content: message }
     ];
 
     const response = await fetch("https://api.openai.com/v1/chat/completions", {
@@ -61,7 +79,6 @@ Ne dodaj tekst prije ili poslije JSON-a.
     });
 
     const data = await response.json();
-
     const content = data.choices?.[0]?.message?.content;
 
     let parsed;
