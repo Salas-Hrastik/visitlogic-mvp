@@ -17,78 +17,96 @@ body {
   height: 100vh;
 }
 
+/* HEADER */
 header {
   background: linear-gradient(135deg, #1e3c72, #2a5298);
   color: white;
-  padding: 18px 30px;
+  padding: 20px 40px;
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 25px;
 }
 
 header img {
-  height: 60px;
+  height: 70px;
 }
 
 header h1 {
   margin: 0;
-  font-size: 22px;
+  font-size: 26px;
   font-weight: 600;
 }
 
 header span {
-  font-size: 14px;
-  opacity: 0.85;
+  font-size: 15px;
+  opacity: 0.9;
 }
 
+/* CHAT CONTAINER */
 .chat-container {
   flex: 1;
   overflow-y: auto;
-  padding: 30px;
-  max-width: 1000px;
+  padding: 40px;
+  max-width: 1100px;
   margin: auto;
   width: 100%;
 }
 
+/* MESSAGES */
 .message {
   margin-bottom: 25px;
-  padding: 18px 22px;
-  border-radius: 14px;
-  line-height: 1.6;
+  line-height: 1.7;
 }
 
 .user {
   background: #e3edff;
-  align-self: flex-end;
+  padding: 16px 20px;
+  border-radius: 14px;
 }
 
 .bot {
-  background: white;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  margin-top: 20px;
 }
 
+/* SMART CARD STYLE */
+.card {
+  background: white;
+  padding: 22px 25px;
+  border-radius: 14px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+  margin-bottom: 18px;
+}
+
+.card h3 {
+  margin-top: 0;
+  color: #2a5298;
+}
+
+/* QUICK BUTTONS */
 .quick-buttons {
   text-align: center;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 
 .quick-buttons button {
-  padding: 8px 16px;
-  border: none;
+  padding: 9px 18px;
   border-radius: 20px;
-  margin: 5px;
+  border: none;
+  margin: 6px;
   cursor: pointer;
   background: #e0e5ec;
   transition: 0.2s;
+  font-weight: 500;
 }
 
 .quick-buttons button:hover {
   background: #cfd8e3;
 }
 
+/* INPUT */
 .input-area {
   display: flex;
-  padding: 15px 20px;
+  padding: 15px 30px;
   background: white;
   border-top: 1px solid #ddd;
 }
@@ -103,20 +121,22 @@ input {
 
 button.send {
   margin-left: 10px;
-  padding: 12px 20px;
+  padding: 12px 22px;
   border-radius: 8px;
   border: none;
   background: #2a5298;
   color: white;
   cursor: pointer;
+  font-weight: 600;
 }
 
 footer {
   text-align: center;
   font-size: 13px;
-  padding: 10px;
+  padding: 12px;
   background: #f0f2f5;
 }
+
 .typing {
   font-style: italic;
   opacity: 0.7;
@@ -127,7 +147,7 @@ footer {
 <body>
 
 <header>
-  <img src="tz-logo-Valpovo.png" alt="TZ Valpovo Logo">
+  <img src="tz-logo-Valpovo.png" alt="TZ Valpovo">
   <div>
     <h1>Turistički informator</h1>
     <span>Turistička zajednica grada Valpova</span>
@@ -135,16 +155,17 @@ footer {
 </header>
 
 <div class="chat-container" id="chat">
-  <div class="message bot">
-    <strong>Dobrodošli!</strong> Postavite pitanje ili odaberite opciju:
+  <div class="card">
+    <h3>Dobrodošli!</h3>
+    Postavite pitanje ili odaberite opciju:
   </div>
 </div>
 
 <div class="quick-buttons">
-  <button onclick="quickAsk('Koje su znamenitosti u Valpovu?')">Znamenitosti</button>
-  <button onclick="quickAsk('Preporuči gastronomiju u Valpovu.')">Gastro</button>
-  <button onclick="quickAsk('Koja su aktualna događanja u Valpovu?')">Događanja</button>
-  <button onclick="quickAsk('Što raditi u Valpovu kada je loše vrijeme?')">Loše vrijeme</button>
+  <button onclick="quickAsk('Koje su znamenitosti u Valpovu?')">🏛 Znamenitosti</button>
+  <button onclick="quickAsk('Preporuči gastronomiju u Valpovu.')">🍽 Gastro</button>
+  <button onclick="quickAsk('Koja su aktualna događanja u Valpovu?')">🎉 Događanja</button>
+  <button onclick="quickAsk('Što raditi u Valpovu kada je loše vrijeme?')">🌧 Loše vrijeme</button>
 </div>
 
 <div class="input-area">
@@ -164,15 +185,18 @@ async function sendMessage(text=null) {
 
   if (!message.trim()) return;
 
-  chat.innerHTML += `<div class="message user"><strong>Vi:</strong> ${message}</div>`;
+  chat.innerHTML += `
+    <div class="message user">
+      <strong>Vi:</strong><br>${message}
+    </div>
+  `;
   input.value = "";
   chat.scrollTop = chat.scrollHeight;
 
   const typing = document.createElement("div");
-  typing.className = "message bot typing";
+  typing.className = "typing";
   typing.innerText = "Informator tipka...";
   chat.appendChild(typing);
-  chat.scrollTop = chat.scrollHeight;
 
   const response = await fetch("/api/chat", {
     method: "POST",
@@ -183,12 +207,22 @@ async function sendMessage(text=null) {
   const data = await response.json();
   typing.remove();
 
-  const botMessage = document.createElement("div");
-  botMessage.className = "message bot";
-  botMessage.innerHTML = "<strong>Informator:</strong><br>" + marked.parse(data.reply);
-
-  chat.appendChild(botMessage);
+  renderBotResponse(data.reply);
   chat.scrollTop = chat.scrollHeight;
+}
+
+function renderBotResponse(text) {
+  const chat = document.getElementById("chat");
+
+  const sections = text.split("###");
+  sections.forEach(section => {
+    if (section.trim() === "") return;
+
+    const card = document.createElement("div");
+    card.className = "card";
+    card.innerHTML = marked.parse(section);
+    chat.appendChild(card);
+  });
 }
 
 function quickAsk(text){
