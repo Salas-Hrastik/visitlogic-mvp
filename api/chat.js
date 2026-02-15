@@ -12,26 +12,55 @@ export default async function handler(req, res) {
     const month = today.getMonth() + 1;
 
     let season;
+    if (month >= 6 && month <= 8) season = "ljeto";
+    else if (month >= 9 && month <= 11) season = "jesen";
+    else if (month >= 12 || month <= 2) season = "zima";
+    else season = "proljeće";
 
-    if (month >= 6 && month <= 8) {
-      season = "ljeto";
-    } else if (month >= 9 && month <= 11) {
-      season = "jesen";
-    } else if (month >= 12 || month <= 2) {
-      season = "zima";
-    } else {
-      season = "proljeće";
+    /* ===============================
+       REAL TIME WEATHER (OpenWeather)
+       =============================== */
+
+    let weatherInfo = "Nepoznato vrijeme.";
+
+    try {
+      const weatherResponse = await fetch(
+        `https://api.openweathermap.org/data/2.5/weather?q=Valpovo,HR&units=metric&lang=hr&appid=${process.env.OPENWEATHER_API_KEY}`
+      );
+
+      const weatherData = await weatherResponse.json();
+
+      if (weatherData?.main?.temp) {
+        weatherInfo = `
+Trenutna temperatura: ${weatherData.main.temp}°C.
+Vrijeme: ${weatherData.weather[0].description}.
+`;
+      }
+
+    } catch (weatherError) {
+      weatherInfo = "Vremenska prognoza trenutno nije dostupna.";
     }
+
+    /* ===============================
+       SYSTEM PROMPT
+       =============================== */
 
     const systemPrompt = `
 Ti si službeni digitalni turistički informator grada Valpova.
 
-Trenutna sezona je: ${season}.
-Danas je: ${today.toLocaleDateString("hr-HR")}.
+Odgovaraš ISKLJUČIVO o Valpovu i okolici.
+Ako korisnik pita za drugi grad, ljubazno ga vrati na Valpovo.
 
-Prilagodi preporuke sezoni.
-Ako je zima, fokusiraj se na indoor aktivnosti.
-Ako je ljeto, predloži park, šetnje i događanja na otvorenom.
+Danas je: ${today.toLocaleDateString("hr-HR")}.
+Sezona: ${season}.
+
+${weatherInfo}
+
+Prilagodi preporuke sezoni i vremenskim uvjetima.
+
+Ako je kiša → fokusiraj indoor aktivnosti.
+Ako je hladno → izbjegavaj dugotrajne šetnje.
+Ako je lijepo vrijeme → predloži park, šetnje i otvorene prostore.
 
 Odgovaraš ISKLJUČIVO u JSON formatu.
 
@@ -91,6 +120,17 @@ Ne dodaj tekst prije ili poslije JSON-a.
         raw: content
       });
     }
+
+    /* ===============================
+       ANALYTICS LOGGING
+       =============================== */
+
+    console.log("---- VISITLOGIC LOG ----");
+    console.log("Vrijeme:", today.toISOString());
+    console.log("Upit:", message);
+    console.log("Sezona:", season);
+    console.log("Vrijeme info:", weatherInfo);
+    console.log("------------------------");
 
     res.status(200).json(parsed);
 
