@@ -10,41 +10,82 @@ export default async function handler(req, res) {
 
     const { message } = req.body;
 
-    const lowerMessage = message.toLowerCase();
+    const gastronomija = valpovoData.gastronomija;
 
-    let category = "općenito";
+    const systemPrompt = `
+Ti si profesionalni AI turistički savjetnik za grad Valpovo.
 
-    if (lowerMessage.includes("jest") || lowerMessage.includes("restoran")) {
-      category = "gastronomija";
-    } 
-    else if (lowerMessage.includes("spavati") || lowerMessage.includes("smještaj")) {
-      category = "smještaj";
+Dobio si bazu stvarnih ugostiteljskih objekata.
+Smiješ koristiti ISKLJUČIVO objekte iz te baze.
+Ne smiješ izmišljati nove objekte.
+
+Tvoj zadatak:
+
+1. Analiziraj korisnički upit.
+2. Odaberi 2 do 4 NAJRELEVANTNIJA objekta.
+3. Objasni zašto ih preporučuješ.
+4. Postavi jedno dodatno pitanje za personalizaciju.
+5. Vrati odgovor u JSON formatu.
+
+Struktura mora biti:
+
+{
+  "title": "Naslov odgovora",
+  "intro": "Kratko personalizirano objašnjenje",
+  "recommendations": [
+    {
+      "name": "Naziv objekta",
+      "reason": "Zašto je odabran"
     }
-    else if (lowerMessage.includes("park") || lowerMessage.includes("šetnj")) {
-      category = "priroda";
-    }
-    else if (lowerMessage.includes("događ")) {
-      category = "događanja";
-    }
-    else if (lowerMessage.includes("vidjeti") || lowerMessage.includes("znamenit")) {
-      category = "znamenitosti";
+  ],
+  "followUpQuestion": "Pitanje za dodatnu personalizaciju"
+}
+
+Baza objekata:
+${JSON.stringify(gastronomija)}
+`;
+
+    const response = await fetch("https://api.openai.com/v1/chat/completions", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${process.env.OPENAI_API_KEY}`
+      },
+      body: JSON.stringify({
+        model: "gpt-4o-mini",
+        temperature: 0.2,
+        messages: [
+          { role: "system", content: systemPrompt },
+          { role: "user", content: message }
+        ]
+      })
+    });
+
+    const data = await response.json();
+    const content = data.choices?.[0]?.message?.content;
+
+    let parsed;
+
+    try {
+      parsed = JSON.parse(content);
+    } catch (err) {
+      return res.status(500).json({
+        error: "Model nije vratio validni JSON.",
+        raw: content
+      });
     }
 
-    const items = valpovoData[category] || [];
+    /* ===============================
+       VALIDACIJA PROTIV HALUCINACIJA
+       =============================== */
 
-    const responseJSON = {
-      category: category,
-      title: "Preporuke za Valpovo",
-      intro: "Donosimo provjerene informacije.",
-      sections: [
-        {
-          heading: category.charAt(0).toUpperCase() + category.slice(1),
-          items: items
-        }
-      ]
-    };
+    const allowedNames = gastronomija.map(obj => obj.name);
 
-    res.status(200).json(responseJSON);
+    parsed.recommendations = parsed.recommendations.filter(r =>
+      allowedNames.includes(r.name)
+    );
+
+    res.status(200).json(parsed);
 
   } catch (error) {
     res.status(500).json({
