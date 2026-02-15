@@ -2,6 +2,10 @@ import valpovoData from "../data/valpovoData.js";
 
 let conversationMemory = [];
 
+/* PROMIJENITE OVDJE TON */
+const TONE = "friendly"; 
+// "formal" | "neutral" | "friendly"
+
 export default async function handler(req, res) {
 
   if (req.method !== "POST") {
@@ -30,8 +34,24 @@ export default async function handler(req, res) {
 
     const selectedData = valpovoData[category] || [];
 
+    /* DEFINICIJA TONA */
+
+    let toneInstruction = "";
+
+    if (TONE === "formal") {
+      toneInstruction = "Komuniciraj profesionalno, službeno i pristojno. Koristi formalni ton obraćanja.";
+    }
+    else if (TONE === "neutral") {
+      toneInstruction = "Komuniciraj jasno i informativno, bez pretjerane formalnosti.";
+    }
+    else if (TONE === "friendly") {
+      toneInstruction = "Komuniciraj toplo, prijateljski i opušteno, ali profesionalno.";
+    }
+
     const systemPrompt = `
-Ti si profesionalni AI turistički savjetnik za Valpovo.
+Ti si službeni AI turistički savjetnik za grad Valpovo.
+
+${toneInstruction}
 
 Imaš kontekst dosadašnjeg razgovora.
 Smiješ koristiti isključivo objekte iz dostavljene baze.
