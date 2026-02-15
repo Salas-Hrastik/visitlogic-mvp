@@ -9,40 +9,48 @@ export default async function handler(req, res) {
   try {
 
     const { message } = req.body;
+    const lower = message.toLowerCase();
 
-    const gastronomija = valpovoData.gastronomija;
+    let category = "znamenitosti";
+
+    if (lower.includes("restoran") || lower.includes("jest") || lower.includes("hrana")) {
+      category = "gastronomija";
+    }
+    else if (lower.includes("smještaj") || lower.includes("spavati") || lower.includes("hotel")) {
+      category = "smještaj";
+    }
+    else if (lower.includes("događ") || lower.includes("manifest")) {
+      category = "događanja";
+    }
+    else if (lower.includes("park") || lower.includes("prirod") || lower.includes("šetnj")) {
+      category = "priroda";
+    }
+
+    const selectedData = valpovoData[category] || [];
 
     const systemPrompt = `
-Ti si profesionalni AI turistički savjetnik za grad Valpovo.
+Ti si profesionalni AI turistički savjetnik za Valpovo.
 
-Dobio si bazu stvarnih ugostiteljskih objekata.
-Smiješ koristiti ISKLJUČIVO objekte iz te baze.
-Ne smiješ izmišljati nove objekte.
+Smiješ koristiti isključivo objekte iz dostavljene baze.
+Ne smiješ izmišljati.
 
-Tvoj zadatak:
+Odaberi 2 do 4 najrelevantnija objekta.
+Objasni zašto ih preporučuješ.
+Postavi dodatno pitanje.
 
-1. Analiziraj korisnički upit.
-2. Odaberi 2 do 4 NAJRELEVANTNIJA objekta.
-3. Objasni zašto ih preporučuješ.
-4. Postavi jedno dodatno pitanje za personalizaciju.
-5. Vrati odgovor u JSON formatu.
-
-Struktura mora biti:
+Vrati JSON u formatu:
 
 {
-  "title": "Naslov odgovora",
-  "intro": "Kratko personalizirano objašnjenje",
+  "title": "...",
+  "intro": "...",
   "recommendations": [
-    {
-      "name": "Naziv objekta",
-      "reason": "Zašto je odabran"
-    }
+    { "name": "...", "reason": "..." }
   ],
-  "followUpQuestion": "Pitanje za dodatnu personalizaciju"
+  "followUpQuestion": "..."
 }
 
-Baza objekata:
-${JSON.stringify(gastronomija)}
+Baza:
+${JSON.stringify(selectedData)}
 `;
 
     const response = await fetch("https://api.openai.com/v1/chat/completions", {
@@ -53,7 +61,7 @@ ${JSON.stringify(gastronomija)}
       },
       body: JSON.stringify({
         model: "gpt-4o-mini",
-        temperature: 0.2,
+        temperature: 0.3,
         messages: [
           { role: "system", content: systemPrompt },
           { role: "user", content: message }
@@ -64,22 +72,9 @@ ${JSON.stringify(gastronomija)}
     const data = await response.json();
     const content = data.choices?.[0]?.message?.content;
 
-    let parsed;
+    let parsed = JSON.parse(content);
 
-    try {
-      parsed = JSON.parse(content);
-    } catch (err) {
-      return res.status(500).json({
-        error: "Model nije vratio validni JSON.",
-        raw: content
-      });
-    }
-
-    /* ===============================
-       VALIDACIJA PROTIV HALUCINACIJA
-       =============================== */
-
-    const allowedNames = gastronomija.map(obj => obj.name);
+    const allowedNames = selectedData.map(o => o.name);
 
     parsed.recommendations = parsed.recommendations.filter(r =>
       allowedNames.includes(r.name)
