@@ -45,7 +45,7 @@ header p{
     overflow-y:auto;
     padding:40px 60px;
     display:flex;
-    flex-direction:column-reverse; /* KLJUČNA PROMJENA */
+    flex-direction:column; /* NORMALNO */
     gap:28px;
 }
 
@@ -176,6 +176,10 @@ Postavite pitanje ili odaberite opciju:
 const chat = document.getElementById("chat");
 let chatHistory = [];
 
+function scrollToBottom(){
+    chat.scrollTop = chat.scrollHeight;
+}
+
 function addMessage(html){
     const wrapper = document.createElement("div");
     wrapper.className="message";
@@ -185,7 +189,8 @@ function addMessage(html){
         <div class="bubble">${html}</div>
     `;
 
-    chat.prepend(wrapper); /* KLJUČNA PROMJENA */
+    chat.appendChild(wrapper);
+    scrollToBottom(); /* KLJUČNO */
 }
 
 function renderStructuredResponse(data){
@@ -259,6 +264,8 @@ document.getElementById("input").addEventListener("keypress", function(e){
         sendMessage();
     }
 });
+
+window.onload = scrollToBottom;
 
 </script>
 
