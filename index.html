@@ -8,122 +8,150 @@
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 
 <style>
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  background: #f4f6f9;
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
+body{
+  margin:0;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  background:#f3f5f9;
+  display:flex;
+  flex-direction:column;
+  height:100vh;
 }
 
-header {
-  background: linear-gradient(135deg,#1e3c72,#2a5298);
-  color: white;
-  padding: 16px 24px;
-  display: flex;
-  align-items: center;
-  gap: 18px;
+/* HEADER */
+header{
+  background:linear-gradient(135deg,#1e3c72,#2a5298);
+  color:white;
+  padding:14px 28px;
+  display:flex;
+  align-items:center;
+  gap:18px;
+}
+header img{height:60px;}
+header h1{margin:0;font-size:20px;}
+header p{margin:4px 0 0;font-size:13px;opacity:0.85;}
+
+/* MAIN */
+main{
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  max-width:1100px;
+  width:100%;
+  margin:auto;
+  padding:20px;
 }
 
-header img {
-  height: 64px;
+#chat{
+  flex:1;
+  overflow-y:auto;
+  padding-right:10px;
+  scroll-behavior:smooth;
 }
 
-header h1 {
-  margin: 0;
-  font-size: 22px;
+/* MESSAGE BUBBLES */
+.message{
+  max-width:75%;
+  padding:14px 18px;
+  border-radius:14px;
+  margin-bottom:14px;
+  animation:fadeIn .25s ease-in-out;
+  line-height:1.5;
 }
 
-header p {
-  margin: 4px 0 0 0;
-  font-size: 14px;
-  opacity: 0.85;
+.user{
+  background:#2a5298;
+  color:white;
+  align-self:flex-end;
+  border-bottom-right-radius:4px;
 }
 
-main {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  max-width: 1100px;
-  width: 100%;
-  margin: auto;
-  padding: 24px;
+.bot{
+  background:white;
+  box-shadow:0 4px 14px rgba(0,0,0,.05);
+  border-bottom-left-radius:4px;
 }
 
-#chat {
-  flex: 1;
-  overflow-y: auto;
-  padding-right: 8px;
+/* Typing animation */
+.typing{
+  display:inline-block;
+}
+.typing span{
+  display:inline-block;
+  width:6px;
+  height:6px;
+  background:#888;
+  border-radius:50%;
+  margin:0 2px;
+  animation:blink 1.4s infinite both;
+}
+.typing span:nth-child(2){animation-delay:.2s;}
+.typing span:nth-child(3){animation-delay:.4s;}
+
+@keyframes blink{
+  0%{opacity:.2;}
+  20%{opacity:1;}
+  100%{opacity:.2;}
 }
 
-.card {
-  background: white;
-  padding: 18px 20px;
-  border-radius: 12px;
-  margin-bottom: 16px;
-  box-shadow: 0 4px 14px rgba(0,0,0,0.05);
-  animation: fadeIn 0.25s ease-in-out;
+@keyframes fadeIn{
+  from{opacity:0;transform:translateY(4px);}
+  to{opacity:1;transform:translateY(0);}
 }
 
-@keyframes fadeIn {
-  from {opacity:0; transform: translateY(5px);}
-  to {opacity:1; transform: translateY(0);}
+/* QUICK BUTTONS */
+.buttons{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin:12px 0;
+}
+.buttons button{
+  border:none;
+  padding:8px 14px;
+  border-radius:20px;
+  background:#e8ecf4;
+  cursor:pointer;
+  font-weight:500;
+}
+.buttons button:hover{
+  background:#d9e2f5;
 }
 
-.buttons {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 14px;
-  flex-wrap: wrap;
+/* INPUT AREA (sticky) */
+.input-area{
+  position:sticky;
+  bottom:0;
+  background:#f3f5f9;
+  padding-top:10px;
+  display:flex;
+  gap:10px;
+}
+input{
+  flex:1;
+  padding:12px;
+  border-radius:8px;
+  border:1px solid #ccc;
+  font-size:14px;
+}
+button.send{
+  padding:12px 20px;
+  background:#2a5298;
+  color:white;
+  border:none;
+  border-radius:8px;
+  cursor:pointer;
+}
+button.send:hover{
+  background:#1e3c72;
 }
 
-.buttons button {
-  background: #e9edf5;
-  border: none;
-  padding: 8px 14px;
-  border-radius: 20px;
-  cursor: pointer;
-  font-weight: 500;
-}
-
-.buttons button:hover {
-  background: #d8e2f3;
-}
-
-.input-area {
-  display: flex;
-  gap: 10px;
-  margin-top: 12px;
-}
-
-input {
-  flex: 1;
-  padding: 12px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-  font-size: 14px;
-}
-
-button.send {
-  padding: 12px 20px;
-  background: #2a5298;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-}
-
-button.send:hover {
-  background: #1e3c72;
-}
-
-footer {
-  text-align: center;
-  font-size: 13px;
-  padding: 14px;
-  background: #eef1f6;
-  color: #555;
+/* FOOTER */
+footer{
+  text-align:center;
+  font-size:13px;
+  padding:12px;
+  background:#eef1f6;
+  color:#555;
 }
 </style>
 </head>
@@ -131,7 +159,7 @@ footer {
 <body>
 
 <header>
-  <img src="tz-logo-Valpovo.png" alt="Turistička zajednica grada Valpova">
+  <img src="tz-logo-Valpovo.png">
   <div>
     <h1>Turistički informator</h1>
     <p>Turistička zajednica grada Valpova</p>
@@ -141,7 +169,7 @@ footer {
 <main>
 
 <div id="chat">
-  <div class="card">
+  <div class="message bot">
     <strong>Dobrodošli!</strong><br>
     Postavite pitanje ili odaberite opciju:
   </div>
@@ -175,15 +203,14 @@ function quick(text){
 }
 
 async function send(){
-  const input = document.getElementById("input");
-  const message = input.value.trim();
+  const input=document.getElementById("input");
+  const message=input.value.trim();
   if(!message) return;
 
-  appendCard("<strong>Vi:</strong> " + message);
+  addMessage(message,"user");
+  input.value="";
 
-  input.value = "";
-
-  const loading = appendCard("Informator piše...");
+  const typing = addTyping();
 
   const response = await fetch("/api/chat",{
     method:"POST",
@@ -193,54 +220,33 @@ async function send(){
 
   const data = await response.json();
 
-  loading.remove();
-  renderResponse(data.reply);
+  typing.remove();
 
-  saveSession();
+  addMessage(data.reply,"bot");
 }
 
-function appendCard(html){
-  const card = document.createElement("div");
-  card.className = "card";
-  card.innerHTML = html;
-  chat.appendChild(card);
+function addMessage(text,type){
+  const div=document.createElement("div");
+  div.className="message "+type;
+  div.innerHTML = marked.parse(text);
+  chat.appendChild(div);
   scrollDown();
-  return card;
 }
 
-function renderResponse(text){
-  const sections = text.split("###");
-
-  sections.forEach(section=>{
-    if(section.trim()==="") return;
-    const card = document.createElement("div");
-    card.className="card";
-    card.innerHTML = marked.parse(section);
-    chat.appendChild(card);
-  });
-
+function addTyping(){
+  const div=document.createElement("div");
+  div.className="message bot";
+  div.innerHTML = '<div class="typing"><span></span><span></span><span></span></div>';
+  chat.appendChild(div);
   scrollDown();
+  return div;
 }
 
 function scrollDown(){
   setTimeout(()=>{
-    chat.scrollTo({
-      top: chat.scrollHeight,
-      behavior: "smooth"
-    });
+    chat.scrollTop = chat.scrollHeight;
   },100);
 }
-
-function saveSession(){
-  localStorage.setItem("valpovo_chat", chat.innerHTML);
-}
-
-function loadSession(){
-  const saved = localStorage.getItem("valpovo_chat");
-  if(saved) chat.innerHTML = saved;
-}
-
-window.onload = loadSession;
 
 </script>
 
