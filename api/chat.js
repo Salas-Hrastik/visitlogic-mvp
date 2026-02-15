@@ -1,3 +1,5 @@
+import valpovoData from "../data/valpovoData.js";
+
 export default async function handler(req, res) {
 
   if (req.method !== "POST") {
@@ -6,119 +8,43 @@ export default async function handler(req, res) {
 
   try {
 
-    const { message, history } = req.body;
+    const { message } = req.body;
 
-    /* ===============================
-       WHITELIST PODACI (DOZVOLJENO)
-       =============================== */
+    const lowerMessage = message.toLowerCase();
 
-    const allowedData = {
-      znamenitosti: [
+    let category = "općenito";
+
+    if (lowerMessage.includes("jest") || lowerMessage.includes("restoran")) {
+      category = "gastronomija";
+    } 
+    else if (lowerMessage.includes("spavati") || lowerMessage.includes("smještaj")) {
+      category = "smještaj";
+    }
+    else if (lowerMessage.includes("park") || lowerMessage.includes("šetnj")) {
+      category = "priroda";
+    }
+    else if (lowerMessage.includes("događ")) {
+      category = "događanja";
+    }
+    else if (lowerMessage.includes("vidjeti") || lowerMessage.includes("znamenit")) {
+      category = "znamenitosti";
+    }
+
+    const items = valpovoData[category] || [];
+
+    const responseJSON = {
+      category: category,
+      title: "Preporuke za Valpovo",
+      intro: "Donosimo provjerene informacije.",
+      sections: [
         {
-          name: "Dvorac Prandau-Normann",
-          description: "Barokni dvorac iz 18. stoljeća okružen perivojem.",
-          link: "https://tz.valpovo.hr"
-        },
-        {
-          name: "Muzej Valpovštine",
-          description: "Muzej smješten u sklopu dvorca s povijesnom zbirkom.",
-          link: "https://tz.valpovo.hr"
-        },
-        {
-          name: "Crkva sv. Roka",
-          description: "Povijesna crkva iz 18. stoljeća u centru grada.",
-          link: "https://tz.valpovo.hr"
-        }
-      ],
-      priroda: [
-        {
-          name: "Perivoj dvorca",
-          description: "Uređeni park oko dvorca idealan za šetnju.",
-          link: "https://tz.valpovo.hr"
+          heading: category.charAt(0).toUpperCase() + category.slice(1),
+          items: items
         }
       ]
     };
 
-    /* ===============================
-       SYSTEM PROMPT
-       =============================== */
-
-    const systemPrompt = `
-Ti si službeni digitalni turistički informator grada Valpova.
-
-STROGO PRAVILO:
-Smiješ koristiti ISKLJUČIVO podatke koji su ti dostavljeni u listi ALLOWED DATA.
-Ne smiješ izmišljati nove lokacije.
-Ne smiješ dodavati objekte koji nisu na listi.
-
-Ako korisnik pita za nešto što nije na listi:
-vrati praznu listu items.
-
-Odgovaraš ISKLJUČIVO u JSON formatu.
-
-Struktura mora biti:
-
-{
-  "category": "znamenitosti | priroda | općenito",
-  "title": "Naslov odgovora",
-  "intro": "Kratki uvodni tekst",
-  "sections": [
-    {
-      "heading": "Naziv sekcije",
-      "items": [ DOZVOLJENI_OBJEKTI ]
-    }
-  ]
-}
-`;
-
-    const messages = [
-      {
-        role: "system",
-        content: systemPrompt + "\n\nALLOWED DATA:\n" + JSON.stringify(allowedData)
-      },
-      ...(history || []),
-      { role: "user", content: message }
-    ];
-
-    const response = await fetch("https://api.openai.com/v1/chat/completions", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${process.env.OPENAI_API_KEY}`
-      },
-      body: JSON.stringify({
-        model: "gpt-4o-mini",
-        temperature: 0.0,
-        messages
-      })
-    });
-
-    const data = await response.json();
-    const content = data.choices?.[0]?.message?.content;
-
-    let parsed;
-
-    try {
-      parsed = JSON.parse(content);
-    } catch (err) {
-      return res.status(500).json({
-        error: "Model nije vratio validni JSON.",
-        raw: content
-      });
-    }
-
-    /* ===============================
-       SERVER VALIDACIJA
-       =============================== */
-
-    parsed.sections?.forEach(section => {
-      section.items = section.items.filter(item =>
-        allowedData.znamenitosti.some(a => a.name === item.name) ||
-        allowedData.priroda.some(a => a.name === item.name)
-      );
-    });
-
-    res.status(200).json(parsed);
+    res.status(200).json(responseJSON);
 
   } catch (error) {
     res.status(500).json({
