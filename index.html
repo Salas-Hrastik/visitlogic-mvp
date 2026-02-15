@@ -31,13 +31,6 @@ header img{
 header h1{
     margin:0;
     font-size:24px;
-    font-weight:600;
-}
-
-header p{
-    margin:4px 0 0 0;
-    font-size:14px;
-    opacity:.9;
 }
 
 #chat{
@@ -64,36 +57,15 @@ header p{
     align-items:center;
     justify-content:center;
     font-weight:600;
-    flex-shrink:0;
 }
 
 .bubble{
     background:white;
-    padding:28px 34px;
+    padding:28px;
     border-radius:14px;
     box-shadow:0 6px 18px rgba(0,0,0,0.08);
-    width:100%;
     max-width:800px;
-}
-
-.quickButtons{
-    display:flex;
-    gap:16px;
-    margin-top:20px;
-    flex-wrap:wrap;
-}
-
-.quickButtons button{
-    background:#e1e8f6;
-    border:none;
-    padding:10px 18px;
-    border-radius:24px;
-    cursor:pointer;
-    font-weight:500;
-}
-
-.quickButtons button:hover{
-    background:#cdd9ee;
+    width:100%;
 }
 
 #inputArea{
@@ -133,29 +105,14 @@ footer{
 <body>
 
 <header>
-<img src="tz-logo-Valpovo.png" alt="Logo Turističke zajednice Valpovo">
+<img src="tz-logo-Valpovo.png">
 <div>
 <h1>Turistički informator</h1>
 <p>Turistička zajednica grada Valpova</p>
 </div>
 </header>
 
-<div id="chat">
-
-<div class="message">
-<div class="avatar">AI</div>
-<div class="bubble">
-<strong>Dobrodošli!</strong><br><br>
-Postavite pitanje ili odaberite opciju:
-<div class="quickButtons">
-<button onclick="quickAsk('Što vrijedi vidjeti u Valpovu?')">Znamenitosti</button>
-<button onclick="quickAsk('Gdje mogu jesti u Valpovu?')">Gastronomija</button>
-<button onclick="quickAsk('Koja su aktualna događanja?')">Događanja</button>
-</div>
-</div>
-</div>
-
-</div>
+<div id="chat"></div>
 
 <div id="inputArea">
 <input id="input" placeholder="Postavite pitanje...">
@@ -169,7 +126,6 @@ Postavite pitanje ili odaberite opciju:
 <script>
 
 const chat = document.getElementById("chat");
-let chatHistory = [];
 
 function scrollToBottom(){
     chat.scrollTop = chat.scrollHeight;
@@ -188,27 +144,24 @@ function addMessage(html){
     scrollToBottom();
 }
 
-function renderStructuredResponse(data){
+function renderAIResponse(data){
 
-    let html = `<small>Kategorija: ${data.category}</small>`;
-    html += `<h2>${data.title}</h2>`;
+    if(!data || !data.recommendations){
+        addMessage("Došlo je do pogreške u odgovoru.");
+        return;
+    }
+
+    let html = `<h2>${data.title}</h2>`;
     html += `<p>${data.intro}</p>`;
+    html += `<ul>`;
 
-    data.sections.forEach(section => {
-        html += `<h3>${section.heading}</h3><ul>`;
-
-        section.items.forEach(item => {
-            html += `
-                <li>
-                    <strong>${item.name}</strong><br>
-                    ${item.description}<br>
-                    <a href="${item.link}" target="_blank">Više informacija</a>
-                </li>
-            `;
-        });
-
-        html += `</ul>`;
+    data.recommendations.forEach(r => {
+        html += `<li><strong>${r.name}</strong><br>${r.reason}</li>`;
     });
+
+    html += `</ul>`;
+
+    html += `<p><em>${data.followUpQuestion}</em></p>`;
 
     addMessage(html);
 }
@@ -227,21 +180,13 @@ async function sendMessage(){
 
         const response = await fetch("/api/chat", {
             method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                message,
-                history: chatHistory.slice(-6)
-            })
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ message })
         });
 
         const data = await response.json();
 
-        chatHistory.push({ role: "user", content: message });
-        chatHistory.push({ role: "assistant", content: JSON.stringify(data) });
-
-        renderStructuredResponse(data);
+        renderAIResponse(data);
 
     } catch(error){
         addMessage("Došlo je do pogreške.");
@@ -250,18 +195,11 @@ async function sendMessage(){
     input.value="";
 }
 
-function quickAsk(text){
-    document.getElementById("input").value = text;
-    sendMessage();
-}
-
 document.getElementById("input").addEventListener("keypress", function(e){
     if(e.key === "Enter"){
         sendMessage();
     }
 });
-
-window.onload = scrollToBottom;
 
 </script>
 
