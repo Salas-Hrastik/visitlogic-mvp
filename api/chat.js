@@ -10,38 +10,63 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: "Message is required." });
     }
 
-    const systemPrompt = `
+    const userText = message.toLowerCase();
+
+    let category = "opcenito";
+
+    if (userText.includes("znamenit")) {
+      category = "znamenitosti";
+    } else if (userText.includes("gastro") || userText.includes("restoran") || userText.includes("jela")) {
+      category = "gastronomija";
+    } else if (userText.includes("događ") || userText.includes("manifest")) {
+      category = "dogadjanja";
+    } else if (userText.includes("loše vrijeme") || userText.includes("kiša")) {
+      category = "lose_vrijeme";
+    }
+
+    let systemPrompt = `
 Ti si službeni digitalni turistički informator grada Valpova.
+Odgovaraj profesionalno, jasno i bez generičkih uvoda.
+Ne izmišljaj objekte ili događanja.
+Ako nemaš sigurnu informaciju, uputi na https://tz.valpovo.hr/
+`;
 
-STROGA PRAVILA:
+    if (category === "znamenitosti") {
+      systemPrompt += `
+Fokus: kulturne i povijesne znamenitosti Valpova.
+Navedi stvarne lokacije (npr. dvorac Prandau-Normann, perivoj, crkva).
+Strukturiraj odgovor u točke.
+`;
+    }
 
-1. Odgovaraj isključivo na postavljeno pitanje.
-2. Ne započinji generičkim opisom grada ako nije tražen.
-3. Ne izmišljaj objekte, restorane, događanja ili institucije.
-4. Ako nisi siguran, jasno naznači da je potrebna provjera službenih izvora.
-5. Odgovaraj profesionalno, institucionalno i jasno.
+    if (category === "gastronomija") {
+      systemPrompt += `
+Fokus: tipovi gastronomije i tradicionalna jela.
+Ne izmišljaj restorane.
+Navedi vrste ponude i primjere jela.
+Strukturiraj odgovor u točke.
+`;
+    }
 
-FORMAT ODGOVORA (OBAVEZAN):
+    if (category === "dogadjanja") {
+      systemPrompt += `
+Za aktualna događanja ne nagađaj.
+Uputi korisnika na službenu stranicu:
+https://tz.valpovo.hr/
+`;
+    }
 
-- Prva rečenica: kratak i izravan odgovor (maksimalno 1 rečenica).
-- Zatim strukturirane točke (ako je primjenjivo).
-- Bez suvišnih uvoda.
-- Na kraju: "Ako trebate dodatne informacije, slobodno postavite novo pitanje."
+    if (category === "lose_vrijeme") {
+      systemPrompt += `
+Predloži aktivnosti u zatvorenim prostorima:
+muzej, kulturne ustanove, ugostiteljski objekti.
+Strukturiraj odgovor u točke.
+`;
+    }
 
-Primjeri strukture:
-
-Za znamenitosti:
-• Naziv lokacije – kratki opis  
-• Naziv lokacije – kratki opis  
-
-Za gastronomiju:
-• Vrsta ponude – opis  
-• Tradicionalna jela – primjeri  
-
-Za događanja:
-Uputiti na službenu stranicu: https://tz.valpovo.hr/
-
-Ton mora biti profesionalan, jasan i službeni.
+    systemPrompt += `
+Završetak odgovora:
+"Ako trebate dodatne informacije, slobodno postavite novo pitanje."
 `;
 
     const openaiResponse = await fetch(
@@ -54,7 +79,7 @@ Ton mora biti profesionalan, jasan i službeni.
         },
         body: JSON.stringify({
           model: "gpt-4o-mini",
-          temperature: 0.3,
+          temperature: 0.25,
           messages: [
             { role: "system", content: systemPrompt },
             { role: "user", content: message }
