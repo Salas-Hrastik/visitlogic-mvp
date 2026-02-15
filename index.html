@@ -78,7 +78,7 @@ header h1{
 .quickButtons button{
     background:#e1e8f6;
     border:none;
-    padding:10px 16px;
+    padding:10px 18px;
     border-radius:24px;
     cursor:pointer;
 }
@@ -136,13 +136,14 @@ footer{
 <div class="avatar">AI</div>
 <div class="bubble">
 <strong>Dobrodošli!</strong><br><br>
-Kako vam mogu pomoći danas?
+Kako vam mogu pomoći?
 
 <div class="quickButtons">
-<button onclick="quickAsk('Gdje na romantičnu večeru?')">Romantična večera</button>
-<button onclick="quickAsk('Brza hrana navečer')">Brza hrana</button>
-<button onclick="quickAsk('Najbolji kafići u centru')">Kafići</button>
-<button onclick="quickAsk('Noćni izlazak u Valpovu')">Noćni život</button>
+<button onclick="quickAsk('Što vrijedi vidjeti u Valpovu?')">Znamenitosti</button>
+<button onclick="quickAsk('Gdje mogu jesti u Valpovu?')">Gastronomija</button>
+<button onclick="quickAsk('Koja su aktualna događanja?')">Događanja</button>
+<button onclick="quickAsk('Gdje mogu prespavati u Valpovu?')">Smještaj</button>
+<button onclick="quickAsk('Gdje prošetati u prirodi?')">Priroda</button>
 </div>
 
 </div>
@@ -167,12 +168,13 @@ function scrollToBottom(){
     chat.scrollTop = chat.scrollHeight;
 }
 
-function addMessage(html){
+function addMessage(html, role="ai"){
+
     const wrapper = document.createElement("div");
     wrapper.className="message";
 
     wrapper.innerHTML = `
-        <div class="avatar">AI</div>
+        <div class="avatar">${role === "user" ? "Vi" : "AI"}</div>
         <div class="bubble">${html}</div>
     `;
 
@@ -182,22 +184,47 @@ function addMessage(html){
 
 function renderAIResponse(data){
 
-    if(!data || !data.recommendations){
-        addMessage("Došlo je do pogreške u odgovoru.");
+    if(!data){
+        addMessage("Došlo je do pogreške.");
         return;
     }
 
-    let html = `<h2>${data.title}</h2>`;
-    html += `<p>${data.intro}</p><ul>`;
+    /* NOVI FORMAT (AI model s recommendations) */
+    if(data.recommendations){
 
-    data.recommendations.forEach(r => {
-        html += `<li><strong>${r.name}</strong><br>${r.reason}</li>`;
-    });
+        let html = `<h2>${data.title}</h2>`;
+        html += `<p>${data.intro}</p><ul>`;
 
-    html += `</ul>`;
-    html += `<p><em>${data.followUpQuestion}</em></p>`;
+        data.recommendations.forEach(r => {
+            html += `<li><strong>${r.name}</strong><br>${r.reason}</li>`;
+        });
 
-    addMessage(html);
+        html += `</ul>`;
+        html += `<p><em>${data.followUpQuestion}</em></p>`;
+
+        addMessage(html);
+        return;
+    }
+
+    /* STARI FORMAT (baza sekcije) */
+    if(data.sections){
+
+        let html = `<h2>${data.title}</h2>`;
+        html += `<p>${data.intro}</p>`;
+
+        data.sections.forEach(section => {
+            html += `<h3>${section.heading}</h3><ul>`;
+
+            section.items.forEach(item => {
+                html += `<li><strong>${item.name}</strong></li>`;
+            });
+
+            html += `</ul>`;
+        });
+
+        addMessage(html);
+    }
+
 }
 
 async function sendMessage(){
@@ -206,10 +233,19 @@ async function sendMessage(){
     const message = input.value.trim();
     if(message === "") return;
 
-    addMessage(`<strong>Vi:</strong> ${message}`);
-    addMessage("<em>Razmišljam...</em>");
+    addMessage(message, "user");
+
+    const thinking = document.createElement("div");
+    thinking.className="message";
+    thinking.innerHTML = `
+        <div class="avatar">AI</div>
+        <div class="bubble"><em>Razmišljam...</em></div>
+    `;
+    chat.appendChild(thinking);
+    scrollToBottom();
 
     try {
+
         const response = await fetch("/api/chat", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -218,12 +254,12 @@ async function sendMessage(){
 
         const data = await response.json();
 
-        /* uklanjamo 'Razmišljam...' poruku */
-        chat.removeChild(chat.lastChild);
+        chat.removeChild(thinking);
 
         renderAIResponse(data);
 
     } catch(error){
+        chat.removeChild(thinking);
         addMessage("Došlo je do pogreške.");
     }
 
