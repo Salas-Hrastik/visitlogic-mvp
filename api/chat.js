@@ -1,9 +1,10 @@
 import valpovoData from "../data/valpovoData.js";
 
 let conversationMemory = [];
+let userPreferences = {};
 
-/* PROMIJENITE OVDJE TON */
-const TONE = "friendly"; 
+/* PROMIJENITE TON AKO ŽELITE */
+const TONE = "formal"; 
 // "formal" | "neutral" | "friendly"
 
 export default async function handler(req, res) {
@@ -16,6 +17,20 @@ export default async function handler(req, res) {
 
     const { message } = req.body;
     const lower = message.toLowerCase();
+
+    /* ---------------------------
+       DETEKCIJA PREFERENCIJA
+    ----------------------------*/
+
+    if(lower.includes("mirno")) userPreferences.atmosfera = "mirna";
+    if(lower.includes("romanti")) userPreferences.tip = "romantično";
+    if(lower.includes("brza")) userPreferences.tip = "brza_hrana";
+    if(lower.includes("djeca")) userPreferences.obitelj = true;
+    if(lower.includes("centar")) userPreferences.lokacija = "centar";
+
+    /* ---------------------------
+       TEMATSKI ROUTER
+    ----------------------------*/
 
     let category = "znamenitosti";
 
@@ -34,32 +49,39 @@ export default async function handler(req, res) {
 
     const selectedData = valpovoData[category] || [];
 
-    /* DEFINICIJA TONA */
+    /* ---------------------------
+       TON KOMUNIKACIJE
+    ----------------------------*/
 
     let toneInstruction = "";
 
     if (TONE === "formal") {
-      toneInstruction = "Komuniciraj profesionalno, službeno i pristojno. Koristi formalni ton obraćanja.";
+      toneInstruction = "Komuniciraj profesionalno i službeno.";
     }
     else if (TONE === "neutral") {
-      toneInstruction = "Komuniciraj jasno i informativno, bez pretjerane formalnosti.";
+      toneInstruction = "Komuniciraj jasno i informativno.";
     }
     else if (TONE === "friendly") {
-      toneInstruction = "Komuniciraj toplo, prijateljski i opušteno, ali profesionalno.";
+      toneInstruction = "Komuniciraj toplo i prijateljski.";
     }
 
+    /* ---------------------------
+       SYSTEM PROMPT
+    ----------------------------*/
+
     const systemPrompt = `
-Ti si službeni AI turistički savjetnik za grad Valpovo.
+Ti si službeni AI turistički savjetnik za Valpovo.
 
 ${toneInstruction}
 
-Imaš kontekst dosadašnjeg razgovora.
+Poznate preferencije korisnika:
+${JSON.stringify(userPreferences)}
+
+Imaš kontekst razgovora.
 Smiješ koristiti isključivo objekte iz dostavljene baze.
 Ne smiješ izmišljati nove objekte.
 
-Odaberi 2 do 4 najrelevantnija objekta.
-Objasni zašto ih preporučuješ.
-Postavi dodatno pitanje ako ima smisla.
+Ako postoje preferencije, prilagodi preporuku njima.
 
 Vrati JSON u formatu:
 
