@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Turistički informator Valpovo</title>
+<title>Turistički informator – Valpovo</title>
 
 <style>
 *{box-sizing:border-box;}
@@ -205,8 +205,13 @@ document.addEventListener("DOMContentLoaded", function(){
     const input = document.getElementById("input");
     const sendBtn = document.getElementById("send");
 
+    /* CHATGPT STYLE SCROLL */
+
+    const bottomAnchor = document.createElement("div");
+    chat.appendChild(bottomAnchor);
+
     function scrollToBottom(){
-        chat.scrollTop = chat.scrollHeight;
+        bottomAnchor.scrollIntoView({ behavior: "smooth" });
     }
 
     function addMessage(text, role="ai"){
@@ -220,7 +225,7 @@ document.addEventListener("DOMContentLoaded", function(){
             ${role === "user" ? `<div class="avatar">Vi</div>` : ""}
         `;
 
-        chat.appendChild(wrapper);
+        chat.insertBefore(wrapper, bottomAnchor);
         scrollToBottom();
     }
 
@@ -241,7 +246,8 @@ document.addEventListener("DOMContentLoaded", function(){
                 </div>
             </div>
         `;
-        chat.appendChild(typing);
+
+        chat.insertBefore(typing, bottomAnchor);
         scrollToBottom();
 
         try{
@@ -253,7 +259,8 @@ document.addEventListener("DOMContentLoaded", function(){
             });
 
             const data = await response.json();
-            chat.removeChild(typing);
+
+            typing.remove();
 
             let html = `<strong>${data.title}</strong><br><br>${data.intro}`;
 
@@ -270,7 +277,7 @@ document.addEventListener("DOMContentLoaded", function(){
             addMessage(html);
 
         }catch(error){
-            chat.removeChild(typing);
+            typing.remove();
             addMessage("Došlo je do tehničke pogreške.");
         }
 
