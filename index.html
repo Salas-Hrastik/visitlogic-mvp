@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="hr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Turistički informator – Turistička zajednica grada Valpova</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Turistički informator – TZ Valpovo</title>
+
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 
 <style>
-* { box-sizing: border-box; }
-
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -17,155 +17,109 @@ body {
   height: 100vh;
 }
 
-/* HEADER */
 header {
-  background: linear-gradient(90deg, #1e3c72, #2a5298);
+  background: linear-gradient(135deg, #1e3c72, #2a5298);
   color: white;
-  padding: 12px 24px;
+  padding: 18px 30px;
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 20px;
 }
 
 header img {
-  height: 55px;
+  height: 60px;
 }
 
 header h1 {
   margin: 0;
-  font-size: 20px;
+  font-size: 22px;
+  font-weight: 600;
 }
 
-header p {
-  margin: 0;
-  font-size: 13px;
+header span {
+  font-size: 14px;
   opacity: 0.85;
 }
 
-/* MAIN LAYOUT */
-.main {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  padding: 20px;
-}
-
-.container {
-  width: 100%;
-  max-width: 1000px;
-  display: flex;
-  flex-direction: column;
-}
-
-/* CHAT BOX */
-.chat-box {
-  background: white;
-  border-radius: 12px;
-  padding: 20px;
+.chat-container {
   flex: 1;
   overflow-y: auto;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.05);
-  margin-bottom: 15px;
+  padding: 30px;
+  max-width: 1000px;
+  margin: auto;
+  width: 100%;
 }
 
 .message {
-  margin: 12px 0;
+  margin-bottom: 25px;
+  padding: 18px 22px;
+  border-radius: 14px;
   line-height: 1.6;
 }
 
-.message.user {
-  font-weight: 600;
-  text-align: right;
+.user {
+  background: #e3edff;
+  align-self: flex-end;
 }
 
-.message.bot {
-  text-align: left;
+.bot {
+  background: white;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
 
-/* TYPING */
-.typing-indicator {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-style: italic;
-  color: #4b5563;
-}
-
-.typing-dots {
-  display: inline-flex;
-  gap: 4px;
-}
-
-.typing-dots span {
-  width: 6px;
-  height: 6px;
-  background: #2563eb;
-  border-radius: 50%;
-  animation: blink 1.4s infinite both;
-}
-
-.typing-dots span:nth-child(1) { animation-delay: 0s; }
-.typing-dots span:nth-child(2) { animation-delay: 0.2s; }
-.typing-dots span:nth-child(3) { animation-delay: 0.4s; }
-
-@keyframes blink {
-  0% { opacity: 0.2; transform: scale(1); }
-  20% { opacity: 1; transform: scale(1.2); }
-  100% { opacity: 0.2; transform: scale(1); }
-}
-
-/* BUTTONS */
-.buttons {
-  display: flex;
-  gap: 10px;
+.quick-buttons {
+  text-align: center;
   margin-bottom: 15px;
-  flex-wrap: wrap;
 }
 
-.buttons button {
-  padding: 8px 14px;
+.quick-buttons button {
+  padding: 8px 16px;
   border: none;
   border-radius: 20px;
-  background: #e5e7eb;
+  margin: 5px;
   cursor: pointer;
+  background: #e0e5ec;
+  transition: 0.2s;
 }
 
-.buttons button:hover {
-  background: #d1d5db;
+.quick-buttons button:hover {
+  background: #cfd8e3;
 }
 
-/* INPUT */
 .input-area {
   display: flex;
-  gap: 10px;
+  padding: 15px 20px;
+  background: white;
+  border-top: 1px solid #ddd;
 }
 
 input {
   flex: 1;
-  padding: 12px;
+  padding: 12px 15px;
   border-radius: 8px;
   border: 1px solid #ccc;
+  font-size: 15px;
 }
 
 button.send {
+  margin-left: 10px;
   padding: 12px 20px;
-  border: none;
   border-radius: 8px;
+  border: none;
   background: #2a5298;
   color: white;
   cursor: pointer;
 }
 
-button.send:hover {
-  background: #1e3c72;
-}
-
-/* FOOTER */
 footer {
   text-align: center;
-  padding: 12px;
   font-size: 13px;
-  background: #f4f6f9;
+  padding: 10px;
+  background: #f0f2f5;
+}
+.typing {
+  font-style: italic;
+  opacity: 0.7;
 }
 </style>
 </head>
@@ -173,84 +127,71 @@ footer {
 <body>
 
 <header>
-  <img src="tz-logo-Valpovo.png" alt="TZ Valpovo">
+  <img src="tz-logo-Valpovo.png" alt="TZ Valpovo Logo">
   <div>
     <h1>Turistički informator</h1>
-    <p>Turistička zajednica grada Valpova</p>
+    <span>Turistička zajednica grada Valpova</span>
   </div>
 </header>
 
-<div class="main">
-<div class="container">
-
-<div class="chat-box" id="chatBox">
+<div class="chat-container" id="chat">
   <div class="message bot">
-    <strong>Dobrodošli!</strong><br>
-    Postavite pitanje ili odaberite opciju:
+    <strong>Dobrodošli!</strong> Postavite pitanje ili odaberite opciju:
   </div>
 </div>
 
-<div class="buttons">
-  <button onclick="quickQuestion('Koje su znamenitosti u Valpovu?')">Znamenitosti</button>
-  <button onclick="quickQuestion('Preporuči gastronomiju u Valpovu.')">Gastro</button>
-  <button onclick="quickQuestion('Koja su aktualna događanja u Valpovu?')">Događanja</button>
-  <button onclick="quickQuestion('Što raditi u Valpovu kada je loše vrijeme?')">Loše vrijeme</button>
+<div class="quick-buttons">
+  <button onclick="quickAsk('Koje su znamenitosti u Valpovu?')">Znamenitosti</button>
+  <button onclick="quickAsk('Preporuči gastronomiju u Valpovu.')">Gastro</button>
+  <button onclick="quickAsk('Koja su aktualna događanja u Valpovu?')">Događanja</button>
+  <button onclick="quickAsk('Što raditi u Valpovu kada je loše vrijeme?')">Loše vrijeme</button>
 </div>
 
 <div class="input-area">
-  <input type="text" id="userInput" placeholder="Postavite pitanje...">
+  <input type="text" id="userInput" placeholder="Postavite pitanje..." />
   <button class="send" onclick="sendMessage()">Pošalji</button>
 </div>
 
-</div>
-</div>
-
 <footer>
-© Turistička zajednica grada Valpova – Digitalni informator
+  © Turistička zajednica grada Valpova – Digitalni informator
 </footer>
 
 <script>
-async function sendMessage(messageOverride = null) {
+async function sendMessage(text=null) {
   const input = document.getElementById("userInput");
-  const message = messageOverride || input.value.trim();
-  if (!message) return;
+  const chat = document.getElementById("chat");
+  const message = text || input.value;
 
-  const chatBox = document.getElementById("chatBox");
+  if (!message.trim()) return;
 
-  chatBox.innerHTML += `<div class="message user">${message}</div>`;
+  chat.innerHTML += `<div class="message user"><strong>Vi:</strong> ${message}</div>`;
   input.value = "";
-  chatBox.scrollTop = chatBox.scrollHeight;
+  chat.scrollTop = chat.scrollHeight;
 
-  // SHOW TYPING
   const typing = document.createElement("div");
-  typing.id = "typing";
-  typing.className = "typing-indicator";
-  typing.innerHTML = `
-    Informator tipka
-    <div class="typing-dots">
-      <span></span><span></span><span></span>
-    </div>
-  `;
-  chatBox.appendChild(typing);
-  chatBox.scrollTop = chatBox.scrollHeight;
+  typing.className = "message bot typing";
+  typing.innerText = "Informator tipka...";
+  chat.appendChild(typing);
+  chat.scrollTop = chat.scrollHeight;
 
   const response = await fetch("/api/chat", {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: {"Content-Type": "application/json"},
     body: JSON.stringify({ message })
   });
 
   const data = await response.json();
+  typing.remove();
 
-  // REMOVE TYPING
-  const typingElement = document.getElementById("typing");
-  if (typingElement) typingElement.remove();
+  const botMessage = document.createElement("div");
+  botMessage.className = "message bot";
+  botMessage.innerHTML = "<strong>Informator:</strong><br>" + marked.parse(data.reply);
 
-  chatBox.innerHTML += `<div class="message bot">${data.reply}</div>`;
-  chatBox.scrollTop = chatBox.scrollHeight;
+  chat.appendChild(botMessage);
+  chat.scrollTop = chat.scrollHeight;
 }
 
-function quickQuestion(text) {
+function quickAsk(text){
   sendMessage(text);
 }
 </script>
