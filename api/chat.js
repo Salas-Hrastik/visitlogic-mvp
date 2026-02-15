@@ -1,5 +1,7 @@
 import valpovoData from "../data/valpovoData.js";
 
+let conversationMemory = [];
+
 export default async function handler(req, res) {
 
   if (req.method !== "POST") {
@@ -31,12 +33,13 @@ export default async function handler(req, res) {
     const systemPrompt = `
 Ti si profesionalni AI turistički savjetnik za Valpovo.
 
+Imaš kontekst dosadašnjeg razgovora.
 Smiješ koristiti isključivo objekte iz dostavljene baze.
-Ne smiješ izmišljati.
+Ne smiješ izmišljati nove objekte.
 
 Odaberi 2 do 4 najrelevantnija objekta.
 Objasni zašto ih preporučuješ.
-Postavi dodatno pitanje.
+Postavi dodatno pitanje ako ima smisla.
 
 Vrati JSON u formatu:
 
@@ -53,6 +56,13 @@ Baza:
 ${JSON.stringify(selectedData)}
 `;
 
+    conversationMemory.push({ role: "user", content: message });
+
+    const messages = [
+      { role: "system", content: systemPrompt },
+      ...conversationMemory
+    ];
+
     const response = await fetch("https://api.openai.com/v1/chat/completions", {
       method: "POST",
       headers: {
@@ -62,10 +72,7 @@ ${JSON.stringify(selectedData)}
       body: JSON.stringify({
         model: "gpt-4o-mini",
         temperature: 0.3,
-        messages: [
-          { role: "system", content: systemPrompt },
-          { role: "user", content: message }
-        ]
+        messages
       })
     });
 
@@ -73,6 +80,15 @@ ${JSON.stringify(selectedData)}
     const content = data.choices?.[0]?.message?.content;
 
     let parsed = JSON.parse(content);
+
+    conversationMemory.push({
+      role: "assistant",
+      content: content
+    });
+
+    if(conversationMemory.length > 10){
+      conversationMemory = conversationMemory.slice(-10);
+    }
 
     const allowedNames = selectedData.map(o => o.name);
 
