@@ -1,155 +1,128 @@
 <!DOCTYPE html>
 <html lang="hr">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Turistički informator – Turistička zajednica grada Valpova</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Turistički informator – TZ Valpovo</title>
 
 <style>
 * { box-sizing: border-box; }
 
 body {
   margin: 0;
-  font-family: 'Inter', sans-serif;
-  background: #f5f7fb;
-  color: #1f2937;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: #f2f4f8;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 /* HEADER */
 header {
-  background: linear-gradient(135deg, #1e3a8a, #2563eb);
-  padding: 14px 40px;
+  background: linear-gradient(90deg, #1e3c72, #2a5298);
+  color: white;
+  padding: 14px 24px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  color: white;
 }
 
 .header-left {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 14px;
 }
 
-.header-left img {
-  height: 70px;
-  background: white;
-  padding: 8px 14px;
-  border-radius: 10px;
+header img {
+  height: 46px;
 }
 
-.header-text h1 {
+header h1 {
+  font-size: 20px;
   margin: 0;
-  font-size: 22px;
-  font-weight: 700;
 }
 
-.header-text span {
-  font-size: 14px;
-  opacity: 0.9;
-}
-
-.header-actions button {
-  background: transparent;
-  border: 1px solid rgba(255,255,255,0.6);
-  color: white;
-  padding: 6px 14px;
-  border-radius: 20px;
-  cursor: pointer;
-  margin-left: 10px;
-}
-
-.header-actions button:hover {
-  background: rgba(255,255,255,0.15);
-}
-
-/* MAIN */
-main {
-  max-width: 1100px;
-  margin: 40px auto;
-  padding: 0 20px;
+header span {
+  font-size: 13px;
+  opacity: 0.85;
 }
 
 /* CHAT AREA */
-.chat-container {
+.chat-wrapper {
+  flex: 1;
+  max-width: 1000px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.chat-box {
+  flex: 1;
   background: white;
-  border-radius: 14px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-  padding: 25px;
-  min-height: 350px;
+  border-radius: 12px;
+  padding: 20px;
+  overflow-y: auto;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
 }
 
-.message {
-  margin-bottom: 18px;
-  line-height: 1.6;
-}
-
-.message.user {
-  text-align: right;
-  font-weight: 600;
-}
-
-.message.bot {
-  text-align: left;
-}
-
-/* QUICK BUTTONS */
+/* BUTTONS */
 .quick-buttons {
-  margin: 25px 0;
+  margin: 16px 0;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
 }
 
 .quick-buttons button {
-  background: #e5e7eb;
   border: none;
-  padding: 8px 16px;
-  margin-right: 10px;
+  padding: 8px 14px;
   border-radius: 20px;
+  background: #e4e8f1;
   cursor: pointer;
-  font-weight: 500;
+  font-size: 14px;
 }
 
 .quick-buttons button:hover {
-  background: #d1d5db;
+  background: #d0d7ea;
 }
 
-/* INPUT AREA */
+/* INPUT */
 .input-area {
   display: flex;
   gap: 10px;
-  margin-top: 20px;
 }
 
 input {
   flex: 1;
-  padding: 14px;
+  padding: 12px;
   border-radius: 10px;
-  border: 1px solid #d1d5db;
+  border: 1px solid #ccc;
   font-size: 15px;
 }
 
 button.send {
-  background: #2563eb;
-  border: none;
-  padding: 0 22px;
-  color: white;
+  padding: 12px 20px;
   border-radius: 10px;
-  font-weight: 600;
+  border: none;
+  background: #2a5298;
+  color: white;
+  font-size: 15px;
   cursor: pointer;
 }
 
 button.send:hover {
-  background: #1d4ed8;
+  background: #1e3c72;
 }
 
 /* FOOTER */
 footer {
   text-align: center;
-  padding: 25px;
+  padding: 10px;
   font-size: 13px;
-  color: #6b7280;
-  margin-top: 40px;
+  background: #f2f4f8;
+  color: #666;
 }
 </style>
 </head>
@@ -158,47 +131,66 @@ footer {
 
 <header>
   <div class="header-left">
-    <img src="/tz-logo-Valpovo.png" alt="Turistička zajednica grada Valpova">
-    <div class="header-text">
+    <img src="tz-logo-Valpovo.png" alt="TZ Valpovo">
+    <div>
       <h1>Turistički informator</h1>
       <span>Turistička zajednica grada Valpova</span>
     </div>
   </div>
-  <div class="header-actions">
-    <button onclick="toggleTheme()">Dark</button>
-    <button onclick="resetChat()">Reset</button>
-  </div>
 </header>
 
-<main>
+<div class="chat-wrapper">
 
-<div class="chat-container" id="chat">
-  <div class="message bot">
-    Dobrodošli u službeni digitalni turistički informator destinacije Valpovo.
-    Postavite pitanje ili odaberite opciju ispod.
+  <div class="chat-box" id="chatBox">
+    <p><strong>Dobrodošli.</strong> Postavite pitanje ili odaberite opciju.</p>
   </div>
-</div>
 
-<div class="quick-buttons">
-  <button onclick="quickAsk('Nabroji znamenitosti u Valpovu')">Znamenitosti</button>
-  <button onclick="quickAsk('Preporuči gastro ponudu u Valpovu')">Gastro</button>
-  <button onclick="quickAsk('Koja su aktualna događanja u Valpovu?')">Događanja</button>
-  <button onclick="quickAsk('Što raditi u Valpovu kada je loše vrijeme?')">Loše vrijeme</button>
-</div>
+  <div class="quick-buttons">
+    <button onclick="sendQuick('Koje su znamenitosti u Valpovu?')">Znamenitosti</button>
+    <button onclick="sendQuick('Preporuči gastronomiju u Valpovu')">Gastro</button>
+    <button onclick="sendQuick('Koja su aktualna događanja u Valpovu?')">Događanja</button>
+    <button onclick="sendQuick('Što raditi u Valpovu kad je loše vrijeme?')">Loše vrijeme</button>
+  </div>
 
-<div class="input-area">
-  <input type="text" id="input" placeholder="Postavite pitanje...">
-  <button class="send" onclick="sendMessage()">Pošalji</button>
-</div>
+  <div class="input-area">
+    <input type="text" id="userInput" placeholder="Postavite pitanje...">
+    <button class="send" onclick="sendMessage()">Pošalji</button>
+  </div>
 
-</main>
+</div>
 
 <footer>
 © Turistička zajednica grada Valpova – Digitalni informator
 </footer>
 
 <script>
+async function sendQuick(text) {
+  document.getElementById("userInput").value = text;
+  sendMessage();
+}
+
 async function sendMessage() {
-  const input = document.getElementById("input");
-  const chat = document.getElementById("chat");
-  const message =
+  const input = document.getElementById("userInput");
+  const chatBox = document.getElementById("chatBox");
+  const message = input.value.trim();
+
+  if (!message) return;
+
+  chatBox.innerHTML += "<p><strong>Vi:</strong> " + message + "</p>";
+  input.value = "";
+
+  const response = await fetch("/api/chat", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ message })
+  });
+
+  const data = await response.json();
+
+  chatBox.innerHTML += "<p><strong>Informator:</strong> " + data.reply + "</p>";
+  chatBox.scrollTop = chatBox.scrollHeight;
+}
+</script>
+
+</body>
+</html>
