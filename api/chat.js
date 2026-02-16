@@ -3,8 +3,7 @@ import valpovoData from "../data/valpovoData.js";
 let conversationMemory = [];
 let userPreferences = {};
 
-const TONE = "formal"; 
-// "formal" | "neutral" | "friendly"
+const CITY = "Valpovo";
 
 export default async function handler(req, res) {
 
@@ -15,18 +14,82 @@ export default async function handler(req, res) {
   try {
 
     const { message } = req.body;
+    const lower = message.toLowerCase();
 
-    /* RESET KOMANDA */
+    /* ======================================================
+       1️⃣ WEATHER CONTEXT (WeatherAPI)
+    ======================================================= */
 
-    if(message === "__RESET__"){
-      conversationMemory = [];
-      userPreferences = {};
-      return res.status(200).json({ reset: true });
-    }
+    let weatherContext = "Vrijeme trenutno nije dostupno.";
+    let isRain = false;
+    let isCold = false;
 
-    /* ---------------------------
-       1️⃣ AI KLASIFIKACIJA
-    ----------------------------*/
+    try {
+
+      const weatherResponse = await fetch(
+        `https://api.weatherapi.com/v1/forecast.json?key=${process.env.WEATHERAPI_KEY}&q=${CITY}&days=1&lang=hr`
+      );
+
+      const weatherData = await weatherResponse.json();
+
+      if(weatherData?.current){
+
+        const condition = weatherData.current.condition.text.toLowerCase();
+        const temp = weatherData.current.temp_c;
+
+        if(condition.includes("kiša") || condition.includes("pljusak")) {
+          isRain = true;
+        }
+
+        if(temp < 8) {
+          isCold = true;
+        }
+
+        weatherContext = `
+Temperatura: ${temp}°C
+Osjećaj: ${weatherData.current.feelslike_c}°C
+Vrijeme: ${weatherData.current.condition.text}
+`;
+      }
+
+    } catch {}
+
+    /* ======================================================
+       2️⃣ TIME CONTEXT
+    ======================================================= */
+
+    const now = new Date();
+    const hour = now.getHours();
+    const day = now.getDay();
+    const month = now.getMonth();
+
+    const isWeekend = (day === 0 || day === 6);
+    const isEvening = hour >= 18;
+
+    let season = "proljeće/jesen";
+    if(month >= 5 && month <= 7) season = "ljeto";
+    if(month === 11 || month <= 1) season = "zima";
+
+    const timeContext = `
+Sat: ${hour}
+Večer: ${isEvening}
+Vikend: ${isWeekend}
+Sezona: ${season}
+`;
+
+    /* ======================================================
+       3️⃣ PREFERENCE DETECTION
+    ======================================================= */
+
+    if(lower.includes("mirno")) userPreferences.atmosfera = "mirna";
+    if(lower.includes("romanti")) userPreferences.tip = "romantično";
+    if(lower.includes("djeca")) userPreferences.obitelj = true;
+    if(lower.includes("brza")) userPreferences.tip = "brza_hrana";
+    if(lower.includes("centar")) userPreferences.lokacija = "centar";
+
+    /* ======================================================
+       4️⃣ AI CLASSIFICATION
+    ======================================================= */
 
     const classificationResponse = await fetch("https://api.openai.com/v1/chat/completions", {
       method: "POST",
@@ -61,39 +124,35 @@ priroda
       category = "znamenitosti";
     }
 
-    const selectedData = valpovoData[category] || [];
+    let selectedData = valpovoData[category] || [];
 
-    /* ---------------------------
-       PREFERENCIJE
-    ----------------------------*/
+    /* ======================================================
+       5️⃣ WEATHER-BASED FILTERING
+    ======================================================= */
 
-    const lower = message.toLowerCase();
+    if((isRain || isCold) && category === "priroda"){
+      selectedData = []; // blokiraj prirodu kad je loše vrijeme
+    }
 
-    if(lower.includes("mirno")) userPreferences.atmosfera = "mirna";
-    if(lower.includes("romanti")) userPreferences.tip = "romantično";
-    if(lower.includes("brza")) userPreferences.tip = "brza_hrana";
-    if(lower.includes("djeca")) userPreferences.obitelj = true;
-    if(lower.includes("centar")) userPreferences.lokacija = "centar";
-
-    /* ---------------------------
-       TON
-    ----------------------------*/
-
-    let toneInstruction = "";
-
-    if (TONE === "formal") toneInstruction = "Komuniciraj profesionalno.";
-    if (TONE === "neutral") toneInstruction = "Komuniciraj informativno.";
-    if (TONE === "friendly") toneInstruction = "Komuniciraj toplo i prijateljski.";
+    /* ======================================================
+       6️⃣ MAIN AI RESPONSE
+    ======================================================= */
 
     const systemPrompt = `
-Ti si AI turistički savjetnik za Valpovo.
+Ti si profesionalni turistički savjetnik za ${CITY}.
 
-${toneInstruction}
+Kontekst:
+${weatherContext}
+${timeContext}
 
-Tema: ${category}
-Preferencije: ${JSON.stringify(userPreferences)}
+Preferencije korisnika:
+${JSON.stringify(userPreferences)}
 
-Vrati JSON:
+Ako je kiša ili hladno izbjegavaj vanjske aktivnosti.
+Ako je večer prilagodi preporuke večernjim sadržajima.
+Ako je vikend uzmi u obzir veću posjećenost.
+
+Vrati isključivo JSON:
 
 {
   "title": "...",
@@ -103,6 +162,8 @@ Vrati JSON:
   ],
   "followUpQuestion": "..."
 }
+
+Koristi isključivo objekte iz baze.
 
 Baza:
 ${JSON.stringify(selectedData)}
@@ -115,7 +176,7 @@ ${JSON.stringify(selectedData)}
       ...conversationMemory
     ];
 
-    const response = await fetch("https://api.openai.com/v1/chat/completions", {
+    const aiResponse = await fetch("https://api.openai.com/v1/chat/completions", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -128,25 +189,37 @@ ${JSON.stringify(selectedData)}
       })
     });
 
-    const data = await response.json();
-    const content = data.choices?.[0]?.message?.content;
+    const aiData = await aiResponse.json();
+    const content = aiData.choices?.[0]?.message?.content;
 
     let parsed;
 
-    try{
+    try {
       parsed = JSON.parse(content);
-    }catch{
+    } catch {
       parsed = null;
     }
 
-    if(!parsed){
+    /* ======================================================
+       7️⃣ FALLBACK
+    ======================================================= */
+
+    if(!parsed || !parsed.recommendations){
       return res.status(200).json({
-        title: "Informacije",
-        intro: "Rado ću pomoći. Koju vrstu informacija trebate?",
+        title: "Informacije o Valpovu",
+        intro: "Rado ću pomoći. Molim precizirajte vrstu informacija.",
         recommendations: [],
         followUpQuestion: "Znamenitosti, gastronomija ili smještaj?"
       });
     }
+
+    /* VALIDACIJA HALUCINACIJA */
+
+    const allowedNames = selectedData.map(o => o.name);
+
+    parsed.recommendations = parsed.recommendations.filter(r =>
+      allowedNames.includes(r.name)
+    );
 
     conversationMemory.push({
       role: "assistant",
@@ -160,9 +233,11 @@ ${JSON.stringify(selectedData)}
     res.status(200).json(parsed);
 
   } catch (error) {
+
     res.status(500).json({
       error: "Server error",
       details: error.message
     });
+
   }
 }
