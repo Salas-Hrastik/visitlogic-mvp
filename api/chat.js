@@ -131,15 +131,17 @@ priroda
     ======================================================= */
 
     if((isRain || isCold) && category === "priroda"){
-      selectedData = []; // blokiraj prirodu kad je loše vrijeme
+      selectedData = [];
     }
 
     /* ======================================================
-       6️⃣ MAIN AI RESPONSE
+       6️⃣ INTELLIGENT SYSTEM PROMPT
     ======================================================= */
 
     const systemPrompt = `
 Ti si profesionalni turistički savjetnik za ${CITY}.
+
+Ne daješ katalog nego analitičku, personaliziranu preporuku.
 
 Kontekst:
 ${weatherContext}
@@ -148,22 +150,31 @@ ${timeContext}
 Preferencije korisnika:
 ${JSON.stringify(userPreferences)}
 
-Ako je kiša ili hladno izbjegavaj vanjske aktivnosti.
-Ako je večer prilagodi preporuke večernjim sadržajima.
-Ako je vikend uzmi u obzir veću posjećenost.
+PRAVILA:
+
+- Analiziraj situaciju.
+- Usporedi objekte.
+- Odaberi 2–3 najrelevantnija.
+- Objasni ZAŠTO su prikladni sada.
+- Istakni razliku među njima ako postoji.
+- Postavi inteligentno follow-up pitanje.
+- Ne navodi sve objekte.
+- Ne izmišljaj objekte.
+- Koristi isključivo objekte iz baze.
 
 Vrati isključivo JSON:
 
 {
-  "title": "...",
-  "intro": "...",
+  "title": "Strateški naslov",
+  "intro": "Kratka personalizirana analiza situacije",
   "recommendations": [
-    { "name": "...", "reason": "..." }
+    {
+      "name": "Naziv objekta",
+      "reason": "Obrazložena preporuka"
+    }
   ],
-  "followUpQuestion": "..."
+  "followUpQuestion": "Pametno pitanje"
 }
-
-Koristi isključivo objekte iz baze.
 
 Baza:
 ${JSON.stringify(selectedData)}
@@ -213,7 +224,9 @@ ${JSON.stringify(selectedData)}
       });
     }
 
-    /* VALIDACIJA HALUCINACIJA */
+    /* ======================================================
+       8️⃣ ANTI-HALUCINATION VALIDATION
+    ======================================================= */
 
     const allowedNames = selectedData.map(o => o.name);
 
