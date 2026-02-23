@@ -10,7 +10,7 @@ html, body{
   margin:0;
   padding:0;
   height:100%;
-  overflow:hidden;   /* STRANICA SE VIŠE NE SKROLA */
+  overflow:hidden; /* BODY NIKAD NE SKROLA */
   font-family:"Segoe UI", sans-serif;
   background:#0b4f2f;
 }
@@ -18,7 +18,7 @@ html, body{
 .app{
   display:flex;
   flex-direction:column;
-  height:100%;
+  height:100dvh; /* VAŽNO */
 }
 
 /* HEADER */
@@ -36,7 +36,6 @@ html, body{
 }
 
 .logo{ height:60px; border-radius:12px; }
-
 .title-main{ font-size:24px; font-weight:700; }
 .title-sub{ font-size:14px; color:#d4f3e5; }
 
@@ -47,17 +46,19 @@ html, body{
   flex-shrink:0;
 }
 
-/* CHAT AREA */
+/* CHAT WRAPPER */
 .chat-wrapper{
   flex:1;
+  min-height:0;   /* KRITIČNO */
   display:flex;
   flex-direction:column;
-  overflow:hidden;
 }
 
+/* CHAT */
 #chat{
   flex:1;
-  overflow-y:auto;    /* SAMO OVDJE SE SKROLA */
+  min-height:0;   /* KRITIČNO */
+  overflow-y:auto;
   padding:15px 20px;
 }
 
@@ -67,7 +68,7 @@ html, body{
   padding:10px 14px;
   border-radius:14px;
   line-height:1.35;
-  margin-bottom:6px;  /* MANJI RAZMAK */
+  margin-bottom:6px;
   white-space:pre-wrap;
 }
 
@@ -83,7 +84,7 @@ html, body{
   border-top-right-radius:4px;
 }
 
-/* Typing bubble */
+/* Typing */
 .typing{
   display:flex;
   gap:5px;
@@ -187,7 +188,7 @@ async function loadWeather(){
   return "Vrijeme trenutno nije dostupno.";
 }
 
-/* HERO INIT */
+/* HERO */
 async function initHero(){
   const weather=await loadWeather();
   hero.innerHTML=
@@ -201,7 +202,7 @@ async function initHero(){
     "</div>";
 }
 
-/* ADD MESSAGE */
+/* PORUKE */
 function addMessage(text,type="ai"){
   const div=document.createElement("div");
   div.className="message "+type;
@@ -211,7 +212,8 @@ function addMessage(text,type="ai"){
 
   div.innerHTML=text;
   chat.appendChild(div);
-  chat.scrollTop=chat.scrollHeight;
+
+  chat.scrollTop=chat.scrollHeight; /* SKROLA SAMO CHAT */
 }
 
 /* TYPING */
