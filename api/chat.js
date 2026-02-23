@@ -10,77 +10,80 @@ export default async function handler(req, res) {
   try {
 
     const { message } = req.body;
-    const userQuery = message.toLowerCase();
+    const userQuery = message.toLowerCase().trim();
 
     const filePath = path.join(process.cwd(), "data", "smjestaj.json");
     const rawData = fs.readFileSync(filePath, "utf8");
     const smjestajData = JSON.parse(rawData);
     const objekti = smjestajData.smjestaj;
 
-    /* ========================================= */
-    /* ===== IZLISTAVANJE CIJELOG POPISA ====== */
-    /* ========================================= */
+    /* ===================================== */
+    /* ===== 1. PRVI KORAK – PITANJE ====== */
+    /* ===================================== */
 
-    if (
-      userQuery.includes("smještaj") ||
-      userQuery.includes("popis") ||
-      userQuery.includes("svi objekti") ||
-      userQuery.includes("izlistaj")
-    ) {
+    if (userQuery === "smještaj" || userQuery === "smjestaj") {
 
-      const hoteli = objekti.filter(o =>
+      return res.status(200).json({
+        reply: `
+Molimo odaberite vrstu smještaja:
+
+1️⃣ Hotel  
+2️⃣ Privatni apartman  
+3️⃣ Sobe / pansion  
+
+Upišite broj opcije.
+        `
+      });
+    }
+
+    /* ===================================== */
+    /* ===== 2. ODABIR PREMA BROJU ======== */
+    /* ===================================== */
+
+    let filtrirani = [];
+
+    if (userQuery === "1") {
+      filtrirani = objekti.filter(o =>
         o.vrsta?.toLowerCase().includes("hotel")
       );
+    }
 
-      const apartmani = objekti.filter(o =>
+    if (userQuery === "2") {
+      filtrirani = objekti.filter(o =>
         o.vrsta?.toLowerCase().includes("apartman")
       );
+    }
 
-      const sobe = objekti.filter(o =>
+    if (userQuery === "3") {
+      filtrirani = objekti.filter(o =>
         o.vrsta?.toLowerCase().includes("sobe")
       );
+    }
 
-      const hostel = objekti.filter(o =>
-        o.vrsta?.toLowerCase().includes("hostel")
-      );
+    if (filtrirani.length > 0) {
 
-      const ostalo = objekti.filter(o =>
-        !o.vrsta?.toLowerCase().includes("hotel") &&
-        !o.vrsta?.toLowerCase().includes("apartman") &&
-        !o.vrsta?.toLowerCase().includes("sobe") &&
-        !o.vrsta?.toLowerCase().includes("hostel")
-      );
+      filtrirani = filtrirani
+        .sort((a, b) => (b.ocjena || 0) - (a.ocjena || 0));
 
-      const renderGrupa = (naslov, lista) => {
-        if (lista.length === 0) return "";
-        let block = `<h3 style="margin:10px 0 5px 0;">${naslov}</h3>`;
-        lista.forEach(o => {
-          block += `
-            <div style="margin-bottom:8px;">
-              <strong>${o.naziv}</strong><br/>
-              Ocjena: ${o.ocjena ?? "N/A"} (${o.broj_recenzija ?? 0})<br/>
-              ${o.adresa}<br/>
-              <a href="${o.google_maps_url}" target="_blank">Google Maps</a>
-            </div>
-          `;
-        });
-        return block;
-      };
+      let odgovor = `<h3>Rezultati:</h3>`;
 
-      let odgovor = "";
-
-      odgovor += renderGrupa("🏨 HOTELS", hoteli);
-      odgovor += renderGrupa("🏢 APARTMANI", apartmani);
-      odgovor += renderGrupa("🛏 SOBE / PANSIONI", sobe);
-      odgovor += renderGrupa("🛌 HOSTELI", hostel);
-      odgovor += renderGrupa("🏠 OSTALO", ostalo);
+      filtrirani.forEach((o, index) => {
+        odgovor += `
+          <div style="margin-bottom:8px;">
+            <strong>${index + 1}. ${o.naziv}</strong><br/>
+            Ocjena: ${o.ocjena ?? "N/A"} (${o.broj_recenzija ?? 0})<br/>
+            ${o.adresa}<br/>
+            <a href="${o.google_maps_url}" target="_blank">Google Maps</a>
+          </div>
+        `;
+      });
 
       return res.status(200).json({ reply: odgovor });
     }
 
-    /* ========================================= */
-    /* ===== OSTALI UPITI → OPENAI ============ */
-    /* ========================================= */
+    /* ===================================== */
+    /* ===== OSTALI UPITI → OPENAI ======== */
+    /* ===================================== */
 
     const openaiResponse = await fetch("https://api.openai.com/v1/chat/completions", {
       method: "POST",
