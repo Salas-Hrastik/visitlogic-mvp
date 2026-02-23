@@ -31,25 +31,48 @@ body{
 .title-main{font-size:24px;font-weight:700;}
 .title-sub{font-size:14px;color:#d4f3e5;}
 
-/* HERO – STICKY */
+/* HERO – KOMPAKTNI */
 #hero{
   position:sticky;
   top:0;
   z-index:10;
   background:#e9ecef;
-  padding:18px 25px;
-  border-radius:0 0 25px 25px;
+  padding:14px 20px;
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  border-radius:0 0 20px 20px;
 }
 
-/* QUICK BUTTONS – VRAĆAMO BOJU */
+/* LIJEVA STRANA */
+.hero-left{
+  display:flex;
+  align-items:center;
+  gap:15px;
+  flex-wrap:wrap;
+}
+
+.weather{
+  font-weight:600;
+}
+
+/* QUICK BUTTONS */
+.quick-buttons{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+}
+
 .quick-buttons button{
   background:#d9e4dd;
   color:#1f2d2a;
   border:none;
-  border-radius:20px;
-  padding:8px 14px;
-  margin:6px 6px 0 0;
+  border-radius:18px;
+  padding:6px 12px;
   cursor:pointer;
+  font-size:14px;
   transition:all .2s ease;
 }
 
@@ -85,11 +108,10 @@ body{
   border-top-right-radius:6px;
 }
 
-/* Typing bubble */
+/* TYPING */
 .typing{
   display:flex;
   gap:6px;
-  align-items:center;
 }
 
 .dot{
@@ -150,7 +172,20 @@ button.send{
   </div>
 </header>
 
-<div id="hero"></div>
+<div id="hero">
+  <div class="hero-left">
+    <div><strong>Sada je u Valpovu:</strong></div>
+    <div class="weather" id="weather"></div>
+  </div>
+
+  <div class="quick-buttons">
+    <button onclick="quickAsk('Znamenitosti')">Znamenitosti</button>
+    <button onclick="quickAsk('Gastronomija')">Gastronomija</button>
+    <button onclick="quickAsk('Događanja')">Događanja</button>
+    <button onclick="quickAsk('Smještaj')">Smještaj</button>
+    <button onclick="quickAsk('Priroda')">Priroda</button>
+  </div>
+</div>
 
 <div id="chat"></div>
 
@@ -160,7 +195,6 @@ button.send{
 </div>
 
 <script>
-const hero=document.getElementById("hero");
 const chat=document.getElementById("chat");
 
 /* WEATHER */
@@ -169,24 +203,10 @@ async function loadWeather(){
     const r=await fetch("/api/weather");
     const d=await r.json();
     if(d.temperature!==undefined){
-      return "🌤 "+d.temperature+"°C • Vjetar "+d.windspeed+" km/h";
+      document.getElementById("weather").innerText=
+        "🌤 "+d.temperature+"°C • Vjetar "+d.windspeed+" km/h";
     }
   }catch{}
-  return "Vrijeme trenutno nije dostupno.";
-}
-
-/* HERO */
-async function initHero(){
-  const weather=await loadWeather();
-  hero.innerHTML=
-    "<strong>Sada je u Valpovu:</strong><br><br>"+weather+
-    "<div class='quick-buttons'>"+
-    "<button onclick=\"quickAsk('Znamenitosti')\">Znamenitosti</button>"+
-    "<button onclick=\"quickAsk('Gastronomija')\">Gastronomija</button>"+
-    "<button onclick=\"quickAsk('Događanja')\">Događanja</button>"+
-    "<button onclick=\"quickAsk('Smještaj')\">Smještaj</button>"+
-    "<button onclick=\"quickAsk('Priroda')\">Priroda</button>"+
-    "</div>";
 }
 
 /* PORUKE */
@@ -214,9 +234,7 @@ function showTyping(){
   div.innerHTML="<div class='dot'></div><div class='dot'></div><div class='dot'></div>";
   chat.appendChild(div);
 
-  window.scrollTo({
-    top:document.body.scrollHeight
-  });
+  window.scrollTo({top:document.body.scrollHeight});
 }
 
 function removeTyping(){
@@ -255,7 +273,7 @@ async function sendMessage(){
   }
 }
 
-window.onload=initHero;
+loadWeather();
 </script>
 
 </body>
