@@ -1,8 +1,5 @@
 import valpovoData from "../data/valpovoData.js";
 
-let conversationMemory = [];
-let userPreferences = {};
-
 const CITY = "Valpovo";
 
 export default async function handler(req, res) {
@@ -13,7 +10,11 @@ export default async function handler(req, res) {
 
   try {
 
-    const { message } = req.body;
+    const { message, context } = req.body;
+    if (!message) {
+      return res.status(400).json({ error: "Message is required" });
+    }
+
     const lower = message.toLowerCase();
 
     /* ================= WEATHER ================= */
@@ -23,20 +24,19 @@ export default async function handler(req, res) {
     let isCold = false;
 
     try {
-
       const weatherResponse = await fetch(
         `https://api.weatherapi.com/v1/forecast.json?key=${process.env.WEATHERAPI_KEY}&q=${CITY}&days=1&lang=hr`
       );
 
       const weatherData = await weatherResponse.json();
 
-      if(weatherData?.current){
+      if (weatherData?.current) {
 
         const condition = weatherData.current.condition.text.toLowerCase();
         const temp = weatherData.current.temp_c;
 
-        if(condition.includes("kiša") || condition.includes("pljusak")) isRain = true;
-        if(temp < 8) isCold = true;
+        if (condition.includes("kiša") || condition.includes("pljusak")) isRain = true;
+        if (temp < 8) isCold = true;
 
         weatherContext = `
 Temperatura: ${temp}°C
@@ -57,8 +57,8 @@ Vrijeme: ${weatherData.current.condition.text}
     const isEvening = hour >= 18;
 
     let season = "proljeće/jesen";
-    if(month >= 5 && month <= 7) season = "ljeto";
-    if(month === 11 || month <= 1) season = "zima";
+    if (month >= 5 && month <= 7) season = "ljeto";
+    if (month === 11 || month <= 1) season = "zima";
 
     const timeContext = `
 Sat: ${hour}
@@ -66,13 +66,6 @@ Večer: ${isEvening}
 Vikend: ${isWeekend}
 Sezona: ${season}
 `;
-
-    /* ================= PREFERENCES ================= */
-
-    if(lower.includes("mirno")) userPreferences.atmosfera = "mirna";
-    if(lower.includes("romanti")) userPreferences.tip = "romantično";
-    if(lower.includes("djeca")) userPreferences.obitelj = true;
-    if(lower.includes("brza")) userPreferences.tip = "brza_hrana";
 
     /* ================= CLASSIFICATION ================= */
 
@@ -89,12 +82,16 @@ Sezona: ${season}
           {
             role: "system",
             content: `
-Vrati samo jednu riječ:
+Vrati točno jednu od ovih riječi:
 gastronomija
 smještaj
 znamenitosti
 događanja
 priroda
+
+Ne dodaj ništa drugo.
+Ne koristi točke.
+Ne koristi objašnjenja.
 `
           },
           { role: "user", content: message }
@@ -105,51 +102,63 @@ priroda
     const classificationData = await classificationResponse.json();
     let category = classificationData.choices?.[0]?.message?.content?.trim();
 
-    if(!valpovoData[category]) category = "znamenitosti";
+    const allowedCategories = [
+      "gastronomija",
+      "smještaj",
+      "znamenitosti",
+      "događanja",
+      "priroda"
+    ];
+
+    if (!allowedCategories.includes(category)) {
+      category = "znamenitosti";
+    }
 
     let selectedData = valpovoData[category] || [];
 
-    if((isRain || isCold) && category === "priroda"){
+    if ((isRain || isCold) && category === "priroda") {
       selectedData = [];
     }
 
-    /* ================= INTELLIGENT STORYTELLING PROMPT ================= */
+    /* ================= CONTEXT FROM QR ================= */
+
+    let locationContext = "";
+    if (context === "dvorac") {
+      locationContext = "Korisnik se nalazi kod Dvorca Prandau-Normann.";
+    }
+
+    if (context === "centar") {
+      locationContext = "Korisnik se nalazi u centru Valpova.";
+    }
+
+    /* ================= SYSTEM PROMPT ================= */
 
     const systemPrompt = `
-Ti si profesionalni turistički vodič i savjetnik za ${CITY}.
+Ti si službeni digitalni turistički informator grada ${CITY}.
+${locationContext}
 
-Odgovori moraju biti opisni, bogati i informativni, ali ne predugi.
-Piši prirodno, kao da vodiš gosta kroz grad.
-
-U uvodu:
-- opiši atmosferu mjesta
-- poveži odgovor s vremenskim uvjetima i sezonom
-
-Za svaki objekt:
-- daj 2–4 rečenice opisa
-- objasni komu je najprikladniji
-- istakni posebnost
+Pravila:
+- Odgovaraj jasno, profesionalno i informativno.
+- Ne izmišljaj objekte.
+- Koristi isključivo objekte iz baze.
+- Ako nema podataka, reci da trenutno nema preporuka.
+- Ne nagađaj radno vrijeme.
+- Ne pretpostavljaj vremensku prognozu osim iz dostavljenog konteksta.
+- Ako baza sadrži 0 objekata, vrati prazan recommendations niz.
 
 Kontekst:
 ${weatherContext}
 ${timeContext}
 
-Preferencije:
-${JSON.stringify(userPreferences)}
-
-Ne koristi katalog stil.
-Ne izmišljaj objekte.
-Koristi samo objekte iz baze.
-
-Vrati isključivo JSON:
+Vrati isključivo JSON u ovom formatu:
 
 {
-  "title": "Opisni naslov",
-  "intro": "Širi uvod (2-4 rečenice)",
+  "title": "Naslov",
+  "intro": "Uvod (2-4 rečenice)",
   "recommendations": [
     {
       "name": "Naziv",
-      "reason": "Opis 2-4 rečenice"
+      "reason": "Opis"
     }
   ],
   "followUpQuestion": "Pametno pitanje"
@@ -159,13 +168,6 @@ Baza:
 ${JSON.stringify(selectedData)}
 `;
 
-    conversationMemory.push({ role: "user", content: message });
-
-    const messages = [
-      { role: "system", content: systemPrompt },
-      ...conversationMemory
-    ];
-
     const aiResponse = await fetch("https://api.openai.com/v1/chat/completions", {
       method: "POST",
       headers: {
@@ -174,8 +176,11 @@ ${JSON.stringify(selectedData)}
       },
       body: JSON.stringify({
         model: "gpt-4o-mini",
-        temperature: 0.5,
-        messages
+        temperature: 0.3,
+        messages: [
+          { role: "system", content: systemPrompt },
+          { role: "user", content: message }
+        ]
       })
     });
 
@@ -187,16 +192,12 @@ ${JSON.stringify(selectedData)}
     try {
       parsed = JSON.parse(content);
     } catch {
-      parsed = null;
-    }
-
-    if(!parsed){
-      return res.status(200).json({
+      parsed = {
         title: "Informacije o Valpovu",
-        intro: "Valpovo nudi raznolike sadržaje kroz cijelu godinu.",
+        intro: "Trenutno nemam precizan odgovor. Molim pokušajte precizirati upit.",
         recommendations: [],
         followUpQuestion: "Što vas točno zanima?"
-      });
+      };
     }
 
     const allowedNames = selectedData.map(o => o.name);
@@ -205,11 +206,11 @@ ${JSON.stringify(selectedData)}
       allowedNames.includes(r.name)
     );
 
-    res.status(200).json(parsed);
+    return res.status(200).json(parsed);
 
   } catch (error) {
 
-    res.status(500).json({
+    return res.status(500).json({
       error: "Server error",
       details: error.message
     });
