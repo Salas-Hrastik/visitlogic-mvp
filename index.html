@@ -6,247 +6,170 @@
 <title>Turistički informator – Valpovo</title>
 
 <style>
-*{box-sizing:border-box;}
-html, body{ height:100%; }
-
 body{
-    margin:0;
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
-    background:#014128;
-    min-height:100dvh;
-    display:flex;
-    flex-direction:column;
+  margin:0;
+  font-family: "Segoe UI", sans-serif;
+  background:#0b4f2f;
+  display:flex;
+  flex-direction:column;
+  height:100vh;
 }
 
-/* HEADER */
 header{
-    background:linear-gradient(135deg,#014128,#0b5c3c);
-    color:white;
-    padding:18px 24px;
-    display:flex;
-    align-items:center;
-    gap:15px;
+  background:#014128;
+  color:white;
+  padding:15px;
+  font-size:22px;
+  font-weight:600;
 }
 
-header img{ height:50px; }
-
-/* CHAT */
 #chat{
-    flex:1;
-    overflow-y:auto;
-    padding:20px;
+  flex:1;
+  overflow-y:auto;
+  padding:20px;
 }
 
 .message{
-    margin-bottom:24px;
-    display:flex;
-    gap:10px;
+  max-width:80%;
+  margin-bottom:15px;
+  padding:15px;
+  border-radius:18px;
+  line-height:1.5;
 }
 
-.message.user{ justify-content:flex-end; }
-
-.avatar{
-    width:34px;
-    height:34px;
-    border-radius:50%;
-    background:#0b5c3c;
-    color:white;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:12px;
+.ai{
+  background:#f1f1f1;
+  border-top-left-radius:4px;
 }
 
-.bubble{
-    background:white;
-    padding:16px 18px;
-    border-radius:18px;
-    box-shadow:0 4px 14px rgba(0,0,0,0.08);
-    max-width:85%;
-    line-height:1.6;
+.user{
+  background:#0f6b3c;
+  color:white;
+  margin-left:auto;
+  border-top-right-radius:4px;
 }
 
-.message.user .bubble{
-    background:#0b5c3c;
-    color:white;
-}
-
-.followUp{
-    margin-top:18px;
-    padding:14px 16px;
-    background:#e8efe9;
-    border-left:4px solid #014128;
-    border-radius:10px;
-    font-style:italic;
-    cursor:pointer;
-}
-
-.quickButtons{
-    margin-top:14px;
-    display:flex;
-    flex-wrap:wrap;
-    gap:8px;
-}
-
-.quickButtons button{
-    background:#e8efe9;
-    border:none;
-    padding:8px 14px;
-    border-radius:18px;
-    cursor:pointer;
-}
-
-/* INPUT */
-#inputArea{
-    background:white;
-    padding:12px 16px;
-    border-top:1px solid #ddd;
-    display:flex;
-    gap:10px;
-    position:sticky;
-    bottom:0;
+#input-area{
+  display:flex;
+  padding:15px;
+  background:#ffffff;
+  border-top:1px solid #ccc;
 }
 
 #input{
-    flex:1;
-    padding:12px;
-    border-radius:24px;
-    border:1px solid #ccc;
-    font-size:16px;
+  flex:1;
+  padding:12px;
+  border-radius:25px;
+  border:1px solid #ccc;
+  font-size:16px;
 }
 
-#send{
-    padding:10px 18px;
-    background:#014128;
-    color:white;
-    border:none;
-    border-radius:24px;
-    cursor:pointer;
+button{
+  margin-left:10px;
+  padding:12px 18px;
+  border:none;
+  border-radius:25px;
+  background:#014128;
+  color:white;
+  font-size:16px;
+  cursor:pointer;
+}
+
+.quick-buttons{
+  margin-top:15px;
+}
+
+.quick-buttons button{
+  background:#d9e4dd;
+  color:#333;
+  margin:5px 5px 0 0;
+  font-size:14px;
 }
 </style>
 </head>
 
 <body>
 
-<header>
-<img src="tz-logo-Valpovo.png">
-<h2>Turistički informator – Valpovo</h2>
-</header>
+<header>Turistički informator – Valpovo</header>
 
 <div id="chat"></div>
 
-<div id="inputArea">
-<input id="input" placeholder="Postavite pitanje...">
-<button id="send">Pošalji</button>
+<div id="input-area">
+  <input id="input" placeholder="Postavite pitanje..." />
+  <button onclick="sendMessage()">Pošalji</button>
 </div>
 
 <script>
+const chat = document.getElementById("chat");
 
-document.addEventListener("DOMContentLoaded", function(){
+function addMessage(text, type="ai"){
+  const div = document.createElement("div");
+  div.className = "message " + type;
+  div.innerHTML = text;
+  chat.appendChild(div);
+  chat.scrollTop = chat.scrollHeight;
+}
 
-    const chat = document.getElementById("chat");
-    const input = document.getElementById("input");
-    const sendBtn = document.getElementById("send");
+async function loadWeather(){
+  try{
+    const response = await fetch("/api/weather");
+    const data = await response.json();
 
-    function addMessage(text, role="ai"){
-        const wrapper = document.createElement("div");
-        wrapper.className = role === "user" ? "message user" : "message";
-
-        wrapper.innerHTML = `
-            ${role === "ai" ? `<div class="avatar">AI</div>` : ""}
-            <div class="bubble">${text}</div>
-            ${role === "user" ? `<div class="avatar">Vi</div>` : ""}
-        `;
-
-        chat.appendChild(wrapper);
-        chat.scrollTop = chat.scrollHeight;
+    if(data.temperature !== undefined){
+      return `🌤 ${data.temperature}°C • Vjetar ${data.windspeed} km/h`;
+    } else {
+      return "Vrijeme trenutno nije dostupno.";
     }
+  }catch{
+    return "Vrijeme trenutno nije dostupno.";
+  }
+}
 
-    function showWelcome(weatherSummary=""){
-        let weatherText = weatherSummary
-            ? `<br><br><strong>Danas je u Valpovu:</strong><br>${weatherSummary}`
-            : "";
+async function welcome(){
+  const weather = await loadWeather();
 
-        addMessage(`
-            <strong>Dobrodošli!</strong>
-            ${weatherText}
-            <div class="quickButtons">
-            <button onclick="quickAsk('Što vrijedi vidjeti u Valpovu?')">Znamenitosti</button>
-            <button onclick="quickAsk('Gdje mogu jesti u Valpovu?')">Gastronomija</button>
-            <button onclick="quickAsk('Koja su aktualna događanja?')">Događanja</button>
-            <button onclick="quickAsk('Gdje mogu prespavati?')">Smještaj</button>
-            <button onclick="quickAsk('Gdje prošetati?')">Priroda</button>
-            </div>
-        `);
-    }
+  addMessage(`
+    <strong>Dobrodošli!</strong><br><br>
+    <strong>Danas je u Valpovu:</strong><br>
+    ${weather}
+    <div class="quick-buttons">
+      <button onclick="quickAsk('Znamenitosti')">Znamenitosti</button>
+      <button onclick="quickAsk('Gastronomija')">Gastronomija</button>
+      <button onclick="quickAsk('Događanja')">Događanja</button>
+      <button onclick="quickAsk('Smještaj')">Smještaj</button>
+      <button onclick="quickAsk('Priroda')">Priroda</button>
+    </div>
+  `);
+}
 
-    async function loadWeather(){
-        try{
-            const response = await fetch("/api/chat", {
-                method:"POST",
-                headers:{ "Content-Type":"application/json" },
-                body:JSON.stringify({ message:"." })
-            });
+function quickAsk(text){
+  document.getElementById("input").value = text;
+  sendMessage();
+}
 
-            const data = await response.json();
-            showWelcome(data.weatherSummary || "");
-        }catch{
-            showWelcome("");
-        }
-    }
+async function sendMessage(){
+  const input = document.getElementById("input");
+  const text = input.value.trim();
+  if(!text) return;
 
-    async function sendMessage(){
-        const message = input.value.trim();
-        if(!message) return;
+  addMessage(text,"user");
+  input.value = "";
 
-        addMessage(message, "user");
-        input.value="";
-
-        try{
-            const response = await fetch("/api/chat", {
-                method:"POST",
-                headers:{ "Content-Type":"application/json" },
-                body:JSON.stringify({ message })
-            });
-
-            const data = await response.json();
-
-            let html = `<strong>${data.title || ""}</strong><br><br>${data.intro || ""}`;
-
-            if(data.recommendations?.length){
-                html += "<ul>";
-                data.recommendations.forEach(r=>{
-                    html += `<li><strong>${r.name}</strong><br>${r.reason}</li>`;
-                });
-                html += "</ul>";
-            }
-
-            if(data.followUpQuestion){
-                html += `<div class="followUp" onclick="quickAsk('${data.followUpQuestion.replace(/'/g,"\\'")}')">
-                         ${data.followUpQuestion}
-                         </div>`;
-            }
-
-            addMessage(html);
-
-        }catch{
-            addMessage("Došlo je do tehničke pogreške.");
-        }
-    }
-
-    sendBtn.addEventListener("click", sendMessage);
-    input.addEventListener("keypress", e=>{
-        if(e.key==="Enter") sendMessage();
+  try{
+    const response = await fetch("/api/chat",{
+      method:"POST",
+      headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({message:text})
     });
 
-    window.quickAsk = function(text){
-        input.value = text;
-        sendMessage();
-    };
+    const data = await response.json();
+    addMessage(data.reply || "Nema odgovora.");
+  }catch{
+    addMessage("Došlo je do greške u komunikaciji.");
+  }
+}
 
-    loadWeather();
-
-});
+welcome();
 </script>
 
 </body>
