@@ -10,14 +10,14 @@ body{
   margin:0;
   font-family:"Segoe UI", sans-serif;
   background:#0b4f2f;
+  height:100vh;
   display:flex;
   flex-direction:column;
-  height:100vh;
 }
 
 /* ===== HEADER ===== */
 .header{
-  background: linear-gradient(135deg, #013220, #014128, #01613c);
+  background: linear-gradient(135deg,#013220,#014128,#01613c);
   padding:18px 30px;
   box-shadow:0 6px 20px rgba(0,0,0,0.3);
 }
@@ -28,53 +28,46 @@ body{
   gap:18px;
 }
 
-.logo{
-  height:60px;
-  border-radius:12px;
-}
+.logo{ height:60px; border-radius:12px; }
 
-.title-main{
-  color:white;
-  font-size:24px;
-  font-weight:700;
-}
+.title-main{ color:white; font-size:24px; font-weight:700; }
+.title-sub{ color:#d4f3e5; font-size:14px; }
 
-.title-sub{
-  color:#d4f3e5;
-  font-size:14px;
-}
-
-/* ===== HERO BLOK ===== */
+/* ===== HERO (NE SKROLA) ===== */
 #hero{
   background:#e9ecef;
-  padding:20px 25px;
+  padding:18px 25px;
   border-radius:0 0 25px 25px;
-  margin-bottom:10px;
 }
 
-.quick-buttons button{
-  background:#d9e4dd;
-  border:none;
-  border-radius:20px;
-  padding:8px 14px;
-  margin:5px 5px 0 0;
-  cursor:pointer;
+/* ===== CHAT KONTEJNER ===== */
+#chat-container{
+  flex:1;
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
 }
 
 /* ===== CHAT ===== */
 #chat{
   flex:1;
   overflow-y:auto;
-  padding:10px 20px;
+  padding:15px 20px;
+  scroll-behavior:smooth;
 }
 
+/* ===== PORUKE ===== */
 .message{
   max-width:75%;
-  margin-bottom:10px;
-  padding:12px;
-  border-radius:16px;
-  line-height:1.5;
+  padding:10px 14px;
+  border-radius:14px;
+  line-height:1.4;
+  margin-bottom:8px;
   white-space:pre-wrap;
+}
+
+.message p{
+  margin:4px 0;   /* MANJI RAZMAK IZMEĐU PASUSA */
 }
 
 .ai{
@@ -113,6 +106,16 @@ button.send{
   color:white;
   cursor:pointer;
 }
+
+/* ===== QUICK BUTTONS ===== */
+.quick-buttons button{
+  background:#d9e4dd;
+  border:none;
+  border-radius:18px;
+  padding:6px 12px;
+  margin:6px 6px 0 0;
+  cursor:pointer;
+}
 </style>
 </head>
 
@@ -129,7 +132,10 @@ button.send{
 </header>
 
 <div id="hero"></div>
-<div id="chat"></div>
+
+<div id="chat-container">
+  <div id="chat"></div>
+</div>
 
 <div id="input-area">
   <input id="input" placeholder="Postavite pitanje..." />
@@ -143,8 +149,8 @@ const chat = document.getElementById("chat");
 /* ===== WEATHER ===== */
 async function loadWeather(){
   try{
-    const r = await fetch("/api/weather");
-    const d = await r.json();
+    const r=await fetch("/api/weather");
+    const d=await r.json();
     if(d.temperature!==undefined){
       return "🌤 "+d.temperature+"°C • Vjetar "+d.windspeed+" km/h";
     }
@@ -155,33 +161,41 @@ async function loadWeather(){
 /* ===== HERO INIT ===== */
 async function initHero(){
   const weather = await loadWeather();
-
   hero.innerHTML =
-    "<strong>Sada je u Valpovu:</strong><br><br>" +
-    weather +
-    "<div class='quick-buttons'>" +
-    "<button onclick=\"quickAsk('Znamenitosti')\">Znamenitosti</button>" +
-    "<button onclick=\"quickAsk('Gastronomija')\">Gastronomija</button>" +
-    "<button onclick=\"quickAsk('Događanja')\">Događanja</button>" +
-    "<button onclick=\"quickAsk('Smještaj')\">Smještaj</button>" +
-    "<button onclick=\"quickAsk('Priroda')\">Priroda</button>" +
+    "<strong>Sada je u Valpovu:</strong><br><br>"+
+    weather+
+    "<div class='quick-buttons'>"+
+    "<button onclick=\"quickAsk('Znamenitosti')\">Znamenitosti</button>"+
+    "<button onclick=\"quickAsk('Gastronomija')\">Gastronomija</button>"+
+    "<button onclick=\"quickAsk('Događanja')\">Događanja</button>"+
+    "<button onclick=\"quickAsk('Smještaj')\">Smještaj</button>"+
+    "<button onclick=\"quickAsk('Priroda')\">Priroda</button>"+
     "</div>";
 }
 
-/* ===== CHAT ===== */
+/* ===== DODAJ PORUKU ===== */
 function addMessage(text,type="ai"){
   const div=document.createElement("div");
   div.className="message "+type;
-  div.innerHTML=text;
+
+  // Bolji format teksta
+  text = text.replace(/\*\*(.*?)\*\*/g,"<strong>$1</strong>");
+  text = text.replace(/(\d+\.\s)/g,"\n$1");
+
+  div.innerHTML = text;
   chat.appendChild(div);
-  chat.scrollTop=chat.scrollHeight;
+
+  // Skrolamo SAMO chat, ne cijelu stranicu
+  chat.scrollTop = chat.scrollHeight;
 }
 
+/* ===== QUICK ===== */
 function quickAsk(text){
   document.getElementById("input").value=text;
   sendMessage();
 }
 
+/* ===== SEND ===== */
 async function sendMessage(){
   const input=document.getElementById("input");
   const text=input.value.trim();
@@ -198,12 +212,7 @@ async function sendMessage(){
     });
 
     const data=await response.json();
-    let reply=data.reply || "Nema odgovora.";
-
-    reply = reply.replace(/\*\*(.*?)\*\*/g,"<strong>$1</strong>");
-    reply = reply.replace(/(\d+\.\s)/g,"<br>$1");
-
-    addMessage(reply);
+    addMessage(data.reply || "Nema odgovora.");
   }catch(e){
     addMessage("Došlo je do greške.");
   }
