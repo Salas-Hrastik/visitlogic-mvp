@@ -8,11 +8,15 @@
 <style>
 *{box-sizing:border-box;}
 
+html, body{
+    height:100%;
+}
+
 body{
     margin:0;
     font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
     background:#014128;
-    height:100vh;
+    min-height:100dvh;
     display:flex;
     flex-direction:column;
 }
@@ -20,7 +24,7 @@ body{
 /* HEADER */
 
 header{
-    background:linear-gradient(135deg,#014128,#0a5c3a);
+    background:linear-gradient(135deg,#014128,#0b5c3c);
     color:white;
     padding:18px 24px;
     display:flex;
@@ -36,7 +40,7 @@ header img{ height:50px; }
 #chat{
     flex:1;
     overflow-y:auto;
-    padding:30px 40px;
+    padding:20px;
 }
 
 /* MESSAGE BLOCK */
@@ -55,7 +59,7 @@ header img{ height:50px; }
     width:34px;
     height:34px;
     border-radius:50%;
-    background:#014128;
+    background:#0b5c3c;
     color:white;
     display:flex;
     align-items:center;
@@ -65,91 +69,39 @@ header img{ height:50px; }
 }
 
 .bubble{
-    background:#f8f9f7;
-    padding:18px 20px;
+    background:white;
+    padding:16px 18px;
     border-radius:18px;
-    box-shadow:0 6px 16px rgba(0,0,0,0.15);
-    max-width:70%;
-    line-height:1.7;
+    box-shadow:0 4px 14px rgba(0,0,0,0.08);
+    max-width:85%;
 }
 
 .message.user .bubble{
-    background:#0a5c3a;
+    background:#0b5c3c;
     color:white;
-}
-
-/* LIST SPACING */
-
-.bubble ul{
-    padding-left:18px;
-    margin-top:14px;
-}
-
-.bubble li{
-    margin-bottom:14px;
 }
 
 /* FOLLOW UP */
 
-.follow-up{
+.followUp{
     margin-top:18px;
-    padding:14px;
-    background:#e6f0ec;
+    padding:14px 16px;
+    background:#e8efe9;
     border-left:4px solid #014128;
     border-radius:10px;
     font-style:italic;
-}
-
-/* TYPING */
-
-.typing{
-    display:flex;
-    gap:4px;
-}
-
-.typing span{
-    width:6px;
-    height:6px;
-    background:#999;
-    border-radius:50%;
-    animation:blink 1.4s infinite both;
-}
-
-.typing span:nth-child(2){ animation-delay:.2s; }
-.typing span:nth-child(3){ animation-delay:.4s; }
-
-@keyframes blink{
-    0%{opacity:.2;}
-    20%{opacity:1;}
-    100%{opacity:.2;}
-}
-
-/* QUICK BUTTONS */
-
-.quickButtons{
-    margin-top:14px;
-    display:flex;
-    flex-wrap:wrap;
-    gap:8px;
-}
-
-.quickButtons button{
-    background:#e6f0ec;
-    border:none;
-    padding:8px 14px;
-    border-radius:18px;
-    cursor:pointer;
 }
 
 /* INPUT */
 
 #inputArea{
     background:white;
-    padding:14px 24px;
+    padding:12px 16px;
     border-top:1px solid #ddd;
     display:flex;
     gap:10px;
-    flex-shrink:0;
+    position:sticky;
+    bottom:0;
 }
 
 #input{
@@ -157,6 +109,7 @@ header img{ height:50px; }
     padding:12px;
     border-radius:24px;
     border:1px solid #ccc;
+    font-size:16px;
 }
 
 #send{
@@ -168,13 +121,9 @@ header img{ height:50px; }
     cursor:pointer;
 }
 
-#send:hover{
-    background:#026b40;
-}
-
 @media (max-width:768px){
-    #chat{ padding:20px; }
-    .bubble{ max-width:85%; }
+    #chat{ padding:16px; }
+    .bubble{ max-width:100%; }
 }
 </style>
 </head>
@@ -186,26 +135,7 @@ header img{ height:50px; }
 <h2>Turistički informator – Valpovo</h2>
 </header>
 
-<div id="chat">
-
-<div class="message">
-<div class="avatar">AI</div>
-<div class="bubble">
-<strong>Dobrodošli!</strong><br><br>
-Kako vam mogu pomoći?
-
-<div class="quickButtons">
-<button onclick="quickAsk('Što vrijedi vidjeti u Valpovu?')">Znamenitosti</button>
-<button onclick="quickAsk('Gdje mogu jesti u Valpovu?')">Gastronomija</button>
-<button onclick="quickAsk('Koja su aktualna događanja?')">Događanja</button>
-<button onclick="quickAsk('Gdje mogu prespavati?')">Smještaj</button>
-<button onclick="quickAsk('Gdje prošetati?')">Priroda</button>
-</div>
-
-</div>
-</div>
-
-</div>
+<div id="chat"></div>
 
 <div id="inputArea">
 <input id="input" placeholder="Postavite pitanje...">
@@ -232,6 +162,7 @@ document.addEventListener("DOMContentLoaded", function(){
         `;
 
         chat.appendChild(wrapper);
+        chat.scrollTop = chat.scrollHeight;
     }
 
     async function sendMessage(){
@@ -240,19 +171,7 @@ document.addEventListener("DOMContentLoaded", function(){
         if(!message) return;
 
         addMessage(message, "user");
-        chat.scrollTop = chat.scrollHeight;
-
-        const typing = document.createElement("div");
-        typing.className="message";
-        typing.innerHTML = `
-            <div class="avatar">AI</div>
-            <div class="bubble">
-                <div class="typing">
-                    <span></span><span></span><span></span>
-                </div>
-            </div>
-        `;
-        chat.appendChild(typing);
+        input.value="";
 
         try{
 
@@ -263,9 +182,8 @@ document.addEventListener("DOMContentLoaded", function(){
             });
 
             const data = await response.json();
-            typing.remove();
 
-            let html = `<strong>${data.title}</strong><br><br>${data.intro}`;
+            let html = `<strong>${data.title || ""}</strong><br><br>${data.intro || ""}`;
 
             if(data.recommendations && data.recommendations.length){
                 html += "<ul>";
@@ -276,17 +194,14 @@ document.addEventListener("DOMContentLoaded", function(){
             }
 
             if(data.followUpQuestion){
-                html += `<div class="follow-up">${data.followUpQuestion}</div>`;
+                html += `<div class="followUp">${data.followUpQuestion}</div>`;
             }
 
             addMessage(html);
 
         }catch(error){
-            typing.remove();
             addMessage("Došlo je do tehničke pogreške.");
         }
-
-        input.value="";
     }
 
     sendBtn.addEventListener("click", sendMessage);
@@ -294,12 +209,8 @@ document.addEventListener("DOMContentLoaded", function(){
         if(e.key==="Enter") sendMessage();
     });
 
-    window.quickAsk = function(text){
-        input.value = text;
-        sendMessage();
-    };
-
 });
+
 </script>
 
 </body>
