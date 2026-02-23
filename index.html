@@ -35,7 +35,7 @@ header{
 
 header img{ height:50px; }
 
-/* CHAT CONTAINER */
+/* CHAT */
 
 #chat{
     flex:1;
@@ -74,11 +74,23 @@ header img{ height:50px; }
     border-radius:18px;
     box-shadow:0 4px 14px rgba(0,0,0,0.08);
     max-width:85%;
+    line-height:1.6;
 }
 
 .message.user .bubble{
     background:#0b5c3c;
     color:white;
+}
+
+/* LIST SPACING */
+
+.bubble ul{
+    padding-left:18px;
+    margin-top:14px;
+}
+
+.bubble li{
+    margin-bottom:14px;
 }
 
 /* FOLLOW UP */
@@ -90,6 +102,28 @@ header img{ height:50px; }
     border-left:4px solid #014128;
     border-radius:10px;
     font-style:italic;
+}
+
+/* QUICK BUTTONS */
+
+.quickButtons{
+    margin-top:14px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+}
+
+.quickButtons button{
+    background:#e8efe9;
+    border:none;
+    padding:8px 14px;
+    border-radius:18px;
+    cursor:pointer;
+    font-size:14px;
+}
+
+.quickButtons button:hover{
+    background:#d5e5da;
 }
 
 /* INPUT */
@@ -121,6 +155,10 @@ header img{ height:50px; }
     cursor:pointer;
 }
 
+#send:hover{
+    background:#026b40;
+}
+
 @media (max-width:768px){
     #chat{ padding:16px; }
     .bubble{ max-width:100%; }
@@ -135,7 +173,26 @@ header img{ height:50px; }
 <h2>Turistički informator – Valpovo</h2>
 </header>
 
-<div id="chat"></div>
+<div id="chat">
+
+<div class="message">
+<div class="avatar">AI</div>
+<div class="bubble">
+<strong>Dobrodošli!</strong><br><br>
+Kako vam mogu pomoći?
+
+<div class="quickButtons">
+<button onclick="quickAsk('Što vrijedi vidjeti u Valpovu?')">Znamenitosti</button>
+<button onclick="quickAsk('Gdje mogu jesti u Valpovu?')">Gastronomija</button>
+<button onclick="quickAsk('Koja su aktualna događanja?')">Događanja</button>
+<button onclick="quickAsk('Gdje mogu prespavati?')">Smještaj</button>
+<button onclick="quickAsk('Gdje prošetati?')">Priroda</button>
+</div>
+
+</div>
+</div>
+
+</div>
 
 <div id="inputArea">
 <input id="input" placeholder="Postavite pitanje...">
@@ -208,6 +265,11 @@ document.addEventListener("DOMContentLoaded", function(){
     input.addEventListener("keypress", e=>{
         if(e.key==="Enter") sendMessage();
     });
+
+    window.quickAsk = function(text){
+        input.value = text;
+        sendMessage();
+    };
 
 });
 
