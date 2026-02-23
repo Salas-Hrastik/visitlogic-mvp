@@ -71,7 +71,6 @@ header img{ height:50px; }
     color:white;
 }
 
-/* FOLLOW UP */
 .followUp{
     margin-top:18px;
     padding:14px 16px;
@@ -165,11 +164,11 @@ document.addEventListener("DOMContentLoaded", function(){
 
     function showWelcome(weatherSummary=""){
         let weatherText = weatherSummary
-            ? `Danas je u Valpovu:<br>${weatherSummary}`
+            ? `<br><br><strong>Danas je u Valpovu:</strong><br>${weatherSummary}`
             : "";
 
         addMessage(`
-            <strong>Dobrodošli!</strong><br><br>
+            <strong>Dobrodošli!</strong>
             ${weatherText}
             <div class="quickButtons">
             <button onclick="quickAsk('Što vrijedi vidjeti u Valpovu?')">Znamenitosti</button>
@@ -179,6 +178,21 @@ document.addEventListener("DOMContentLoaded", function(){
             <button onclick="quickAsk('Gdje prošetati?')">Priroda</button>
             </div>
         `);
+    }
+
+    async function loadWeather(){
+        try{
+            const response = await fetch("/api/chat", {
+                method:"POST",
+                headers:{ "Content-Type":"application/json" },
+                body:JSON.stringify({ message:"." })
+            });
+
+            const data = await response.json();
+            showWelcome(data.weatherSummary || "");
+        }catch{
+            showWelcome("");
+        }
     }
 
     async function sendMessage(){
@@ -230,19 +244,7 @@ document.addEventListener("DOMContentLoaded", function(){
         sendMessage();
     };
 
-    // Početni poziv samo radi vremena
-    fetch("/api/chat", {
-        method:"POST",
-        headers:{ "Content-Type":"application/json" },
-        body:JSON.stringify({ message:"vrijeme" })
-    })
-    .then(res=>res.json())
-    .then(data=>{
-        showWelcome(data.weatherSummary);
-    })
-    .catch(()=>{
-        showWelcome();
-    });
+    loadWeather();
 
 });
 </script>
