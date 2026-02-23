@@ -15,15 +15,10 @@ body{
   height:100vh;
 }
 
-/* ===== PREMIUM HEADER ===== */
 .header{
   background: linear-gradient(135deg, #013220, #014128, #01613c);
-  padding: 18px 30px;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.35);
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  backdrop-filter: blur(6px);
+  padding:18px 30px;
+  box-shadow:0 8px 25px rgba(0,0,0,0.35);
 }
 
 .header-inner{
@@ -35,12 +30,6 @@ body{
 .logo{
   height:60px;
   border-radius:12px;
-  box-shadow:0 6px 18px rgba(0,0,0,0.4);
-  transition: transform 0.3s ease;
-}
-
-.logo:hover{
-  transform: scale(1.05);
 }
 
 .title-group{
@@ -52,17 +41,13 @@ body{
   color:white;
   font-size:24px;
   font-weight:700;
-  letter-spacing:0.5px;
 }
 
 .title-sub{
   color:#d4f3e5;
   font-size:14px;
-  opacity:0.9;
-  margin-top:2px;
 }
 
-/* ===== CHAT ===== */
 #chat{
   flex:1;
   overflow-y:auto;
@@ -74,7 +59,7 @@ body{
   margin-bottom:15px;
   padding:15px;
   border-radius:18px;
-  line-height:1.5;
+  line-height:1.6;
 }
 
 .ai{
@@ -89,12 +74,34 @@ body{
   border-top-right-radius:4px;
 }
 
-/* ===== INPUT ===== */
+/* ===== Typing Bubble ===== */
+.typing{
+  display:flex;
+  gap:6px;
+  align-items:center;
+}
+
+.dot{
+  width:8px;
+  height:8px;
+  background:#999;
+  border-radius:50%;
+  animation: blink 1.4s infinite both;
+}
+
+.dot:nth-child(2){ animation-delay:0.2s; }
+.dot:nth-child(3){ animation-delay:0.4s; }
+
+@keyframes blink{
+  0%{opacity:.2;}
+  20%{opacity:1;}
+  100%{opacity:.2;}
+}
+
 #input-area{
   display:flex;
   padding:15px;
-  background:#ffffff;
-  border-top:1px solid #ccc;
+  background:#fff;
 }
 
 #input{
@@ -102,7 +109,6 @@ body{
   padding:12px;
   border-radius:25px;
   border:1px solid #ccc;
-  font-size:16px;
 }
 
 button{
@@ -112,26 +118,13 @@ button{
   border-radius:25px;
   background:#014128;
   color:white;
-  font-size:16px;
   cursor:pointer;
-}
-
-.quick-buttons{
-  margin-top:15px;
 }
 
 .quick-buttons button{
   background:#d9e4dd;
   color:#333;
   margin:5px 5px 0 0;
-  font-size:14px;
-}
-
-/* ===== MOBILE ===== */
-@media (max-width:600px){
-  .logo{ height:45px; }
-  .title-main{ font-size:18px; }
-  .title-sub{ font-size:12px; }
 }
 </style>
 </head>
@@ -140,7 +133,7 @@ button{
 
 <header class="header">
   <div class="header-inner">
-    <img src="tz-logo-Valpovo.png" alt="TZ Valpovo logo" class="logo">
+    <img src="tz-logo-Valpovo.png" class="logo">
     <div class="title-group">
       <div class="title-main">Turistički informator</div>
       <div class="title-sub">Grad Valpovo</div>
@@ -158,6 +151,16 @@ button{
 <script>
 const chat = document.getElementById("chat");
 
+function formatResponse(text){
+  // Bold
+  text = text.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
+
+  // Numbered lists
+  text = text.replace(/(\d+\.\s)/g, "<br>$1");
+
+  return text;
+}
+
 function addMessage(text,type="ai"){
   const div=document.createElement("div");
   div.className="message "+type;
@@ -166,46 +169,24 @@ function addMessage(text,type="ai"){
   chat.scrollTop=chat.scrollHeight;
 }
 
-/* ===== WEATHER (Open-Meteo via /api/weather) ===== */
-async function loadWeather(){
-  try{
-    const response=await fetch("/api/weather");
-    const data=await response.json();
-    if(data.temperature!==undefined){
-      return `🌤 ${data.temperature}°C • Vjetar ${data.windspeed} km/h`;
-    } else {
-      return "Vrijeme trenutno nije dostupno.";
-    }
-  }catch{
-    return "Vrijeme trenutno nije dostupno.";
-  }
+function showTyping(){
+  const div=document.createElement("div");
+  div.className="message ai typing";
+  div.id="typing";
+  div.innerHTML=`
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+  `;
+  chat.appendChild(div);
+  chat.scrollTop=chat.scrollHeight;
 }
 
-/* ===== WELCOME ===== */
-async function welcome(){
-  const weather=await loadWeather();
-
-  addMessage(`
-    <strong>Dobrodošli!</strong><br><br>
-    <strong>Danas je u Valpovu:</strong><br>
-    ${weather}
-    <div class="quick-buttons">
-      <button onclick="quickAsk('Znamenitosti')">Znamenitosti</button>
-      <button onclick="quickAsk('Gastronomija')">Gastronomija</button>
-      <button onclick="quickAsk('Događanja')">Događanja</button>
-      <button onclick="quickAsk('Smještaj')">Smještaj</button>
-      <button onclick="quickAsk('Priroda')">Priroda</button>
-    </div>
-  `);
+function removeTyping(){
+  const typing=document.getElementById("typing");
+  if(typing) typing.remove();
 }
 
-/* ===== QUICK ASK ===== */
-function quickAsk(text){
-  document.getElementById("input").value=text;
-  sendMessage();
-}
-
-/* ===== CHAT SEND ===== */
 async function sendMessage(){
   const input=document.getElementById("input");
   const text=input.value.trim();
@@ -214,20 +195,25 @@ async function sendMessage(){
   addMessage(text,"user");
   input.value="";
 
+  showTyping();
+
   try{
     const response=await fetch("/api/chat",{
       method:"POST",
       headers:{"Content-Type":"application/json"},
       body:JSON.stringify({message:text})
     });
+
     const data=await response.json();
-    addMessage(data.reply || "Nema odgovora.");
+
+    removeTyping();
+
+    addMessage(formatResponse(data.reply || "Nema odgovora."));
   }catch{
-    addMessage("Došlo je do greške u komunikaciji.");
+    removeTyping();
+    addMessage("Došlo je do greške.");
   }
 }
-
-welcome();
 </script>
 
 </body>
