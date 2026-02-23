@@ -6,20 +6,27 @@
 <title>Turistički informator – Valpovo</title>
 
 <style>
-body{
+html, body{
   margin:0;
+  padding:0;
+  height:100%;
+  overflow:hidden;   /* STRANICA SE VIŠE NE SKROLA */
   font-family:"Segoe UI", sans-serif;
   background:#0b4f2f;
-  height:100vh;
-  display:flex;
-  flex-direction:column;
 }
 
-/* ===== HEADER ===== */
+.app{
+  display:flex;
+  flex-direction:column;
+  height:100%;
+}
+
+/* HEADER */
 .header{
-  background: linear-gradient(135deg,#013220,#014128,#01613c);
+  background:linear-gradient(135deg,#013220,#014128,#01613c);
   padding:18px 30px;
-  box-shadow:0 6px 20px rgba(0,0,0,0.3);
+  color:white;
+  flex-shrink:0;
 }
 
 .header-inner{
@@ -30,44 +37,38 @@ body{
 
 .logo{ height:60px; border-radius:12px; }
 
-.title-main{ color:white; font-size:24px; font-weight:700; }
-.title-sub{ color:#d4f3e5; font-size:14px; }
+.title-main{ font-size:24px; font-weight:700; }
+.title-sub{ font-size:14px; color:#d4f3e5; }
 
-/* ===== HERO (NE SKROLA) ===== */
+/* HERO */
 #hero{
   background:#e9ecef;
-  padding:18px 25px;
-  border-radius:0 0 25px 25px;
+  padding:16px 25px;
+  flex-shrink:0;
 }
 
-/* ===== CHAT KONTEJNER ===== */
-#chat-container{
+/* CHAT AREA */
+.chat-wrapper{
   flex:1;
-  overflow:hidden;
   display:flex;
   flex-direction:column;
+  overflow:hidden;
 }
 
-/* ===== CHAT ===== */
 #chat{
   flex:1;
-  overflow-y:auto;
+  overflow-y:auto;    /* SAMO OVDJE SE SKROLA */
   padding:15px 20px;
-  scroll-behavior:smooth;
 }
 
-/* ===== PORUKE ===== */
+/* PORUKE */
 .message{
   max-width:75%;
   padding:10px 14px;
   border-radius:14px;
-  line-height:1.4;
-  margin-bottom:8px;
+  line-height:1.35;
+  margin-bottom:6px;  /* MANJI RAZMAK */
   white-space:pre-wrap;
-}
-
-.message p{
-  margin:4px 0;   /* MANJI RAZMAK IZMEĐU PASUSA */
 }
 
 .ai{
@@ -82,12 +83,37 @@ body{
   border-top-right-radius:4px;
 }
 
-/* ===== INPUT ===== */
+/* Typing bubble */
+.typing{
+  display:flex;
+  gap:5px;
+  align-items:center;
+}
+
+.dot{
+  width:7px;
+  height:7px;
+  background:#999;
+  border-radius:50%;
+  animation:blink 1.4s infinite both;
+}
+
+.dot:nth-child(2){animation-delay:.2s;}
+.dot:nth-child(3){animation-delay:.4s;}
+
+@keyframes blink{
+  0%{opacity:.2;}
+  20%{opacity:1;}
+  100%{opacity:.2;}
+}
+
+/* INPUT */
 #input-area{
   display:flex;
   padding:12px;
   background:#fff;
   border-top:1px solid #ccc;
+  flex-shrink:0;
 }
 
 #input{
@@ -107,7 +133,6 @@ button.send{
   cursor:pointer;
 }
 
-/* ===== QUICK BUTTONS ===== */
 .quick-buttons button{
   background:#d9e4dd;
   border:none;
@@ -121,6 +146,8 @@ button.send{
 
 <body>
 
+<div class="app">
+
 <header class="header">
   <div class="header-inner">
     <img src="tz-logo-Valpovo.png" class="logo">
@@ -133,7 +160,7 @@ button.send{
 
 <div id="hero"></div>
 
-<div id="chat-container">
+<div class="chat-wrapper">
   <div id="chat"></div>
 </div>
 
@@ -142,11 +169,13 @@ button.send{
   <button class="send" onclick="sendMessage()">Pošalji</button>
 </div>
 
-<script>
-const hero = document.getElementById("hero");
-const chat = document.getElementById("chat");
+</div>
 
-/* ===== WEATHER ===== */
+<script>
+const hero=document.getElementById("hero");
+const chat=document.getElementById("chat");
+
+/* WEATHER */
 async function loadWeather(){
   try{
     const r=await fetch("/api/weather");
@@ -154,16 +183,15 @@ async function loadWeather(){
     if(d.temperature!==undefined){
       return "🌤 "+d.temperature+"°C • Vjetar "+d.windspeed+" km/h";
     }
-  }catch(e){}
+  }catch{}
   return "Vrijeme trenutno nije dostupno.";
 }
 
-/* ===== HERO INIT ===== */
+/* HERO INIT */
 async function initHero(){
-  const weather = await loadWeather();
-  hero.innerHTML =
-    "<strong>Sada je u Valpovu:</strong><br><br>"+
-    weather+
+  const weather=await loadWeather();
+  hero.innerHTML=
+    "<strong>Sada je u Valpovu:</strong><br><br>"+weather+
     "<div class='quick-buttons'>"+
     "<button onclick=\"quickAsk('Znamenitosti')\">Znamenitosti</button>"+
     "<button onclick=\"quickAsk('Gastronomija')\">Gastronomija</button>"+
@@ -173,29 +201,41 @@ async function initHero(){
     "</div>";
 }
 
-/* ===== DODAJ PORUKU ===== */
+/* ADD MESSAGE */
 function addMessage(text,type="ai"){
   const div=document.createElement("div");
   div.className="message "+type;
 
-  // Bolji format teksta
-  text = text.replace(/\*\*(.*?)\*\*/g,"<strong>$1</strong>");
-  text = text.replace(/(\d+\.\s)/g,"\n$1");
+  text=text.replace(/\*\*(.*?)\*\*/g,"<strong>$1</strong>");
+  text=text.replace(/(\d+\.\s)/g,"\n$1");
 
-  div.innerHTML = text;
+  div.innerHTML=text;
   chat.appendChild(div);
-
-  // Skrolamo SAMO chat, ne cijelu stranicu
-  chat.scrollTop = chat.scrollHeight;
+  chat.scrollTop=chat.scrollHeight;
 }
 
-/* ===== QUICK ===== */
+/* TYPING */
+function showTyping(){
+  const div=document.createElement("div");
+  div.className="message ai typing";
+  div.id="typing";
+  div.innerHTML="<div class='dot'></div><div class='dot'></div><div class='dot'></div>";
+  chat.appendChild(div);
+  chat.scrollTop=chat.scrollHeight;
+}
+
+function removeTyping(){
+  const t=document.getElementById("typing");
+  if(t) t.remove();
+}
+
+/* QUICK */
 function quickAsk(text){
   document.getElementById("input").value=text;
   sendMessage();
 }
 
-/* ===== SEND ===== */
+/* SEND */
 async function sendMessage(){
   const input=document.getElementById("input");
   const text=input.value.trim();
@@ -203,6 +243,8 @@ async function sendMessage(){
 
   addMessage(text,"user");
   input.value="";
+
+  showTyping();
 
   try{
     const response=await fetch("/api/chat",{
@@ -212,13 +254,15 @@ async function sendMessage(){
     });
 
     const data=await response.json();
+    removeTyping();
     addMessage(data.reply || "Nema odgovora.");
-  }catch(e){
+  }catch{
+    removeTyping();
     addMessage("Došlo je do greške.");
   }
 }
 
-window.onload = initHero;
+window.onload=initHero;
 </script>
 
 </body>
