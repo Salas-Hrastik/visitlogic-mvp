@@ -1,6 +1,45 @@
 import fs from "fs";
 import path from "path";
 
+function detectLanguage(text) {
+  const t = text.toLowerCase();
+
+  if (/[äöüß]/.test(t) || t.includes("unterkunft") || t.includes("hotel in")) return "de";
+  if (t.includes("accommodation") || t.includes("hotel") && t.includes("where")) return "en";
+  return "hr";
+}
+
+function getTexts(lang) {
+  const texts = {
+    hr: {
+      choose: "Molimo odaberite vrstu smještaja:",
+      option1: "Hotel",
+      option2: "Privatni apartman",
+      option3: "Sobe / pansion",
+      results: "Rezultati",
+      maps: "Otvori na Google Maps"
+    },
+    en: {
+      choose: "Please choose accommodation type:",
+      option1: "Hotel",
+      option2: "Private apartment",
+      option3: "Rooms / guesthouse",
+      results: "Results",
+      maps: "Open on Google Maps"
+    },
+    de: {
+      choose: "Bitte wählen Sie die Unterkunftsart:",
+      option1: "Hotel",
+      option2: "Privates Apartment",
+      option3: "Zimmer / Pension",
+      results: "Ergebnisse",
+      maps: "Auf Google Maps öffnen"
+    }
+  };
+
+  return texts[lang];
+}
+
 export default async function handler(req, res) {
 
   if (req.method !== "POST") {
@@ -10,35 +49,38 @@ export default async function handler(req, res) {
   try {
 
     const { message } = req.body;
-    const userQuery = message.toLowerCase().trim();
+    const userQuery = message.trim().toLowerCase();
+
+    const language = detectLanguage(message);
+    const t = getTexts(language);
 
     const filePath = path.join(process.cwd(), "data", "smjestaj.json");
     const rawData = fs.readFileSync(filePath, "utf8");
     const smjestajData = JSON.parse(rawData);
     const objekti = smjestajData.smjestaj;
 
-    /* ===================================== */
-    /* ===== 1. PRVI KORAK – PITANJE ====== */
-    /* ===================================== */
+    /* ===== STEP 1 – ASK TYPE ===== */
 
-    if (userQuery === "smještaj" || userQuery === "smjestaj") {
+    if (
+      userQuery === "smještaj" ||
+      userQuery === "smjestaj" ||
+      userQuery === "accommodation" ||
+      userQuery === "unterkunft"
+    ) {
 
       return res.status(200).json({
         reply: `
-Molimo odaberite vrstu smještaja:
+${t.choose}
 
-1️⃣ Hotel  
-2️⃣ Privatni apartman  
-3️⃣ Sobe / pansion  
+1️⃣ ${t.option1}  
+2️⃣ ${t.option2}  
+3️⃣ ${t.option3}
 
-Upišite broj opcije.
-        `
+`
       });
     }
 
-    /* ===================================== */
-    /* ===== 2. ODABIR PREMA BROJU ======== */
-    /* ===================================== */
+    /* ===== STEP 2 – HANDLE SELECTION ===== */
 
     let filtrirani = [];
 
@@ -62,18 +104,19 @@ Upišite broj opcije.
 
     if (filtrirani.length > 0) {
 
-      filtrirani = filtrirani
-        .sort((a, b) => (b.ocjena || 0) - (a.ocjena || 0));
+      filtrirani = filtrirani.sort((a, b) =>
+        (b.ocjena || 0) - (a.ocjena || 0)
+      );
 
-      let odgovor = `<h3>Rezultati:</h3>`;
+      let odgovor = `<h3>${t.results}</h3>`;
 
       filtrirani.forEach((o, index) => {
         odgovor += `
-          <div style="margin-bottom:8px;">
+          <div style="margin-bottom:6px;">
             <strong>${index + 1}. ${o.naziv}</strong><br/>
-            Ocjena: ${o.ocjena ?? "N/A"} (${o.broj_recenzija ?? 0})<br/>
             ${o.adresa}<br/>
-            <a href="${o.google_maps_url}" target="_blank">Google Maps</a>
+            ⭐ ${o.ocjena ?? "N/A"} (${o.broj_recenzija ?? 0})<br/>
+            <a href="${o.google_maps_url}" target="_blank">${t.maps}</a>
           </div>
         `;
       });
@@ -81,9 +124,7 @@ Upišite broj opcije.
       return res.status(200).json({ reply: odgovor });
     }
 
-    /* ===================================== */
-    /* ===== OSTALI UPITI → OPENAI ======== */
-    /* ===================================== */
+    /* ===== OTHER REQUESTS → OPENAI ===== */
 
     const openaiResponse = await fetch("https://api.openai.com/v1/chat/completions", {
       method: "POST",
@@ -96,7 +137,11 @@ Upišite broj opcije.
         messages: [
           {
             role: "system",
-            content: "Ti si službeni turistički informator grada Valpova. Odgovaraj profesionalno i sažeto."
+            content: `
+Ti si službeni turistički informator grada Valpova.
+Odgovaraj profesionalno.
+Uvijek odgovaraj na jeziku korisnika.
+`
           },
           {
             role: "user",
@@ -110,13 +155,13 @@ Upišite broj opcije.
     const data = await openaiResponse.json();
 
     return res.status(200).json({
-      reply: data.choices?.[0]?.message?.content || "Trenutno nema odgovora."
+      reply: data.choices?.[0]?.message?.content || "No response."
     });
 
   } catch (error) {
     console.error(error);
     return res.status(500).json({
-      reply: "Došlo je do greške pri obradi zahtjeva."
+      reply: "Server error."
     });
   }
 }
