@@ -15,14 +15,10 @@ body{
   height:100vh;
 }
 
-/* ===== HEADER ===== */
 .header{
   background: linear-gradient(135deg, #013220, #014128, #01613c);
   padding:18px 30px;
   box-shadow:0 8px 25px rgba(0,0,0,0.35);
-  position:sticky;
-  top:0;
-  z-index:100;
 }
 
 .header-inner{
@@ -34,12 +30,6 @@ body{
 .logo{
   height:60px;
   border-radius:12px;
-  box-shadow:0 6px 18px rgba(0,0,0,0.4);
-}
-
-.title-group{
-  display:flex;
-  flex-direction:column;
 }
 
 .title-main{
@@ -53,7 +43,6 @@ body{
   font-size:14px;
 }
 
-/* ===== CHAT ===== */
 #chat{
   flex:1;
   overflow-y:auto;
@@ -66,7 +55,7 @@ body{
   padding:15px;
   border-radius:18px;
   line-height:1.6;
-  white-space:pre-line;
+  white-space:pre-wrap;
 }
 
 .ai{
@@ -81,30 +70,6 @@ body{
   border-top-right-radius:4px;
 }
 
-/* ===== Typing ===== */
-.typing{
-  display:flex;
-  gap:6px;
-}
-
-.dot{
-  width:8px;
-  height:8px;
-  background:#999;
-  border-radius:50%;
-  animation: blink 1.4s infinite both;
-}
-
-.dot:nth-child(2){ animation-delay:0.2s; }
-.dot:nth-child(3){ animation-delay:0.4s; }
-
-@keyframes blink{
-  0%{opacity:.2;}
-  20%{opacity:1;}
-  100%{opacity:.2;}
-}
-
-/* ===== INPUT ===== */
 #input-area{
   display:flex;
   padding:15px;
@@ -137,13 +102,6 @@ button{
   background:#d9e4dd;
   color:#333;
   margin:5px 5px 0 0;
-  font-size:14px;
-}
-
-/* ===== MOBILE ===== */
-@media (max-width:600px){
-  .logo{ height:45px; }
-  .title-main{ font-size:18px; }
 }
 </style>
 </head>
@@ -153,7 +111,7 @@ button{
 <header class="header">
   <div class="header-inner">
     <img src="tz-logo-Valpovo.png" class="logo">
-    <div class="title-group">
+    <div>
       <div class="title-main">Turistički informator</div>
       <div class="title-sub">Grad Valpovo</div>
     </div>
@@ -170,12 +128,6 @@ button{
 <script>
 const chat = document.getElementById("chat");
 
-function formatResponse(text){
-  text = text.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
-  text = text.replace(/(\d+\.\s)/g, "\n$1");
-  return text;
-}
-
 function addMessage(text,type="ai"){
   const div=document.createElement("div");
   div.className="message "+type;
@@ -184,54 +136,32 @@ function addMessage(text,type="ai"){
   chat.scrollTop=chat.scrollHeight;
 }
 
-function showTyping(){
-  const div=document.createElement("div");
-  div.className="message ai typing";
-  div.id="typing";
-  div.innerHTML=`
-    <div class="dot"></div>
-    <div class="dot"></div>
-    <div class="dot"></div>
-  `;
-  chat.appendChild(div);
-  chat.scrollTop=chat.scrollHeight;
-}
-
-function removeTyping(){
-  const t=document.getElementById("typing");
-  if(t) t.remove();
-}
-
-/* ===== WEATHER ===== */
 async function loadWeather(){
   try{
-    const response=await fetch("/api/weather");
-    const data=await response.json();
-    if(data.temperature!==undefined){
-      return `🌤 ${data.temperature}°C • Vjetar ${data.windspeed} km/h`;
+    const r = await fetch("/api/weather");
+    const d = await r.json();
+    if(d.temperature!==undefined){
+      return "🌤 "+d.temperature+"°C • Vjetar "+d.windspeed+" km/h";
     }
-  }catch{}
+  }catch(e){}
   return "Vrijeme trenutno nije dostupno.";
 }
 
-/* ===== WELCOME ===== */
 async function welcome(){
-  const weather=await loadWeather();
+  const weather = await loadWeather();
 
-  addMessage(`
-<strong>Dobrodošli!</strong>
-
-<strong>Danas je u Valpovu:</strong>
-${weather}
-
-<div class="quick-buttons">
-<button onclick="quickAsk('Znamenitosti')">Znamenitosti</button>
-<button onclick="quickAsk('Gastronomija')">Gastronomija</button>
-<button onclick="quickAsk('Događanja')">Događanja</button>
-<button onclick="quickAsk('Smještaj')">Smještaj</button>
-<button onclick="quickAsk('Priroda')">Priroda</button>
-</div>
-`);
+  addMessage(
+    "<strong>Dobrodošli!</strong><br><br>"+
+    "<strong>Danas je u Valpovu:</strong><br>"+
+    weather+
+    "<div class='quick-buttons'>"+
+    "<button onclick=\"quickAsk('Znamenitosti')\">Znamenitosti</button>"+
+    "<button onclick=\"quickAsk('Gastronomija')\">Gastronomija</button>"+
+    "<button onclick=\"quickAsk('Događanja')\">Događanja</button>"+
+    "<button onclick=\"quickAsk('Smještaj')\">Smještaj</button>"+
+    "<button onclick=\"quickAsk('Priroda')\">Priroda</button>"+
+    "</div>"
+  );
 }
 
 function quickAsk(text){
@@ -239,7 +169,6 @@ function quickAsk(text){
   sendMessage();
 }
 
-/* ===== SEND ===== */
 async function sendMessage(){
   const input=document.getElementById("input");
   const text=input.value.trim();
@@ -247,8 +176,6 @@ async function sendMessage(){
 
   addMessage(text,"user");
   input.value="";
-
-  showTyping();
 
   try{
     const response=await fetch("/api/chat",{
@@ -259,15 +186,17 @@ async function sendMessage(){
 
     const data=await response.json();
 
-    removeTyping();
-    addMessage(formatResponse(data.reply || "Nema odgovora."));
-  }catch{
-    removeTyping();
-    addMessage("Došlo je do greške u komunikaciji.");
+    let reply = data.reply || "Nema odgovora.";
+    reply = reply.replace(/\*\*(.*?)\*\*/g,"<strong>$1</strong>");
+    reply = reply.replace(/(\d+\.\s)/g,"<br>$1");
+
+    addMessage(reply);
+  }catch(e){
+    addMessage("Došlo je do greške.");
   }
 }
 
-welcome();
+window.onload = welcome;
 </script>
 
 </body>
