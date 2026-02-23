@@ -15,10 +15,14 @@ body{
   height:100vh;
 }
 
+/* ===== HEADER ===== */
 .header{
   background: linear-gradient(135deg, #013220, #014128, #01613c);
   padding:18px 30px;
   box-shadow:0 8px 25px rgba(0,0,0,0.35);
+  position:sticky;
+  top:0;
+  z-index:100;
 }
 
 .header-inner{
@@ -30,6 +34,7 @@ body{
 .logo{
   height:60px;
   border-radius:12px;
+  box-shadow:0 6px 18px rgba(0,0,0,0.4);
 }
 
 .title-group{
@@ -48,6 +53,7 @@ body{
   font-size:14px;
 }
 
+/* ===== CHAT ===== */
 #chat{
   flex:1;
   overflow-y:auto;
@@ -60,6 +66,7 @@ body{
   padding:15px;
   border-radius:18px;
   line-height:1.6;
+  white-space:pre-line;
 }
 
 .ai{
@@ -74,11 +81,10 @@ body{
   border-top-right-radius:4px;
 }
 
-/* ===== Typing Bubble ===== */
+/* ===== Typing ===== */
 .typing{
   display:flex;
   gap:6px;
-  align-items:center;
 }
 
 .dot{
@@ -98,10 +104,12 @@ body{
   100%{opacity:.2;}
 }
 
+/* ===== INPUT ===== */
 #input-area{
   display:flex;
   padding:15px;
   background:#fff;
+  border-top:1px solid #ccc;
 }
 
 #input{
@@ -121,10 +129,21 @@ button{
   cursor:pointer;
 }
 
+.quick-buttons{
+  margin-top:15px;
+}
+
 .quick-buttons button{
   background:#d9e4dd;
   color:#333;
   margin:5px 5px 0 0;
+  font-size:14px;
+}
+
+/* ===== MOBILE ===== */
+@media (max-width:600px){
+  .logo{ height:45px; }
+  .title-main{ font-size:18px; }
 }
 </style>
 </head>
@@ -152,12 +171,8 @@ button{
 const chat = document.getElementById("chat");
 
 function formatResponse(text){
-  // Bold
   text = text.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
-
-  // Numbered lists
-  text = text.replace(/(\d+\.\s)/g, "<br>$1");
-
+  text = text.replace(/(\d+\.\s)/g, "\n$1");
   return text;
 }
 
@@ -183,10 +198,48 @@ function showTyping(){
 }
 
 function removeTyping(){
-  const typing=document.getElementById("typing");
-  if(typing) typing.remove();
+  const t=document.getElementById("typing");
+  if(t) t.remove();
 }
 
+/* ===== WEATHER ===== */
+async function loadWeather(){
+  try{
+    const response=await fetch("/api/weather");
+    const data=await response.json();
+    if(data.temperature!==undefined){
+      return `🌤 ${data.temperature}°C • Vjetar ${data.windspeed} km/h`;
+    }
+  }catch{}
+  return "Vrijeme trenutno nije dostupno.";
+}
+
+/* ===== WELCOME ===== */
+async function welcome(){
+  const weather=await loadWeather();
+
+  addMessage(`
+<strong>Dobrodošli!</strong>
+
+<strong>Danas je u Valpovu:</strong>
+${weather}
+
+<div class="quick-buttons">
+<button onclick="quickAsk('Znamenitosti')">Znamenitosti</button>
+<button onclick="quickAsk('Gastronomija')">Gastronomija</button>
+<button onclick="quickAsk('Događanja')">Događanja</button>
+<button onclick="quickAsk('Smještaj')">Smještaj</button>
+<button onclick="quickAsk('Priroda')">Priroda</button>
+</div>
+`);
+}
+
+function quickAsk(text){
+  document.getElementById("input").value=text;
+  sendMessage();
+}
+
+/* ===== SEND ===== */
 async function sendMessage(){
   const input=document.getElementById("input");
   const text=input.value.trim();
@@ -207,13 +260,14 @@ async function sendMessage(){
     const data=await response.json();
 
     removeTyping();
-
     addMessage(formatResponse(data.reply || "Nema odgovora."));
   }catch{
     removeTyping();
-    addMessage("Došlo je do greške.");
+    addMessage("Došlo je do greške u komunikaciji.");
   }
 }
+
+welcome();
 </script>
 
 </body>
