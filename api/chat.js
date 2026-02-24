@@ -42,11 +42,14 @@ function buildSystemPrompt(db, weather, season, hour, isWeekend) {
         if (item.web) s += ` | Web: ${item.web}`;
         if (item.ocjena) s += ` | Ocjena: ${item.ocjena}⭐`;
         if (item.radno_vrijeme) s += ` | Radno vrijeme: ${JSON.stringify(item.radno_vrijeme)}`;
+        if (item.aktivnosti) s += ` | Aktivnosti: ${item.aktivnosti.join(", ")}`;
+        if (item.koordinate) s += ` | GPS: ${item.koordinate.lat}, ${item.koordinate.lng}`;
         return s;
     };
 
     const znamenitosti = (db.znamenitosti || []).map(fmt).join("\n");
     const gastronomija = (db.gastronomija || []).map(fmt).join("\n");
+    const priroda = (db.priroda || []).map(fmt).join("\n");
     const smjestaj_list = (db.smjestaj || []).map(fmt).join("\n");
     const dogadanja = (db.dogadanja || []).map(d => `- ${d.naziv} (${d.vrijeme}): ${d.opis}`).join("\n");
     const specJela = (db.specijalizirana_jela || []).map(j => `- ${j.naziv}: ${j.opis}`).join("\n");
@@ -91,6 +94,9 @@ BAZA ZNANJA – VALPOVO
 ──────────────────────────────────────────
 ZNAMENITOSTI I ATRAKCIJE:
 ${znamenitosti}
+
+PRIRODA I REKREACIJA (RIJEKE I VIKEND NASELJA):
+${priroda}
 
 GASTRONOMIJA (HRANA I PIĆE):
 ${gastronomija}
