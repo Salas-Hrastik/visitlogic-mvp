@@ -171,6 +171,14 @@ Ako korisnik želi rezervaciju → uputi na službeni kontakt, NE izmišljaj cij
 Kontakt TZ: ${kontakt.telefon} | ${kontakt.email} | ${kontakt.web}
 
 ──────────────────────────────────────────
+PROCES FILTRIRANJA SMJEŠTAJA
+──────────────────────────────────────────
+Ako korisnik pita općenito za smještaj, prati ovaj proces:
+1. PRVI FILTER: Ponudi izbor između tipova: "Hotel", "Pansion/Prenoćište" ili "Apartmani i privatne sobe".
+2. DRUGI FILTER: Nakon izbora tipa, postavi sugestivno pitanje o opremi ili posebnim zahtjevima (npr. "Trebate li parking, dječji krevetić ili je li dozvoljen boravak kućnim ljubimcima?") kako bi suzio ponudu.
+3. PREPORUKA: Na temelju filtera ponudi konkretne objekte s linkovima.
+
+──────────────────────────────────────────
 BAZA ZNANJA – VALPOVO
 ──────────────────────────────────────────
 
