@@ -1,18 +1,16 @@
-import fs from "fs";
-import path from "path";
+import { db } from "./database.js";
 
 // ── WEATHER HELPER ──────────────────────────────────────────────────────────
 async function fetchWeather() {
     try {
         const url = "https://api.open-meteo.com/v1/forecast?latitude=45.6609&longitude=18.4186&current_weather=true";
         const r = await fetch(url);
-        // Ako weather API vrati grešku, ne želimo srušiti cijeli chat
         if (!r.ok) return null;
         const d = await r.json();
         return d.current_weather || null;
     } catch (e) {
         console.error("fetchWeather error (non-fatal):", e);
-        return null; // Vrati null umjesto bacanja greške
+        return null;
     }
 }
 
@@ -98,37 +96,7 @@ export default async function handler(req, res) {
             return res.status(500).json({ error: "OPENAI_API_KEY nije ispravno postavljen u Vercel postavkama." });
         }
 
-        // 1. UČITAJ BAZU
-        let db;
-        const dbPath = path.resolve(process.cwd(), "data", "valpovo.json");
-        try {
-            if (!fs.existsSync(dbPath)) {
-                return res.status(500).json({
-                    error: "Baza podataka nije pronađena",
-                    details: `Putanja ${dbPath} ne postoji. CWD: ${process.cwd()}`
-                });
-            }
-
-            const dbContent = fs.readFileSync(dbPath, "utf8");
-            try {
-                db = JSON.parse(dbContent);
-            } catch (jsonErr) {
-                // Escapamo < za siguran prikaz na frontendu
-                const snippet = dbContent.substring(0, 150).replace(/</g, "&lt;").replace(/>/g, "&gt;");
-                return res.status(500).json({
-                    error: "Greška u formatu baze (nije JSON)",
-                    details: `Sadržaj: ${snippet} | Putanja: ${dbPath} | Greška: ${jsonErr.message}`
-                });
-            }
-        } catch (err) {
-            console.error("DB Load Error:", err);
-            return res.status(500).json({
-                error: "Greška pri pristupu bazi podataka",
-                details: "Sistemska greška: " + err.message
-            });
-        }
-
-        // 2. PRIKUPI KONTEKST
+        // 1. KORISTI UGRAĐENU BAZU (nema više čitanja s diska)
         const weather = await fetchWeather();
         const now = new Date();
         const month = now.getUTCMonth() + 1;
@@ -137,7 +105,7 @@ export default async function handler(req, res) {
         const isWeekend = [0, 5, 6].includes(now.getUTCDay());
         const systemPrompt = buildSystemPrompt(db, weather, season, hour, isWeekend);
 
-        // 3. POZIV OPENAI
+        // 2. POZIV OPENAI
         const messages = [
             { role: "system", content: systemPrompt },
             ...history.slice(-6).map(m => ({
