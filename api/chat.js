@@ -72,7 +72,15 @@ export default async function handler(req, res) {
             const intro = lang === "hr" ? "🏨 Smještajni objekti u Valpovu:" :
                 lang === "en" ? "🏨 Accommodation in Valpovo:" :
                     "🏨 Unterkunft in Valpovo:";
-            reply = buildResponse(db.smjestaj, ["naziv", "tip", "opis"], intro, lang);
+            const lista = db.smjestaj.map(s => `• ${s.naziv} (${s.tip})`).join("\n");
+            reply = `${intro}\n${lista}`;
+            if (lang === "hr") {
+                reply += "\n\n📍 Detalje, kontakte i Google Maps lokacije svakog objekta pronađite na:\nhttps://tz.valpovo.hr/smjestaj-u-valpovu";
+            } else if (lang === "en") {
+                reply += "\n\n📍 Details, contacts and Google Maps for each property:\nhttps://tz.valpovo.hr/smjestaj-u-valpovu";
+            } else {
+                reply += "\n\n📍 Details und Google Maps für jede Unterkunft:\nhttps://tz.valpovo.hr/smjestaj-u-valpovu";
+            }
         }
         // --- DOGADANJA / MANIFESTACIJE ---
         else if (q.includes("događaj") || q.includes("manifestacij") || q.includes("festival") || q.includes("program") ||
