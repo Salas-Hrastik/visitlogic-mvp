@@ -317,9 +317,9 @@
                 const d = await r.json();
                 if (d.temperature !== undefined) {
                     document.getElementById("weather").innerText =
-                        " 🌤 " + d.temperature + "°C • Vjetar " + d.windspeed + " km/h";
+                        " 🌤 " + d.temperature + "°C • 🌬️ " + d.windspeed + " km/h";
                 } else {
-                    document.getElementById("weather").innerText = " – Podaci nisu dostupni";
+                    document.getElementById("weather").innerText = " – ––";
                 }
             } catch {
                 document.getElementById("weather").innerText = " – Podaci nisu dostupni";
