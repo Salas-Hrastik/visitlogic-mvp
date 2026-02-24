@@ -13,21 +13,43 @@ export const db = {
             "id": 1,
             "naziv": "Dvorac Prandau-Normann i perivoj",
             "tip": "Kulturna baština",
-            "opis": "Ljet nikovska reziuencija obitelji Prandau-Normann – jedno od najreprezentativnijih baroknih dvoraca u istočnoj Hrvatskoj. Cjelinu čine pročelna palača, srednjovjekovna kula, kapelica Svetoga Trojstva i bočna krila, okruženi prekrasnim perivojem.",
-            "adresa": "Dvorišna ul. 10, 31550 Valpovo",
-            "radno_vrijeme": "Iznajmljivo za događanja; perivoj otvoren cijelo vrijeme",
+            "opis": "Ljetnikovačka rezidencija obitelji Prandau-Normann – jedno od najreprezentativnijih baroknih dvoraca u istočnoj Hrvatskoj. Cjelinu čine pročelna palača, srednjovjekovna kula, kapelica Svetoga Trojstva i bočna krila, okruženi prekrasnim perivojem.",
+            "adresa": "Ul. Dvorac Norman-Prandau 1, 31550 Valpovo",
+            "koordinate": { "lat": 45.6589474, "lng": 18.4153698 },
+            "ocjena": 4.7,
+            "broj_recenzija": 472,
+            "radno_vrijeme": {
+                "pon": "16:00 - 19:00",
+                "uto": "10:00 - 12:00",
+                "sri": "10:00 - 12:00",
+                "čet": "16:00 - 19:00",
+                "pet": "10:00 - 12:00",
+                "sub": "15:00 - 18:00",
+                "ned": "Zatvoreno"
+            },
             "web": "https://tz.valpovo.hr/znamenitosti/dvorac-i-perivoj/",
-            "kljucne_rijeci": [ "dvorac", "prandau", "normann", "barok", "perivoj", "park" ]
+            "kljucne_rijeci": ["dvorac", "prandau", "normann", "barok", "perivoj", "park"]
         },
         {
             "id": 2,
             "naziv": "Muzej Valpovštine",
             "tip": "Muzej",
             "opis": "Muzej Valpovštine osnovan je 1956. godine i smješten u valpovačkom dvorcu. Čuva bogatu zbirku lokalne povijesti, tradicijske kulture i prirodne baštine valpovačkog kraja.",
-            "adresa": "Dvorac Prandau-Normann, 31550 Valpovo",
-            "radno_vrijeme": "Prema dogovoru, kontaktirati TZ",
+            "adresa": "Ul. Dvorac Norman-Prandau, 31550 Valpovo",
+            "koordinate": { "lat": 45.6593858, "lng": 18.4154047 },
+            "ocjena": 4.5,
+            "broj_recenzija": 29,
+            "radno_vrijeme": {
+                "pon": "16:00 - 19:00",
+                "uto": "10:00 - 12:00",
+                "sri": "10:00 - 12:00",
+                "čet": "16:00 - 19:00",
+                "pet": "10:00 - 12:00",
+                "sub": "Zatvoreno",
+                "ned": "Zatvoreno"
+            },
             "web": "https://tz.valpovo.hr/znamenitosti/muzej-valpovstine",
-            "kljucne_rijeci": [ "muzej", "povijest", "tradicija", "kultura", "zbirka" ]
+            "kljucne_rijeci": ["muzej", "povijest", "tradicija", "kultura", "zbirka"]
         },
         {
             "id": 3,
@@ -36,7 +58,7 @@ export const db = {
             "opis": "Najstarija sačuvana kazališna zgrada u kontinentalnoj Hrvatskoj, podignuta 1809. godine od strane baruna Josefa Ignaca Hillepranda od Prandaua.",
             "adresa": "Valpovo",
             "web": "https://tz.valpovo.hr/znamenitosti//prandauovo-kazaliste/",
-            "kljucne_rijeci": [ "kazalište", "prandau", "najstarije", "kazaliste", "teatar" ]
+            "kljucne_rijeci": ["kazalište", "prandau", "najstarije", "kazaliste", "teatar"]
         },
         {
             "id": 4,
@@ -44,7 +66,7 @@ export const db = {
             "tip": "Sakralna baština",
             "opis": "Na području grada Valpova nalaze se brojna crkve, kapele i sakralni objekti, uključujući kapelicu Svetoga Trojstva unutar dvorca.",
             "web": "https://tz.valpovo.hr/znamenitosti/crkve-i-kapele/",
-            "kljucne_rijeci": [ "crkva", "kapela", "sakralno", "sveto trojstvo", "vjerski objekti" ]
+            "kljucne_rijeci": ["crkva", "kapela", "sakralno", "sveto trojstvo", "vjerski objekti"]
         },
         {
             "id": 5,
@@ -52,7 +74,7 @@ export const db = {
             "tip": "Kulturna baština",
             "opis": "Najstariji i spomenički najvrijedniji dio dvorca – srednjovjekovna obrambena kula koja datira iz doba kada je Valpovo bilo značajno utvrđeno naselje.",
             "web": "https://tz.valpovo.hr/znamenitosti/srednjovjekovna-kula",
-            "kljucne_rijeci": [ "kula", "srednjovjekovna", "utvrda", "obrambena", "tvrđava" ]
+            "kljucne_rijeci": ["kula", "srednjovjekovna", "utvrda", "obrambena", "tvrđava"]
         },
         {
             "id": 6,
@@ -60,7 +82,7 @@ export const db = {
             "tip": "Povijesna građevina",
             "opis": "Valpovački hotel Fortuna sagradio je barun Josip Prandau 1807. godine – jedno od tri najstarija sačuvana svratišta u sjeveroistočnoj Hrvatskoj i jedna od četiri najstarije zgrade u gradu.",
             "web": "https://tz.valpovo.hr/znamenitosti/hotel-fortuna",
-            "kljucne_rijeci": [ "hotel fortuna", "najstariji", "barun", "prandau", "svratište" ]
+            "kljucne_rijeci": ["hotel fortuna", "najstariji", "barun", "prandau", "svratište"]
         },
         {
             "id": 7,
@@ -68,7 +90,7 @@ export const db = {
             "tip": "Kulturna baština",
             "opis": "Gustav Prandau izgradio je 1867. godine konjušnice uz valpovački dvor, u Reljkovićevoj ulici – jedno od većih ulaganja toga vremena, a svjedočanstvo o konjogojstvu kao dijelu vlastelinske tradicije.",
             "web": "https://tz.valpovo.hr/znamenitosti/crkve-i-kapele/",
-            "kljucne_rijeci": [ "konjušnice", "ergela", "konji", "prandau", "jahanje" ]
+            "kljucne_rijeci": ["konjušnice", "ergela", "konji", "prandau", "jahanje"]
         },
         {
             "id": 8,
@@ -76,7 +98,7 @@ export const db = {
             "tip": "Industrijska baština",
             "opis": "Antun Petar Prandau pokrenuo je niz gospodarskih aktivnosti na vlastelinstvu, uključujući osnivanje pivovare – svjedočanstvo o razvoju valpovačke industrije u 19. stoljeću.",
             "web": "https://tz.valpovo.hr/znamenitosti/pivovara-valpovo",
-            "kljucne_rijeci": [ "pivovara", "pivo", "industrija", "prandau", "baština" ]
+            "kljucne_rijeci": ["pivovara", "pivo", "industrija", "prandau", "baština"]
         },
         {
             "id": 9,
@@ -84,7 +106,7 @@ export const db = {
             "tip": "Kulturna baština",
             "opis": "Zgrada desno od župne crkve podignuta sredinom 19. stoljeća kao Pučka škola – jedna od najstarijih zgrada u Valpovu. Izvorno je imala dvije učionice, stan za učitelja i pomoćne prostorije.",
             "web": "https://tz.valpovo.hr/znamenitosti/pucka-skola",
-            "kljucne_rijeci": [ "škola", "pučka", "obrazovanje", "stara zgrada", "povijest" ]
+            "kljucne_rijeci": ["škola", "pučka", "obrazovanje", "stara zgrada", "povijest"]
         },
         {
             "id": 10,
@@ -92,7 +114,7 @@ export const db = {
             "tip": "Kulturni centar",
             "opis": "Pored dvorca Prandau-Normann, Centar kulture je središte kulturno-društvenih događanja u Valpovu. Nosi ime po Matiji Petru Katančiću, poznatom franjevačkom svećeniku, pjesniku i lingvistu rodom iz Valpova.",
             "web": "https://tz.valpovo.hr/znamenitosti/centar-kulture-matija-petar-katancic-valpovo",
-            "kljucne_rijeci": [ "centar kulture", "katančić", "kultura", "eventi", "manifestacije" ]
+            "kljucne_rijeci": ["centar kulture", "katančić", "kultura", "eventi", "manifestacije"]
         },
         {
             "id": 11,
@@ -101,7 +123,7 @@ export const db = {
             "opis": "Kroz projekt 'Priča o kulturnoj ostavštini Matije Petra Katančića' obnovljena je zgrada stare škole iz 1859. godine, pretvorena u Edukacijsko-interpretacijski centar – Katančićev vremeplov. Ovdje se nalazi i Suvenirnica grada Valpova.",
             "web": "https://tz.valpovo.hr/znamenitosti/edukacijsko-interpretacijski-centar-matije-petra-katancica-suvenirnica-grada-valpova/",
             "webshop": "https://suvenirnica.valpovo.hr/",
-            "kljucne_rijeci": [ "suvenirnica", "suveniri", "katančić", "edukacija", "interpretacijski centar" ]
+            "kljucne_rijeci": ["suvenirnica", "suveniri", "katančić", "edukacija", "interpretacijski centar"]
         },
         {
             "id": 12,
@@ -109,7 +131,50 @@ export const db = {
             "tip": "Memorijalni centar",
             "opis": "Novoizgrađeni Memorijalni centar posvećen je Matiji Petru Katančiću (1750.–1825.), slavnom valpovačkom franjevcu, jezikoslovcu, pjesniku i prevoditelju Biblije. Središnji je dio projekta koji oživljava Katančićevo djelo i naslijeđe.",
             "web": "https://tz.valpovo.hr/znamenitosti/memorijalni-centar-matije-petra-katancica/",
-            "kljucne_rijeci": [ "memorijalni centar", "katančić", "franjevac", "jezikoslovac", "biblija" ]
+            "kljucne_rijeci": ["memorijalni centar", "katančić", "franjevac", "jezikoslovac", "biblija"]
+        },
+        {
+            "id": 13,
+            "naziv": "Crkva Bezgrješnog Začeća Blažene Djevice Marije",
+            "tip": "Sakralna baština",
+            "opis": "Glavna župna crkva u Valpovu, barokno zdanje iz 18. stoljeća.",
+            "adresa": "Trg kralja Tomislava 12, 31550 Valpovo",
+            "koordinate": { "lat": 45.6592722, "lng": 18.4181684 },
+            "ocjena": 4.7,
+            "broj_recenzija": 73,
+            "radno_vrijeme": { "napomena": "Otvorena svaki dan" },
+            "kljucne_rijeci": ["crkva", "župna crkva", "marija", "barok", "sakralno"]
+        },
+        {
+            "id": 14,
+            "naziv": "Kapela Sv. Roka",
+            "tip": "Sakralna baština",
+            "opis": "Povijesna kapela uz koju se nalazi spomen-obilježje Podunavskim Švabama.",
+            "adresa": "Ul. Josipa Jurja Strossmayera 48, 31550 Valpovo",
+            "koordinate": { "lat": 45.6670375, "lng": 18.4149471 },
+            "ocjena": 4.5,
+            "broj_recenzija": 4,
+            "kljucne_rijeci": ["kapela", "sv. rok", "spomenik", "švabe", "povijest"]
+        },
+        {
+            "id": 15,
+            "naziv": "Srpska pravoslavna crkva Sv. Georgija",
+            "tip": "Sakralna baština",
+            "adresa": "Osječka ul. 21, 31550 Valpovo",
+            "koordinate": { "lat": 45.6568671, "lng": 18.4212159 },
+            "kljucne_rijeci": ["crkva", "pravoslavna", "sv. georgije", "sakralno"]
+        },
+        {
+            "id": 16,
+            "naziv": "Advent Valpovo",
+            "tip": "Manifestacija / Atrakcija",
+            "opis": "Adventsko-božićni sajam na Trgu kralja Tomislava. Sezonski sadržaj.",
+            "adresa": "Trg kralja Tomislava 16, 31550 Valpovo",
+            "koordinate": { "lat": 45.6584343, "lng": 18.4177215 },
+            "ocjena": 5.0,
+            "broj_recenzija": 2,
+            "radno_vrijeme": { "napomena": "Sezonski (prosinac)" },
+            "kljucne_rijeci": ["advent", "božić", "trg", "sajam", "zima"]
         }
     ],
     "gastronomija": [
@@ -117,151 +182,238 @@ export const db = {
             "id": 1,
             "naziv": "Restoran Jovalija",
             "tip": "Restoran",
-            "opis": "Restoran s tradicijskim slavonskim jelima.",
+            "kategorija": "slavonska kuhinja",
+            "adresa": "Ul. Ive Lole Ribara 1, 31550 Valpovo",
+            "ocjena": 4.9,
+            "broj_recenzija": 52,
+            "opis": "Restoran s vrhunskim tradicijskim slavonskim jelima. Visoko ocijenjen (4.9⭐) od strane posjetitelja.",
             "web": "https://tz.valpovo.hr/ugostiteljstvo/restoran-jovalija/",
-            "kljucne_rijeci": [ "restoran", "jelo", "hrana", "slavonska kuhinja", "jovalija" ]
+            "radno_vrijeme": {
+                "svaki_dan": "09:00 - 22:00"
+            },
+            "kljucne_rijeci": ["restoran", "jelo", "hrana", "slavonska kuhinja", "jovalija", "čobanac"]
         },
         {
             "id": 2,
             "naziv": "Hotel & Restoran Park Valpovo",
             "tip": "Restoran / Hotel",
-            "opis": "Restoran uz hotel Park s odabirom slavonske i internacionalne kuhinje. Jedno od glavnih mjesta za ručak i večeru u Valpovu.",
+            "adresa": "Ul. Ive Lole Ribara 10, 31550 Valpovo",
+            "ocjena": 4.7,
+            "broj_recenzija": 1406,
+            "opis": "Restoran uz hotel Park u sklopu dvorca. Nudi odabir slavonske i internacionalne kuhinje. Popularno mjesto za ručak i večeru.",
             "web": "https://tz.valpovo.hr/ugostiteljstvo/restoran-park/",
-            "kljucne_rijeci": [ "restoran", "park", "jelo", "hrana", "ručak", "večera", "hotel" ]
+            "radno_vrijeme": {
+                "pon-sub": "10:00 - 22:00",
+                "ned": "11:00 - 16:00"
+            },
+            "kljucne_rijeci": ["restoran", "park", "jelo", "hrana", "ručak", "večera", "hotel"]
         },
         {
             "id": 3,
-            "naziv": "Bar i Pizzeria HEX Valpovo",
-            "tip": "Pizzeria / Bar",
-            "opis": "Popularna pizzeria i bar u Valpovu.",
-            "web": "https://tz.valpovo.hr/ugostiteljstvo/bar-i-pizzeria-hex-valpovo/",
-            "kljucne_rijeci": [ "pizza", "pizzeria", "hex", "bar", "hrana" ]
+            "naziv": "PIGment",
+            "tip": "Restoran / Burgeri",
+            "adresa": "Trg kralja Tomislava 7, 31550 Valpovo",
+            "ocjena": 5.0,
+            "broj_recenzija": 34,
+            "opis": "Specijalizirani burger bar s najvišim ocjenama (5.0⭐). Moderni koncept i vrhunski sastojci.",
+            "radno_vrijeme": {
+                "čet": "17:00 - 22:00",
+                "pet-sub": "17:00 - 00:00",
+                "ned": "17:00 - 22:00",
+                "pon-srij": "Zatvoreno"
+            },
+            "kljucne_rijeci": ["burgeri", "hamburger", "pigment", "moderno", "fast food"]
         },
         {
             "id": 4,
-            "naziv": "Gurman – objekt brze prehrane",
-            "tip": "Brza prehrana",
-            "opis": "Objekt brze prehrane u Valpovu.",
-            "web": "https://tz.valpovo.hr/ugostiteljstvo/gurman-objekt-brze-prehrane/",
-            "kljucne_rijeci": [ "brza hrana", "gurman", "fast food", "sendvič" ]
+            "naziv": "RasoPaso",
+            "tip": "Restoran",
+            "adresa": "Strossmayerova ul. 2, 31550 Valpovo",
+            "ocjena": 4.4,
+            "broj_recenzija": 52,
+            "opis": "Restoran u centru grada s raznolikom ponudom.",
+            "radno_vrijeme": {
+                "uto-ned": "10:00 - 22:00",
+                "pon": "Zatvoreno"
+            },
+            "kljucne_rijeci": ["restoran", "rasopaso", "hrana", "centar"]
         },
         {
             "id": 5,
+            "naziv": "Bar i Pizzeria HEX Valpovo",
+            "tip": "Pizzeria / Bar",
+            "adresa": "Trg kralja Tomislava 18, 31550 Valpovo",
+            "ocjena": 4.7,
+            "broj_recenzija": 365,
+            "opis": "Popularna pizzeria i bar u centru. Odličan izbor pizza i pića.",
+            "web": "https://tz.valpovo.hr/ugostiteljstvo/bar-i-pizzeria-hex-valpovo/",
+            "radno_vrijeme": {
+                "svaki_dan": "10:00 - 23:00"
+            },
+            "kljucne_rijeci": ["pizza", "pizzeria", "hex", "bar", "hrana"]
+        },
+        {
+            "id": 6,
+            "naziv": "Gurman – objekt brze prehrane",
+            "tip": "Brza prehrana / Pizzeria",
+            "adresa": "Ul. Augusta Šenoe 107, 31550 Valpovo",
+            "ocjena": 4.0,
+            "broj_recenzija": 143,
+            "opis": "Objekt brze prehrane i pizzeria s mogućnošću dostave.",
+            "web": "https://tz.valpovo.hr/ugostiteljstvo/gurman-objekt-brze-prehrane/",
+            "radno_vrijeme": {
+                "pon-pet": "08:30 - 22:00",
+                "sub": "10:00 - 22:00",
+                "ned": "12:30 - 22:00"
+            },
+            "kljucne_rijeci": ["brza hrana", "gurman", "fast food", "sendvič", "pizza", "dostava"]
+        },
+        {
+            "id": 7,
+            "naziv": "Fast Food Vesperas",
+            "tip": "Fast food / Noćni zalogaj",
+            "adresa": "Ul. Zrinsko Frankopanska 48, 31550 Valpovo",
+            "ocjena": 4.9,
+            "broj_recenzija": 121,
+            "opis": "Objekt brze prehrane poznat po velikim porcijama i odličnoj usluzi. Radi do kasno u noć vikendom.",
+            "radno_vrijeme": {
+                "pon-čet": "16:00 - 00:00",
+                "pet-sub": "16:00 - 01:00",
+                "ned": "17:00 - 23:00"
+            },
+            "kljucne_rijeci": ["vesperas", "hamburger", "fast food", "kasno", "noćna hrana"]
+        },
+        {
+            "id": 8,
+            "naziv": "Fast food Lana",
+            "tip": "Fast food",
+            "adresa": "Osječka ul. 14, 31550 Valpovo",
+            "ocjena": 4.0,
+            "broj_recenzija": 59,
+            "opis": "Objekt brze prehrane u centru.",
+            "radno_vrijeme": {
+                "pon-sub": "16:00 - 23:00",
+                "ned": "Zatvoreno"
+            },
+            "kljucne_rijeci": ["lana", "fast food", "hrana", "centar"]
+        },
+        {
+            "id": 9,
             "naziv": "Gradska kavana Valpovo",
             "tip": "Kavana",
             "opis": "Klasična gradska kavana u srcu Valpova s kolačima i toplim napicima.",
             "web": "https://tz.valpovo.hr/ugostiteljstvo/gradska-kavana-valpovo/",
-            "kljucne_rijeci": [ "kavana", "kafa", "kava", "kolač", "slatko" ]
+            "kljucne_rijeci": ["kavana", "kafa", "kava", "kolač", "slatko"]
         },
         {
-            "id": 6,
+            "id": 10,
             "naziv": "Gradska kavana Katančić",
             "tip": "Kavana",
             "opis": "Kavana koja nosi ime po slavnom valpovačkom franjevcu Matiji Petru Katančiću.",
             "web": "https://tz.valpovo.hr/ugostiteljstvo/gradska-kavana-katancic/",
-            "kljucne_rijeci": [ "kavana", "katančić", "kava", "piće" ]
+            "kljucne_rijeci": ["kavana", "katančić", "kava", "piće"]
         },
         {
-            "id": 7,
+            "id": 11,
             "naziv": "Caffe Bar Forum",
             "tip": "Caffe bar",
             "opis": "Caffe bar u centru Valpova.",
             "web": "https://tz.valpovo.hr/ugostiteljstvo/caffe-bar-forum/",
-            "kljucne_rijeci": [ "caffe", "bar", "forum", "piće", "kava" ]
+            "kljucne_rijeci": ["caffe", "bar", "forum", "piće", "kava"]
         },
         {
-            "id": 8,
+            "id": 12,
             "naziv": "Caffe Bar Kolaž",
             "tip": "Caffe bar",
             "opis": "Caffe bar u Valpovu.",
             "web": "https://tz.valpovo.hr/ugostiteljstvo/caffe-bar-kolaz/",
-            "kljucne_rijeci": [ "caffe", "kolaž", "bar", "piće", "kava" ]
+            "kljucne_rijeci": ["caffe", "kolaž", "bar", "piće", "kava"]
         },
         {
-            "id": 9,
+            "id": 13,
             "naziv": "Caffe – Night Bar Blue",
             "tip": "Caffe bar / Noćni bar",
             "opis": "Caffe i noćni bar u Valpovu.",
             "web": "https://tz.valpovo.hr/ugostiteljstvo/caffe-night-bar-blue/",
-            "kljucne_rijeci": [ "bar", "blue", "noćni bar", "piće", "zabava" ]
+            "kljucne_rijeci": ["bar", "blue", "noćni bar", "piće", "zabava"]
         },
         {
-            "id": 10,
+            "id": 14,
             "naziv": "Caffe Bar Passage",
             "tip": "Caffe bar",
             "opis": "Caffe bar Passage u Valpovu.",
             "web": "https://tz.valpovo.hr/ugostiteljstvo/caffe-bar-passage/",
-            "kljucne_rijeci": [ "caffe", "passage", "bar", "kava", "piće" ]
+            "kljucne_rijeci": ["caffe", "passage", "bar", "kava", "piće"]
         },
         {
-            "id": 11,
+            "id": 15,
             "naziv": "Caffe Bar Space",
             "tip": "Caffe bar",
             "opis": "Caffe bar Space u Valpovu.",
             "web": "https://tz.valpovo.hr/ugostiteljstvo/caffe-bar-space/",
-            "kljucne_rijeci": [ "caffe", "space", "bar", "kava", "piće" ]
+            "kljucne_rijeci": ["caffe", "space", "bar", "kava", "piće"]
         },
         {
-            "id": 12,
+            "id": 16,
             "naziv": "Caffe Bar Best",
             "tip": "Caffe bar",
             "opis": "Caffe bar Best u Valpovu.",
             "web": "https://tz.valpovo.hr/ugostiteljstvo/caffe-bar-best/",
-            "kljucne_rijeci": [ "caffe", "best", "bar", "kava", "piće" ]
+            "kljucne_rijeci": ["caffe", "best", "bar", "kava", "piće"]
         },
         {
-            "id": 13,
+            "id": 17,
             "naziv": "Caffe Bar Aqua Valpovo",
             "tip": "Caffe bar",
             "opis": "Caffe bar Aqua uz vodu u Valpovu.",
             "web": "https://tz.valpovo.hr/ugostiteljstvo/caffe-bar-aqua-valpovo/",
-            "kljucne_rijeci": [ "caffe", "aqua", "bar", "kava", "piće" ]
+            "kljucne_rijeci": ["caffe", "aqua", "bar", "kava", "piće"]
         },
         {
-            "id": 14,
+            "id": 18,
             "naziv": "Barcode Caffe & Night Bar",
             "tip": "Caffe bar / Noćni bar",
             "opis": "Caffe i noćni bar Barcode u Valpovu.",
             "web": "https://tz.valpovo.hr/ugostiteljstvo/barcode-caffe-night-bar/",
-            "kljucne_rijeci": [ "barcode", "caffe", "noćni bar", "piće", "zabava" ]
+            "kljucne_rijeci": ["barcode", "caffe", "noćni bar", "piće", "zabava"]
         },
         {
-            "id": 15,
+            "id": 19,
             "naziv": "Caffe Bar BRM – BRM",
             "tip": "Caffe bar",
             "opis": "Caffe bar BRM-BRM u Valpovu.",
             "web": "https://tz.valpovo.hr/ugostiteljstvo/caffe-bar-brm-brm/",
-            "kljucne_rijeci": [ "caffe", "brm", "bar", "kava", "piće" ]
+            "kljucne_rijeci": ["caffe", "brm", "bar", "kava", "piće"]
         },
         {
-            "id": 16,
+            "id": 20,
             "naziv": "Caffe Bar Prandau",
             "tip": "Caffe bar",
             "opis": "Caffe bar pod imenom slavne valpovačke vlastelinske obitelji Prandau.",
             "web": "https://tz.valpovo.hr/ugostiteljstvo/caffe-bar-prandau/",
-            "kljucne_rijeci": [ "caffe", "prandau", "bar", "kava", "piće" ]
+            "kljucne_rijeci": ["caffe", "prandau", "bar", "kava", "piće"]
         }
     ],
     "specijalizirana_jela": [
         {
             "naziv": "Čobanac",
             "opis": "Tradicionalno slavonsko mesno jelo od miješanog mesa s paprom i paprikom, kuhano na otvorenoj vatri. Jedno od zaštitnih znakova slavonske kuhinje.",
-            "kljucne_rijeci": [ "čobanac", "meso", "slavonsko jelo", "paprikaš", "tradicija" ]
+            "kljucne_rijeci": ["čobanac", "meso", "slavonsko jelo", "paprikaš", "tradicija"]
         },
         {
             "naziv": "Fiš paprikaš",
             "opis": "Riblji specijalitet tipičan za Slavoniju i Baranju, pripremljeno na otvorenoj vatri uz rijeku. Valpovo je poznato po natjecanjima u kuhanju ribljeg paprikaša.",
-            "kljucne_rijeci": [ "fiš", "paprikaš", "riba", "riblje jelo", "fišijada", "šaran" ]
+            "kljucne_rijeci": ["fiš", "paprikaš", "riba", "riblje jelo", "fišijada", "šaran"]
         },
         {
             "naziv": "Kulen",
             "opis": "Prepoznatljiva slavonska suhomesnata delicija od svinjskog mesa, začinjena crvenom paprikom i češnjakom. Zaštićeni geografski naziv.",
-            "kljucne_rijeci": [ "kulen", "slavonski kulen", "kobasica", "meso", "začin", "tradicija" ]
+            "kljucne_rijeci": ["kulen", "slavonski kulen", "kobasica", "meso", "začin", "tradicija"]
         },
         {
             "naziv": "Slavonski šljivovac",
             "opis": "Tradicionalna slavonska domaća rakija od šljiva, sastavni dio svakog domaćinskog dočeka gostiju.",
-            "kljucne_rijeci": [ "šljivovica", "rakija", "slavonska", "domaća", "alkohol" ]
+            "kljucne_rijeci": ["šljivovica", "rakija", "slavonska", "domaća", "alkohol"]
         }
     ],
     "dogadanja": [
@@ -272,7 +424,7 @@ export const db = {
             "vrijeme": "Veljača / Poklade",
             "opis": "Gradski karneval za najmlađe, s maskama i povorkom kroz Valpovo.",
             "web": "https://tz.valpovo.hr/manifestacije/djecji-gradski-karneval/",
-            "kljucne_rijeci": [ "karneval", "djeca", "maske", "poklade", "povorka" ]
+            "kljucne_rijeci": ["karneval", "djeca", "maske", "poklade", "povorka"]
         },
         {
             "id": 2,
@@ -281,7 +433,7 @@ export const db = {
             "vrijeme": "Travanj (Uskrs)",
             "opis": "Uskrsna manifestacija s tradicijskim obilježjima i događanjima.",
             "web": "https://tz.valpovo.hr/manifestacije/uskrs-u-valpovu/",
-            "kljucne_rijeci": [ "uskrs", "blagdan", "tradicija", "proljeće", "pisanice" ]
+            "kljucne_rijeci": ["uskrs", "blagdan", "tradicija", "proljeće", "pisanice"]
         },
         {
             "id": 3,
@@ -290,7 +442,7 @@ export const db = {
             "vrijeme": "Lipanj",
             "opis": "Festival posvećen nasljeđu Matije Petra Katančića – kulturni, glazbeni i edukativni program.",
             "web": "https://tz.valpovo.hr/manifestacije/matijafest/",
-            "kljucne_rijeci": [ "matijafest", "katančić", "festival", "kultura", "glazba", "ljeto" ]
+            "kljucne_rijeci": ["matijafest", "katančić", "festival", "kultura", "glazba", "ljeto"]
         },
         {
             "id": 4,
@@ -299,7 +451,7 @@ export const db = {
             "vrijeme": "Proljeće / Ljeto",
             "opis": "Gastronomska manifestacija posvećena slavonskim sirima i vinima s degustacijom i lokalnim izlagačima.",
             "web": "https://tz.valpovo.hr/manifestacije/festival-sira-i-vina/",
-            "kljucne_rijeci": [ "sir", "vino", "degustacija", "gastronomija", "festival", "lokalni" ]
+            "kljucne_rijeci": ["sir", "vino", "degustacija", "gastronomija", "festival", "lokalni"]
         },
         {
             "id": 5,
@@ -308,7 +460,7 @@ export const db = {
             "vrijeme": "Ljeto",
             "opis": "Tradicijski sajam i festival koji oživljava starinske valpovačke vašare s lokalnim obrtnicima, gastronomijom i glazbom.",
             "web": "https://tz.valpovo.hr/manifestacije/vashar-festival/",
-            "kljucne_rijeci": [ "vashar", "vašar", "sajam", "tradicija", "obrtnici", "narodni" ]
+            "kljucne_rijeci": ["vashar", "vašar", "sajam", "tradicija", "obrtnici", "narodni"]
         },
         {
             "id": 6,
@@ -317,7 +469,7 @@ export const db = {
             "vrijeme": "Srpanj / Kolovoz",
             "opis": "Ljetni kulturno-zabavni program s raznovrsnim sadržajima za posjetitelje u centru Valpova.",
             "web": "https://tz.valpovo.hr/manifestacije/ljeto-valpovacko/",
-            "kljucne_rijeci": [ "ljeto", "ljetni", "program", "kultura", "zabava", "koncerti" ]
+            "kljucne_rijeci": ["ljeto", "ljetni", "program", "kultura", "zabava", "koncerti"]
         },
         {
             "id": 7,
@@ -326,7 +478,7 @@ export const db = {
             "vrijeme": "Ljeto",
             "opis": "Glazbeni festival koji okuplja mlade i ljubitelje suvremene glazbe.",
             "web": "https://tz.valpovo.hr/manifestacije/reunited-festival/",
-            "kljucne_rijeci": [ "reunited", "festival", "glazba", "mladi", "koncerti", "ljeto" ]
+            "kljucne_rijeci": ["reunited", "festival", "glazba", "mladi", "koncerti", "ljeto"]
         },
         {
             "id": 8,
@@ -335,7 +487,7 @@ export const db = {
             "vrijeme": "Ljeto",
             "opis": "Rock festival s domaćim i regionalnim izvođačima.",
             "web": "https://tz.valpovo.hr/manifestacije/rockaraj-festival/",
-            "kljucne_rijeci": [ "rock", "festival", "glazba", "bend", "koncerti", "rockaraj" ]
+            "kljucne_rijeci": ["rock", "festival", "glazba", "bend", "koncerti", "rockaraj"]
         },
         {
             "id": 9,
@@ -344,7 +496,7 @@ export const db = {
             "vrijeme": "Ljeto / Jesen",
             "opis": "Polufinalno državno natjecanje u kuhanju ribljeg paprikaša – jedna od najprepoznatljivijih slavonskih kulinarskih tradicija.",
             "web": "https://tz.valpovo.hr/manifestacije/fisijada-nard-polufinalno-drzavno-natjecanje-u-kuhanju-ribljeg-paprikasa/",
-            "kljucne_rijeci": [ "fišijada", "paprikaš", "riblji", "natjecanje", "kuhanje", "tradicija" ]
+            "kljucne_rijeci": ["fišijada", "paprikaš", "riblji", "natjecanje", "kuhanje", "tradicija"]
         },
         {
             "id": 10,
@@ -353,7 +505,7 @@ export const db = {
             "vrijeme": "Ljeto",
             "opis": "Festival craft piva s domaćim i stranim pivarima te gastro ponudom.",
             "web": "https://tz.valpovo.hr/manifestacije/craft-beer-festival/",
-            "kljucne_rijeci": [ "pivo", "craft beer", "pivski festival", "pivarstvo" ]
+            "kljucne_rijeci": ["pivo", "craft beer", "pivski festival", "pivarstvo"]
         },
         {
             "id": 11,
@@ -362,7 +514,7 @@ export const db = {
             "vrijeme": "Proljeće / Jesen",
             "opis": "Rekreativna utrka i hodanje kroz valpovačke predjele – manifestacija koja potiče aktivan način života i outdoor turizam.",
             "web": "https://tz.valpovo.hr/manifestacije/valpovacka-staza-zdravlja/",
-            "kljucne_rijeci": [ "staza zdravlja", "trčanje", "hodanje", "sport", "rekreacija", "utrka" ]
+            "kljucne_rijeci": ["staza zdravlja", "trčanje", "hodanje", "sport", "rekreacija", "utrka"]
         },
         {
             "id": 12,
@@ -371,7 +523,7 @@ export const db = {
             "vrijeme": "Kroz godinu",
             "opis": "Kulturna manifestacija posvećena slavnom valpovačkom franjevcu, lingvistu i pjesniku.",
             "web": "https://tz.valpovo.hr/manifestacije/dani-matije-petra-katancica/",
-            "kljucne_rijeci": [ "katančić", "kultura", "franjevac", "jezikoslovac", "dani", "manifestacija" ]
+            "kljucne_rijeci": ["katančić", "kultura", "franjevac", "jezikoslovac", "dani", "manifestacija"]
         },
         {
             "id": 13,
@@ -380,7 +532,7 @@ export const db = {
             "vrijeme": "Prosinac (Advent)",
             "opis": "Advent s božičnim kućicama, sadržajima za djecu i odrasle, gastro i rukotvorinama.",
             "web": "https://tz.valpovo.hr/manifestacije/advent-u-valpovu/",
-            "kljucne_rijeci": [ "advent", "božić", "zimski", "prosinac", "kućice", "blagdani" ]
+            "kljucne_rijeci": ["advent", "božić", "zimski", "prosinac", "kućice", "blagdani"]
         }
     ],
     "smjestaj": [
@@ -392,7 +544,7 @@ export const db = {
             "telefon": "+385 31 651 844",
             "opis": "Hotel s restoranom u sklopu višestoljetnog valpovačkog perivoja.",
             "web": "https://tz.valpovo.hr/smjestaj-u-valpovu/hotel-restoran-park-valpovo/",
-            "kljucne_rijeci": [ "hotel", "park", "noćenje", "smještaj", "restoran" ]
+            "kljucne_rijeci": ["hotel", "park", "noćenje", "smještaj", "restoran"]
         },
         {
             "id": 2,
@@ -403,7 +555,7 @@ export const db = {
             "email": "hotel.villa.valpovo@gmail.com",
             "web": "http://www.villa-valpovo.hr",
             "opis": "Moderan hotel u Valpovu s vrhunskom uslugom i restoranom.",
-            "kljucne_rijeci": [ "hotel", "villa", "noćenje", "smještaj" ]
+            "kljucne_rijeci": ["hotel", "villa", "noćenje", "smještaj"]
         },
         {
             "id": 3,
@@ -414,7 +566,7 @@ export const db = {
             "email": "kitakslavica@gmail.com",
             "web": "https://tz.valpovo.hr/smjestaj-u-valpovu/apartman-tea-valpovo/",
             "opis": "Udoban apartman za iznajmljivanje u Valpovu.",
-            "kljucne_rijeci": [ "apartman", "tea", "noćenje", "smještaj" ]
+            "kljucne_rijeci": ["apartman", "tea", "noćenje", "smještaj"]
         },
         {
             "id": 4,
@@ -425,7 +577,7 @@ export const db = {
             "email": "valpovacki.dvori@gmail.com",
             "web": "http://sobe-valpovo.com/",
             "opis": "Ruralni smještaj s autentičnim slavonskim ugođajem.",
-            "kljucne_rijeci": [ "valpovački dvori", "ruralni", "seoski turizam", "smještaj", "noćenje" ]
+            "kljucne_rijeci": ["valpovački dvori", "ruralni", "seoski turizam", "smještaj", "noćenje"]
         },
         {
             "id": 5,
@@ -436,7 +588,7 @@ export const db = {
             "email": "prenociste.ms@gmail.com",
             "web": "https://msvalpovo.wixsite.com/ms-valpovo",
             "opis": "Prenoćište M&S za kratki i duži boravak u Valpovu.",
-            "kljucne_rijeci": [ "prenoćište", "m&s", "sobe", "noćenje", "smještaj" ]
+            "kljucne_rijeci": ["prenoćište", "m&s", "sobe", "noćenje", "smještaj"]
         },
         {
             "id": 6,
@@ -447,7 +599,7 @@ export const db = {
             "email": "dcicak987@gmail.com",
             "web": "https://tz.valpovo.hr/smjestaj-u-valpovu/sobe-za-iznajmljivanje-cicak/",
             "opis": "Privatne sobe za iznajmljivanje u Valpovu.",
-            "kljucne_rijeci": [ "sobe", "čičak", "privatni smještaj", "noćenje" ]
+            "kljucne_rijeci": ["sobe", "čičak", "privatni smještaj", "noćenje"]
         },
         {
             "id": 7,
@@ -458,7 +610,7 @@ export const db = {
             "email": "evicasetnik@gmail.com",
             "web": "https://tz.valpovo.hr/smjestaj-u-valpovu/prenociste-setnik/",
             "opis": "Prenoćište Setnik u Valpovu.",
-            "kljucne_rijeci": [ "prenoćište", "setnik", "noćenje", "smještaj" ]
+            "kljucne_rijeci": ["prenoćište", "setnik", "noćenje", "smještaj"]
         },
         {
             "id": 8,
@@ -468,8 +620,8 @@ export const db = {
             "telefon": "097 730-5708",
             "email": "stolic7@gmail.com",
             "web": "https://tz.valpovo.hr/smjestaj-u-valpovu/privatni-smjestaj-tolic/",
-            "opis": "Privatni smještaj obitelji Tolić u Ladimirevcima.",
-            "kljucne_rijeci": [ "privatni smještaj", "tolić", "sobe", "noćenje" ]
+            "opis": "Privatne smještaj obitelji Tolić u Ladimirevcima.",
+            "kljucne_rijeci": ["privatni smještaj", "tolić", "sobe", "noćenje"]
         },
         {
             "id": 9,
@@ -480,7 +632,7 @@ export const db = {
             "email": "robert.setnik@gmail.com",
             "web": "https://hr.airbnb.com/rooms/15785129",
             "opis": "Moderno opremljena soba u centru Valpova.",
-            "kljucne_rijeci": [ "soba", "draft room", "iznajmljivanje", "noćenje" ]
+            "kljucne_rijeci": ["soba", "draft room", "iznajmljivanje", "noćenje"]
         },
         {
             "id": 10,
@@ -491,7 +643,7 @@ export const db = {
             "email": "lidijaivic23@gmail.com",
             "web": "https://tz.valpovo.hr/smjestaj-u-valpovu/apartman-ana-1-valpovo/",
             "opis": "Apartman Ana 1 za iznajmljivanje u mirnoj ulici.",
-            "kljucne_rijeci": [ "apartman", "ana", "noćenje", "smještaj" ]
+            "kljucne_rijeci": ["apartman", "ana", "noćenje", "smještaj"]
         },
         {
             "id": 11,
@@ -502,7 +654,7 @@ export const db = {
             "email": "danijela.majetic@gmail.com",
             "web": "https://tz.valpovo.hr/smjestaj-u-valpovu/apartmani-nives-i-lea-valpovo/",
             "opis": "Dva moderno opremljena apartmana u centru grada.",
-            "kljucne_rijeci": [ "apartman", "nives", "lea", "noćenje", "smještaj" ]
+            "kljucne_rijeci": ["apartman", "nives", "lea", "noćenje", "smještaj"]
         },
         {
             "id": 12,
@@ -513,7 +665,7 @@ export const db = {
             "email": "studioapartmanm@gmail.com",
             "web": "https://tz.valpovo.hr/smjestaj-u-valpovu/studio-apartman-m-valpovo/",
             "opis": "Studio apartman u blizini središta grada.",
-            "kljucne_rijeci": [ "studio", "apartman", "noćenje", "smještaj" ]
+            "kljucne_rijeci": ["studio", "apartman", "noćenje", "smještaj"]
         },
         {
             "id": 13,
@@ -524,7 +676,7 @@ export const db = {
             "email": "josipa.andrisic1@gmail.com",
             "web": "https://tz.valpovo.hr/smjestaj-u-valpovu/soba-valux-valpovo/",
             "opis": "Luksuzno opremljena privatna soba VaLux.",
-            "kljucne_rijeci": [ "soba", "valux", "luksuz", "noćenje", "smještaj" ]
+            "kljucne_rijeci": ["soba", "valux", "luksuz", "noćenje", "smještaj"]
         },
         {
             "id": 14,
@@ -535,7 +687,7 @@ export const db = {
             "email": "hethongaarsehuisje@gmail.com",
             "web": "https://tz.valpovo.hr/smjestaj-u-valpovu/olive-holiday-house/",
             "opis": "Šarmantna seoska kuća idealna za obitelji.",
-            "kljucne_rijeci": [ "olive", "holiday house", "kuća za odmor", "noćenje" ]
+            "kljucne_rijeci": ["olive", "holiday house", "kuća za odmor", "noćenje"]
         },
         {
             "id": 15,
@@ -546,7 +698,7 @@ export const db = {
             "email": "apartmancentarvalpovo@gmail.com",
             "web": "https://tz.valpovo.hr/smjestaj-u-valpovu/apartman-centar-valpovo/",
             "opis": "Apartman u samom centru, na 2. katu s dizalom.",
-            "kljucne_rijeci": [ "apartman", "centar", "noćenje", "smještaj" ]
+            "kljucne_rijeci": ["apartman", "centar", "noćenje", "smještaj"]
         }
     ],
     "priroda": [
@@ -555,30 +707,76 @@ export const db = {
             "naziv": "Rijeka Karašica",
             "tip": "Prirodna atrakcija",
             "opis": "Karašica je manja slavonska rijeka koja teče pokraj Valpova. Idealna za ribolov, šetnje uz obalu i odmor u prirodi.",
-            "kljucne_rijeci": [ "karasica", "rijeka", "ribolov", "priroda", "šetnja", "voda" ]
+            "kljucne_rijeci": ["karasica", "rijeka", "ribolov", "priroda", "šetnja", "voda"]
         },
         {
             "id": 2,
             "naziv": "Perivoj dvorca Prandau-Normann",
             "tip": "Park / Priroda",
-            "opis": "Prostrani perivoj okružuje dvorac Prandau-Normann. Idealan za šetnje, odmor i fotografiranje.",
-            "kljucne_rijeci": [ "perivoj", "park", "šetnja", "dvorac", "priroda", "zeleno" ]
+            "opis": "Prostrani krajobrazni park koji okružuje dvorac. Jedan od najljepših u Hrvatskoj s oko 100 vrsta drveća. Hortikulturni spomenik prirode.",
+            "adresa": "Ul. Dvorac Norman-Prandau 1, 31550 Valpovo",
+            "koordinate": { "lat": 45.657398, "lng": 18.4156833 },
+            "ocjena": 4.7,
+            "broj_recenzija": 32,
+            "radno_vrijeme": { "svaki_dan": "Otvoreno 24h" },
+            "kljucne_rijeci": ["perivoj", "park", "šetnja", "dvorac", "priroda", "zeleno"]
         },
         {
             "id": 3,
             "naziv": "Biciklističke staze",
             "tip": "Biciklizam",
             "opis": "Valpovo je polazna točka nekoliko biciklističkih staza kroz slavonske ravnice i uz Karašicu. Operativni plan razvoja cikloturizma dostupan je za detaljne informacije.",
-            "kljucne_rijeci": [ "bicikl", "biciklizam", "cikloturizam", "staze", "pedala" ]
+            "kljucne_rijeci": ["bicikl", "biciklizam", "cikloturizam", "staze", "pedala"]
         },
         {
             "id": 4,
             "naziv": "Valpovačka staza zdravlja",
             "tip": "Rekreacijska staza",
             "opis": "Rekreacijska staza za hodanje i trčanje koja prolazi kroz zelene površine Valpova.",
-            "kljucne_rijeci": [ "staza", "zdravlje", "hodanje", "jogging", "rekreacija", "šetnja" ]
+            "kljucne_rijeci": ["staza", "zdravlje", "hodanje", "jogging", "rekreacija", "šetnja"]
         }
     ],
+    "usluge": {
+        "autoservisi": [
+            { "id": "SER-001", "naziv": "Valentić", "adresa": "Ul. Nikole Tesle 30, 31550 Valpovo", "ocjena": 4.9, "broj_recenzija": 39, "radno_vrijeme": { "pon-pet": "08:00 - 16:00", "sub": "08:00 - 12:00" }, "kljucne_rijeci": ["mehaničar", "auto", "servis"] },
+            { "id": "SER-002", "naziv": "Autoservis Galičić", "adresa": "Sunčana ul. 21, 31550 Valpovo", "ocjena": 4.7, "broj_recenzija": 82, "radno_vrijeme": { "pon-pet": "07:00 - 15:00" }, "kljucne_rijeci": ["mehaničar", "auto", "servis", "gume", "klima"] },
+            { "id": "SER-003", "naziv": "Autoservis Ružić", "adresa": "Ul. Nikole Tesle 28, 31550 Valpovo", "ocjena": 4.8, "broj_recenzija": 34, "radno_vrijeme": { "pon-pet": "07:00 - 15:00" }, "kljucne_rijeci": ["mehaničar", "auto", "servis"] },
+            { "id": "SER-007", "naziv": "DABO - obrt za popravak vozila", "adresa": "Florijanova ul. 15, 31550 Valpovo", "ocjena": 5.0, "broj_recenzija": 1, "radno_vrijeme": { "pon-pet": "08:00 - 16:00", "sub": "08:00 - 12:00" }, "kljucne_rijeci": ["mehaničar", "auto", "servis"] }
+        ],
+        "ljekarne": [
+            { "id": "LJK-001", "naziv": "Centralna ljekarna Valpovo", "adresa": "Osječka ul. 3, 31550 Valpovo", "ocjena": 4.6, "broj_recenzija": 21, "radno_vrijeme": { "pon-pet": "07:00 - 20:00", "sub": "08:00 - 13:00" }, "kljucne_rijeci": ["ljekarna", "lijek", "apoteka", "zdravlje"] }
+        ],
+        "posta": [
+            { "id": "POS-001", "naziv": "HP - Hrvatska pošta", "adresa": "Osječka ul. 2, 31550 Valpovo", "ocjena": 3.2, "broj_recenzija": 22, "radno_vrijeme": { "pon-pet": "08:00 - 18:00", "sub": "08:00 - 13:00" }, "kljucne_rijeci": ["pošta", "paket", "pismo", "slanje"] }
+        ],
+        "banke_i_bankomati": [
+            { "id": "BNK-001", "naziv": "PBZ banka", "adresa": "Ul. kralja Petra Krešimira IV 2, 31550 Valpovo", "ocjena": 3.4, "broj_recenzija": 39, "radno_vrijeme": { "pon-pet": "08:00 - 19:00" }, "kljucne_rijeci": ["banka", "pbz", "novac"] },
+            { "id": "BNK-002", "naziv": "Slatinska banka", "adresa": "Trg kralja Tomislava, 31550 Valpovo", "ocjena": 4.5, "broj_recenzija": 13, "radno_vrijeme": { "pon-pet": "08:30 - 16:00" }, "kljucne_rijeci": ["banka", "slatinska", "novac"] },
+            { "id": "BNK-003", "naziv": "OTP bankomat", "adresa": "Vijenac 107. brigade HV 1, 31550 Valpovo", "ocjena": 4.3, "broj_recenzija": 6, "radno_vrijeme": { "svaki_dan": "00:00 - 24:00" }, "kljucne_rijeci": ["bankomat", "otp", "cash"] },
+            { "id": "BNK-004", "naziv": "Zagrebačka banka bankomat", "adresa": "Ul. Braće Radić 1A, 31550 Valpovo", "ocjena": 3.5, "broj_recenzija": 2, "radno_vrijeme": { "svaki_dan": "00:00 - 24:00" }, "kljucne_rijeci": ["bankomat", "zaba", "cash"] }
+        ],
+        "trgovine": [
+            { "id": "SHP-001", "naziv": "STOP SHOP Valpovo", "tip": "Trgovački centar", "adresa": "Bana Josipa Jelačića, 31550 Valpovo", "ocjena": 4.4, "broj_recenzija": 21, "radno_vrijeme": { "pon-sub": "09:00 - 21:00" }, "kljucne_rijeci": ["shopping", "trgovina", "centar", "stop shop"] },
+            { "id": "SHP-002", "naziv": "Plodine", "tip": "Supermarket", "adresa": "Bizovačka ul. 10, 31550 Valpovo", "ocjena": 4.0, "broj_recenzija": 922, "radno_vrijeme": { "pon-ned": "07:00 - 21:00" }, "kljucne_rijeci": ["hrana", "trgovina", "plodine", "supermarket"] },
+            { "id": "SHP-003", "naziv": "Centar tehnike Valpovo", "tip": "Elektronika", "adresa": "Osječka ul. 6, 31550 Valpovo", "ocjena": 4.5, "broj_recenzija": 71, "radno_vrijeme": { "pon-pet": "08:00 - 20:00", "sub": "08:00 - 13:00" }, "kljucne_rijeci": ["tehnika", "televizor", "mobitel", "elektronika"] }
+        ],
+        "benzinske_postaje": [
+            { "id": "BEN-001", "naziv": "Petrol (Bizovačka)", "adresa": "Bizovačka 6, 31550 Valpovo", "ocjena": 4.5, "broj_recenzija": 357, "radno_vrijeme": { "pon-sub": "06:00 - 21:00", "ned": "08:00 - 20:00" }, "kljucne_rijeci": ["gorivo", "benzin", "petrol"] },
+            { "id": "BEN-003", "naziv": "INA (Belašće)", "adresa": "Ul. bana Josipa Jelačića 30, 31550 Valpovo", "ocjena": 4.6, "broj_recenzija": 128, "radno_vrijeme": { "svaki_dan": "06:00 - 22:00" }, "kljucne_rijeci": ["gorivo", "benzin", "ina"] }
+        ],
+        "frizerski_saloni": [
+            { "id": "FRI-001", "naziv": "Frizerski salon Đurđica", "adresa": "Ul. Nikole Tesle 39, 31550 Valpovo", "ocjena": 4.9, "broj_recenzija": 36, "radno_vrijeme": { "pon-sri": "13:00 - 20:00", "čet-sub": "08:00 - 14:00" }, "kljucne_rijeci": ["frizura", "šišanje", "salon"] },
+            { "id": "FRI-002", "naziv": "Frizerski salon Viva", "adresa": "Vijenac 107 brigade HV 3, 31550 Valpovo", "ocjena": 4.7, "broj_recenzija": 87, "radno_vrijeme": { "pon-pet": "09:00 - 20:00", "sub": "08:00 - 13:00" }, "kljucne_rijeci": ["frizura", "šišanje", "salon"] },
+            { "id": "FRI-010", "naziv": "Barbershop Industry", "adresa": "J.J.Strossmayera 8, 31550 Valpovo", "ocjena": 4.8, "broj_recenzija": 6, "radno_vrijeme": { "pon-pet": "09:00 - 20:00", "sub": "08:00 - 13:00" }, "kljucne_rijeci": ["brijačnica", "brada", "šišanje", "barber"] }
+        ],
+        "zdravstvo": [
+            { "id": "ZDR-001", "naziv": "Dom zdravlja Valpovo", "adresa": "Ul. kralja Petra Krešimira IV 1, 31550 Valpovo", "ocjena": 4.5, "broj_recenzija": 2, "kljucne_rijeci": ["doktor", "zdravlje", "hitna", "bolnica"] }
+        ],
+        "sport_i_fitness": [
+            { "id": "SPO-001", "naziv": "SC Ružić (Teretana)", "adresa": "Ul. Nikole Tesle 28, 31550 Valpovo", "ocjena": 4.7, "broj_recenzija": 37, "radno_vrijeme": { "pon-sub": "08:00 - 22:00" }, "kljucne_rijeci": ["teretana", "fitness", "vježbanje", "sport"] },
+            { "id": "SPO-003", "naziv": "Sportska dvorana Valpovo", "adresa": "Ul. Franje Tuđmana 4, 31550 Valpovo", "ocjena": 4.5, "broj_recenzija": 146, "kljucne_rijeci": ["dvorana", "sport", "rukomet", "košarka"] }
+        ]
+    },
     "korisne_informacije": {
         "kontakt_tz": {
             "naziv": "Turistička zajednica Grada Valpova",
@@ -591,3 +789,4 @@ export const db = {
         }
     }
 };
+
