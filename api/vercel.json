@@ -1,7 +1,13 @@
 {
-  "functions": {
-    "api/chat.js": {
-      "runtime": "nodejs18.x"
+    "functions": {
+        "api/chat.js": {
+            "runtime": "nodejs18.x",
+            "maxDuration": 30,
+            "memory": 512
+        },
+        "api/weather.js": {
+            "runtime": "nodejs18.x",
+            "maxDuration": 10
+        }
     }
-  }
 }
