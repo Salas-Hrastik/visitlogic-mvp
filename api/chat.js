@@ -203,9 +203,9 @@ export default async function handler(req, res) {
         return res.status(400).json({ error: "Message is required" });
     }
 
-    const apiKey = process.env.GEMINI_API_KEY;
+    const apiKey = process.env.OPENAI_API_KEY;
     if (!apiKey) {
-        return res.status(500).json({ error: "GEMINI_API_KEY nije postavljen" });
+        return res.status(500).json({ error: "OPENAI_API_KEY nije postavljen" });
     }
 
     try {
@@ -224,61 +224,45 @@ export default async function handler(req, res) {
 
         const systemPrompt = buildSystemPrompt(db, weather, season, hour, isWeekend);
 
-        // Gemini API poziv - korištenje stabilne v1 verzije bez system_instruction polja
-        // (ovo osigurava kompatibilnost ako v1beta nije dostupna ili ne prepoznaje polje)
-        const endpoint =
-            `https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
-
-        // Izgradi history za Gemini
-        const contents = [];
-
-        // Dodaj system prompt kao prvu "instrukciju" u povijest ako je chat na početku,
-        // inače ga dodajemo u trenutnu poruku da AI uvijek prati pravila.
-        const fullMessage = `DODATNE INSTRUKCIJE ZA PONAŠANJE:\n${systemPrompt}\n\nKorisnik pita: ${message}`;
+        // Izgradi poruke za OpenAI
+        const messages = [
+            { role: "system", content: systemPrompt }
+        ];
 
         // Dodaj povijest razgovora
         const recentHistory = history.slice(-6);
         for (const msg of recentHistory) {
-            contents.push({
-                role: msg.role === "user" ? "user" : "model",
-                parts: [{ text: msg.content }],
+            messages.push({
+                role: msg.role === "user" ? "user" : "assistant",
+                content: msg.content
             });
         }
 
-        // Dodaj trenutnu poruku s ugrađenim instrukcijama
-        contents.push({
-            role: "user",
-            parts: [{ text: fullMessage }],
-        });
+        // Dodaj trenutnu poruku
+        messages.push({ role: "user", content: message });
 
-        const body = {
-            contents,
-            generationConfig: {
-                temperature: 0.3,
-                maxOutputTokens: 800,
-                topP: 0.8,
-            },
-            safetySettings: [
-                { category: "HARM_CATEGORY_HARASSMENT", threshold: "BLOCK_NONE" },
-                { category: "HARM_CATEGORY_HATE_SPEECH", threshold: "BLOCK_NONE" },
-            ],
-        };
-
-        const geminiRes = await fetch(endpoint, {
+        const openAIRes = await fetch("https://api.openai.com/v1/chat/completions", {
             method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(body),
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${apiKey}`
+            },
+            body: JSON.stringify({
+                model: "gpt-4o-mini", // Brz i pouzdan model
+                messages: messages,
+                temperature: 0.7,
+                max_tokens: 800
+            })
         });
 
-        if (!geminiRes.ok) {
-            const err = await geminiRes.text();
-            console.error("Gemini API error:", err);
-            return res.status(502).json({ error: "AI servis nije dostupan", details: err });
+        if (!openAIRes.ok) {
+            const err = await openAIRes.text();
+            console.error("OpenAI API error:", err);
+            return res.status(502).json({ error: "AI servis (OpenAI) nije dostupan", details: err });
         }
 
-        const geminiData = await geminiRes.json();
-        const reply =
-            geminiData?.candidates?.[0]?.content?.parts?.[0]?.text ||
+        const aiData = await openAIRes.json();
+        const reply = aiData?.choices?.[0]?.message?.content ||
             "Nažalost, trenutno ne mogu odgovoriti. Pokušajte malo kasnije.";
 
         return res.status(200).json({ reply });
