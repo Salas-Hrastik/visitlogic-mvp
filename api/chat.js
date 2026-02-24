@@ -100,12 +100,12 @@ export default async function handler(req, res) {
 
         // 1. UČITAJ BAZU
         let db;
-        const dbPath = path.join(process.cwd(), "data", "valpovo.json");
+        const dbPath = path.resolve(process.cwd(), "data", "valpovo.json");
         try {
             if (!fs.existsSync(dbPath)) {
                 return res.status(500).json({
                     error: "Baza podataka nije pronađena",
-                    details: `Putanja ${dbPath} ne postoji na serveru. CWD: ${process.cwd()}`
+                    details: `Putanja ${dbPath} ne postoji. CWD: ${process.cwd()}`
                 });
             }
 
@@ -113,16 +113,18 @@ export default async function handler(req, res) {
             try {
                 db = JSON.parse(dbContent);
             } catch (jsonErr) {
+                // Escapamo < za siguran prikaz na frontendu
+                const snippet = dbContent.substring(0, 150).replace(/</g, "&lt;").replace(/>/g, "&gt;");
                 return res.status(500).json({
                     error: "Greška u formatu baze (nije JSON)",
-                    details: `Sadržaj (prvih 100): ${dbContent.substring(0, 100)}... | CWD: ${process.cwd()} | Greška: ${jsonErr.message}`
+                    details: `Sadržaj: ${snippet} | Putanja: ${dbPath} | Greška: ${jsonErr.message}`
                 });
             }
         } catch (err) {
             console.error("DB Load Error:", err);
             return res.status(500).json({
-                error: "Greška pri učitavanju baze podataka",
-                details: "Sistemski check: " + err.message
+                error: "Greška pri pristupu bazi podataka",
+                details: "Sistemska greška: " + err.message
             });
         }
 
