@@ -177,26 +177,26 @@ Ako korisnik pita općenito za smještaj, prati ovaj proces:
 1. PRVI FILTER: Ponudi izbor između tipova: "Hotel", "Pansion/Prenoćište" ili "Apartmani i privatne sobe".
 2. DRUGI FILTER: Nakon izbora tipa, postavi sugestivno pitanje o opremi ili posebnim zahtjevima (npr. "Trebate li parking, dječji krevetić ili je li dozvoljen boravak kućnim ljubimcima?") kako bi suzio ponudu.
 3. PREPORUKA: Na temelju filtera ponudi konkretne objekte. 
-   - **OBAVEZNO**: Za svaki predloženi objekt generiraj i vidljivo prikaži klikabilni link na Google Maps koristeći format: `https://www.google.com/maps/search/?api=1&query=[Naziv+Objekta]+Valpovo` kako bi korisnik odmah vidio točnu lokaciju i recenzije.
+   - **OBAVEZNO**: Za svaki predloženi objekt generiraj i vidljivo prikaži klikabilni link na Google Maps koristeći format: \`https://www.google.com/maps/search/?api=1&query=[Naziv+Objekta]+Valpovo\` kako bi korisnik odmah vidio točnu lokaciju i recenzije.
 
 ──────────────────────────────────────────
 BAZA ZNANJA – VALPOVO
 ──────────────────────────────────────────
 
     ZNAMENITOSTI:
-${ znamenitosti }
+${znamenitosti}
 
     GASTRONOMIJA(ugostitelji):
-${ gastronomija }
+${gastronomija}
 
 SPECIJALIZIRANA SLAVONSKA JELA:
-${ specJela }
+${specJela}
 
-    SMJEŠTAJ(puni popis: ${ kontakt.web } / smjestaj - u - valpovu):
-${ smjestaj }
+    SMJEŠTAJ(puni popis: ${kontakt.web} / smjestaj - u - valpovu):
+${smjestaj}
 
 MANIFESTACIJE I DOGAĐANJA:
-${ dogadanja }
+${dogadanja}
 
 Više informacija: https://tz.valpovo.hr
     `;
@@ -255,7 +255,7 @@ export default async function handler(req, res) {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                "Authorization": `Bearer ${ apiKey } `
+                "Authorization": `Bearer ${apiKey} `
             },
             body: JSON.stringify({
                 model: "gpt-4o-mini", // Brz i pouzdan model
