@@ -1,4 +1,48 @@
-import { db } from "./database.js";
+// ── INTEGRATED DATABASE (Valpovo Tourism Data) ─────────────────────────────
+const db = {
+    "grad": {
+        "naziv": "Valpovo",
+        "opis": "Valpovo je grad u Osječko-baranjskoj županiji, smješten uz rijeku Karašicu, poznat po dvorcu Prandau-Normann, bogatoj kulturnoj baštini i toploj slavonskoj gostoljubivosti.",
+        "adresa_tz": "Trg kralja Tomislava 2, 31550 Valpovo",
+        "telefon": "+385 31 656 200",
+        "email": "tzgvalpovo@gmail.com",
+        "web": "https://tz.valpovo.hr",
+        "virtualna_setnja": "https://tz.valpovo.hr/2025/01/17/virtualna-setnja-valpovo-gdje-najbolje-pocinje/"
+    },
+    "znamenitosti": [
+        { "id": 1, "naziv": "Dvorac Prandau-Normann i perivoj", "tip": "Kulturna baština", "opis": "Ljetnikovačka rezidencija obitelji Prandau-Normann – barokni dvorac.", "adresa": "Ul. Dvorac Norman-Prandau 1, 31550 Valpovo", "koordinate": { "lat": 45.6589, "lng": 18.4153 }, "ocjena": 4.7, "web": "https://tz.valpovo.hr/znamenitosti/dvorac-i-perivoj/" },
+        { "id": 2, "naziv": "Muzej Valpovštine", "tip": "Muzej", "opis": "Muzej u dvorcu koji čuva lokalnu povijest.", "adresa": "Ul. Dvorac Norman-Prandau, 31550 Valpovo", "koordinate": { "lat": 45.6593, "lng": 18.4154 }, "ocjena": 4.5, "web": "https://tz.valpovo.hr/znamenitosti/muzej-valpovstine" },
+        { "id": 3, "naziv": "Advent Valpovo", "tip": "Manifestacija", "opis": "Adventsko-božićni sajam na Trgu.", "koordinate": { "lat": 45.6584, "lng": 18.4177 }, "ocjena": 5.0, "radno_vrijeme": { "napomena": "Sezonski (prosinac)" } }
+    ],
+    "gastronomija": [
+        { "id": 1, "naziv": "Restoran Jovalija", "tip": "Restoran", "adresa": "Ul. Ive Lole Ribara 1", "ocjena": 4.9, "opis": "Vrhunska tradicijska slavonska jela.", "radno_vrijeme": { "svaki_dan": "09:00 - 22:00" } },
+        { "id": 2, "naziv": "Hotel & Restoran Park Valpovo", "tip": "Restoran / Hotel", "adresa": "Ul. Ive Lole Ribara 10", "ocjena": 4.7, "opis": "Restoran uz hotel Park u sklopu dvorca.", "radno_vrijeme": { "pon-sub": "10:00-22:00", "ned": "11:00-16:00" } },
+        { "id": 3, "naziv": "PIGment", "tip": "Restoran / Burgeri", "adresa": "Trg kralja Tomislava 7", "ocjena": 5.0, "opis": "Specijalizirani burger bar.", "radno_vrijeme": { "čet": "17:00-22:00", "pet-sub": "17:00-00:00", "ned": "17:00-22:00" } }
+    ],
+    "usluge": {
+        "benzinske_postaje": [
+            { "id": "BEN-001", "naziv": "Petrol (Bizovačka)", "adresa": "Bizovačka 6", "ocjena": 4.5, "radno_vrijeme": { "pon-sub": "06:00-21:00", "ned": "08:00-20:00" } },
+            { "id": "BEN-002", "naziv": "Petrol (Strossmayerova)", "adresa": "Ul. J. J. Strossmayera 85A", "ocjena": 4.6, "radno_vrijeme": { "svaki_dan": "06:00-22:00" } },
+            { "id": "BEN-003", "naziv": "INA (Bana Jelačića)", "adresa": "Ul. bana Josipa Jelačića 30", "ocjena": 4.6, "radno_vrijeme": { "svaki_dan": "06:00-22:00" } },
+            { "id": "BEN-004", "naziv": "INA (Ive Lole Ribara)", "adresa": "Ul. Ive Lole Ribara 61", "ocjena": 4.5, "radno_vrijeme": { "svaki_dan": "06:00-22:00" } }
+        ],
+        "ljekarne": [{ "id": "LJK-001", "naziv": "Centralna ljekarna", "adresa": "Osječka ul. 3", "ocjena": 4.6 }],
+        "banke": [{ "id": "BNK-001", "naziv": "PBZ banka", "adresa": "Ul. kralja Petra Krešimira IV 2", "ocjena": 3.4 }]
+    },
+    "priroda": [
+        { "id": 1, "naziv": "Rijeka Karašica", "opis": "Identitet grada, idealna za šetnje i ribolov.", "koordinate": { "lat": 45.659, "lng": 18.418 } },
+        { "id": 3, "naziv": "Rijeka Drava", "opis": "Moćna rijeka uz naselja Nard, Nehaj i Labov. Plaža u Nardu.", "koordinate": { "lat": 45.672, "lng": 18.448 } },
+        { "id": 7, "naziv": "Vikend naselje Nehaj", "tip": "Izletnička zona", "opis": "Prirodne plaže, ribolov. Forest Glam za proslave.", "koordinate": { "lat": 45.6415, "lng": 18.5123 }, "ocjena": 5.0 },
+        { "id": 8, "naziv": "Vikend naselje Labov", "tip": "Izletnička zona", "opis": "Mirna oaza za ribolov uz Dravu.", "koordinate": { "lat": 45.638, "lng": 18.430 } }
+    ],
+    "smjestaj": [
+        { "id": 1, "naziv": "Hotel & Restoran Park Valpovo", "adresa": "Dvorac 1", "telefon": "+385 31 651 844" },
+        { "id": 2, "naziv": "Hotel Villa Valpovo", "adresa": "Bana Josipa Jelačića 1", "telefon": "031 651 960" }
+    ],
+    "korisne_informacije": {
+        "kontakt_tz": { "naziv": "TZ Grada Valpova", "telefon": "+385 31 656 200", "email": "tzgvalpovo@gmail.com", "web": "https://tz.valpovo.hr" }
+    }
+};
 
 // ── WEATHER HELPER ──────────────────────────────────────────────────────────
 async function fetchWeather() {
@@ -9,7 +53,6 @@ async function fetchWeather() {
         const d = await r.json();
         return d.current_weather || null;
     } catch (e) {
-        console.error("fetchWeather error (non-fatal):", e);
         return null;
     }
 }
@@ -28,13 +71,9 @@ function getHour() {
 // ── BUILD SYSTEM PROMPT ─────────────────────────────────────────────────────
 function buildSystemPrompt(db, weather, season, hour, isWeekend) {
     const weatherNote = weather
-        ? `\n\nTRENUTNO STANJE U VALPOVU:\n- Temperatura: ${weather.temperature}°C\n- Vjetar: ${weather.windspeed} km/h\n- Weather Code: ${weather.weathercode}\nSezona: ${season}. Sat: ${hour}:00.`
+        ? `\n\nTRENUTNO STANJE U VALPOVU:\n- Temperatura: ${weather.temperature}°C\n- Vjetar: ${weather.windspeed} km/h\nSezona: ${season}. Sat: ${hour}:00.`
         : `\nSezona: ${season}. Sat: ${hour}:00.`;
 
-    const eveningNote = hour >= 19 ? "\nNAKON 19:00: Predloži večernju šetnju ili restoran." : "";
-    const weekendNote = isWeekend ? "\nVIKEND: Napomeni mogućnost događanja." : "";
-
-    // Helper to format entities for the prompt
     const fmt = (item) => {
         let s = `- ${item.naziv}: ${item.opis || ""}`;
         if (item.adresa) s += ` | Adresa: ${item.adresa}`;
@@ -51,10 +90,7 @@ function buildSystemPrompt(db, weather, season, hour, isWeekend) {
     const gastronomija = (db.gastronomija || []).map(fmt).join("\n");
     const priroda = (db.priroda || []).map(fmt).join("\n");
     const smjestaj_list = (db.smjestaj || []).map(fmt).join("\n");
-    const dogadanja = (db.dogadanja || []).map(d => `- ${d.naziv} (${d.vrijeme}): ${d.opis}`).join("\n");
-    const specJela = (db.specijalizirana_jela || []).map(j => `- ${j.naziv}: ${j.opis}`).join("\n");
 
-    // Format USLUGE section
     let uslugeStr = "";
     if (db.usluge) {
         for (const [kat, lista] of Object.entries(db.usluge)) {
@@ -63,77 +99,44 @@ function buildSystemPrompt(db, weather, season, hour, isWeekend) {
     }
 
     return `STRICT LANGUAGE RULE: Always respond in the SAME language the user is using.
-Dobrodošli u Valpovo 🌳🏰
-Ti si digitalni turistički informator TZ Valpovo. Profesionalan, topao i koristan.
-Izvor informacija: tz.valpovo.hr i interna baza podataka.
+Digitalni turistički informator TZ Valpovo. Profesionalan, topao i koristan.
+Izvor: tz.valpovo.hr.
 
-${weatherNote}${eveningNote}${weekendNote}
+${weatherNote}
 
-──────────────────────────────────────────
-PRAVILA FORMATIRANJA ODGOVORA (OBAVEZNO):
-──────────────────────────────────────────
- Za SVAKI subjekt (restoran, trgovina, znamenitost, usluga) koji preporučiš, MORAŠ prikazati:
- 1. NAZIV S IKONOM: Ispred naziva stavi prikladnu ikonu ovisno o vrsti (npr. 🏛️ za znamenitosti, 🍽️ za hranu, 🌊 za prirodu, 🛌 za smještaj, 🛒 za trgovine, 🚗 za servise, 🏧 za banke, 🎉 za događanja).
- 2. KRATKI OPIS.
- 3. KONTAKT: Ako postoji "Telefon", prikaži ga kao "📞 [broj]".
- 4. WEB: Ako postoji "Web", prikaži ga kao "🌐 [link]".
- 5. GPS: Ako postoje "Koordinate", prikaži ih kao "📍 [lat], [lng]".
- 6. GOOGLE MAPS LINK: OBAVEZNO generiraj link u formatu:
-    https://www.google.com/maps/search/?api=1&query=[Naziv+Objekta]+Valpovo
-    (Ovaj link će frontend prikazati kao gumb).
+PRAVILA FORMATIRANJA:
+1. NAZIV S IKONOM (🏛️, 🍽️, 🌊, 🛌, 🛒, 🚗, 🏧, 🎉).
+2. KRATKI OPIS.
+3. KONTAKT (📞), WEB (🌐), GPS (📍).
+4. MAPS LINK: OBAVEZNO https://www.google.com/maps/search/?api=1&query=[Naziv+Objekta]+Valpovo
 
- AKO korisnik pita za radno vrijeme ili ocjenu, koristi podatke iz baze.
- Koristi listu (• ili -) za nabrajanje više objekata.
-
-──────────────────────────────────────────
-PROCES FILTRIRANJA SMJEŠTAJA
-──────────────────────────────────────────
-1. IZLISTAJ SVE objekte iz odabrane kategorije.
-2. ZA SVAKI OBJEKT NAVEDI: Naziv, Adresu, Telefon, Opis i Maps link.
-3. KRAJ: "Za sve detaljne informacije i rezervacije, molimo kontaktirajte izravno odabrani smještaj..."
-
-──────────────────────────────────────────
-BAZA ZNANJA – VALPOVO
-──────────────────────────────────────────
-ZNAMENITOSTI I ATRAKCIJE:
+BAZA ZNANJA:
+ZNAMENITOSTI:
 ${znamenitosti}
 
-PRIRODA I REKREACIJA (RIJEKE I VIKEND NASELJA):
+PRIRODA (NEHAJ, LABOV, DRAVA):
 ${priroda}
 
-GASTRONOMIJA (HRANA I PIĆE):
+GASTRONOMIJA:
 ${gastronomija}
 
-USLUGE (BANKE, MEHANIČARI, TRGOVINE, ZDRAVLJE):
+USLUGE:
 ${uslugeStr}
 
 SMJEŠTAJ:
 ${smjestaj_list}
-
-MANIFESTACIJE:
-${dogadanja}
-
-SPECIJALIZIRANA JELA:
-${specJela}
 `;
 }
 
 // ── HANDLER ─────────────────────────────────────────────────────────────────
 export default async function handler(req, res) {
-    if (req.method !== "POST") {
-        return res.status(405).json({ error: "Method not allowed" });
-    }
+    if (req.method !== "POST") return res.status(405).json({ error: "Method not allowed" });
 
     try {
         const { message, history = [] } = req.body;
-        if (!message) return res.status(400).json({ error: "Message is required" });
-
         const apiKey = process.env.OPENAI_API_KEY;
-        if (!apiKey || apiKey.trim().length < 10) {
-            return res.status(500).json({ error: "OPENAI_API_KEY nije ispravno postavljen u Vercel postavkama." });
-        }
+        if (!apiKey) return res.status(500).json({ error: "Missing API Key" });
 
-        // 1. KORISTI UGRAĐENU BAZU (nema više čitanja s diska)
         const weather = await fetchWeather();
         const now = new Date();
         const month = now.getUTCMonth() + 1;
@@ -142,65 +145,23 @@ export default async function handler(req, res) {
         const isWeekend = [0, 5, 6].includes(now.getUTCDay());
         const systemPrompt = buildSystemPrompt(db, weather, season, hour, isWeekend);
 
-        // 2. POZIV OPENAI
         const messages = [
             { role: "system", content: systemPrompt },
-            ...history.slice(-6).map(m => ({
-                role: m.role === "user" ? "user" : "assistant",
-                content: m.content
-            })),
+            ...history.slice(-6).map(m => ({ role: m.role === "user" ? "user" : "assistant", content: m.content })),
             { role: "user", content: message }
         ];
 
-        let openAIRes;
-        try {
-            openAIRes = await fetch("https://api.openai.com/v1/chat/completions", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    "Authorization": `Bearer ${apiKey.trim()}`
-                },
-                body: JSON.stringify({
-                    model: "gpt-4o-mini",
-                    messages: messages,
-                    temperature: 0.7,
-                    max_tokens: 1000
-                })
-            });
-        } catch (fetchErr) {
-            console.error("OpenAI Fetch Error:", fetchErr);
-            return res.status(502).json({ error: "Problem u komunikaciji s AI servisom", details: fetchErr.message });
-        }
+        const openAIRes = await fetch("https://api.openai.com/v1/chat/completions", {
+            method: "POST",
+            headers: { "Content-Type": "application/json", "Authorization": `Bearer ${apiKey.trim()}` },
+            body: JSON.stringify({ model: "gpt-4o-mini", messages: messages, temperature: 0.7 })
+        });
 
-        const responseText = await openAIRes.text();
-
-        if (!openAIRes.ok) {
-            console.error("OpenAI Error Response:", responseText);
-            return res.status(openAIRes.status).json({
-                error: `OpenAI API javlja grešku (${openAIRes.status})`,
-                details: responseText.substring(0, 200)
-            });
-        }
-
-        let aiData;
-        try {
-            aiData = JSON.parse(responseText);
-        } catch (parseErr) {
-            console.error("JSON Parse Error:", responseText);
-            return res.status(502).json({
-                error: "AI servis je poslao nevažeći odgovor (nije JSON)",
-                details: responseText.substring(0, 100)
-            });
-        }
-
-        const reply = aiData?.choices?.[0]?.message?.content || "Došlo je do greške u generiranju odgovora.";
+        const aiData = await openAIRes.json();
+        const reply = aiData?.choices?.[0]?.message?.content || "Greška u odgovoru.";
         return res.status(200).json({ reply });
 
-    } catch (globalError) {
-        console.error("Global Handler Error:", globalError);
-        return res.status(500).json({
-            error: "Neočekivana greška na poslužitelju",
-            details: globalError.message
-        });
+    } catch (e) {
+        return res.status(500).json({ error: "Server Error", details: e.message });
     }
 }
