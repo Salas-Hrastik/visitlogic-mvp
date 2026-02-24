@@ -202,9 +202,9 @@
         },
         {
             "id": 2,
-            "naziv": "Restoran Park",
-            "tip": "Restoran",
-            "opis": "Restoran u blizini parka s odabirom slavonske i internacional kuhinje.",
+            "naziv": "Hotel & Restoran Park Valpovo",
+            "tip": "Restoran / Hotel",
+            "opis": "Restoran uz hotel Park s odabirom slavonske i internacionalne kuhinje. Jedno od glavnih mjesta za ručak i večeru u Valpovu.",
             "web": "https://tz.valpovo.hr/ugostiteljstvo/restoran-park/",
             "kljucne_rijeci": [
                 "restoran",
@@ -212,7 +212,8 @@
                 "jelo",
                 "hrana",
                 "ručak",
-                "večera"
+                "večera",
+                "hotel"
             ]
         },
         {
@@ -239,15 +240,14 @@
                 "brza hrana",
                 "gurman",
                 "fast food",
-                "sendvič",
-                "burger"
+                "sendvič"
             ]
         },
         {
             "id": 5,
             "naziv": "Gradska kavana Valpovo",
             "tip": "Kavana",
-            "opis": "Klasična gradska kavana u srcu Valpova.",
+            "opis": "Klasična gradska kavana u srcu Valpova s kolačima i toplim napicima.",
             "web": "https://tz.valpovo.hr/ugostiteljstvo/gradska-kavana-valpovo/",
             "kljucne_rijeci": [
                 "kavana",
@@ -274,7 +274,7 @@
             "id": 7,
             "naziv": "Caffe Bar Forum",
             "tip": "Caffe bar",
-            "opis": "Caffe bar u Valpovu.",
+            "opis": "Caffe bar u centru Valpova.",
             "web": "https://tz.valpovo.hr/ugostiteljstvo/caffe-bar-forum/",
             "kljucne_rijeci": [
                 "caffe",
@@ -286,9 +286,121 @@
         },
         {
             "id": 8,
+            "naziv": "Caffe Bar Kolaž",
+            "tip": "Caffe bar",
+            "opis": "Caffe bar u Valpovu.",
+            "web": "https://tz.valpovo.hr/ugostiteljstvo/caffe-bar-kolaz/",
+            "kljucne_rijeci": [
+                "caffe",
+                "kolaž",
+                "bar",
+                "piće",
+                "kava"
+            ]
+        },
+        {
+            "id": 9,
+            "naziv": "Caffe – Night Bar Blue",
+            "tip": "Caffe bar / Noćni bar",
+            "opis": "Caffe i noćni bar u Valpovu.",
+            "web": "https://tz.valpovo.hr/ugostiteljstvo/caffe-night-bar-blue/",
+            "kljucne_rijeci": [
+                "bar",
+                "blue",
+                "noćni bar",
+                "piće",
+                "zabava"
+            ]
+        },
+        {
+            "id": 10,
+            "naziv": "Caffe Bar Passage",
+            "tip": "Caffe bar",
+            "opis": "Caffe bar Passage u Valpovu.",
+            "web": "https://tz.valpovo.hr/ugostiteljstvo/caffe-bar-passage/",
+            "kljucne_rijeci": [
+                "caffe",
+                "passage",
+                "bar",
+                "kava",
+                "piće"
+            ]
+        },
+        {
+            "id": 11,
+            "naziv": "Caffe Bar Space",
+            "tip": "Caffe bar",
+            "opis": "Caffe bar Space u Valpovu.",
+            "web": "https://tz.valpovo.hr/ugostiteljstvo/caffe-bar-space/",
+            "kljucne_rijeci": [
+                "caffe",
+                "space",
+                "bar",
+                "kava",
+                "piće"
+            ]
+        },
+        {
+            "id": 12,
+            "naziv": "Caffe Bar Best",
+            "tip": "Caffe bar",
+            "opis": "Caffe bar Best u Valpovu.",
+            "web": "https://tz.valpovo.hr/ugostiteljstvo/caffe-bar-best/",
+            "kljucne_rijeci": [
+                "caffe",
+                "best",
+                "bar",
+                "kava",
+                "piće"
+            ]
+        },
+        {
+            "id": 13,
+            "naziv": "Caffe Bar Aqua Valpovo",
+            "tip": "Caffe bar",
+            "opis": "Caffe bar Aqua uz vodu u Valpovu.",
+            "web": "https://tz.valpovo.hr/ugostiteljstvo/caffe-bar-aqua-valpovo/",
+            "kljucne_rijeci": [
+                "caffe",
+                "aqua",
+                "bar",
+                "kava",
+                "piće"
+            ]
+        },
+        {
+            "id": 14,
+            "naziv": "Barcode Caffe & Night Bar",
+            "tip": "Caffe bar / Noćni bar",
+            "opis": "Caffe i noćni bar Barcode u Valpovu.",
+            "web": "https://tz.valpovo.hr/ugostiteljstvo/barcode-caffe-night-bar/",
+            "kljucne_rijeci": [
+                "barcode",
+                "caffe",
+                "noćni bar",
+                "piće",
+                "zabava"
+            ]
+        },
+        {
+            "id": 15,
+            "naziv": "Caffe Bar BRM – BRM",
+            "tip": "Caffe bar",
+            "opis": "Caffe bar BRM-BRM u Valpovu.",
+            "web": "https://tz.valpovo.hr/ugostiteljstvo/caffe-bar-brm-brm/",
+            "kljucne_rijeci": [
+                "caffe",
+                "brm",
+                "bar",
+                "kava",
+                "piće"
+            ]
+        },
+        {
+            "id": 16,
             "naziv": "Caffe Bar Prandau",
             "tip": "Caffe bar",
-            "opis": "Caffe bar pod imenom slavne valpovačke vlastelinske obitelji.",
+            "opis": "Caffe bar pod imenom slavne valpovačke vlastelinske obitelji Prandau.",
             "web": "https://tz.valpovo.hr/ugostiteljstvo/caffe-bar-prandau/",
             "kljucne_rijeci": [
                 "caffe",
@@ -556,40 +668,201 @@
     "smjestaj": [
         {
             "id": 1,
-            "naziv": "Hotel Villa Valpovo",
+            "naziv": "Hotel & Restoran Park Valpovo",
             "tip": "Hotel",
-            "adresa": "Valpovo",
-            "opis": "Moderan hotel u Valpovu s vrhunskom uslugom i restoranom.",
+            "opis": "Hotel s restoranom u centru Valpova.",
+            "web": "https://tz.valpovo.hr/smjestaj-u-valpovu/hotel-restoran-park-valpovo/",
             "kljucne_rijeci": [
                 "hotel",
+                "park",
                 "noćenje",
                 "smještaj",
-                "villa valpovo"
+                "restoran"
             ]
         },
         {
             "id": 2,
-            "naziv": "Apartman Park",
+            "naziv": "Hotel Villa Valpovo",
+            "tip": "Hotel",
+            "opis": "Moderan hotel u Valpovu s vrhunskom uslugom i restoranom.",
+            "web": "https://tz.valpovo.hr/smjestaj-u-valpovu/villa-valpovo/",
+            "kljucne_rijeci": [
+                "hotel",
+                "villa",
+                "noćenje",
+                "smještaj"
+            ]
+        },
+        {
+            "id": 3,
+            "naziv": "Apartman Tea Valpovo",
             "tip": "Apartman",
-            "adresa": "Avenija 104. brigade HV 1, 31550 Valpovo",
-            "opis": "Prostran apartman s pogledom na park i dvorac Prandau-Normann.",
+            "opis": "Udoban apartman za iznajmljivanje u Valpovu.",
+            "web": "https://tz.valpovo.hr/smjestaj-u-valpovu/apartman-tea-valpovo/",
             "kljucne_rijeci": [
                 "apartman",
-                "park",
+                "tea",
+                "noćenje",
+                "smještaj"
+            ]
+        },
+        {
+            "id": 4,
+            "naziv": "Valpovački dvori",
+            "tip": "Ruralni smještaj",
+            "opis": "Ruralni smještaj s autentičnim slavonskim ugođajem.",
+            "web": "https://tz.valpovo.hr/smjestaj-u-valpovu/valpovacki-dvori/",
+            "kljucne_rijeci": [
+                "valpovački dvori",
+                "ruralni",
+                "seoski turizam",
                 "smještaj",
                 "noćenje"
             ]
         },
         {
-            "id": 3,
-            "naziv": "Sobe i doručak – Slavonski san",
+            "id": 5,
+            "naziv": "M&S prenoćište Valpovo",
             "tip": "Prenoćište",
-            "adresa": "Reljkovićeva 15, 31550 Valpovo",
-            "opis": "Tradicionalno uređen smještaj s domaćim doručkom i toplom slavonskom gostoljubivošću.",
+            "opis": "Prenoćište M&S za kratki i duži boravak u Valpovu.",
+            "web": "https://tz.valpovo.hr/smjestaj-u-valpovu/ms-prenociste-valpovo/",
+            "kljucne_rijeci": [
+                "prenoćište",
+                "m&s",
+                "sobe",
+                "noćenje",
+                "smještaj"
+            ]
+        },
+        {
+            "id": 6,
+            "naziv": "Sobe za iznajmljivanje Čičak",
+            "tip": "Privatne sobe",
+            "opis": "Privatne sobe za iznajmljivanje u Valpovu.",
+            "web": "https://tz.valpovo.hr/smjestaj-u-valpovu/sobe-za-iznajmljivanje-cicak/",
             "kljucne_rijeci": [
                 "sobe",
-                "doručak",
+                "čičak",
+                "privatni smještaj",
+                "noćenje"
+            ]
+        },
+        {
+            "id": 7,
+            "naziv": "Prenoćište Setnik",
+            "tip": "Prenoćište",
+            "opis": "Prenoćište Setnik u Valpovu.",
+            "web": "https://tz.valpovo.hr/smjestaj-u-valpovu/prenociste-setnik/",
+            "kljucne_rijeci": [
                 "prenoćište",
+                "setnik",
+                "noćenje",
+                "smještaj"
+            ]
+        },
+        {
+            "id": 8,
+            "naziv": "Privatni smještaj Tolić",
+            "tip": "Privatne sobe",
+            "opis": "Privatni smještaj obitelji Tolić u Valpovu.",
+            "web": "https://tz.valpovo.hr/smjestaj-u-valpovu/privatni-smjestaj-tolic/",
+            "kljucne_rijeci": [
+                "privatni smještaj",
+                "tolić",
+                "sobe",
+                "noćenje"
+            ]
+        },
+        {
+            "id": 9,
+            "naziv": "Soba za iznajmljivanje Draft Room",
+            "tip": "Privatna soba",
+            "opis": "Soba za iznajmljivanje Draft Room u Valpovu.",
+            "web": "https://tz.valpovo.hr/smjestaj-u-valpovu/soba-za-iznajmljivanje-draft-room/",
+            "kljucne_rijeci": [
+                "soba",
+                "draft room",
+                "iznajmljivanje",
+                "noćenje"
+            ]
+        },
+        {
+            "id": 10,
+            "naziv": "Apartman Ana 1 Valpovo",
+            "tip": "Apartman",
+            "opis": "Apartman Ana 1 za iznajmljivanje u Valpovu.",
+            "web": "https://tz.valpovo.hr/smjestaj-u-valpovu/apartman-ana-1-valpovo/",
+            "kljucne_rijeci": [
+                "apartman",
+                "ana",
+                "noćenje",
+                "smještaj"
+            ]
+        },
+        {
+            "id": 11,
+            "naziv": "Apartmani Nives i Lea Valpovo",
+            "tip": "Apartmani",
+            "opis": "Dva apartmana – Nives i Lea – za iznajmljivanje u Valpovu.",
+            "web": "https://tz.valpovo.hr/smjestaj-u-valpovu/apartmani-nives-i-lea-valpovo/",
+            "kljucne_rijeci": [
+                "apartman",
+                "nives",
+                "lea",
+                "noćenje",
+                "smještaj"
+            ]
+        },
+        {
+            "id": 12,
+            "naziv": "Studio apartman M Valpovo",
+            "tip": "Studio apartman",
+            "opis": "Studio apartman M za kratki odmor u Valpovu.",
+            "web": "https://tz.valpovo.hr/smjestaj-u-valpovu/studio-apartman-m-valpovo/",
+            "kljucne_rijeci": [
+                "studio",
+                "apartman",
+                "noćenje",
+                "smještaj"
+            ]
+        },
+        {
+            "id": 13,
+            "naziv": "Soba VaLux Valpovo",
+            "tip": "Privatna soba",
+            "opis": "Luksuzno opremljena privatna soba VaLux u Valpovu.",
+            "web": "https://tz.valpovo.hr/smjestaj-u-valpovu/soba-valux-valpovo/",
+            "kljucne_rijeci": [
+                "soba",
+                "valux",
+                "luksuz",
+                "noćenje",
+                "smještaj"
+            ]
+        },
+        {
+            "id": 14,
+            "naziv": "Olive Holiday House",
+            "tip": "Holiday House",
+            "opis": "Kuća za odmor Olive u Valpovu, idealna za obitelji i grupe.",
+            "web": "https://tz.valpovo.hr/smjestaj-u-valpovu/olive-holiday-house/",
+            "kljucne_rijeci": [
+                "olive",
+                "holiday house",
+                "kuća za odmor",
+                "noćenje",
+                "obitelj"
+            ]
+        },
+        {
+            "id": 15,
+            "naziv": "Apartman Centar Valpovo",
+            "tip": "Apartman",
+            "opis": "Apartman u centru Valpova, idealan za posjetitelje koji žele biti blizu svih atrakcija.",
+            "web": "https://tz.valpovo.hr/smjestaj-u-valpovu/apartman-centar-valpovo/",
+            "kljucne_rijeci": [
+                "apartman",
+                "centar",
                 "noćenje",
                 "smještaj"
             ]
