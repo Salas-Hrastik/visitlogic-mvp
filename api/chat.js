@@ -261,10 +261,10 @@ export default async function handler(req, res) {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                "Authorization": `Bearer ${apiKey} `
+                "Authorization": `Bearer ${apiKey.trim()}`
             },
             body: JSON.stringify({
-                model: "gpt-4o-mini", // Brz i pouzdan model
+                model: "gpt-4o-mini",
                 messages: messages,
                 temperature: 0.7,
                 max_tokens: 800
@@ -272,12 +272,20 @@ export default async function handler(req, res) {
         });
 
         if (!openAIRes.ok) {
-            const err = await openAIRes.text();
-            console.error("OpenAI API error:", err);
-            return res.status(502).json({ error: "AI servis (OpenAI) nije dostupan", details: err });
+            const errText = await openAIRes.text();
+            console.error("OpenAI API error:", openAIRes.status, errText);
+            return res.status(502).json({ error: "AI servis (OpenAI) nije dostupan", details: errText });
         }
 
-        const aiData = await openAIRes.json();
+        const aiText = await openAIRes.text();
+        let aiData;
+        try {
+            aiData = JSON.parse(aiText);
+        } catch (e) {
+            console.error("Failed to parse OpenAI response as JSON:", aiText);
+            throw new Error("OpenAI vratio nevažeći JSON: " + aiText.substring(0, 100));
+        }
+
         const reply = aiData?.choices?.[0]?.message?.content ||
             "Nažalost, trenutno ne mogu odgovoriti. Pokušajte malo kasnije.";
 
