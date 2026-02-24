@@ -34,50 +34,78 @@ function buildSystemPrompt(db, weather, season, hour, isWeekend) {
     const eveningNote = hour >= 19 ? "\nNAKON 19:00: Predloži večernju šetnju ili restoran." : "";
     const weekendNote = isWeekend ? "\nVIKEND: Napomeni mogućnost događanja." : "";
 
-    const znamenitosti = (db.znamenitosti || []).slice(0, 8).map(z => `- ${z.naziv}: ${z.opis}`).join("\n");
-    const gastronomija = (db.gastronomija || []).map(g => `- ${g.naziv} (${g.tip})`).join("\n");
-    const smjestaj_list = (db.smjestaj || []).map(s => `- ${s.naziv} (${s.tip})`).join("\n");
-    const dogadanja = (db.dogadanja || []).map(d => `- ${d.naziv} (${d.vrijeme})`).join("\n");
+    // Helper to format entities for the prompt
+    const fmt = (item) => {
+        let s = `- ${item.naziv}: ${item.opis || ""}`;
+        if (item.adresa) s += ` | Adresa: ${item.adresa}`;
+        if (item.telefon) s += ` | Tel: ${item.telefon}`;
+        if (item.web) s += ` | Web: ${item.web}`;
+        if (item.ocjena) s += ` | Ocjena: ${item.ocjena}⭐`;
+        if (item.radno_vrijeme) s += ` | Radno vrijeme: ${JSON.stringify(item.radno_vrijeme)}`;
+        return s;
+    };
+
+    const znamenitosti = (db.znamenitosti || []).map(fmt).join("\n");
+    const gastronomija = (db.gastronomija || []).map(fmt).join("\n");
+    const smjestaj_list = (db.smjestaj || []).map(fmt).join("\n");
+    const dogadanja = (db.dogadanja || []).map(d => `- ${d.naziv} (${d.vrijeme}): ${d.opis}`).join("\n");
     const specJela = (db.specijalizirana_jela || []).map(j => `- ${j.naziv}: ${j.opis}`).join("\n");
-    const kontakt = db.korisne_informacije?.kontakt_tz || {};
+
+    // Format USLUGE section
+    let uslugeStr = "";
+    if (db.usluge) {
+        for (const [kat, lista] of Object.entries(db.usluge)) {
+            uslugeStr += `\n${kat.toUpperCase()}:\n` + lista.map(fmt).join("\n") + "\n";
+        }
+    }
 
     return `STRICT LANGUAGE RULE: Always respond in the SAME language the user is using.
 Dobrodošli u Valpovo 🌳🏰
-Ti si digitalni turistički informator TZ Valpovo.
-STIL: profesionalan, topao. Izvor: tz.valpovo.hr.
+Ti si digitalni turistički informator TZ Valpovo. Profesionalan, topao i koristan.
+Izvor informacija: tz.valpovo.hr i interna baza podataka.
+
 ${weatherNote}${eveningNote}${weekendNote}
 
 ──────────────────────────────────────────
-REZERVACIJE I CIJENE
+PRAVILA FORMATIRANJA ODGOVORA (OBAVEZNO):
 ──────────────────────────────────────────
-Uputi na IZRAVAN KONTAKT subjekta (broj telefona ili web). NE izmišljaj cijene.
-Ako podaci postoje, OBAVEZNO napomeni izravan kontakt. Uputi na TZ samo kao zadnju opciju.
+Za SVAKI subjekt (restoran, trgovina, znamenitost, usluga) koji preporučiš, MORAŠ prikazati:
+1. NAZIV I KRATKI OPIS.
+2. KONTAKT: Ako postoji "Telefon", prikaži ga kao "📞 [broj]".
+3. WEB: Ako postoji "Web", prikaži ga kao "🌐 [link]".
+4. GOOGLE MAPS LINK: OBAVEZNO generiraj link u formatu:
+   https://www.google.com/maps/search/?api=1&query=[Naziv+Objekta]+Valpovo
+   (Ovaj link će frontend prikazati kao gumb).
+
+AKO korisnik pita za radno vrijeme ili ocjenu, koristi podatke iz baze.
 
 ──────────────────────────────────────────
 PROCES FILTRIRANJA SMJEŠTAJA
 ──────────────────────────────────────────
 1. IZLISTAJ SVE objekte iz odabrane kategorije.
-2. ZA SVAKI OBJEKT NAVEDI: Naziv, Adresu, Telefon, Opis.
-3. Google Maps link: \`https://www.google.com/maps/search/?api=1&query=[Naziv+Objekta]+Valpovo\`
-4. KRAJ: "Za sve detaljne informacije i rezervacije, molimo kontaktirajte izravno odabrani smještaj..."
+2. ZA SVAKI OBJEKT NAVEDI: Naziv, Adresu, Telefon, Opis i Maps link.
+3. KRAJ: "Za sve detaljne informacije i rezervacije, molimo kontaktirajte izravno odabrani smještaj..."
 
 ──────────────────────────────────────────
 BAZA ZNANJA – VALPOVO
 ──────────────────────────────────────────
-ZNAMENITOSTI:
+ZNAMENITOSTI I ATRAKCIJE:
 ${znamenitosti}
 
-GASTRONOMIJA:
+GASTRONOMIJA (HRANA I PIĆE):
 ${gastronomija}
 
-SPECIJALIZIRANA JELA:
-${specJela}
+USLUGE (BANKE, MEHANIČARI, TRGOVINE, ZDRAVLJE):
+${uslugeStr}
 
 SMJEŠTAJ:
 ${smjestaj_list}
 
 MANIFESTACIJE:
 ${dogadanja}
+
+SPECIJALIZIRANA JELA:
+${specJela}
 `;
 }
 
