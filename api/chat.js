@@ -55,9 +55,8 @@ function getHour() {
 
 // ── BUILD SYSTEM PROMPT ─────────────────────────────────────────────────────
 function buildSystemPrompt(db, weather, season, hour, isWeekend) {
-    const weatherCtx = weatherDescription(weather);
-    const weatherNote = weatherCtx
-        ? `\n\nTRENUTNO STANJE U VALPOVU:\n${weatherCtx}\nSezona: ${season}. Sat: ${hour}:00.`
+    const weatherNote = weather
+        ? `\n\nTRENUTNO STANJE U VALPOVU:\n- Temperatura: ${weather.temperature}°C\n- Vjetar: ${weather.windspeed} km/h\n- Weather Code: ${weather.weathercode}\nSezona: ${season}. Sat: ${hour}:00.`
         : `\nSezona: ${season}. Sat: ${hour}:00.`;
 
     const eveningNote =
@@ -93,7 +92,9 @@ function buildSystemPrompt(db, weather, season, hour, isWeekend) {
 
     const kontakt = db.korisne_informacije.kontakt_tz;
 
-    return `Dobrodošli u Valpovo 🌳🏰
+    return `STRICT LANGUAGE RULE: Always respond in the SAME language the user is using (e.g., if asked in English, answer in English; if asked in German, answer in German). The database is in Croatian, but you must translate all information accurately and warmly into the user's language.
+
+Dobrodošli u Valpovo 🌳🏰
 
 Valpovo je grad perivoja, plemićke baštine i slavonske gostoljubivosti.
 Ti si službeni digitalni turistički informator Turističke zajednice Grada Valpova.
