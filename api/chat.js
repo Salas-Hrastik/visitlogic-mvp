@@ -100,15 +100,29 @@ export default async function handler(req, res) {
 
         // 1. UČITAJ BAZU
         let db;
+        const dbPath = path.join(process.cwd(), "data", "valpovo.json");
         try {
-            const dbPath = path.join(process.cwd(), "data", "valpovo.json");
+            if (!fs.existsSync(dbPath)) {
+                return res.status(500).json({
+                    error: "Baza podataka nije pronađena",
+                    details: `Putanja ${dbPath} ne postoji na serveru. CWD: ${process.cwd()}`
+                });
+            }
+
             const dbContent = fs.readFileSync(dbPath, "utf8");
-            db = JSON.parse(dbContent);
+            try {
+                db = JSON.parse(dbContent);
+            } catch (jsonErr) {
+                return res.status(500).json({
+                    error: "Greška u formatu baze (nije JSON)",
+                    details: `Sadržaj (prvih 100): ${dbContent.substring(0, 100)}... | CWD: ${process.cwd()} | Greška: ${jsonErr.message}`
+                });
+            }
         } catch (err) {
             console.error("DB Load Error:", err);
             return res.status(500).json({
                 error: "Greška pri učitavanju baze podataka",
-                details: "File check: " + err.message
+                details: "Sistemski check: " + err.message
             });
         }
 
