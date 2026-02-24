@@ -800,7 +800,9 @@ export const db = {
         ],
         "benzinske_postaje": [
             { "id": "BEN-001", "naziv": "Petrol (Bizovačka)", "adresa": "Bizovačka 6, 31550 Valpovo", "ocjena": 4.5, "broj_recenzija": 357, "radno_vrijeme": { "pon-sub": "06:00 - 21:00", "ned": "08:00 - 20:00" }, "kljucne_rijeci": ["gorivo", "benzin", "petrol"] },
-            { "id": "BEN-003", "naziv": "INA (Belašće)", "adresa": "Ul. bana Josipa Jelačića 30, 31550 Valpovo", "ocjena": 4.6, "broj_recenzija": 128, "radno_vrijeme": { "svaki_dan": "06:00 - 22:00" }, "kljucne_rijeci": ["gorivo", "benzin", "ina"] }
+            { "id": "BEN-002", "naziv": "Petrol (Strossmayerova)", "adresa": "Ul. J. J. Strossmayera 85A, 31550 Valpovo", "ocjena": 4.6, "broj_recenzija": 142, "radno_vrijeme": { "svaki_dan": "06:00 - 22:00" }, "kljucne_rijeci": ["gorivo", "benzin", "petrol", "crodux"] },
+            { "id": "BEN-003", "naziv": "INA (Bana Jelačića)", "adresa": "Ul. bana Josipa Jelačića 30, 31550 Valpovo", "ocjena": 4.6, "broj_recenzija": 128, "radno_vrijeme": { "svaki_dan": "06:00 - 22:00" }, "kljucne_rijeci": ["gorivo", "benzin", "ina"] },
+            { "id": "BEN-004", "naziv": "INA (Ive Lole Ribara)", "adresa": "Ul. Ive Lole Ribara 61, 31550 Valpovo", "ocjena": 4.5, "broj_recenzija": 89, "radno_vrijeme": { "svaki_dan": "06:00 - 22:00" }, "kljucne_rijeci": ["gorivo", "benzin", "ina"] }
         ],
         "frizerski_saloni": [
             { "id": "FRI-001", "naziv": "Frizerski salon Đurđica", "adresa": "Ul. Nikole Tesle 39, 31550 Valpovo", "ocjena": 4.9, "broj_recenzija": 36, "radno_vrijeme": { "pon-sri": "13:00 - 20:00", "čet-sub": "08:00 - 14:00" }, "kljucne_rijeci": ["frizura", "šišanje", "salon"] },
@@ -826,5 +828,3 @@ export const db = {
             "web": "https://tz.valpovo.hr"
         }
     }
-};
-
