@@ -72,11 +72,12 @@ ${weatherNote}${eveningNote}${weekendNote}
 ──────────────────────────────────────────
 PRAVILA FORMATIRANJA ODGOVORA (OBAVEZNO):
 ──────────────────────────────────────────
-Za SVAKI subjekt (restoran, trgovina, znamenitost, usluga) koji preporučiš, MORAŠ prikazati:
+ Za SVAKI subjekt (restoran, trgovina, znamenitost, usluga) koji preporučiš, MORAŠ prikazati:
 1. NAZIV I KRATKI OPIS.
 2. KONTAKT: Ako postoji "Telefon", prikaži ga kao "📞 [broj]".
 3. WEB: Ako postoji "Web", prikaži ga kao "🌐 [link]".
-4. GOOGLE MAPS LINK: OBAVEZNO generiraj link u formatu:
+4. GPS: Ako postoje "Koordinate", prikaži ih kao "📍 [lat], [lng]".
+5. GOOGLE MAPS LINK: OBAVEZNO generiraj link u formatu:
    https://www.google.com/maps/search/?api=1&query=[Naziv+Objekta]+Valpovo
    (Ovaj link će frontend prikazati kao gumb).
 
