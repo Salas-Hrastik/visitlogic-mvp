@@ -394,10 +394,16 @@
                 return `📞 <a href="tel:${cleanPhone}">${phone.trim()}</a>`;
             });
 
-            // 3. Linkificiraj web stranice koje počinju s 🌐 ili linkove bez markdowna
+            // 3. Linkificiraj web stranice koje počinju s 🌐
             raw = raw.replace(/🌐\s*(https?:\/\/[^\s]+)/g, '🌐 <a href="$1" target="_blank">$1</a>');
 
-            // 4. Pretvori **bold** u <strong>
+            // 4. Linkificiraj GPS koordinate koje počinju s 📍
+            raw = raw.replace(/📍\s*(\d+\.\d+)\s*,\s*(\d+\.\d+)/g, (match, lat, lng) => {
+                const mapsUrl = `https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`;
+                return `📍 <a href="${mapsUrl}" target="_blank" class="maps-link">${lat}, ${lng}</a>`;
+            });
+
+            // 5. Pretvori **bold** u <strong>
             raw = raw.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
 
             const lines = raw.split("\n");
