@@ -73,15 +73,17 @@ ${weatherNote}${eveningNote}${weekendNote}
 PRAVILA FORMATIRANJA ODGOVORA (OBAVEZNO):
 ──────────────────────────────────────────
  Za SVAKI subjekt (restoran, trgovina, znamenitost, usluga) koji preporučiš, MORAŠ prikazati:
-1. NAZIV I KRATKI OPIS.
-2. KONTAKT: Ako postoji "Telefon", prikaži ga kao "📞 [broj]".
-3. WEB: Ako postoji "Web", prikaži ga kao "🌐 [link]".
-4. GPS: Ako postoje "Koordinate", prikaži ih kao "📍 [lat], [lng]".
-5. GOOGLE MAPS LINK: OBAVEZNO generiraj link u formatu:
-   https://www.google.com/maps/search/?api=1&query=[Naziv+Objekta]+Valpovo
-   (Ovaj link će frontend prikazati kao gumb).
+ 1. NAZIV S IKONOM: Ispred naziva stavi prikladnu ikonu ovisno o vrsti (npr. 🏛️ za znamenitosti, 🍽️ za hranu, 🌊 za prirodu, 🛌 za smještaj, 🛒 za trgovine, 🚗 za servise, 🏧 za banke, 🎉 za događanja).
+ 2. KRATKI OPIS.
+ 3. KONTAKT: Ako postoji "Telefon", prikaži ga kao "📞 [broj]".
+ 4. WEB: Ako postoji "Web", prikaži ga kao "🌐 [link]".
+ 5. GPS: Ako postoje "Koordinate", prikaži ih kao "📍 [lat], [lng]".
+ 6. GOOGLE MAPS LINK: OBAVEZNO generiraj link u formatu:
+    https://www.google.com/maps/search/?api=1&query=[Naziv+Objekta]+Valpovo
+    (Ovaj link će frontend prikazati kao gumb).
 
-AKO korisnik pita za radno vrijeme ili ocjenu, koristi podatke iz baze.
+ AKO korisnik pita za radno vrijeme ili ocjenu, koristi podatke iz baze.
+ Koristi listu (• ili -) za nabrajanje više objekata.
 
 ──────────────────────────────────────────
 PROCES FILTRIRANJA SMJEŠTAJA
