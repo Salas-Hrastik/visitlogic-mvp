@@ -58,7 +58,7 @@ function buildSystemPrompt(db, weather, season, hour, isWeekend) {
     let uslugeStr = "";
     if (db.usluge) {
         for (const [kat, lista] of Object.entries(db.usluge)) {
-            uslugeStr += `\n${kat.toUpperCase()}:\n` + lista.map(fmt).join("\n") + "\n";
+            uslugeStr += `\n--- ${kat.toUpperCase()} ---\n` + lista.map(fmt).join("\n") + "\n";
         }
     }
 
