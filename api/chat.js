@@ -224,14 +224,19 @@ export default async function handler(req, res) {
 
         const systemPrompt = buildSystemPrompt(db, weather, season, hour, isWeekend);
 
-        // Gemini API poziv
+        // Gemini API poziv - korištenje stabilne v1 verzije bez system_instruction polja
+        // (ovo osigurava kompatibilnost ako v1beta nije dostupna ili ne prepoznaje polje)
         const endpoint =
             `https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
 
-        // Izgradi history za Gemini (user/model alternating)
+        // Izgradi history za Gemini
         const contents = [];
 
-        // Dodaj povijest razgovora (maks. zadnjih 6 poruka)
+        // Dodaj system prompt kao prvu "instrukciju" u povijest ako je chat na početku,
+        // inače ga dodajemo u trenutnu poruku da AI uvijek prati pravila.
+        const fullMessage = `DODATNE INSTRUKCIJE ZA PONAŠANJE:\n${systemPrompt}\n\nKorisnik pita: ${message}`;
+
+        // Dodaj povijest razgovora
         const recentHistory = history.slice(-6);
         for (const msg of recentHistory) {
             contents.push({
@@ -240,20 +245,17 @@ export default async function handler(req, res) {
             });
         }
 
-        // Dodaj trenutnu poruku
+        // Dodaj trenutnu poruku s ugrađenim instrukcijama
         contents.push({
             role: "user",
-            parts: [{ text: message }],
+            parts: [{ text: fullMessage }],
         });
 
         const body = {
-            system_instruction: {
-                parts: [{ text: systemPrompt }],
-            },
             contents,
             generationConfig: {
                 temperature: 0.3,
-                maxOutputTokens: 600,
+                maxOutputTokens: 800,
                 topP: 0.8,
             },
             safetySettings: [
