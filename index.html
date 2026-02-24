@@ -388,7 +388,16 @@
                 return `<a href="${url}" target="_blank" ${className}>${text}</a>`;
             });
 
-            // 2. Pretvori **bold** u <strong>
+            // 2. Linkificiraj telefone koji počinju s 📞 (ako nisu već linkovi)
+            raw = raw.replace(/📞\s*(\+?\d[\d\s\-/]{6,}\d)/g, (match, phone) => {
+                const cleanPhone = phone.replace(/[^\d+]/g, "");
+                return `📞 <a href="tel:${cleanPhone}">${phone.trim()}</a>`;
+            });
+
+            // 3. Linkificiraj web stranice koje počinju s 🌐 ili linkove bez markdowna
+            raw = raw.replace(/🌐\s*(https?:\/\/[^\s]+)/g, '🌐 <a href="$1" target="_blank">$1</a>');
+
+            // 4. Pretvori **bold** u <strong>
             raw = raw.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
 
             const lines = raw.split("\n");
