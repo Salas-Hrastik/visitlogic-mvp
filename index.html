@@ -156,6 +156,32 @@
             font-weight: 600;
         }
 
+        /* POSEBNI STIL ZA GOOGLE MAPS LINKOVE */
+        .ai .maps-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #f0f7f4;
+            color: #0d5a32;
+            padding: 8px 14px;
+            border-radius: 20px;
+            text-decoration: none !important;
+            font-size: 13.5px;
+            margin: 5px 0;
+            border: 1px solid #cce3d7;
+            transition: all 0.2s;
+        }
+
+        .ai .maps-link:hover {
+            background: #e1ede6;
+            transform: translateY(-1px);
+        }
+
+        .ai .maps-link::before {
+            content: "📍";
+            font-size: 14px;
+        }
+
         .ai strong {
             color: #014128;
         }
@@ -248,14 +274,12 @@
         button.send {
             padding: 12px 22px;
             border: none;
-            border-radius: 25px;
             background: #014128;
             color: white;
-            cursor: pointer;
-            font-size: 15px;
+            border-radius: 25px;
             font-weight: 600;
+            cursor: pointer;
             transition: background .2s;
-            white-space: nowrap;
         }
 
         button.send:hover {
@@ -263,8 +287,32 @@
         }
 
         button.send:disabled {
-            background: #aaa;
-            cursor: not-allowed;
+            background: #ccc;
+            cursor: default;
+        }
+
+        /* RESPONZIVNOST */
+        @media (max-width: 600px) {
+            .header {
+                height: 70px;
+                padding: 10px 15px;
+            }
+
+            .logo {
+                height: 40px;
+            }
+
+            .title-main {
+                font-size: 18px;
+            }
+
+            #hero {
+                top: 70px;
+            }
+
+            #chat {
+                top: 120px;
+            }
         }
     </style>
 </head>
@@ -273,7 +321,7 @@
 
     <div class="header">
         <div class="header-inner">
-            <img src="tz-logo-Valpovo.png" class="logo">
+            <img class="logo" src="https://tz.valpovo.hr/wp-content/uploads/2021/03/tz-valpovo-logo.png" alt="Logo">
             <div>
                 <div class="title-main">Turistički informator</div>
                 <div class="title-sub">Grad Valpovo</div>
@@ -283,8 +331,7 @@
 
     <div id="hero">
         <div class="hero-weather">
-            <strong>Sada je u Valpovu:</strong>
-            <span id="weather">Učitavanje...</span>
+            Sada je u Valpovu: <span id="weather">... učitavam</span>
         </div>
 
         <div class="quick-buttons">
@@ -334,10 +381,14 @@
 
         /* ── FORMATIRANJE ── */
         function formatAI(raw) {
-            // Pretvori [tekst](link) u <a href...>
-            raw = raw.replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2" target="_blank">$1</a>');
+            // 1. Pretvori [tekst](link) u <a href...> s detekcijom Google Maps
+            raw = raw.replace(/\[(.*?)\]\((.*?)\)/g, (match, text, url) => {
+                const isMaps = url.includes("google.com/maps");
+                const className = isMaps ? 'class="maps-link"' : "";
+                return `<a href="${url}" target="_blank" ${className}>${text}</a>`;
+            });
 
-            // Pretvori **bold** u <strong>
+            // 2. Pretvori **bold** u <strong>
             raw = raw.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
 
             const lines = raw.split("\n");
@@ -351,11 +402,26 @@
                     continue;
                 }
 
+                // Posebna provjera: Ako je linija SAMO Google Maps link, tretiraj je kao paragraf (da nema bullets)
+                if (line.includes('class="maps-link"') && !line.startsWith("-") && !line.startsWith("•")) {
+                    if (inList) { html += "</ul>"; inList = false; }
+                    html += `<p>${line}</p>`;
+                    continue;
+                }
+
                 // Lista: •, -, ili brojčana lista (1., 2. itd)
                 if (line.startsWith("•") || (line.startsWith("-") && line.length > 2) || /^\d+\.\s/.test(line)) {
                     if (!inList) { html += "<ul>"; inList = true; }
                     const content = line.replace(/^([•\-]|(\d+\.))\s*/, "");
-                    html += `<li>${content}</li>`;
+                    // Ako unutar list itema imamo maps link, možda ga želimo bez bulleta? 
+                    // Ali obično je AI output: "- [Maps](link)".
+                    // Ako je to jedini sadržaj linije, makni bullet.
+                    if (content.startsWith('<a class="maps-link"')) {
+                        if (inList) { html += "</ul>"; inList = false; }
+                        html += `<p style="margin-left: 20px;">${content}</p>`;
+                    } else {
+                        html += `<li>${content}</li>`;
+                    }
                 }
                 // Naslov: Emoji + : ili kratki redak s :
                 else if (/^[🏛️🍽️🎉🏨🌿📍🚗🥩]/.test(line) || (line.endsWith(":") && line.length < 60)) {
