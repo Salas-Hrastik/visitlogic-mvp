@@ -4,41 +4,16 @@ import path from "path";
 // ── WEATHER HELPER ──────────────────────────────────────────────────────────
 async function fetchWeather() {
     try {
-        const url =
-            "https://api.open-meteo.com/v1/forecast?latitude=45.6609&longitude=18.4186&current_weather=true";
+        const url = "https://api.open-meteo.com/v1/forecast?latitude=45.6609&longitude=18.4186&current_weather=true";
         const r = await fetch(url);
+        // Ako weather API vrati grešku, ne želimo srušiti cijeli chat
+        if (!r.ok) return null;
         const d = await r.json();
         return d.current_weather || null;
-    } catch {
-        return null;
+    } catch (e) {
+        console.error("fetchWeather error (non-fatal):", e);
+        return null; // Vrati null umjesto bacanja greške
     }
-}
-
-function weatherDescription(w) {
-    if (!w) return null;
-    const { temperature, windspeed, weathercode } = w;
-
-    let tempDesc =
-        temperature < 5
-            ? "Hladno je (ispod 5°C) – preporučujem zatvorene lokacije."
-            : temperature < 12
-                ? `Sve je ${temperature}°C – prikladno za kraće šetnje.`
-                : temperature < 22
-                    ? `Ugodnih ${temperature}°C – idealno za park i centar.`
-                    : temperature < 30
-                        ? `Toplo je (${temperature}°C) – predivno za boravak vani.`
-                        : `Vruće (${temperature}°C) – jutarnje i večernje aktivnosti.`;
-
-    let weatherType =
-        weathercode >= 51
-            ? "Pada kiša – preporučujem zatvorene sadržaje."
-            : weathercode >= 3
-                ? "Oblačno, ali bez kiše."
-                : "Sunčano i vedro.";
-
-    let windDesc = windspeed > 30 ? ` Vjetar ${windspeed} km/h.` : "";
-
-    return `${tempDesc} ${weatherType}${windDesc}`;
 }
 
 function getSeason(month) {
@@ -49,8 +24,7 @@ function getSeason(month) {
 }
 
 function getHour() {
-    // Central European time (UTC+1/+2) – approximate from server time
-    return new Date().getUTCHours() + 1;
+    return new Date().getUTCHours() + 1; // Approximate CET
 }
 
 // ── BUILD SYSTEM PROMPT ─────────────────────────────────────────────────────
@@ -59,153 +33,54 @@ function buildSystemPrompt(db, weather, season, hour, isWeekend) {
         ? `\n\nTRENUTNO STANJE U VALPOVU:\n- Temperatura: ${weather.temperature}°C\n- Vjetar: ${weather.windspeed} km/h\n- Weather Code: ${weather.weathercode}\nSezona: ${season}. Sat: ${hour}:00.`
         : `\nSezona: ${season}. Sat: ${hour}:00.`;
 
-    const eveningNote =
-        hour >= 19
-            ? "\nNAKON 19:00: Predloži večernju šetnju, večeru u lokalnom restoranu ili kulturni program (ako je vikend)."
-            : "";
+    const eveningNote = hour >= 19 ? "\nNAKON 19:00: Predloži večernju šetnju ili restoran." : "";
+    const weekendNote = isWeekend ? "\nVIKEND: Napomeni mogućnost događanja." : "";
 
-    const weekendNote = isWeekend
-        ? "\nVIKEND: Diskretno napomeni mogućnost lokalnih događanja ili kulturnog programa."
-        : "";
+    const znamenitosti = (db.znamenitosti || []).slice(0, 8).map(z => `- ${z.naziv}: ${z.opis}`).join("\n");
+    const gastronomija = (db.gastronomija || []).map(g => `- ${g.naziv} (${g.tip})`).join("\n");
+    const smjestaj_list = (db.smjestaj || []).map(s => `- ${s.naziv} (${s.tip})`).join("\n");
+    const dogadanja = (db.dogadanja || []).map(d => `- ${d.naziv} (${d.vrijeme})`).join("\n");
+    const specJela = (db.specijalizirana_jela || []).map(j => `- ${j.naziv}: ${j.opis}`).join("\n");
+    const kontakt = db.korisne_informacije?.kontakt_tz || {};
 
-    // Sažetak znanja iz JSON-a
-    const znamenitosti = db.znamenitosti
-        .slice(0, 8)
-        .map((z) => `- ${z.naziv}: ${z.opis}`)
-        .join("\n");
-
-    const gastronomija = db.gastronomija
-        .map((g) => `- ${g.naziv} (${g.tip})`)
-        .join("\n");
-
-    const smjestaj = db.smjestaj
-        .map((s) => `- ${s.naziv} (${s.tip})`)
-        .join("\n");
-
-    const dogadanja = db.dogadanja
-        .map((d) => `- ${d.naziv} (${d.vrijeme})`)
-        .join("\n");
-
-    const specJela = db.specijalizirana_jela
-        .map((j) => `- ${j.naziv}: ${j.opis}`)
-        .join("\n");
-
-    const kontakt = db.korisne_informacije.kontakt_tz;
-
-    return `STRICT LANGUAGE RULE: Always respond in the SAME language the user is using (e.g., if asked in English, answer in English; if asked in German, answer in German). The database is in Croatian, but you must translate all information accurately and warmly into the user's language.
-
+    return `STRICT LANGUAGE RULE: Always respond in the SAME language the user is using.
 Dobrodošli u Valpovo 🌳🏰
-
-Valpovo je grad perivoja, plemićke baštine i slavonske gostoljubivosti.
-Ti si službeni digitalni turistički informator Turističke zajednice Grada Valpova.
-
-STIL: profesionalan, realan, topao, slavonski nenametljiv.
-NIKADA ne izmišljaj podatke. Ako nemaš potvrđenih informacija, to jasno naglasi.
-
-PRAVILO: Jedini izvor informacija je tz.valpovo.hr i podaci koje ovdje dobijete. Nikad drugi izvori.
+Ti si digitalni turistički informator TZ Valpovo.
+STIL: profesionalan, topao. Izvor: tz.valpovo.hr.
 ${weatherNote}${eveningNote}${weekendNote}
-
-──────────────────────────────────────────
-PRAVILA PONAŠANJA
-──────────────────────────────────────────
-
-REALNI UVJETI → SEZONA → DOGAĐANJA → PREPORUKA → ATMOSFERA
-
-Temperatura:
-- < 5°C → fokus na zatvorene sadržaje
-- 5–12°C → kraće šetnje
-- 12–22°C → idealno za park i centar
-- > 30°C → jutarnje i večernje aktivnosti
-- Ako weathercode ≥ 51 → fokus na zatvorene sadržaje
-
-Sezonski mod:
-- Proljeće → priroda i park
-- Ljeto → večernje šetnje i događanja
-- Jesen → perivoj + gastronomija
-- Zima → kultura i interijeri
-
-Manifestacijska logika (petak navečer, subota, nedjelja):
-→ Diskretno napomeni mogućnost lokalnih događanja.
-→ Koristi: "Često se vikendom održavaju kulturna događanja…" ili "Vrijedi provjeriti aktualni program…"
-→ NIKAD ne izmišljaj konkretan program.
-
-──────────────────────────────────────────
-DESTINACIJSKI IDENTITET
-──────────────────────────────────────────
-
-Valpovo komumiciraj kao:
-- Grad dvorca Prandau-Normann
-- Grad velikog perivoja
-- Mirnu slavonsku destinaciju
-- Mjesto ugodnih kulturnih događanja
-
-Prioritet preporuka:
-1. Dvorac Prandau-Normann
-2. Perivoj
-3. Župna crkva / Centar grada
-4. Aktualna događanja (ako postoje)
-
-Najviše 3 preporuke u jednom odgovoru.
-Najviše jedno potpitanje.
-
-──────────────────────────────────────────
-MINI ITINERARI
-──────────────────────────────────────────
-
-1 dan → dvorac + perivoj + ručak
-2–3 dana → Valpovo + Baranja ili Kopački rit
-
-Ne više od 3 aktivnosti dnevno.
-
-Ako korisnik želi izlet: Predloži Baranju, Kopački rit, nebo biciklističke rute. Navedi okvirno trajanje puta.
-
-──────────────────────────────────────────
-OBITELJSKI MOD
-──────────────────────────────────────────
-Ako korisnik spominje djecu: istakni park, otvorene prostore, sigurnost, mirnu atmosferu. Maks. 3 preporuke.
 
 ──────────────────────────────────────────
 REZERVACIJE I CIJENE
 ──────────────────────────────────────────
-Ako korisnik želi rezervaciju → uputi na IZRAVAN KONTAKT subjekta (broj telefona ili web stranicu). NE izmišljaj cijene. 
-Ako podaci o subjektu sadrže kontakt telefon ili web, OBAVEZNO napomeni da se za rezervacije obrate izravno tom subjektu. 
-Samo ako podaci nisu dostupni, uputi na TZ: ${kontakt.telefon} | ${kontakt.email}.
+Uputi na IZRAVAN KONTAKT subjekta (broj telefona ili web). NE izmišljaj cijene.
+Ako podaci postoje, OBAVEZNO napomeni izravan kontakt. Uputi na TZ samo kao zadnju opciju.
 
 ──────────────────────────────────────────
 PROCES FILTRIRANJA SMJEŠTAJA
 ──────────────────────────────────────────
-Kada korisnik odabere tip smještaja (posebno "Apartmani i privatne sobe"):
-1. IZLISTAJ SVE objekte iz te kategorije.
-2. ZA SVAKI OBJEKT NAVEDI:
-   - **Naziv**
-   - **Adresu** (ako je dostupna u bazi)
-   - **Broj telefona** (ako je dostupan u bazi)
-   - **Opis**
-   - **Google Maps link**: generiraj link u formatu: \`https://www.google.com/maps/search/?api=1&query=[Naziv+Objekta]+Valpovo\`
-3. NA KRAJU ISPISA: **NEMOJ** pisati da se za detalje obrate Turističkoj zajednici. Umjesto toga, napiši: "Za sve detaljne informacije i rezervacije, molimo kontaktirajte izravno odabrani smještaj putem navedenog broja telefona ili web stranice."
-4. Multilingual: Sve podatke (osim imena i adresa) prevedi na jezik korisnika.
+1. IZLISTAJ SVE objekte iz odabrane kategorije.
+2. ZA SVAKI OBJEKT NAVEDI: Naziv, Adresu, Telefon, Opis.
+3. Google Maps link: \`https://www.google.com/maps/search/?api=1&query=[Naziv+Objekta]+Valpovo\`
+4. KRAJ: "Za sve detaljne informacije i rezervacije, molimo kontaktirajte izravno odabrani smještaj..."
 
 ──────────────────────────────────────────
 BAZA ZNANJA – VALPOVO
 ──────────────────────────────────────────
-
 ZNAMENITOSTI:
 ${znamenitosti}
 
-GASTRONOMIJA (ugostitelji):
+GASTRONOMIJA:
 ${gastronomija}
 
-SPECIJALIZIRANA SLAVONSKA JELA:
+SPECIJALIZIRANA JELA:
 ${specJela}
 
-SMJEŠTAJ (puni popis: https://tz.valpovo.hr/smjestaj-u-valpovu/):
-${smjestaj}
+SMJEŠTAJ:
+${smjestaj_list}
 
-MANIFESTACIJE I DOGAĐANJA:
+MANIFESTACIJE:
 ${dogadanja}
-
-Više informacija: https://tz.valpovo.hr
-    `;
+`;
 }
 
 // ── HANDLER ─────────────────────────────────────────────────────────────────
@@ -214,85 +89,97 @@ export default async function handler(req, res) {
         return res.status(405).json({ error: "Method not allowed" });
     }
 
-    const { message, history = [] } = req.body;
-    if (!message) {
-        return res.status(400).json({ error: "Message is required" });
-    }
-
-    const apiKey = process.env.OPENAI_API_KEY;
-    if (!apiKey) {
-        return res.status(500).json({ error: "OPENAI_API_KEY nije postavljen" });
-    }
-
     try {
-        // Učitaj bazu znanja
-        const dbPath = path.join(process.cwd(), "data", "valpovo.json");
-        const db = JSON.parse(fs.readFileSync(dbPath, "utf8"));
+        const { message, history = [] } = req.body;
+        if (!message) return res.status(400).json({ error: "Message is required" });
 
-        // Kontekstualni podaci
+        const apiKey = process.env.OPENAI_API_KEY;
+        if (!apiKey || apiKey.trim().length < 10) {
+            return res.status(500).json({ error: "OPENAI_API_KEY nije ispravno postavljen u Vercel postavkama." });
+        }
+
+        // 1. UČITAJ BAZU
+        let db;
+        try {
+            const dbPath = path.join(process.cwd(), "data", "valpovo.json");
+            const dbContent = fs.readFileSync(dbPath, "utf8");
+            db = JSON.parse(dbContent);
+        } catch (err) {
+            console.error("DB Load Error:", err);
+            return res.status(500).json({
+                error: "Greška pri učitavanju baze podataka",
+                details: "File check: " + err.message
+            });
+        }
+
+        // 2. PRIKUPI KONTEKST
         const weather = await fetchWeather();
         const now = new Date();
         const month = now.getUTCMonth() + 1;
         const season = getSeason(month);
         const hour = getHour();
-        const dayOfWeek = now.getUTCDay(); // 0=ned, 5=pet, 6=sub
-        const isWeekend = dayOfWeek === 0 || dayOfWeek === 5 || dayOfWeek === 6;
-
+        const isWeekend = [0, 5, 6].includes(now.getUTCDay());
         const systemPrompt = buildSystemPrompt(db, weather, season, hour, isWeekend);
 
-        // Izgradi poruke za OpenAI
+        // 3. POZIV OPENAI
         const messages = [
-            { role: "system", content: systemPrompt }
+            { role: "system", content: systemPrompt },
+            ...history.slice(-6).map(m => ({
+                role: m.role === "user" ? "user" : "assistant",
+                content: m.content
+            })),
+            { role: "user", content: message }
         ];
 
-        // Dodaj povijest razgovora
-        const recentHistory = history.slice(-6);
-        for (const msg of recentHistory) {
-            messages.push({
-                role: msg.role === "user" ? "user" : "assistant",
-                content: msg.content
+        let openAIRes;
+        try {
+            openAIRes = await fetch("https://api.openai.com/v1/chat/completions", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${apiKey.trim()}`
+                },
+                body: JSON.stringify({
+                    model: "gpt-4o-mini",
+                    messages: messages,
+                    temperature: 0.7,
+                    max_tokens: 1000
+                })
+            });
+        } catch (fetchErr) {
+            console.error("OpenAI Fetch Error:", fetchErr);
+            return res.status(502).json({ error: "Problem u komunikaciji s AI servisom", details: fetchErr.message });
+        }
+
+        const responseText = await openAIRes.text();
+
+        if (!openAIRes.ok) {
+            console.error("OpenAI Error Response:", responseText);
+            return res.status(openAIRes.status).json({
+                error: `OpenAI API javlja grešku (${openAIRes.status})`,
+                details: responseText.substring(0, 200)
             });
         }
 
-        // Dodaj trenutnu poruku
-        messages.push({ role: "user", content: message });
-
-        const openAIRes = await fetch("https://api.openai.com/v1/chat/completions", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": `Bearer ${apiKey.trim()}`
-            },
-            body: JSON.stringify({
-                model: "gpt-4o-mini",
-                messages: messages,
-                temperature: 0.7,
-                max_tokens: 800
-            })
-        });
-
-        if (!openAIRes.ok) {
-            const errText = await openAIRes.text();
-            console.error("OpenAI API error:", openAIRes.status, errText);
-            return res.status(502).json({ error: "AI servis (OpenAI) nije dostupan", details: errText });
-        }
-
-        const aiText = await openAIRes.text();
         let aiData;
         try {
-            aiData = JSON.parse(aiText);
-        } catch (e) {
-            console.error("Failed to parse OpenAI response as JSON:", aiText);
-            throw new Error("OpenAI vratio nevažeći JSON: " + aiText.substring(0, 100));
+            aiData = JSON.parse(responseText);
+        } catch (parseErr) {
+            console.error("JSON Parse Error:", responseText);
+            return res.status(502).json({
+                error: "AI servis je poslao nevažeći odgovor (nije JSON)",
+                details: responseText.substring(0, 100)
+            });
         }
 
-        const reply = aiData?.choices?.[0]?.message?.content ||
-            "Nažalost, trenutno ne mogu odgovoriti. Pokušajte malo kasnije.";
-
+        const reply = aiData?.choices?.[0]?.message?.content || "Došlo je do greške u generiranju odgovora.";
         return res.status(200).json({ reply });
 
-    } catch (error) {
-        console.error("Chat API Error:", error);
-        return res.status(500).json({ error: "Greška pri obradi", details: error.message });
+    } catch (globalError) {
+        console.error("Global Handler Error:", globalError);
+        return res.status(500).json({
+            error: "Neočekivana greška na poslužitelju",
+            details: globalError.message
+        });
     }
 }
