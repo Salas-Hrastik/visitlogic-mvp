@@ -1,4 +1,4 @@
-const { db } = require("./database.js");
+import { db } from "./database.js";
 
 // ── WEATHER HELPER ──────────────────────────────────────────────────────────
 async function fetchWeather() {
@@ -119,7 +119,7 @@ ${specJela}
 }
 
 // ── HANDLER ─────────────────────────────────────────────────────────────────
-module.exports = async function handler(req, res) {
+export default async function handler(req, res) {
     if (req.method !== "POST") {
         return res.status(405).json({ error: "Method not allowed" });
     }
