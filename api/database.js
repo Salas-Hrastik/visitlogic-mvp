@@ -1,4 +1,4 @@
-export const db = {
+const db = {
     "grad": {
         "naziv": "Valpovo",
         "opis": "Valpovo je grad u Osječko-baranjskoj županiji, smješten uz rijeku Karašicu, poznat po dvorcu Prandau-Normann, bogatoj kulturnoj baštini i toploj slavonskoj gostoljubivosti.",
