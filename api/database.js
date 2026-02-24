@@ -706,11 +706,27 @@ export const db = {
             "id": 1,
             "naziv": "Rijeka Karašica",
             "tip": "Prirodna atrakcija",
-            "opis": "Karašica je manja slavonska rijeka koja teče pokraj Valpova. Idealna za ribolov, šetnje uz obalu i odmor u prirodi.",
-            "kljucne_rijeci": ["karasica", "rijeka", "ribolov", "priroda", "šetnja", "voda"]
+            "opis": "Današnja rijeka Karašica protječe kroz sam grad Valpovo (ispod mosta Malta) i predstavlja identitet grada. Idealna je za šetnje uz obalu, ribolov i odmor u prirodi.",
+            "koordinate": { "lat": 45.659, "lng": 18.418 },
+            "kljucne_rijeci": ["karašica", "rijeka", "valpovo", "šetnja", "ribolov", "most malta"]
         },
         {
             "id": 2,
+            "naziv": "Rijeka Vučica",
+            "tip": "Prirodna atrakcija",
+            "opis": "Rijeka Vučica protječe u blizini Valpova i naselja Marijančaci. Kroz povijest je bila ključna za mlinove i gospodarstvo, a danas je važno prirodno stanište i desni pritok Karašice.",
+            "kljucne_rijeci": ["vučica", "rijeka", "marijančaci", "priroda", "voda"]
+        },
+        {
+            "id": 3,
+            "naziv": "Rijeka Drava",
+            "tip": "Prirodna atrakcija",
+            "opis": "Drava protječe rubnim dijelom grada Valpova, pokraj naselja Nard. To je moćna rijeka idealna za kupanje (plaža u Nardu), ribolov i rekreaciju. Uz Dravu se nalaze i popularna vikendaška naselja Nehaj i Labov.",
+            "koordinate": { "lat": 45.672, "lng": 18.448 },
+            "kljucne_rijeci": ["drava", "rijeka", "nard", "šag", "kupanje", "plaža", "priroda", "ribolov"]
+        },
+        {
+            "id": 4,
             "naziv": "Perivoj dvorca Prandau-Normann",
             "tip": "Park / Priroda",
             "opis": "Prostrani krajobrazni park koji okružuje dvorac. Jedan od najljepših u Hrvatskoj s oko 100 vrsta drveća. Hortikulturni spomenik prirode.",
@@ -722,18 +738,40 @@ export const db = {
             "kljucne_rijeci": ["perivoj", "park", "šetnja", "dvorac", "priroda", "zeleno"]
         },
         {
-            "id": 3,
+            "id": 5,
             "naziv": "Biciklističke staze",
             "tip": "Biciklizam",
-            "opis": "Valpovo je polazna točka nekoliko biciklističkih staza kroz slavonske ravnice i uz Karašicu. Operativni plan razvoja cikloturizma dostupan je za detaljne informacije.",
+            "opis": "Valpovo je polazna točka nekoliko biciklističkih staza kroz slavonske ravnice i uz rijeke. Operativni plan razvoja cikloturizma dostupan je za detaljne informacije.",
             "kljucne_rijeci": ["bicikl", "biciklizam", "cikloturizam", "staze", "pedala"]
         },
         {
-            "id": 4,
+            "id": 6,
             "naziv": "Valpovačka staza zdravlja",
             "tip": "Rekreacijska staza",
-            "opis": "Rekreacijska staza za hodanje i trčanje koja prolazi kroz zelene površine Valpova.",
+            "opis": "Rekreacijska staza za hodanje i trčanje koja prolazi kroz zelene površine Valpova i uz rijeku.",
             "kljucne_rijeci": ["staza", "zdravlje", "hodanje", "jogging", "rekreacija", "šetnja"]
+        },
+        {
+            "id": 7,
+            "naziv": "Vikend naselje Nehaj",
+            "tip": "Vikendaško naselje / Rekreacijska zona",
+            "opis": "Popularno izletničko naselje uz lijevu obalu Drave. Poznato po prirodnim plažama, ribolovu i odmoru. Tu se nalazi i Forest Glam za proslave.",
+            "adresa": "Petrijevci / Valpovo, Hrvatska",
+            "koordinate": { "lat": 45.6415176, "lng": 18.5123367 },
+            "ocjena": 5.0,
+            "broj_recenzija": 20,
+            "aktivnosti": ["ribolov", "kupanje", "roštilj", "čamac / kajak", "Forest Glam"],
+            "kljucne_rijeci": ["nehaj", "vikendice", "plaža", "drava", "izlet", "ribolov"]
+        },
+        {
+            "id": 8,
+            "naziv": "Vikend naselje Labov",
+            "tip": "Vikendaško naselje / Rekreacijska zona",
+            "opis": "Vikendaško naselje uz rijeku Dravu u blizini Nehaja. Poznato lokalnom stanovništvu kao mirna oaza za ribolov i vikend turizam.",
+            "adresa": "Obala rijeke Drave, Valpovo",
+            "koordinate": { "lat": 45.638, "lng": 18.430 },
+            "aktivnosti": ["ribolov", "kupanje", "roštilj", "priroda"],
+            "kljucne_rijeci": ["labov", "vikendice", "drava", "priroda", "ribolov"]
         }
     ],
     "usluge": {
