@@ -406,12 +406,17 @@
         }
 
         /* ── SEND ── */
+        const conversationHistory = [];
+
         async function sendMessage() {
             const text = inputEl.value.trim();
             if (!text || isProcessing) return;
 
             addMessage(text, "user");
             inputEl.value = "";
+
+            // Spremi u povijest
+            conversationHistory.push({ role: "user", content: text });
 
             setLock(true);
             showTyping();
@@ -420,12 +425,20 @@
                 const response = await fetch("/api/chat", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ message: text })
+                    body: JSON.stringify({
+                        message: text,
+                        history: conversationHistory.slice(-6) // pošalji zadnjih 6 poruka
+                    })
                 });
 
                 const data = await response.json();
                 removeTyping();
-                addMessage(data.reply || "Nema odgovora.");
+                const reply = data.reply || "Nema odgovora.";
+                addMessage(reply);
+
+                // Spremi AI odgovor u povijest
+                conversationHistory.push({ role: "model", content: reply });
+
             } catch {
                 removeTyping();
                 addMessage("Došlo je do greške pri komunikaciji s poslužiteljem.");
