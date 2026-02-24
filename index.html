@@ -150,16 +150,22 @@
             margin-bottom: 6px;
         }
 
+        .ai a {
+            color: #0f6b3c;
+            text-decoration: underline;
+            font-weight: 600;
+        }
+
         .ai strong {
             color: #014128;
         }
 
         .ai .section-title {
-            font-size: 16px;
             font-weight: 700;
-            color: #013220;
-            margin: 14px 0 6px 0;
-            border-bottom: 1px solid #e0ece6;
+            color: #0b4b2a;
+            margin: 15px 0 8px 0;
+            font-size: 16px;
+            border-bottom: 1px solid #eee;
             padding-bottom: 4px;
         }
 
@@ -328,6 +334,9 @@
 
         /* ── FORMATIRANJE ── */
         function formatAI(raw) {
+            // Pretvori [tekst](link) u <a href...>
+            raw = raw.replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2" target="_blank">$1</a>');
+
             // Pretvori **bold** u <strong>
             raw = raw.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
 
@@ -342,18 +351,18 @@
                     continue;
                 }
 
-                // Redovi koji počinju sa • ili - su stavke liste
-                if (line.startsWith("•") || (line.startsWith("-") && line.length > 2)) {
+                // Lista: •, -, ili brojčana lista (1., 2. itd)
+                if (line.startsWith("•") || (line.startsWith("-") && line.length > 2) || /^\d+\.\s/.test(line)) {
                     if (!inList) { html += "<ul>"; inList = true; }
-                    const content = line.replace(/^[•\-]\s*/, "");
+                    const content = line.replace(/^([•\-]|(\d+\.))\s*/, "");
                     html += `<li>${content}</li>`;
                 }
-                // Redovi koji počinju s emoji + dvotočje ili završavaju s : su naslovi sekcija
+                // Naslov: Emoji + : ili kratki redak s :
                 else if (/^[🏛️🍽️🎉🏨🌿📍🚗🥩]/.test(line) || (line.endsWith(":") && line.length < 60)) {
                     if (inList) { html += "</ul>"; inList = false; }
                     html += `<div class="section-title">${line}</div>`;
                 }
-                // Ostalo su paragrafi
+                // Paragraf
                 else {
                     if (inList) { html += "</ul>"; inList = false; }
                     html += `<p>${line}</p>`;
