@@ -433,15 +433,19 @@
 
                 const data = await response.json();
                 removeTyping();
-                const reply = data.reply || "Nema odgovora.";
-                addMessage(reply);
 
-                // Spremi AI odgovor u povijest
-                conversationHistory.push({ role: "model", content: reply });
+                if (data.reply) {
+                    addMessage(data.reply);
+                    conversationHistory.push({ role: "model", content: data.reply });
+                } else if (data.error) {
+                    addMessage("❌ **Greška:** " + data.error + (data.details ? "\n\n" + data.details : ""));
+                } else {
+                    addMessage("⚠️ Neočekivani odgovor servera (nema 'reply' polja).");
+                }
 
-            } catch {
+            } catch (err) {
                 removeTyping();
-                addMessage("Došlo je do greške pri komunikaciji s poslužiteljem.");
+                addMessage("🚨 **Problem s povezivanjem:** " + err.message);
             } finally {
                 setLock(false);
                 inputEl.focus();
