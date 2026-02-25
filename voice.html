@@ -132,6 +132,83 @@
             border-radius: 14px 14px 4px 14px;
         }
 
+        /* Voice UI */
+        .ai-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            padding-bottom: 4px;
+        }
+
+        .speak-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            opacity: 0.6;
+            transition: opacity 0.2s, transform 0.1s;
+            padding: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        .speak-btn:hover {
+            opacity: 1;
+            background: rgba(0, 0, 0, 0.05);
+        }
+
+        .speak-btn:active {
+            transform: scale(0.9);
+        }
+
+        .speak-btn.playing {
+            color: #d32f2f;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.5;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .mic-btn {
+            background: #f0f0f0;
+            border: none;
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 20px;
+            margin-left: 8px;
+            transition: background 0.2s;
+        }
+
+        .mic-btn:hover {
+            background: #e0e0e0;
+        }
+
+        .mic-btn.recording {
+            background: #ff5252;
+            color: white;
+            animation: pulse 1s infinite;
+        }
+
         /* Formatiranje AI odgovora */
         .ai p {
             margin: 0 0 10px 0;
@@ -399,8 +476,11 @@
     <div id="chat"></div>
 
     <div id="input-area">
-        <input id="input" placeholder="Postavite pitanje..." />
-        <button class="send" id="send" onclick="sendMessage()">Pošalji</button>
+        <div style="display: flex; width: 100%; align-items: center;">
+            <input id="input" placeholder="Postavite pitanje..." />
+            <button class="mic-btn" id="mic-btn" onclick="toggleMic()">🎤</button>
+            <button class="send" id="send" onclick="sendMessage()" style="margin-left: 8px;">Pošalji</button>
+        </div>
     </div>
 
     <!-- MODAL ZA LINKOVE -->
@@ -418,7 +498,11 @@
         const chat = document.getElementById("chat");
         const inputEl = document.getElementById("input");
         const sendBtn = document.getElementById("send");
+        const micBtn = document.getElementById("mic-btn");
         let isProcessing = false;
+        let isRecording = false;
+        let currentAudio = null;
+        let currentSpeakerBtn = null;
 
         /* ── SCROLL LOCK ── */
         function setLock(locked) {
@@ -553,7 +637,15 @@
             div.className = "message " + type;
 
             if (type === "ai") {
-                div.innerHTML = formatAI(content);
+                const html = formatAI(content);
+                // Dodajemo zaglavlje sa zvučnikom za AI
+                div.innerHTML = `
+                    <div class="ai-header">
+                        <span style="font-size: 0.8em; opacity: 0.5; font-weight: bold;">TURISTIČKI INFORMATOR</span>
+                        <button class="speak-btn" onclick="speakText(this, \`${content.replace(/`/g, "\\'").replace(/\n/g, " ")}\`)">🔊</button>
+                    </div>
+                    <div class="ai-content">${html}</div>
+                `;
             } else {
                 div.textContent = content;
             }
@@ -564,6 +656,124 @@
             div.scrollIntoView({ behavior: "smooth", block: "start" });
 
             return div;
+        }
+
+        /* ── GLASOVNE FUNKCIJE ── */
+        async function speakText(btn, text) {
+            if (currentAudio) {
+                currentAudio.pause();
+                currentSpeakerBtn.classList.remove("playing");
+                currentSpeakerBtn.innerHTML = "🔊";
+
+                if (currentSpeakerBtn === btn) {
+                    currentAudio = null;
+                    currentSpeakerBtn = null;
+                    return;
+                }
+            }
+
+            try {
+                btn.classList.add("playing");
+                btn.innerHTML = "🛑";
+                currentSpeakerBtn = btn;
+
+                const response = await fetch("/api/speak", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ text: text.substring(0, 1000) })
+                });
+
+                if (!response.ok) throw new Error("TTS failed");
+
+                const blob = await response.blob();
+                const url = URL.createObjectURL(blob);
+
+                currentAudio = new Audio(url);
+                currentAudio.onended = () => {
+                    btn.classList.remove("playing");
+                    btn.innerHTML = "🔊";
+                    currentAudio = null;
+                    currentSpeakerBtn = null;
+                };
+                currentAudio.play();
+
+            } catch (e) {
+                console.error("Speech error:", e);
+                btn.classList.remove("playing");
+                btn.innerHTML = "⚠️";
+            }
+        }
+
+        let mediaRecorder;
+        let audioChunks = [];
+
+        async function toggleMic() {
+            if (isRecording) {
+                stopRecording();
+            } else {
+                startRecording();
+            }
+        }
+
+        async function startRecording() {
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+                mediaRecorder = new MediaRecorder(stream);
+                audioChunks = [];
+
+                mediaRecorder.ondataavailable = (event) => {
+                    audioChunks.push(event.data);
+                };
+
+                mediaRecorder.onstop = async () => {
+                    const audioBlob = new Blob(audioChunks, { type: 'audio/webm' });
+                    sendToWhisper(audioBlob);
+                };
+
+                mediaRecorder.start();
+                isRecording = true;
+                micBtn.classList.add("recording");
+                micBtn.innerHTML = "🛑";
+                inputEl.placeholder = "Slušam...";
+            } catch (err) {
+                console.error("Mic error:", err);
+                alert("Greška s mikrofonom. Provjerite dopuštenja.");
+            }
+        }
+
+        function stopRecording() {
+            if (mediaRecorder && isRecording) {
+                mediaRecorder.stop();
+                isRecording = false;
+                micBtn.classList.remove("recording");
+                micBtn.innerHTML = "🎤";
+                inputEl.placeholder = "Obrađujem glas...";
+            }
+        }
+
+        async function sendToWhisper(blob) {
+            try {
+                const formData = new FormData();
+                formData.append('file', blob);
+
+                const response = await fetch("/api/transcribe", {
+                    method: "POST",
+                    body: formData
+                });
+
+                const data = await response.json();
+                if (data.text) {
+                    inputEl.value = data.text;
+                    inputEl.placeholder = "Postavite pitanje...";
+                    sendMessage();
+                } else {
+                    throw new Error(data.error || "Prazan tekst");
+                }
+            } catch (e) {
+                console.error("Whisper error:", e);
+                inputEl.placeholder = "Pokušajte ponovno...";
+                setTimeout(() => inputEl.placeholder = "Postavite pitanje...", 2000);
+            }
         }
 
         /* ── TYPING ── */
