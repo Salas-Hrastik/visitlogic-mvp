@@ -389,18 +389,25 @@
             });
 
             // 2. Linkificiraj telefone koji počinju s 📞 (ako nisu već linkovi)
-            raw = raw.replace(/📞\s*(\+?\d[\d\s\-/]{6,}\d)/g, (match, phone) => {
+            raw = raw.replace(/📞\s*(\+?\d[\d\s\-\/()]{6,}\d)/g, (match, phone) => {
                 const cleanPhone = phone.replace(/[^\d+]/g, "");
                 return `📞 <a href="tel:${cleanPhone}">${phone.trim()}</a>`;
             });
 
-            // 3. Linkificiraj web stranice koje počinju s 🌐
-            raw = raw.replace(/🌐\s*(https?:\/\/[^\s]+)/g, '🌐 <a href="$1" target="_blank">$1</a>');
+            // 2b. Linkificiraj i standalone telefone (0XX/XXX-XXXX ili +385...)
+            raw = raw.replace(/(?<!tel:")(?<!href=")(?<!\d)(\+385[\d\s\-\/]{7,}\d|0\d{1,2}[\/\s\-]\d{3}[\s\-]?\d{3,4})/g, (match, phone) => {
+                if (match.includes('<a')) return match;
+                const cleanPhone = phone.replace(/[^\d+]/g, "");
+                return `<a href="tel:${cleanPhone}">${phone.trim()}</a>`;
+            });
 
-            // 4. Linkificiraj GPS koordinate koje počinju s 📍
+            // 3. Linkificiraj web stranice koje počinju s 🌐
+            raw = raw.replace(/🌐\s*(https?:\/\/[^\s)]+)/g, '🌐 <a href="$1" target="_blank">$1</a>');
+
+            // 4. Linkificiraj GPS koordinate koje počinju s 📍 (bez dupliranja ikone)
             raw = raw.replace(/📍\s*(\d+\.\d+)\s*,\s*(\d+\.\d+)/g, (match, lat, lng) => {
                 const mapsUrl = `https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`;
-                return `📍 <a href="${mapsUrl}" target="_blank" class="maps-link">${lat}, ${lng}</a>`;
+                return `<a href="${mapsUrl}" target="_blank" class="maps-link">${lat}, ${lng}</a>`;
             });
 
             // 5. Pretvori **bold** u <strong>
@@ -526,7 +533,7 @@
 
                 if (data.reply) {
                     addMessage(data.reply);
-                    conversationHistory.push({ role: "model", content: data.reply });
+                    conversationHistory.push({ role: "assistant", content: data.reply });
                 } else if (data.error) {
                     addMessage("❌ **Greška:** " + data.error + (data.details ? "\n\n" + data.details : ""));
                 } else {
@@ -548,11 +555,4 @@
                 e.preventDefault();
                 sendMessage();
             }
-        });
-
-        loadWeather();
-    </script>
-
-</body>
-
-</html>
+       
