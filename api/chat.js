@@ -154,11 +154,14 @@ const db = {
 // ── HELPERS ─────────────────────────────────────────────────────────────────
 async function fetchWeather() {
     try {
-        const url = "https://api.open-meteo.com/v1/forecast?latitude=45.6609&longitude=18.4186&current_weather=true";
+        const url = "https://api.open-meteo.com/v1/forecast?latitude=45.6609&longitude=18.4186&current_weather=true&daily=weathercode,temperature_2m_max,temperature_2m_min&timezone=auto";
         const r = await fetch(url);
         if (!r.ok) return null;
         const d = await r.json();
-        return d.current_weather || null;
+        return {
+            current: d.current_weather,
+            daily: d.daily
+        };
     } catch (e) { return null; }
 }
 
@@ -171,7 +174,29 @@ function getSeason(month) {
 
 // ── PROMPT ──────────────────────────────────────────────────────────────────
 function buildSystemPrompt(db, weather, season, hour, isWeekend) {
-    const weatherNote = weather ? `\nTRENUTNO U VALPOVU: ${weather.temperature}°C, ${weather.windspeed} km/h.` : "";
+    let weatherNote = "";
+    if (weather && weather.current) {
+        weatherNote = `\nTRENUTNO U VALPOVU: ${weather.current.temperature}°C, ${weather.current.windspeed} km/h.`;
+
+        if (weather.daily) {
+            weatherNote += "\nPROGNOZA ZA IDUĆIH 7 DANA:";
+            for (let i = 0; i < weather.daily.time.length; i++) {
+                const date = weather.daily.time[i];
+                const max = weather.daily.temperature_2m_max[i];
+                const min = weather.daily.temperature_2m_min[i];
+                const code = weather.daily.weathercode[i];
+                // Jednostavna interpretacija koda (moglo bi se proširiti)
+                let desc = "Vedro/Promjenjivo";
+                if (code >= 1 && code <= 3) desc = "Djelomično oblačno";
+                if (code >= 45 && code <= 48) desc = "Magla";
+                if (code >= 51 && code <= 67) desc = "Kiša/Rominjanje";
+                if (code >= 71 && code <= 86) desc = "Snijeg";
+                if (code >= 95) desc = "Grmljavina";
+
+                weatherNote += `\n- ${date}: ${desc}, ${min}°C do ${max}°C`;
+            }
+        }
+    }
 
     const fmt = (item) => {
         let s = `- ${item.naziv}: ${item.opis || ""}`;
@@ -215,6 +240,11 @@ function buildSystemPrompt(db, weather, season, hour, isWeekend) {
 1. PREPOZNAJ jezik korisnika.
 2. UVIJEK odgovaraj na ISTOM jeziku koji korisnik koristi (Engleski, Njemački, itd.).
 3. PREVEDI sve lokalne podatke iz baze podataka (opise, nazive, termine) na jezik korisnika.
+
+--- VREMENSKA PROGNOZA ---
+Sada imaš uvid u TRENUTNO VRIJEME i PROGNOZU za idućih 7 dana iznad. 
+Koristi te informacije kada te korisnik pita za vrijeme ili kada predlažeš aktivnosti (npr. ako će padati kiša, predloži muzej umjesto parka).
+NIKADA ne govori da ne možeš provjeriti prognozu - ona je ispred tebe!
 
 Digitalni turistički informator grada Valpova. Profesionalan i koristan. ${weatherNote}
 
