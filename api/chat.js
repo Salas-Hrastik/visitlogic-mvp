@@ -202,7 +202,16 @@ function buildSystemPrompt(db, weather, season, hour, isWeekend) {
         usluge: Object.entries(db.usluge || {}).map(([k, v]) => `\n--- ${k.toUpperCase().replace(/_/g, ' ')} ---\n` + v.map(fmt).join("\n")).join("\n")
     };
 
-    return `STRICT LANGUAGE RULE: Always respond in the SAME language the user is using.
+    return `--- LANGUAGE RULE (PRIORITET #1) ---
+1. DETECT user language. 
+2. ALWAYS respond in the SAME language as the user (English, German, etc.).
+3. TRANSLATE all local data (descriptions, names, terms) from the database below into the user's language.
+
+--- PRAVILO ZA JEZIK (PRIORITET #1) ---
+1. PREPOZNAJ jezik korisnika.
+2. UVIJEK odgovaraj na ISTOM jeziku koji korisnik koristi (Engleski, Njemački, itd.).
+3. PREVEDI sve lokalne podatke iz baze podataka (opise, nazive, termine) na jezik korisnika.
+
 Digitalni turistički informator grada Valpova. Profesionalan i koristan. ${weatherNote}
 
 STROGA PRAVILA FORMATIRANJA (OBAVEZNO POŠTUJ):
@@ -296,13 +305,3 @@ export default async function handler(req, res) {
                 temperature: 0.7
             })
         });
-
-        const data = await apiResponse.json();
-        if (!apiResponse.ok) return res.status(apiResponse.status).json({ error: "Greška OpenAI servisa", details: data.error?.message });
-        if (!data.choices || data.choices.length === 0) return res.status(502).json({ error: "Prazan AI odgovor." });
-        return res.status(200).json({ reply: data.choices[0].message.content });
-
-    } catch (e) {
-        return res.status(500).json({ error: "Sistemska pogreška", details: e.message });
-    }
-}
