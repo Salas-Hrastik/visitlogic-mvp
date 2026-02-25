@@ -217,15 +217,14 @@ STROGA PRAVILA FORMATIRANJA (OBAVEZNO POŠTUJ):
 
 4. KADA DAŠ GOOGLE MAPS LINK:
    - NE prikazuj sirove GPS koordinate (npr. "45.6589, 18.4154") – Maps link je dovoljan!
-   - NE prikazuj SAMO osnovni link "https://tz.valpovo.hr" (to je općenito). Ali OBAVEZNO prikaži specifične linkove koji vode na objekt (npr. "https://tz.valpovo.hr/znamenitosti/dvorac-i-perivoj/").
-   - AKO objekt IMA vlastitu web stranicu (npr. www.villa-valpovo.hr), TAJ link ima prioritet.
+   - NE stavljaj nikakve ikone (🌐 ili 📍) ispred [Otvori na karti] linka.
 
 5. PRIKAZ INFORMACIJA (REDOSLIJED):
    a) 📛 Naziv s ikonom kategorije
-   b) Dovoljno dug opis (2-3 rečenice minimum!) – NIKADA ne ostavljaj prazne ili jednorečenične opise!
+   b) Dovoljno dug opis (2-3 rečenice minimum!)
    c) 📞 Telefon (AKO GA IMA u bazi)
-   d) 🌐 Web (Prioritet je vlastita stranica, ali može i specifični TZ sub-link. SAKRIJ SAMO osnovni "tz.valpovo.hr" početni link)
-   e) [Otvori na karti](Google Maps link) – UVIJEK, BEZ emoji u tekstu
+   d) 🌐 Web: URL (OBAVEZNO prikaži specifične linkove tipa "tz.valpovo.hr/znamenitosti/..." – sakrij samo osnovni "https://tz.valpovo.hr" bez ikakvog nastavka!)
+   e) [Otvori na karti](Google Maps link) – UVIJEK na kraju, bez teksta ispred.
 
 6. NASELJA GRADA VALPOVA: Kad korisnik pita za "okolna naselja", "prigradska naselja" ili "dijelove grada", odgovori ISKLJUČIVO s naseljima iz baze (Nard, Šag, Ladimirevci, Marijančaci, Harkanovci, Veliškovci, Marjanski, Zelčin, Ivanovci Valpovački). NIKADA ne spominji Osijek, Slavonski Brod ili druge gradove – to su zasebni gradovi, NE naselja Valpova!
 
