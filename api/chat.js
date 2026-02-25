@@ -34,28 +34,30 @@ const db = {
         { "id": 12, "naziv": "Srpska pravoslavna crkva Sv. Georgija", "adresa": "Osječka ul. 21" }
     ],
     "gastronomija": [
-        { "id": 1, "naziv": "Restoran Jovalija", "adresa": "Ul. Ive Lole Ribara 1", "ocjena": 4.9, "opis": "Vrhunska slavonska jela.", "web": "https://tz.valpovo.hr/ugostiteljstvo/restoran-jovalija/", "radno_vrijeme": { "svaki_dan": "09:00 - 22:00" } },
-        { "id": 2, "naziv": "Hotel & Restoran Park Valpovo", "adresa": "Ul. Ive Lole Ribara 10", "ocjena": 4.7, "web": "https://tz.valpovo.hr/ugostiteljstvo/restoran-park/", "radno_vrijeme": { "pon-sub": "10:00 - 22:00", "ned": "11:00 - 16:00" } },
-        { "id": 3, "naziv": "PIGment", "adresa": "Trg kralja Tomislava 7", "ocjena": 5.0, "opis": "Burger bar.", "radno_vrijeme": { "čet": "17:00-22:00", "pet-sub": "17:00-00:00", "ned": "17:00-22:00" } },
-        { "id": 4, "naziv": "RasoPaso", "adresa": "Strossmayerova ul. 2", "ocjena": 4.4, "radno_vrijeme": { "uto-ned": "10:00-22:00" } },
-        { "id": 5, "naziv": "Bar i Pizzeria HEX", "adresa": "Trg kralja Tomislava 18", "ocjena": 4.7, "web": "https://tz.valpovo.hr/ugostiteljstvo/bar-i-pizzeria-hex-valpovo/" },
-        { "id": 6, "naziv": "Gurman", "adresa": "Ul. Augusta Šenoe 107", "ocjena": 4.0 },
-        { "id": 7, "naziv": "Fast Food Vesperas", "adresa": "Ul. Zrinsko Frankopanska 48", "ocjena": 4.9 },
-        { "id": 8, "naziv": "Gradska kavana Valpovo", "web": "https://tz.valpovo.hr/ugostiteljstvo/gradska-kavana-valpovo/" },
-        { "id": 9, "naziv": "Gradska kavana Katančić", "web": "https://tz.valpovo.hr/ugostiteljstvo/gradska-kavana-katancic/" }
+        { "id": 1, "naziv": "Restoran Jovalija", "adresa": "Ul. Ive Lole Ribara 1", "ocjena": 4.9, "opis": "Vrhunski restoran slavonske kuhinje poznat po domaćem kulenu, čobancu i svježoj ribi iz Drave. Rustikalni interijer s autentičnim slavonskim ugođajem.", "web": "https://tz.valpovo.hr/ugostiteljstvo/restoran-jovalija/", "radno_vrijeme": { "svaki_dan": "09:00 - 22:00" } },
+        { "id": 2, "naziv": "Hotel & Restoran Park Valpovo", "adresa": "Ul. Ive Lole Ribara 10", "ocjena": 4.7, "opis": "Elegantni restoran u sklopu hotela uz dvorac. Nudi međunarodnu i slavonsku kuhinju, idealan za svečane prilike i poslovne ručkove.", "web": "https://tz.valpovo.hr/ugostiteljstvo/restoran-park/", "radno_vrijeme": { "pon-sub": "10:00 - 22:00", "ned": "11:00 - 16:00" } },
+        { "id": 3, "naziv": "PIGment", "adresa": "Trg kralja Tomislava 7", "ocjena": 5.0, "opis": "Popularni burger bar u samom centru grada. Craft burgeri od domaćeg mesa s kreativnim dodacima. Mladenačka atmosfera.", "radno_vrijeme": { "čet": "17:00-22:00", "pet-sub": "17:00-00:00", "ned": "17:00-22:00" } },
+        { "id": 4, "naziv": "RasoPaso", "adresa": "Strossmayerova ul. 2", "ocjena": 4.4, "opis": "Obiteljski restoran s raznovrsnim jelovnikom – od pizze i tjestenine do tradicionalnih slavonskih jela. Terasa za lijepe dane.", "radno_vrijeme": { "uto-ned": "10:00-22:00" } },
+        { "id": 5, "naziv": "Bar i Pizzeria HEX", "adresa": "Trg kralja Tomislava 18", "ocjena": 4.7, "opis": "Pivnica i pizzerija na glavnom trgu. Širok izbor pizza, sendviča i pića. Idealno za opušteno druženje.", "web": "https://tz.valpovo.hr/ugostiteljstvo/bar-i-pizzeria-hex-valpovo/" },
+        { "id": 6, "naziv": "Gurman", "adresa": "Ul. Augusta Šenoe 107", "ocjena": 4.0, "opis": "Restoran s ponudom gotovih jela i dnevnog menija. Pristupačne cijene, domaća kuhinja." },
+        { "id": 7, "naziv": "Fast Food Vesperas", "adresa": "Ul. Zrinsko Frankopanska 48", "ocjena": 4.9, "opis": "Omiljeni fast food u Valpovu – ćevapi, pljeskavice, pomfrit. Brza usluga i odlični obroci za van." }
+    ],
+    "kavane": [
+        { "id": 1, "naziv": "Gradska kavana Valpovo", "opis": "Kultna kavana u centru grada, mjesto okupljanja Valpovčana. Kava, kolači, kokteli.", "web": "https://tz.valpovo.hr/ugostiteljstvo/gradska-kavana-valpovo/" },
+        { "id": 2, "naziv": "Gradska kavana Katančić", "opis": "Moderna kavana s ugodnim ambijentom u blizini dvorca. Širok izbor toplih i hladnih napitaka.", "web": "https://tz.valpovo.hr/ugostiteljstvo/gradska-kavana-katancic/" }
     ],
     "manifestacije": [
-        { "id": "MAN-001", "naziv": "Dječji gradski karneval Valpovo", "vrijeme": "Veljača", "opis": "Karnevalska povorka djece (32. izdanje 14.2.2026).", "url": "https://tz.valpovo.hr/2026/02/05/32-djecji-gradski-karneval-u-valpovu/" },
-        { "id": "MAN-002", "naziv": "Uskrs u Valpovu", "vrijeme": "Kraj ožujka", "opis": "Etno/eko sajam s programima za djecu.", "url": "https://tz.valpovo.hr/manifestacije/uskrs-u-valpovu/" },
-        { "id": "MAN-003", "naziv": "Dan Grada / Zlatno sijelo", "vrijeme": "Travanj/Svibanj", "opis": "Svečana proslava Dana Grada.", "url": "https://tz.valpovo.hr/category/dan-grada-valpova/" },
-        { "id": "MAN-004", "naziv": "Ljeto valpovačko", "vrijeme": "22.-28. lipnja 2026.", "opis": "54. izdanje najstarije smotre amaterskog stvaralaštva u Slavoniji.", "url": "https://tz.valpovo.hr/manifestacije/ljeto-valpovacko/" },
-        { "id": "MAN-005", "naziv": "Rock'a'raj festival", "vrijeme": "Srpanj", "opis": "Rock koncerti ispred dvorca.", "url": "https://tz.valpovo.hr/manifestacije/rockaraj-festival/" },
-        { "id": "MAN-006", "naziv": "Valpovačko turističko ljeto", "vrijeme": "Srpanj-Kolovoz", "opis": "Ljetni kulturni i zabavni programi.", "url": "https://tz.valpovo.hr/category/valpovacko-turisticko-ljeto/" },
-        { "id": "MAN-007", "naziv": "Greenroom festival", "vrijeme": "Ljeto", "url": "https://tz.valpovo.hr/category/greenroom-festival/" },
-        { "id": "MAN-008", "naziv": "Reunited festival", "vrijeme": "Ljeto", "url": "https://tz.valpovo.hr/category/reunited-festival/" },
-        { "id": "MAN-009", "naziv": "Valpovo Craft Beer Fest", "vrijeme": "Rujan", "opis": "Dvodnevni festival craft piva uz glazbu.", "url": "https://tz.valpovo.hr/manifestacije/craft-beer-festival/" },
-        { "id": "MAN-010", "naziv": "Advent u Valpovu", "vrijeme": "Studeni-Prosinac", "opis": "Adventsko seoceto, koncerti, jaslice, doček Nove godine.", "url": "https://tz.valpovo.hr/category/advent-u-valpovu/" },
-        { "id": "MAN-011", "naziv": "Noć muzeja", "vrijeme": "Siječanj", "opis": "Poseban program u Muzeju Valpovštine.", "url": "https://tz.valpovo.hr/2026/01/26/noc-muzeja-2026-u-muzeju-valpovstine/" }
+        { "id": "MAN-001", "naziv": "Dječji gradski karneval Valpovo", "vrijeme": "14. veljače 2026.", "datum_iso": "2026-02-14", "opis": "32. izdanje šarene karnevalske povorke djece ulicama Valpova. Maske, plesovi, glazba i zabava za najmlađe – tradicionalna manifestacija koja otvara godinu.", "url": "https://tz.valpovo.hr/2026/02/05/32-djecji-gradski-karneval-u-valpovu/" },
+        { "id": "MAN-002", "naziv": "Uskrs u Valpovu", "vrijeme": "28.-29. ožujka 2026.", "datum_iso": "2026-03-28", "opis": "Tradicionalni etno i eko sajam na Trgu kralja Tomislava. Izložba pisanica, domaćih proizvoda, radionice za djecu i bogat kulturni program.", "url": "https://tz.valpovo.hr/manifestacije/uskrs-u-valpovu/" },
+        { "id": "MAN-003", "naziv": "Dan Grada / Zlatno sijelo", "vrijeme": "Svibanj 2026.", "datum_iso": "2026-05-15", "opis": "Svečana proslava Dana Grada Valpova s kulturno-umjetničkim programom, smotrom folklora 'Zlatno sijelo', izložbama i sportskim natjecanjima.", "url": "https://tz.valpovo.hr/category/dan-grada-valpova/" },
+        { "id": "MAN-004", "naziv": "Ljeto valpovačko", "vrijeme": "22.-28. lipnja 2026.", "datum_iso": "2026-06-22", "opis": "54. izdanje najstarije smotre amaterskog stvaralaštva u Slavoniji. Tjedan dana kazališnih predstava, koncerata, izložbi i radionica u dvorištu dvorca Prandau-Normann.", "url": "https://tz.valpovo.hr/manifestacije/ljeto-valpovacko/" },
+        { "id": "MAN-005", "naziv": "Rock'a'raj festival", "vrijeme": "Srpanj 2026.", "datum_iso": "2026-07-15", "opis": "Cjelodnevni rock festival ispred dvorca Prandau-Normann. Nastupaju domaći i regionalni rock bendovi na sceni okruženoj srednjovjekovnim zidinama.", "url": "https://tz.valpovo.hr/manifestacije/rockaraj-festival/" },
+        { "id": "MAN-006", "naziv": "Valpovačko turističko ljeto", "vrijeme": "Srpanj-Kolovoz 2026.", "datum_iso": "2026-07-01", "opis": "Dva mjeseca ljetnih kulturnih i zabavnih programa na otvorenom – koncerti, filmske projekcije, sportska natjecanja i dječje radionice.", "url": "https://tz.valpovo.hr/category/valpovacko-turisticko-ljeto/" },
+        { "id": "MAN-007", "naziv": "Greenroom festival", "vrijeme": "Srpanj 2026.", "datum_iso": "2026-07-20", "opis": "Festival elektronske glazbe u zelenoj oazi valpovačkog perivoja. DJ nastupi, light show i ljetna atmosfera.", "url": "https://tz.valpovo.hr/category/greenroom-festival/" },
+        { "id": "MAN-008", "naziv": "Reunited festival", "vrijeme": "Kolovoz 2026.", "datum_iso": "2026-08-10", "opis": "Glazbeni festival koji okuplja domaće i regionalne izvođače raznih žanrova. Ugođaj ljetne fešte u dvorištu dvorca.", "url": "https://tz.valpovo.hr/category/reunited-festival/" },
+        { "id": "MAN-009", "naziv": "Valpovo Craft Beer Fest", "vrijeme": "Rujan 2026.", "datum_iso": "2026-09-15", "opis": "Dvodnevni festival craft piva s degustacijama više od 30 vrsta piva domaćih pivovara, uz street food, live glazbu i DJ-eve.", "url": "https://tz.valpovo.hr/manifestacije/craft-beer-festival/" },
+        { "id": "MAN-010", "naziv": "Advent u Valpovu", "vrijeme": "Studeni-Prosinac 2026.", "datum_iso": "2026-11-28", "opis": "Čarobni adventski sajam na Trgu kralja Tomislava – adventsko seoceto s drvenim kućicama, kuhanim vinom, kobasicama, koncertima, jaslicama i dočekom Nove godine.", "url": "https://tz.valpovo.hr/category/advent-u-valpovu/" },
+        { "id": "MAN-011", "naziv": "Noć muzeja", "vrijeme": "Siječanj 2027.", "datum_iso": "2027-01-29", "opis": "Poseban noćni program u Muzeju Valpovštine – vodstva, predavanja, izložbe i radionice otvorene do kasno u noć, besplatan ulaz.", "url": "https://tz.valpovo.hr/2026/01/26/noc-muzeja-2026-u-muzeju-valpovstine/" }
     ],
     "smjestaj": [
         { "id": 1, "naziv": "Hotel & Restoran Park Valpovo", "tip": "Hotel", "adresa": "Dvorac 1", "telefon": "+385 31 651 844", "web": "https://tz.valpovo.hr/smjestaj-u-valpovu/hotel-restoran-park-valpovo/" },
@@ -185,12 +187,17 @@ function buildSystemPrompt(db, weather, season, hour, isWeekend) {
 
     const fmtNaselje = (item) => `- ${item.naziv}: ${item.opis || ""}`;
 
+    // Filter manifestacije: only upcoming events
+    const today = new Date().toISOString().slice(0, 10);
+    const upcomingEvents = (db.manifestacije || []).filter(m => !m.datum_iso || m.datum_iso >= today);
+
     const strings = {
         znamenitosti: (db.znamenitosti || []).map(fmt).join("\n"),
         gastronomija: (db.gastronomija || []).map(fmt).join("\n"),
+        kavane: (db.kavane || []).map(fmt).join("\n"),
         priroda: (db.priroda || []).map(fmt).join("\n"),
         smjestaj: (db.smjestaj || []).map(fmt).join("\n"),
-        manifestacije: (db.manifestacije || []).map(fmt).join("\n"),
+        manifestacije: upcomingEvents.map(fmt).join("\n"),
         naselja: (db.naselja || []).map(fmtNaselje).join("\n"),
         usluge: Object.entries(db.usluge || {}).map(([k, v]) => `\n--- ${k.toUpperCase().replace(/_/g, ' ')} ---\n` + v.map(fmt).join("\n")).join("\n")
     };
@@ -205,7 +212,8 @@ STROGA PRAVILA FORMATIRANJA (OBAVEZNO POŠTUJ):
 2. TELEFON: Ako IMAŠ telefonski broj u bazi, prikaži ga sa 📞 ikonom. NIKADA ne stavljaj adresu iza 📞 ikone – to je SAMO za telefonske brojeve!
 
 3. GOOGLE MAPS: Za svaki objekt OBAVEZNO generiraj Google Maps link u formatu:
-   [📍 Otvori na karti](https://www.google.com/maps/search/?api=1&query=NAZIV+OBJEKTA+Valpovo)
+   [Otvori na karti](https://www.google.com/maps/search/?api=1&query=NAZIV+OBJEKTA+Valpovo)
+   VAŽNO: NE stavljaj 📍 emoji u tekst linka! CSS automatski dodaje ikonu. Piši SAMO "Otvori na karti".
 
 4. KADA DAŠ GOOGLE MAPS LINK:
    - NE prikazuj sirove GPS koordinate (npr. "45.6589, 18.4154") – Maps link je dovoljan!
@@ -214,29 +222,34 @@ STROGA PRAVILA FORMATIRANJA (OBAVEZNO POŠTUJ):
 
 5. PRIKAZ INFORMACIJA (REDOSLIJED):
    a) 📛 Naziv s ikonom kategorije
-   b) Kratki opis
+   b) Dovoljno dug opis (2-3 rečenice minimum!) – NIKADA ne ostavljaj prazne ili jednorečenične opise!
    c) 📞 Telefon (AKO GA IMA u bazi)
    d) 🌐 Web (SAMO ako objekt ima VLASTITU stranicu, NE općeniti tz.valpovo.hr)
-   e) [📍 Otvori na karti](Google Maps link) – UVIJEK, BEZ sirovih GPS koordinata
+   e) [Otvori na karti](Google Maps link) – UVIJEK, BEZ emoji u tekstu
 
 6. NASELJA GRADA VALPOVA: Kad korisnik pita za "okolna naselja", "prigradska naselja" ili "dijelove grada", odgovori ISKLJUČIVO s naseljima iz baze (Nard, Šag, Ladimirevci, Marijančaci, Harkanovci, Veliškovci, Marjanski, Zelčin, Ivanovci Valpovački). NIKADA ne spominji Osijek, Slavonski Brod ili druge gradove – to su zasebni gradovi, NE naselja Valpova!
 
+7. KAVANE: Kavane su ZASEBNA kategorija od gastronomije (restorana). Kad korisnik pita za kafiće ili kavane, prikaži podatke iz kategorije KAVANE. Kad pita za restorane ili hranu, prikaži GASTRONOMIJU.
+
 SMART FLOWS:
 - SMJEŠTAJ: Pitaj vrstu (Hotel/Apartman/Sobe/Prenoćište) → pitaj preference → daj 3 opcije.
-- MANIFESTACIJE: Izlistaj kronološki s 🎉 ikonom i datumima.
+- MANIFESTACIJE: Prikazuj SAMO nadolazeće manifestacije (koje još nisu prošle). Danas je ${today}. Izlistaj kronološki s 🎉 ikonom, TOČNIM DATUMOM i opisom.
 
 BAZA PODATAKA:
 ZNAMENITOSTI:
 ${strings.znamenitosti}
 
-MANIFESTACIJE (KALENDAR 2026):
+NADOLAZEĆE MANIFESTACIJE (KALENDAR 2026):
 ${strings.manifestacije}
 
 PRIRODA:
 ${strings.priroda}
 
-GASTRONOMIJA:
+GASTRONOMIJA (RESTORANI I FAST FOOD):
 ${strings.gastronomija}
+
+KAVANE:
+${strings.kavane}
 
 USLUGE:
 ${strings.usluge}
