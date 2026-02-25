@@ -394,9 +394,8 @@
                 return `📞 <a href="tel:${cleanPhone}">${phone.trim()}</a>`;
             });
 
-            // 2b. Linkificiraj i standalone telefone (0XX/XXX-XXXX ili +385...)
-            raw = raw.replace(/(?<!tel:")(?<!href=")(?<!\d)(\+385[\d\s\-\/]{7,}\d|0\d{1,2}[\/\s\-]\d{3}[\s\-]?\d{3,4})/g, (match, phone) => {
-                if (match.includes('<a')) return match;
+            // 2b. Linkificiraj standalone telefone (+385... ili 0XX/XXX-XXXX) ako nisu već u linku
+            raw = raw.replace(/(\+385[\d\s\-\/]{7,}\d|0\d{1,2}[\/\s\-]\d{3}[\s\-]?\d{3,4})/g, (match, phone) => {
                 const cleanPhone = phone.replace(/[^\d+]/g, "");
                 return `<a href="tel:${cleanPhone}">${phone.trim()}</a>`;
             });
