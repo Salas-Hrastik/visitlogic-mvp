@@ -457,11 +457,13 @@
 
         /* ── FORMATIRANJE ── */
         function formatAI(raw) {
-            // 1. Pretvori [tekst](link) u modalni link s detekcijom Google Maps
+            // 1. Pretvori [tekst](link) u modalni link (OSIM ZA GOOGLE MAPS koji ne dopušta iframe)
             raw = raw.replace(/\[(.*?)\]\((.*?)\)/g, (match, text, url) => {
                 const isMaps = url.includes("google.com/maps");
-                const className = isMaps ? 'class="maps-link"' : "";
-                return `<a href="${url}" ${className} onclick="openModal('${url}', '${text.replace(/'/g, "\\'")}'); return false;">${text}</a>`;
+                if (isMaps) {
+                    return `<a href="${url}" target="_blank" class="maps-link">${text}</a>`;
+                }
+                return `<a href="${url}" onclick="openModal('${url}', '${text.replace(/'/g, "\\'")}'); return false;">${text}</a>`;
             });
 
             // 2. Linkificiraj telefone koji počinju s 📞 (ako nisu već linkovi)
@@ -481,10 +483,10 @@
                 return `🌐 <a href="${url}" onclick="openModal('${url}'); return false;">${url}</a>`;
             });
 
-            // 4. Linkificiraj GPS koordinate koje počinju s 📍 (bez dupliranja ikone, u modal)
+            // 4. Linkificiraj GPS koordinate koje počinju s 📍 (bez dupliranja ikone, u novi tab jer Google ne dopušta iframe)
             raw = raw.replace(/📍\s*(\d+\.\d+)\s*,\s*(\d+\.\d+)/g, (match, lat, lng) => {
                 const mapsUrl = `https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`;
-                return `<a href="${mapsUrl}" class="maps-link" onclick="openModal('${mapsUrl}', 'Lokacija'); return false;">${lat}, ${lng}</a>`;
+                return `<a href="${mapsUrl}" target="_blank" class="maps-link">${lat}, ${lng}</a>`;
             });
 
             // 5. Pretvori **bold** u <strong>
