@@ -457,37 +457,58 @@
 
         /* ── FORMATIRANJE ── */
         function formatAI(raw) {
-            // 1. Pretvori [tekst](link) u modalni link (OSIM ZA GOOGLE MAPS koji ne dopušta iframe)
+            // 1. Markdown bold
+            raw = raw.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
+
+            // 2. Eksplicitni Markdown linkovi [tekst](url) -> <a> tags
             raw = raw.replace(/\[(.*?)\]\((.*?)\)/g, (match, text, url) => {
-                const isMaps = url.includes("google.com/maps");
+                const isMaps = url.includes("google.com/maps") || url.includes("goo.gl/maps");
                 if (isMaps) {
                     return `<a href="${url}" target="_blank" class="maps-link">${text}</a>`;
                 }
                 return `<a href="${url}" onclick="openModal('${url}', '${text.replace(/'/g, "\\'")}'); return false;">${text}</a>`;
             });
 
-            // 2. Linkificiraj telefone koji počinju s 📞 (ako nisu već linkovi)
+            // 3. ZAŠTITA: Privremeno sakrivamo sve <a> tagove da ih sljedeći koraci ne pokvare
+            const tokens = [];
+            raw = raw.replace(/<a\s+[^>]*>.*?<\/a>/gi, (match) => {
+                const token = `##LNK${tokens.length}##`;
+                tokens.push(match);
+                return token;
+            });
+
+            // 4. Linkificiramo ostalo (telefone, web) - sada sigurno jer su <a> tagovi sakriveni
+
+            // 🌐 Web linkovi (raw URL-ovi)
+            raw = raw.replace(/🌐\s*(?:[^:]+:\s*)?(https?:\/\/[^\s)]+)/g, (match, url) => {
+                return `🌐 <a href="${url}" onclick="openModal('${url}'); return false;">${url}</a>`;
+            });
+
+            // 📍 GPS koordinate
+            raw = raw.replace(/📍\s*(\d+\.\d+)\s*,\s*(\d+\.\d+)/g, (match, lat, lng) => {
+                const mapsUrl = `https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`;
+                return `<a href="${mapsUrl}" target="_blank" class="maps-link">${lat}, ${lng}</a>`;
+            });
+
+            // 📞 Telefoni koji počinju ikonom
             raw = raw.replace(/📞\s*(\+?\d[\d\s\-\/()]{6,}\d)/g, (match, phone) => {
                 const cleanPhone = phone.replace(/[^\d+]/g, "");
                 return `📞 <a href="tel:${cleanPhone}">${phone.trim()}</a>`;
             });
 
-            // 2b. Linkificiraj standalone telefone (+385... ili 0XX/XXX-XXXX) ako nisu već u linku
+            // Samostalni telefoni (+385... ili 0XX...)
             raw = raw.replace(/(\+385[\d\s\-\/]{7,}\d|0\d{1,2}[\/\s\-]\d{3}[\s\-]?\d{3,4})/g, (match, phone) => {
                 const cleanPhone = phone.replace(/[^\d+]/g, "");
                 return `<a href="tel:${cleanPhone}">${phone.trim()}</a>`;
             });
 
-            // 3. Linkificiraj web stranice koje počinju s 🌐 (podržava optional "Web:", "Stranica:" itd)
-            raw = raw.replace(/🌐\s*(?:[^:]+:\s*)?(https?:\/\/[^\s)]+)/g, (match, url) => {
-                return `🌐 <a href="${url}" onclick="openModal('${url}'); return false;">${url}</a>`;
+            // 5. Vraćamo sakrivene linkove nazad
+            tokens.forEach((tag, i) => {
+                raw = raw.replace(`##LNK${i}##`, tag);
             });
 
-            // 4. Linkificiraj GPS koordinate koje počinju s 📍 (bez dupliranja ikone, u novi tab jer Google ne dopušta iframe)
-            raw = raw.replace(/📍\s*(\d+\.\d+)\s*,\s*(\d+\.\d+)/g, (match, lat, lng) => {
-                const mapsUrl = `https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`;
-                return `<a href="${mapsUrl}" target="_blank" class="maps-link">${lat}, ${lng}</a>`;
-            });
+            // Finalno čišćenje: Makni 🌐 ako se pojavio ispred maps linka (AI greška)
+            raw = raw.replace(/🌐\s*(<a\s+class="maps-link".*?<\/a>)/g, "$1");
 
             // 5. Pretvori **bold** u <strong>
             raw = raw.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
