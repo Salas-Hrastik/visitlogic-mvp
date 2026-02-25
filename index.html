@@ -478,8 +478,8 @@
                 return `<a href="tel:${cleanPhone}">${phone.trim()}</a>`;
             });
 
-            // 3. Linkificiraj web stranice koje počinju s 🌐 (u modal)
-            raw = raw.replace(/🌐\s*(https?:\/\/[^\s)]+)/g, (match, url) => {
+            // 3. Linkificiraj web stranice koje počinju s 🌐 (podržava optional "Web:", "Stranica:" itd)
+            raw = raw.replace(/🌐\s*(?:[^:]+:\s*)?(https?:\/\/[^\s)]+)/g, (match, url) => {
                 return `🌐 <a href="${url}" onclick="openModal('${url}'); return false;">${url}</a>`;
             });
 
