@@ -457,57 +457,40 @@
 
         /* ── FORMATIRANJE ── */
         function formatAI(raw) {
-            // 1. Markdown bold
+            // 1. Prvo obrađujemo eksplicitne Markdown elemente
             raw = raw.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
-
-            // 2. Eksplicitni Markdown linkovi [tekst](url) -> <a> tags
             raw = raw.replace(/\[(.*?)\]\((.*?)\)/g, (match, text, url) => {
                 const isMaps = url.includes("google.com/maps") || url.includes("goo.gl/maps");
-                if (isMaps) {
-                    return `<a href="${url}" target="_blank" class="maps-link">${text}</a>`;
-                }
+                if (isMaps) return `<a href="${url}" target="_blank" class="maps-link">${text}</a>`;
                 return `<a href="${url}" onclick="openModal('${url}', '${text.replace(/'/g, "\\'")}'); return false;">${text}</a>`;
             });
 
-            // 3. ZAŠTITA: Privremeno sakrivamo sve <a> tagove da ih sljedeći koraci ne pokvare
-            const tokens = [];
-            raw = raw.replace(/<a\s+[^>]*>.*?<\/a>/gi, (match) => {
-                const token = `##LNK${tokens.length}##`;
-                tokens.push(match);
-                return token;
+            // 2. MOĆNI SINGLE-PASS REGEX: Presreće <a> tagove i u ostalim grupama hvata telefone/web
+            const combo = /(<a\s+[^>]*>.*?<\/a>)|(🌐\s*(?:[^:]+:\s*)?(https?:\/\/[^\s)]+))|(📞\s*\+?\d[\d\s\-\/()]{6,}\d)|(\+385[\d\s\-\/]{7,}\d|0\d{1,2}[\/\s\-]\d{3}[\s\-]?\d{3,4})/g;
+
+            raw = raw.replace(combo, (match, tag, webFull, webUrl, phoneIcon, phoneOnly) => {
+                if (tag) return tag; // AKO JE VEĆ LINK, VRATI GA ISTOG
+
+                if (webUrl) {
+                    return `🌐 <a href="${webUrl}" onclick="openModal('${webUrl}'); return false;">${webUrl}</a>`;
+                }
+                if (phoneIcon) {
+                    const num = phoneIcon.replace("📞", "").trim();
+                    return `📞 <a href="tel:${num.replace(/[^\d+]/g, "")}">${num}</a>`;
+                }
+                if (phoneOnly) {
+                    return `<a href="tel:${phoneOnly.replace(/[^\d+]/g, "")}">${phoneOnly.trim()}</a>`;
+                }
+                return match;
             });
 
-            // 4. Linkificiramo ostalo (telefone, web) - sada sigurno jer su <a> tagovi sakriveni
-
-            // 🌐 Web linkovi (raw URL-ovi)
-            raw = raw.replace(/🌐\s*(?:[^:]+:\s*)?(https?:\/\/[^\s)]+)/g, (match, url) => {
-                return `🌐 <a href="${url}" onclick="openModal('${url}'); return false;">${url}</a>`;
-            });
-
-            // 📍 GPS koordinate
-            raw = raw.replace(/📍\s*(\d+\.\d+)\s*,\s*(\d+\.\d+)/g, (match, lat, lng) => {
+            // 3. 📍 GPS koordinate (ako nisu dio linka)
+            raw = raw.replace(/(?![^<]*<\/a>)(📍\s*(\d+\.\d+)\s*,\s*(\d+\.\d+))/g, (match, full, lat, lng) => {
                 const mapsUrl = `https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`;
                 return `<a href="${mapsUrl}" target="_blank" class="maps-link">${lat}, ${lng}</a>`;
             });
 
-            // 📞 Telefoni koji počinju ikonom
-            raw = raw.replace(/📞\s*(\+?\d[\d\s\-\/()]{6,}\d)/g, (match, phone) => {
-                const cleanPhone = phone.replace(/[^\d+]/g, "");
-                return `📞 <a href="tel:${cleanPhone}">${phone.trim()}</a>`;
-            });
-
-            // Samostalni telefoni (+385... ili 0XX...)
-            raw = raw.replace(/(\+385[\d\s\-\/]{7,}\d|0\d{1,2}[\/\s\-]\d{3}[\s\-]?\d{3,4})/g, (match, phone) => {
-                const cleanPhone = phone.replace(/[^\d+]/g, "");
-                return `<a href="tel:${cleanPhone}">${phone.trim()}</a>`;
-            });
-
-            // 5. Vraćamo sakrivene linkove nazad
-            tokens.forEach((tag, i) => {
-                raw = raw.replace(`##LNK${i}##`, tag);
-            });
-
-            // Finalno čišćenje: Makni 🌐 ako se pojavio ispred maps linka (AI greška)
+            // 4. Finalno čišćenje: Makni 🌐 ako je slučajno završio ispred maps linka
             raw = raw.replace(/🌐\s*(<a\s+class="maps-link".*?<\/a>)/g, "$1");
 
             // 5. Pretvori **bold** u <strong>
