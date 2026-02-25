@@ -490,7 +490,10 @@
                 return `<a href="${mapsUrl}" target="_blank" class="maps-link">${lat}, ${lng}</a>`;
             });
 
-            // 4. Finalno čišćenje: Makni 🌐 ako je slučajno završio ispred maps linka
+            // 4. Finalno čišćenje: 
+            // - Makni 🌐 ako je slučajno završio ispred maps linka
+            // - Makni "Web:" ili "Stranica:" ako je AI krivo povezao s maps linkom
+            raw = raw.replace(/(?:🌐\s*)?(?:Web|Stranica|Poveznica):\s*(<a\s+class="maps-link".*?<\/a>)/gi, "$1");
             raw = raw.replace(/🌐\s*(<a\s+class="maps-link".*?<\/a>)/g, "$1");
 
             // 5. Pretvori **bold** u <strong>
@@ -642,7 +645,3 @@
 
         loadWeather();
     </script>
-
-</body>
-
-</html>
