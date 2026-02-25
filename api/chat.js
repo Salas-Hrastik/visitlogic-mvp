@@ -202,6 +202,10 @@ function buildSystemPrompt(db, weather, season, hour, isWeekend) {
         usluge: Object.entries(db.usluge || {}).map(([k, v]) => `\n--- ${k.toUpperCase().replace(/_/g, ' ')} ---\n` + v.map(fmt).join("\n")).join("\n")
     };
 
+    const tz = db.korisne_informacije?.kontakt_tz || {};
+    const tzTel = (tz.telefoni || []).join(", ");
+    const tzEmail = (tz.emails || [])[0] || "";
+
     return `--- LANGUAGE RULE (PRIORITET #1) ---
 1. DETECT user language. 
 2. ALWAYS respond in the SAME language as the user (English, German, etc.).
@@ -268,7 +272,7 @@ ${strings.smjestaj}
 NASELJA GRADA VALPOVA:
 ${strings.naselja}
 
-KONTAKT TZ: ${db.korisne_informacije.kontakt_tz.naziv} | Tel: ${db.korisne_informacije.kontakt_tz.telefoni.join(", ")} | Email: ${db.korisne_informacije.kontakt_tz.emails[0]} | Web: ${db.korisne_informacije.kontakt_tz.web}
+KONTAKT TZ: ${tz.naziv || "TZ Valpovo"} | Tel: ${tzTel} | Email: ${tzEmail} | Web: ${tz.web || ""}
 `;
 }
 
@@ -305,3 +309,18 @@ export default async function handler(req, res) {
                 temperature: 0.7
             })
         });
+
+        const data = await apiResponse.json();
+        if (!apiResponse.ok) return res.status(apiResponse.status).json({ error: "Greška OpenAI servisa", details: data.error?.message });
+        if (!data.choices || data.choices.length === 0) return res.status(502).json({ error: "Prazan AI odgovor." });
+        return res.status(200).json({ reply: data.choices[0].message.content });
+
+    } catch (e) {
+        console.error("API Handler Error:", e);
+        return res.status(500).json({
+            reply: "Problem s povezivanjem: " + e.message,
+            error: "Sistemska pogreška",
+            details: e.message
+        });
+    }
+}
