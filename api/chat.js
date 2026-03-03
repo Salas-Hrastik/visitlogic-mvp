@@ -1,120 +1,983 @@
-// ── INTEGRATED DATABASE (Complete Verified Data from tz.valpovo.hr) ──
-const db = {
-    "grad": {
-        "naziv": "Valpovo",
-        "opis": "Valpovo je grad u Osječko-baranjskoj županiji, smješten uz rijeku Karašicu.",
-        "web": "https://tz.valpovo.hr"
-    },
-    "znamenitosti": [
-        { "id": 1, "naziv": "Dvorac Prandau-Normann i perivoj", "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2018/12/dvorac-1.jpg", "opis": "Barokni dvorac iz 18. st. sa srednjovjekovnom obrambenom kulom i engleskim perivojem.", "adresa": "Ul. Dvorac Norman-Prandau 1", "web": "https://tz.valpovo.hr/znamenitosti/dvorac-i-perivoj/" },
-        { "id": 2, "naziv": "Muzej Valpovštine", "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2018/12/muzej.jpg", "opis": "Muzej smješten u dvorcu s bogatim zbirkama o povijesti Valpovštine.", "web": "https://tz.valpovo.hr/znamenitosti/muzej-valpovstine" },
-        { "id": 3, "naziv": "Srednjovjekovna kula", "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2018/12/kula.jpg", "opis": "Najstariji dio dvorca i spomenik najviše kategorije.", "web": "https://tz.valpovo.hr/znamenitosti/srednjovjekovna-kula" },
-        { "id": 6, "naziv": "Katančićev vremeplov", "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2023/11/katancicev-vremeplov.jpg", "opis": "Interpretacijski centar posvećen Matiji Petru Katančiću.", "web": "https://tz.valpovo.hr/znamenitosti/edukacijsko-interpretacijski-centar-matije-petra-katancica-suvenirnica-grada-valpova/" }
-    ],
-    "gastronomija": [
-        { "id": 1, "naziv": "Restoran Jovalija", "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2024/02/jovalija.jpg", "adresa": "Ive Lole Ribara 1", "telefon": "+385 31 651 895", "opis": "Moderni restoran, pizze i jela s roštilja.", "web": "https://tz.valpovo.hr/ugostiteljstvo/restoran-jovalija/" },
-        { "id": 2, "naziv": "Hotel & Restoran Park", "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2018/12/hotel-park-restoran.jpg", "adresa": "Ive Lole Ribara 10", "telefon": "+385 31 651 230", "opis": "Tradicionalna kuhinja i smještaj 4*. Čobanac i fiš.", "web": "https://restoran-park.hr" }
-    ],
-    "manifestacije": [
-        { "id": "M1", "naziv": "Ljeto valpovačko", "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2018/12/ljeto-valpovacko.jpg", "opis": "Najveća kulturna manifestacija Valpovštine (lipanj).", "web": "https://tz.valpovo.hr/manifestacije/ljeto-valpovacko/" },
-        { "id": "M2", "naziv": "Advent u Valpovu", "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2018/12/advent.jpg", "opis": "Zimska čarolija na trgu u prosincu.", "web": "https://tz.valpovo.hr/manifestacije/advent-u-valpovu/" }
-    ]
-};
+<!DOCTYPE html>
+<html lang="hr">
 
-async function fetchWeather() {
-    try {
-        const r = await fetch("https://api.open-meteo.com/v1/forecast?latitude=45.6609&longitude=18.4186&current_weather=true&timezone=auto");
-        const d = await r.json();
-        return d.current_weather || null;
-    } catch { return null; }
-}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Turistički informator – Valpovo</title>
+    <!-- Google Fonts: Lexend for headings, Inter for body -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Lexend:wght@400;600;700&display=swap"
+        rel="stylesheet">
 
-function buildSystemPrompt(db, weather) {
-    const today = new Date().toISOString().split('T')[0];
+    <style>
+        :root {
+            --primary: #014128;
+            --primary-light: #0d6e4a;
+            --accent: #d4af37;
+            /* Gold accent */
+            --bg-gradient: linear-gradient(135deg, #0b4f2f, #013220);
+            --glass-bg: rgba(255, 255, 255, 0.85);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+        }
 
-    // Formatting helper
-    const fmt = (item) => {
-        let s = `- ${item.naziv}: ${item.opis || ""}`;
-        if (item.IMAGE_URL) s += ` | IMAGE_TAG: ![foto](${item.IMAGE_URL})`; // FIXED terminology
-        if (item.adresa) s += ` | Adresa: ${item.adresa}`;
-        if (item.telefon) s += ` | Tel: ${item.telefon}`;
-        if (item.web) s += ` | Web: ${item.web}`;
-        return s;
-    };
+        * {
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
 
-    const strings = {
-        znamenitosti: db.znamenitosti.map(fmt).join("\n"),
-        gastronomija: db.gastronomija.map(fmt).join("\n"),
-        manifestacije: db.manifestacije.map(fmt).join("\n")
-    };
+        html,
+        body {
+            margin: 0;
+            height: 100%;
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-gradient);
+            background-attachment: fixed;
+            overflow: hidden;
+            color: #333;
+        }
 
-    return `TI SI Digitalni turistički informator grada Valpova.
-Danas je: ${today}. Vrijeme: ${weather ? weather.temperature + "°C" : "Ugodno"}.
+        /* HEADER */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 90px;
+            background: rgba(1, 65, 40, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            padding: 0 30px;
+            color: white;
+            display: flex;
+            align-items: center;
+            z-index: 100;
+            border-bottom: 1px solid var(--glass-border);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
 
-### STROGO PRAVILO #1: FORMATIRANJE
-1. NIKADA ne koristi ljestve (#, ##, ###).
-2. Za nazive koristi **BOLDIRANI TEKST**.
-3. Za slike koristi točan Markdown koji ti je zadan u IMAGE_TAG ispod.
+        .header-inner {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
 
-### STROGO PRAVILO #2: BEZ ISPRIKA ZA SLIKE
-- NE govori "ne mogu prikazati slike". 
-- Ti si tekstualni model, ali tvoj odgovor se prikazuje u aplikaciji koja PODRŽAVA slike putem Markdowna.
-- Jednostavno PREPIŠI IMAGE_TAG iz baze podataka na početak opisa.
+        .logo {
+            height: 55px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+            background: white;
+            padding: 2px;
+        }
 
-### BAZA PODATAKA (KORISTI OVE PODATKE):
-ZNAMENITOSTI:
-${strings.znamenitosti}
+        .title-group {
+            flex: 1;
+        }
 
-GASTRONOMIJA:
-${strings.gastronomija}
+        .title-main {
+            font-family: 'Lexend', sans-serif;
+            font-size: 22px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
 
-MANIFESTACIJE:
-${strings.manifestacije}
+        .title-sub {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: 500;
+        }
 
-Pravilo prikaza:
-**[IKONA] Naziv objekta**
-[Ovdje umetni IMAGE_TAG iz baze]
-[Ovdje tekstualni opis]
-📞 Telefon / 🌐 Web
-[Otvori na karti](https://www.google.com/maps/search/?api=1&query=NAZIV+OBJEKTA+Valpovo)`;
-}
+        /* HERO / WEATHER */
+        #hero {
+            position: fixed;
+            top: 90px;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 12px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            z-index: 90;
+            border-bottom: 1px solid #ddd;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
 
-export default async function handler(req, res) {
-    if (req.method !== "POST") return res.status(405).end();
+        .hero-container {
+            width: 100%;
+            max-width: 1200px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
 
-    const apiKey = process.env.OPENAI_API_KEY;
-    if (!apiKey) return res.status(500).json({ reply: "Nedostaje API ključ." });
+        .hero-weather {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--primary);
+            background: #f0f7f4;
+            padding: 6px 15px;
+            border-radius: 20px;
+            border: 1px solid #cce3d7;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
 
-    try {
-        const { message, history = [] } = req.body;
-        const weather = await fetchWeather();
-        const systemPrompt = buildSystemPrompt(db, weather);
+        .quick-buttons {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
 
-        const response = await fetch("https://api.openai.com/v1/chat/completions", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": `Bearer ${apiKey.trim()}`
-            },
-            body: JSON.stringify({
-                model: "gpt-4o-mini",
-                messages: [
-                    { role: "system", content: systemPrompt },
-                    ...history.slice(-6).map(m => ({
-                        role: m.role === "model" ? "assistant" : m.role,
-                        content: m.content
-                    })),
-                    { role: "user", content: message }
-                ],
-                temperature: 0.7
-            })
+        .quick-buttons button {
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 20px;
+            padding: 8px 16px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .quick-buttons button:hover {
+            background: var(--primary-light);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        /* CHAT AREA */
+        #chat {
+            position: absolute;
+            top: 155px;
+            bottom: 85px;
+            left: 0;
+            right: 0;
+            overflow-y: auto;
+            padding: 24px 20px;
+            scroll-behavior: smooth;
+        }
+
+        #chat::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        #chat::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+        }
+
+        /* MESSAGES */
+        .message {
+            max-width: 800px;
+            margin: 0 auto 20px auto;
+            padding: 18px 22px;
+            border-radius: 20px;
+            line-height: 1.6;
+            font-size: 15px;
+            position: relative;
+            animation: fadeIn 0.4s ease-out both;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .ai {
+            background: var(--glass-bg);
+            backdrop-filter: blur(8px);
+            border: 1px solid var(--glass-border);
+            box-shadow: var(--shadow);
+            border-bottom-left-radius: 5px;
+            color: #2d3436;
+        }
+
+        .user {
+            background: var(--accent);
+            color: #1a1a1a;
+            font-weight: 500;
+            text-align: left;
+            border-bottom-right-radius: 5px;
+            margin-left: auto;
+            width: fit-content;
+            max-width: 70%;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        /* AI Header & Voice controls */
+        .ai-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+            padding-bottom: 8px;
+        }
+
+        .ai-label {
+            font-size: 10px;
+            font-weight: 800;
+            color: var(--primary);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .speak-btn {
+            background: white;
+            border: 1px solid #ddd;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 16px;
+        }
+
+        .speak-btn:hover {
+            border-color: var(--primary);
+            background: #f0f7f4;
+            transform: scale(1.1);
+        }
+
+        .speak-btn.playing {
+            color: #e74c3c;
+            animation: pulse-audio 1.5s infinite;
+        }
+
+        @keyframes pulse-audio {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+
+            50% {
+                transform: scale(1.1);
+                opacity: 0.7;
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        /* AI Content Formatting */
+        .ai p {
+            margin: 0 0 12px 0;
+        }
+
+        .ai p:last-child {
+            margin-bottom: 0;
+        }
+
+        .ai ul {
+            margin: 8px 0 12px 0;
+            padding-left: 20px;
+        }
+
+        .ai li {
+            margin-bottom: 8px;
+        }
+
+        .ai strong {
+            color: var(--primary);
+            font-weight: 700;
+            display: block;
+            margin-top: 10px;
+            font-size: 1.1rem;
+        }
+
+        /* Message Content Images */
+        .ai img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            margin: 12px 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            display: block;
+            border: 2px solid #fff;
+        }
+
+        .ai a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            border-bottom: 1.5px solid rgba(1, 65, 40, 0.2);
+            transition: border-color 0.2s;
+        }
+
+        .ai a:hover {
+            border-color: var(--primary);
+        }
+
+        .ai .maps-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #f0f7f4;
+            color: var(--primary);
+            padding: 8px 16px;
+            border-radius: 25px;
+            text-decoration: none !important;
+            font-size: 13px;
+            font-weight: 600;
+            margin: 8px 0;
+            border: 1.5px solid #cce3d7;
+            transition: all 0.2s;
+        }
+
+        .ai .maps-link:hover {
+            background: #e1ede6;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .ai .maps-link::before {
+            content: "📍";
+            margin-top: -2px;
+        }
+
+        .ai .section-title {
+            font-family: 'Lexend', sans-serif;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 20px 0 10px 0;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* INPUT AREA */
+        #input-area {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 85px;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 100;
+            border-top: 1px solid #ddd;
+        }
+
+        .input-container {
+            width: 100%;
+            max-width: 800px;
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            background: white;
+            padding: 8px 8px 8px 20px;
+            border-radius: 40px;
+            border: 2px solid #eee;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            transition: border-color 0.3s;
+        }
+
+        .input-container:focus-within {
+            border-color: var(--primary);
+        }
+
+        #input {
+            flex: 1;
+            border: none;
+            background: transparent;
+            font-size: 15px;
+            font-family: inherit;
+            outline: none;
+            padding: 5px 0;
+        }
+
+        .mic-btn {
+            background: #f5f5f5;
+            border: none;
+            border-radius: 50%;
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 20px;
+            transition: all 0.2s;
+        }
+
+        .mic-btn:hover {
+            background: #eee;
+            transform: scale(1.05);
+        }
+
+        .mic-btn.recording {
+            background: #ff4757;
+            color: white;
+            animation: pulse-red 1s infinite;
+        }
+
+        @keyframes pulse-red {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(255, 71, 87, 0.4);
+            }
+
+            70% {
+                transform: scale(1.1);
+                box-shadow: 0 0 0 10px rgba(255, 71, 87, 0);
+            }
+
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(255, 71, 87, 0);
+            }
+        }
+
+        .send-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            padding: 10px 22px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .send-btn:hover {
+            background: var(--primary-light);
+            transform: translateX(3px);
+        }
+
+        .send-btn:disabled {
+            background: #ccc;
+            cursor: default;
+        }
+
+        /* TYPING */
+        .typing {
+            display: flex;
+            gap: 5px;
+            align-items: center;
+            padding: 15px 25px !important;
+            width: fit-content;
+        }
+
+        .dot {
+            width: 7px;
+            height: 7px;
+            background: #999;
+            border-radius: 50%;
+            animation: dot-blink 1.4s infinite both;
+        }
+
+        .dot:nth-child(2) {
+            animation-delay: .2s;
+        }
+
+        .dot:nth-child(3) {
+            animation-delay: .4s;
+        }
+
+        @keyframes dot-blink {
+
+            0%,
+            100% {
+                opacity: .2;
+                transform: scale(0.8);
+            }
+
+            50% {
+                opacity: 1;
+                transform: scale(1.1);
+            }
+        }
+
+        /* MODAL */
+        #modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(5px);
+        }
+
+        #modal-content {
+            width: 92%;
+            height: 88%;
+            background: white;
+            border-radius: 15px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        #modal-header {
+            padding: 12px 20px;
+            background: var(--primary);
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        #modal-title {
+            font-family: 'Lexend', sans-serif;
+            font-weight: 600;
+            font-size: 16px;
+        }
+
+        #modal-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+        }
+
+        #modal-iframe {
+            width: 100%;
+            height: calc(100% - 55px);
+            border: none;
+        }
+
+        /* MOBILE */
+        @media (max-width: 600px) {
+            .header {
+                height: 75px;
+                padding: 0 15px;
+            }
+
+            .logo {
+                height: 45px;
+            }
+
+            .title-main {
+                font-size: 18px;
+            }
+
+            #hero {
+                top: 75px;
+            }
+
+            .hero-container {
+                justify-content: center;
+            }
+
+            .hero-weather {
+                width: 100%;
+                justify-content: center;
+                margin-bottom: 5px;
+            }
+
+            #chat {
+                top: 165px;
+                bottom: 85px;
+                padding: 15px;
+            }
+
+            .user {
+                max-width: 85%;
+            }
+
+            .message {
+                padding: 15px;
+            }
+
+            #modal-content {
+                width: 98%;
+                height: 95%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+        <div class="header-inner">
+            <img class="logo" src="https://tz.valpovo.hr/wp-content/uploads/2018/05/tz-logo-new-465x331.png"
+                alt="Valpovo">
+            <div class="title-group">
+                <div class="title-main">Turistički informator</div>
+                <div class="title-sub">Grad Valpovo • Pametni asistent</div>
+            </div>
+        </div>
+    </div>
+
+    <div id="hero">
+        <div class="hero-container">
+            <div class="hero-weather" id="weather-badge">
+                <span id="weather-icon">🌤</span> <span id="weather-text">Učitavam vrijeme...</span>
+            </div>
+            <div class="quick-buttons">
+                <button onclick="quickAsk('Znamenitosti')">🏛 Znamenitosti</button>
+                <button onclick="quickAsk('Gastronomija')">🍽️ Gastronomija</button>
+                <button onclick="quickAsk('Događanja')">🎉 Događanja</button>
+                <button onclick="quickAsk('Smještaj')">🛌 Smještaj</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="chat"></div>
+
+    <div id="input-area">
+        <div class="input-container">
+            <input id="input" placeholder="Pitaj me o Valpovu..." autocomplete="off">
+            <button class="mic-btn" id="mic-btn" onclick="toggleMic()" title="Glasovno pitanje">🎤</button>
+            <button class="send-btn" id="send-btn" onclick="sendMessage()">
+                <span>Pošalji</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="22" y1="2" x2="11" y2="13"></line>
+                    <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <div id="modal-overlay" onclick="closeModal()">
+        <div id="modal-content" onclick="event.stopPropagation()">
+            <div id="modal-header">
+                <span id="modal-title">Pregled stranice</span>
+                <button id="modal-close" onclick="closeModal()">&times;</button>
+            </div>
+            <iframe id="modal-iframe" src="about:blank"></iframe>
+        </div>
+    </div>
+
+    <script>
+        const chatEl = document.getElementById("chat");
+        const inputEl = document.getElementById("input");
+        const sendBtn = document.getElementById("send-btn");
+        const micBtn = document.getElementById("mic-btn");
+        let isProcessing = false;
+        let isRecording = false;
+        let currentAudio = null;
+        let currentSpeakerBtn = null;
+        const conversationHistory = [];
+
+        /* ── UI LOCK ── */
+        function setLock(locked) {
+            isProcessing = locked;
+            inputEl.disabled = locked;
+            sendBtn.disabled = locked;
+            micBtn.disabled = locked;
+        }
+
+        /* ── WEATHER ── */
+        async function loadWeather() {
+            try {
+                const r = await fetch("/api/weather");
+                const d = await r.json();
+                if (d.temperature !== undefined) {
+                    document.getElementById("weather-text").innerText = `${d.temperature}°C • ${d.windspeed} km/h`;
+                } else {
+                    document.getElementById("weather-text").innerText = "Provjeri TZ Valpovo";
+                }
+            } catch {
+                document.getElementById("weather-text").innerText = "Vrijeme nedostupno";
+            }
+        }
+
+        /* ── MODAL ── */
+        function openModal(url, title = "Pregled") {
+            document.getElementById("modal-title").innerText = title;
+            document.getElementById("modal-iframe").src = url;
+            document.getElementById("modal-overlay").style.display = "flex";
+        }
+        function closeModal() {
+            document.getElementById("modal-overlay").style.display = "none";
+            document.getElementById("modal-iframe").src = "about:blank";
+        }
+
+        /* ── FORMATTING ── */
+        function formatAI(raw) {
+            // Remove any markdown headers (### or ##) if they still appear
+            raw = raw.replace(/^#+\s+/gm, "");
+
+            // Basic md bold
+            raw = raw.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
+
+            // Image handling ![alt](url)
+            // Remove crossorigin if it causes issues, using standard img tag
+            raw = raw.replace(/!\[(.*?)\]\((.*?)\)/g, '<img src="$2" alt="$1">');
+
+            // Link handling with Modal integration
+            raw = raw.replace(/\[(.*?)\]\((.*?)\)/g, (match, text, url) => {
+                const isMaps = url.includes("google.com/maps") || url.includes("goo.gl/maps");
+                if (isMaps) return `<a href="${url}" target="_blank" class="maps-link">${text}</a>`;
+                return `<a href="${url}" onclick="openModal('${url}', '${text.replace(/'/g, "\\'")}'); return false;">${text}</a>`;
+            });
+
+            // Advanced regex for phones and web
+            const combo = /(<a\s+[^>]*>.*?<\/a>)|(<img\s+[^>]*>)|(🌐\s*(?:[^:]+:\s*)?(https?:\/\/[^\s)]+))|(📞\s*\+?\d[\d\s\-\/()]{6,}\d)|(\+385[\d\s\-\/]{7,}\d|0\d{1,2}[\/\s\-]\d{3}[\s\-]?\d{3,4})/g;
+            raw = raw.replace(combo, (match, tag, imgTag, webFull, webUrl, phoneIcon, phoneOnly) => {
+                if (tag) return tag;
+                if (imgTag) return imgTag;
+                if (webUrl) return `🌐 <a href="${webUrl}" onclick="openModal('${webUrl}'); return false;">${webUrl}</a>`;
+                if (phoneIcon) {
+                    const num = phoneIcon.replace("📞", "").trim();
+                    return `📞 <a href="tel:${num.replace(/[^\d+]/g, "")}">${num}</a>`;
+                }
+                if (phoneOnly) return `<a href="tel:${phoneOnly.replace(/[^\d+]/g, "")}">${phoneOnly.trim()}</a>`;
+                return match;
+            });
+
+            const lines = raw.split("\n");
+            let html = "";
+            let inList = false;
+
+            for (let line of lines) {
+                line = line.trim();
+                if (!line) {
+                    if (inList) { html += "</ul>"; inList = false; }
+                    continue;
+                }
+
+                if (line.startsWith("<img")) {
+                    if (inList) { html += "</ul>"; inList = false; }
+                    html += line; // Images in their own line
+                } else if (line.includes('class="maps-link"') && !line.startsWith("-") && !line.startsWith("•")) {
+                    if (inList) { html += "</ul>"; inList = false; }
+                    html += `<p>${line}</p>`;
+                } else if (line.startsWith("•") || (line.startsWith("-") && line.length > 2) || /^\d+\.\s/.test(line)) {
+                    if (!inList) { html += "<ul>"; inList = true; }
+                    html += `<li>${line.replace(/^([•\-]|(\d+\.))\s*/, "")}</li>`;
+                } else if (/^[🏛️🍽️🎉🏨🌿📍🚗🛌💊🏧⛽🏋️🛒📬]/.test(line) || (line.endsWith(":") && line.length < 50)) {
+                    if (inList) { html += "</ul>"; inList = false; }
+                    html += `<div class="section-title">${line}</div>`;
+                } else {
+                    if (inList) { html += "</ul>"; inList = false; }
+                    html += `<p>${line}</p>`;
+                }
+            }
+            if (inList) html += "</ul>";
+            return html;
+        }
+
+        /* ── MESSENGING ── */
+        function addMessage(content, type = "ai") {
+            const div = document.createElement("div");
+            div.className = "message " + type;
+
+            if (type === "ai") {
+                const formatted = formatAI(content);
+                // Clean content for TTS (no markdown, no links)
+                const speakTextStr = content.replace(/\[(.*?)\]\((.*?)\)/g, "$1").replace(/\*\*/g, "");
+
+                div.innerHTML = `
+                    <div class="ai-header">
+                        <span class="ai-label">Asistent</span>
+                        <button class="speak-btn" onclick="speakText(this, \`${speakTextStr.replace(/`/g, "\\'").replace(/\n/g, " ")}\`)" title="Slušaj odgovor">🔊</button>
+                    </div>
+                    <div class="ai-content">${formatted}</div>
+                `;
+            } else {
+                div.textContent = content;
+            }
+
+            chatEl.appendChild(div);
+            div.scrollIntoView({ behavior: "smooth", block: "start" });
+            return div;
+        }
+
+        function showTyping() {
+            const div = document.createElement("div");
+            div.className = "message ai typing";
+            div.id = "typing-dots";
+            div.innerHTML = "<div class='dot'></div><div class='dot'></div><div class='dot'></div>";
+            chatEl.appendChild(div);
+            div.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+
+        function removeTyping() {
+            const t = document.getElementById("typing-dots");
+            if (t) t.remove();
+        }
+
+        function quickAsk(text) {
+            if (isProcessing) return;
+            inputEl.value = text;
+            sendMessage();
+        }
+
+        async function sendMessage() {
+            const text = inputEl.value.trim();
+            if (!text || isProcessing) return;
+
+            addMessage(text, "user");
+            inputEl.value = "";
+            conversationHistory.push({ role: "user", content: text });
+
+            setLock(true);
+            showTyping();
+
+            try {
+                const response = await fetch("/api/chat", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        message: text,
+                        history: conversationHistory.slice(-8)
+                    })
+                });
+
+                const data = await response.json();
+                removeTyping();
+
+                if (data.reply) {
+                    addMessage(data.reply);
+                    conversationHistory.push({ role: "assistant", content: data.reply });
+                } else {
+                    addMessage("❌ Došlo je do greške. Molim pokušajte kasnije.");
+                }
+
+            } catch (err) {
+                removeTyping();
+                addMessage("🚨 Problem s vezom: " + err.message);
+            } finally {
+                setLock(false);
+                inputEl.focus();
+            }
+        }
+
+        /* ── VOICE LOGIC ── */
+        async function speakText(btn, text) {
+            if (currentAudio) {
+                currentAudio.pause();
+                currentSpeakerBtn.classList.remove("playing");
+                currentSpeakerBtn.innerHTML = "🔊";
+                if (currentSpeakerBtn === btn) {
+                    currentAudio = null;
+                    currentSpeakerBtn = null;
+                    return;
+                }
+            }
+
+            try {
+                btn.classList.add("playing");
+                btn.innerHTML = "🛑";
+                currentSpeakerBtn = btn;
+
+                const response = await fetch("/api/speak", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ text: text.substring(0, 1500) })
+                });
+
+                if (!response.ok) throw new Error("TTS failed");
+                const blob = await response.blob();
+                const url = URL.createObjectURL(blob);
+
+                currentAudio = new Audio(url);
+                currentAudio.onended = () => {
+                    btn.classList.remove("playing");
+                    btn.innerHTML = "🔊";
+                    currentAudio = null;
+                    currentSpeakerBtn = null;
+                };
+                currentAudio.play();
+            } catch (e) {
+                btn.classList.remove("playing");
+                btn.innerHTML = "⚠️";
+            }
+        }
+
+        let mediaRecorder;
+        let audioChunks = [];
+
+        async function toggleMic() {
+            if (isRecording) { stopRecording(); } else { startRecording(); }
+        }
+
+        async function startRecording() {
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+                mediaRecorder = new MediaRecorder(stream);
+                audioChunks = [];
+                mediaRecorder.ondataavailable = (e) => audioChunks.push(e.data);
+                mediaRecorder.onstop = () => {
+                    const blob = new Blob(audioChunks, { type: 'audio/webm' });
+                    sendToWhisper(blob);
+                };
+                mediaRecorder.start();
+                isRecording = true;
+                micBtn.classList.add("recording");
+                inputEl.placeholder = "Slušam vas...";
+            } catch (err) {
+                alert("Mikrofon nije dostupan ili nemam dopuštenje.");
+            }
+        }
+
+        function stopRecording() {
+            if (mediaRecorder && isRecording) {
+                mediaRecorder.stop();
+                isRecording = false;
+                micBtn.classList.remove("recording");
+                inputEl.placeholder = "Obrađujem glas...";
+            }
+        }
+
+        async function sendToWhisper(blob) {
+            try {
+                const fd = new FormData();
+                fd.append('file', blob);
+                const r = await fetch("/api/transcribe", { method: "POST", body: fd });
+                const d = await r.json();
+                if (d.text) {
+                    inputEl.value = d.text;
+                    sendMessage();
+                }
+                inputEl.placeholder = "Pitaj me o Valpovu...";
+            } catch (e) {
+                inputEl.placeholder = "Greška - pokušaj ručno...";
+            }
+        }
+
+        /* ── INIT ── */
+        inputEl.addEventListener("keydown", (e) => {
+            if (e.key === "Enter") sendMessage();
         });
 
-        const data = await response.json();
-        if (!response.ok) throw new Error(data.error?.message || "OpenAI error");
+        loadWeather();
+        addMessage("Pozdrav! Ja sam vaš digitalni vodič kroz Valpovo. Kako vam mogu pomoći danas? 🏰🌿");
+    </script>
+</body>
 
-        return res.status(200).json({ reply: data.choices[0].message.content });
-    } catch (e) {
-        return res.status(500).json({ reply: "Greška: " + e.message });
-    }
-}
+</html>
