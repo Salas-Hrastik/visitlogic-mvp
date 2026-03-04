@@ -1,5 +1,5 @@
 // VERSION: 3.3.0 (SMART CONTEXT & FULL DATA FIX)
-import { db } from '../lib/database.js';
+import { db } from './database.js';
 
 async function fetchWeather() {
     try {
