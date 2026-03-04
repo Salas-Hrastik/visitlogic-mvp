@@ -96,5 +96,32 @@ export const db = {
             "adresa": "Matije Gupca 95",
             "web": "http://sobe-valpovo.com/"
         }
-    ]
+    ],
+    "usluge": {
+        "auto_servisi": [
+            { "naziv": "Autocentar Ivica", "adresa": "Sunčana 20", "telefon": "031/651-037" },
+            { "naziv": "Auto servis Galičić", "adresa": "Sunčana 21" },
+            { "naziv": "Auto servis Valentić", "adresa": "Nikole Tesle 30" },
+            { "naziv": "Dabo automehaničarski obrt", "adresa": "Florijanova 15" },
+            { "naziv": "Karlo servis", "adresa": "Bana Josipa Jelačića 55" }
+        ],
+        "zdravstvo": [
+            { "naziv": "Dom zdravlja Valpovo", "adresa": "Kralja Petra Krešimira IV 4", "telefon": "194 (Hitna)" },
+            { "naziv": "Ljekarna Valpovo (Srce)", "adresa": "Osječka 3", "telefon": "031 651 350" },
+            { "naziv": "Ljekarna Kalenić", "adresa": "J.J. Strossmayera 12", "telefon": "031 650 290" }
+        ],
+        "banke_i_posta": [
+            { "naziv": "Hrvatska pošta", "adresa": "Osječka 2", "telefon": "031 651 155" },
+            { "naziv": "Slatinska banka", "adresa": "Trg kralja Tomislava 6", "telefon": "031 628 165" },
+            { "naziv": "OTP banka", "adresa": "Vijenac 107. brig. HV 1" },
+            { "naziv": "HPB", "adresa": "Trg kralja Tomislava 17" }
+        ],
+        "trgovine": [
+            { "naziv": "STOP SHOP Valpovo (Shopping centar)", "adresa": "Ivana Fuderera Hanzike 1" },
+            { "naziv": "Plodine", "adresa": "Bizovačka 10" },
+            { "naziv": "Konzum", "adresa": "Trg kralja Tomislava" },
+            { "naziv": "DM - drogerie markt", "adresa": "Trg kralja Tomislava 3" },
+            { "naziv": "Borovo", "adresa": "Trg kralja Tomislava 1" }
+        ]
+    }
 };

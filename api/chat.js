@@ -41,7 +41,7 @@ function getRelevantContext(message, database) {
     if (msg.includes("priroda") || msg.includes("rijeka") || msg.includes("park") || msg.includes("bicikl")) {
         context.priroda = database.priroda;
     }
-    if (msg.includes("usluge") || msg.includes("banka") || msg.includes("pošta") || msg.includes("doktor") || msg.includes("trgovina")) {
+    if (msg.includes("usluge") || msg.includes("banka") || msg.includes("pošta") || msg.includes("doktor") || msg.includes("trgovina") || msg.includes("ljekarna") || msg.includes("majstor") || msg.includes("auto") || msg.includes("servis") || msg.includes("mehaničar") || msg.includes("šoping") || msg.includes("kupiti")) {
         context.usluge = database.usluge;
     }
 
@@ -50,6 +50,7 @@ function getRelevantContext(message, database) {
         context.znamenitosti = database.znamenitosti;
         context.gastronomija = database.gastronomija;
         context.dogadanja = database.dogadanja;
+        context.usluge = database.usluge;
     }
 
     return JSON.stringify(context, null, 2);
