@@ -69,15 +69,94 @@ export const db = {
     ],
     "dogadanja": [
         {
+            "naziv": "Dječji gradski karneval",
+            "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2025/03/1djecji-gradski-karneval-valpovo-1024x576.jpg",
+            "opis": "Maskirana povorka i zabavni program za djecu.",
+            "vrijeme": "Veljača",
+            "web": "https://tz.valpovo.hr/manifestacije/djecji-gradski-karneval/"
+        },
+        {
+            "naziv": "Uskrs u Valpovu",
+            "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2025/03/1-1-1024x683.jpg",
+            "opis": "Tradicionalni uskrsni sajam, radionice i potraga za pisanicama.",
+            "vrijeme": "Ožujak/Travanj",
+            "web": "https://tz.valpovo.hr/manifestacije/uskrs-u-valpovu/"
+        },
+        {
+            "naziv": "MatijafesT",
+            "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2025/03/1-matijafest-1024x683.jpg",
+            "opis": "Kulturno-edukativni festival za djecu o ostavštini M.P. Katančića.",
+            "vrijeme": "Svibanj",
+            "web": "https://tz.valpovo.hr/manifestacije/matijafest/"
+        },
+        {
+            "naziv": "Festival sira i vina",
+            "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2025/03/1-festival-sira-i-vina-1-1024x684.jpg",
+            "opis": "Eno-gastro festival u dvorcu uz degustacije i glazbu.",
+            "vrijeme": "Svibanj",
+            "web": "https://tz.valpovo.hr/manifestacije/festival-sira-i-vina/"
+        },
+        {
+            "naziv": "Vashar festival",
+            "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2025/09/Vashar-promo-naslovna-1024x678.jpg",
+            "opis": "Glazbeni festival autorskih bendova na otvorenom.",
+            "vrijeme": "Svibanj/Lipanj",
+            "web": "https://tz.valpovo.hr/manifestacije/vashar-festival/"
+        },
+        {
             "naziv": "Ljeto valpovačko",
-            "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2025/03/1-ljeto-valpovacko-962x640.jpg",
-            "opis": "Najveća kulturna manifestacija (lipanj) s tradicijom od preko 50 godina.",
+            "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2025/03/1-2-1024x681.jpg",
+            "opis": "Najveća smotra folklora i tradicijske kulture.",
+            "vrijeme": "Lipanj",
             "web": "https://tz.valpovo.hr/manifestacije/ljeto-valpovacko/"
         },
         {
+            "naziv": "Reunited festival",
+            "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2025/03/1-3-1024x684.jpg",
+            "opis": "Glazbeni festival hip-hopa i elektronske scene.",
+            "vrijeme": "Srpanj",
+            "web": "https://tz.valpovo.hr/manifestacije/reunited-festival/"
+        },
+        {
+            "naziv": "Rock’a’raj festival",
+            "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2025/03/1-4-1024x683.jpg",
+            "opis": "Rock festival na otvorenom ispred dvorca.",
+            "vrijeme": "Srpanj",
+            "web": "https://tz.valpovo.hr/manifestacije/rockaraj-festival/"
+        },
+        {
+            "naziv": "Fišijada Nard",
+            "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2025/03/1-fisijada-nard-1-1024x683.jpg",
+            "opis": "Polufinalno državno natjecanje u kuhanju fiša.",
+            "vrijeme": "Kolovoz",
+            "web": "https://tz.valpovo.hr/manifestacije/fisijada-nard-polufinalno-drzavno-natjecanje-u-kuhanju-ribljeg-paprikasa/"
+        },
+        {
+            "naziv": "Valpovo Craft Beer Fest",
+            "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2025/03/1-valpovo-craft-beer-fest-1-1024x683.jpg",
+            "opis": "Promocija hrvatskih craft piva uz gastro ponudu i koncerte.",
+            "vrijeme": "Rujan",
+            "web": "https://tz.valpovo.hr/manifestacije/craft-beer-festival/"
+        },
+        {
+            "naziv": "Valpovačka staza zdravlja",
+            "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2025/03/1-valpovacka-staza-zdravlja-1024x682.jpg",
+            "opis": "Promicanje zdravog načina života i bavljenje aktivnostima.",
+            "vrijeme": "Rujan/Listopad",
+            "web": "https://tz.valpovo.hr/manifestacije/valpovacka-staza-zdravlja/"
+        },
+        {
+            "naziv": "Dani Matije Petra Katančića",
+            "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2025/03/1-dani-matije-petra-katancica-1024x768.jpg",
+            "opis": "Kulturno-znanstvena manifestacija posvećena M.P. Katančiću.",
+            "vrijeme": "Listopad",
+            "web": "https://tz.valpovo.hr/manifestacije/dani-matije-petra-katancica/"
+        },
+        {
             "naziv": "Advent u Valpovu",
-            "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2025/03/1-advent-u-valpovu-853x640.jpg",
-            "opis": "Zimska bajka na glavnom trgu s bogatim programom.",
+            "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2025/03/1-advent-u-valpovu-1-1024x768.jpg",
+            "opis": "Zimska bajka, klizalište i božićni sajam.",
+            "vrijeme": "Prosinac",
             "web": "https://tz.valpovo.hr/manifestacije/advent-u-valpovu/"
         }
     ],

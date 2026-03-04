@@ -35,7 +35,7 @@ function getRelevantContext(message, database) {
     if (msg.includes("smještaj") || msg.includes("hotel") || msg.includes("apartman") || msg.includes("sobe")) {
         context.smjestaj = database.smjestaj;
     }
-    if (msg.includes("događanja") || msg.includes("manifestacije") || msg.includes("festival") || msg.includes("advent")) {
+    if (msg.includes("događanja") || msg.includes("manifestacije") || msg.includes("festival") || msg.includes("advent") || msg.includes("ljeto") || msg.includes("karneval") || msg.includes("uskrs") || msg.includes("fiš") || msg.includes("beer") || msg.includes("staza")) {
         context.dogadanja = database.dogadanja;
     }
     if (msg.includes("priroda") || msg.includes("rijeka") || msg.includes("park") || msg.includes("bicikl")) {
