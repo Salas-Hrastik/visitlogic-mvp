@@ -1,12 +1,20 @@
 // VERSION: 3.3.0 (SMART CONTEXT & FULL DATA FIX)
-import { db } from './database.js';
+import { db } from './_database.js';
 
 async function fetchWeather() {
     try {
-        const r = await fetch("https://api.open-meteo.com/v1/forecast?latitude=45.6609&longitude=18.4186&current_weather=true&timezone=auto");
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 8000); // 8s timeout
+        const r = await fetch("https://api.open-meteo.com/v1/forecast?latitude=45.6609&longitude=18.4186&current_weather=true&timezone=auto", {
+            signal: controller.signal
+        });
+        clearTimeout(timeoutId);
         const d = await r.json();
         return d.current_weather || null;
-    } catch { return null; }
+    } catch (e) {
+        console.error("Weather Fetch Error:", e.message);
+        return null;
+    }
 }
 
 /**
@@ -65,7 +73,8 @@ STATUS: Koristiš RELEVANTNI dio baze za odgovor.
 
 ### PRAVILO FORMATIRANJA:
 - Nazivi objekata moraju biti **BOLDIRANI**.
-- Uvijek dodaj gumb za kartu: [📍 Otvori na karti](https://www.google.com/maps/search/?api=1&query=NAZIV+OBJEKTA+Valpovo)
+- Uvijek dodaj gumb za kartu: [Otvori na karti](https://www.google.com/maps/search/?api=1&query=NAZIV+OBJEKTA+Valpovo)
+- VAŽNO: NE stavljaj 📍 ikonu u tekst linka! CSS je dodaje automatski.
 
 ### TVOJA TRENUTNA BAZA (FILTRIRANO ZA UPIT):
 ${contextData}`;

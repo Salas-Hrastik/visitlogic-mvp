@@ -828,8 +828,10 @@
             // Basic md bold
             raw = raw.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
 
+            // Clean up double icons (📍 📍) if AI still sends them
+            raw = raw.replace(/📍\s*📍/g, "📍");
+
             // Image handling ![alt](url)
-            // Remove crossorigin if it causes issues, using standard img tag
             raw = raw.replace(/!\[(.*?)\]\((.*?)\)/g, '<img src="$2" alt="$1">');
 
             // Link handling with Modal integration
@@ -849,8 +851,8 @@
                 return `<a href="${url}" onclick="openModal('${url}', '${text.replace(/'/g, "\\'")}'); return false;">${text}</a>`;
             });
 
-            // Advanced regex for phones and web
-            const combo = /(<a\s+[^>]*>.*?<\/a>)|(<img\s+[^>]*>)|(🌐\s*(?:[^:]+:\s*)?(https?:\/\/[^\s)]+))|(📞\s*\+?\d[\d\s\-\/()]{6,}\d)|(\+385[\d\s\-\/]{7,}\d|0\d{1,2}[\/\s\-]\d{3}[\s\-]?\d{3,4})/g;
+            // Advanced regex for phones and web - captured broader web prefixes
+            const combo = /(<a\s+[^>]*>.*?<\/a>)|(<img\s+[^>]*>)|(🌐\s*(?:[^:]+:\s*(?:-\s*)?)?(https?:\/\/[^\s)]+))|(📞\s*\+?\d[\d\s\-\/()]{6,}\d)|(\+385[\d\s\-\/]{7,}\d|0\d{1,2}[\/\s\-]\d{3}[\s\-]?\d{3,4})/g;
             raw = raw.replace(combo, (match, tag, imgTag, webFull, webUrl, phoneIcon, phoneOnly) => {
                 if (tag) return tag;
                 if (imgTag) return imgTag;
@@ -874,18 +876,22 @@
                     continue;
                 }
 
-                if (line.startsWith("<img")) {
-                    if (inList) { html += "</ul>"; inList = false; }
-                    html += line; // Images in their own line
-                } else if (line.includes('class="maps-link"') && !line.startsWith("-") && !line.startsWith("•")) {
-                    if (inList) { html += "</ul>"; inList = false; }
-                    html += `<p>${line}</p>`;
-                } else if (line.startsWith("•") || (line.startsWith("-") && line.length > 2) || /^\d+\.\s/.test(line)) {
-                    if (!inList) { html += "<ul>"; inList = true; }
-                    html += `<li>${line.replace(/^([•\-]|(\d+\.))\s*/, "")}</li>`;
-                } else if (/^[🏛️🍽️🎉🏨🌿📍🚗🛌💊🏧⛽🏋️🛒📬]/.test(line) || (line.endsWith(":") && line.length < 50)) {
+                // Handle section titles (icons or short lines ending in :)
+                if (/^[🏛️🍽️🎉🏨🌿📍🚗🛌💊🏧⛽🏋️🛒📬🌐]/.test(line) || (line.endsWith(":") && line.length < 50)) {
                     if (inList) { html += "</ul>"; inList = false; }
                     html += `<div class="section-title">${line}</div>`;
+                    continue;
+                }
+
+                if (line.startsWith("<img")) {
+                    if (inList) { html += "</ul>"; inList = false; }
+                    html += line;
+                } else if (line.includes('class="maps-link"')) {
+                    if (inList) { html += "</ul>"; inList = false; }
+                    html += `<p>${line}</p>`;
+                } else if (line.startsWith("•") || (line.startsWith("-") && line.length > 1) || /^\d+\.\s/.test(line)) {
+                    if (!inList) { html += "<ul>"; inList = true; }
+                    html += `<li>${line.replace(/^([•\-]|(\d+\.))\s*/, "")}</li>`;
                 } else {
                     if (inList) { html += "</ul>"; inList = false; }
                     html += `<p>${line}</p>`;
