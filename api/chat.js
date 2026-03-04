@@ -37,24 +37,23 @@ function getRelevantContext(message, database, history = []) {
     }
 
     // MANIFESTACIJE CHUNKING (Pagination)
-    if (msg.includes("događanja") || msg.includes("manifestacije") || msg.includes("festival") || msg.includes("advent") || msg.includes("ljeto") || msg.includes("karneval") || msg.includes("uskrs") || msg.includes("fiš") || msg.includes("beer") || msg.includes("staza")) {
+    const isContinuation = msg === "da" || msg === "može" || msg === "ajde" || msg.includes("više") || msg.includes("još") || msg.includes("sljedeće") || msg.includes("nastavi");
+    const historyText = history.map(h => h.content).join(" ").toLowerCase();
+    const wasEvents = historyText.includes("događanja") || historyText.includes("manifestacije") || historyText.includes("dječji gradski karneval");
+
+    if (msg.includes("događanja") || msg.includes("manifestacije") || msg.includes("festival") || (wasEvents && isContinuation)) {
         const allEvents = database.dogadanja;
-        const isMore = msg.includes("više") || msg.includes("još") || msg.includes("sljedeće") || msg.includes("nastavi");
+        const showedFirst = historyText.includes(" uskrsni");
+        const showedSecond = historyText.includes(" craft beer");
 
-        // Check history to see if we already showed first batch
-        const historyText = history.map(h => h.content).join(" ").toLowerCase();
-        const showedFirst = historyText.includes("dječji gradski karneval");
-        const showedSecond = historyText.includes("ljeto valpovačko");
-
-        if (isMore && showedFirst && !showedSecond) {
+        if (isContinuation && showedFirst && !showedSecond) {
             context.dogadanja = allEvents.slice(5, 10);
-            context.napomena = "Ovo su manifestacije od 6. do 10. mjesta.";
-        } else if (isMore && showedSecond) {
+            context.napomena = "Prikazujem manifestacije od 6. do 10. mjesta.";
+        } else if (isContinuation && showedSecond) {
             context.dogadanja = allEvents.slice(10);
-            context.napomena = "Ovo su preostale manifestacije.";
+            context.napomena = "Prikazujem preostale manifestacije.";
         } else {
             context.dogadanja = allEvents.slice(0, 5);
-            context.napomena = "Prikazujem prvih 5 manifestacija. Za ostale reci 'više'.";
         }
     }
 
