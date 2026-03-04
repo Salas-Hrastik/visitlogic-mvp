@@ -21,7 +21,7 @@ async function fetchWeather() {
  * Filter database context based on user message keywords
  * to fit into the prompt without truncation.
  */
-function getRelevantContext(message, database) {
+function getRelevantContext(message, database, history = []) {
     const msg = message.toLowerCase();
     let context = { grad: database.grad };
 
@@ -35,9 +35,29 @@ function getRelevantContext(message, database) {
     if (msg.includes("smještaj") || msg.includes("hotel") || msg.includes("apartman") || msg.includes("sobe")) {
         context.smjestaj = database.smjestaj;
     }
+
+    // MANIFESTACIJE CHUNKING (Pagination)
     if (msg.includes("događanja") || msg.includes("manifestacije") || msg.includes("festival") || msg.includes("advent") || msg.includes("ljeto") || msg.includes("karneval") || msg.includes("uskrs") || msg.includes("fiš") || msg.includes("beer") || msg.includes("staza")) {
-        context.dogadanja = database.dogadanja;
+        const allEvents = database.dogadanja;
+        const isMore = msg.includes("više") || msg.includes("još") || msg.includes("sljedeće") || msg.includes("nastavi");
+
+        // Check history to see if we already showed first batch
+        const historyText = history.map(h => h.content).join(" ").toLowerCase();
+        const showedFirst = historyText.includes("dječji gradski karneval");
+        const showedSecond = historyText.includes("ljeto valpovačko");
+
+        if (isMore && showedFirst && !showedSecond) {
+            context.dogadanja = allEvents.slice(5, 10);
+            context.napomena = "Ovo su manifestacije od 6. do 10. mjesta.";
+        } else if (isMore && showedSecond) {
+            context.dogadanja = allEvents.slice(10);
+            context.napomena = "Ovo su preostale manifestacije.";
+        } else {
+            context.dogadanja = allEvents.slice(0, 5);
+            context.napomena = "Prikazujem prvih 5 manifestacija. Za ostale reci 'više'.";
+        }
     }
+
     if (msg.includes("priroda") || msg.includes("rijeka") || msg.includes("park") || msg.includes("bicikl")) {
         context.priroda = database.priroda;
     }
@@ -45,44 +65,37 @@ function getRelevantContext(message, database) {
         context.usluge = database.usluge;
     }
 
-    // If query is generic or no keywords found, send top categories
+    // Default top categories (if no keywords)
     if (Object.keys(context).length === 1) {
         context.znamenitosti = database.znamenitosti;
         context.gastronomija = database.gastronomija;
-        context.dogadanja = database.dogadanja;
+        context.dogadanja = database.dogadanja.slice(0, 5); // Limit default list too
         context.usluge = database.usluge;
     }
 
-    // COMPACT CONTEXT: Remove indentation to save tokens and speed up generation
     return JSON.stringify(context);
 }
 
-function buildSystemPrompt(message, db, weather) {
-    const contextData = getRelevantContext(message, db);
+function buildSystemPrompt(message, db, weather, history) {
+    const contextData = getRelevantContext(message, db, history);
 
     return `TI SI Digitalni turistički informator grada Valpova.
 VRIJEME: ${weather ? weather.temperature + "°C" : "Ugodno"}.
 
 ### PRAVILO VREMENA (VAŽNO):
-- Tvoji savjeti MORAJU biti u skladu s trenutnim vremenom:
-    - HLADNO (< 15°C) ili KIŠOVITO: Preporuči zatvorene prostore.
-    - TOPLO I SUNČANO: Preporuči perivoj ili aktivnosti na otvorenom.
+- Tvoji savjeti MORAJU biti u skladu s trenutnim vremenom.
 - Spomeni vrijeme u PRVOJ kratkoj rečenici.
 
-### STROGI PROTOKOL FOTOGRAFIJA:
-- Za svaki objekt s IMAGE_URL obavezno dodaj gumb: [📸 Vidi fotografiju](IMAGE_URL)
-
-### PRAVILA ZA LISTANJE (KRITIČNO ZA BRZINU):
-- Ako korisnika zanima popis (npr. 'Manifestacije'), budi MAKSIMALNO KRATAK.
-- Za svaki događaj navedi samo: **Naziv**, jedan kratki opis (max 10 riječi), gumb za sliku i kartu.
-- NE piši dugačke uvodnike ili zaključke. Odmah na stvar!
+### PRAVILA ZA LISTANJE (BITE-SIZED ODGOVORI):
+- U tvojoj bazi (ispod) vidiš samo DIO podataka (npr. 5 događanja).
+- Izlistaj SVE što vidiš u "dogadanja" ili drugoj kategoriji koju korisnik traži.
+- Na kraju obavezno napiši: "Želite li vidjeti još manifestacija (ili restorana/službi)?" ako osjećaš da ih ima još.
 
 ### PRAVILO FORMATIRANJA:
-- Nazivi objekata **BOLDIRANI**.
+- Naziv, kratki opis, gumb za sliku: [📸 Vidi fotografiju](IMAGE_URL)
 - Gumb za kartu: [Otvori na karti](https://www.google.com/maps/search/?api=1&query=NAZIV+OBJEKTA+Valpovo)
-- Web linkovi: [Web stranica](URL).
 
-### BAZA:
+### BAZA (TRENUTNI DIO):
 ${contextData}`;
 }
 
@@ -96,7 +109,7 @@ export default async function handler(req, res) {
         if (!message) return res.status(400).json({ reply: "Poruka je prazna." });
 
         const weather = await fetchWeather();
-        const systemPrompt = buildSystemPrompt(message, db, weather);
+        const systemPrompt = buildSystemPrompt(message, db, weather, history);
 
         // API Call with 15s timeout
         const controller = new AbortController();
