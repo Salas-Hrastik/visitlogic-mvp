@@ -879,6 +879,12 @@
                 // Handle section titles (icons or short lines ending in :)
                 if (/^[🏛️🍽️🎉🏨🌿📍🚗🛌💊🏧⛽🏋️🛒📬🌐]/.test(line) || (line.endsWith(":") && line.length < 50)) {
                     if (inList) { html += "</ul>"; inList = false; }
+                    
+                    // Standardize Web link icon if it appears at start of line
+                    if (line.startsWith("🌐") || line.toLowerCase().includes("web")) {
+                         line = line.replace(/^(🌐\s*|Web:\s*|-\s*)+/i, "🌐 ");
+                    }
+                    
                     html += `<div class="section-title">${line}</div>`;
                     continue;
                 }
