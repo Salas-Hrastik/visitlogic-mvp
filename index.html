@@ -361,6 +361,30 @@
             margin-top: -2px;
         }
 
+        .image-popup-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            padding: 8px 16px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            margin: 8px 0;
+            transition: all 0.2s;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .image-popup-link:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
         .ai .section-title {
             font-family: 'Lexend', sans-serif;
             font-weight: 700;
@@ -809,17 +833,20 @@
             raw = raw.replace(/!\[(.*?)\]\((.*?)\)/g, '<img src="$2" alt="$1">');
 
             // Link handling with Modal integration
+            raw = raw.replace(/\[📸\s*(.*?)\]\((.*?)\)/g, (match, text, url) => {
+                url = url.trim();
+                return `<a href="${url}" class="image-popup-link" onclick="openModal('${url}', '${text.replace(/'/g, "\\'")}'); return false;">📸 ${text}</a>`;
+            });
+
             raw = raw.replace(/\[(.*?)\]\((.*?)\)/g, (match, text, url) => {
                 url = url.trim();
                 const isMaps = url.includes("google.com/maps") || url.includes("goo.gl/maps");
                 const isImage = url.toLowerCase().match(/\.(jpeg|jpg|gif|png|webp|avif|svg)/);
 
                 if (isMaps) return `<a href="${url}" target="_blank" class="maps-link">${text}</a>`;
+                if (isImage) return `<a href="${url}" class="image-popup-link" onclick="openModal('${url}', '${text.replace(/'/g, "\\'")}'); return false;">📸 ${text}</a>`;
 
-                const cssClass = isImage ? 'image-popup-link' : '';
-                const prefix = isImage ? '📸 ' : '';
-
-                return `<a href="${url}" class="${cssClass}" onclick="openModal('${url}', '${text.replace(/'/g, "\\'")}'); return false;">${prefix}${text}</a>`;
+                return `<a href="${url}" onclick="openModal('${url}', '${text.replace(/'/g, "\\'")}'); return false;">${text}</a>`;
             });
 
             // Advanced regex for phones and web
