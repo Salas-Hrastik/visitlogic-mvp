@@ -753,7 +753,8 @@
 
         /* ── MODAL ── */
         function openModal(url, title = "Pregled") {
-            const isImage = url.match(/\.(jpeg|jpg|gif|png|webp)$/i);
+            url = url.trim(); // Ensure no spaces
+            const isImage = url.toLowerCase().match(/\.(jpeg|jpg|gif|png|webp|avif|svg)/); // Removed $ and added more types
             const iframe = document.getElementById("modal-iframe");
             const img = document.getElementById("modal-img");
 
@@ -761,12 +762,16 @@
 
             if (isImage) {
                 iframe.style.display = "none";
+                iframe.src = "about:blank"; // Reset iframe
                 img.src = url;
                 img.style.display = "block";
+                console.log("Opening image:", url);
             } else {
                 img.style.display = "none";
+                img.src = ""; // Reset image
                 iframe.src = url;
                 iframe.style.display = "block";
+                console.log("Opening iframe:", url);
             }
 
             document.getElementById("modal-overlay").style.display = "flex";
@@ -791,8 +796,9 @@
 
             // Link handling with Modal integration
             raw = raw.replace(/\[(.*?)\]\((.*?)\)/g, (match, text, url) => {
+                url = url.trim();
                 const isMaps = url.includes("google.com/maps") || url.includes("goo.gl/maps");
-                const isImage = url.match(/\.(jpeg|jpg|gif|png|webp)$/i);
+                const isImage = url.toLowerCase().match(/\.(jpeg|jpg|gif|png|webp|avif|svg)/);
 
                 if (isMaps) return `<a href="${url}" target="_blank" class="maps-link">${text}</a>`;
 
