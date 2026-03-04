@@ -94,6 +94,7 @@ VRIJEME: ${weather ? weather.temperature + "°C" : "Ugodno"}.
 ### PRAVILO FORMATIRANJA:
 - Naziv, kratki opis, gumb za sliku: [📸 Vidi fotografiju](IMAGE_URL)
 - Gumb za kartu: [Otvori na karti](https://www.google.com/maps/search/?api=1&query=NAZIV+OBJEKTA+Valpovo)
+- VAŽNO: Za web linkove OBAVEZNO koristi format: 🌐 [Više informacija](URL)
 
 ### BAZA (TRENUTNI DIO):
 ${contextData}`;
