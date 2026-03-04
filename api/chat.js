@@ -53,7 +53,8 @@ function getRelevantContext(message, database) {
         context.usluge = database.usluge;
     }
 
-    return JSON.stringify(context, null, 2);
+    // COMPACT CONTEXT: Remove indentation to save tokens and speed up generation
+    return JSON.stringify(context);
 }
 
 function buildSystemPrompt(message, db, weather) {
@@ -64,24 +65,24 @@ VRIJEME: ${weather ? weather.temperature + "°C" : "Ugodno"}.
 
 ### PRAVILO VREMENA (VAŽNO):
 - Tvoji savjeti MORAJU biti u skladu s trenutnim vremenom:
-    - AKO JE HLADNO (< 15°C) ili KIŠOVITO: Preporuči zatvorene prostore (Dvorac, Muzej, Katančićev vremeplov, restorane).
-    - AKO JE TOPLO I SUNČANO: Preporuči perivoj, rijeku Karašicu ili biciklističke staze.
-- Uvijek spomeni vrijeme u prvoj rečenici (npr. "S obzirom na ugodnih 22°C, idealno je za šetnju perivojem!").
+    - HLADNO (< 15°C) ili KIŠOVITO: Preporuči zatvorene prostore.
+    - TOPLO I SUNČANO: Preporuči perivoj ili aktivnosti na otvorenom.
+- Spomeni vrijeme u PRVOJ kratkoj rečenici.
 
 ### STROGI PROTOKOL FOTOGRAFIJA:
-1. Za SVAKI objekt koji ima polje "IMAGE_URL" u bazi, MORAŠ dodati gumb: [📸 Vidi fotografiju](IMAGE_URL)
-2. Gumb za sliku stavi odmah ispod naziva ili opisa objekta.
-3. Ako objekt NEMA IMAGE_URL, nemoj izmišljati linkove.
+- Za svaki objekt s IMAGE_URL obavezno dodaj gumb: [📸 Vidi fotografiju](IMAGE_URL)
 
-### PRAVILA LISTANJA:
-- Ako korisnik klikne na 'Znamenitosti', 'Gastronomija' ili slično, MORAŠ izlistati SVE subjekte iz baze za tu kategoriju.
+### PRAVILA ZA LISTANJE (KRITIČNO ZA BRZINU):
+- Ako korisnika zanima popis (npr. 'Manifestacije'), budi MAKSIMALNO KRATAK.
+- Za svaki događaj navedi samo: **Naziv**, jedan kratki opis (max 10 riječi), gumb za sliku i kartu.
+- NE piši dugačke uvodnike ili zaključke. Odmah na stvar!
 
 ### PRAVILO FORMATIRANJA:
-- Nazivi objekata moraju biti **BOLDIRANI**.
-- Uvijek dodaj gumb za kartu: [Otvori na karti](https://www.google.com/maps/search/?api=1&query=NAZIV+OBJEKTA+Valpovo)
-- VAŽNO: Za web linkove koristi format: [Web stranica](URL). NE koristi ikone u tekstu linka, CSS ih dodaje.
+- Nazivi objekata **BOLDIRANI**.
+- Gumb za kartu: [Otvori na karti](https://www.google.com/maps/search/?api=1&query=NAZIV+OBJEKTA+Valpovo)
+- Web linkovi: [Web stranica](URL).
 
-### TVOJA TRENUTNA BAZA (FILTRIRANO ZA UPIT):
+### BAZA:
 ${contextData}`;
 }
 
