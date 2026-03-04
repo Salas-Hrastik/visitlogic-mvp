@@ -69,11 +69,10 @@
         }
 
         .logo {
-            height: 55px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
-            background: white;
-            padding: 2px;
+            height: 65px;
+            border-radius: 5px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            object-fit: contain;
         }
 
         .title-group {
@@ -690,8 +689,7 @@
 
     <div class="header">
         <div class="header-inner">
-            <img class="logo" src="https://tz.valpovo.hr/wp-content/uploads/2018/05/tz-logo-new-465x331.png"
-                alt="Valpovo">
+            <img class="logo" src="img/katancic-portrait.png" alt="Matija Petar Katančić">
             <div class="title-group">
                 <div class="title-main">Turistički informator</div>
                 <div class="title-sub">Grad Valpovo • Pametni asistent</div>
@@ -879,12 +877,12 @@
                 // Handle section titles (icons or short lines ending in :)
                 if (/^[🏛️🍽️🎉🏨🌿📍🚗🛌💊🏧⛽🏋️🛒📬🌐]/.test(line) || (line.endsWith(":") && line.length < 50)) {
                     if (inList) { html += "</ul>"; inList = false; }
-                    
+
                     // Standardize Web link icon if it appears at start of line
                     if (line.startsWith("🌐") || line.toLowerCase().includes("web")) {
-                         line = line.replace(/^(🌐\s*|Web:\s*|-\s*)+/i, "🌐 ");
+                        line = line.replace(/^(🌐\s*|Web:\s*|-\s*)+/i, "🌐 ");
                     }
-                    
+
                     html += `<div class="section-title">${line}</div>`;
                     continue;
                 }

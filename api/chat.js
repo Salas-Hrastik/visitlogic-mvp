@@ -88,12 +88,18 @@ ${contextData}`;
 export default async function handler(req, res) {
     if (req.method !== "POST") return res.status(405).json({ error: "Method not allowed" });
     const apiKey = process.env.OPENAI_API_KEY;
-    if (!apiKey) return res.status(500).json({ reply: "API ključ nedostaje." });
+    if (!apiKey) return res.status(500).json({ reply: "Sistemska greška: API ključ nije konfiguriran." });
 
     try {
         const { message, history = [] } = req.body;
+        if (!message) return res.status(400).json({ reply: "Poruka je prazna." });
+
         const weather = await fetchWeather();
         const systemPrompt = buildSystemPrompt(message, db, weather);
+
+        // API Call with 15s timeout
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 15000);
 
         const response = await fetch("https://api.openai.com/v1/chat/completions", {
             method: "POST",
@@ -101,21 +107,45 @@ export default async function handler(req, res) {
                 "Content-Type": "application/json",
                 "Authorization": `Bearer ${apiKey.trim()}`
             },
+            signal: controller.signal,
             body: JSON.stringify({
                 model: "gpt-4o-mini",
                 messages: [
                     { role: "system", content: systemPrompt },
-                    ...history.slice(-4).map(m => ({ role: m.role === "model" ? "assistant" : m.role, content: m.content })),
+                    ...history.slice(-4).map(m => ({
+                        role: m.role === "model" ? "assistant" : m.role,
+                        content: m.content
+                    })),
                     { role: "user", content: message }
                 ],
-                temperature: 0.3 // Niža temperatura za preciznije nabrajanje
+                temperature: 0.3
             })
         });
 
+        clearTimeout(timeoutId);
+
         const result = await response.json();
-        if (!response.ok) throw new Error(result.error?.message || "OpenAI error");
+
+        if (!response.ok) {
+            console.error("OpenAI API Error:", result);
+            return res.status(response.status).json({
+                reply: `Greška servisa (${response.status}): ${result.error?.message || "Nepoznata greška OpenAI."}`
+            });
+        }
+
+        if (!result.choices || !result.choices[0]) {
+            throw new Error("Neispravan odgovor od OpenAI (nedostaje 'choices').");
+        }
+
         return res.status(200).json({ reply: result.choices[0].message.content });
+
     } catch (e) {
-        return res.status(500).json({ reply: "Sistemska greška: " + e.message });
+        console.error("Chat Server Error:", e.message);
+        const isTimeout = e.name === "AbortError";
+        return res.status(500).json({
+            reply: isTimeout
+                ? "Asistentu treba previše vremena za odgovor. Molimo pokušajte ponovno s kraćim upitom."
+                : "Sistemska greška: " + e.message
+        });
     }
 }
