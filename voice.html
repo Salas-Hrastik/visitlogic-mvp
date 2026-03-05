@@ -451,7 +451,7 @@
 
     <div class="header">
         <div class="header-inner">
-            <img class="logo" src="https://tz.valpovo.hr/wp-content/uploads/2018/05/tz-logo-new-465x331.png" alt="Logo">
+            <img class="logo" src="katancic-portrait.png" alt="Logo">
             <div>
                 <div class="title-main">Turistički informator</div>
                 <div class="title-sub">Grad Valpovo • AI asistent</div>
@@ -541,11 +541,21 @@
 
         /* ── FORMATIRANJE ── */
         function formatAI(raw) {
-            // 1. Prvo obrađujemo eksplicitne Markdown elemente
+            // 1. Markdown slike: ![alt](url) → <img> kartica (MORA biti prije link regexpa)
+            raw = raw.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, (match, alt, src) => {
+                return `<img src="${src}" alt="${alt}" style="max-width:100%;border-radius:10px;margin:8px 0;display:block;" onerror="this.style.display='none'">`;
+            });
+
+            // 2. Bold
             raw = raw.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
+
+            // 3. Linkovi [text](url)
             raw = raw.replace(/\[(.*?)\]\((.*?)\)/g, (match, text, url) => {
                 const isMaps = url.includes("google.com/maps") || url.includes("goo.gl/maps");
-                if (isMaps) return `<a href="${url}" target="_blank" class="maps-link">${text}</a>`;
+                if (isMaps) {
+                    const cleanText = text.replace(/^📍\s*/, '');
+                    return `<a href="${url}" target="_blank" class="maps-link">${cleanText || 'Otvori na karti'}</a>`;
+                }
                 return `<a href="${url}" onclick="openModal('${url}', '${text.replace(/'/g, "\\'")}'); return false;">${text}</a>`;
             });
 
@@ -591,6 +601,14 @@
                 line = line.trim();
                 if (!line) {
                     if (inList) { html += "</ul>"; inList = false; }
+                    continue;
+                }
+
+                // Markdown naslovi: ###, ##, #
+                if (/^#{1,3}\s/.test(line)) {
+                    const headingText = line.replace(/^#{1,3}\s+/, '');
+                    if (inList) { html += "</ul>"; inList = false; }
+                    html += `<div class="section-title">${headingText}</div>`;
                     continue;
                 }
 

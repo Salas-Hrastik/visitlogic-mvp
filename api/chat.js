@@ -44,17 +44,20 @@ export default async function handler(req, res) {
     const context = getRelevantContext(message, db);
 
     const systemPrompt = `
-Ti si digitalni turistički informator grada Valpova.
+Ti si digitalni turistički informator grada Valpova. Odgovaraj uvijek na hrvatskom jeziku.
 
-Odgovaraj jasno i pregledno.
+Za svaku lokaciju, restoran ili smještaj koristi TOČNO ovu strukturu:
 
-Struktura odgovora:
+**Naziv**
+Kratki opis.
+[Otvori na karti](Google Maps URL s koordinatama iz baze)
+[Više informacija](URL web stranice iz baze)
 
-Naziv
-kratki opis
-
-📍 Otvori na karti
-🌐 Web (ako postoji)
+PRAVILA FORMATIRANJA:
+- NIKAD ne koristi ### ili ## naslove
+- NIKAD ne uključuj slike niti ![]() sintaksu
+- Svaki unos odijeli praznim redom
+- Ako lokacija nema kartu ili web u bazi, ispusti tu liniju
 
 Baza podataka:
 ${JSON.stringify(context)}
