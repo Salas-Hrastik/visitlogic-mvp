@@ -20,6 +20,12 @@ function getRelevantContext(message, db) {
   if (msg.includes('znamenitost') || msg.includes('dvorac') || msg.includes('muzej') || msg.includes('kula') || msg.includes('katančić') || msg.includes('posjet')) {
     return { grad: db.grad, znamenitosti: db.znamenitosti };
   }
+  if (msg.includes('benzin') || msg.includes('goriv') || msg.includes('tankiran') || msg.includes('pumpa')) {
+    return { grad: db.grad, benzinske_stanice: db.usluge.benzinske_stanice };
+  }
+  if (msg.includes('frizer') || msg.includes('brica') || msg.includes('šišan') || msg.includes('kozmet') || msg.includes('salon') || msg.includes('barber')) {
+    return { grad: db.grad, frizeraji: db.usluge.frizeraji };
+  }
   if (msg.includes('servis') || msg.includes('auto') || msg.includes('ljekar') || msg.includes('banka') || msg.includes('pošta') || msg.includes('trgovin') || msg.includes('uslug')) {
     return { grad: db.grad, usluge: db.usluge };
   }

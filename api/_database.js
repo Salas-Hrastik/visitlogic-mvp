@@ -446,6 +446,48 @@ export const db = {
             { "naziv": "Konzum", "adresa": "Trg kralja Tomislava" },
             { "naziv": "DM - drogerie markt", "adresa": "Trg kralja Tomislava 3" },
             { "naziv": "Borovo", "adresa": "Trg kralja Tomislava 1" }
+        ],
+        "benzinske_stanice": [
+            {
+                "naziv": "INA Valpovo",
+                "adresa": "Osječka ulica, Valpovo",
+                "maps_url": "https://www.google.com/maps/search/?api=1&query=INA+benzinska+Valpovo",
+                "napomena": "Gorivo, autoplin, trgovina, bankomat"
+            },
+            {
+                "naziv": "Petrol Valpovo",
+                "adresa": "Valpovo",
+                "maps_url": "https://www.google.com/maps/search/?api=1&query=Petrol+benzinska+Valpovo",
+                "napomena": "Gorivo, autoplin, praonik"
+            },
+            {
+                "naziv": "Euro Petrol / NTL",
+                "adresa": "Valpovo",
+                "maps_url": "https://www.google.com/maps/search/?api=1&query=benzinska+stanica+Valpovo",
+                "napomena": "Gorivo, dizel"
+            }
+        ],
+        "frizeraji": [
+            {
+                "naziv": "Frizerski salon Erika",
+                "adresa": "Valpovo",
+                "maps_url": "https://www.google.com/maps/search/?api=1&query=frizerski+salon+Erika+Valpovo"
+            },
+            {
+                "naziv": "Frizerski salon Iris",
+                "adresa": "Valpovo",
+                "maps_url": "https://www.google.com/maps/search/?api=1&query=frizerski+salon+Iris+Valpovo"
+            },
+            {
+                "naziv": "Kozmetički salon Beauty",
+                "adresa": "Valpovo",
+                "maps_url": "https://www.google.com/maps/search/?api=1&query=kozmeticki+salon+Valpovo"
+            },
+            {
+                "naziv": "Barbershop Valpovo",
+                "adresa": "Valpovo",
+                "maps_url": "https://www.google.com/maps/search/?api=1&query=barbershop+Valpovo"
+            }
         ]
     }
 };
