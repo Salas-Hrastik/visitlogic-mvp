@@ -29,6 +29,16 @@ const CATEGORY_CONTEXTS = {
   usluge:       (db) => ({ grad: db.grad, usluge: db.usluge }),
 };
 
+const MONTH_MAP = {
+  'Siječanj':1,'Veljača':2,'Ožujak':3,'Travanj':4,'Svibanj':5,'Lipanj':6,
+  'Srpanj':7,'Kolovoz':8,'Rujan':9,'Listopad':10,'Studeni':11,'Prosinac':12
+};
+
+function eventMaxMonth(vrijeme) {
+  const months = (vrijeme || '').split('/').map(p => MONTH_MAP[p.trim()]).filter(Boolean);
+  return months.length ? Math.max(...months) : 12;
+}
+
 // Vrati { context, category } — category se pamti i šalje nazad klijentu
 function getRelevantContext(message, db, lastCategory) {
   const msg = message.toLowerCase();
@@ -76,6 +86,23 @@ export default async function handler(req, res) {
     }
 
     const { context, category } = getRelevantContext(message, db, lastCategory);
+
+    // Događanja listing: filtriraj prošle i generiraj direktno bez AI
+    if (category === 'dogadanja' && !lastCategory) {
+      const currentMonth = new Date().getMonth() + 1;
+      const upcoming = db.dogadanja.filter(e => eventMaxMonth(e.vrijeme) >= currentMonth);
+      let reply = upcoming.length
+        ? `Predstojeće manifestacije u Valpovu (${new Date().getFullYear()}):\n\n`
+        : 'Nema predstojećih manifestacija za ostatak ove godine.';
+      for (const e of upcoming) {
+        reply += `**${e.naziv}**\n`;
+        reply += `📅 ${e.vrijeme}\n`;
+        reply += `${e.opis}\n`;
+        if (e.web) reply += `[Više informacija](${e.web})\n`;
+        reply += '\n';
+      }
+      return res.status(200).json({ reply, category });
+    }
 
     // Smještaj listing: generiraj direktno bez AI (brzo, kompletno, bez token limita)
     const isSmjestajListing = category === 'smjestaj' && !lastCategory;

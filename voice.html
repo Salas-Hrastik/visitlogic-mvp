@@ -646,7 +646,7 @@
                     }
                 }
                 // Naslov: Emoji + : ili kratki redak s :
-                else if (/^[🏛️🍽️🎉🏨🌿📍🚗🥩]/.test(line) || (line.endsWith(":") && line.length < 60)) {
+                else if (/^[🏛️🍽️🎉🏨🌿📍🚗🥩📅🔑]/.test(line) || (line.endsWith(":") && line.length < 60)) {
                     if (inList) { html += "</ul>"; inList = false; }
                     html += `<div class="section-title">${line}</div>`;
                 }
