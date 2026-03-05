@@ -267,6 +267,12 @@
             margin-bottom: 2px;
         }
 
+        .ai li strong {
+            display: inline;
+            font-size: inherit;
+            margin-top: 0;
+        }
+
         .ai .section-title {
             font-weight: 700;
             color: #0b4b2a;
@@ -627,12 +633,10 @@
                 if (line.startsWith("•") || (line.startsWith("-") && line.length > 2) || /^\d+\.\s/.test(line)) {
                     if (!inList) { html += "<ul>"; inList = true; }
                     const content = line.replace(/^([•\-]|(\d+\.))\s*/, "");
-                    // Ako unutar list itema imamo maps link, možda ga želimo bez bulleta? 
-                    // Ali obično je AI output: "- [Maps](link)".
-                    // Ako je to jedini sadržaj linije, makni bullet.
-                    if (content.startsWith('<a class="maps-link"')) {
+                    // Ako je cijeli sadržaj samo maps link, prikaži ga bez bulleta
+                    if (/^<a\s[^>]*class="maps-link"[^>]*>.*?<\/a>$/.test(content.trim())) {
                         if (inList) { html += "</ul>"; inList = false; }
-                        html += `<p style="margin-left: 20px;">${content}</p>`;
+                        html += `<p>${content}</p>`;
                     } else {
                         html += `<li>${content}</li>`;
                     }

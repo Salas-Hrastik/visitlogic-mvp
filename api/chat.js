@@ -11,7 +11,7 @@ function getRelevantContext(message, db) {
   if (msg.includes('smještaj') || msg.includes('hotel') || msg.includes('noćenje') || msg.includes('sobe') || msg.includes('apartman')) {
     return { grad: db.grad, smjestaj: db.smjestaj };
   }
-  if (msg.includes('jelo') || msg.includes('restoran') || msg.includes('gastronomija') || msg.includes('hrana') || msg.includes('pizza') || msg.includes('burger') || msg.includes('jesti')) {
+  if (msg.includes('jelo') || msg.includes('restoran') || msg.includes('gastronomija') || msg.includes('hrana') || msg.includes('pizza') || msg.includes('burger') || msg.includes('jesti') || msg.includes('večer') || msg.includes('večera') || msg.includes('ručak') || msg.includes('ručam') || msg.includes('pojesti') || msg.includes('naruč') || msg.includes('kafić') || msg.includes('kava') || msg.includes('piti') || msg.includes('bar') || msg.includes('popiti')) {
     return { grad: db.grad, gastronomija: db.gastronomija };
   }
   if (msg.includes('događ') || msg.includes('festival') || msg.includes('manifestac') || msg.includes('karneval') || msg.includes('advent') || msg.includes('uskrs')) {
