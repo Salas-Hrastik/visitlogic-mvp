@@ -11,25 +11,26 @@
 <style>
 
 body{
-font-family:Arial, sans-serif;
-background:#0f4f2f;
 margin:0;
-padding:0;
+font-family:Arial, Helvetica, sans-serif;
+background:#0e4f2b;
+color:#222;
 }
 
 header{
-background:#0b3c24;
+background:#0c3d24;
 color:white;
-padding:20px;
+padding:18px 24px;
 display:flex;
 align-items:center;
-gap:15px;
+gap:16px;
 }
 
 header img{
 width:60px;
 height:60px;
 border-radius:12px;
+object-fit:cover;
 }
 
 header h1{
@@ -37,69 +38,81 @@ margin:0;
 font-size:24px;
 }
 
-.container{
+header small{
+opacity:0.8;
+}
+
+.main{
 max-width:900px;
 margin:auto;
-padding:20px;
+padding:24px;
 }
 
 .chat-box{
 background:white;
-border-radius:12px;
+border-radius:14px;
 padding:20px;
-min-height:300px;
+min-height:360px;
+box-shadow:0 10px 25px rgba(0,0,0,0.2);
+overflow-y:auto;
 }
 
 .user-message{
-background:#2e7d32;
+background:#2f7d32;
 color:white;
-padding:12px;
+padding:12px 16px;
 border-radius:10px;
-margin:10px 0;
+margin:12px 0;
 text-align:right;
 }
 
-.assistant-message{
-background:#f1f1f1;
-padding:12px;
+.bot-message{
+background:#f2f2f2;
+padding:14px 16px;
 border-radius:10px;
-margin:10px 0;
+margin:12px 0;
+line-height:1.5;
 }
 
-.controls{
-margin-top:20px;
+.input-row{
+margin-top:16px;
 display:flex;
 gap:10px;
 }
 
 input{
 flex:1;
-padding:12px;
-border-radius:8px;
-border:1px solid #ccc;
+padding:14px;
+border-radius:10px;
+border:none;
 font-size:16px;
 }
 
 button{
-padding:12px 20px;
+background:#d1ad33;
 border:none;
-border-radius:8px;
-background:#c9a227;
-color:black;
+padding:12px 20px;
+border-radius:10px;
 font-weight:bold;
 cursor:pointer;
 }
 
-.quick-buttons{
+.quick{
 margin-top:20px;
 display:flex;
 gap:10px;
 flex-wrap:wrap;
 }
 
-.quick-buttons button{
-background:#1b5e20;
+.quick button{
+background:#1e6a34;
 color:white;
+}
+
+a{
+color:#1a73e8;
+text-decoration:none;
+font-weight:bold;
 }
 
 </style>
@@ -108,36 +121,37 @@ color:white;
 
 <body>
 
+
 <header>
 
 <img src="katancic-portrait.png">
 
 <div>
 <h1>Turistički informator</h1>
-<div>Grad Valpovo • Pametni asistent</div>
+<small>Grad Valpovo • Pametni asistent</small>
 </div>
 
 </header>
 
 
-<div class="container">
+<div class="main">
 
 <div id="chat-box" class="chat-box"></div>
 
-<div class="controls">
+<div class="input-row">
 
-<input id="chat-input" placeholder="Postavite pitanje...">
+<input id="user-input" placeholder="Postavite pitanje...">
 
-<button onclick="handleSend()">Pošalji</button>
+<button id="send-btn">Pošalji</button>
 
 </div>
 
-<div class="quick-buttons">
+<div class="quick">
 
-<button onclick="sendMessage('znamenitosti')">🏛 Znamenitosti</button>
-<button onclick="sendMessage('gastronomija')">🍽 Gastronomija</button>
-<button onclick="sendMessage('događanja')">🎉 Događanja</button>
-<button onclick="sendMessage('smještaj')">🛏 Smještaj</button>
+<button onclick="quickAsk('znamenitosti')">🏛 Znamenitosti</button>
+<button onclick="quickAsk('gastronomija')">🍽 Gastronomija</button>
+<button onclick="quickAsk('događanja')">🎉 Događanja</button>
+<button onclick="quickAsk('smještaj')">🛏 Smještaj</button>
 
 </div>
 
@@ -146,21 +160,53 @@ color:white;
 
 <script>
 
-async function sendMessage(message){
+
+function formatReply(text){
+
+return text
+.replace(/\n/g,"<br>")
+.replace(/\*\*(.*?)\*\*/g,"<strong>$1</strong>")
+.replace(/\[([^\]]+)\]\(([^)]+)\)/g,'<a href="$2" target="_blank">$1</a>');
+
+}
+
+
+
+function addMessage(text,type){
 
 const chatBox=document.getElementById("chat-box")
 
-const user=document.createElement("div")
-user.className="user-message"
-user.textContent=message
+const div=document.createElement("div")
 
-chatBox.appendChild(user)
+div.className= type==="user" ? "user-message" : "bot-message"
+
+div.innerHTML=text
+
+chatBox.appendChild(div)
+
+chatBox.scrollTop=chatBox.scrollHeight
+
+}
+
+
+
+async function sendMessage(){
+
+const input=document.getElementById("user-input")
+
+const message=input.value.trim()
+
+if(!message) return
+
+addMessage(message,"user")
+
+input.value=""
 
 const loading=document.createElement("div")
-loading.className="assistant-message"
-loading.textContent="Asistent razmišlja..."
+loading.className="bot-message"
+loading.innerText="Asistent razmišlja..."
 
-chatBox.appendChild(loading)
+document.getElementById("chat-box").appendChild(loading)
 
 try{
 
@@ -178,9 +224,7 @@ headers:{
 "Content-Type":"application/json"
 },
 
-body:JSON.stringify({
-message:message
-})
+body:JSON.stringify({message})
 
 })
 
@@ -190,70 +234,56 @@ const data=await response.json()
 
 loading.remove()
 
-const bot=document.createElement("div")
-bot.className="assistant-message"
-
 if(data.reply){
 
-bot.innerHTML=data.reply
-.replace(/\n/g,"<br>")
-.replace(/\[([^\]]+)\]\(([^)]+)\)/g,'<a href="$2" target="_blank">$1</a>')
+addMessage(formatReply(data.reply),"bot")
 
 }else{
 
-bot.textContent="Nema odgovora."
+addMessage("Asistent nije dao odgovor.","bot")
 
 }
-
-chatBox.appendChild(bot)
-
-chatBox.scrollTop=chatBox.scrollHeight
 
 }catch(e){
 
 loading.remove()
 
-const error=document.createElement("div")
-error.className="assistant-message"
-
 if(e.name==="AbortError"){
 
-error.textContent="Odgovor traje dulje nego očekivano. Pokušajte ponovno."
+addMessage("Odgovor traje dulje nego očekivano. Pokušajte ponovno.","bot")
 
 }else{
 
-error.textContent="Greška u komunikaciji sa serverom."
-
-}
-
-chatBox.appendChild(error)
+addMessage("Greška u komunikaciji sa serverom.","bot")
 
 }
 
 }
 
-function handleSend(){
+}
 
-const input=document.getElementById("chat-input")
 
-const message=input.value.trim()
 
-if(!message) return
+function quickAsk(text){
 
-sendMessage(message)
+document.getElementById("user-input").value=text
 
-input.value=""
+sendMessage()
 
 }
 
-document.getElementById("chat-input")
-.addEventListener("keypress",function(e){
+
+
+document.getElementById("send-btn").addEventListener("click",sendMessage)
+
+
+document.getElementById("user-input").addEventListener("keypress",function(e){
 
 if(e.key==="Enter"){
 
 e.preventDefault()
 
-handleSend()
+sendMessage()
 
 }
 
@@ -261,6 +291,6 @@ handleSend()
 
 </script>
 
-</body>
 
+</body>
 </html>
