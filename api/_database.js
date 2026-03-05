@@ -124,6 +124,97 @@ export const db = {
             "opis": "Najpopularnije mjesto za pizzu i druženje.",
             "adresa": "Trg kralja Tomislava 18, Valpovo",
             "web": "https://tz.valpovo.hr/ugostiteljstvo/bar-i-pizzeria-hex-valpovo/"
+        },
+        {
+            "naziv": "Caffe Bar Forum",
+            "opis": "Caffe bar u centru Valpova.",
+            "adresa": "Valpovo",
+            "maps_url": "https://www.google.com/maps/search/?api=1&query=Caffe+Bar+Forum+Valpovo",
+            "web": "https://tz.valpovo.hr/ugostiteljstvo/caffe-bar-forum/"
+        },
+        {
+            "naziv": "Gurman – Objekt brze prehrane",
+            "opis": "Brza prehrana u Valpovu.",
+            "adresa": "Valpovo",
+            "maps_url": "https://www.google.com/maps/search/?api=1&query=Gurman+Valpovo",
+            "web": "https://tz.valpovo.hr/ugostiteljstvo/gurman/"
+        },
+        {
+            "naziv": "Caffe Bar Kolaž",
+            "opis": "Caffe bar u Valpovu.",
+            "adresa": "Valpovo",
+            "maps_url": "https://www.google.com/maps/search/?api=1&query=Caffe+Bar+Kolaž+Valpovo",
+            "web": "https://tz.valpovo.hr/ugostiteljstvo/caffe-bar-kolaz/"
+        },
+        {
+            "naziv": "Caffe Night Bar Blue",
+            "opis": "Caffe i noćni bar u Valpovu.",
+            "adresa": "Valpovo",
+            "maps_url": "https://www.google.com/maps/search/?api=1&query=Night+Bar+Blue+Valpovo",
+            "web": "https://tz.valpovo.hr/ugostiteljstvo/caffe-night-bar-blue/"
+        },
+        {
+            "naziv": "Caffe Bar Passage",
+            "opis": "Caffe bar u Valpovu.",
+            "adresa": "Valpovo",
+            "maps_url": "https://www.google.com/maps/search/?api=1&query=Caffe+Bar+Passage+Valpovo",
+            "web": "https://tz.valpovo.hr/ugostiteljstvo/caffe-bar-passage/"
+        },
+        {
+            "naziv": "Caffe Bar Space",
+            "opis": "Caffe bar u Valpovu.",
+            "adresa": "Valpovo",
+            "maps_url": "https://www.google.com/maps/search/?api=1&query=Caffe+Bar+Space+Valpovo",
+            "web": "https://tz.valpovo.hr/ugostiteljstvo/caffe-bar-space/"
+        },
+        {
+            "naziv": "Caffe Bar Best",
+            "opis": "Caffe bar u Valpovu.",
+            "adresa": "Valpovo",
+            "maps_url": "https://www.google.com/maps/search/?api=1&query=Caffe+Bar+Best+Valpovo",
+            "web": "https://tz.valpovo.hr/ugostiteljstvo/caffe-bar-best/"
+        },
+        {
+            "naziv": "Gradska Kavana Valpovo",
+            "opis": "Gradska kavana u centru Valpova.",
+            "adresa": "Valpovo",
+            "maps_url": "https://www.google.com/maps/search/?api=1&query=Gradska+Kavana+Valpovo",
+            "web": "https://tz.valpovo.hr/ugostiteljstvo/gradska-kavana-valpovo/"
+        },
+        {
+            "naziv": "Gradska Kavana Katančić",
+            "opis": "Kavana nazvana po poznatom valpovačkom pjesniku Matiji Petru Katančiću.",
+            "adresa": "Valpovo",
+            "maps_url": "https://www.google.com/maps/search/?api=1&query=Gradska+Kavana+Katančić+Valpovo",
+            "web": "https://tz.valpovo.hr/ugostiteljstvo/gradska-kavana-katancic/"
+        },
+        {
+            "naziv": "Barcode Caffe & Night Bar",
+            "opis": "Caffe i noćni bar u Valpovu.",
+            "adresa": "Valpovo",
+            "maps_url": "https://www.google.com/maps/search/?api=1&query=Barcode+Caffe+Valpovo",
+            "web": "https://tz.valpovo.hr/ugostiteljstvo/barcode-caffe-night-bar/"
+        },
+        {
+            "naziv": "Caffe Bar Brm Brm",
+            "opis": "Caffe bar u Valpovu.",
+            "adresa": "Valpovo",
+            "maps_url": "https://www.google.com/maps/search/?api=1&query=Caffe+Bar+Brm+Brm+Valpovo",
+            "web": "https://tz.valpovo.hr/ugostiteljstvo/caffe-bar-brm-brm/"
+        },
+        {
+            "naziv": "Caffe Bar Aqua Valpovo",
+            "opis": "Caffe bar u Valpovu.",
+            "adresa": "Valpovo",
+            "maps_url": "https://www.google.com/maps/search/?api=1&query=Caffe+Bar+Aqua+Valpovo",
+            "web": "https://tz.valpovo.hr/ugostiteljstvo/caffe-bar-aqua-valpovo/"
+        },
+        {
+            "naziv": "Caffe Bar Prandau",
+            "opis": "Caffe bar nazvan po barunima Prandau, u Valpovu.",
+            "adresa": "Valpovo",
+            "maps_url": "https://www.google.com/maps/search/?api=1&query=Caffe+Bar+Prandau+Valpovo",
+            "web": "https://tz.valpovo.hr/ugostiteljstvo/caffe-bar-prandau/"
         }
     ],
     "dogadanja": [
