@@ -5,6 +5,20 @@ const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY
 });
 
+// Ukloni IMAGE_URL polja iz konteksta — AI ih ne treba, samo povećavaju tokene
+function stripImages(data) {
+  if (Array.isArray(data)) return data.map(stripImages);
+  if (data && typeof data === 'object') {
+    const out = {};
+    for (const [k, v] of Object.entries(data)) {
+      if (k === 'IMAGE_URL') continue;
+      out[k] = stripImages(v);
+    }
+    return out;
+  }
+  return data;
+}
+
 function getRelevantContext(message, db) {
   const msg = message.toLowerCase();
 
@@ -47,7 +61,7 @@ export default async function handler(req, res) {
       return res.status(400).json({ reply: "Poruka je prazna." });
     }
 
-    const context = getRelevantContext(message, db);
+    const context = stripImages(getRelevantContext(message, db));
 
     const systemPrompt = `
 Ti si digitalni turistički informator grada Valpova. Odgovaraj uvijek na hrvatskom jeziku.
