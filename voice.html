@@ -454,7 +454,7 @@
             <img class="logo" src="https://tz.valpovo.hr/wp-content/uploads/2018/05/tz-logo-new-465x331.png" alt="Logo">
             <div>
                 <div class="title-main">Turistički informator</div>
-                <div class="title-sub">Grad Valpovo</div>
+                <div class="title-sub">Grad Valpovo • Pametni asistent</div>
             </div>
         </div>
     </div>
@@ -465,11 +465,11 @@
         </div>
 
         <div class="quick-buttons">
-            <button onclick="quickAsk('Znamenitosti')">🏛️ Znamenitosti</button>
-            <button onclick="quickAsk('Gastronomija')">🍽️ Gastronomija</button>
-            <button onclick="quickAsk('Događanja')">🎉 Događanja</button>
-            <button onclick="quickAsk('Smještaj')">🏨 Smještaj</button>
-            <button onclick="quickAsk('Priroda')">🌿 Priroda</button>
+            <button onclick="quickAsk('Koje su glavne znamenitosti i atrakcije u Valpovu?')">🏛️ Znamenitosti</button>
+            <button onclick="quickAsk('Koji restorani i kafići postoje u Valpovu?')">🍽️ Gastronomija</button>
+            <button onclick="quickAsk('Koje manifestacije i festivali se održavaju u Valpovu?')">🎉 Događanja</button>
+            <button onclick="quickAsk('Gdje mogu prenoćiti u Valpovu?')">🏨 Smještaj</button>
+            <button onclick="quickAsk('Kakva je priroda i mogućnosti za rekreaciju u okolici Valpova?')">🌿 Priroda</button>
         </div>
     </div>
 
@@ -814,16 +814,21 @@
             setLock(true);
             showTyping();
 
+            const controller = new AbortController();
+            const timeout = setTimeout(() => controller.abort(), 25000);
+
             try {
                 const response = await fetch("/api/chat", {
                     method: "POST",
+                    signal: controller.signal,
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({
                         message: text,
-                        history: conversationHistory.slice(-6) // pošalji zadnjih 6 poruka
+                        history: conversationHistory.slice(-6)
                     })
                 });
 
+                clearTimeout(timeout);
                 const data = await response.json();
                 removeTyping();
 
@@ -837,8 +842,13 @@
                 }
 
             } catch (err) {
+                clearTimeout(timeout);
                 removeTyping();
-                addMessage("🚨 **Problem s povezivanjem:** " + err.message);
+                if (err.name === "AbortError") {
+                    addMessage("⏱️ Asistent treba previše vremena. Pokušajte s kraćim upitom.");
+                } else {
+                    addMessage("🚨 **Problem s povezivanjem:** " + err.message);
+                }
             } finally {
                 setLock(false);
                 inputEl.focus();
