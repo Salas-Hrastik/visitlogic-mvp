@@ -1,5 +1,3 @@
-// STABLE CHAT SERVER FOR VALPOVO BOT
-
 import OpenAI from "openai";
 import { db } from "./_database.js";
 
@@ -7,94 +5,62 @@ const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY
 });
 
-async function fetchWeather() {
+export default async function handler(req, res) {
+
+  if (req.method !== "POST") {
+    return res.status(405).json({ reply: "Method not allowed" });
+  }
 
   try {
 
-    const r = await fetch(
-      "https://api.open-meteo.com/v1/forecast?latitude=45.6609&longitude=18.4186&current_weather=true&timezone=auto"
-    );
+    const { message } = req.body;
 
-    const d = await r.json();
+    if (!message) {
+      return res.status(400).json({ reply: "Poruka je prazna." });
+    }
 
-    return d.current_weather;
-
-  } catch {
-
-    return null;
-
-  }
-
-}
-
-function buildPrompt(message, weather) {
-
-return `
+    const systemPrompt = `
 Ti si digitalni turistički informator grada Valpova.
 
-Ako ima podataka o vremenu, spomeni ih u prvoj rečenici.
+Odgovaraj jasno i pregledno.
 
-Vrijeme:
-${weather ? weather.temperature + "°C" : "nije dostupno"}
+Struktura odgovora:
 
-Odgovaraj kratko i pregledno.
-
-Koristi strukturu:
-
-NAZIV
+Naziv
 kratki opis
 
 📍 Otvori na karti
-🌐 Web
+🌐 Web (ako postoji)
 
 Baza podataka:
 ${JSON.stringify(db)}
 `;
 
-}
+    const completion = await openai.chat.completions.create({
 
-export default async function handler(req, res) {
+      model: "gpt-4o-mini",
 
-if (req.method !== "POST") {
-  return res.status(405).json({ reply: "Method not allowed" });
-}
+      messages: [
+        { role: "system", content: systemPrompt },
+        { role: "user", content: message }
+      ],
 
-try {
+      temperature: 0.3
 
-const { message } = req.body;
+    });
 
-const weather = await fetchWeather();
+    const reply = completion.choices[0].message.content;
 
-const systemPrompt = buildPrompt(message, weather);
+    return res.status(200).json({ reply });
 
-const completion = await openai.chat.completions.create({
+  } catch (error) {
 
-model: "gpt-4o-mini",
+    console.error("CHAT ERROR:", error);
 
-messages: [
+    return res.status(500).json({
+      reply: "Došlo je do greške na serveru."
+    });
 
-{ role: "system", content: systemPrompt },
-
-{ role: "user", content: message }
-
-],
-
-temperature: 0.4
-
-});
-
-const reply = completion.choices[0].message.content;
-
-return res.status(200).json({ reply });
-
-} catch (error) {
-
-console.error(error);
-
-return res.status(500).json({
-reply: "Došlo je do greške na serveru."
-});
-
-}
+  }
 
 }
