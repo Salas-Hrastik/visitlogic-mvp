@@ -95,7 +95,8 @@ PRAVILA FORMATIRANJA:
 - Ako lokacija nema web u bazi, ispusti tu liniju
 
 PRAVILA ZA BROJ REZULTATA:
-- Prikaži MAKSIMALNO 5 lokacija po odgovoru — nikad više
+- Za kategoriju SMJEŠTAJ: prikaži SVE opcije, grupirane po tipu (Hoteli, Apartmani, Prenoćišta, Sobe, Ruralni smještaj). Za svaku lokaciju samo: naziv, kratki opis (ako postoji), [Otvori na karti] i [Više informacija].
+- Za sve ostale kategorije: prikaži MAKSIMALNO 5 lokacija po odgovoru
 - Ako ih ima više, na kraju dodaj: "Ima još [N] rezultata — pitajte za više!"
 - Ako korisnik traži "još" ili "više" — prikaži sljedećih 5 koje NISU već navedene
 - Nikad ne ponavljaj iste lokacije u istom razgovoru
@@ -119,7 +120,7 @@ ${JSON.stringify(stripImages(context))}
       ],
 
       temperature: 0.3,
-      max_tokens: 700
+      max_tokens: category === 'smjestaj' ? 1200 : 700
 
     });
 
