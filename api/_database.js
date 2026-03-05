@@ -36,9 +36,64 @@ export const db = {
         {
             "naziv": "Katančićev vremeplov",
             "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2025/03/20250313_113711-edukacijski-centar-matije-pater-katancic-valpovo-550x360.jpg",
-            "opis": "Interpretacijski centar posvećen Matiji Petru Katančiću.",
+            "opis": "Obnovljena zgrada stare škole iz 1859. godine — edukacijsko-interpretacijski centar i suvenirnica grada Valpova.",
             "maps_url": "https://www.google.com/maps/search/?api=1&query=Katančićev+vremeplov+Valpovo",
             "web": "https://tz.valpovo.hr/znamenitosti/edukacijsko-interpretacijski-centar-matije-petra-katancica-suvenirnica-grada-valpova/"
+        },
+        {
+            "naziv": "Crkve i kapele",
+            "opis": "Sakralni objekti na području grada Valpova, uključujući crkve i kapele.",
+            "maps_url": "https://www.google.com/maps/search/?api=1&query=crkva+Valpovo",
+            "web": "https://tz.valpovo.hr/znamenitosti/crkve-i-kapele/"
+        },
+        {
+            "naziv": "Hotel Fortuna",
+            "opis": "Sagrađen 1807. godine od strane baruna Josipa Prandaua — jedan od tri najstarija sačuvana svratišta u sjeveroistočnoj Hrvatskoj.",
+            "adresa": "Valpovo",
+            "maps_url": "https://www.google.com/maps/search/?api=1&query=Hotel+Fortuna+Valpovo",
+            "web": "https://tz.valpovo.hr/znamenitosti/hotel-fortuna/"
+        },
+        {
+            "naziv": "Konjušnice ergele Valpovo",
+            "opis": "Izgrađene 1867. godine po nalogu Gustava Prandaua uz valpovački dvor, u današnjoj Reljkovićevoj ulici.",
+            "adresa": "Reljkovićeva ulica, Valpovo",
+            "maps_url": "https://www.google.com/maps/search/?api=1&query=Konjušnice+ergele+Valpovo",
+            "web": "https://tz.valpovo.hr/znamenitosti/konjusnice-ergele-valpovo/"
+        },
+        {
+            "naziv": "Prandauovo kazalište",
+            "opis": "Najstarija sačuvana kazališna zgrada u kontinentalnoj Hrvatskoj, podignuta 1809. godine od baruna Josefa Ignaca Hillepranda od Prandaua.",
+            "adresa": "Valpovo",
+            "maps_url": "https://www.google.com/maps/search/?api=1&query=Prandauovo+kazalište+Valpovo",
+            "web": "https://tz.valpovo.hr/znamenitosti/prandauovo-kazaliste/"
+        },
+        {
+            "naziv": "Pučka škola",
+            "opis": "Zgrada iz sredine 19. stoljeća, jedna od najstarijih u Valpovu — izvorno dvije učionice i stan za učitelja.",
+            "adresa": "Valpovo (desno od župne crkve)",
+            "maps_url": "https://www.google.com/maps/search/?api=1&query=Pučka+škola+Valpovo",
+            "web": "https://tz.valpovo.hr/znamenitosti/pucka-skola/"
+        },
+        {
+            "naziv": "Pivovara Valpovo",
+            "opis": "Povijesna pivovara podignuta za vladavine Antuna Petra Prandaua kao dio obnove gospodarstva vlastelinstva Valpovo.",
+            "adresa": "Valpovo",
+            "maps_url": "https://www.google.com/maps/search/?api=1&query=Pivovara+Valpovo",
+            "web": "https://tz.valpovo.hr/znamenitosti/pivovara-valpovo/"
+        },
+        {
+            "naziv": "Centar kulture Matija Petar Katančić",
+            "opis": "Središte kulturno-društvenih događanja u Valpovu, smješten pored dvorca Prandau-Normann.",
+            "adresa": "Valpovo",
+            "maps_url": "https://www.google.com/maps/search/?api=1&query=Centar+kulture+Katančić+Valpovo",
+            "web": "https://tz.valpovo.hr/znamenitosti/centar-kulture-matija-petar-katancic/"
+        },
+        {
+            "naziv": "Memorijalni centar Matije Petra Katančića",
+            "opis": "Novoizgrađeni memorijalni centar — središnji dio projekta Priča o kulturnoj ostavštini Matije Petra Katančića.",
+            "adresa": "Valpovo",
+            "maps_url": "https://www.google.com/maps/search/?api=1&query=Memorijalni+centar+Katančić+Valpovo",
+            "web": "https://tz.valpovo.hr/znamenitosti/memorijalni-centar-matije-petra-katancica/"
         }
     ],
     "gastronomija": [
