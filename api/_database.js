@@ -489,6 +489,36 @@ export const db = {
                 "adresa": "Valpovo",
                 "maps_url": "https://www.google.com/maps/search/?api=1&query=barbershop+Valpovo"
             }
+        ],
+        "parkiralista": [
+            {
+                "naziv": "Parkiralište uz Dvorac Prandau-Normann",
+                "opis": "Besplatno parkiralište neposredno uz dvorac i perivoj.",
+                "adresa": "Ul. Dvorac Norman-Prandau, Valpovo",
+                "maps_url": "https://www.google.com/maps/dir/?api=1&destination=45.6589,18.4155",
+                "napomena": "Besplatno, otvoreno"
+            },
+            {
+                "naziv": "Parkiralište Trg kralja Tomislava",
+                "opis": "Javno parkiralište u centru grada uz glavni trg.",
+                "adresa": "Trg kralja Tomislava, Valpovo",
+                "maps_url": "https://www.google.com/maps/search/?api=1&query=parking+Trg+kralja+Tomislava+Valpovo",
+                "napomena": "Besplatno, ograničeno trajanje"
+            },
+            {
+                "naziv": "Parkiralište STOP SHOP Valpovo",
+                "opis": "Besplatno parking uz shopping centar, dostupno svim posjetiteljima.",
+                "adresa": "Ivana Fuderera Hanzike 1, Valpovo",
+                "maps_url": "https://www.google.com/maps/search/?api=1&query=STOP+SHOP+Valpovo+parking",
+                "napomena": "Besplatno, veći kapacitet"
+            },
+            {
+                "naziv": "Ulično parkiranje (slobodne zone)",
+                "opis": "Besplatno uličnog parkiranje dostupno je u većini ulica u centru i okolici.",
+                "adresa": "Centar Valpova",
+                "maps_url": "https://www.google.com/maps/search/?api=1&query=parking+Valpovo",
+                "napomena": "Besplatno, označene parkirne trake"
+            }
         ]
     }
 };

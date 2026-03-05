@@ -26,6 +26,7 @@ const CATEGORY_CONTEXTS = {
   znamenitosti: (db) => ({ grad: db.grad, znamenitosti: db.znamenitosti }),
   benzinske:    (db) => ({ grad: db.grad, benzinske_stanice: db.usluge.benzinske_stanice }),
   frizeraji:    (db) => ({ grad: db.grad, frizeraji: db.usluge.frizeraji }),
+  parking:      (db) => ({ grad: db.grad, parkiralista: db.usluge.parkiralista }),
   usluge:       (db) => ({ grad: db.grad, usluge: db.usluge }),
 };
 
@@ -60,6 +61,9 @@ function getRelevantContext(message, db, lastCategory) {
 
   if (msg.includes('frizer') || msg.includes('brica') || msg.includes('šišan') || msg.includes('kozmet') || msg.includes('salon') || msg.includes('barber'))
     return { context: CATEGORY_CONTEXTS.frizeraji(db), category: 'frizeraji' };
+
+  if (msg.includes('parking') || msg.includes('parkir') || msg.includes('parkirat') || msg.includes('gdje parkir') || msg.includes('auto ostav'))
+    return { context: CATEGORY_CONTEXTS.parking(db), category: 'parking' };
 
   if (msg.includes('servis') || msg.includes('auto') || msg.includes('ljekar') || msg.includes('banka') || msg.includes('pošta') || msg.includes('trgovin') || msg.includes('uslug'))
     return { context: CATEGORY_CONTEXTS.usluge(db), category: 'usluge' };
