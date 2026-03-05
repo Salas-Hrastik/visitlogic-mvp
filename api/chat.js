@@ -80,10 +80,11 @@ PRAVILA FORMATIRANJA:
 - Svaki unos odijeli praznim redom
 - Ako lokacija nema web u bazi, ispusti tu liniju
 
-PRAVILA ZA NASTAVAK RAZGOVORA:
-- Ako korisnik traži "još", "više", "ostale" ili sličnih - prikaži SAMO lokacije koje NISU već navedene u prethodnim porukama
-- Nikad ne ponavljaj iste lokacije u istom razgovoru osim ako korisnik izričito traži ponavljanje
-- Ako su sve lokacije već navedene, javi to korisniku
+PRAVILA ZA BROJ REZULTATA:
+- Prikaži MAKSIMALNO 5 lokacija po odgovoru — nikad više
+- Ako ih ima više, na kraju dodaj: "Ima još [N] rezultata — pitajte za više!"
+- Ako korisnik traži "još" ili "više" — prikaži sljedećih 5 koje NISU već navedene
+- Nikad ne ponavljaj iste lokacije u istom razgovoru
 
 Baza podataka:
 ${JSON.stringify(context)}
@@ -103,7 +104,8 @@ ${JSON.stringify(context)}
         { role: "user", content: message }
       ],
 
-      temperature: 0.3
+      temperature: 0.3,
+      max_tokens: 700
 
     });
 
