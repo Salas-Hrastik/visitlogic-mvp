@@ -317,7 +317,7 @@ export const db = {
                 "opis": "Moderan hotel s vrhunskom uslugom u centru Valpova.",
                 "adresa": "Bana Josipa Jelačića 1",
                 "maps_url": "https://www.google.com/maps/search/?api=1&query=Hotel+Villa+Valpovo",
-                "web": "http://www.villa-valpovo.hr"
+                "web": "https://tz.valpovo.hr/smjestaj/hotel-villa-valpovo/"
             },
             {
                 "naziv": "Hotel & Restoran Park Valpovo",
@@ -334,7 +334,7 @@ export const db = {
                 "opis": "Ruralni smještaj s autentičnim slavonskim ugođajem.",
                 "adresa": "Matije Gupca 95",
                 "maps_url": "https://www.google.com/maps/search/?api=1&query=Valpovački+dvori",
-                "web": "http://sobe-valpovo.com/"
+                "web": "https://tz.valpovo.hr/smjestaj/valpovacki-dvori/"
             },
             {
                 "naziv": "Olive Holiday House",

@@ -77,6 +77,33 @@ export default async function handler(req, res) {
 
     const { context, category } = getRelevantContext(message, db, lastCategory);
 
+    // Smještaj listing: generiraj direktno bez AI (brzo, kompletno, bez token limita)
+    const isSmjestajListing = category === 'smjestaj' && !lastCategory;
+    if (isSmjestajListing) {
+      const s = db.smjestaj;
+      const sections = [
+        { key: 'hoteli',         icon: '🏨', label: 'Hoteli' },
+        { key: 'ruralni_smjestaj', icon: '🌿', label: 'Ruralni smještaj' },
+        { key: 'apartmani',      icon: '🏠', label: 'Apartmani' },
+        { key: 'prenocista',     icon: '🛏', label: 'Prenoćišta' },
+        { key: 'sobe',           icon: '🔑', label: 'Sobe' },
+      ];
+      let reply = 'Evo svih smještajnih opcija u Valpovu:\n\n';
+      for (const { key, icon, label } of sections) {
+        const items = s[key];
+        if (!items?.length) continue;
+        reply += `${icon} **${label}**\n\n`;
+        for (const item of items) {
+          reply += `**${item.naziv}**\n`;
+          if (item.opis) reply += `${item.opis}\n`;
+          reply += `[Otvori na karti](${item.maps_url})\n`;
+          if (item.web) reply += `[Više informacija](${item.web})\n`;
+          reply += '\n';
+        }
+      }
+      return res.status(200).json({ reply, category });
+    }
+
     const systemPrompt = `
 Ti si digitalni turistički informator grada Valpova. Odgovaraj uvijek na hrvatskom jeziku.
 
