@@ -15,6 +15,7 @@ export const db = {
             "opis": "Barokni dvorac iz 18. st. sa srednjovjekovnom kulom i engleskim perivojem.",
             "adresa": "Ul. Dvorac Norman-Prandau 1",
             "koordinate": { "lat": 45.6589474, "lng": 18.4153698 },
+            "maps_url": "https://www.google.com/maps/dir/?api=1&destination=45.6589474,18.4153698",
             "web": "https://tz.valpovo.hr/znamenitosti/dvorac-i-perivoj/"
         },
         {
@@ -22,18 +23,21 @@ export const db = {
             "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2018/04/muzej-1920x1280.jpg",
             "opis": "Muzej smješten u dvorcu s bogatim zbirkama o povijesti Valpovštine.",
             "adresa": "Ul. Dvorac Norman-Prandau, Valpovo",
+            "maps_url": "https://www.google.com/maps/dir/?api=1&destination=45.6589474,18.4153698",
             "web": "https://tz.valpovo.hr/znamenitosti/muzej-valpovstine"
         },
         {
             "naziv": "Srednjovjekovna kula",
             "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2012/06/Kula.png",
             "opis": "Najstariji dio dvorca i spomenik najviše kategorije.",
+            "maps_url": "https://www.google.com/maps/dir/?api=1&destination=45.6589474,18.4153698",
             "web": "https://tz.valpovo.hr/znamenitosti/srednjovjekovna-kula"
         },
         {
             "naziv": "Katančićev vremeplov",
             "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2025/03/20250313_113711-edukacijski-centar-matije-pater-katancic-valpovo-550x360.jpg",
             "opis": "Interpretacijski centar posvećen Matiji Petru Katančiću.",
+            "maps_url": "https://www.google.com/maps/search/?api=1&query=Katančićev+vremeplov+Valpovo",
             "web": "https://tz.valpovo.hr/znamenitosti/edukacijsko-interpretacijski-centar-matije-petra-katancica-suvenirnica-grada-valpova/"
         }
     ],

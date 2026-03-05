@@ -56,8 +56,9 @@ Kratki opis.
 PRAVILA FORMATIRANJA:
 - NIKAD ne koristi ### ili ## naslove
 - NIKAD ne uključuj slike niti ![]() sintaksu
+- Za "Otvori na karti" koristi polje maps_url iz baze (svaka lokacija ga ima)
 - Svaki unos odijeli praznim redom
-- Ako lokacija nema kartu ili web u bazi, ispusti tu liniju
+- Ako lokacija nema web u bazi, ispusti tu liniju
 
 Baza podataka:
 ${JSON.stringify(context)}
