@@ -120,7 +120,7 @@ ${JSON.stringify(stripImages(context))}
       ],
 
       temperature: 0.3,
-      max_tokens: category === 'smjestaj' ? 1200 : 700
+      max_tokens: category === 'smjestaj' ? 1800 : 700
 
     });
 
