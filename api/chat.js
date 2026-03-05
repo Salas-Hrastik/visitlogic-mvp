@@ -66,6 +66,11 @@ PRAVILA FORMATIRANJA:
 - Svaki unos odijeli praznim redom
 - Ako lokacija nema web u bazi, ispusti tu liniju
 
+PRAVILA ZA NASTAVAK RAZGOVORA:
+- Ako korisnik traži "još", "više", "ostale" ili sličnih - prikaži SAMO lokacije koje NISU već navedene u prethodnim porukama
+- Nikad ne ponavljaj iste lokacije u istom razgovoru osim ako korisnik izričito traži ponavljanje
+- Ako su sve lokacije već navedene, javi to korisniku
+
 Baza podataka:
 ${JSON.stringify(context)}
 `;
