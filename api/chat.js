@@ -19,32 +19,46 @@ function stripImages(data) {
   return data;
 }
 
-function getRelevantContext(message, db) {
+const CATEGORY_CONTEXTS = {
+  smjestaj:     (db) => ({ grad: db.grad, smjestaj: db.smjestaj }),
+  gastronomija: (db) => ({ grad: db.grad, gastronomija: db.gastronomija }),
+  dogadanja:    (db) => ({ grad: db.grad, dogadanja: db.dogadanja }),
+  znamenitosti: (db) => ({ grad: db.grad, znamenitosti: db.znamenitosti }),
+  benzinske:    (db) => ({ grad: db.grad, benzinske_stanice: db.usluge.benzinske_stanice }),
+  frizeraji:    (db) => ({ grad: db.grad, frizeraji: db.usluge.frizeraji }),
+  usluge:       (db) => ({ grad: db.grad, usluge: db.usluge }),
+};
+
+// Vrati { context, category } — category se pamti i šalje nazad klijentu
+function getRelevantContext(message, db, lastCategory) {
   const msg = message.toLowerCase();
 
-  if (msg.includes('smještaj') || msg.includes('hotel') || msg.includes('noćenje') || msg.includes('sobe') || msg.includes('apartman')) {
-    return { grad: db.grad, smjestaj: db.smjestaj };
-  }
-  if (msg.includes('jelo') || msg.includes('restoran') || msg.includes('gastronomija') || msg.includes('hrana') || msg.includes('pizza') || msg.includes('burger') || msg.includes('jesti') || msg.includes('večer') || msg.includes('večera') || msg.includes('ručak') || msg.includes('ručam') || msg.includes('pojesti') || msg.includes('naruč') || msg.includes('kafić') || msg.includes('kava') || msg.includes('piti') || msg.includes('bar') || msg.includes('popiti')) {
-    return { grad: db.grad, gastronomija: db.gastronomija };
-  }
-  if (msg.includes('događ') || msg.includes('festival') || msg.includes('manifestac') || msg.includes('karneval') || msg.includes('advent') || msg.includes('uskrs')) {
-    return { grad: db.grad, dogadanja: db.dogadanja };
-  }
-  if (msg.includes('znamenitost') || msg.includes('dvorac') || msg.includes('muzej') || msg.includes('kula') || msg.includes('katančić') || msg.includes('posjet')) {
-    return { grad: db.grad, znamenitosti: db.znamenitosti };
-  }
-  if (msg.includes('benzin') || msg.includes('goriv') || msg.includes('tankiran') || msg.includes('pumpa')) {
-    return { grad: db.grad, benzinske_stanice: db.usluge.benzinske_stanice };
-  }
-  if (msg.includes('frizer') || msg.includes('brica') || msg.includes('šišan') || msg.includes('kozmet') || msg.includes('salon') || msg.includes('barber')) {
-    return { grad: db.grad, frizeraji: db.usluge.frizeraji };
-  }
-  if (msg.includes('servis') || msg.includes('auto') || msg.includes('ljekar') || msg.includes('banka') || msg.includes('pošta') || msg.includes('trgovin') || msg.includes('uslug')) {
-    return { grad: db.grad, usluge: db.usluge };
-  }
+  if (msg.includes('smještaj') || msg.includes('hotel') || msg.includes('noćenje') || msg.includes('sobe') || msg.includes('apartman'))
+    return { context: CATEGORY_CONTEXTS.smjestaj(db), category: 'smjestaj' };
 
-  return db;
+  if (msg.includes('jelo') || msg.includes('restoran') || msg.includes('gastronomija') || msg.includes('hrana') || msg.includes('pizza') || msg.includes('burger') || msg.includes('jesti') || msg.includes('večer') || msg.includes('večera') || msg.includes('ručak') || msg.includes('ručam') || msg.includes('pojesti') || msg.includes('naruč') || msg.includes('kafić') || msg.includes('kava') || msg.includes('piti') || msg.includes('bar') || msg.includes('popiti'))
+    return { context: CATEGORY_CONTEXTS.gastronomija(db), category: 'gastronomija' };
+
+  if (msg.includes('događ') || msg.includes('festival') || msg.includes('manifestac') || msg.includes('karneval') || msg.includes('advent') || msg.includes('uskrs'))
+    return { context: CATEGORY_CONTEXTS.dogadanja(db), category: 'dogadanja' };
+
+  if (msg.includes('znamenitost') || msg.includes('dvorac') || msg.includes('muzej') || msg.includes('kula') || msg.includes('katančić') || msg.includes('posjet'))
+    return { context: CATEGORY_CONTEXTS.znamenitosti(db), category: 'znamenitosti' };
+
+  if (msg.includes('benzin') || msg.includes('goriv') || msg.includes('tankiran') || msg.includes('pumpa'))
+    return { context: CATEGORY_CONTEXTS.benzinske(db), category: 'benzinske' };
+
+  if (msg.includes('frizer') || msg.includes('brica') || msg.includes('šišan') || msg.includes('kozmet') || msg.includes('salon') || msg.includes('barber'))
+    return { context: CATEGORY_CONTEXTS.frizeraji(db), category: 'frizeraji' };
+
+  if (msg.includes('servis') || msg.includes('auto') || msg.includes('ljekar') || msg.includes('banka') || msg.includes('pošta') || msg.includes('trgovin') || msg.includes('uslug'))
+    return { context: CATEGORY_CONTEXTS.usluge(db), category: 'usluge' };
+
+  // Nema ključnih riječi — koristi zadnju kategoriju razgovora ako postoji
+  if (lastCategory && CATEGORY_CONTEXTS[lastCategory])
+    return { context: CATEGORY_CONTEXTS[lastCategory](db), category: lastCategory };
+
+  return { context: db, category: null };
 }
 
 export default async function handler(req, res) {
@@ -55,13 +69,13 @@ export default async function handler(req, res) {
 
   try {
 
-    const { message, history } = req.body;
+    const { message, history, category: lastCategory } = req.body;
 
     if (!message) {
       return res.status(400).json({ reply: "Poruka je prazna." });
     }
 
-    const context = stripImages(getRelevantContext(message, db));
+    const { context, category } = getRelevantContext(message, db, lastCategory);
 
     const systemPrompt = `
 Ti si digitalni turistički informator grada Valpova. Odgovaraj uvijek na hrvatskom jeziku.
@@ -87,7 +101,7 @@ PRAVILA ZA BROJ REZULTATA:
 - Nikad ne ponavljaj iste lokacije u istom razgovoru
 
 Baza podataka:
-${JSON.stringify(context)}
+${JSON.stringify(stripImages(context))}
 `;
 
     const historyMessages = Array.isArray(history)
@@ -111,7 +125,7 @@ ${JSON.stringify(context)}
 
     const reply = completion.choices[0].message.content;
 
-    return res.status(200).json({ reply });
+    return res.status(200).json({ reply, category });
 
   } catch (error) {
 

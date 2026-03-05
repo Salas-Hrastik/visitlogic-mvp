@@ -826,6 +826,7 @@
 
         /* ── SEND ── */
         const conversationHistory = [];
+        let currentCategory = null;
 
         async function sendMessage() {
             const text = inputEl.value.trim();
@@ -850,7 +851,8 @@
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({
                         message: text,
-                        history: conversationHistory.slice(-6)
+                        history: conversationHistory.slice(-6),
+                        category: currentCategory
                     })
                 });
 
@@ -861,6 +863,7 @@
                 if (data.reply) {
                     addMessage(data.reply);
                     conversationHistory.push({ role: "assistant", content: data.reply });
+                    if (data.category) currentCategory = data.category;
                 } else if (data.error) {
                     addMessage("❌ **Greška:** " + data.error + (data.details ? "\n\n" + data.details : ""));
                 } else {
