@@ -31,6 +31,8 @@ const CATEGORY_CONTEXTS = {
   frizeraji:    (db) => ({ grad: db.grad, frizeraji: db.usluge.frizeraji }),
   parking:      (db) => ({ grad: db.grad, parkiralista: db.usluge.parkiralista }),
   usluge:       (db) => ({ grad: db.grad, usluge: db.usluge }),
+  priroda:      (db) => ({ grad: db.grad, priroda: db.priroda }),
+  okolica:      (db) => ({ grad: db.grad, okolica: db.okolica }),
 };
 
 const MONTH_MAP = {
@@ -77,8 +79,14 @@ function getRelevantContext(message, db, lastCategory) {
   if (msg.includes('parking') || msg.includes('parkir') || msg.includes('parkirat') || msg.includes('gdje parkir') || msg.includes('auto ostav'))
     return { context: CATEGORY_CONTEXTS.parking(db), category: 'parking' };
 
-  if (msg.includes('servis') || msg.includes('auto') || msg.includes('ljekar') || msg.includes('banka') || msg.includes('pošta') || msg.includes('trgovin') || msg.includes('uslug'))
+  if (msg.includes('servis') || msg.includes('ljekar') || msg.includes('banka') || msg.includes('pošta') || msg.includes('bankomat') || msg.includes('taksi') || msg.includes('taxi') || msg.includes('prijevoz') || msg.includes('autobus') || msg.includes('vlak') || msg.includes('kolodvor') || msg.includes('uslug'))
     return { context: CATEGORY_CONTEXTS.usluge(db), category: 'usluge' };
+
+  if (msg.includes('šetn') || msg.includes('setn') || msg.includes('karašic') || msg.includes('karasic') || msg.includes('bicikl') || msg.includes('perivoj') || msg.includes('park') || msg.includes('pješac') || msg.includes('pješac') || msg.includes('piknik') || msg.includes('priroda') || msg.includes('ribolov') || msg.includes('riba') || msg.includes('drava') || msg.includes('ušće') || msg.includes('uce') || msg.includes('rekreacij') || msg.includes('šuma') || msg.includes('suma') || msg.includes('zelenilo') || msg.includes('nordijsk'))
+    return { context: CATEGORY_CONTEXTS.priroda(db), category: 'priroda' };
+
+  if (msg.includes('izlet') || msg.includes('okolica') || msg.includes('blizin') || msg.includes('nedaleko') || msg.includes('kopački') || msg.includes('kopacki') || msg.includes('osijek') || msg.includes('đakovo') || msg.includes('dakovo') || msg.includes('bizovac') || msg.includes('bizovač') || msg.includes('toplice') || msg.includes('vinska') || msg.includes('miholjac') || msg.includes('baranj') || msg.includes('slobodin') || msg.includes('ekskurzij') || msg.includes('što posjet') || msg.includes('kuda izaći'))
+    return { context: CATEGORY_CONTEXTS.okolica(db), category: 'okolica' };
 
   // Nema ključnih riječi — koristi zadnju kategoriju razgovora ako postoji
   if (lastCategory && CATEGORY_CONTEXTS[lastCategory])
@@ -169,6 +177,8 @@ PRAVILA ZA BROJ REZULTATA:
 - Za kategoriju SPORT (opći upit): prikaži SVE klubove grupirane po sportu, pa objekte i rekreaciju. Koristi emoji po sportu: ⚽ Nogomet, 🎾 Tenis, 🤾 Rukomet, 🏐 Odbojka, 🥊 Borilački, ♟️ Šah, 🎣 Ribolov, 💪 Fitness itd.
 - Za kategoriju KUPOVINA (opći upit): prikaži sve u logičnom redoslijedu — prvo 🏬 Trading centri (s popisom trgovina unutra), zatim 🛒 Supermarketi, 🏪 Specijalizirane trgovine, 🎁 Lokalni proizvodi i suveniri, 🥬 Tržnica. Za svaku stavku napiši naziv, opis, radno vrijeme i [Otvori na karti]. Za STOP SHOP dodatno navedi popis svih trgovina unutra.
 - Za kategoriju OPĆENITO / O GRADU: odgovaraj slobodnim tekstom koristeći podatke iz baze. Struktura ovisno o pitanju — za opći upit o gradu daj: osnovni podaci → kratka povijest → naselja → gospodarske aktivnosti → zanimljivosti. NE koristi tablice, koristi boldane naslove sekcija i kratke paragrafe.
+- Za kategoriju PRIRODA (opći upit): prikaži sve sadržaje grupirane: 🚶 Šetnice i parkovi, 🚴 Biciklizam, 🎣 Ribolov. Za svaki unos: naziv, opis. Gdje postoji maps_url — dodaj [Otvori na karti].
+- Za kategoriju OKOLICA / IZLETI (opći upit): prikaži sve destinacije s udaljenošću, kratkim opisom i cijenom (ako postoji). Koristi emoji 📍 za svaku destinaciju. Za svaku dodaj [Više informacija](web) gdje postoji web u bazi. Grupiraj po udaljenosti: bliže → dalje.
 - Za sve ostale kategorije: prikaži MAKSIMALNO 5 lokacija po odgovoru
 - Ako ih ima više, na kraju dodaj: "Ima još [N] rezultata — pitajte za više!"
 - Ako korisnik traži "još" ili "više" — prikaži sljedećih 5 koje NISU već navedene

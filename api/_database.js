@@ -603,6 +603,39 @@ export const db = {
                 "maps_url": "https://www.google.com/maps/search/?api=1&query=barbershop+Valpovo"
             }
         ],
+        "taksi": [
+            {
+                "naziv": "Taksi Panda",
+                "telefon": "099 666 000 9",
+                "napomena": "Lokalna taksi služba Valpovo — dostupna svakodnevno"
+            },
+            {
+                "naziv": "Taxi Goran (Belišće/Valpovo)",
+                "telefon": "+385 95 310 3100",
+                "napomena": "Prijevoz za Valpovo, Belišće, Osijek i okolicu"
+            },
+            {
+                "naziv": "Taksi do/iz Osijeka",
+                "telefon": "031 205 205",
+                "napomena": "Osječka taksi služba — Osijek ↔ Valpovo (~30 min, ~30 km)"
+            }
+        ],
+        "autobusni_prijevoz": [
+            {
+                "naziv": "Autobusni kolodvor Valpovo",
+                "adresa": "Valpovo (centar)",
+                "maps_url": "https://www.google.com/maps/search/?api=1&query=autobusni+kolodvor+Valpovo",
+                "napomena": "Direktne linije: Osijek (22 veze dnevno, ~40 min, polasci od 5:35 do 22:20), Belišće, Donji Miholjac, Petrijevci. Vozni red: www.autobusni-kolodvor.com"
+            }
+        ],
+        "zeljeznicki_prijevoz": [
+            {
+                "naziv": "Željeznički kolodvor Valpovo",
+                "adresa": "Valpovo",
+                "maps_url": "https://www.google.com/maps/search/?api=1&query=zeljeznicki+kolodvor+Valpovo",
+                "napomena": "Pruga Osijek–Donji Miholjac. Vozni red: hzpp.hr"
+            }
+        ],
         "parkiralista": [
             {
                 "naziv": "Parkiralište uz Dvorac Prandau-Normann",
@@ -869,6 +902,107 @@ export const db = {
                 "opis": "Rijeka Drava na rubu valpovačkog područja nudi kayaking, kanuarenje, SUP (stand-up paddleboarding), sportski ribolov i riječne plaže za kupanje i rekreaciju.",
                 "adresa": "Rijeka Drava, Valpovštinsko područje",
                 "maps_url": "https://www.google.com/maps/search/?api=1&query=rijeka+Drava+Valpovo"
+            }
+        ]
+    },
+    "priroda": {
+        "setnice_i_parkovi": [
+            {
+                "naziv": "Perivoj dvorca Prandau-Normann",
+                "opis": "Najljepše šetalište u Valpovu — engleski perivoj uz barokni dvorac s alejama starih stabala. Idealno za jutarnju šetnju, odmor i fotografiranje. Uz perivoj teče rječica Karašica.",
+                "adresa": "Uz dvorac Prandau-Normann, centar Valpova",
+                "maps_url": "https://www.google.com/maps/dir/?api=1&destination=45.6589474,18.4153698",
+                "napomena": "Besplatno, otvoreno cijele godine"
+            },
+            {
+                "naziv": "Šetnica uz rijeku Karašicu",
+                "opis": "Rječica Karašica protječe uz sam dvorac i perivoj. Može se šetati uz obalu prema ušću s rijekom Dravom (~2 km prema sjeveru). Na ušću se nalazi vikend naselje Karašica i Udičarski dom.",
+                "adresa": "Karašica, Valpovo — prema Dravi",
+                "maps_url": "https://www.google.com/maps/search/?api=1&query=rijeka+Karašica+Valpovo",
+                "napomena": "Besplatno, prirodna šetnica"
+            },
+            {
+                "naziv": "Udičarski dom Karašica",
+                "opis": "Ugostiteljski objekt uz ušće Karašice i Drave, ~2 km sjeverno od dvorca. Povremeno se poslužuje fiš paprikaš od svježe riječne ribe. Odlično za opuštanje uz vodu.",
+                "adresa": "Karašica (vikend naselje uz Dravu), Valpovo",
+                "maps_url": "https://www.google.com/maps/search/?api=1&query=Udičarski+dom+Karašica+Valpovo"
+            }
+        ],
+        "biciklizam": [
+            {
+                "naziv": "Biciklistička staza uz rijeku Dravu (EuroVelo 13 / EuroVelo 6)",
+                "opis": "Šetnica i biciklistička staza uz nasip rijeke Drave proteže se ~2 km od Valpova. Ruta prati europsku biciklističku rutu EuroVelo 13 ('Željezna zavjesa') koja se pri kraju nastavlja dunavskom rutom EuroVelo 6. Prolazi lokalnim cestama i šumskim putevima.",
+                "adresa": "Nasip uz rijeku Dravu, sjeverno od Valpova",
+                "maps_url": "https://www.google.com/maps/search/?api=1&query=rijeka+Drava+nasip+Valpovo",
+                "napomena": "Besplatno — dio europske biciklističke mreže"
+            },
+            {
+                "naziv": "Biciklistička ruta Valpovo – Belišće – Osijek",
+                "opis": "Popularna biciklistička ruta koja iz Valpova vodi prema Osijeku (30 km). Preporučuje TZ Osijek — prolazi manjim prometnim lokalnim cestama uz Dravu.",
+                "maps_url": "https://www.google.com/maps/dir/Valpovo/Osijek",
+                "napomena": "Ruta TZ Osijek — cesta Valpovo → Belišće → Osijek"
+            }
+        ],
+        "ribolov": [
+            {
+                "naziv": "Ribolov na rijeci Karašici i Dravi",
+                "opis": "Valpovo i okolica poznati su kao ribolovna destinacija. Rijeke Karašica i Drava bogate su ribom (šaran, som, štuka, smuđ). Potrebna ribolovna dozvola — kupuje se kod lokalnih ribolovnih društava.",
+                "adresa": "Rijeke Karašica i Drava, Valpovo i okolica",
+                "maps_url": "https://www.google.com/maps/search/?api=1&query=ribolov+rijeka+Karašica+Valpovo"
+            }
+        ]
+    },
+    "okolica": {
+        "opis": "Valpovo je odlično polazište za jednodnevne izlete u Slavoniji i Baranji.",
+        "izleti": [
+            {
+                "naziv": "Bizovačke toplice",
+                "udaljenost": "9 km (~10 min vožnje)",
+                "opis": "Termalni aquapark s hipertermalnom vodom (do 96°C na izvoru). Vanjski i unutarnji bazeni, wellness, lječilište. Jedan od najpopularnijih termalno-rekreacijskih centara u Hrvatskoj.",
+                "adresa": "Bizovac (9 km od Valpova)",
+                "maps_url": "https://www.google.com/maps/dir/Valpovo/Bizovačke+toplice",
+                "web": "https://www.bizovacke-toplice.hr/",
+                "cijena": "Odrasli od 10 €, djeca od 7 €, obitelji od 15 € (cjenik 2026)",
+                "napomena": "Radno: svakodnevno. Aquapolis kupanje + mogućnost lječilišta."
+            },
+            {
+                "naziv": "Osijek",
+                "udaljenost": "30 km (~30 min vožnje ili ~40 min autobusom)",
+                "opis": "Glavni grad Slavonije — bogat kulturom i poviješću. Obavezno posjetiti: barokna Tvrđa (18. st., candidat za UNESCO), ZOO vrt (najveći u HR, 650 životinja, 11 ha), Promenada uz Dravu, Pješački most. Autobus iz Valpova: 22 linije dnevno.",
+                "adresa": "Osijek, 30 km od Valpova",
+                "maps_url": "https://www.google.com/maps/dir/Valpovo/Osijek",
+                "web": "https://www.tzosijek.hr/"
+            },
+            {
+                "naziv": "Park prirode Kopački rit",
+                "udaljenost": "~45 km (~40 min vožnje, preko Osijeka)",
+                "opis": "Jedno od najvećih i najljepše očuvanih poplavnih područja u Europi (17.700 ha). Više od 2300 životinjskih vrsta, 140 vrsta ptica koje se gnijezde. Drvene šetnice iznad jezera, vožnja brodom, kanui. Idealno u proljeće i jesen. Ulaznica: 3 €, s brodom: 13 €.",
+                "adresa": "Bilje (kraj Osijeka), ~45 km od Valpova",
+                "maps_url": "https://www.google.com/maps/dir/Valpovo/Kopački+rit",
+                "web": "https://pp-kopacki-rit.hr/",
+                "cijena": "Ulaz 3 €, s vožnjom brodom (1h) 13 €"
+            },
+            {
+                "naziv": "Đakovo — katedrala i lipicanci",
+                "udaljenost": "58 km (~40 min vožnje)",
+                "opis": "Grad slavonskog biskupa Strossmayera. Katedrala sv. Petra — papa Ivan XXIII. opisao je kao 'najljepšu između Venecije i Istanbula'. Državna ergela lipicanaca, Muzej Đakovštine. Ljeti se održavaju Đakovački vezovi (folklor, konjske utrke).",
+                "adresa": "Đakovo, 58 km od Valpova",
+                "maps_url": "https://www.google.com/maps/dir/Valpovo/Đakovo",
+                "web": "https://www.tz-dakovo.hr/"
+            },
+            {
+                "naziv": "Vinske ceste Slavonije i Baranje",
+                "udaljenost": "Kutjevo 70 km, Baranja 50 km, Erdut 30 km",
+                "opis": "Valpovo leži u vinogorju Erdut — srce slavonskog vinogradarstva. U blizini: Kutjevo (graševina, winery ture, dvorac), Baranja (winery Josić, Krauthaker), Ilok (Dunav, Iločki podrumi). Vinski mjesec OBŽ: lipanj–srpanj (4 vikenda, 4 vinogorja).",
+                "maps_url": "https://www.google.com/maps/search/?api=1&query=vinska+cesta+Slavonija",
+                "web": "https://www.visitosijek-baranja.com/"
+            },
+            {
+                "naziv": "Donji Miholjac",
+                "udaljenost": "20 km (~20 min vožnje)",
+                "opis": "Mali slavonski grad uz Dravu, 20 km od Valpova. Zanimljiv za kratki izlet — kupanje i rekreacija uz Dravu ljeti.",
+                "adresa": "Donji Miholjac, 20 km od Valpova",
+                "maps_url": "https://www.google.com/maps/dir/Valpovo/Donji+Miholjac"
             }
         ]
     }
