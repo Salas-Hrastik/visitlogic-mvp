@@ -555,10 +555,8 @@
             raw = raw.replace(/\[[^\]]*\]\([^)]*$/, '');
             raw = raw.replace(/\[[^\]]*$/, '');
 
-            // 1. Markdown slike: ![alt](url) → <img> kartica (MORA biti prije link regexpa)
-            raw = raw.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, (match, alt, src) => {
-                return `<img src="${src}" alt="${alt}" style="max-width:100%;border-radius:10px;margin:8px 0;display:block;" onerror="this.style.display='none'">`;
-            });
+            // 1. Markdown slike: ![alt](url) → potpuno ukloni (AI ne smije prikazivati slike)
+            raw = raw.replace(/!\[([^\]]*)\]\([^)]+\)/g, '');
 
             // 2. Bold
             raw = raw.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
