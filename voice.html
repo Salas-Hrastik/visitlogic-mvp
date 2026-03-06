@@ -540,7 +540,21 @@
             }
         }
 
-        /* ── MODAL KONTROLE ── */
+        /* ── POPUP PROZOR (umjesto iframea koji blokira X-Frame-Options) ── */
+        function openPopup(url) {
+            const w = Math.min(1100, screen.availWidth  * 0.88);
+            const h = Math.min(800,  screen.availHeight * 0.88);
+            const left = Math.round((screen.availWidth  - w) / 2);
+            const top  = Math.round((screen.availHeight - h) / 2);
+            window.open(
+                url,
+                'visitlogic_popup',
+                `width=${w},height=${h},left=${left},top=${top},` +
+                `scrollbars=yes,resizable=yes,menubar=no,toolbar=no,location=yes,status=no`
+            );
+        }
+
+        /* ── MODAL KONTROLE (zadržano, nekorišteno za linkove) ── */
         function openModal(url, title = "Pregled stranice") {
             document.getElementById("modal-title").innerText = title;
             document.getElementById("modal-iframe").src = url;
@@ -571,7 +585,7 @@
                     const cleanText = text.replace(/^📍\s*/, '');
                     return `<a href="${url}" target="_blank" class="maps-link">${cleanText || 'Otvori na karti'}</a>`;
                 }
-                return `<a href="${url}" target="_blank" rel="noopener">${text}</a>`;
+                return `<a href="${url}" onclick="openPopup('${url}'); return false;">${text}</a>`;
             });
 
             // 2. MOĆNI SINGLE-PASS REGEX: Presreće <a> tagove i u ostalim grupama hvata telefone/web
@@ -581,7 +595,7 @@
                 if (tag) return tag; // AKO JE VEĆ LINK, VRATI GA ISTOG
 
                 if (webUrl) {
-                    return `🌐 <a href="${webUrl}" target="_blank" rel="noopener">${webUrl}</a>`;
+                    return `🌐 <a href="${webUrl}" onclick="openPopup('${webUrl}'); return false;">${webUrl}</a>`;
                 }
                 if (phoneIcon) {
                     const num = phoneIcon.replace("📞", "").trim();
