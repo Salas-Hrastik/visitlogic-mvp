@@ -502,6 +502,44 @@
             padding: 0 5px;
         }
 
+        #modal-external {
+            color: rgba(255,255,255,0.85);
+            font-size: 13px;
+            text-decoration: none;
+            margin-right: auto;
+            margin-left: 12px;
+            white-space: nowrap;
+            border: 1px solid rgba(255,255,255,0.4);
+            padding: 3px 9px;
+            border-radius: 6px;
+        }
+
+        #modal-external:hover { background: rgba(255,255,255,0.15); }
+
+        #modal-blocked {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: calc(100% - 45px);
+            gap: 16px;
+            padding: 30px;
+            text-align: center;
+            color: #555;
+        }
+
+        #modal-blocked p { font-size: 15px; margin: 0; }
+
+        #modal-blocked a {
+            background: #014128;
+            color: white;
+            padding: 12px 28px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 600;
+        }
+
         #modal-iframe {
             width: 100%;
             height: calc(100% - 45px);
@@ -578,23 +616,17 @@
         </div>
     </div>
 
-    <!-- LINK BOTTOM SHEET -->
-    <div id="link-sheet-overlay" onclick="closeLinkSheet()">
-        <div id="link-sheet" onclick="event.stopPropagation()">
-            <div id="link-sheet-handle"></div>
-            <div id="link-sheet-title">Više informacija</div>
-            <div id="link-sheet-url"></div>
-            <button id="link-sheet-open">🌐 Otvori stranicu</button>
-            <button id="link-sheet-back" onclick="closeLinkSheet()">← Natrag na bot</button>
-        </div>
-    </div>
-
-    <!-- STARI MODAL (zadržan ali nekorišten za linkove) -->
+    <!-- MODAL ZA LINKOVE -->
     <div id="modal-overlay" onclick="closeModal()">
         <div id="modal-content" onclick="event.stopPropagation()">
             <div id="modal-header">
                 <span id="modal-title">Pregled stranice</span>
+                <a id="modal-external" href="#" target="_blank" title="Otvori u novoj kartici">🔗 Otvori direktno</a>
                 <button id="modal-close" onclick="closeModal()">×</button>
+            </div>
+            <div id="modal-blocked" style="display:none;">
+                <p>⚠️ Ova stranica ne dozvoljava prikaz unutar bota.</p>
+                <a id="modal-blocked-link" href="#" target="_blank">🌐 Otvori stranicu direktno</a>
             </div>
             <iframe id="modal-iframe" src="about:blank"></iframe>
         </div>
@@ -633,30 +665,40 @@
             }
         }
 
-        /* ── LINK BOTTOM SHEET ── */
-        function openLinkSheet(url, title) {
-            const sheet = document.getElementById('link-sheet-overlay');
-            document.getElementById('link-sheet-title').textContent = title || 'Više informacija';
-            document.getElementById('link-sheet-url').textContent = url;
-            document.getElementById('link-sheet-open').onclick = function() {
-                window.open(url, '_blank');
-                closeLinkSheet();
-            };
-            sheet.style.display = 'flex';
-        }
+        /* ── MODAL ZA LINKOVE ── */
+        function openModal(url, title) {
+            const iframe   = document.getElementById("modal-iframe");
+            const blocked  = document.getElementById("modal-blocked");
+            const extLink  = document.getElementById("modal-external");
+            const blkLink  = document.getElementById("modal-blocked-link");
 
-        function closeLinkSheet() {
-            document.getElementById('link-sheet-overlay').style.display = 'none';
-        }
+            document.getElementById("modal-title").innerText = title || "Pregled stranice";
+            extLink.href  = url;
+            blkLink.href  = url;
+            blocked.style.display = "none";
+            iframe.style.display  = "block";
+            iframe.src = url;
 
-        /* ── MODAL KONTROLE (zadržano, nekorišteno za linkove) ── */
-        function openModal(url, title = "Pregled stranice") {
-            document.getElementById("modal-title").innerText = title;
-            document.getElementById("modal-iframe").src = url;
+            // Ako sajt blokira iframe (X-Frame-Options) — prikaži poruku nakon 3s
+            clearTimeout(iframe._blockTimer);
+            iframe._blockTimer = setTimeout(() => {
+                try {
+                    // Pokušaj pristupiti contentDocument — CORS greška = učitano ali blokirano
+                    const doc = iframe.contentDocument;
+                    if (!doc || doc.body === null || doc.body.innerHTML === "") {
+                        iframe.style.display = "none";
+                        blocked.style.display = "flex";
+                    }
+                } catch (e) {
+                    // Cross-origin = stranica JE učitana, sve ok
+                }
+            }, 3000);
+
             document.getElementById("modal-overlay").style.display = "flex";
         }
 
         function closeModal() {
+            clearTimeout(document.getElementById("modal-iframe")._blockTimer);
             document.getElementById("modal-overlay").style.display = "none";
             document.getElementById("modal-iframe").src = "about:blank";
         }
@@ -680,7 +722,7 @@
                     const cleanText = text.replace(/^📍\s*/, '');
                     return `<a href="${url}" target="_blank" class="maps-link">${cleanText || 'Otvori na karti'}</a>`;
                 }
-                return `<a href="${url}" onclick="openLinkSheet('${url}', '${text.replace(/'/g, "\\'")}'); return false;">${text}</a>`;
+                return `<a href="${url}" onclick="openModal('${url}', '${text.replace(/'/g, "\\'")}'); return false;">${text}</a>`;
             });
 
             // 2. MOĆNI SINGLE-PASS REGEX: Presreće <a> tagove i u ostalim grupama hvata telefone/web
@@ -690,7 +732,7 @@
                 if (tag) return tag; // AKO JE VEĆ LINK, VRATI GA ISTOG
 
                 if (webUrl) {
-                    return `🌐 <a href="${webUrl}" onclick="openLinkSheet('${webUrl}', '${webUrl}'); return false;">${webUrl}</a>`;
+                    return `🌐 <a href="${webUrl}" onclick="openModal('${webUrl}', '${webUrl}'); return false;">${webUrl}</a>`;
                 }
                 if (phoneIcon) {
                     const num = phoneIcon.replace("📞", "").trim();
