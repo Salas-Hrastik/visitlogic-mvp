@@ -114,7 +114,7 @@ export default async function handler(req, res) {
         reply += `**${e.naziv}**\n`;
         reply += `📅 ${e.vrijeme}\n`;
         reply += `${e.opis}\n`;
-        reply += e.web ? `[Više informacija](${e.web})\n` : `🌐 Web: nije dostupno\n`;
+        reply += e.web ? `[Više informacija](${e.web})\n` : `[Više informacija na TZ Valpovo](https://tz.valpovo.hr/manifestacije/)\n`;
         reply += '\n';
       }
       return res.status(200).json({ reply, category });
@@ -140,7 +140,7 @@ export default async function handler(req, res) {
           reply += `**${item.naziv}**\n`;
           if (item.opis) reply += `${item.opis}\n`;
           reply += `[Otvori na karti](${item.maps_url})\n`;
-          reply += item.web ? `[Više informacija](${item.web})\n` : `🌐 Web: nije dostupno\n`;
+          reply += item.web ? `[Više informacija](${item.web})\n` : `[Više informacija na TZ Valpovo](https://tz.valpovo.hr/smjestaj-u-valpovu/)\n`;
           reply += '\n';
         }
       }
@@ -162,7 +162,7 @@ PRAVILA FORMATIRANJA:
 - NIKAD ne uključuj slike niti ![]() sintaksu
 - Za "Otvori na karti" koristi polje maps_url iz baze (svaka lokacija ga ima)
 - Svaki unos odijeli praznim redom
-- Ako lokacija nema web u bazi, napiši: 🌐 Web: nije dostupno
+- Ako lokacija nema web u bazi, umjesto "Web: nije dostupno" napiši aktivan link: [Više informacija na TZ Valpovo](https://tz.valpovo.hr)
 
 PRAVILA ZA BROJ REZULTATA:
 - Za kategoriju SMJEŠTAJ: prikaži SVE opcije, grupirane po tipu (Hoteli, Apartmani, Prenoćišta, Sobe, Ruralni smještaj). Za svaku lokaciju samo: naziv, kratki opis (ako postoji), [Otvori na karti] i [Više informacija].
