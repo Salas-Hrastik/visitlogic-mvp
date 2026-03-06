@@ -521,6 +521,108 @@ export const db = {
             }
         ]
     },
+    "kupovina": {
+        "trgovacki_centri": [
+            {
+                "naziv": "STOP SHOP Valpovo",
+                "opis": "Moderni trgovački park s 11 trgovina i kafićem na 6.600 m². Smješten na južnom ulazu u Valpovo, samo 2 km od centra. Besplatan parking s velikim kapacitetom. Zatvoreno nedjeljom.",
+                "adresa": "Ivana Fuderera Hanzike 1, Valpovo",
+                "radno_vrijeme": "Pon–Sub: 09:00–20:00 | Ned: zatvoreno",
+                "maps_url": "https://www.google.com/maps/search/?api=1&query=STOP+SHOP+Valpovo",
+                "web": "https://stop-shop.com/en/croatia/valpovo",
+                "trgovine_u_centru": [
+                    { "naziv": "SPAR", "kategorija": "Supermarket / prehrambeni", "web": "https://www.spar.hr/" },
+                    { "naziv": "PEPCO", "kategorija": "Odjeća i kućanski proizvodi", "web": "https://pepco.hr/" },
+                    { "naziv": "Takko Fashion", "kategorija": "Moda za cijelu obitelj", "web": "https://www.takko.com/hr-hr/" },
+                    { "naziv": "KiK", "kategorija": "Moda i tekstil", "web": "https://poduzece.kik.hr/" },
+                    { "naziv": "MANA", "kategorija": "Ženska moda", "web": "https://www.mana.hr/" },
+                    { "naziv": "Deichmann", "kategorija": "Obuća", "web": "https://www.deichmann.com/" },
+                    { "naziv": "JYSK", "kategorija": "Namještaj, posteljina, dom", "web": "https://www.jysk.hr/" },
+                    { "naziv": "BIPA", "kategorija": "Kozmetika i zdravlje", "web": "https://www.bipa.hr/" },
+                    { "naziv": "TEDi", "kategorija": "Opća roba, dekoracije, igračke", "web": "https://www.tedi.com/hr/" },
+                    { "naziv": "La Rouge Caffè", "kategorija": "Kafić", "radno_vrijeme": "07:00–20:00" },
+                    { "naziv": "ADMIRAL", "kategorija": "Gaming centar", "radno_vrijeme": "0–24h", "web": "https://admiral.hr/" }
+                ]
+            }
+        ],
+        "supermarketi": [
+            {
+                "naziv": "Konzum Maxi",
+                "opis": "Veliki supermarket s kompletnom prehrambenom i neprehrambenom ponudom u centru Valpova.",
+                "adresa": "Osječka 1, Valpovo",
+                "telefon": "0800 400 000",
+                "radno_vrijeme": "Pon–Sub: 07:00–20:30 | Ned: 08:00–13:00",
+                "maps_url": "https://www.google.com/maps/dir/?api=1&destination=45.65776,18.41892",
+                "web": "https://www.konzum.hr/"
+            },
+            {
+                "naziv": "Plodine",
+                "opis": "Supermarket s velikim izborom prehrambenih i neprehrambenih artikala uz povoljne cijene.",
+                "adresa": "Bizovačka 10, Valpovo",
+                "telefon": "031 656 220",
+                "radno_vrijeme": "Pon–Ned: 07:00–21:00",
+                "maps_url": "https://www.google.com/maps/search/?api=1&query=Plodine+Valpovo+Bizovačka",
+                "web": "https://www.plodine.hr/supermarketi/85/supermarket-valpovo"
+            }
+        ],
+        "specijalizirane_trgovine": [
+            {
+                "naziv": "dm drogerie markt",
+                "opis": "Drogerija s kozmetičkim i njeguјućim proizvodima, dodacima, sanitarnim artiklima i sunčanim naočalama. Nalazi se na Trgu kralja Tomislava u samom centru.",
+                "adresa": "Trg kralja Tomislava 3, Valpovo",
+                "telefon": "01 362 6136",
+                "radno_vrijeme": "Pon–Pet: 08:00–20:00 | Sub: 08:00–14:00 | Ned: zatvoreno",
+                "maps_url": "https://www.google.com/maps/dir/?api=1&destination=45.658546,18.417816",
+                "web": "https://www.dm.hr/store/k05g/valpovo/trg-kralja-tomislava-3"
+            },
+            {
+                "naziv": "Borovo obuća",
+                "opis": "Hrvatska tradicijska marka obuće — kožna, sportska i svakodnevna obuća. Smještena na glavnom gradskom trgu.",
+                "adresa": "Trg kralja Tomislava 1, Valpovo",
+                "telefon": "031 651 056",
+                "radno_vrijeme": "Pon–Pet: 08:00–20:00 | Sub: 08:00–14:00",
+                "maps_url": "https://www.google.com/maps/search/?api=1&query=Borovo+obuća+Valpovo",
+                "web": "https://www.borovo.hr/"
+            },
+            {
+                "naziv": "Prima namještaj Valpovo",
+                "opis": "Salon namještaja od 1.100 m² uz gradsku obilaznicu. Kuhinje, blagovaonice, dnevni boravci, spavaće i dječje sobe, kupaonice. Veliki besplatni parking.",
+                "adresa": "Uz gradsku obilaznicu, Valpovo",
+                "radno_vrijeme": "Pon–Pet: 08:00–20:00 | Sub: 08:00–13:00 | Ned: zatvoreno",
+                "maps_url": "https://www.google.com/maps/search/?api=1&query=Prima+namještaj+Valpovo",
+                "web": "https://www.prima-namjestaj.hr/prima-namjestaj-valpovo"
+            }
+        ],
+        "lokalni_i_suveniri": [
+            {
+                "naziv": "Suvenirnica Valpovo (Katančićev vremeplov)",
+                "opis": "Jedina gradska suvenirnica, otvorena 2023. u sklopu Katančićevog vremeplova. Nudi majice, dukseve, šalice, ruksake i magnete s motivima Valpova i Matije Petra Katančića. Online narudžba dostupna. Maks. cijena 25 €.",
+                "adresa": "Trg kralja Tomislava 14, Valpovo",
+                "telefon": "+385 31 293 288",
+                "email": "suvenirivalpova@gmail.com",
+                "radno_vrijeme": "Pon: 11:00–19:00 | Uto–Pet: 09:00–15:00",
+                "maps_url": "https://www.google.com/maps/search/?api=1&query=Katančićev+vremeplov+Valpovo",
+                "web": "https://suvenirnica.valpovo.hr/"
+            },
+            {
+                "naziv": "PPK Valpovo – diskont mesnih proizvoda",
+                "opis": "Prodajno mjesto lokalne mesne industrije PPK Valpovo — svježe meso, kobasice, suhomesnati i domaći slavonski specijaliteti po tvorničkim cijenama.",
+                "adresa": "A. B. Šimića 27, Valpovo",
+                "telefon": "031 656 500",
+                "radno_vrijeme": "Pon–Pet: 06:00–14:00",
+                "maps_url": "https://www.google.com/maps/search/?api=1&query=PPK+Valpovo",
+                "web": "https://ppkvalpovo.hr/"
+            }
+        ],
+        "trznica": [
+            {
+                "naziv": "Gradska tržnica Valpovo",
+                "opis": "Lokalna tržnica u centru Valpova s ponudom svježeg voća, povrća, sezonskih namirnica i lokalnih poljoprivrednih proizvoda. Klasično okupljalište mještana svako jutro.",
+                "adresa": "Centar Valpova (uz Osječku ulicu)",
+                "maps_url": "https://www.google.com/maps/search/?api=1&query=tržnica+Valpovo"
+            }
+        ]
+    },
     "sport": {
         "klubovi": [
             {

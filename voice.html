@@ -481,6 +481,7 @@
             <button onclick="quickAsk('Gdje mogu prenoćiti u Valpovu?')">🏨 Smještaj</button>
             <button onclick="quickAsk('Kakva je priroda i mogućnosti za rekreaciju u okolici Valpova?')">🌿 Priroda</button>
             <button onclick="quickAsk('Koji sportski klubovi i sportski sadržaji postoje u Valpovu?')">⚽ Sport</button>
+            <button onclick="quickAsk('Gdje mogu kupovati u Valpovu? Koje trgovine i shopping centri postoje?')">🛍️ Kupovina</button>
         </div>
     </div>
 
@@ -645,7 +646,7 @@
                     }
                 }
                 // Naslov: Emoji + : ili kratki redak s :
-                else if (/^[🏛️🍽️🎉🏨🌿📍🚗🥩📅🔑]/.test(line) || (line.endsWith(":") && line.length < 60)) {
+                else if (/^[🏛️🍽️🎉🏨🌿📍🚗🥩📅🔑🛍️🏬🛒🏪🎁🥬⚽🎾🤾🏐🥊♟️🎣💪]/.test(line) || (line.endsWith(":") && line.length < 60)) {
                     if (inList) { html += "</ul>"; inList = false; }
                     html += `<div class="section-title">${line}</div>`;
                 }
