@@ -8,6 +8,119 @@ export const db = {
         "web": "https://tz.valpovo.hr",
         "virtualna_setnja": "https://tz.valpovo.hr/2025/01/17/virtualna-setnja-valpovo-gdje-najbolje-pocinje/"
     },
+    "opcenito": {
+        "osnovni_podaci": {
+            "naziv": "Grad Valpovo",
+            "zupanija": "Osječko-baranjska županija",
+            "drzava": "Republika Hrvatska",
+            "koordinate": "45°39′39″ N, 18°25′7″ E",
+            "nadmorska_visina": "91 m",
+            "povrsina_ha": 14266,
+            "gradonacelnik": "Matko Šutalo",
+            "broj_naselja": 8,
+            "stanovnici_grad": 7406,
+            "stanovnici_ukupno": 11563,
+            "popis_godina": 2021,
+            "polozaj": "25 km sjeverozapadno od Osijeka, u Podravini",
+            "rijeke": "Karašica (teče kroz grad), Vučica (zapadno), Drava (sjeveroistočno)",
+            "web_grad": "https://valpovo.hr",
+            "web_tz": "https://tz.valpovo.hr"
+        },
+        "koristenje_zemljista": {
+            "poljoprivredno": "60,8 % (8.668 ha)",
+            "sume": "26,7 % (3.809 ha)",
+            "ostalo_neproduktivno": "12,5 %"
+        },
+        "naselja": [
+            { "naziv": "Valpovo", "napomena": "Središte grada" },
+            { "naziv": "Harkanovci" },
+            { "naziv": "Ivanovci" },
+            { "naziv": "Ladimirevci" },
+            { "naziv": "Marjančaci" },
+            { "naziv": "Nard" },
+            { "naziv": "Šag" },
+            { "naziv": "Zelčin" }
+        ],
+        "povijest": [
+            {
+                "razdoblje": "Prapovijest",
+                "opis": "Najstarija naselja na području Valpova sežu do mlađeg kamenog doba (neolitik). Rimska vojna postaja 'Iovallium' nalazila se na ovom prostoru uz cestu duž desne obale Drave (1.–5. st. po Kr.)."
+            },
+            {
+                "razdoblje": "Srednji vijek",
+                "opis": "Prva pisana dokumentacija o Valpovu potječe iz 1332. — popis župa prigodom ubiranja Papine desetine. Kastrum 'Walpo' (castrum et oppidum Walpo) prvi se put navodi 1438. Ivan Suljagić bio je prvi poznati feudalni vlasnik (1397.). Ban Mačve Ivan Morović 1405.–1410. gradi tvrđavu na ušću Vučice u Karašicu."
+            },
+            {
+                "razdoblje": "Osmansko razdoblje (1543.–1687.)",
+                "opis": "Osmanskim snagama Valpovo pada 23. lipnja 1543. za Sulejmanovog pohoda. Osmanska vlast traje 144 godine, do 30. rujna 1687. kada aga Muharem predaje grad carskim snagama."
+            },
+            {
+                "razdoblje": "Prandau-Normann (1687.–1944.)",
+                "opis": "Car Karlo VI. 31. prosinca 1721. daruje posjed barunu Antunu Petru Hilleprand von Prandau. Obitelj Prandau vlada do 1885. (smrt baruna Gustava). Potom posjed nasljeđuje obitelj Normann-Ehrenfels i vlada do 1944. U tom razdoblju grade se dvorac, perivoj, kazalište, konjušnice i pivovara."
+            },
+            {
+                "razdoblje": "Suvremeno doba (1944.–danas)",
+                "opis": "Nakon II. svjetskog rata Valpovo ulazi u SFRJ. Nakon prvih višestranačkih izbora 1990. ustrojavaju se Grad Valpovo te općine Belišće, Bizovac i Petrijevci. Valpovo danas ima status grada i administrativnog, sudskog, gospodarskog i kulturnog središta šire Valpovštine."
+            }
+        ],
+        "gospodarstvo": {
+            "opis": "Valpovo je gospodarsko središte Valpovštine s razvijenim poduzetništvom, prehrambenom industrijom i obrtništvom. Grad aktivno podupire poduzetnike kroz poduzetničke zone i inkubator.",
+            "kljucne_tvrtke": [
+                { "naziv": "PPK Valpovo", "djelatnost": "Mesna industrija — suhomesnati proizvodi, kobasice, svježe meso", "web": "https://ppkvalpovo.hr/" },
+                { "naziv": "Harburg-Freudenberger Belišće", "djelatnost": "Proizvodnja strojeva i opreme" },
+                { "naziv": "Condor d.o.o.", "djelatnost": "Mikrobiološki preparati" },
+                { "naziv": "Tvornica Elektro Opreme", "djelatnost": "Električna oprema" },
+                { "naziv": "Kromopak d.o.o.", "djelatnost": "Tiskara i kartonažna industrija" }
+            ],
+            "poduzetnicki_inkubator": "Valpovački poduzetnički centar (VPC) — u inkubatoru su smješteni IT sektor, CNC stroj, pogoni za preradu voća, povrća i pčelinjih proizvoda. Novi centar od 1.105 m² planiran s laboratorijima za električna vozila.",
+            "poduzetnicke_zone": [
+                "Industrijska zona Grada Valpova",
+                "Poslovna zona K-III",
+                "Poslovna zona Bizovačka ulica",
+                "Poslovna zona J. J. Strossmayera",
+                "Zona gospodarsko-poslovne namjene K-VI (uz obilaznicu)",
+                "Zona malog gospodarstva I i II"
+            ],
+            "broj_poduzetnika_u_zonama": "33 poduzetnika s ~400 zaposlenih"
+        },
+        "poznate_osobe": [
+            {
+                "ime": "Matija Petar Katančić",
+                "godine": "1750.–1825.",
+                "opis": "Rođen u Valpovu 12. kolovoza 1750. Franjevac, pjesnik, filolog, leksikograf, estetičar, arheolog i numizmatičar. Smatra se ocem hrvatske arheologije. Preveo je cijelu Bibliju (Stari i Novi zavjet) na hrvatski jezik u 6 svezaka — objavljena posthumno 1831. u Budimu. Nazvan 'najučenijim Slavoncem svoga doba'."
+            }
+        ],
+        "obrazovanje": {
+            "opis": "Valpovo je obrazovno središte šire regije s potpunom obrazovnom vertikalom.",
+            "ustanove": [
+                "Osnovna škola Ante Starčevića Valpovo",
+                "Osnovna škola Josipa Jurja Strossmayera Valpovo",
+                "Srednja škola Valpovo (opća gimnazija, strukovne i četverogodišnje škole)",
+                "Dječji vrtić 'Maslačak' Valpovo"
+            ]
+        },
+        "promet": {
+            "opis": "Valpovo leži na prometnom koridoru između Osijeka i Donjeg Miholjca.",
+            "cestovni": "Državna cesta D2 (Osijek–Donji Miholjac); brzi pristup Podravskoj autocesti (A5)",
+            "zeljeznicni": "Pruga Osijek–Donji Miholjac s kolodvorom u Valpovu",
+            "udaljenosti": {
+                "Osijek": "25 km",
+                "Donji Miholjac": "20 km",
+                "Našice": "30 km",
+                "Zagreb": "230 km",
+                "Budimpešta": "230 km"
+            }
+        },
+        "zanimljivosti": [
+            "Valpovo u rimsko doba nosi naziv 'Iovallium' — naziv se danas koristi za niz lokalnih događanja i ustanova.",
+            "Dvorac Prandau-Normann obnavljan je sedam puta kroz povijest.",
+            "Prandauovo kazalište (1809.) najstarija je sačuvana kazališna zgrada u kontinentalnoj Hrvatskoj.",
+            "Muzej Valpovštine osnovan je 1956. i smješten je unutar dvorca.",
+            "Suvenirnica grada Valpova otvorena je u svibnju 2023. u Katančićevom vremeplovu.",
+            "Godišnja manifestacija 'Ljeto valpovačko' traje od 1968. godine (57. izdanje u 2025.).",
+            "Na području Valpova žive 4 naroda i više vjerskih zajednica — slavenska multietničnost tipična za Slavoniju."
+        ]
+    },
     "znamenitosti": [
         {
             "naziv": "Dvorac Prandau-Normann i perivoj",

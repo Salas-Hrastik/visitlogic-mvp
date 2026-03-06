@@ -26,6 +26,7 @@ const CATEGORY_CONTEXTS = {
   znamenitosti: (db) => ({ grad: db.grad, znamenitosti: db.znamenitosti }),
   sport:        (db) => ({ grad: db.grad, sport: db.sport }),
   kupovina:     (db) => ({ grad: db.grad, kupovina: db.kupovina }),
+  opcenito:     (db) => ({ grad: db.grad, opcenito: db.opcenito }),
   benzinske:    (db) => ({ grad: db.grad, benzinske_stanice: db.usluge.benzinske_stanice }),
   frizeraji:    (db) => ({ grad: db.grad, frizeraji: db.usluge.frizeraji }),
   parking:      (db) => ({ grad: db.grad, parkiralista: db.usluge.parkiralista }),
@@ -45,6 +46,9 @@ function eventMaxMonth(vrijeme) {
 // Vrati { context, category } — category se pamti i šalje nazad klijentu
 function getRelevantContext(message, db, lastCategory) {
   const msg = message.toLowerCase();
+
+  if (msg.includes('povijest') || msg.includes('histori') || msg.includes('osnovan') || msg.includes('nastao') || msg.includes('kad je') || msg.includes('kada je') || msg.includes('općenito') || msg.includes('opcenito') || msg.includes('o gradu') || msg.includes('o valpovu') || msg.includes('stanovic') || msg.includes('stanovništv') || msg.includes('koliko ima') || msg.includes('naselje') || msg.includes('geografij') || msg.includes('površin') || msg.includes('gospodar') || msg.includes('industrij') || msg.includes('poznat') || msg.includes('zanimljiv') || msg.includes('iovallium') || msg.includes('prandau') || msg.includes('normann') || msg.includes('rimsk') || msg.includes('osmansk') || msg.includes('gradonacelnik') || msg.includes('gradonačelnik') || msg.includes('župani') || msg.includes('prometn') || msg.includes('željeznic') || msg.includes('vlak') || msg.includes('udaljenost'))
+    return { context: CATEGORY_CONTEXTS.opcenito(db), category: 'opcenito' };
 
   if (msg.includes('smještaj') || msg.includes('hotel') || msg.includes('noćenje') || msg.includes('sobe') || msg.includes('apartman'))
     return { context: CATEGORY_CONTEXTS.smjestaj(db), category: 'smjestaj' };
@@ -164,6 +168,7 @@ PRAVILA ZA BROJ REZULTATA:
 - Za kategoriju SMJEŠTAJ: prikaži SVE opcije, grupirane po tipu (Hoteli, Apartmani, Prenoćišta, Sobe, Ruralni smještaj). Za svaku lokaciju samo: naziv, kratki opis (ako postoji), [Otvori na karti] i [Više informacija].
 - Za kategoriju SPORT (opći upit): prikaži SVE klubove grupirane po sportu, pa objekte i rekreaciju. Koristi emoji po sportu: ⚽ Nogomet, 🎾 Tenis, 🤾 Rukomet, 🏐 Odbojka, 🥊 Borilački, ♟️ Šah, 🎣 Ribolov, 💪 Fitness itd.
 - Za kategoriju KUPOVINA (opći upit): prikaži sve u logičnom redoslijedu — prvo 🏬 Trading centri (s popisom trgovina unutra), zatim 🛒 Supermarketi, 🏪 Specijalizirane trgovine, 🎁 Lokalni proizvodi i suveniri, 🥬 Tržnica. Za svaku stavku napiši naziv, opis, radno vrijeme i [Otvori na karti]. Za STOP SHOP dodatno navedi popis svih trgovina unutra.
+- Za kategoriju OPĆENITO / O GRADU: odgovaraj slobodnim tekstom koristeći podatke iz baze. Struktura ovisno o pitanju — za opći upit o gradu daj: osnovni podaci → kratka povijest → naselja → gospodarske aktivnosti → zanimljivosti. NE koristi tablice, koristi boldane naslove sekcija i kratke paragrafe.
 - Za sve ostale kategorije: prikaži MAKSIMALNO 5 lokacija po odgovoru
 - Ako ih ima više, na kraju dodaj: "Ima još [N] rezultata — pitajte za više!"
 - Ako korisnik traži "još" ili "više" — prikaži sljedećih 5 koje NISU već navedene
