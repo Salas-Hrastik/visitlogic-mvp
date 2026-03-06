@@ -104,7 +104,7 @@ export default async function handler(req, res) {
     const { context, category } = getRelevantContext(message, db, lastCategory);
 
     // Događanja listing: filtriraj prošle i generiraj direktno bez AI
-    if (category === 'dogadanja' && !lastCategory) {
+    if (category === 'dogadanja' && lastCategory !== 'dogadanja') {
       const currentMonth = new Date().getMonth() + 1;
       const upcoming = db.dogadanja.filter(e => eventMaxMonth(e.vrijeme) >= currentMonth);
       let reply = upcoming.length
@@ -121,7 +121,7 @@ export default async function handler(req, res) {
     }
 
     // Smještaj listing: generiraj direktno bez AI (brzo, kompletno, bez token limita)
-    const isSmjestajListing = category === 'smjestaj' && !lastCategory;
+    const isSmjestajListing = category === 'smjestaj' && lastCategory !== 'smjestaj';
     if (isSmjestajListing) {
       const s = db.smjestaj;
       const sections = [
