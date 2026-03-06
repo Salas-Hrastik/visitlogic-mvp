@@ -24,6 +24,7 @@ const CATEGORY_CONTEXTS = {
   gastronomija: (db) => ({ grad: db.grad, gastronomija: db.gastronomija }),
   dogadanja:    (db) => ({ grad: db.grad, dogadanja: db.dogadanja }),
   znamenitosti: (db) => ({ grad: db.grad, znamenitosti: db.znamenitosti }),
+  sport:        (db) => ({ grad: db.grad, sport: db.sport }),
   benzinske:    (db) => ({ grad: db.grad, benzinske_stanice: db.usluge.benzinske_stanice }),
   frizeraji:    (db) => ({ grad: db.grad, frizeraji: db.usluge.frizeraji }),
   parking:      (db) => ({ grad: db.grad, parkiralista: db.usluge.parkiralista }),
@@ -55,6 +56,9 @@ function getRelevantContext(message, db, lastCategory) {
 
   if (msg.includes('znamenitost') || msg.includes('dvorac') || msg.includes('muzej') || msg.includes('kula') || msg.includes('katančić') || msg.includes('posjet'))
     return { context: CATEGORY_CONTEXTS.znamenitosti(db), category: 'znamenitosti' };
+
+  if (msg.includes('sport') || msg.includes('sportski') || msg.includes('sportska') || msg.includes('tenis') || msg.includes('nogomet') || msg.includes('futsal') || msg.includes('rukomet') || msg.includes('odbojka') || msg.includes('košark') || msg.includes('karate') || msg.includes('savate') || msg.includes('šah') || msg.includes('ribolov') || msg.includes('fitness') || msg.includes('teretana') || msg.includes('stadion') || msg.includes('trčan') || msg.includes('rekreacij') || msg.includes('vježban') || msg.includes('klub') || msg.includes('sportaš') || msg.includes('natjecanj'))
+    return { context: CATEGORY_CONTEXTS.sport(db), category: 'sport' };
 
   if (msg.includes('benzin') || msg.includes('goriv') || msg.includes('tankiran') || msg.includes('pumpa'))
     return { context: CATEGORY_CONTEXTS.benzinske(db), category: 'benzinske' };
@@ -154,6 +158,7 @@ PRAVILA FORMATIRANJA:
 
 PRAVILA ZA BROJ REZULTATA:
 - Za kategoriju SMJEŠTAJ: prikaži SVE opcije, grupirane po tipu (Hoteli, Apartmani, Prenoćišta, Sobe, Ruralni smještaj). Za svaku lokaciju samo: naziv, kratki opis (ako postoji), [Otvori na karti] i [Više informacija].
+- Za kategoriju SPORT (opći upit): prikaži SVE klubove grupirane po sportu, pa objekte i rekreaciju. Koristi emoji po sportu: ⚽ Nogomet, 🎾 Tenis, 🤾 Rukomet, 🏐 Odbojka, 🥊 Borilački, ♟️ Šah, 🎣 Ribolov, 💪 Fitness itd.
 - Za sve ostale kategorije: prikaži MAKSIMALNO 5 lokacija po odgovoru
 - Ako ih ima više, na kraju dodaj: "Ima još [N] rezultata — pitajte za više!"
 - Ako korisnik traži "još" ili "više" — prikaži sljedećih 5 koje NISU već navedene
@@ -178,7 +183,7 @@ ${JSON.stringify(stripImages(context))}
       ],
 
       temperature: 0.3,
-      max_tokens: category === 'smjestaj' ? 1800 : 700
+      max_tokens: (category === 'smjestaj' || category === 'sport') ? 1800 : 700
 
     });
 

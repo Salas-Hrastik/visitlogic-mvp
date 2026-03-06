@@ -520,5 +520,141 @@ export const db = {
                 "napomena": "Besplatno, označene parkirne trake"
             }
         ]
+    },
+    "sport": {
+        "klubovi": [
+            {
+                "sport": "Nogomet",
+                "naziv": "NK Valpovka",
+                "opis": "Jedan od najstarijih klubova u Slavoniji, osnovan 1926. Natječe se u 3. HNL – Istok. Stadion s glavnim i dva pomoćna terena, teretanom i svlačionicama renoviranim 2019. EU-fondovima (1,8 mil. EUR).",
+                "adresa": "Ive Lole Ribara 10, Valpovo",
+                "telefon": "091 890 5823",
+                "maps_url": "https://www.google.com/maps/search/?api=1&query=NK+Valpovka+Valpovo",
+                "web": "https://nk-valpovka-valpovo.hr/"
+            },
+            {
+                "sport": "Futsal (malonogometni)",
+                "naziv": "MNK Mala Mljekara Valpovo",
+                "opis": "Futsal klub osnovan 1997., natječe se u 2. HMNL – Istok. Domaće utakmice igra u Gradskoj dvorani. Osvajač nagrade za najboljeg sportskog kolektiva Valpova. Organizira Božićni turnir svake godine.",
+                "adresa": "B. Radića 20, Valpovo",
+                "telefon": "+385 95 521 3464",
+                "maps_url": "https://www.google.com/maps/search/?api=1&query=MNK+Mala+Mljekara+Valpovo"
+            },
+            {
+                "sport": "Rukomet",
+                "naziv": "RK Valpovka",
+                "opis": "Rukometni klub s više od 65 godina tradicije, osnovan 1958. Natječe se u 3. rukometnoj ligi – Istok. Igra u Gradsko-školskoj sportskoj dvorani.",
+                "adresa": "Dr. Franje Tuđmana 4, Valpovo",
+                "maps_url": "https://www.google.com/maps/search/?api=1&query=RK+Valpovka+Valpovo",
+                "web": "https://www.rkvalpovka.hr/"
+            },
+            {
+                "sport": "Odbojka",
+                "naziv": "OK Valpovka",
+                "opis": "Ženski odbojkaški klub osnovan 1971., natječe se u 2. HOL – Istok. Povijesno je nastupao u 1.A ligi (2000.–2003.). Organizira godišnji turnir u odbojci na travi.",
+                "adresa": "Dr. Franje Tuđmana 4, Valpovo",
+                "telefon": "031/656 574",
+                "maps_url": "https://www.google.com/maps/search/?api=1&query=OK+Valpovka+odbojka+Valpovo",
+                "web": "https://ok-valpovka.hr/"
+            },
+            {
+                "sport": "Košarka",
+                "naziv": "KK Valpovo",
+                "opis": "Košarkaški klub koji se natječe u 3. hrvatskoj košarkaškoj ligi.",
+                "adresa": "Valpovo",
+                "maps_url": "https://www.google.com/maps/search/?api=1&query=KK+Valpovo+košarka"
+            },
+            {
+                "sport": "Tenis",
+                "naziv": "Teniski centar Valpovo",
+                "opis": "Teniski centar s 4 terena, osnovan 2004. Nudi tenišku školu za djecu i odrasle, najam terena i opreme, te godišnji ranking turnir 'Valpovačka piramida' s više od 70 igrača u 18 razreda.",
+                "adresa": "Ive Lole Ribara 5, Valpovo",
+                "telefon": "091 222 10 33",
+                "maps_url": "https://www.google.com/maps/search/?api=1&query=Teniski+centar+Valpovo",
+                "web": "https://tenis-valpovo.hr/"
+            },
+            {
+                "sport": "Stolni tenis",
+                "naziv": "STK Dvorac Valpovo",
+                "opis": "Jedan od najstarijih stolnoteniskih klubova u Slavoniji, s tradicijom od 1955. godine. Aktivno se natječe u regionalnim i nacionalnim ligama.",
+                "adresa": "Dr. Franje Tuđmana 4, Valpovo",
+                "maps_url": "https://www.google.com/maps/search/?api=1&query=STK+Dvorac+Valpovo+stolni+tenis"
+            },
+            {
+                "sport": "Karate",
+                "naziv": "Karate klub Valpovo",
+                "opis": "Aktivan karate klub s natjecateljima na regionalnoj i državnoj razini. Ivan Brezovac, osvajač dvije zlatne medalje na Parakarate Kupu Osijeka 2025. u kategoriji K40.",
+                "adresa": "Valpovo",
+                "telefon": "098 915 6333",
+                "maps_url": "https://www.google.com/maps/search/?api=1&query=Karate+klub+Valpovo"
+            },
+            {
+                "sport": "Savate (francuski boks)",
+                "naziv": "Savate klub Valpovo",
+                "opis": "Klub koji trenira savate (francuski boks) za djecu i odrasle. Natječe se na gradskoj, županijskoj i državnoj razini.",
+                "adresa": "Valpovo",
+                "maps_url": "https://www.google.com/maps/search/?api=1&query=Savate+klub+Valpovo"
+            },
+            {
+                "sport": "Šah",
+                "naziv": "ŠK Hrvatska čitaonica Valpovo",
+                "opis": "Šahovski klub s tradicijom više od 70 godina. Organizira godišnje 'Dane šaha' — turniri Čarobni prsten (ženski), Iovallium (omladinski) i 107 (juniorski), u suradnji sa ŠK Belišće.",
+                "adresa": "Valpovo",
+                "maps_url": "https://www.google.com/maps/search/?api=1&query=šahovski+klub+Valpovo"
+            },
+            {
+                "sport": "Sportski ribolov",
+                "naziv": "ZSRUV – Zajednica sportskih ribolovnih udruga Valpovo",
+                "opis": "Krovni ribolovni savez za područje Valpova s 11 udruga-članica. Ribolovno područje obuhvaća rijeke Karašicu, Vučicu i Dravu. Organizira natjecanja: Kup Šaga, Kup Narda i drugi.",
+                "adresa": "Valpovo",
+                "maps_url": "https://www.google.com/maps/search/?api=1&query=ribolov+Valpovo",
+                "web": "https://zsruavalpovo.hr/"
+            }
+        ],
+        "objekti": [
+            {
+                "naziv": "Gradsko-školska sportska dvorana Valpovo",
+                "opis": "Glavna zatvorena sportska dvorana u Valpovu. Dom RK Valpovka, OK Valpovka, MNK Mala Mljekara i STK Dvorac. Sadrži i malu polifunkcijsku dvoranu za aerobik, zumbu i rekreaciju.",
+                "adresa": "Dr. Franje Tuđmana 4, Valpovo",
+                "maps_url": "https://www.google.com/maps/search/?api=1&query=Sportska+dvorana+Valpovo"
+            },
+            {
+                "naziv": "Stadion NK Valpovka",
+                "opis": "Stadion kapaciteta 1.000 gledatelja s glavnim i dva pomoćna terena (jedan s reflektorima). Sadrži teretanu, 4 svlačionice, caffe-bar i uredske prostore. Renoviran 2019. EU-fondovima.",
+                "adresa": "Ive Lole Ribara 10, Valpovo",
+                "maps_url": "https://www.google.com/maps/search/?api=1&query=Stadion+Valpovka+Valpovo",
+                "web": "https://nk-valpovka-valpovo.hr/stadion/"
+            },
+            {
+                "naziv": "Teniski centar Valpovo",
+                "opis": "4 teniška terena s mogućnošću najma. Teniška škola za sve uzraste, turnir 'Valpovačka piramida'. Na lokaciji djeluje i rekreativno društvo Lifestyle.",
+                "adresa": "Ive Lole Ribara 5, Valpovo",
+                "telefon": "091 222 10 33",
+                "maps_url": "https://www.google.com/maps/search/?api=1&query=Teniski+centar+Valpovo",
+                "web": "https://tenis-valpovo.hr/"
+            },
+            {
+                "naziv": "StrongFit Valpovo",
+                "opis": "Fitness centar s funkcionalnim treninzima i CrossFit elementima. Program 'Basic Training for Life' namijenjen svim uzrastima, uključujući umirovljenike i žene.",
+                "adresa": "Starovalpovački put 1, Valpovo",
+                "telefon": "095 569 7001",
+                "maps_url": "https://www.google.com/maps/search/?api=1&query=StrongFit+Valpovo",
+                "web": "https://strongfit.hr/"
+            }
+        ],
+        "rekreacija": [
+            {
+                "naziv": "Valpovačka ljetna liga trčanja",
+                "opis": "Godišnja ljetna liga trčanja kroz perivoj dvorca Prandau-Normann, 10 uzastopnih subota (lipanj–rujan). Rute od 2,5 km, 5 km i 10 km. Bez dobne granice, otvoreno za sve.",
+                "adresa": "Perivoj Dvorca Prandau-Normann, Valpovo",
+                "maps_url": "https://www.google.com/maps/dir/?api=1&destination=45.6589474,18.4153698"
+            },
+            {
+                "naziv": "Rijeka Drava – rekreacija i ribolov",
+                "opis": "Rijeka Drava na rubu valpovačkog područja nudi kayaking, kanuarenje, SUP (stand-up paddleboarding), sportski ribolov i riječne plaže za kupanje i rekreaciju.",
+                "adresa": "Rijeka Drava, Valpovštinsko područje",
+                "maps_url": "https://www.google.com/maps/search/?api=1&query=rijeka+Drava+Valpovo"
+            }
+        ]
     }
 };
