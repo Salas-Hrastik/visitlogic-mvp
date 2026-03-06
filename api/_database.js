@@ -988,21 +988,22 @@ export const db = {
                 "opis": "Grad slavonskog biskupa Strossmayera. Katedrala sv. Petra — papa Ivan XXIII. opisao je kao 'najljepšu između Venecije i Istanbula'. Državna ergela lipicanaca, Muzej Đakovštine. Ljeti se održavaju Đakovački vezovi (folklor, konjske utrke).",
                 "adresa": "Đakovo, 58 km od Valpova",
                 "maps_url": "https://www.google.com/maps/dir/Valpovo/Đakovo",
-                "web": "https://www.tz-dakovo.hr/"
+                "web": "https://www.visitdjakovo.com/"
             },
             {
                 "naziv": "Vinske ceste Slavonije i Baranje",
                 "udaljenost": "Kutjevo 70 km, Baranja 50 km, Erdut 30 km",
                 "opis": "Valpovo leži u vinogorju Erdut — srce slavonskog vinogradarstva. U blizini: Kutjevo (graševina, winery ture, dvorac), Baranja (winery Josić, Krauthaker), Ilok (Dunav, Iločki podrumi). Vinski mjesec OBŽ: lipanj–srpanj (4 vikenda, 4 vinogorja).",
                 "maps_url": "https://www.google.com/maps/search/?api=1&query=vinska+cesta+Slavonija",
-                "web": "https://www.visitosijek-baranja.com/"
+                "web": "https://visitslavoniabaranja.com/en/"
             },
             {
                 "naziv": "Donji Miholjac",
                 "udaljenost": "20 km (~20 min vožnje)",
                 "opis": "Mali slavonski grad uz Dravu, 20 km od Valpova. Zanimljiv za kratki izlet — kupanje i rekreacija uz Dravu ljeti.",
                 "adresa": "Donji Miholjac, 20 km od Valpova",
-                "maps_url": "https://www.google.com/maps/dir/Valpovo/Donji+Miholjac"
+                "maps_url": "https://www.google.com/maps/dir/Valpovo/Donji+Miholjac",
+                "web": "https://www.tz-donjimiholjac.hr/"
             }
         ]
     }

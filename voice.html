@@ -669,17 +669,39 @@
         /* ── MODAL ZA LINKOVE ── */
         function openModal(url, title) {
             document.getElementById("modal-title").innerText = title || "Pregled stranice";
-            document.getElementById("modal-external").href = url;
+            const extLink = document.getElementById("modal-external");
+            extLink.href = url;
+            extLink.style.display = "none"; // skriveno dok ne provjerimo može li se iframe učitati
+
             document.getElementById("modal-blocked").style.display = "none";
             const iframe = document.getElementById("modal-iframe");
             iframe.style.display = "block";
+
+            // Detekcija X-Frame-Options blokade:
+            // - Ako je iframe blokiran → browser učitava prazan/about:blank dokument (contentDocument dostupan, same-origin)
+            // - Ako se vanjska stranica uspješno učitala → contentDocument je null (cross-origin, nedostupan)
+            iframe.onload = function () {
+                try {
+                    if (iframe.contentDocument !== null) {
+                        // Iframe blokiran — prikaži "Otvori direktno" kao zamjenu
+                        extLink.style.display = "inline-flex";
+                    }
+                    // else: cross-origin stranica se učitala normalno — "Otvori direktno" ostaje skriveno
+                } catch (e) {
+                    // Neočekivana greška — prikaži gumb za sigurnost
+                    extLink.style.display = "inline-flex";
+                }
+            };
+
             iframe.src = url;
             document.getElementById("modal-overlay").style.display = "flex";
         }
 
         function closeModal() {
             document.getElementById("modal-overlay").style.display = "none";
-            document.getElementById("modal-iframe").src = "about:blank";
+            const iframe = document.getElementById("modal-iframe");
+            iframe.onload = null;
+            iframe.src = "about:blank";
         }
 
         /* ── FORMATIRANJE ── */

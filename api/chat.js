@@ -171,6 +171,7 @@ PRAVILA FORMATIRANJA:
 - Za "Otvori na karti" koristi polje maps_url iz baze (svaka lokacija ga ima)
 - Svaki unos odijeli praznim redom
 - Ako lokacija nema web u bazi, umjesto "Web: nije dostupno" napiši aktivan link: [Više informacija na TZ Valpovo](https://tz.valpovo.hr)
+- NIKAD ne izmišljaj URL-ove koji nisu u bazi — koristi SAMO URL adrese iz polja "web" u bazi podataka
 
 PRAVILA ZA BROJ REZULTATA:
 - Za kategoriju SMJEŠTAJ: prikaži SVE opcije, grupirane po tipu (Hoteli, Apartmani, Prenoćišta, Sobe, Ruralni smještaj). Za svaku lokaciju samo: naziv, kratki opis (ako postoji), [Otvori na karti] i [Više informacija].
