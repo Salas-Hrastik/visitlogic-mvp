@@ -667,40 +667,57 @@
 
         /* ── MODAL ZA LINKOVE ── */
         function openModal(url, title) {
-            const iframe   = document.getElementById("modal-iframe");
-            const blocked  = document.getElementById("modal-blocked");
-            const extLink  = document.getElementById("modal-external");
-            const blkLink  = document.getElementById("modal-blocked-link");
+            const iframe  = document.getElementById("modal-iframe");
+            const blocked = document.getElementById("modal-blocked");
+            const extLink = document.getElementById("modal-external");
+            const blkLink = document.getElementById("modal-blocked-link");
 
             document.getElementById("modal-title").innerText = title || "Pregled stranice";
-            extLink.href  = url;
-            blkLink.href  = url;
+            extLink.href = url;
+            blkLink.href = url;
             blocked.style.display = "none";
             iframe.style.display  = "block";
-            iframe.src = url;
-
-            // Ako sajt blokira iframe (X-Frame-Options) — prikaži poruku nakon 3s
             clearTimeout(iframe._blockTimer);
-            iframe._blockTimer = setTimeout(() => {
+            iframe.onload = null;
+
+            function showBlocked() {
+                clearTimeout(iframe._blockTimer);
+                iframe.style.display  = "none";
+                blocked.style.display = "flex";
+            }
+
+            // Ključna logika detekcije:
+            // – SecurityError (catch) = cross-origin stranica = UČITANA USPJEŠNO → ostavi iframe
+            // – Nema greške + prazan body = browser blokira X-Frame-Options → pokaži poruku
+            iframe.onload = function () {
                 try {
-                    // Pokušaj pristupiti contentDocument — CORS greška = učitano ali blokirano
                     const doc = iframe.contentDocument;
-                    if (!doc || doc.body === null || doc.body.innerHTML === "") {
-                        iframe.style.display = "none";
-                        blocked.style.display = "flex";
+                    if (!doc || !doc.body || doc.body.innerHTML.trim() === "") {
+                        showBlocked();
                     }
                 } catch (e) {
-                    // Cross-origin = stranica JE učitana, sve ok
+                    // SecurityError = cross-origin = stranica se učitala ✓ — ne radi ništa
                 }
-            }, 3000);
+            };
 
+            // Backup: ako onload ne pukne u 6s (rijetki slučajevi)
+            iframe._blockTimer = setTimeout(() => {
+                try {
+                    const doc = iframe.contentDocument;
+                    if (!doc || !doc.body || doc.body.innerHTML.trim() === "") showBlocked();
+                } catch (e) { /* cross-origin = ok */ }
+            }, 6000);
+
+            iframe.src = url;
             document.getElementById("modal-overlay").style.display = "flex";
         }
 
         function closeModal() {
-            clearTimeout(document.getElementById("modal-iframe")._blockTimer);
+            const iframe = document.getElementById("modal-iframe");
+            clearTimeout(iframe._blockTimer);
+            iframe.onload = null;
             document.getElementById("modal-overlay").style.display = "none";
-            document.getElementById("modal-iframe").src = "about:blank";
+            iframe.src = "about:blank";
         }
 
         /* ── FORMATIRANJE ── */
