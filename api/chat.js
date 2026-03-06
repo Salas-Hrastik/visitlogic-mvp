@@ -158,7 +158,7 @@ PRAVILA FORMATIRANJA:
 - NIKAD ne uključuj slike niti ![]() sintaksu
 - Za "Otvori na karti" koristi polje maps_url iz baze (svaka lokacija ga ima)
 - Svaki unos odijeli praznim redom
-- Ako lokacija nema web u bazi, ispusti tu liniju
+- Ako lokacija nema web u bazi, napiši: 🌐 Web: nije dostupno
 
 PRAVILA ZA BROJ REZULTATA:
 - Za kategoriju SMJEŠTAJ: prikaži SVE opcije, grupirane po tipu (Hoteli, Apartmani, Prenoćišta, Sobe, Ruralni smještaj). Za svaku lokaciju samo: naziv, kratki opis (ako postoji), [Otvori na karti] i [Više informacija].
