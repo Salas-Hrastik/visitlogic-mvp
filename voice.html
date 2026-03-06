@@ -571,7 +571,7 @@
                     const cleanText = text.replace(/^📍\s*/, '');
                     return `<a href="${url}" target="_blank" class="maps-link">${cleanText || 'Otvori na karti'}</a>`;
                 }
-                return `<a href="${url}" onclick="openModal('${url}', '${text.replace(/'/g, "\\'")}'); return false;">${text}</a>`;
+                return `<a href="${url}" target="_blank" rel="noopener">${text}</a>`;
             });
 
             // 2. MOĆNI SINGLE-PASS REGEX: Presreće <a> tagove i u ostalim grupama hvata telefone/web
@@ -581,7 +581,7 @@
                 if (tag) return tag; // AKO JE VEĆ LINK, VRATI GA ISTOG
 
                 if (webUrl) {
-                    return `🌐 <a href="${webUrl}" onclick="openModal('${webUrl}'); return false;">${webUrl}</a>`;
+                    return `🌐 <a href="${webUrl}" target="_blank" rel="noopener">${webUrl}</a>`;
                 }
                 if (phoneIcon) {
                     const num = phoneIcon.replace("📞", "").trim();
