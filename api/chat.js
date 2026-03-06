@@ -110,7 +110,7 @@ export default async function handler(req, res) {
         reply += `**${e.naziv}**\n`;
         reply += `📅 ${e.vrijeme}\n`;
         reply += `${e.opis}\n`;
-        if (e.web) reply += `[Više informacija](${e.web})\n`;
+        reply += e.web ? `[Više informacija](${e.web})\n` : `🌐 Web: nije dostupno\n`;
         reply += '\n';
       }
       return res.status(200).json({ reply, category });
@@ -136,7 +136,7 @@ export default async function handler(req, res) {
           reply += `**${item.naziv}**\n`;
           if (item.opis) reply += `${item.opis}\n`;
           reply += `[Otvori na karti](${item.maps_url})\n`;
-          if (item.web) reply += `[Više informacija](${item.web})\n`;
+          reply += item.web ? `[Više informacija](${item.web})\n` : `🌐 Web: nije dostupno\n`;
           reply += '\n';
         }
       }
