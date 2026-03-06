@@ -155,6 +155,23 @@ export default async function handler(req, res) {
       return res.status(200).json({ reply, category });
     }
 
+    // Okolica listing: generiraj direktno bez AI — zajamčeni URL-ovi iz baze, bez halucinacija
+    const isOkolicaListing = category === 'okolica' && lastCategory !== 'okolica';
+    if (isOkolicaListing) {
+      const izleti = db.okolica?.izleti || [];
+      let reply = 'Preporučeni izleti iz Valpova — od najbližeg prema daljem:\n\n';
+      for (const item of izleti) {
+        reply += `**${item.naziv}**\n`;
+        if (item.udaljenost) reply += `📍 ${item.udaljenost}\n`;
+        if (item.opis)       reply += `${item.opis}\n`;
+        if (item.cijena)     reply += `💶 ${item.cijena}\n`;
+        reply += `[Otvori na karti](${item.maps_url})\n`;
+        if (item.web)        reply += `[Više informacija](${item.web})\n`;
+        reply += '\n';
+      }
+      return res.status(200).json({ reply, category });
+    }
+
     const systemPrompt = `
 Ti si digitalni turistički informator grada Valpova. Odgovaraj uvijek na hrvatskom jeziku.
 
