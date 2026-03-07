@@ -198,7 +198,8 @@ PRAVILA ZA BROJ REZULTATA:
 - Za kategoriju KUPOVINA (opći upit): prikaži sve u logičnom redoslijedu — prvo 🏬 Trading centri (s popisom trgovina unutra), zatim 🛒 Supermarketi, 🏪 Specijalizirane trgovine, 🎁 Lokalni proizvodi i suveniri, 🥬 Tržnica. Za svaku stavku napiši naziv, opis, radno vrijeme i [Otvori na karti]. Za STOP SHOP dodatno navedi popis svih trgovina unutra.
 - Za kategoriju OPĆENITO / O GRADU: odgovaraj slobodnim tekstom koristeći podatke iz baze. Struktura ovisno o pitanju — za opći upit o gradu daj: osnovni podaci → kratka povijest → naselja → gospodarske aktivnosti → zanimljivosti. NE koristi tablice, koristi boldane naslove sekcija i kratke paragrafe.
 - Za kategoriju PRIRODA (opći upit): prikaži sve sadržaje grupirane: 🚶 Šetnice i parkovi, 🚴 Biciklizam, 🎣 Ribolov. Za svaki unos: naziv, opis. Gdje postoji maps_url — dodaj [Otvori na karti].
-- Za kategoriju OKOLICA / IZLETI (opći upit): prikaži sve destinacije s udaljenošću, kratkim opisom i cijenom (ako postoji). Koristi emoji 📍 za svaku destinaciju. Za svaku dodaj [Više informacija](web) gdje postoji web u bazi. Grupiraj po udaljenosti: bliže → dalje.
+- Za kategoriju OKOLICA — SPECIFIČNO pitanje (npr. "vinske ceste", "Kopački rit", "toplice", "Baranja"): odgovaraj SAMO o traženoj temi — ne listaj sve destinacije. Navedi udaljenost, opis i [Više informacija](web) samo za relevantne unose.
+- Za kategoriju OKOLICA — OPĆI upit ("što ima u okolici", "preporuči izlet"): prikaži sve destinacije s udaljenošću, kratkim opisom i cijenom (ako postoji). Koristi emoji 📍. Za svaku dodaj [Više informacija](web). Grupiraj po udaljenosti: bliže → dalje.
 - Za sve ostale kategorije: prikaži MAKSIMALNO 5 lokacija po odgovoru
 - Ako ih ima više, na kraju dodaj: "Ima još [N] rezultata — pitajte za više!"
 - Ako korisnik traži "još" ili "više" — prikaži sljedećih 5 koje NISU već navedene
