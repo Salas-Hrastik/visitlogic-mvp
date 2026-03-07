@@ -57,7 +57,7 @@ function getRelevantContext(message, db, lastCategory) {
     || msg.includes('geschichte') || msg.includes('über') || msg.includes('einwohner') || msg.includes('gegründet') || msg.includes('wirtschaft'))
     return { context: CATEGORY_CONTEXTS.opcenito(db), category: 'opcenito' };
 
-  if (msg.includes('smještaj') || msg.includes('hotel') || msg.includes('noćen') || msg.includes('apartman') || msg.includes('sobe') || msg.includes('villa') || msg.includes('ruralni')
+  if (msg.includes('smještaj') || msg.includes('smjestaj') || msg.includes('hotel') || msg.includes('noćen') || msg.includes('nocen') || msg.includes('apartman') || msg.includes('sobe') || msg.includes('soba') || msg.includes('sob ') || msg.includes('villa') || msg.includes('ruralni')
     // EN
     || msg.includes('accommodation') || msg.includes('sleep') || msg.includes('stay') || msg.includes('room') || msg.includes('bed') || msg.includes('lodge') || msg.includes('hostel')
     // DE
@@ -181,25 +181,49 @@ export default async function handler(req, res) {
       return res.status(200).json({ reply, category });
     }
 
-    // Smještaj listing: generiraj direktno bez AI (brzo, kompletno, bez token limita)
-    const isSmjestajListing = category === 'smjestaj' && lastCategory !== 'smjestaj';
-    if (isSmjestajListing) {
+    // Smještaj listing: uvijek generiraj direktno bez AI (sprječava hallucination)
+    if (category === 'smjestaj') {
       const s = db.smjestaj;
-      const sections = [
-        { key: 'hoteli',         icon: '🏨', label: 'Hoteli' },
-        { key: 'ruralni_smjestaj', icon: '🌿', label: 'Ruralni smještaj' },
-        { key: 'apartmani',      icon: '🏠', label: 'Apartmani' },
-        { key: 'prenocista',     icon: '🛏', label: 'Prenoćišta' },
-        { key: 'sobe',           icon: '🔑', label: 'Sobe' },
+      const msgL = message.toLowerCase();
+
+      // Detektiraj specifičnu podkategoriju iz upita
+      const wantsSobe      = msgL.includes('sob') || msgL.includes('room');
+      const wantsHotel     = msgL.includes('hotel') && !wantsSobe;
+      const wantsApartman  = (msgL.includes('apartman') || msgL.includes('studio')) && !wantsSobe;
+      const wantsRuralni   = msgL.includes('ruralni') || msgL.includes('holiday') || msgL.includes('dvori');
+      const wantsPrenociste= msgL.includes('prenoć') || msgL.includes('prenoc') || msgL.includes('noćiš') || msgL.includes('nocis');
+
+      // Ako nema specifičnog zahtjeva → prikaži sve
+      const showAll = !wantsSobe && !wantsHotel && !wantsApartman && !wantsRuralni && !wantsPrenociste;
+
+      const allSections = [
+        { key: 'hoteli',           icon: '🏨', label: 'Hoteli',            show: showAll || wantsHotel },
+        { key: 'ruralni_smjestaj', icon: '🌿', label: 'Ruralni smještaj',  show: showAll || wantsRuralni },
+        { key: 'apartmani',        icon: '🏠', label: 'Apartmani',         show: showAll || wantsApartman },
+        { key: 'prenocista',       icon: '🛏', label: 'Prenoćišta',        show: showAll || wantsPrenociste },
+        { key: 'sobe',             icon: '🔑', label: 'Sobe',              show: showAll || wantsSobe },
       ];
-      let reply = 'Evo svih smještajnih opcija u Valpovu:\n\n';
-      for (const { key, icon, label } of sections) {
+
+      const activeSections = allSections.filter(sec => sec.show);
+
+      // Dinamičan uvod ovisno o upitu
+      let reply = '';
+      if (wantsSobe)       reply = 'Evo dostupnih soba za iznajmljivanje u Valpovu:\n\n';
+      else if (wantsHotel) reply = 'Evo hotela u Valpovu:\n\n';
+      else if (wantsApartman) reply = 'Evo apartmana dostupnih za iznajmljivanje u Valpovu:\n\n';
+      else if (wantsRuralni)  reply = 'Evo ruralnog smještaja u okolici Valpova:\n\n';
+      else if (wantsPrenociste) reply = 'Evo prenoćišta u Valpovu:\n\n';
+      else reply = 'Evo svih smještajnih opcija u Valpovu:\n\n';
+
+      for (const { key, icon, label } of activeSections) {
         const items = s[key];
         if (!items?.length) continue;
-        reply += `${icon} **${label}**\n\n`;
+        if (showAll) reply += `${icon} **${label}**\n\n`;
         for (const item of items) {
           reply += `**${item.naziv}**\n`;
           if (item.opis) reply += `${item.opis}\n`;
+          if (item.adresa) reply += `📍 ${item.adresa}\n`;
+          if (item.telefon) reply += `📞 ${item.telefon}\n`;
           reply += `[Otvori na karti](${item.maps_url})\n`;
           reply += item.web ? `[Više informacija](${item.web})\n` : `[Više informacija na TZ Valpovo](https://tz.valpovo.hr/smjestaj-u-valpovu/)\n`;
           reply += '\n';
