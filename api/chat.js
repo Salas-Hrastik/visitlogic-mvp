@@ -266,32 +266,39 @@ ${JSON.stringify(stripImages(context))}
       ? history.slice(-6).map(m => ({ role: m.role, content: m.content }))
       : [];
 
-    const completion = await openai.chat.completions.create({
+    // SSE streaming — tekst se prikazuje čim stignu prvi tokeni
+    res.setHeader('Content-Type', 'text/event-stream; charset=utf-8');
+    res.setHeader('Cache-Control', 'no-cache, no-transform');
+    res.setHeader('X-Accel-Buffering', 'no');
 
+    const stream = await openai.chat.completions.create({
       model: "gpt-4o-mini",
-
       messages: [
         { role: "system", content: systemPrompt },
         ...historyMessages,
         { role: "user", content: message }
       ],
-
       temperature: 0.3,
-      max_tokens: (category === 'smjestaj' || category === 'sport' || category === 'kupovina') ? 1800 : 700
-
+      max_tokens: 500,
+      stream: true
     });
 
-    const reply = completion.choices[0].message.content;
-
-    return res.status(200).json({ reply, category });
+    for await (const chunk of stream) {
+      const content = chunk.choices[0]?.delta?.content;
+      if (content) res.write(`data: ${JSON.stringify({ t: content })}\n\n`);
+    }
+    res.write(`data: ${JSON.stringify({ done: true, category: category || null })}\n\n`);
+    res.end();
 
   } catch (error) {
 
     console.error("CHAT ERROR:", error);
-
-    return res.status(500).json({
-      reply: "Došlo je do greške na serveru."
-    });
+    try {
+      res.write(`data: ${JSON.stringify({ error: true })}\n\n`);
+      res.end();
+    } catch {
+      res.status(500).json({ reply: "Došlo je do greške na serveru." });
+    }
 
   }
 

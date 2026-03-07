@@ -893,7 +893,7 @@
                 const response = await fetch("/api/speak", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ text: cleanForSpeech(text).substring(0, 1200) })
+                    body: JSON.stringify({ text: cleanForSpeech(text).substring(0, 600) })
                 });
 
                 if (!response.ok) throw new Error("TTS failed");
@@ -1044,17 +1044,24 @@
                 });
 
                 clearTimeout(timeout);
-                const data = await response.json();
                 removeTyping();
 
-                if (data.reply) {
-                    addMessage(data.reply);
-                    conversationHistory.push({ role: "assistant", content: data.reply });
-                    if (data.category) currentCategory = data.category;
-                } else if (data.error) {
-                    addMessage("❌ **Greška:** " + data.error + (data.details ? "\n\n" + data.details : ""));
+                const ct = response.headers.get('content-type') || '';
+                if (ct.includes('text/event-stream')) {
+                    // SSE streaming — AI odgovor stiže u chunkovim
+                    await handleStream(response);
                 } else {
-                    addMessage("⚠️ Neočekivani odgovor servera (nema 'reply' polja).");
+                    // JSON — pre-generirani odgovor (sport, smještaj, događanja, izleti)
+                    const data = await response.json();
+                    if (data.reply) {
+                        addMessage(data.reply);
+                        conversationHistory.push({ role: "assistant", content: data.reply });
+                        if (data.category) currentCategory = data.category;
+                    } else if (data.error) {
+                        addMessage("❌ **Greška:** " + data.error + (data.details ? "\n\n" + data.details : ""));
+                    } else {
+                        addMessage("⚠️ Neočekivani odgovor servera.");
+                    }
                 }
 
             } catch (err) {
@@ -1069,6 +1076,63 @@
                 setLock(false);
                 inputEl.focus();
             }
+        }
+
+        /* ── SSE STREAM HANDLER ── */
+        async function handleStream(response) {
+            const reader = response.body.getReader();
+            const decoder = new TextDecoder();
+            let buffer = '';
+            let fullText = '';
+            let streamCategory = null;
+
+            // Kreiraj prazan AI message div
+            const msgDiv = document.createElement('div');
+            msgDiv.className = 'message ai';
+            msgDiv.innerHTML = `
+                <div class="ai-header">
+                    <span style="font-size:0.8em;opacity:0.5;font-weight:bold;">TURISTIČKI INFORMATOR</span>
+                </div>
+                <div class="ai-content"></div>
+            `;
+            chat.appendChild(msgDiv);
+            const contentDiv = msgDiv.querySelector('.ai-content');
+            msgDiv.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+            // Čitaj SSE chunkove
+            while (true) {
+                const { done, value } = await reader.read();
+                if (done) break;
+                buffer += decoder.decode(value, { stream: true });
+                const lines = buffer.split('\n');
+                buffer = lines.pop();
+                for (const line of lines) {
+                    if (!line.startsWith('data: ')) continue;
+                    try {
+                        const payload = JSON.parse(line.slice(6));
+                        if (payload.t) {
+                            fullText += payload.t;
+                            contentDiv.textContent = fullText; // plain text dok stiže
+                        }
+                        if (payload.done) streamCategory = payload.category;
+                        if (payload.error) fullText = fullText || "⚠️ Greška pri generiranju odgovora.";
+                    } catch {}
+                }
+            }
+
+            // Finalni render kao markdown
+            contentDiv.innerHTML = formatAI(fullText);
+
+            // Dodaj zvučnik gumb
+            const speakBtn = document.createElement('button');
+            speakBtn.className = 'speak-btn';
+            speakBtn.innerHTML = '🔊';
+            speakBtn.addEventListener('click', () => speakText(speakBtn, fullText));
+            msgDiv.querySelector('.ai-header').appendChild(speakBtn);
+
+            // Spremi u povijest
+            conversationHistory.push({ role: 'assistant', content: fullText });
+            if (streamCategory) currentCategory = streamCategory;
         }
 
         /* ── ENTER TIPKA ── */
