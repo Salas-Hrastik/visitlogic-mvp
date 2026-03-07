@@ -803,7 +803,7 @@ export const db = {
             {
                 "sport": "Nogomet",
                 "naziv": "NK Valpovka",
-                "opis": "Jedan od najstarijih klubova u Slavoniji, osnovan 1926. Natječe se u 3. HNL – Istok. Stadion s glavnim i dva pomoćna terena, teretanom i svlačionicama renoviranim 2019. EU-fondovima (1,8 mil. EUR).",
+                "opis": "Jedan od najstarijih klubova u Slavoniji, osnovan 1926. pod imenom NK Jovalija. Natječe se u 3. HNL – Istok. Stadion s glavnim i dva pomoćna terena, teretanom i svlačionicama renoviranim 2019. EU-fondovima (1,8 mil. EUR).",
                 "adresa": "Ive Lole Ribara 10, Valpovo",
                 "telefon": "091 890 5823",
                 "maps_url": "https://www.google.com/maps/search/?api=1&query=NK+Valpovka+Valpovo",

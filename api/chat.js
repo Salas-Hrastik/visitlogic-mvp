@@ -155,6 +155,49 @@ export default async function handler(req, res) {
       return res.status(200).json({ reply, category });
     }
 
+    // Sport listing: generiraj direktno bez AI (opći upit o sportu/klubovima)
+    const isSportListing = category === 'sport' && lastCategory !== 'sport';
+    if (isSportListing) {
+      const s = db.sport;
+      const sportEmoji = {
+        'Nogomet': '⚽', 'Futsal (malonogometni)': '⚽', 'Rukomet': '🤾', 'Odbojka': '🏐',
+        'Košarka': '🏀', 'Tenis': '🎾', 'Stolni tenis': '🏓', 'Karate': '🥋',
+        'Savate (francuski boks)': '🥊', 'Šah': '♟️', 'Sportski ribolov': '🎣'
+      };
+      let reply = 'Sportski klubovi i sadržaji u Valpovu:\n\n';
+      if (s?.klubovi?.length) {
+        reply += '**🏆 Sportski klubovi**\n\n';
+        for (const k of s.klubovi) {
+          const emoji = sportEmoji[k.sport] || '🏅';
+          reply += `${emoji} **${k.naziv}**\n`;
+          if (k.opis) reply += `${k.opis}\n`;
+          if (k.maps_url) reply += `[Otvori na karti](${k.maps_url})\n`;
+          if (k.web) reply += `[Više informacija](${k.web})\n`;
+          reply += '\n';
+        }
+      }
+      if (s?.objekti?.length) {
+        reply += '**🏟️ Sportski objekti**\n\n';
+        for (const o of s.objekti) {
+          reply += `**${o.naziv}**\n`;
+          if (o.opis) reply += `${o.opis}\n`;
+          if (o.maps_url) reply += `[Otvori na karti](${o.maps_url})\n`;
+          if (o.web) reply += `[Više informacija](${o.web})\n`;
+          reply += '\n';
+        }
+      }
+      if (s?.rekreacija?.length) {
+        reply += '**🚴 Rekreacija i aktivni odmor**\n\n';
+        for (const r of s.rekreacija) {
+          reply += `**${r.naziv}**\n`;
+          if (r.opis) reply += `${r.opis}\n`;
+          if (r.maps_url) reply += `[Otvori na karti](${r.maps_url})\n`;
+          reply += '\n';
+        }
+      }
+      return res.status(200).json({ reply, category });
+    }
+
     // Okolica listing: generiraj direktno bez AI samo kad korisnik traži opći popis izleta
     // (sadrži 'izlet') — specifična pitanja (vinske ceste, Kopački rit...) idu na AI
     const msgLower = message.toLowerCase();
