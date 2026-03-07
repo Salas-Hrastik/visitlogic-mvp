@@ -222,8 +222,6 @@ export default async function handler(req, res) {
         for (const item of items) {
           reply += `**${item.naziv}**\n`;
           if (item.opis) reply += `${item.opis}\n`;
-          if (item.adresa) reply += `📍 ${item.adresa}\n`;
-          if (item.telefon) reply += `📞 ${item.telefon}\n`;
           reply += `[Otvori na karti](${item.maps_url})\n`;
           reply += item.web ? `[Više informacija](${item.web})\n` : `[Više informacija na TZ Valpovo](https://tz.valpovo.hr/smjestaj-u-valpovu/)\n`;
           reply += '\n';
