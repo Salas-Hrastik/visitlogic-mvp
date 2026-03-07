@@ -962,21 +962,44 @@ export const db = {
                 "adresa": "Bizovac (9 km od Valpova)",
                 "maps_url": "https://www.google.com/maps/dir/Valpovo/Bizovačke+toplice",
                 "web": "https://www.bizovacke-toplice.hr/",
-                "cijena": "Odrasli od 10 €, djeca od 7 €, obitelji od 15 € (cjenik 2026)",
-                "napomena": "Radno: svakodnevno. Aquapolis kupanje + mogućnost lječilišta."
+                "cijena": "Odrasli od 10 €, djeca od 7 €, obitelji od 15 € (cjenik 2026)"
+            },
+            {
+                "naziv": "Donji Miholjac",
+                "udaljenost": "20 km (~20 min vožnje)",
+                "opis": "Mali slavonski grad uz Dravu. Rekreacija i kupanje uz Dravu ljeti, šetnje uz rijeku.",
+                "adresa": "Donji Miholjac, 20 km od Valpova",
+                "maps_url": "https://www.google.com/maps/dir/Valpovo/Donji+Miholjac",
+                "web": "https://www.tz-donjimiholjac.hr/"
             },
             {
                 "naziv": "Osijek",
                 "udaljenost": "30 km (~30 min vožnje ili ~40 min autobusom)",
-                "opis": "Glavni grad Slavonije — bogat kulturom i poviješću. Obavezno posjetiti: barokna Tvrđa (18. st., candidat za UNESCO), ZOO vrt (najveći u HR, 650 životinja, 11 ha), Promenada uz Dravu, Pješački most. Autobus iz Valpova: 22 linije dnevno.",
+                "opis": "Glavni grad Slavonije. Barokna Tvrđa (kandidat za UNESCO), ZOO vrt (najveći u HR, 650 životinja), Promenada uz Dravu, Pješački most. Autobus iz Valpova: 22 linije dnevno.",
                 "adresa": "Osijek, 30 km od Valpova",
                 "maps_url": "https://www.google.com/maps/dir/Valpovo/Osijek",
                 "web": "https://www.tzosijek.hr/"
             },
             {
+                "naziv": "Našice",
+                "udaljenost": "30 km (~25 min vožnje)",
+                "opis": "Grad u slavonskom zagorju poznat po dvorcu Pejačević i prekrasnom gradskom parku. Zavičajni muzej, jezero Lapovac, ZOO vrt Bizik. Dobitnik nagrade 'Najljepši Advent u Hrvatskoj'.",
+                "adresa": "Našice, 30 km od Valpova",
+                "maps_url": "https://www.google.com/maps/dir/Valpovo/Našice",
+                "web": "https://tznasice.hr/"
+            },
+            {
+                "naziv": "Baranja",
+                "udaljenost": "35 km (~30 min vožnje, do Belog Manastira)",
+                "opis": "Trostruki dobitnik nagrade 'Best Rural Destination of Croatia'. Poznata po vinima (Josić, Krauthaker), etno selima, rodama i autohtonoj gastronomiji. Turistički vlak Ćiro, seoske agroturističke farme uz Dunav i Dravu.",
+                "adresa": "Beli Manastir, ~35 km od Valpova",
+                "maps_url": "https://www.google.com/maps/dir/Valpovo/Beli+Manastir",
+                "web": "https://tzbaranje.hr/"
+            },
+            {
                 "naziv": "Park prirode Kopački rit",
-                "udaljenost": "~45 km (~40 min vožnje, preko Osijeka)",
-                "opis": "Jedno od najvećih i najljepše očuvanih poplavnih područja u Europi (17.700 ha). Više od 2300 životinjskih vrsta, 140 vrsta ptica koje se gnijezde. Drvene šetnice iznad jezera, vožnja brodom, kanui. Idealno u proljeće i jesen. Ulaznica: 3 €, s brodom: 13 €.",
+                "udaljenost": "45 km (~40 min vožnje, preko Osijeka)",
+                "opis": "Jedno od najvećih poplavnih područja u Europi (17.700 ha). Više od 2300 životinjskih vrsta, 140 vrsta gnjezdarica. Drvene šetnice, vožnja brodom, kanui. Idealno u proljeće i jesen.",
                 "adresa": "Bilje (kraj Osijeka), ~45 km od Valpova",
                 "maps_url": "https://www.google.com/maps/dir/Valpovo/Kopački+rit",
                 "web": "https://pp-kopacki-rit.hr/",
@@ -985,25 +1008,25 @@ export const db = {
             {
                 "naziv": "Đakovo — katedrala i lipicanci",
                 "udaljenost": "58 km (~40 min vožnje)",
-                "opis": "Grad slavonskog biskupa Strossmayera. Katedrala sv. Petra — papa Ivan XXIII. opisao je kao 'najljepšu između Venecije i Istanbula'. Državna ergela lipicanaca, Muzej Đakovštine. Ljeti se održavaju Đakovački vezovi (folklor, konjske utrke).",
+                "opis": "Grad biskupa Strossmayera. Katedrala sv. Petra — papa Ivan XXIII. opisao je kao 'najljepšu između Venecije i Istanbula'. Državna ergela lipicanaca, Muzej Đakovštine. Ljeti: Đakovački vezovi (folklor, konjske utrke).",
                 "adresa": "Đakovo, 58 km od Valpova",
                 "maps_url": "https://www.google.com/maps/dir/Valpovo/Đakovo",
                 "web": "https://www.visitdjakovo.com/"
             },
             {
-                "naziv": "Vinske ceste Slavonije i Baranje",
-                "udaljenost": "Kutjevo 70 km, Baranja 50 km, Erdut 30 km",
-                "opis": "Valpovo leži u vinogorju Erdut — srce slavonskog vinogradarstva. U blizini: Kutjevo (graševina, winery ture, dvorac), Baranja (winery Josić, Krauthaker), Ilok (Dunav, Iločki podrumi). Vinski mjesec OBŽ: lipanj–srpanj (4 vikenda, 4 vinogorja).",
-                "maps_url": "https://www.google.com/maps/search/?api=1&query=vinska+cesta+Slavonija",
-                "web": "https://visitslavoniabaranja.com/en/"
+                "naziv": "Slavonski Brod",
+                "udaljenost": "85 km (~60 min vožnje autocestom A3)",
+                "opis": "Grad na Savi poznat po Tvrdavi Brod — jednoj od najvećih bastionskih tvrdava u ovom dijelu Europe. Rodni kraj Ivane Brlić-Mažuranić, Kuća tambure. Bogat kulturni i gastronomski sadržaj.",
+                "adresa": "Slavonski Brod, ~85 km od Valpova",
+                "maps_url": "https://www.google.com/maps/dir/Valpovo/Slavonski+Brod",
+                "web": "https://www.tzgsb.hr/"
             },
             {
-                "naziv": "Donji Miholjac",
-                "udaljenost": "20 km (~20 min vožnje)",
-                "opis": "Mali slavonski grad uz Dravu, 20 km od Valpova. Zanimljiv za kratki izlet — kupanje i rekreacija uz Dravu ljeti.",
-                "adresa": "Donji Miholjac, 20 km od Valpova",
-                "maps_url": "https://www.google.com/maps/dir/Valpovo/Donji+Miholjac",
-                "web": "https://www.tz-donjimiholjac.hr/"
+                "naziv": "Vinske ceste Slavonije i Baranje",
+                "udaljenost": "Erdut 30 km, Baranja 35–50 km, Kutjevo 70 km",
+                "opis": "Valpovo leži u vinogorju Erdut — srce slavonskog vinogradarstva. U blizini: Baranja (winery Josić, Krauthaker), Kutjevo (graševina, dvorac), Ilok (Iločki podrumi uz Dunav). Vinski mjesec OBŽ: lipanj–srpanj.",
+                "maps_url": "https://www.google.com/maps/search/?api=1&query=vinska+cesta+Slavonija",
+                "web": "https://visitslavoniabaranja.com/en/"
             }
         ]
     }
