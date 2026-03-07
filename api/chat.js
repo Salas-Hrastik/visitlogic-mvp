@@ -64,7 +64,7 @@ function getRelevantContext(message, db, lastCategory) {
     || msg.includes('unterkunft') || msg.includes('schlafen') || msg.includes('übernacht') || msg.includes('zimmer') || msg.includes('bauernhof'))
     return { context: CATEGORY_CONTEXTS.smjestaj(db), category: 'smjestaj' };
 
-  if (msg.includes('jelo') || msg.includes('restoran') || msg.includes('hrana') || msg.includes('pizza') || msg.includes('burger') || msg.includes('jesti') || msg.includes('ručati') || msg.includes('ručak') || msg.includes('večerati') || msg.includes('večera') || msg.includes('doručak') || msg.includes('kafić') || msg.includes('kava') || msg.includes('bar') || msg.includes('ugostit')
+  if (msg.includes('jelo') || msg.includes('restoran') || msg.includes('hrana') || msg.includes('pizza') || msg.includes('burger') || msg.includes('jesti') || msg.includes('ručati') || msg.includes('ručak') || msg.includes('večerati') || msg.includes('večera') || msg.includes('doručak') || msg.includes('kafić') || msg.includes('kava') || msg.includes('bar') || msg.includes('ugostit') || msg.includes('radno vrij') || msg.includes('kada radi') || msg.includes('do kada rad') || msg.includes('od kada rad') || msg.includes('radi li') || msg.includes('je li otvor') || msg.includes('opening hours') || msg.includes('what time') || msg.includes('öffnungszeiten') || msg.includes('geöffnet')
     // EN
     || msg.includes('restaurant') || msg.includes('food') || msg.includes('eat') || msg.includes('dinner') || msg.includes('lunch') || msg.includes('breakfast') || msg.includes('cafe') || msg.includes('coffee') || msg.includes('drink') || msg.includes('where to eat') || msg.includes('place to eat')
     // DE
@@ -435,6 +435,10 @@ PRAVILA ZA BROJ REZULTATA:
 - Ako ih ima više od prikazanih (N > 0), na kraju dodaj: "Ima još [N] rezultata — pitajte za više!" — AKO NEMA VIŠE: NIŠTA NE DODAJ. ZABRANJENA fraza "Ima još 0 rezultata" — nikad je ne koristi.
 - Ako korisnik traži "još" ili "više" — prikaži sljedećih 5 koje NISU već navedene
 - Nikad ne ponavljaj iste lokacije u istom razgovoru
+
+RADNO VRIJEME: Mnogi unosi u bazi imaju polje "radno_vrijeme". Kad korisnik pita kada nešto radi, je li otvoreno, do kada radi i slično:
+- Ako postoji "radno_vrijeme" u bazi → prikaži ga jasno (emoji 🕐 ispred)
+- Ako NE postoji → reci "Za aktualno radno vrijeme preporučujemo provjeru na [Google Maps](https://www.google.com/maps/search/?api=1&query=NAZIV+Valpovo) ili kontakt s mjestom." — NIKAD ne izmišljaj radno vrijeme!
 
 PRAVILO: AKO PODATAK NIJE U BAZI — odgovori iskreno: "Trenutno nemam te podatke. Za više informacija obratite se Turističkoj zajednici Valpovo: [tz.valpovo.hr](https://tz.valpovo.hr) ili tel. 031 651 256." NIKAD ne izmišljaj podatke koji nisu u bazi.
 

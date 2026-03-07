@@ -137,6 +137,7 @@ export const db = {
             "opis": "Muzej smješten u dvorcu s bogatim zbirkama o povijesti Valpovštine.",
             "adresa": "Ul. Dvorac Norman-Prandau, Valpovo",
             "maps_url": "https://www.google.com/maps/dir/?api=1&destination=45.6589474,18.4153698",
+            "radno_vrijeme": "Pon, Čet: 16:00–19:00 | Uto, Sri, Pet: 10:00–12:00 | Grupni posjeti uz najavu: 031/650-639",
             "web": "https://tz.valpovo.hr/znamenitosti/muzej-valpovstine"
         },
         {
@@ -151,6 +152,7 @@ export const db = {
             "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2025/03/20250313_113711-edukacijski-centar-matije-pater-katancic-valpovo-550x360.jpg",
             "opis": "Obnovljena zgrada stare škole iz 1859. godine — edukacijsko-interpretacijski centar i suvenirnica grada Valpova.",
             "maps_url": "https://www.google.com/maps/search/?api=1&query=Katančićev+vremeplov+Valpovo",
+            "radno_vrijeme": "Pon: 07:00–19:00 | Uto–Pet: 07:00–15:00",
             "web": "https://tz.valpovo.hr/znamenitosti/edukacijsko-interpretacijski-centar-matije-petra-katancica-suvenirnica-grada-valpova/"
         },
         {
@@ -216,6 +218,7 @@ export const db = {
             "opis": "Moderni restoran s vrhunskom ponudom slavonskih jela i jela s roštilja.",
             "adresa": "Ive Lole Ribara 1, Valpovo",
             "telefon": "+385 31 651 895",
+            "radno_vrijeme": "Pon–Ned: 08:00–22:00",
             "web": "https://tz.valpovo.hr/ugostiteljstvo/restoran-jovalija/"
         },
         {
@@ -224,6 +227,7 @@ export const db = {
             "opis": "Tradicionalni slavonski restoran s bogatom ponudom jela i pića.",
             "adresa": "Ive Lole Ribara 10, Valpovo",
             "telefon": "+385 31 651 230",
+            "radno_vrijeme": "Pon–Sub: 08:00–22:00 | Ned: 10:00–16:00",
             "web": "https://tz.valpovo.hr/ugostiteljstvo/restoran-park/"
         },
         {
@@ -236,6 +240,7 @@ export const db = {
             "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2022/04/unnamed-4-pizzeria-hex-valpovo-854x640.jpg",
             "opis": "Najpopularnije mjesto za pizzu i druženje.",
             "adresa": "Trg kralja Tomislava 18, Valpovo",
+            "radno_vrijeme": "Ned–Pon: 10:00–23:00 | Uto–Sub: 10:00–24:00",
             "web": "https://tz.valpovo.hr/ugostiteljstvo/bar-i-pizzeria-hex-valpovo/"
         },
         {
@@ -249,6 +254,7 @@ export const db = {
             "naziv": "Gurman – Objekt brze prehrane",
             "opis": "Brza prehrana u Valpovu.",
             "adresa": "Valpovo",
+            "radno_vrijeme": "Pon–Sub: 13:00–21:00 | Ned: 14:00–21:00",
             "maps_url": "https://www.google.com/maps/search/?api=1&query=Gurman+Valpovo",
             "web": "https://tz.valpovo.hr/ugostiteljstvo/gurman/"
         },
@@ -256,6 +262,7 @@ export const db = {
             "naziv": "Caffe Bar Kolaž",
             "opis": "Caffe bar u Valpovu.",
             "adresa": "Valpovo",
+            "radno_vrijeme": "Pon, Čet, Ned: 08:00–00:00 | Pet–Sub: 08:00–02:00",
             "maps_url": "https://www.google.com/maps/search/?api=1&query=Caffe+Bar+Kolaž+Valpovo",
             "web": "https://tz.valpovo.hr/ugostiteljstvo/caffe-bar-kolaz/"
         },
@@ -263,6 +270,7 @@ export const db = {
             "naziv": "Caffe Night Bar Blue",
             "opis": "Caffe i noćni bar u Valpovu.",
             "adresa": "Valpovo",
+            "radno_vrijeme": "Ned–Čet: 08:00–00:00 | Pet–Sub: 08:00–04:00",
             "maps_url": "https://www.google.com/maps/search/?api=1&query=Night+Bar+Blue+Valpovo",
             "web": "https://tz.valpovo.hr/ugostiteljstvo/caffe-night-bar-blue/"
         },
@@ -270,6 +278,7 @@ export const db = {
             "naziv": "Caffe Bar Passage",
             "opis": "Caffe bar u Valpovu.",
             "adresa": "Valpovo",
+            "radno_vrijeme": "Pon–Čet: 07:00–24:00 | Pet–Sub: 07:00–02:00 | Ned: 08:00–24:00",
             "maps_url": "https://www.google.com/maps/search/?api=1&query=Caffe+Bar+Passage+Valpovo",
             "web": "https://tz.valpovo.hr/ugostiteljstvo/caffe-bar-passage/"
         },
@@ -277,6 +286,7 @@ export const db = {
             "naziv": "Caffe Bar Space",
             "opis": "Caffe bar u Valpovu.",
             "adresa": "Valpovo",
+            "radno_vrijeme": "Pon–Čet: 08:00–00:00 | Pet–Sub: 08:00–02:00 | Ned: 08:00–00:00",
             "maps_url": "https://www.google.com/maps/search/?api=1&query=Caffe+Bar+Space+Valpovo",
             "web": "https://tz.valpovo.hr/ugostiteljstvo/caffe-bar-space/"
         },
@@ -284,6 +294,7 @@ export const db = {
             "naziv": "Caffe Bar Best",
             "opis": "Caffe bar u Valpovu.",
             "adresa": "Valpovo",
+            "radno_vrijeme": "Svaki dan: 08:00–02:00",
             "maps_url": "https://www.google.com/maps/search/?api=1&query=Caffe+Bar+Best+Valpovo",
             "web": "https://tz.valpovo.hr/ugostiteljstvo/caffe-bar-best/"
         },
@@ -291,6 +302,7 @@ export const db = {
             "naziv": "Gradska Kavana Valpovo",
             "opis": "Gradska kavana u centru Valpova.",
             "adresa": "Valpovo",
+            "radno_vrijeme": "Svaki dan: 07:00–23:00",
             "maps_url": "https://www.google.com/maps/search/?api=1&query=Gradska+Kavana+Valpovo",
             "web": "https://tz.valpovo.hr/ugostiteljstvo/gradska-kavana-valpovo/"
         },
@@ -298,6 +310,7 @@ export const db = {
             "naziv": "Gradska Kavana Katančić",
             "opis": "Kavana nazvana po poznatom valpovačkom pjesniku Matiji Petru Katančiću.",
             "adresa": "Valpovo",
+            "radno_vrijeme": "Pon–Čet: 08:00–00:00 | Pet–Sub: 08:00–04:00 | Ned: 08:00–00:00",
             "maps_url": "https://www.google.com/maps/search/?api=1&query=Gradska+Kavana+Katančić+Valpovo",
             "web": "https://tz.valpovo.hr/ugostiteljstvo/gradska-kavana-katancic/"
         },
@@ -305,6 +318,7 @@ export const db = {
             "naziv": "Barcode Caffe & Night Bar",
             "opis": "Caffe i noćni bar u Valpovu.",
             "adresa": "Valpovo",
+            "radno_vrijeme": "Pon–Čet: 08:00–23:00 | Pet: 08:00–04:00 | Sub: 09:00–04:00 | Ned: 09:00–23:00",
             "maps_url": "https://www.google.com/maps/search/?api=1&query=Barcode+Caffe+Valpovo",
             "web": "https://tz.valpovo.hr/ugostiteljstvo/barcode-caffe-night-bar/"
         },
@@ -312,6 +326,7 @@ export const db = {
             "naziv": "Caffe Bar Brm Brm",
             "opis": "Caffe bar u Valpovu.",
             "adresa": "Valpovo",
+            "radno_vrijeme": "Pon–Pet: 06:00–22:00 | Sub–Ned: 08:00–22:00",
             "maps_url": "https://www.google.com/maps/search/?api=1&query=Caffe+Bar+Brm+Brm+Valpovo",
             "web": "https://tz.valpovo.hr/ugostiteljstvo/caffe-bar-brm-brm/"
         },
@@ -319,6 +334,7 @@ export const db = {
             "naziv": "Caffe Bar Aqua Valpovo",
             "opis": "Caffe bar u Valpovu.",
             "adresa": "Valpovo",
+            "radno_vrijeme": "Pon–Čet: 08:00–00:00 | Pet–Sub: 08:00–02:00 | Ned: 09:00–00:00",
             "maps_url": "https://www.google.com/maps/search/?api=1&query=Caffe+Bar+Aqua+Valpovo",
             "web": "https://tz.valpovo.hr/ugostiteljstvo/caffe-bar-aqua-valpovo/"
         },
@@ -326,6 +342,7 @@ export const db = {
             "naziv": "Caffe Bar Prandau",
             "opis": "Caffe bar nazvan po barunima Prandau, u Valpovu.",
             "adresa": "Valpovo",
+            "radno_vrijeme": "Pon–Sub: 07:00–23:00 | Ned: 08:00–13:00 i 17:00–23:00",
             "maps_url": "https://www.google.com/maps/search/?api=1&query=Caffe+Bar+Prandau+Valpovo",
             "web": "https://tz.valpovo.hr/ugostiteljstvo/caffe-bar-prandau/"
         }
