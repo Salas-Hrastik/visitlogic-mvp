@@ -71,9 +71,11 @@ function getRelevantContext(message, db, lastCategory) {
     || msg.includes('essen') || msg.includes('speise') || msg.includes('trinken') || msg.includes('café') || msg.includes('gaststätte') || msg.includes('mittagessen') || msg.includes('abendessen'))
     return { context: CATEGORY_CONTEXTS.gastronomija(db), category: 'gastronomija' };
 
-  if (msg.includes('događ') || msg.includes('dogad') || msg.includes('događ') || msg.includes('festival') || msg.includes('manifestac') || msg.includes('karneval') || msg.includes('advent') || msg.includes('program') || msg.includes('što se dešava') || msg.includes('što se događa') || msg.includes('sto se desava') || msg.includes('slijede') || msg.includes('uskoro')
+  if (msg.includes('događ') || msg.includes('dogad') || msg.includes('festival') || msg.includes('manifestac') || msg.includes('karneval') || msg.includes('advent') || msg.includes('program') || msg.includes('što se dešava') || msg.includes('što se događa') || msg.includes('sto se desava') || msg.includes('slijede') || msg.includes('uskoro')
+    // Specifične manifestacije valpovštine
+    || msg.includes('fišijad') || msg.includes('fisijad') || msg.includes('matijafest') || msg.includes('rockaraj') || msg.includes('reunited') || msg.includes('vašar') || msg.includes('vasar') || msg.includes('ljeto valpov') || msg.includes('craft beer') || msg.includes('staza zdravlja') || msg.includes('katančić') || msg.includes('festival sira') || msg.includes('ribljeg paprikaša') || msg.includes('ribljeg paprikasa') || msg.includes('kuhanje fiš') || msg.includes('kuhanje fis')
     // EN
-    || msg.includes('event') || msg.includes('events') || msg.includes('festival') || msg.includes('carnival') || msg.includes('celebration') || msg.includes('upcoming') || msg.includes('what\'s on')
+    || msg.includes('event') || msg.includes('events') || msg.includes('carnival') || msg.includes('celebration') || msg.includes('upcoming') || msg.includes('what\'s on')
     // DE
     || msg.includes('veranstaltung') || msg.includes('fest') || msg.includes('feier') || msg.includes('kommende'))
     return { context: CATEGORY_CONTEXTS.dogadanja(db), category: 'dogadanja' };
@@ -165,7 +167,9 @@ export default async function handler(req, res) {
     const { context, category } = getRelevantContext(message, db, lastCategory);
 
     // Događanja listing: filtriraj prošle i generiraj direktno bez AI
-    if (category === 'dogadanja' && lastCategory !== 'dogadanja') {
+    // Ako korisnik pita za SPECIFIČNU manifestaciju po imenu → preskoči listing, pusti AI da odgovori konkretno
+    const specificEventQuery = ['fišijad','fisijad','matijafest','rockaraj','reunited','vašar','vasar','ljeto valpov','craft beer','staza zdravlja','festival sira','ribljeg paprikaš','ribljeg paprikas','kuhanje fiš','kuhanje fis'].some(k => message.toLowerCase().includes(k));
+    if (category === 'dogadanja' && lastCategory !== 'dogadanja' && !specificEventQuery) {
       const currentMonth = new Date().getMonth() + 1;
       const upcoming = db.dogadanja.filter(e => eventMaxMonth(e.vrijeme) >= currentMonth);
       let reply = upcoming.length
