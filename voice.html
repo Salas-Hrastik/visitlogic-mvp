@@ -110,7 +110,21 @@
             background: #b4ccbf;
         }
 
-        /* PHOTO STRIP — fotogalerija ispod bot odgovora */
+        /* ITEM THUMBNAIL — inline minijatura uz svaki unos u listingu */
+        .item-thumb {
+            float: left;
+            width: 88px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 7px;
+            margin: 0 10px 6px 0;
+            display: block;
+            cursor: pointer;
+            transition: opacity .2s;
+        }
+        .item-thumb:hover { opacity: .85; }
+
+        /* PHOTO STRIP — fotogalerija ispod bot odgovora (za AI streaming odgovore) */
         .photo-strip {
             display: flex;
             gap: 8px;
@@ -791,7 +805,12 @@
             raw = raw.replace(/\[[^\]]*\]\([^)]*$/, '');
             raw = raw.replace(/\[[^\]]*$/, '');
 
-            // 1. Markdown slike: ![alt](url) → potpuno ukloni (AI ne smije prikazivati slike)
+            // 1a. [[IMG:url]] — pre-gen inline thumbnail (nije AI, smije se prikazati)
+            raw = raw.replace(/\[\[IMG:(https?:[^\]]+)\]\]/g,
+                '<img class="item-thumb" src="$1" loading="lazy" alt="" onclick="window.open(\'$1\',\'_blank\')">');
+            // 1b. [[CLR]] — čisti float nakon stavke s minijaturom
+            raw = raw.replace(/\[\[CLR\]\]/g, '<div style="clear:both"></div>');
+            // 1c. Markdown slike: ![alt](url) → potpuno ukloni (AI ne smije prikazivati slike)
             raw = raw.replace(/!\[([^\]]*)\]\([^)]+\)/g, '');
 
             // 2. Bold
@@ -1146,7 +1165,7 @@
                         const msgDiv = addMessage(data.reply);
                         conversationHistory.push({ role: "assistant", content: data.reply });
                         if (data.category) currentCategory = data.category;
-                        addPhotoStrip(msgDiv, data.images);
+                        // Pre-gen odgovori imaju inline slike [[IMG:]] — photo strip nije potreban
                         addSuggestions(msgDiv, data.suggestions);
                     } else if (data.error) {
                         addMessage("❌ **Greška:** " + data.error + (data.details ? "\n\n" + data.details : ""));

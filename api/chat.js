@@ -210,11 +210,12 @@ export default async function handler(req, res) {
         ? `Predstojeće manifestacije u Valpovu (${new Date().getFullYear()}):\n\n`
         : 'Nema predstojećih manifestacija za ostatak ove godine.';
       for (const e of upcoming) {
+        if (e.IMAGE_URL) reply += `[[IMG:${e.IMAGE_URL}]]`;
         reply += `**${e.naziv}**\n`;
         reply += `📅 ${e.vrijeme}\n`;
         reply += `${e.opis}\n`;
         reply += e.web ? `[Više informacija](${e.web})\n` : `[Više informacija na TZ Valpovo](https://tz.valpovo.hr/manifestacije/)\n`;
-        reply += '\n';
+        reply += `[[CLR]]\n\n`;
       }
       return res.status(200).json({ reply, category, suggestions: getSuggestions(category), images: extractImages(context) });
     }
@@ -258,11 +259,12 @@ export default async function handler(req, res) {
         if (!items?.length) continue;
         if (showAll) reply += `${icon} **${label}**\n\n`;
         for (const item of items) {
+          if (item.IMAGE_URL) reply += `[[IMG:${item.IMAGE_URL}]]`;
           reply += `**${item.naziv}**\n`;
           if (item.opis) reply += `${item.opis}\n`;
           reply += `[Otvori na karti](${item.maps_url})\n`;
           reply += item.web ? `[Više informacija](${item.web})\n` : `[Više informacija na TZ Valpovo](https://tz.valpovo.hr/smjestaj-u-valpovu/)\n`;
-          reply += '\n';
+          reply += `[[CLR]]\n\n`;
         }
       }
       return res.status(200).json({ reply, category, suggestions: getSuggestions(category), images: extractImages(context) });
@@ -296,13 +298,14 @@ export default async function handler(req, res) {
       if (restorani.length) {
         reply += '🍽️ **Restorani**\n\n';
         for (const item of restorani) {
+          if (item.IMAGE_URL) reply += `[[IMG:${item.IMAGE_URL}]]`;
           reply += `**${item.naziv}**\n`;
           if (item.opis) reply += `${item.opis}\n`;
           if (item.adresa) reply += `📍 ${item.adresa}\n`;
           if (item.telefon) reply += `📞 ${item.telefon}\n`;
           reply += `[Otvori na karti](${mapsUrl(item)})\n`;
           if (item.web) reply += `[Više informacija](${item.web})\n`;
-          reply += '\n';
+          reply += `[[CLR]]\n\n`;
         }
       }
 
