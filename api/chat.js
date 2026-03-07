@@ -49,43 +49,95 @@ function eventMaxMonth(vrijeme) {
 function getRelevantContext(message, db, lastCategory) {
   const msg = message.toLowerCase();
 
-  if (msg.includes('povijest') || msg.includes('histori') || msg.includes('osnovan') || msg.includes('nastao') || msg.includes('kad je') || msg.includes('kada je') || msg.includes('općenito') || msg.includes('opcenito') || msg.includes('o gradu') || msg.includes('o valpovu') || msg.includes('stanovic') || msg.includes('stanovništv') || msg.includes('koliko ima') || msg.includes('naselje') || msg.includes('geografij') || msg.includes('površin') || msg.includes('gospodar') || msg.includes('industrij') || msg.includes('poznat') || msg.includes('zanimljiv') || msg.includes('iovallium') || msg.includes('prandau') || msg.includes('normann') || msg.includes('rimsk') || msg.includes('osmansk') || msg.includes('gradonacelnik') || msg.includes('gradonačelnik') || msg.includes('župani') || msg.includes('prometn') || msg.includes('željeznic') || msg.includes('vlak') || msg.includes('udaljenost'))
+  // HR + EN + DE ključne riječi
+  if (msg.includes('povijest') || msg.includes('histori') || msg.includes('osnovan') || msg.includes('općenito') || msg.includes('o gradu') || msg.includes('o valpovu') || msg.includes('stanovic') || msg.includes('stanovništv') || msg.includes('naselje') || msg.includes('geografij') || msg.includes('gospodar') || msg.includes('industrij') || msg.includes('poznat') || msg.includes('zanimljiv') || msg.includes('iovallium') || msg.includes('prandau') || msg.includes('rimsk') || msg.includes('osmansk') || msg.includes('gradonačelnik') || msg.includes('udaljenost')
+    // EN
+    || msg.includes('history') || msg.includes('about') || msg.includes('general') || msg.includes('population') || msg.includes('founded') || msg.includes('tell me about') || msg.includes('what is valpovo') || msg.includes('economy') || msg.includes('industry') || msg.includes('famous')
+    // DE
+    || msg.includes('geschichte') || msg.includes('über') || msg.includes('einwohner') || msg.includes('gegründet') || msg.includes('wirtschaft'))
     return { context: CATEGORY_CONTEXTS.opcenito(db), category: 'opcenito' };
 
-  if (msg.includes('smještaj') || msg.includes('smjestaj') || msg.includes('hotel') || msg.includes('noćen') || msg.includes('noćit') || msg.includes('prenoći') || msg.includes('sobe') || msg.includes('soba') || msg.includes('apartman') || msg.includes('boravak') || msg.includes('prenoćišt') || msg.includes('spavat') || msg.includes('gdje spat') || msg.includes('villa') || msg.includes('ruralni'))
+  if (msg.includes('smještaj') || msg.includes('hotel') || msg.includes('noćen') || msg.includes('apartman') || msg.includes('sobe') || msg.includes('villa') || msg.includes('ruralni')
+    // EN
+    || msg.includes('accommodation') || msg.includes('sleep') || msg.includes('stay') || msg.includes('room') || msg.includes('bed') || msg.includes('lodge') || msg.includes('hostel')
+    // DE
+    || msg.includes('unterkunft') || msg.includes('schlafen') || msg.includes('übernacht') || msg.includes('zimmer'))
     return { context: CATEGORY_CONTEXTS.smjestaj(db), category: 'smjestaj' };
 
-  if (msg.includes('jelo') || msg.includes('restoran') || msg.includes('gastronomija') || msg.includes('hrana') || msg.includes('pizza') || msg.includes('burger') || msg.includes('jesti') || msg.includes('večer') || msg.includes('večera') || msg.includes('ručak') || msg.includes('ručam') || msg.includes('pojesti') || msg.includes('naruč') || msg.includes('kafić') || msg.includes('kava') || msg.includes('piti') || msg.includes('bar') || msg.includes('popiti'))
+  if (msg.includes('jelo') || msg.includes('restoran') || msg.includes('hrana') || msg.includes('pizza') || msg.includes('burger') || msg.includes('jesti') || msg.includes('kafić') || msg.includes('kava') || msg.includes('bar')
+    // EN
+    || msg.includes('restaurant') || msg.includes('food') || msg.includes('eat') || msg.includes('dinner') || msg.includes('lunch') || msg.includes('breakfast') || msg.includes('cafe') || msg.includes('coffee') || msg.includes('drink')
+    // DE
+    || msg.includes('essen') || msg.includes('restaurant') || msg.includes('speise') || msg.includes('trinken') || msg.includes('café') || msg.includes('gaststätte'))
     return { context: CATEGORY_CONTEXTS.gastronomija(db), category: 'gastronomija' };
 
-  if (msg.includes('događ') || msg.includes('festival') || msg.includes('manifestac') || msg.includes('karneval') || msg.includes('advent') || msg.includes('uskrs'))
+  if (msg.includes('događ') || msg.includes('festival') || msg.includes('manifestac') || msg.includes('karneval') || msg.includes('advent')
+    // EN
+    || msg.includes('event') || msg.includes('events') || msg.includes('festival') || msg.includes('carnival') || msg.includes('celebration')
+    // DE
+    || msg.includes('veranstaltung') || msg.includes('fest') || msg.includes('feier'))
     return { context: CATEGORY_CONTEXTS.dogadanja(db), category: 'dogadanja' };
 
-  if (msg.includes('znamenitost') || msg.includes('dvorac') || msg.includes('muzej') || msg.includes('kula') || msg.includes('katančić') || msg.includes('posjet'))
+  if (msg.includes('znamenitost') || msg.includes('dvorac') || msg.includes('muzej') || msg.includes('kula') || msg.includes('katančić') || msg.includes('posjet')
+    // EN
+    || msg.includes('attraction') || msg.includes('sightseeing') || msg.includes('castle') || msg.includes('museum') || msg.includes('monument') || msg.includes('visit') || msg.includes('landmark') || msg.includes('sight')
+    // DE
+    || msg.includes('sehenswürdigkeit') || msg.includes('burg') || msg.includes('schloss') || msg.includes('museum') || msg.includes('besichtigung'))
     return { context: CATEGORY_CONTEXTS.znamenitosti(db), category: 'znamenitosti' };
 
-  if (msg.includes('sport') || msg.includes('sportski') || msg.includes('sportska') || msg.includes('tenis') || msg.includes('nogomet') || msg.includes('futsal') || msg.includes('rukomet') || msg.includes('odbojka') || msg.includes('košark') || msg.includes('karate') || msg.includes('savate') || msg.includes('šah') || msg.includes('ribolov') || msg.includes('fitness') || msg.includes('teretana') || msg.includes('stadion') || msg.includes('trčan') || msg.includes('rekreacij') || msg.includes('vježban') || msg.includes('klub') || msg.includes('sportaš') || msg.includes('natjecanj'))
+  if (msg.includes('sport') || msg.includes('tenis') || msg.includes('nogomet') || msg.includes('futsal') || msg.includes('rukomet') || msg.includes('odbojka') || msg.includes('košark') || msg.includes('karate') || msg.includes('fitness') || msg.includes('teretana') || msg.includes('stadion') || msg.includes('klub') || msg.includes('rekreacij')
+    // EN
+    || msg.includes('tennis') || msg.includes('football') || msg.includes('soccer') || msg.includes('handball') || msg.includes('volleyball') || msg.includes('basketball') || msg.includes('gym') || msg.includes('stadium') || msg.includes('club') || msg.includes('recreation')
+    // DE
+    || msg.includes('tennis') || msg.includes('fußball') || msg.includes('handball') || msg.includes('volleyball') || msg.includes('basketball') || msg.includes('fitnessstudio') || msg.includes('stadion') || msg.includes('verein'))
     return { context: CATEGORY_CONTEXTS.sport(db), category: 'sport' };
 
-  if (msg.includes('kupin') || msg.includes('kupovat') || msg.includes('shopping') || msg.includes('trgovin') || msg.includes('supermarket') || msg.includes('prodavaon') || msg.includes('dućan') || msg.includes('suveniri') || msg.includes('suvenir') || msg.includes('poklon') || msg.includes('stop shop') || msg.includes('konzum') || msg.includes('plodine') || msg.includes('spar') || msg.includes('obuć') || msg.includes('odjeć') || msg.includes('namještaj') || msg.includes('tržnic') || msg.includes('pijac') || msg.includes('market') || msg.includes('robu') || msg.includes('roba') || msg.includes('opg') || msg.includes('agropark') || msg.includes('domaći') || msg.includes('domac') || msg.includes('lokalni proizvod'))
+  if (msg.includes('kupin') || msg.includes('kupovat') || msg.includes('shopping') || msg.includes('trgovin') || msg.includes('supermarket') || msg.includes('dućan') || msg.includes('suveniri') || msg.includes('market') || msg.includes('agropark')
+    // EN
+    || msg.includes('shop') || msg.includes('store') || msg.includes('buy') || msg.includes('souvenir') || msg.includes('market') || msg.includes('mall') || msg.includes('grocery')
+    // DE
+    || msg.includes('einkaufen') || msg.includes('einkauf') || msg.includes('laden') || msg.includes('souvenir') || msg.includes('markt') || msg.includes('kaufen'))
     return { context: CATEGORY_CONTEXTS.kupovina(db), category: 'kupovina' };
 
-  if (msg.includes('benzin') || msg.includes('goriv') || msg.includes('tankiran') || msg.includes('pumpa'))
+  if (msg.includes('benzin') || msg.includes('goriv') || msg.includes('pumpa')
+    // EN
+    || msg.includes('gas station') || msg.includes('petrol') || msg.includes('fuel')
+    // DE
+    || msg.includes('tankstelle') || msg.includes('benzin') || msg.includes('kraftstoff'))
     return { context: CATEGORY_CONTEXTS.benzinske(db), category: 'benzinske' };
 
-  if (msg.includes('frizer') || msg.includes('brica') || msg.includes('šišan') || msg.includes('kozmet') || msg.includes('salon') || msg.includes('barber'))
+  if (msg.includes('frizer') || msg.includes('brica') || msg.includes('kozmet') || msg.includes('salon') || msg.includes('barber')
+    // EN
+    || msg.includes('hairdresser') || msg.includes('haircut') || msg.includes('barber') || msg.includes('beauty salon')
+    // DE
+    || msg.includes('friseur') || msg.includes('frisör') || msg.includes('haarschnitt'))
     return { context: CATEGORY_CONTEXTS.frizeraji(db), category: 'frizeraji' };
 
-  if (msg.includes('parking') || msg.includes('parkir') || msg.includes('parkirat') || msg.includes('gdje parkir') || msg.includes('auto ostav'))
+  if (msg.includes('parking') || msg.includes('parkir')
+    // EN (parking is same)
+    // DE
+    || msg.includes('parken') || msg.includes('parkplatz'))
     return { context: CATEGORY_CONTEXTS.parking(db), category: 'parking' };
 
-  if (msg.includes('servis') || msg.includes('ljekar') || msg.includes('banka') || msg.includes('pošta') || msg.includes('bankomat') || msg.includes('novac') || msg.includes('taksi') || msg.includes('taxi') || msg.includes('prijevoz') || msg.includes('autobus') || msg.includes('vlak') || msg.includes('kolodvor') || msg.includes('uslug'))
+  if (msg.includes('ljekar') || msg.includes('banka') || msg.includes('bankomat') || msg.includes('taksi') || msg.includes('taxi') || msg.includes('autobus') || msg.includes('uslug')
+    // EN
+    || msg.includes('doctor') || msg.includes('pharmacy') || msg.includes('bank') || msg.includes('atm') || msg.includes('cash') || msg.includes('bus') || msg.includes('service') || msg.includes('post office')
+    // DE
+    || msg.includes('arzt') || msg.includes('apotheke') || msg.includes('bank') || msg.includes('geldautomat') || msg.includes('bus') || msg.includes('taxi') || msg.includes('post'))
     return { context: CATEGORY_CONTEXTS.usluge(db), category: 'usluge' };
 
-  if (msg.includes('šetn') || msg.includes('setn') || msg.includes('karašic') || msg.includes('karasic') || msg.includes('bicikl') || msg.includes('perivoj') || msg.includes('park') || msg.includes('pješac') || msg.includes('pješac') || msg.includes('piknik') || msg.includes('priroda') || msg.includes('ribolov') || msg.includes('riba') || msg.includes('drava') || msg.includes('ušće') || msg.includes('uce') || msg.includes('rekreacij') || msg.includes('šuma') || msg.includes('suma') || msg.includes('zelenilo') || msg.includes('nordijsk'))
+  if (msg.includes('šetn') || msg.includes('bicikl') || msg.includes('perivoj') || msg.includes('park') || msg.includes('priroda') || msg.includes('ribolov') || msg.includes('drava') || msg.includes('šuma')
+    // EN
+    || msg.includes('walk') || msg.includes('hiking') || msg.includes('cycling') || msg.includes('nature') || msg.includes('fishing') || msg.includes('river') || msg.includes('forest') || msg.includes('outdoor') || msg.includes('picnic')
+    // DE
+    || msg.includes('wandern') || msg.includes('radfahren') || msg.includes('natur') || msg.includes('angeln') || msg.includes('fluss') || msg.includes('wald') || msg.includes('spazier'))
     return { context: CATEGORY_CONTEXTS.priroda(db), category: 'priroda' };
 
-  if (msg.includes('izlet') || msg.includes('okolica') || msg.includes('blizin') || msg.includes('nedaleko') || msg.includes('kopački') || msg.includes('kopacki') || msg.includes('osijek') || msg.includes('đakovo') || msg.includes('dakovo') || msg.includes('bizovac') || msg.includes('bizovač') || msg.includes('toplice') || msg.includes('vinsk') || msg.includes('vino') || msg.includes('vinograd') || msg.includes('miholjac') || msg.includes('našic') || msg.includes('nasic') || msg.includes('baranj') || msg.includes('ekskurzij') || msg.includes('što posjet') || msg.includes('kuda izaći'))
+  if (msg.includes('izlet') || msg.includes('okolica') || msg.includes('blizin') || msg.includes('kopački') || msg.includes('osijek') || msg.includes('đakovo') || msg.includes('bizovac') || msg.includes('toplice') || msg.includes('vino') || msg.includes('baranj')
+    // EN
+    || msg.includes('trip') || msg.includes('excursion') || msg.includes('nearby') || msg.includes('surroundings') || msg.includes('day trip') || msg.includes('wine') || msg.includes('spa') || msg.includes('around valpovo')
+    // DE
+    || msg.includes('ausflug') || msg.includes('umgebung') || msg.includes('in der nähe') || msg.includes('wein') || msg.includes('therme'))
     return { context: CATEGORY_CONTEXTS.okolica(db), category: 'okolica' };
 
   // Nema ključnih riječi — koristi zadnju kategoriju razgovora ako postoji
@@ -218,22 +270,22 @@ export default async function handler(req, res) {
     }
 
     const systemPrompt = `
+KRITIČNO PRAVILO — JEZIK: Uvijek odgovaraj ISKLJUČIVO na jeziku kojim je napisano korisnikovo pitanje. Ovo je apsolutni prioritet koji se nikad ne smije zanemariti.
+- Pitanje na engleskom → cijeli odgovor na engleskom, uključujući labele linkova ([Open on map], [More information])
+- Pitanje na njemačkom → cijeli odgovor na njemačkom ([Auf der Karte öffnen], [Mehr Informationen])
+- Pitanje na talijanskom → cijeli odgovor na talijanskom ([Apri sulla mappa], [Più informazioni])
+- Pitanje na hrvatskom → odgovor na hrvatskom ([Otvori na karti], [Više informacija])
+- Za bilo koji drugi jezik → odgovaraj na tom jeziku
+Podatke iz baze prevedi na jezik korisnika. Nazive mjesta, ulica i institucija ostavi u izvornom obliku.
+
 Ti si digitalni turistički informator grada Valpova.
 
-JEZIK ODGOVORA: Odgovaraj uvijek na ISTOM jeziku kojim korisnik postavlja pitanje.
-- Pitanje na hrvatskom → odgovor na hrvatskom
-- Pitanje na engleskom → odgovor na engleskom
-- Pitanje na njemačkom → odgovor na njemačkom
-- Pitanje na talijanskom → odgovor na talijanskom
-- Itd. za sve ostale jezike
-Podatke iz baze prevedi na jezik korisnika. Nazive mjesta i ulica ostavi u izvornom obliku.
-
-Za svaku lokaciju, restoran ili smještaj koristi TOČNO ovu strukturu (prevedi labele linkova na jezik korisnika):
+Za svaku lokaciju, restoran ili smještaj koristi TOČNO ovu strukturu (labele linkova na jeziku korisnika):
 
 **Naziv**
 Kratki opis.
-[Otvori na karti](Google Maps URL) ← na engleskom: [Open on map](...), na njemačkom: [Auf der Karte öffnen](...)
-[Više informacija](URL web stranice) ← na engleskom: [More information](...), na njemačkom: [Mehr Informationen](...)
+[Otvori na karti](Google Maps URL)
+[Više informacija](URL web stranice)
 
 PRAVILA FORMATIRANJA:
 - NIKAD ne koristi ### ili ## naslove
