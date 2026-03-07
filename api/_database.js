@@ -221,7 +221,7 @@ export const db = {
         {
             "naziv": "Hotel & Restoran Park Valpovo",
             "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2022/04/parkvalpovo003-853x640.jpg",
-            "opis": "Tradicionalni slavonski restorani s bogatom ponudom u krugu dvorca.",
+            "opis": "Tradicionalni slavonski restoran s bogatom ponudom jela i pića.",
             "adresa": "Ive Lole Ribara 10, Valpovo",
             "telefon": "+385 31 651 230",
             "web": "https://tz.valpovo.hr/ugostiteljstvo/restoran-park/"
@@ -434,7 +434,7 @@ export const db = {
             },
             {
                 "naziv": "Hotel & Restoran Park Valpovo",
-                "opis": "Hotel i restoran s tradicijom slavonske kuhinje u krugu dvorca.",
+                "opis": "Hotel i restoran s tradicijom slavonske kuhinje.",
                 "adresa": "Ive Lole Ribara 10",
                 "telefon": "+385 31 651 230",
                 "maps_url": "https://www.google.com/maps/search/?api=1&query=Hotel+Park+Valpovo",
