@@ -85,7 +85,7 @@ function getRelevantContext(message, db, lastCategory) {
   if (msg.includes('šetn') || msg.includes('setn') || msg.includes('karašic') || msg.includes('karasic') || msg.includes('bicikl') || msg.includes('perivoj') || msg.includes('park') || msg.includes('pješac') || msg.includes('pješac') || msg.includes('piknik') || msg.includes('priroda') || msg.includes('ribolov') || msg.includes('riba') || msg.includes('drava') || msg.includes('ušće') || msg.includes('uce') || msg.includes('rekreacij') || msg.includes('šuma') || msg.includes('suma') || msg.includes('zelenilo') || msg.includes('nordijsk'))
     return { context: CATEGORY_CONTEXTS.priroda(db), category: 'priroda' };
 
-  if (msg.includes('izlet') || msg.includes('okolica') || msg.includes('blizin') || msg.includes('nedaleko') || msg.includes('kopački') || msg.includes('kopacki') || msg.includes('osijek') || msg.includes('đakovo') || msg.includes('dakovo') || msg.includes('bizovac') || msg.includes('bizovač') || msg.includes('toplice') || msg.includes('vinska') || msg.includes('miholjac') || msg.includes('baranj') || msg.includes('slobodin') || msg.includes('ekskurzij') || msg.includes('što posjet') || msg.includes('kuda izaći'))
+  if (msg.includes('izlet') || msg.includes('okolica') || msg.includes('blizin') || msg.includes('nedaleko') || msg.includes('kopački') || msg.includes('kopacki') || msg.includes('osijek') || msg.includes('đakovo') || msg.includes('dakovo') || msg.includes('bizovac') || msg.includes('bizovač') || msg.includes('toplice') || msg.includes('vinsk') || msg.includes('vino') || msg.includes('vinograd') || msg.includes('miholjac') || msg.includes('našic') || msg.includes('nasic') || msg.includes('baranj') || msg.includes('ekskurzij') || msg.includes('što posjet') || msg.includes('kuda izaći'))
     return { context: CATEGORY_CONTEXTS.okolica(db), category: 'okolica' };
 
   // Nema ključnih riječi — koristi zadnju kategoriju razgovora ako postoji
@@ -155,11 +155,10 @@ export default async function handler(req, res) {
       return res.status(200).json({ reply, category });
     }
 
-    // Okolica listing: generiraj direktno bez AI — zajamčeni URL-ovi iz baze, bez halucinacija
-    // Uvijek pre-generiraj kad korisnik klikne gumb (sadrži 'izlet'), i kod prvog upita
+    // Okolica listing: generiraj direktno bez AI samo kad korisnik traži opći popis izleta
+    // (sadrži 'izlet') — specifična pitanja (vinske ceste, Kopački rit...) idu na AI
     const msgLower = message.toLowerCase();
-    const isOkolicaListing = category === 'okolica' &&
-      (lastCategory !== 'okolica' || msgLower.includes('izlet'));
+    const isOkolicaListing = category === 'okolica' && msgLower.includes('izlet');
     if (isOkolicaListing) {
       const izleti = db.okolica?.izleti || [];
       let reply = 'Preporučeni izleti iz Valpova — od najbližeg prema daljem:\n\n';
