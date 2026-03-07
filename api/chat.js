@@ -57,11 +57,11 @@ function getRelevantContext(message, db, lastCategory) {
     || msg.includes('geschichte') || msg.includes('über') || msg.includes('einwohner') || msg.includes('gegründet') || msg.includes('wirtschaft'))
     return { context: CATEGORY_CONTEXTS.opcenito(db), category: 'opcenito' };
 
-  if (msg.includes('smještaj') || msg.includes('smjestaj') || msg.includes('hotel') || msg.includes('noćen') || msg.includes('nocen') || msg.includes('apartman') || msg.includes('sobe') || msg.includes('soba') || msg.includes('sob ') || msg.includes('villa') || msg.includes('ruralni')
+  if (msg.includes('smještaj') || msg.includes('smjestaj') || msg.includes('hotel') || msg.includes('noćen') || msg.includes('nocen') || msg.includes('apartman') || msg.includes('sobe') || msg.includes('soba') || msg.includes('sob ') || msg.includes('villa') || msg.includes('ruralni') || msg.includes('seoski') || msg.includes('seosk') || msg.includes('gospodarstv') || msg.includes('farma') || msg.includes('agro') || msg.includes('prenoćiš') || msg.includes('prenocis') || msg.includes('prenoćišt') || msg.includes('privatni smještaj') || msg.includes('iznajm')
     // EN
-    || msg.includes('accommodation') || msg.includes('sleep') || msg.includes('stay') || msg.includes('room') || msg.includes('bed') || msg.includes('lodge') || msg.includes('hostel')
+    || msg.includes('accommodation') || msg.includes('sleep') || msg.includes('stay') || msg.includes('room') || msg.includes('bed') || msg.includes('lodge') || msg.includes('hostel') || msg.includes('farm stay') || msg.includes('rural')
     // DE
-    || msg.includes('unterkunft') || msg.includes('schlafen') || msg.includes('übernacht') || msg.includes('zimmer'))
+    || msg.includes('unterkunft') || msg.includes('schlafen') || msg.includes('übernacht') || msg.includes('zimmer') || msg.includes('bauernhof'))
     return { context: CATEGORY_CONTEXTS.smjestaj(db), category: 'smjestaj' };
 
   if (msg.includes('jelo') || msg.includes('restoran') || msg.includes('hrana') || msg.includes('pizza') || msg.includes('burger') || msg.includes('jesti') || msg.includes('ručati') || msg.includes('ručak') || msg.includes('večerati') || msg.includes('večera') || msg.includes('doručak') || msg.includes('kafić') || msg.includes('kava') || msg.includes('bar') || msg.includes('ugostit')
@@ -190,7 +190,7 @@ export default async function handler(req, res) {
       const wantsSobe      = msgL.includes('sob') || msgL.includes('room');
       const wantsHotel     = msgL.includes('hotel') && !wantsSobe;
       const wantsApartman  = (msgL.includes('apartman') || msgL.includes('studio')) && !wantsSobe;
-      const wantsRuralni   = msgL.includes('ruralni') || msgL.includes('holiday') || msgL.includes('dvori');
+      const wantsRuralni   = msgL.includes('ruralni') || msgL.includes('holiday') || msgL.includes('dvori') || msgL.includes('seoski') || msgL.includes('seosk') || msgL.includes('gospodarstv') || msgL.includes('farma') || msgL.includes('agro') || msgL.includes('rural') || msgL.includes('bauernhof');
       const wantsPrenociste= msgL.includes('prenoć') || msgL.includes('prenoc') || msgL.includes('noćiš') || msgL.includes('nocis');
 
       // Ako nema specifičnog zahtjeva → prikaži sve
