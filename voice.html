@@ -562,15 +562,37 @@
             }
 
             .title-main {
-                font-size: 18px;
+                font-size: 16px;
+            }
+
+            .title-sub {
+                font-size: 14px;
             }
 
             #hero {
                 top: 70px;
+                padding: 8px 12px;
+                gap: 6px;
             }
 
-            #chat {
-                top: 120px;
+            /* Gumbovi se NE prelamaju — klizaju horizontalno */
+            .quick-buttons {
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: none;
+                padding-bottom: 2px;
+            }
+
+            .quick-buttons::-webkit-scrollbar {
+                display: none;
+            }
+
+            .quick-buttons button {
+                white-space: nowrap;
+                flex-shrink: 0;
+                font-size: 13px;
+                padding: 6px 11px;
             }
 
             #modal-content {
@@ -825,14 +847,17 @@
 
             if (type === "ai") {
                 const html = formatAI(content);
-                // Dodajemo zaglavlje sa zvučnikom za AI
                 div.innerHTML = `
                     <div class="ai-header">
                         <span style="font-size: 0.8em; opacity: 0.5; font-weight: bold;">TURISTIČKI INFORMATOR</span>
-                        <button class="speak-btn" onclick="speakText(this, \`${content.replace(/`/g, "\\'").replace(/\n/g, " ")}\`)">🔊</button>
+                        <button class="speak-btn">🔊</button>
                     </div>
                     <div class="ai-content">${html}</div>
                 `;
+                // addEventListener umjesto inline onclick — sigurno za posebne znakove i mobilne browsere
+                div.querySelector('.speak-btn').addEventListener('click', function () {
+                    speakText(this, content);
+                });
             } else {
                 div.textContent = content;
             }
@@ -888,11 +913,22 @@
                 }
             }
 
-            try {
-                btn.classList.add("playing");
-                btn.innerHTML = "🛑";
-                currentSpeakerBtn = btn;
+            btn.classList.add("playing");
+            btn.innerHTML = "🛑";
+            currentSpeakerBtn = btn;
 
+            // iOS Safari: Audio objekt mora biti kreiran SINHRONO unutar click handlera
+            // (prije bilo kojeg await), inače browser blokira reprodukciju
+            const audio = new Audio();
+            currentAudio = audio;
+            audio.onended = () => {
+                btn.classList.remove("playing");
+                btn.innerHTML = "🔊";
+                currentAudio = null;
+                currentSpeakerBtn = null;
+            };
+
+            try {
                 const response = await fetch("/api/speak", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
@@ -902,21 +938,15 @@
                 if (!response.ok) throw new Error("TTS failed");
 
                 const blob = await response.blob();
-                const url = URL.createObjectURL(blob);
-
-                currentAudio = new Audio(url);
-                currentAudio.onended = () => {
-                    btn.classList.remove("playing");
-                    btn.innerHTML = "🔊";
-                    currentAudio = null;
-                    currentSpeakerBtn = null;
-                };
-                currentAudio.play();
+                audio.src = URL.createObjectURL(blob);
+                await audio.play();
 
             } catch (e) {
                 console.error("Speech error:", e);
                 btn.classList.remove("playing");
                 btn.innerHTML = "⚠️";
+                currentAudio = null;
+                currentSpeakerBtn = null;
             }
         }
 
@@ -1147,6 +1177,18 @@
         });
 
         loadWeather();
+
+        /* ── DINAMIČKA VISINA CHATA ── */
+        // Chat top = visina headera + visina hero panela (hero se mijenja ovisno o ekranu)
+        function adjustChatTop() {
+            const hero = document.getElementById('hero');
+            const chatEl = document.getElementById('chat');
+            chatEl.style.top = (hero.offsetTop + hero.offsetHeight) + 'px';
+        }
+        window.addEventListener('resize', adjustChatTop);
+        // Pozovi odmah i malo odgođeno (da se weather učita i hero dobije pravu visinu)
+        adjustChatTop();
+        setTimeout(adjustChatTop, 500);
     </script>
 
 </body>
