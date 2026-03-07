@@ -64,11 +64,11 @@ function getRelevantContext(message, db, lastCategory) {
     || msg.includes('unterkunft') || msg.includes('schlafen') || msg.includes('übernacht') || msg.includes('zimmer'))
     return { context: CATEGORY_CONTEXTS.smjestaj(db), category: 'smjestaj' };
 
-  if (msg.includes('jelo') || msg.includes('restoran') || msg.includes('hrana') || msg.includes('pizza') || msg.includes('burger') || msg.includes('jesti') || msg.includes('kafić') || msg.includes('kava') || msg.includes('bar')
+  if (msg.includes('jelo') || msg.includes('restoran') || msg.includes('hrana') || msg.includes('pizza') || msg.includes('burger') || msg.includes('jesti') || msg.includes('ručati') || msg.includes('ručak') || msg.includes('večerati') || msg.includes('večera') || msg.includes('doručak') || msg.includes('kafić') || msg.includes('kava') || msg.includes('bar') || msg.includes('ugostit')
     // EN
-    || msg.includes('restaurant') || msg.includes('food') || msg.includes('eat') || msg.includes('dinner') || msg.includes('lunch') || msg.includes('breakfast') || msg.includes('cafe') || msg.includes('coffee') || msg.includes('drink')
+    || msg.includes('restaurant') || msg.includes('food') || msg.includes('eat') || msg.includes('dinner') || msg.includes('lunch') || msg.includes('breakfast') || msg.includes('cafe') || msg.includes('coffee') || msg.includes('drink') || msg.includes('where to eat') || msg.includes('place to eat')
     // DE
-    || msg.includes('essen') || msg.includes('restaurant') || msg.includes('speise') || msg.includes('trinken') || msg.includes('café') || msg.includes('gaststätte'))
+    || msg.includes('essen') || msg.includes('speise') || msg.includes('trinken') || msg.includes('café') || msg.includes('gaststätte') || msg.includes('mittagessen') || msg.includes('abendessen'))
     return { context: CATEGORY_CONTEXTS.gastronomija(db), category: 'gastronomija' };
 
   if (msg.includes('događ') || msg.includes('festival') || msg.includes('manifestac') || msg.includes('karneval') || msg.includes('advent')
@@ -204,6 +204,68 @@ export default async function handler(req, res) {
           reply += '\n';
         }
       }
+      return res.status(200).json({ reply, category });
+    }
+
+    // Gastronomija listing: generiraj direktno bez AI (eliminira hallucination restorana)
+    const isGastroListing = category === 'gastronomija' && lastCategory !== 'gastronomija';
+    if (isGastroListing) {
+      const gastro = db.gastronomija || [];
+
+      // Pomoćna funkcija za maps_url — koristi polje ili generira iz adrese/naziva
+      const mapsUrl = (item) =>
+        item.maps_url ||
+        `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(item.naziv + ' Valpovo')}`;
+
+      // Grupiraj po tipu
+      const restorani = gastro.filter(g =>
+        /restoran|hotel.*restoran/i.test(g.naziv)
+      );
+      const brzaHrana = gastro.filter(g =>
+        /burger|pizza|pizzeria|brze prehrane|gurman/i.test(g.naziv)
+      );
+      const caffeBarovi = gastro.filter(g =>
+        !restorani.includes(g) && !brzaHrana.includes(g)
+      );
+
+      let reply = 'Valpovo ima bogatu ugostiteljsku ponudu — od tradicionalnih slavonskih restorana do caffe barova. Evo kompletnog pregleda:\n\n';
+
+      if (restorani.length) {
+        reply += '🍽️ **Restorani**\n\n';
+        for (const item of restorani) {
+          reply += `**${item.naziv}**\n`;
+          if (item.opis) reply += `${item.opis}\n`;
+          if (item.adresa) reply += `📍 ${item.adresa}\n`;
+          if (item.telefon) reply += `📞 ${item.telefon}\n`;
+          reply += `[Otvori na karti](${mapsUrl(item)})\n`;
+          if (item.web) reply += `[Više informacija](${item.web})\n`;
+          reply += '\n';
+        }
+      }
+
+      if (brzaHrana.length) {
+        reply += '🍕 **Brza hrana i pizzerije**\n\n';
+        for (const item of brzaHrana) {
+          reply += `**${item.naziv}**\n`;
+          if (item.opis) reply += `${item.opis}\n`;
+          if (item.adresa) reply += `📍 ${item.adresa}\n`;
+          reply += `[Otvori na karti](${mapsUrl(item)})\n`;
+          if (item.web) reply += `[Više informacija](${item.web})\n`;
+          reply += '\n';
+        }
+      }
+
+      if (caffeBarovi.length) {
+        reply += '☕ **Caffe barovi i kavane**\n\n';
+        for (const item of caffeBarovi) {
+          reply += `**${item.naziv}**\n`;
+          if (item.opis) reply += `${item.opis}\n`;
+          reply += `[Otvori na karti](${mapsUrl(item)})\n`;
+          if (item.web) reply += `[Više informacija](${item.web})\n`;
+          reply += '\n';
+        }
+      }
+
       return res.status(200).json({ reply, category });
     }
 
