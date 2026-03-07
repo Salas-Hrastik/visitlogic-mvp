@@ -110,6 +110,35 @@
             background: #b4ccbf;
         }
 
+        /* PHOTO STRIP — fotogalerija ispod bot odgovora */
+        .photo-strip {
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            overflow-y: hidden;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            margin-top: 12px;
+            padding-bottom: 4px;
+        }
+        .photo-strip::-webkit-scrollbar { display: none; }
+        .photo-strip a {
+            flex-shrink: 0;
+            display: block;
+            width: 130px;
+            height: 85px;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: opacity .2s, transform .2s;
+        }
+        .photo-strip a:hover { opacity: .85; transform: scale(1.03); }
+        .photo-strip img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
         /* SUGGESTION CHIPS — kontekstualni prijedlozi ispod bot odgovora */
         .suggestion-chips {
             display: flex;
@@ -1117,6 +1146,7 @@
                         const msgDiv = addMessage(data.reply);
                         conversationHistory.push({ role: "assistant", content: data.reply });
                         if (data.category) currentCategory = data.category;
+                        addPhotoStrip(msgDiv, data.images);
                         addSuggestions(msgDiv, data.suggestions);
                     } else if (data.error) {
                         addMessage("❌ **Greška:** " + data.error + (data.details ? "\n\n" + data.details : ""));
@@ -1147,6 +1177,7 @@
             let fullText = '';
             let streamCategory = null;
             let streamSuggestions = null;
+            let streamImages = null;
 
             // Kreiraj prazan AI message div
             const msgDiv = document.createElement('div');
@@ -1176,7 +1207,7 @@
                             fullText += payload.t;
                             contentDiv.textContent = fullText; // plain text dok stiže
                         }
-                        if (payload.done) { streamCategory = payload.category; streamSuggestions = payload.suggestions; }
+                        if (payload.done) { streamCategory = payload.category; streamSuggestions = payload.suggestions; streamImages = payload.images; }
                         if (payload.error) fullText = fullText || "⚠️ Greška pri generiranju odgovora.";
                     } catch {}
                 }
@@ -1196,8 +1227,29 @@
             conversationHistory.push({ role: 'assistant', content: fullText });
             if (streamCategory) currentCategory = streamCategory;
 
-            // Dodaj kontekstualne prijedloge
+            // Dodaj fotogaleriju i kontekstualne prijedloge
+            addPhotoStrip(msgDiv, streamImages);
             addSuggestions(msgDiv, streamSuggestions);
+        }
+
+        /* ── PHOTO STRIP ── */
+        function addPhotoStrip(msgDiv, images) {
+            if (!images?.length) return;
+            const strip = document.createElement('div');
+            strip.className = 'photo-strip';
+            images.forEach(url => {
+                const a = document.createElement('a');
+                a.href = url;
+                a.target = '_blank';
+                a.rel = 'noopener';
+                const img = document.createElement('img');
+                img.src = url;
+                img.alt = '';
+                img.loading = 'lazy';
+                a.appendChild(img);
+                strip.appendChild(a);
+            });
+            msgDiv.appendChild(strip);
         }
 
         /* ── SUGGESTION CHIPS ── */

@@ -150,6 +150,19 @@ function getRelevantContext(message, db, lastCategory) {
   return { context: db, category: null };
 }
 
+// Izvuci IMAGE_URL vrijednosti iz objekta/niza (rekurzivno), max N slika
+function extractImages(obj, max = 4) {
+  const urls = [];
+  function walk(node) {
+    if (!node || typeof node !== 'object' || urls.length >= max) return;
+    if (Array.isArray(node)) { node.forEach(walk); return; }
+    if (node.IMAGE_URL) urls.push(node.IMAGE_URL);
+    for (const v of Object.values(node)) walk(v);
+  }
+  walk(obj);
+  return urls.slice(0, max);
+}
+
 // Kontekstualni prijedlozi za sljedeće pitanje — ovisno o kategoriji
 function getSuggestions(category) {
   const map = {
@@ -203,7 +216,7 @@ export default async function handler(req, res) {
         reply += e.web ? `[Više informacija](${e.web})\n` : `[Više informacija na TZ Valpovo](https://tz.valpovo.hr/manifestacije/)\n`;
         reply += '\n';
       }
-      return res.status(200).json({ reply, category, suggestions: getSuggestions(category) });
+      return res.status(200).json({ reply, category, suggestions: getSuggestions(category), images: extractImages(context) });
     }
 
     // Smještaj listing: uvijek generiraj direktno bez AI (sprječava hallucination)
@@ -252,7 +265,7 @@ export default async function handler(req, res) {
           reply += '\n';
         }
       }
-      return res.status(200).json({ reply, category, suggestions: getSuggestions(category) });
+      return res.status(200).json({ reply, category, suggestions: getSuggestions(category), images: extractImages(context) });
     }
 
     // Gastronomija listing: generiraj direktno bez AI (eliminira hallucination restorana)
@@ -316,7 +329,7 @@ export default async function handler(req, res) {
         }
       }
 
-      return res.status(200).json({ reply, category, suggestions: getSuggestions(category) });
+      return res.status(200).json({ reply, category, suggestions: getSuggestions(category), images: extractImages(context) });
     }
 
     // Sport listing: generiraj direktno bez AI (opći upit o sportu/klubovima)
@@ -359,7 +372,7 @@ export default async function handler(req, res) {
           reply += '\n';
         }
       }
-      return res.status(200).json({ reply, category, suggestions: getSuggestions(category) });
+      return res.status(200).json({ reply, category, suggestions: getSuggestions(category), images: extractImages(context) });
     }
 
     // Okolica listing: generiraj direktno bez AI samo kad korisnik traži opći popis izleta
@@ -378,7 +391,7 @@ export default async function handler(req, res) {
         if (item.web)        reply += `[Više informacija](${item.web})\n`;
         reply += '\n';
       }
-      return res.status(200).json({ reply, category, suggestions: getSuggestions(category) });
+      return res.status(200).json({ reply, category, suggestions: getSuggestions(category), images: extractImages(context) });
     }
 
     // Datum i godišnje doba (server-side, uvijek točno)
@@ -495,7 +508,7 @@ ${JSON.stringify(stripImages(context))}
       const content = chunk.choices[0]?.delta?.content;
       if (content) res.write(`data: ${JSON.stringify({ t: content })}\n\n`);
     }
-    res.write(`data: ${JSON.stringify({ done: true, category: category || null, suggestions: getSuggestions(category) })}\n\n`);
+    res.write(`data: ${JSON.stringify({ done: true, category: category || null, suggestions: getSuggestions(category), images: extractImages(context) })}\n\n`);
     res.end();
 
   } catch (error) {
