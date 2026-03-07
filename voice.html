@@ -146,10 +146,10 @@
             background: none;
             border: none;
             cursor: pointer;
-            font-size: 18px;
-            opacity: 0.6;
+            font-size: 26px;
+            opacity: 0.65;
             transition: opacity 0.2s, transform 0.1s;
-            padding: 4px;
+            padding: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -847,11 +847,19 @@
         // Čisti tekst za TTS: uklanja markdown, linkove → fonetski opis
         function cleanForSpeech(text) {
             return text
-                // Google Maps linkovi → "Otvori na mapi"
+                // Hrvatski Maps linkovi → "Otvori na mapi"
                 .replace(/\[Otvori na karti\]\([^)]+\)/g, 'Otvori na mapi.')
-                // "Više informacija..." linkovi → "Više informacija na webu"
+                // Engleski Maps linkovi → "Open on map"
+                .replace(/\[Open on map\]\([^)]+\)/g, 'Open on map.')
+                // Njemački Maps linkovi → "Auf der Karte öffnen"
+                .replace(/\[Auf der Karte[^\]]*\]\([^)]+\)/g, 'Auf der Karte öffnen.')
+                // Hrvatski "Više informacija..." → "Više informacija na webu"
                 .replace(/\[Više informacija[^\]]*\]\([^)]+\)/g, 'Više informacija na webu.')
-                // Svi ostali markdowni linkovi → samo label tekst
+                // Engleski "More information..." → "More information on the web"
+                .replace(/\[More information[^\]]*\]\([^)]+\)/g, 'More information on the web.')
+                // Njemački "Mehr Informationen..." → "Mehr Informationen im Web"
+                .replace(/\[Mehr Informationen[^\]]*\]\([^)]+\)/g, 'Mehr Informationen im Web.')
+                // Svi ostali markdown linkovi → samo label tekst (čita se label)
                 .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
                 // Ukloni markdown bold **tekst**
                 .replace(/\*\*([^*]+)\*\*/g, '$1')
