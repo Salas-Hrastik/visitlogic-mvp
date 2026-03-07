@@ -67,7 +67,7 @@ function getRelevantContext(message, db, lastCategory) {
   if (msg.includes('sport') || msg.includes('sportski') || msg.includes('sportska') || msg.includes('tenis') || msg.includes('nogomet') || msg.includes('futsal') || msg.includes('rukomet') || msg.includes('odbojka') || msg.includes('košark') || msg.includes('karate') || msg.includes('savate') || msg.includes('šah') || msg.includes('ribolov') || msg.includes('fitness') || msg.includes('teretana') || msg.includes('stadion') || msg.includes('trčan') || msg.includes('rekreacij') || msg.includes('vježban') || msg.includes('klub') || msg.includes('sportaš') || msg.includes('natjecanj'))
     return { context: CATEGORY_CONTEXTS.sport(db), category: 'sport' };
 
-  if (msg.includes('kupin') || msg.includes('kupovat') || msg.includes('shopping') || msg.includes('trgovin') || msg.includes('supermarket') || msg.includes('prodavaon') || msg.includes('dućan') || msg.includes('suveniri') || msg.includes('suvenir') || msg.includes('poklon') || msg.includes('stop shop') || msg.includes('konzum') || msg.includes('plodine') || msg.includes('spar') || msg.includes('obuć') || msg.includes('odjeć') || msg.includes('namještaj') || msg.includes('tržnic') || msg.includes('pijac') || msg.includes('market') || msg.includes('robu') || msg.includes('roba'))
+  if (msg.includes('kupin') || msg.includes('kupovat') || msg.includes('shopping') || msg.includes('trgovin') || msg.includes('supermarket') || msg.includes('prodavaon') || msg.includes('dućan') || msg.includes('suveniri') || msg.includes('suvenir') || msg.includes('poklon') || msg.includes('stop shop') || msg.includes('konzum') || msg.includes('plodine') || msg.includes('spar') || msg.includes('obuć') || msg.includes('odjeć') || msg.includes('namještaj') || msg.includes('tržnic') || msg.includes('pijac') || msg.includes('market') || msg.includes('robu') || msg.includes('roba') || msg.includes('opg') || msg.includes('agropark') || msg.includes('domaći') || msg.includes('domac') || msg.includes('lokalni proizvod'))
     return { context: CATEGORY_CONTEXTS.kupovina(db), category: 'kupovina' };
 
   if (msg.includes('benzin') || msg.includes('goriv') || msg.includes('tankiran') || msg.includes('pumpa'))
@@ -79,7 +79,7 @@ function getRelevantContext(message, db, lastCategory) {
   if (msg.includes('parking') || msg.includes('parkir') || msg.includes('parkirat') || msg.includes('gdje parkir') || msg.includes('auto ostav'))
     return { context: CATEGORY_CONTEXTS.parking(db), category: 'parking' };
 
-  if (msg.includes('servis') || msg.includes('ljekar') || msg.includes('banka') || msg.includes('pošta') || msg.includes('bankomat') || msg.includes('taksi') || msg.includes('taxi') || msg.includes('prijevoz') || msg.includes('autobus') || msg.includes('vlak') || msg.includes('kolodvor') || msg.includes('uslug'))
+  if (msg.includes('servis') || msg.includes('ljekar') || msg.includes('banka') || msg.includes('pošta') || msg.includes('bankomat') || msg.includes('novac') || msg.includes('taksi') || msg.includes('taxi') || msg.includes('prijevoz') || msg.includes('autobus') || msg.includes('vlak') || msg.includes('kolodvor') || msg.includes('uslug'))
     return { context: CATEGORY_CONTEXTS.usluge(db), category: 'usluge' };
 
   if (msg.includes('šetn') || msg.includes('setn') || msg.includes('karašic') || msg.includes('karasic') || msg.includes('bicikl') || msg.includes('perivoj') || msg.includes('park') || msg.includes('pješac') || msg.includes('pješac') || msg.includes('piknik') || msg.includes('priroda') || msg.includes('ribolov') || msg.includes('riba') || msg.includes('drava') || msg.includes('ušće') || msg.includes('uce') || msg.includes('rekreacij') || msg.includes('šuma') || msg.includes('suma') || msg.includes('zelenilo') || msg.includes('nordijsk'))
@@ -201,9 +201,11 @@ PRAVILA ZA BROJ REZULTATA:
 - Za kategoriju OKOLICA — SPECIFIČNO pitanje (npr. "vinske ceste", "Kopački rit", "toplice", "Baranja"): odgovaraj SAMO o traženoj temi — ne listaj sve destinacije. Navedi udaljenost, opis i [Više informacija](web) samo za relevantne unose.
 - Za kategoriju OKOLICA — OPĆI upit ("što ima u okolici", "preporuči izlet"): prikaži sve destinacije s udaljenošću, kratkim opisom i cijenom (ako postoji). Koristi emoji 📍. Za svaku dodaj [Više informacija](web). Grupiraj po udaljenosti: bliže → dalje.
 - Za sve ostale kategorije: prikaži MAKSIMALNO 5 lokacija po odgovoru
-- Ako ih ima više, na kraju dodaj: "Ima još [N] rezultata — pitajte za više!"
+- Ako ih ima više od prikazanih (N > 0), na kraju dodaj: "Ima još [N] rezultata — pitajte za više!" — AKO NEMA VIŠE, NE DODAJ NIŠTA
 - Ako korisnik traži "još" ili "više" — prikaži sljedećih 5 koje NISU već navedene
 - Nikad ne ponavljaj iste lokacije u istom razgovoru
+
+PRAVILO: AKO PODATAK NIJE U BAZI — odgovori iskreno: "Trenutno nemam te podatke. Za više informacija obratite se Turističkoj zajednici Valpovo: [tz.valpovo.hr](https://tz.valpovo.hr) ili tel. 031 651 256." NIKAD ne izmišljaj podatke koji nisu u bazi.
 
 Baza podataka:
 ${JSON.stringify(stripImages(context))}

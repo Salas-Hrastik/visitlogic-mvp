@@ -549,10 +549,17 @@ export const db = {
             { "naziv": "Ljekarna Kalenić", "adresa": "J.J. Strossmayera 12", "telefon": "031 650 290" }
         ],
         "banke_i_posta": [
-            { "naziv": "Hrvatska pošta", "adresa": "Osječka 2", "telefon": "031 651 155" },
-            { "naziv": "Slatinska banka", "adresa": "Trg kralja Tomislava 6", "telefon": "031 628 165" },
-            { "naziv": "OTP banka", "adresa": "Vijenac 107. brig. HV 1" },
-            { "naziv": "HPB", "adresa": "Trg kralja Tomislava 17" }
+            { "naziv": "Hrvatska pošta", "adresa": "Osječka 2", "telefon": "031 651 155", "maps_url": "https://www.google.com/maps/search/?api=1&query=Hrvatska+pošta+Valpovo" },
+            { "naziv": "Slatinska banka", "adresa": "Trg kralja Tomislava 6", "telefon": "031 628 165", "radno_vrijeme": "Pon–Pet 08:30–16:00", "maps_url": "https://www.google.com/maps/search/?api=1&query=Slatinska+banka+Valpovo" },
+            { "naziv": "OTP banka", "adresa": "Vijenac 107. brig. HV 1", "maps_url": "https://www.google.com/maps/search/?api=1&query=OTP+banka+Valpovo" },
+            { "naziv": "HPB (Hrvatska poštanska banka)", "adresa": "Trg kralja Tomislava 17", "maps_url": "https://www.google.com/maps/search/?api=1&query=HPB+Valpovo" },
+            { "naziv": "PBZ (Privredna banka Zagreb)", "adresa": "Trg F. Šovagovića 1", "maps_url": "https://www.google.com/maps/search/?api=1&query=PBZ+Valpovo" }
+        ],
+        "bankomati": [
+            { "naziv": "Bankomat Slatinska banka", "adresa": "Trg kralja Tomislava 6", "napomena": "Dostupan u radno vrijeme poslovnice (Pon–Pet 08:30–16:00)", "maps_url": "https://www.google.com/maps/search/?api=1&query=Slatinska+banka+Valpovo" },
+            { "naziv": "Bankomat HPB", "adresa": "Trg kralja Tomislava 17", "napomena": "Dostupan 24/7", "maps_url": "https://www.google.com/maps/search/?api=1&query=HPB+bankomat+Valpovo" },
+            { "naziv": "Bankomat OTP banka", "adresa": "Vijenac 107. brig. HV 1", "maps_url": "https://www.google.com/maps/search/?api=1&query=OTP+banka+Valpovo" },
+            { "naziv": "Bankomat PBZ", "adresa": "Trg F. Šovagovića 1", "maps_url": "https://www.google.com/maps/search/?api=1&query=PBZ+bankomat+Valpovo" }
         ],
         "trgovine": [
             { "naziv": "STOP SHOP Valpovo (Shopping centar)", "adresa": "Ivana Fuderera Hanzike 1" },
@@ -762,10 +769,32 @@ export const db = {
         ],
         "trznica": [
             {
-                "naziv": "Gradska tržnica Valpovo",
-                "opis": "Lokalna tržnica u centru Valpova s ponudom svježeg voća, povrća, sezonskih namirnica i lokalnih poljoprivrednih proizvoda. Klasično okupljalište mještana svako jutro.",
-                "adresa": "Centar Valpova (uz Osječku ulicu)",
-                "maps_url": "https://www.google.com/maps/search/?api=1&query=tržnica+Valpovo"
+                "naziv": "Agropark — Valpovačka zelena tržnica",
+                "opis": "Tržnica lokalnih OPG-ova i obrtnika, otvorena uz potporu EU fondova. Svježe voće, povrće, med, sirevi i domaći proizvodi valpovačkih poljoprivrednika.",
+                "adresa": "Valpovački poduzetnički centar, Valpovo",
+                "radno_vrijeme": "Pon–Sub 07:30–11:30 (radno vrijeme iz probnog perioda — za aktualno provjerite na 031 656 200)",
+                "maps_url": "https://www.google.com/maps/search/?api=1&query=Agropark+Valpovo"
+            }
+        ],
+        "opg": [
+            {
+                "naziv": "OPG Matija Bartolović — pčelarstvo",
+                "opis": "Lokalni pčelar s oko 150 košnica. Proizvodi: bagremov med, cvjetni med, lipov med. Jedini slavonsko-baranjski med koji se prodaje u irskim trgovinama. Narudžba putem Facebooka ili platforme Locavore.",
+                "adresa": "Valpovo",
+                "telefon": "+385 91 734 8631",
+                "email": "matija.bartolovic1@gmail.com",
+                "maps_url": "https://www.google.com/maps/search/?api=1&query=OPG+Bartolovic+Valpovo"
+            },
+            {
+                "naziv": "OPG Piskorjanac Davor — povrće i prerađevine",
+                "opis": "OPG iz Valpova s ponudom povrća i prerađevina od voća. Narudžba putem Facebooka.",
+                "adresa": "Valpovo",
+                "telefon": "+385 97 602 9011",
+                "maps_url": "https://www.google.com/maps/search/?api=1&query=OPG+Piskorjanac+Valpovo"
+            },
+            {
+                "naziv": "Ostali OPG-ovi na Agroparku",
+                "opis": "Na Agroparku redovito nastupaju lokalni OPG-ovi s medom, kozjim sirom, cvijećem i sezonskim namirnicama. Za aktualan popis i kontakte obratite se Gradu Valpovo (031 656 200) ili TZ Valpovo."
             }
         ]
     },
