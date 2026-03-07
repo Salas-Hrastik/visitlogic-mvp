@@ -553,30 +553,38 @@
         /* RESPONZIVNOST */
         @media (max-width: 600px) {
             .header {
-                height: 70px;
-                padding: 10px 15px;
+                height: 60px;
+                padding: 8px 12px;
             }
 
             .logo {
-                height: 40px;
+                height: 36px;
             }
 
             .title-main {
-                font-size: 16px;
+                font-size: 15px;
             }
 
             .title-sub {
-                font-size: 14px;
+                font-size: 13px;
             }
 
+            /* Hero: vertikalni stek — vremenski podatak gore, gumbi klizaju ispod */
             #hero {
-                top: 70px;
-                padding: 8px 12px;
-                gap: 6px;
+                top: 60px;
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 6px 12px;
+                gap: 5px;
             }
 
-            /* Gumbovi se NE prelamaju — klizaju horizontalno */
+            .hero-weather {
+                font-size: 13px;
+            }
+
+            /* Gumbi u jednom horizontalnom kliznom redu — bez prelamanja */
             .quick-buttons {
+                width: 100%;
                 flex-wrap: nowrap;
                 overflow-x: auto;
                 -webkit-overflow-scrolling: touch;
@@ -591,8 +599,8 @@
             .quick-buttons button {
                 white-space: nowrap;
                 flex-shrink: 0;
-                font-size: 13px;
-                padding: 6px 11px;
+                font-size: 12px;
+                padding: 5px 10px;
             }
 
             #modal-content {
