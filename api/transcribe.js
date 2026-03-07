@@ -1,4 +1,4 @@
-import formidable from 'formidable';
+import { IncomingForm } from 'formidable';
 import fs from 'fs';
 
 export const config = {
@@ -10,14 +10,14 @@ export const config = {
 export default async function handler(req, res) {
     if (req.method !== "POST") return res.status(405).json({ error: "Method not allowed" });
 
-    const form = new formidable.IncomingForm();
+    const form = new IncomingForm();
 
     form.parse(req, async (err, fields, files) => {
         if (err) {
             return res.status(500).json({ error: "Form error", details: err.message });
         }
 
-        const audioFile = files.file;
+        const audioFile = Array.isArray(files.file) ? files.file[0] : files.file;
         if (!audioFile) {
             return res.status(400).json({ error: "Nedostaje audio datoteka." });
         }
@@ -27,12 +27,9 @@ export default async function handler(req, res) {
             if (!apiKey) return res.status(500).json({ error: "API ključ nije postavljen." });
 
             const formData = new FormData();
-            const stats = fs.statSync(audioFile.filepath);
-            const stream = fs.createReadStream(audioFile.filepath);
-
-            // OpenAI Whisper zahtijeva 'file', 'model' i opcionalno 'language'
-            formData.append('file', new Blob([fs.readFileSync(audioFile.filepath)], { type: audioFile.mimetype }), 'audio.webm');
+            formData.append('file', new Blob([fs.readFileSync(audioFile.filepath)], { type: audioFile.mimetype || 'audio/webm' }), 'audio.webm');
             formData.append('model', 'whisper-1');
+            formData.append('language', 'hr');
 
             const response = await fetch("https://api.openai.com/v1/audio/transcriptions", {
                 method: "POST",
@@ -54,8 +51,9 @@ export default async function handler(req, res) {
             console.error("Transcription Error:", e);
             return res.status(500).json({ error: "Sistemska pogreška", details: e.message });
         } finally {
-            // Čišćenje privremene datoteke
-            if (audioFile.filepath) fs.unlinkSync(audioFile.filepath);
+            if (audioFile?.filepath) {
+                try { fs.unlinkSync(audioFile.filepath); } catch (_) {}
+            }
         }
     });
 }
