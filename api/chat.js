@@ -331,12 +331,35 @@ export default async function handler(req, res) {
       return res.status(200).json({ reply, category });
     }
 
+    // Datum i godišnje doba (server-side, uvijek točno)
+    const now = new Date();
+    const day = now.getDate();
+    const month = now.getMonth() + 1; // 1-12
+    const year = now.getFullYear();
+    const months = ['siječnja','veljače','ožujka','travnja','svibnja','lipnja',
+                    'srpnja','kolovoza','rujna','listopada','studenog','prosinca'];
+    const dateStr = `${day}. ${months[month - 1]} ${year}.`;
+
+    function getSeason(m, d) {
+      if ((m === 3 && d >= 21) || m === 4 || m === 5 || (m === 6 && d <= 20)) return 'proljeće';
+      if ((m === 6 && d >= 21) || m === 7 || m === 8 || (m === 9 && d <= 22)) return 'ljeto';
+      if ((m === 9 && d >= 23) || m === 10 || m === 11 || (m === 12 && d <= 21)) return 'jesen';
+      return 'zima';
+    }
+    const season = getSeason(month, day);
+
     const weatherLine = weather?.temperature !== undefined
       ? `Trenutno vrijeme u Valpovu: ${weather.temperature}°C, vjetar ${weather.windspeed} km/h.`
       : '';
 
     const systemPrompt = `
-${weatherLine ? `TRENUTNO VRIJEME: ${weatherLine}\n` : ''}KRITIČNO PRAVILO — JEZIK: Uvijek odgovaraj ISKLJUČIVO na jeziku kojim je napisano korisnikovo pitanje. Ovo je apsolutni prioritet koji se nikad ne smije zanemariti.
+KONTEKST TRENUTNOG TRENUTKA:
+- Datum: ${dateStr}
+- Godišnje doba: ${season}
+${weatherLine ? `- Trenutno vrijeme u Valpovu: ${weatherLine}` : ''}
+Koristi ovaj kontekst prirodno u preporukama — npr. ljeti predloži rijeku i izlete na otvorenom, zimi toplice i advent, u proljeće šetnje i biciklizam, u jesen vinska sela i berbu.
+
+KRITIČNO PRAVILO — JEZIK: Uvijek odgovaraj ISKLJUČIVO na jeziku kojim je napisano korisnikovo pitanje. Ovo je apsolutni prioritet koji se nikad ne smije zanemariti.
 - Pitanje na engleskom → cijeli odgovor na engleskom, uključujući labele linkova ([Open on map], [More information])
 - Pitanje na njemačkom → cijeli odgovor na njemačkom ([Auf der Karte öffnen], [Mehr Informationen])
 - Pitanje na talijanskom → cijeli odgovor na talijanskom ([Apri sulla mappa], [Più informazioni])
