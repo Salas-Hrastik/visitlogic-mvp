@@ -843,6 +843,27 @@
         }
 
         /* ── GLASOVNE FUNKCIJE ── */
+
+        // Čisti tekst za TTS: uklanja markdown, linkove → fonetski opis
+        function cleanForSpeech(text) {
+            return text
+                // Google Maps linkovi → "Otvori na mapi"
+                .replace(/\[Otvori na karti\]\([^)]+\)/g, 'Otvori na mapi.')
+                // "Više informacija..." linkovi → "Više informacija na webu"
+                .replace(/\[Više informacija[^\]]*\]\([^)]+\)/g, 'Više informacija na webu.')
+                // Svi ostali markdowni linkovi → samo label tekst
+                .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
+                // Ukloni markdown bold **tekst**
+                .replace(/\*\*([^*]+)\*\*/g, '$1')
+                // Ukloni emoji znakove
+                .replace(/[\u{1F300}-\u{1F9FF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}\u{1F000}-\u{1FFFF}]/gu, '')
+                // Pretvori višestruke newline u pauzu
+                .replace(/\n+/g, '. ')
+                // Ukloni višestruke razmake
+                .replace(/\s{2,}/g, ' ')
+                .trim();
+        }
+
         async function speakText(btn, text) {
             if (currentAudio) {
                 currentAudio.pause();
@@ -864,7 +885,7 @@
                 const response = await fetch("/api/speak", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ text: text.substring(0, 1000) })
+                    body: JSON.stringify({ text: cleanForSpeech(text).substring(0, 1200) })
                 });
 
                 if (!response.ok) throw new Error("TTS failed");

@@ -29,7 +29,7 @@ export default async function handler(req, res) {
             const formData = new FormData();
             formData.append('file', new Blob([fs.readFileSync(audioFile.filepath)], { type: audioFile.mimetype || 'audio/webm' }), 'audio.webm');
             formData.append('model', 'whisper-1');
-            formData.append('language', 'hr');
+            // Bez 'language' — Whisper automatski detektira jezik (hr, en, de, it...)
 
             const response = await fetch("https://api.openai.com/v1/audio/transcriptions", {
                 method: "POST",
