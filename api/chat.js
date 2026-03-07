@@ -93,10 +93,11 @@ function getRelevantContext(message, db, lastCategory) {
     return { context: CATEGORY_CONTEXTS.sport(db), category: 'sport' };
 
   if (msg.includes('kupin') || msg.includes('kupovat') || msg.includes('shopping') || msg.includes('trgovin') || msg.includes('supermarket') || msg.includes('dućan') || msg.includes('suveniri') || msg.includes('market') || msg.includes('agropark')
+    || msg.includes('cipel') || msg.includes('obuć') || msg.includes('odjeć') || msg.includes('moda') || msg.includes('haljin') || msg.includes('hlač') || msg.includes('košulj') || msg.includes('namještaj') || msg.includes('kozmetik') || msg.includes('drogerij') || msg.includes('med') || msg.includes('sir') || msg.includes('tržnic')
     // EN
-    || msg.includes('shop') || msg.includes('store') || msg.includes('buy') || msg.includes('souvenir') || msg.includes('market') || msg.includes('mall') || msg.includes('grocery')
+    || msg.includes('shop') || msg.includes('store') || msg.includes('buy') || msg.includes('souvenir') || msg.includes('market') || msg.includes('mall') || msg.includes('grocery') || msg.includes('shoes') || msg.includes('clothes') || msg.includes('clothing') || msg.includes('fashion') || msg.includes('furniture') || msg.includes('cosmetics')
     // DE
-    || msg.includes('einkaufen') || msg.includes('einkauf') || msg.includes('laden') || msg.includes('souvenir') || msg.includes('markt') || msg.includes('kaufen'))
+    || msg.includes('einkaufen') || msg.includes('einkauf') || msg.includes('laden') || msg.includes('souvenir') || msg.includes('markt') || msg.includes('kaufen') || msg.includes('schuhe') || msg.includes('kleidung') || msg.includes('möbel'))
     return { context: CATEGORY_CONTEXTS.kupovina(db), category: 'kupovina' };
 
   if (msg.includes('benzin') || msg.includes('goriv') || msg.includes('pumpa')
@@ -398,13 +399,14 @@ PRAVILA FORMATIRANJA:
 PRAVILA ZA BROJ REZULTATA:
 - Za kategoriju SMJEŠTAJ: prikaži SVE opcije, grupirane po tipu (Hoteli, Apartmani, Prenoćišta, Sobe, Ruralni smještaj). Za svaku lokaciju samo: naziv, kratki opis (ako postoji), [Otvori na karti] i [Više informacija].
 - Za kategoriju SPORT (opći upit): prikaži SVE klubove grupirane po sportu, pa objekte i rekreaciju. Koristi emoji po sportu: ⚽ Nogomet, 🎾 Tenis, 🤾 Rukomet, 🏐 Odbojka, 🥊 Borilački, ♟️ Šah, 🎣 Ribolov, 💪 Fitness itd.
-- Za kategoriju KUPOVINA (opći upit): prikaži sve u logičnom redoslijedu — prvo 🏬 Trading centri (s popisom trgovina unutra), zatim 🛒 Supermarketi, 🏪 Specijalizirane trgovine, 🎁 Lokalni proizvodi i suveniri, 🥬 Tržnica. Za svaku stavku napiši naziv, opis, radno vrijeme i [Otvori na karti]. Za STOP SHOP dodatno navedi popis svih trgovina unutra.
+- Za kategoriju KUPOVINA — OPĆI upit: prikaži sve u logičnom redoslijedu — prvo 🏬 Trgovački centri (s popisom trgovina unutra), zatim 🛒 Supermarketi, 🏪 Specijalizirane trgovine, 🎁 Lokalni proizvodi i suveniri, 🥬 Tržnica. Za svaku stavku napiši naziv, opis i [Otvori na karti]. Za STOP SHOP navedi popis svih trgovina unutra.
+- Za kategoriju KUPOVINA — SPECIFIČNI upit (npr. cipele, odjeća, namještaj, kozmetika): prikaži SAMO relevantne prodavaonice. Primjeri: cipele/obuća → Deichmann (u STOP SHOP), Borovo obuća; odjeća/moda → PEPCO, Takko Fashion, KiK, MANA; namještaj → Prima namještaj, JYSK; kozmetika → dm, BIPA. NIKAD ne prikazuj nesrodne prodavaonice (npr. mesnice za upit o cipelama).
 - Za kategoriju OPĆENITO / O GRADU: odgovaraj slobodnim tekstom koristeći podatke iz baze. Struktura ovisno o pitanju — za opći upit o gradu daj: osnovni podaci → kratka povijest → naselja → gospodarske aktivnosti → zanimljivosti. NE koristi tablice, koristi boldane naslove sekcija i kratke paragrafe.
 - Za kategoriju PRIRODA (opći upit): prikaži sve sadržaje grupirane: 🚶 Šetnice i parkovi, 🚴 Biciklizam, 🎣 Ribolov. Za svaki unos: naziv, opis. Gdje postoji maps_url — dodaj [Otvori na karti].
 - Za kategoriju OKOLICA — SPECIFIČNO pitanje (npr. "vinske ceste", "Kopački rit", "toplice", "Baranja"): odgovaraj SAMO o traženoj temi — ne listaj sve destinacije. Navedi udaljenost, opis i [Više informacija](web) samo za relevantne unose.
 - Za kategoriju OKOLICA — OPĆI upit ("što ima u okolici", "preporuči izlet"): prikaži sve destinacije s udaljenošću, kratkim opisom i cijenom (ako postoji). Koristi emoji 📍. Za svaku dodaj [Više informacija](web). Grupiraj po udaljenosti: bliže → dalje.
 - Za sve ostale kategorije: prikaži MAKSIMALNO 5 lokacija po odgovoru
-- Ako ih ima više od prikazanih (N > 0), na kraju dodaj: "Ima još [N] rezultata — pitajte za više!" — AKO NEMA VIŠE, NE DODAJ NIŠTA
+- Ako ih ima više od prikazanih (N > 0), na kraju dodaj: "Ima još [N] rezultata — pitajte za više!" — AKO NEMA VIŠE: NIŠTA NE DODAJ. ZABRANJENA fraza "Ima još 0 rezultata" — nikad je ne koristi.
 - Ako korisnik traži "još" ili "više" — prikaži sljedećih 5 koje NISU već navedene
 - Nikad ne ponavljaj iste lokacije u istom razgovoru
 
