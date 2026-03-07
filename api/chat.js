@@ -71,11 +71,11 @@ function getRelevantContext(message, db, lastCategory) {
     || msg.includes('essen') || msg.includes('speise') || msg.includes('trinken') || msg.includes('café') || msg.includes('gaststätte') || msg.includes('mittagessen') || msg.includes('abendessen'))
     return { context: CATEGORY_CONTEXTS.gastronomija(db), category: 'gastronomija' };
 
-  if (msg.includes('događ') || msg.includes('festival') || msg.includes('manifestac') || msg.includes('karneval') || msg.includes('advent')
+  if (msg.includes('događ') || msg.includes('dogad') || msg.includes('događ') || msg.includes('festival') || msg.includes('manifestac') || msg.includes('karneval') || msg.includes('advent') || msg.includes('program') || msg.includes('što se dešava') || msg.includes('što se događa') || msg.includes('sto se desava') || msg.includes('slijede') || msg.includes('uskoro')
     // EN
-    || msg.includes('event') || msg.includes('events') || msg.includes('festival') || msg.includes('carnival') || msg.includes('celebration')
+    || msg.includes('event') || msg.includes('events') || msg.includes('festival') || msg.includes('carnival') || msg.includes('celebration') || msg.includes('upcoming') || msg.includes('what\'s on')
     // DE
-    || msg.includes('veranstaltung') || msg.includes('fest') || msg.includes('feier'))
+    || msg.includes('veranstaltung') || msg.includes('fest') || msg.includes('feier') || msg.includes('kommende'))
     return { context: CATEGORY_CONTEXTS.dogadanja(db), category: 'dogadanja' };
 
   if (msg.includes('znamenitost') || msg.includes('dvorac') || msg.includes('muzej') || msg.includes('kula') || msg.includes('katančić') || msg.includes('posjet')
@@ -347,6 +347,12 @@ export default async function handler(req, res) {
       return 'zima';
     }
     const season = getSeason(month, day);
+    // Prijelazni opis za kraj zime / početak proljeća (1.-20. ožujka)
+    const seasonDisplay = (month === 3 && day < 21)
+      ? 'kraj zime / početak proljeća'
+      : (month === 12 && day >= 22) || month === 1 || month === 2
+        ? 'zima'
+        : season;
 
     const weatherLine = weather?.temperature !== undefined
       ? `Trenutno vrijeme u Valpovu: ${weather.temperature}°C, vjetar ${weather.windspeed} km/h.`
@@ -355,9 +361,13 @@ export default async function handler(req, res) {
     const systemPrompt = `
 KONTEKST TRENUTNOG TRENUTKA:
 - Datum: ${dateStr}
-- Godišnje doba: ${season}
+- Godišnje doba: ${seasonDisplay}
 ${weatherLine ? `- Trenutno vrijeme u Valpovu: ${weatherLine}` : ''}
-Koristi ovaj kontekst prirodno u preporukama — npr. ljeti predloži rijeku i izlete na otvorenom, zimi toplice i advent, u proljeće šetnje i biciklizam, u jesen vinska sela i berbu.
+VAŽNO — VREMENSKI KONTEKST:
+- Preporuke uvijek usmjeri prema SADAŠNJOSTI i BUDUĆNOSTI, nikad prema prošlim događajima
+- Odaberi aktivnosti primjerene stvarnom godišnjem dobu i temperaturi: u proljeće/ljeto → šetnje, biciklizam, rijeka, izleti; u jesen → vinska sela, berba; u zimu → toplice, unutarnji sadržaji
+- Kraj zime / početak proljeća (veljača–ožujak): sunčaniji dani su idealni za prve šetnje i izlete, ne predlažu se zimski sportovi
+- Ako korisnik pita što se uskoro događa ili koji su predstojeći događaji — prikaži samo nadolazeće manifestacije (koje još nisu prošle)
 
 KRITIČNO PRAVILO — JEZIK: Uvijek odgovaraj ISKLJUČIVO na jeziku kojim je napisano korisnikovo pitanje. Ovo je apsolutni prioritet koji se nikad ne smije zanemariti.
 - Pitanje na engleskom → cijeli odgovor na engleskom, uključujući labele linkova ([Open on map], [More information])
