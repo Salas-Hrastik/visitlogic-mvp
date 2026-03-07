@@ -279,7 +279,7 @@ ${JSON.stringify(stripImages(context))}
         { role: "user", content: message }
       ],
       temperature: 0.3,
-      max_tokens: 500,
+      max_tokens: category === 'opcenito' ? 900 : 500,
       stream: true
     });
 
