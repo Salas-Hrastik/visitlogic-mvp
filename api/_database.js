@@ -991,7 +991,7 @@ export const db = {
             {
                 "naziv": "Baranja",
                 "udaljenost": "35 km (~30 min vožnje, do Belog Manastira)",
-                "opis": "Trostruki dobitnik nagrade 'Best Rural Destination of Croatia'. Poznata po vinima (Josić, Krauthaker), etno selima, rodama i autohtonoj gastronomiji. Turistički vlak Ćiro, seoske agroturističke farme uz Dunav i Dravu.",
+                "opis": "Trostruki dobitnik nagrade 'Best Rural Destination of Croatia'. Poznata po vinima (winery Josić), etno selima, rodama i autohtonoj gastronomiji. Turistički vlak Ćiro, seoske agroturističke farme uz Dunav i Dravu.",
                 "adresa": "Beli Manastir, ~35 km od Valpova",
                 "maps_url": "https://www.google.com/maps/dir/Valpovo/Beli+Manastir",
                 "web": "https://tzbaranje.hr/"
@@ -1024,7 +1024,7 @@ export const db = {
             {
                 "naziv": "Vinske ceste Slavonije i Baranje",
                 "udaljenost": "Erdut 30 km, Baranja 35–50 km, Kutjevo 70 km",
-                "opis": "Valpovo leži u vinogorju Erdut — srce slavonskog vinogradarstva. U blizini: Baranja (winery Josić, Krauthaker), Kutjevo (graševina, dvorac), Ilok (Iločki podrumi uz Dunav). Vinski mjesec OBŽ: lipanj–srpanj.",
+                "opis": "Slavonija i Baranja poznate su po iznimnim vinima. U blizini: Kutjevo (graševina, winery Krauthaker, dvorac, 70 km), Baranja (winery Josić i druga imanja, 35–50 km), Erdut (vinarije uz Dunav, 30 km), Ilok (Iločki podrumi, ~80 km). Vinski dani OBŽ: lipanj–srpanj.",
                 "maps_url": "https://www.google.com/maps/search/?api=1&query=vinska+cesta+Slavonija",
                 "web": "https://visitslavoniabaranja.com/en/"
             }
