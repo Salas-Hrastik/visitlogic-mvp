@@ -235,7 +235,9 @@ export default async function handler(req, res) {
     }
 
     // Gastronomija listing: generiraj direktno bez AI (eliminira hallucination restorana)
-    const isGastroListing = category === 'gastronomija' && lastCategory !== 'gastronomija';
+    // Ako korisnik pita za radno vrijeme ili specifično mjesto → preskoči listing, pusti AI s kontekstom
+    const radnoVrijemeQuery = ['radno vrij','kada radi','radi li','do kada rad','od kada rad','opening hours','what time','öffnungszeiten','geöffnet','otvoreno','zatvoreno'].some(k => message.toLowerCase().includes(k));
+    const isGastroListing = category === 'gastronomija' && lastCategory !== 'gastronomija' && !radnoVrijemeQuery;
     if (isGastroListing) {
       const gastro = db.gastronomija || [];
 
