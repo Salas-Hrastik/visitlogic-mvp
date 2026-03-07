@@ -156,7 +156,10 @@ export default async function handler(req, res) {
     }
 
     // Okolica listing: generiraj direktno bez AI — zajamčeni URL-ovi iz baze, bez halucinacija
-    const isOkolicaListing = category === 'okolica' && lastCategory !== 'okolica';
+    // Uvijek pre-generiraj kad korisnik klikne gumb (sadrži 'izlet'), i kod prvog upita
+    const msgLower = message.toLowerCase();
+    const isOkolicaListing = category === 'okolica' &&
+      (lastCategory !== 'okolica' || msgLower.includes('izlet'));
     if (isOkolicaListing) {
       const izleti = db.okolica?.izleti || [];
       let reply = 'Preporučeni izleti iz Valpova — od najbližeg prema daljem:\n\n';

@@ -667,32 +667,29 @@
         }
 
         /* ── MODAL ZA LINKOVE ── */
+        // Domene koje DOPUŠTAJU ugradnju u iframe — za sve ostale prikazujemo "Otvori direktno"
+        // Napomena: contentDocument je uvijek null za cross-origin iframeove (i blokirane i uspješne),
+        // pa je jedino pouzdano rješenje whitelist poznatih domena koje dopuštaju ugradnju.
+        const EMBED_WHITELIST = ['tz.valpovo.hr', 'valpovo.hr'];
+
+        function canEmbed(url) {
+            try {
+                const host = new URL(url).hostname;
+                return EMBED_WHITELIST.some(d => host === d || host.endsWith('.' + d));
+            } catch (e) { return false; }
+        }
+
         function openModal(url, title) {
             document.getElementById("modal-title").innerText = title || "Pregled stranice";
             const extLink = document.getElementById("modal-external");
             extLink.href = url;
-            extLink.style.display = "none"; // skriveno dok ne provjerimo može li se iframe učitati
+            // Prikaži "Otvori direktno" za sve vanjske domene osim whitelistanih
+            extLink.style.display = canEmbed(url) ? "none" : "inline-flex";
 
             document.getElementById("modal-blocked").style.display = "none";
             const iframe = document.getElementById("modal-iframe");
             iframe.style.display = "block";
-
-            // Detekcija X-Frame-Options blokade:
-            // - Ako je iframe blokiran → browser učitava prazan/about:blank dokument (contentDocument dostupan, same-origin)
-            // - Ako se vanjska stranica uspješno učitala → contentDocument je null (cross-origin, nedostupan)
-            iframe.onload = function () {
-                try {
-                    if (iframe.contentDocument !== null) {
-                        // Iframe blokiran — prikaži "Otvori direktno" kao zamjenu
-                        extLink.style.display = "inline-flex";
-                    }
-                    // else: cross-origin stranica se učitala normalno — "Otvori direktno" ostaje skriveno
-                } catch (e) {
-                    // Neočekivana greška — prikaži gumb za sigurnost
-                    extLink.style.display = "inline-flex";
-                }
-            };
-
+            iframe.onload = null;
             iframe.src = url;
             document.getElementById("modal-overlay").style.display = "flex";
         }
