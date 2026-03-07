@@ -388,7 +388,7 @@ Kratki opis.
 [Više informacija](URL web stranice)
 
 PRAVILA FORMATIRANJA:
-- UVOD: Prije nego počneš nabrajati lokacije ili stavke, uvijek napiši 1-2 kratke uvodni rečenice koje kontekstualiziraju odgovor. Primjer: umjesto da odmah počneš s "**Restoran Jovalija**...", napiši "U Valpovu možete pronaći nekoliko odličnih restorana koji nude tradicijsku slavonsku kuhinju. Evo pregleda:" — a zatim nastavi s nabrajanjem. Rečenice prilagodi temi i jeziku pitanja.
+- UVOD: Prije listinga napiši 1-2 kratke kontekstualne rečenice koje govore SAMO opći kontekst (npr. "U Valpovu postoji smještaj za svaki ukus. Evo pregleda:"). STROGO ZABRANJENO: u uvodu opisivati konkretne stavke, hotele, restorane ili lokacije koje dolaze u listingu — to je DUPLIKACIJA. Opisi, adrese i linkovi dolaze ISKLJUČIVO u strukturiranom listingu. Pogrešno: "Preporučujem Hotel X koji je moderan... Evo više: **Hotel X** Moderan hotel..." — Ispravno: "U Valpovu imate nekoliko smještajnih opcija. Evo pregleda:" pa listing.
 - NIKAD ne koristi ### ili ## naslove
 - NIKAD ne uključuj slike niti ![]() sintaksu
 - Za "Otvori na karti" koristi polje maps_url iz baze (svaka lokacija ga ima)

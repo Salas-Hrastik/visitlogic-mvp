@@ -427,7 +427,7 @@ export const db = {
         "hoteli": [
             {
                 "naziv": "Hotel Villa Valpovo",
-                "opis": "Moderan hotel s vrhunskom uslugom u centru Valpova.",
+                "opis": "Moderan hotel s vrhunskom uslugom, smješten desetak minuta hoda od centra Valpova.",
                 "adresa": "Bana Josipa Jelačića 1",
                 "maps_url": "https://www.google.com/maps/search/?api=1&query=Hotel+Villa+Valpovo",
                 "web": "https://tz.valpovo.hr/smjestaj-u-valpovu/villa-valpovo/"
