@@ -150,6 +150,27 @@ function getRelevantContext(message, db, lastCategory) {
   return { context: db, category: null };
 }
 
+// Kontekstualni prijedlozi za sljedeće pitanje — ovisno o kategoriji
+function getSuggestions(category) {
+  const map = {
+    smjestaj:     ['🍽️ Gdje ručati?', '🏛️ Što vidjeti?', '🅿️ Parkiranje?'],
+    gastronomija: ['🏨 Smještaj u Valpovu?', '🏛️ Što vidjeti?', '📅 Događaji?'],
+    dogadanja:    ['🏨 Smještaj za tu noć?', '🍽️ Gdje ručati?', '🏛️ Što vidjeti?'],
+    znamenitosti: ['🍽️ Gdje ručati?', '🏨 Smještaj u Valpovu?', '📅 Događaji?'],
+    sport:        ['🍽️ Gdje ručati?', '🌿 Priroda i šetnice?', '🏨 Smještaj?'],
+    kupovina:     ['🍽️ Gdje ručati?', '🅿️ Parkiranje?', '🏛️ Što vidjeti?'],
+    priroda:      ['🍽️ Gdje ručati?', '🚴 Sport i rekreacija?', '🏨 Smještaj?'],
+    okolica:      ['🏨 Smještaj u Valpovu?', '🍽️ Gdje ručati?', '📅 Događaji?'],
+    opcenito:     ['🏛️ Što vidjeti?', '🍽️ Gdje ručati?', '🏨 Smještaj?'],
+    benzinske:    ['🅿️ Parkiranje?', '🍽️ Gdje ručati?', '🏨 Smještaj?'],
+    parking:      ['🍽️ Gdje ručati?', '🏛️ Što vidjeti?', '🏨 Smještaj?'],
+    usluge:       ['🍽️ Gdje ručati?', '🏨 Smještaj?', '🏛️ Što vidjeti?'],
+    frizeraji:    ['🍽️ Gdje ručati?', '🏛️ Što vidjeti?', '🏨 Smještaj?'],
+    priroda:      ['🍽️ Gdje ručati?', '🚴 Sport i rekreacija?', '🏨 Smještaj?'],
+  };
+  return map[category] || ['🏛️ Što vidjeti?', '🍽️ Gdje ručati?', '🏨 Smještaj?'];
+}
+
 export default async function handler(req, res) {
 
   if (req.method !== "POST") {
@@ -182,7 +203,7 @@ export default async function handler(req, res) {
         reply += e.web ? `[Više informacija](${e.web})\n` : `[Više informacija na TZ Valpovo](https://tz.valpovo.hr/manifestacije/)\n`;
         reply += '\n';
       }
-      return res.status(200).json({ reply, category });
+      return res.status(200).json({ reply, category, suggestions: getSuggestions(category) });
     }
 
     // Smještaj listing: uvijek generiraj direktno bez AI (sprječava hallucination)
@@ -231,7 +252,7 @@ export default async function handler(req, res) {
           reply += '\n';
         }
       }
-      return res.status(200).json({ reply, category });
+      return res.status(200).json({ reply, category, suggestions: getSuggestions(category) });
     }
 
     // Gastronomija listing: generiraj direktno bez AI (eliminira hallucination restorana)
@@ -295,7 +316,7 @@ export default async function handler(req, res) {
         }
       }
 
-      return res.status(200).json({ reply, category });
+      return res.status(200).json({ reply, category, suggestions: getSuggestions(category) });
     }
 
     // Sport listing: generiraj direktno bez AI (opći upit o sportu/klubovima)
@@ -338,7 +359,7 @@ export default async function handler(req, res) {
           reply += '\n';
         }
       }
-      return res.status(200).json({ reply, category });
+      return res.status(200).json({ reply, category, suggestions: getSuggestions(category) });
     }
 
     // Okolica listing: generiraj direktno bez AI samo kad korisnik traži opći popis izleta
@@ -357,7 +378,7 @@ export default async function handler(req, res) {
         if (item.web)        reply += `[Više informacija](${item.web})\n`;
         reply += '\n';
       }
-      return res.status(200).json({ reply, category });
+      return res.status(200).json({ reply, category, suggestions: getSuggestions(category) });
     }
 
     // Datum i godišnje doba (server-side, uvijek točno)
@@ -474,7 +495,7 @@ ${JSON.stringify(stripImages(context))}
       const content = chunk.choices[0]?.delta?.content;
       if (content) res.write(`data: ${JSON.stringify({ t: content })}\n\n`);
     }
-    res.write(`data: ${JSON.stringify({ done: true, category: category || null })}\n\n`);
+    res.write(`data: ${JSON.stringify({ done: true, category: category || null, suggestions: getSuggestions(category) })}\n\n`);
     res.end();
 
   } catch (error) {

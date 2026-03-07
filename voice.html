@@ -110,6 +110,32 @@
             background: #b4ccbf;
         }
 
+        /* SUGGESTION CHIPS — kontekstualni prijedlozi ispod bot odgovora */
+        .suggestion-chips {
+            display: flex;
+            gap: 7px;
+            flex-wrap: wrap;
+            margin-top: 12px;
+            padding-top: 10px;
+            border-top: 1px solid rgba(0,0,0,0.07);
+        }
+        .suggestion-chip {
+            background: #edf3ef;
+            border: 1px solid #c5d9cb;
+            border-radius: 18px;
+            padding: 5px 13px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 500;
+            color: #1a4a2e;
+            transition: background .15s, border-color .15s;
+            white-space: nowrap;
+        }
+        .suggestion-chip:hover {
+            background: #d0e4d8;
+            border-color: #0f6b3c;
+        }
+
         /* CHAT */
         #chat {
             position: absolute;
@@ -1088,9 +1114,10 @@
                     // JSON — pre-generirani odgovor (sport, smještaj, događanja, izleti)
                     const data = await response.json();
                     if (data.reply) {
-                        addMessage(data.reply);
+                        const msgDiv = addMessage(data.reply);
                         conversationHistory.push({ role: "assistant", content: data.reply });
                         if (data.category) currentCategory = data.category;
+                        addSuggestions(msgDiv, data.suggestions);
                     } else if (data.error) {
                         addMessage("❌ **Greška:** " + data.error + (data.details ? "\n\n" + data.details : ""));
                     } else {
@@ -1119,6 +1146,7 @@
             let buffer = '';
             let fullText = '';
             let streamCategory = null;
+            let streamSuggestions = null;
 
             // Kreiraj prazan AI message div
             const msgDiv = document.createElement('div');
@@ -1148,7 +1176,7 @@
                             fullText += payload.t;
                             contentDiv.textContent = fullText; // plain text dok stiže
                         }
-                        if (payload.done) streamCategory = payload.category;
+                        if (payload.done) { streamCategory = payload.category; streamSuggestions = payload.suggestions; }
                         if (payload.error) fullText = fullText || "⚠️ Greška pri generiranju odgovora.";
                     } catch {}
                 }
@@ -1167,6 +1195,29 @@
             // Spremi u povijest
             conversationHistory.push({ role: 'assistant', content: fullText });
             if (streamCategory) currentCategory = streamCategory;
+
+            // Dodaj kontekstualne prijedloge
+            addSuggestions(msgDiv, streamSuggestions);
+        }
+
+        /* ── SUGGESTION CHIPS ── */
+        function addSuggestions(msgDiv, chips) {
+            if (!chips?.length) return;
+            const container = document.createElement('div');
+            container.className = 'suggestion-chips';
+            chips.forEach(text => {
+                const btn = document.createElement('button');
+                btn.className = 'suggestion-chip';
+                btn.textContent = text;
+                btn.addEventListener('click', () => {
+                    // Ukloni sve chip containere iz chata (da ne zbunjuju)
+                    document.querySelectorAll('.suggestion-chips').forEach(el => el.remove());
+                    inputEl.value = text;
+                    sendMessage();
+                });
+                container.appendChild(btn);
+            });
+            msgDiv.appendChild(container);
         }
 
         /* ── ENTER TIPKA ── */
