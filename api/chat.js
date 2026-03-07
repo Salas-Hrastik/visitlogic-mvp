@@ -155,7 +155,7 @@ export default async function handler(req, res) {
 
   try {
 
-    const { message, history, category: lastCategory } = req.body;
+    const { message, history, category: lastCategory, weather } = req.body;
 
     if (!message) {
       return res.status(400).json({ reply: "Poruka je prazna." });
@@ -331,8 +331,12 @@ export default async function handler(req, res) {
       return res.status(200).json({ reply, category });
     }
 
+    const weatherLine = weather?.temperature !== undefined
+      ? `Trenutno vrijeme u Valpovu: ${weather.temperature}°C, vjetar ${weather.windspeed} km/h.`
+      : '';
+
     const systemPrompt = `
-KRITIČNO PRAVILO — JEZIK: Uvijek odgovaraj ISKLJUČIVO na jeziku kojim je napisano korisnikovo pitanje. Ovo je apsolutni prioritet koji se nikad ne smije zanemariti.
+${weatherLine ? `TRENUTNO VRIJEME: ${weatherLine}\n` : ''}KRITIČNO PRAVILO — JEZIK: Uvijek odgovaraj ISKLJUČIVO na jeziku kojim je napisano korisnikovo pitanje. Ovo je apsolutni prioritet koji se nikad ne smije zanemariti.
 - Pitanje na engleskom → cijeli odgovor na engleskom, uključujući labele linkova ([Open on map], [More information])
 - Pitanje na njemačkom → cijeli odgovor na njemačkom ([Auf der Karte öffnen], [Mehr Informationen])
 - Pitanje na talijanskom → cijeli odgovor na talijanskom ([Apri sulla mappa], [Più informazioni])
