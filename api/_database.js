@@ -463,6 +463,7 @@ export const db = {
         "hoteli": [
             {
                 "naziv": "Hotel Villa Valpovo",
+                "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2023/10/1-hoitel-villa-valpovo-2023.jpg",
                 "opis": "Moderan hotel s vrhunskom uslugom, smješten desetak minuta hoda od centra Valpova.",
                 "adresa": "Bana Josipa Jelačića 1",
                 "maps_url": "https://www.google.com/maps/search/?api=1&query=Hotel+Villa+Valpovo",
@@ -470,6 +471,7 @@ export const db = {
             },
             {
                 "naziv": "Hotel & Restoran Park Valpovo",
+                "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2022/04/parkvalpovo003-853x640.jpg",
                 "opis": "Hotel i restoran s tradicijom slavonske kuhinje.",
                 "adresa": "Ive Lole Ribara 10",
                 "telefon": "+385 31 651 230",
@@ -480,6 +482,7 @@ export const db = {
         "ruralni_smjestaj": [
             {
                 "naziv": "Valpovački dvori",
+                "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2018/04/20180103_150327.jpg",
                 "opis": "Ruralni smještaj s autentičnim slavonskim ugođajem.",
                 "adresa": "Matije Gupca 95",
                 "maps_url": "https://www.google.com/maps/search/?api=1&query=Valpovački+dvori",
@@ -487,6 +490,7 @@ export const db = {
             },
             {
                 "naziv": "Olive Holiday House",
+                "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2024/03/0.jpg",
                 "opis": "Holiday house za odmor u Valpovu.",
                 "adresa": "Valpovo",
                 "maps_url": "https://www.google.com/maps/search/?api=1&query=Olive+Holiday+House+Valpovo",
@@ -496,6 +500,7 @@ export const db = {
         "apartmani": [
             {
                 "naziv": "Apartman Tea Valpovo",
+                "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2022/12/IMG-20220505-WA0055-apartman-tea-valpovo.jpg",
                 "opis": "Apartman za kratki i duži boravak.",
                 "adresa": "Valpovo",
                 "maps_url": "https://www.google.com/maps/search/?api=1&query=Apartman+Tea+Valpovo",
@@ -503,6 +508,7 @@ export const db = {
             },
             {
                 "naziv": "Apartman Ana 1 Valpovo",
+                "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2023/01/apartman.jpg",
                 "opis": "Apartman za iznajmljivanje.",
                 "adresa": "Valpovo",
                 "maps_url": "https://www.google.com/maps/search/?api=1&query=Apartman+Ana+Valpovo",
@@ -510,6 +516,7 @@ export const db = {
             },
             {
                 "naziv": "Apartmani Nives i Lea Valpovo",
+                "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2023/01/DSC6439apartmani-nives-valpovo.jpg",
                 "opis": "Dva apartmana za iznajmljivanje.",
                 "adresa": "Valpovo",
                 "maps_url": "https://www.google.com/maps/search/?api=1&query=Apartmani+Nives+Lea+Valpovo",
@@ -517,6 +524,7 @@ export const db = {
             },
             {
                 "naziv": "Studio apartman M Valpovo",
+                "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2023/03/IMG_1577-apartman-studio-m-valpovo.jpg",
                 "opis": "Studio apartman za iznajmljivanje.",
                 "adresa": "Valpovo",
                 "maps_url": "https://www.google.com/maps/search/?api=1&query=Studio+apartman+M+Valpovo",
@@ -524,6 +532,7 @@ export const db = {
             },
             {
                 "naziv": "Apartman Centar Valpovo",
+                "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2025/10/Slika-1-apartman-centar-valpovo.jpg",
                 "opis": "Apartman u centru Valpova.",
                 "adresa": "Valpovo",
                 "maps_url": "https://www.google.com/maps/search/?api=1&query=Apartman+Centar+Valpovo",
@@ -533,18 +542,21 @@ export const db = {
         "prenocista": [
             {
                 "naziv": "M&S Prenoćište Valpovo",
+                "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2018/04/mS_prenociste_01.jpg",
                 "adresa": "Valpovo",
                 "maps_url": "https://www.google.com/maps/search/?api=1&query=MS+prenociste+Valpovo",
                 "web": "https://tz.valpovo.hr/smjestaj-u-valpovu/ms-prenociste-valpovo/"
             },
             {
                 "naziv": "Prenoćište Setnik",
+                "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2018/04/91993871.jpg",
                 "adresa": "Valpovo",
                 "maps_url": "https://www.google.com/maps/search/?api=1&query=Prenoćište+Setnik+Valpovo",
                 "web": "https://tz.valpovo.hr/smjestaj-u-valpovu/prenociste-setnik/"
             },
             {
                 "naziv": "Privatni smještaj Tolić",
+                "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2018/04/tolic-1.jpg",
                 "adresa": "Valpovo",
                 "maps_url": "https://www.google.com/maps/search/?api=1&query=Smještaj+Tolić+Valpovo",
                 "web": "https://tz.valpovo.hr/smjestaj-u-valpovu/privatni-smjestaj-tolic/"
@@ -553,18 +565,21 @@ export const db = {
         "sobe": [
             {
                 "naziv": "Sobe za iznajmljivanje Čičak",
+                "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2021/09/čičak6.jpg",
                 "adresa": "Valpovo",
                 "maps_url": "https://www.google.com/maps/search/?api=1&query=Sobe+Čičak+Valpovo",
                 "web": "https://tz.valpovo.hr/smjestaj-u-valpovu/sobe-za-iznajmljivanje-cicak/"
             },
             {
                 "naziv": "Soba za iznajmljivanje Draft Room",
+                "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2021/02/2.jpg",
                 "adresa": "Valpovo",
                 "maps_url": "https://www.google.com/maps/search/?api=1&query=Draft+Room+Valpovo",
                 "web": "https://tz.valpovo.hr/smjestaj-u-valpovu/soba-za-iznajmljivanje-draft-room/"
             },
             {
                 "naziv": "Soba VaLux Valpovo",
+                "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2024/03/00-valux-valpovo-sobe.jpg",
                 "adresa": "Valpovo",
                 "maps_url": "https://www.google.com/maps/search/?api=1&query=VaLux+Valpovo",
                 "web": "https://tz.valpovo.hr/smjestaj-u-valpovu/soba-valux-valpovo/"

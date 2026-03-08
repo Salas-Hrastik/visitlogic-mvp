@@ -144,10 +144,11 @@ function getRelevantContext(message, db, lastCategory) {
     return { context: CATEGORY_CONTEXTS.okolica(db), category: 'okolica' };
 
   // Nema ključnih riječi — koristi zadnju kategoriju razgovora ako postoji
+  // matched: false → pre-gen se NE aktivira, ide na AI (npr. "kakvo će biti vrijeme?")
   if (lastCategory && CATEGORY_CONTEXTS[lastCategory])
-    return { context: CATEGORY_CONTEXTS[lastCategory](db), category: lastCategory };
+    return { context: CATEGORY_CONTEXTS[lastCategory](db), category: lastCategory, matched: false };
 
-  return { context: db, category: null };
+  return { context: db, category: null, matched: false };
 }
 
 // Izvuci IMAGE_URL vrijednosti iz objekta/niza (rekurzivno), max N slika
@@ -198,12 +199,22 @@ export default async function handler(req, res) {
       return res.status(400).json({ reply: "Poruka je prazna." });
     }
 
-    const { context, category } = getRelevantContext(message, db, lastCategory);
+    // matched: true = routing je prepoznao ključne riječi → pre-gen se aktivira
+    // matched: false = fallback na lastCategory (npr. nepovezano pitanje) → ide na AI
+    const { context, category, matched = true } = getRelevantContext(message, db, lastCategory);
+
+    // Vremenski upit — direktan odgovor bez AI (nema vremenskih podataka)
+    const isWeatherQuery = ['prognoz', 'forecast', 'wetter', 'vremensku prognozu'].some(k => message.toLowerCase().includes(k))
+      || (['kakvo', 'kako', 'hoće', 'hoce', 'biti', 'stupnjev', 'stupnja', 'temperatura'].filter(k => message.toLowerCase().includes(k)).length >= 2 && ['vrij', 'tempera', 'kišno', 'sunčano', 'oblačno'].some(k => message.toLowerCase().includes(k)));
+    if (isWeatherQuery) {
+      const weatherReply = `Nažalost, nemam pristup vremenskim podacima niti prognozi za buduće dane.\n\nZa točnu vremensku prognozu preporučujem:\n🌤️ [meteo.hr](https://meteo.hr) — Državni hidrometeorološki zavod\n🌡️ [Weather.com Valpovo](https://weather.com/hr-HR/weather/today/l/Valpovo)\n\nAko mi kažeš kakvo vrijeme očekuješ — ☀️ sunčano, 🌧️ kišno, ❄️ hladno — predložit ću aktivnosti i sadržaje koji odgovaraju!`;
+      return res.status(200).json({ reply: weatherReply, category: lastCategory || null, suggestions: getSuggestions(lastCategory), images: [] });
+    }
 
     // Događanja listing: filtriraj prošle i generiraj direktno bez AI
     // Ako korisnik pita za SPECIFIČNU manifestaciju po imenu → preskoči listing, pusti AI da odgovori konkretno
     const specificEventQuery = ['fišijad','fisijad','matijafest','rockaraj','reunited','vašar','vasar','ljeto valpov','craft beer','staza zdravlja','festival sira','ribljeg paprikaš','ribljeg paprikas','kuhanje fiš','kuhanje fis'].some(k => message.toLowerCase().includes(k));
-    if (category === 'dogadanja' && !specificEventQuery) {
+    if (category === 'dogadanja' && !specificEventQuery && matched) {
       const currentMonth = new Date().getMonth() + 1;
       const upcoming = db.dogadanja.filter(e => eventMaxMonth(e.vrijeme) >= currentMonth);
       let reply = upcoming.length
@@ -220,8 +231,9 @@ export default async function handler(req, res) {
       return res.status(200).json({ reply, category, suggestions: getSuggestions(category), images: extractImages(context) });
     }
 
-    // Smještaj listing: uvijek generiraj direktno bez AI (sprječava hallucination)
-    if (category === 'smjestaj') {
+    // Smještaj listing: generiraj direktno bez AI (sprječava hallucination)
+    // matched: false = fallback (npr. vremenski upit) → NE aktiviraj pre-gen
+    if (category === 'smjestaj' && matched) {
       const s = db.smjestaj;
       const msgL = message.toLowerCase();
 
@@ -273,7 +285,7 @@ export default async function handler(req, res) {
     // Znamenitosti listing: generiraj direktno bez AI
     // Specifični upit (dvorac, muzej, kula...) → pusti AI da odgovori detaljno
     const specificZnaQuery = ['dvorac','prandau','muzej','kula','kazalište','kazaliste','pivovara','konjušnice','konjusnice','pučka škola','pucka skola','memorijaln','centar kulture','katančić','katancic','fortuna'].some(k => message.toLowerCase().includes(k));
-    if (category === 'znamenitosti' && !specificZnaQuery) {
+    if (category === 'znamenitosti' && !specificZnaQuery && matched) {
       const zna = db.znamenitosti || [];
       let reply = 'Valpovo krije niz kulturnih i povijesnih znamenitosti. Evo kompletnog pregleda:\n\n';
       for (const item of zna) {
@@ -292,7 +304,7 @@ export default async function handler(req, res) {
     // Gastronomija listing: generiraj direktno bez AI (eliminira hallucination restorana)
     // Ako korisnik pita za radno vrijeme ili specifično mjesto → preskoči listing, pusti AI s kontekstom
     const radnoVrijemeQuery = ['radno vrij','kada radi','radi li','do kada rad','od kada rad','opening hours','what time','öffnungszeiten','geöffnet','otvoreno','zatvoreno'].some(k => message.toLowerCase().includes(k));
-    const isGastroListing = category === 'gastronomija' && !radnoVrijemeQuery;
+    const isGastroListing = category === 'gastronomija' && !radnoVrijemeQuery && matched;
     if (isGastroListing) {
       const gastro = db.gastronomija || [];
 
@@ -357,7 +369,7 @@ export default async function handler(req, res) {
     }
 
     // Sport listing: generiraj direktno bez AI (opći upit o sportu/klubovima)
-    const isSportListing = category === 'sport';
+    const isSportListing = category === 'sport' && matched;
     if (isSportListing) {
       const s = db.sport;
       const sportEmoji = {
@@ -402,7 +414,7 @@ export default async function handler(req, res) {
     // Okolica listing: generiraj direktno bez AI samo kad korisnik traži opći popis izleta
     // (sadrži 'izlet') — specifična pitanja (vinske ceste, Kopački rit...) idu na AI
     const msgLower = message.toLowerCase();
-    const isOkolicaListing = category === 'okolica' && msgLower.includes('izlet');
+    const isOkolicaListing = category === 'okolica' && msgLower.includes('izlet') && matched;
     if (isOkolicaListing) {
       const izleti = db.okolica?.izleti || [];
       let reply = 'Preporučeni izleti iz Valpova — od najbližeg prema daljem:\n\n';
