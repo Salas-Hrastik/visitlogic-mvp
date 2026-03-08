@@ -157,12 +157,14 @@ export const db = {
         },
         {
             "naziv": "Crkve i kapele",
+            "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2018/04/dvorska-kapela-kapelica-1-e1525723165441-300x200.jpg",
             "opis": "Sakralni objekti na području grada Valpova, uključujući crkve i kapele.",
             "maps_url": "https://www.google.com/maps/search/?api=1&query=crkva+Valpovo",
             "web": "https://tz.valpovo.hr/znamenitosti/crkve-i-kapele/"
         },
         {
             "naziv": "Hotel Fortuna",
+            "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2018/04/hotel-fortuna-1920-1280.jpg",
             "opis": "Sagrađen 1807. godine od strane baruna Josipa Prandaua — jedan od tri najstarija sačuvana svratišta u sjeveroistočnoj Hrvatskoj.",
             "adresa": "Valpovo",
             "maps_url": "https://www.google.com/maps/search/?api=1&query=Hotel+Fortuna+Valpovo",
@@ -170,6 +172,7 @@ export const db = {
         },
         {
             "naziv": "Konjušnice ergele Valpovo",
+            "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2018/04/ergele-1920x1280.jpg",
             "opis": "Izgrađene 1867. godine po nalogu Gustava Prandaua uz valpovački dvor, u današnjoj Reljkovićevoj ulici.",
             "adresa": "Reljkovićeva ulica, Valpovo",
             "maps_url": "https://www.google.com/maps/search/?api=1&query=Konjušnice+ergele+Valpovo",
@@ -177,6 +180,7 @@ export const db = {
         },
         {
             "naziv": "Prandauovo kazalište",
+            "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2018/04/prandauvo-kazaliste-1920-1280.jpg",
             "opis": "Najstarija sačuvana kazališna zgrada u kontinentalnoj Hrvatskoj, podignuta 1809. godine od baruna Josefa Ignaca Hillepranda od Prandaua.",
             "adresa": "Valpovo",
             "maps_url": "https://www.google.com/maps/search/?api=1&query=Prandauovo+kazalište+Valpovo",
@@ -184,6 +188,7 @@ export const db = {
         },
         {
             "naziv": "Pučka škola",
+            "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2018/04/pucka-skola-1280-853.jpg",
             "opis": "Zgrada iz sredine 19. stoljeća, jedna od najstarijih u Valpovu — izvorno dvije učionice i stan za učitelja.",
             "adresa": "Valpovo (desno od župne crkve)",
             "maps_url": "https://www.google.com/maps/search/?api=1&query=Pučka+škola+Valpovo",
@@ -191,6 +196,7 @@ export const db = {
         },
         {
             "naziv": "Pivovara Valpovo",
+            "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2018/04/pivovara-valpovo-1280-851.jpg",
             "opis": "Povijesna pivovara podignuta za vladavine Antuna Petra Prandaua kao dio obnove gospodarstva vlastelinstva Valpovo.",
             "adresa": "Valpovo",
             "maps_url": "https://www.google.com/maps/search/?api=1&query=Pivovara+Valpovo",
@@ -205,6 +211,7 @@ export const db = {
         },
         {
             "naziv": "Memorijalni centar Matije Petra Katančića",
+            "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2025/03/1-memorijalni-centar-matije-petra-katancic.jpg",
             "opis": "Novoizgrađeni memorijalni centar — središnji dio projekta Priča o kulturnoj ostavštini Matije Petra Katančića.",
             "adresa": "Valpovo",
             "maps_url": "https://www.google.com/maps/search/?api=1&query=Memorijalni+centar+Katančić+Valpovo",
@@ -245,6 +252,7 @@ export const db = {
         },
         {
             "naziv": "Caffe Bar Forum",
+            "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2025/03/caffe-bar-forum-valpovo9-comp.jpg",
             "opis": "Caffe bar u centru Valpova.",
             "adresa": "Valpovo",
             "maps_url": "https://www.google.com/maps/search/?api=1&query=Caffe+Bar+Forum+Valpovo",
@@ -260,6 +268,7 @@ export const db = {
         },
         {
             "naziv": "Caffe Bar Kolaž",
+            "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2022/04/1-2.jpg",
             "opis": "Caffe bar u Valpovu.",
             "adresa": "Valpovo",
             "radno_vrijeme": "Pon, Čet, Ned: 08:00–00:00 | Pet–Sub: 08:00–02:00",
@@ -268,6 +277,7 @@ export const db = {
         },
         {
             "naziv": "Caffe Night Bar Blue",
+            "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2022/04/cb-blue-cover-logo.jpg",
             "opis": "Caffe i noćni bar u Valpovu.",
             "adresa": "Valpovo",
             "radno_vrijeme": "Ned–Čet: 08:00–00:00 | Pet–Sub: 08:00–04:00",
@@ -276,6 +286,7 @@ export const db = {
         },
         {
             "naziv": "Caffe Bar Passage",
+            "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2018/04/30705564_1544146202381079_2303070350126088192_n-1.jpg",
             "opis": "Caffe bar u Valpovu.",
             "adresa": "Valpovo",
             "radno_vrijeme": "Pon–Čet: 07:00–24:00 | Pet–Sub: 07:00–02:00 | Ned: 08:00–24:00",
@@ -284,6 +295,7 @@ export const db = {
         },
         {
             "naziv": "Caffe Bar Space",
+            "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2022/04/cb-space.jpg",
             "opis": "Caffe bar u Valpovu.",
             "adresa": "Valpovo",
             "radno_vrijeme": "Pon–Čet: 08:00–00:00 | Pet–Sub: 08:00–02:00 | Ned: 08:00–00:00",
@@ -292,6 +304,7 @@ export const db = {
         },
         {
             "naziv": "Caffe Bar Best",
+            "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2018/04/20180115_064620_1.jpg",
             "opis": "Caffe bar u Valpovu.",
             "adresa": "Valpovo",
             "radno_vrijeme": "Svaki dan: 08:00–02:00",
@@ -300,6 +313,7 @@ export const db = {
         },
         {
             "naziv": "Gradska Kavana Valpovo",
+            "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2018/04/20180412_160629_1.jpg",
             "opis": "Gradska kavana u centru Valpova.",
             "adresa": "Valpovo",
             "radno_vrijeme": "Svaki dan: 07:00–23:00",
@@ -308,6 +322,7 @@ export const db = {
         },
         {
             "naziv": "Gradska Kavana Katančić",
+            "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2018/04/kavana-katancic-cover.jpg",
             "opis": "Kavana nazvana po poznatom valpovačkom pjesniku Matiji Petru Katančiću.",
             "adresa": "Valpovo",
             "radno_vrijeme": "Pon–Čet: 08:00–00:00 | Pet–Sub: 08:00–04:00 | Ned: 08:00–00:00",
@@ -316,6 +331,7 @@ export const db = {
         },
         {
             "naziv": "Barcode Caffe & Night Bar",
+            "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2018/04/23916556_1909458369319888_384810895355494538_o_1.jpg",
             "opis": "Caffe i noćni bar u Valpovu.",
             "adresa": "Valpovo",
             "radno_vrijeme": "Pon–Čet: 08:00–23:00 | Pet: 08:00–04:00 | Sub: 09:00–04:00 | Ned: 09:00–23:00",
@@ -324,6 +340,7 @@ export const db = {
         },
         {
             "naziv": "Caffe Bar Brm Brm",
+            "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2018/04/IMG-9e02fa1b72ffc4cac7f3ddd896cbac5e-V.jpg",
             "opis": "Caffe bar u Valpovu.",
             "adresa": "Valpovo",
             "radno_vrijeme": "Pon–Pet: 06:00–22:00 | Sub–Ned: 08:00–22:00",
@@ -332,6 +349,7 @@ export const db = {
         },
         {
             "naziv": "Caffe Bar Aqua Valpovo",
+            "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2022/04/160862921_284864409878535_1700317226212063352_n.jpg",
             "opis": "Caffe bar u Valpovu.",
             "adresa": "Valpovo",
             "radno_vrijeme": "Pon–Čet: 08:00–00:00 | Pet–Sub: 08:00–02:00 | Ned: 09:00–00:00",
@@ -340,6 +358,7 @@ export const db = {
         },
         {
             "naziv": "Caffe Bar Prandau",
+            "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2024/01/unnamed-1-caffe-bar-prandau-valpovo.jpg",
             "opis": "Caffe bar nazvan po barunima Prandau, u Valpovu.",
             "adresa": "Valpovo",
             "radno_vrijeme": "Pon–Sub: 07:00–23:00 | Ned: 08:00–13:00 i 17:00–23:00",

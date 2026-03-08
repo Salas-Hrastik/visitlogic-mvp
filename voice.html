@@ -119,10 +119,7 @@
             border-radius: 7px;
             margin: 0 10px 6px 0;
             display: block;
-            cursor: pointer;
-            transition: opacity .2s;
         }
-        .item-thumb:hover { opacity: .85; }
 
         /* PHOTO STRIP — fotogalerija ispod bot odgovora (za AI streaming odgovore) */
         .photo-strip {
@@ -807,7 +804,7 @@
 
             // 1a. [[IMG:url]] — pre-gen inline thumbnail (nije AI, smije se prikazati)
             raw = raw.replace(/\[\[IMG:(https?:[^\]]+)\]\]/g,
-                '<img class="item-thumb" src="$1" loading="lazy" alt="" onclick="window.open(\'$1\',\'_blank\')">');
+                '<img class="item-thumb" src="$1" loading="lazy" alt="">');
             // 1b. [[CLR]] — čisti float nakon stavke s minijaturom
             raw = raw.replace(/\[\[CLR\]\]/g, '<div style="clear:both"></div>');
             // 1c. Markdown slike: ![alt](url) → potpuno ukloni (AI ne smije prikazivati slike)

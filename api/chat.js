@@ -87,9 +87,9 @@ function getRelevantContext(message, db, lastCategory) {
     || msg.includes('sehenswürdigkeit') || msg.includes('burg') || msg.includes('schloss') || msg.includes('museum') || msg.includes('besichtigung'))
     return { context: CATEGORY_CONTEXTS.znamenitosti(db), category: 'znamenitosti' };
 
-  if (msg.includes('sport') || msg.includes('tenis') || msg.includes('nogomet') || msg.includes('futsal') || msg.includes('rukomet') || msg.includes('odbojka') || msg.includes('košark') || msg.includes('karate') || msg.includes('fitness') || msg.includes('teretana') || msg.includes('stadion') || msg.includes('klub') || msg.includes('rekreacij')
+  if (msg.includes('sport') || msg.includes('tenis') || msg.includes('nogomet') || msg.includes('futsal') || msg.includes('rukomet') || msg.includes('odbojka') || msg.includes('košark') || msg.includes('karate') || msg.includes('fitness') || msg.includes('teretana') || msg.includes('stadion') || msg.includes('klub') || msg.includes('sportska rekreacij')
     // EN
-    || msg.includes('tennis') || msg.includes('football') || msg.includes('soccer') || msg.includes('handball') || msg.includes('volleyball') || msg.includes('basketball') || msg.includes('gym') || msg.includes('stadium') || msg.includes('club') || msg.includes('recreation')
+    || msg.includes('tennis') || msg.includes('football') || msg.includes('soccer') || msg.includes('handball') || msg.includes('volleyball') || msg.includes('basketball') || msg.includes('gym') || msg.includes('stadium') || msg.includes('sports club')
     // DE
     || msg.includes('tennis') || msg.includes('fußball') || msg.includes('handball') || msg.includes('volleyball') || msg.includes('basketball') || msg.includes('fitnessstudio') || msg.includes('stadion') || msg.includes('verein'))
     return { context: CATEGORY_CONTEXTS.sport(db), category: 'sport' };
@@ -266,6 +266,25 @@ export default async function handler(req, res) {
           reply += item.web ? `[Više informacija](${item.web})\n` : `[Više informacija na TZ Valpovo](https://tz.valpovo.hr/smjestaj-u-valpovu/)\n`;
           reply += `[[CLR]]\n\n`;
         }
+      }
+      return res.status(200).json({ reply, category, suggestions: getSuggestions(category), images: extractImages(context) });
+    }
+
+    // Znamenitosti listing: generiraj direktno bez AI
+    // Specifični upit (dvorac, muzej, kula...) → pusti AI da odgovori detaljno
+    const specificZnaQuery = ['dvorac','prandau','muzej','kula','kazalište','kazaliste','pivovara','konjušnice','konjusnice','pučka škola','pucka skola','memorijaln','centar kulture','katančić','katancic','fortuna'].some(k => message.toLowerCase().includes(k));
+    if (category === 'znamenitosti' && lastCategory !== 'znamenitosti' && !specificZnaQuery) {
+      const zna = db.znamenitosti || [];
+      let reply = 'Valpovo krije niz kulturnih i povijesnih znamenitosti. Evo kompletnog pregleda:\n\n';
+      for (const item of zna) {
+        if (item.IMAGE_URL) reply += `[[IMG:${item.IMAGE_URL}]]`;
+        reply += `**${item.naziv}**\n`;
+        if (item.opis) reply += `${item.opis}\n`;
+        if (item.radno_vrijeme) reply += `🕐 ${item.radno_vrijeme}\n`;
+        if (item.adresa) reply += `📍 ${item.adresa}\n`;
+        reply += `[Otvori na karti](${item.maps_url})\n`;
+        reply += item.web ? `[Više informacija](${item.web})\n` : `[Više informacija na TZ Valpovo](https://tz.valpovo.hr/znamenitosti/)\n`;
+        reply += `[[CLR]]\n\n`;
       }
       return res.status(200).json({ reply, category, suggestions: getSuggestions(category), images: extractImages(context) });
     }
