@@ -80,11 +80,11 @@ function getRelevantContext(message, db, lastCategory) {
     || msg.includes('veranstaltung') || msg.includes('fest') || msg.includes('feier') || msg.includes('kommende'))
     return { context: CATEGORY_CONTEXTS.dogadanja(db), category: 'dogadanja' };
 
-  if (msg.includes('znamenitost') || msg.includes('dvorac') || msg.includes('muzej') || msg.includes('kula') || msg.includes('katančić') || msg.includes('posjet')
+  if (msg.includes('znamenitost') || msg.includes('dvorac') || msg.includes('muzej') || msg.includes('kula') || msg.includes('katančić') || msg.includes('posjet') || msg.includes('vidjeti') || msg.includes('vidjet') || msg.includes('razgled') || msg.includes('što ima') || msg.includes('sto ima')
     // EN
-    || msg.includes('attraction') || msg.includes('sightseeing') || msg.includes('castle') || msg.includes('museum') || msg.includes('monument') || msg.includes('visit') || msg.includes('landmark') || msg.includes('sight')
+    || msg.includes('attraction') || msg.includes('sightseeing') || msg.includes('castle') || msg.includes('museum') || msg.includes('monument') || msg.includes('visit') || msg.includes('landmark') || msg.includes('sight') || msg.includes('what to see') || msg.includes('things to see')
     // DE
-    || msg.includes('sehenswürdigkeit') || msg.includes('burg') || msg.includes('schloss') || msg.includes('museum') || msg.includes('besichtigung'))
+    || msg.includes('sehenswürdigkeit') || msg.includes('burg') || msg.includes('schloss') || msg.includes('museum') || msg.includes('besichtigung') || msg.includes('was gibt es'))
     return { context: CATEGORY_CONTEXTS.znamenitosti(db), category: 'znamenitosti' };
 
   if (msg.includes('sport') || msg.includes('tenis') || msg.includes('nogomet') || msg.includes('futsal') || msg.includes('rukomet') || msg.includes('odbojka') || msg.includes('košark') || msg.includes('karate') || msg.includes('fitness') || msg.includes('teretana') || msg.includes('stadion') || msg.includes('klub') || msg.includes('sportska rekreacij')
@@ -203,7 +203,7 @@ export default async function handler(req, res) {
     // Događanja listing: filtriraj prošle i generiraj direktno bez AI
     // Ako korisnik pita za SPECIFIČNU manifestaciju po imenu → preskoči listing, pusti AI da odgovori konkretno
     const specificEventQuery = ['fišijad','fisijad','matijafest','rockaraj','reunited','vašar','vasar','ljeto valpov','craft beer','staza zdravlja','festival sira','ribljeg paprikaš','ribljeg paprikas','kuhanje fiš','kuhanje fis'].some(k => message.toLowerCase().includes(k));
-    if (category === 'dogadanja' && lastCategory !== 'dogadanja' && !specificEventQuery) {
+    if (category === 'dogadanja' && !specificEventQuery) {
       const currentMonth = new Date().getMonth() + 1;
       const upcoming = db.dogadanja.filter(e => eventMaxMonth(e.vrijeme) >= currentMonth);
       let reply = upcoming.length
@@ -273,7 +273,7 @@ export default async function handler(req, res) {
     // Znamenitosti listing: generiraj direktno bez AI
     // Specifični upit (dvorac, muzej, kula...) → pusti AI da odgovori detaljno
     const specificZnaQuery = ['dvorac','prandau','muzej','kula','kazalište','kazaliste','pivovara','konjušnice','konjusnice','pučka škola','pucka skola','memorijaln','centar kulture','katančić','katancic','fortuna'].some(k => message.toLowerCase().includes(k));
-    if (category === 'znamenitosti' && lastCategory !== 'znamenitosti' && !specificZnaQuery) {
+    if (category === 'znamenitosti' && !specificZnaQuery) {
       const zna = db.znamenitosti || [];
       let reply = 'Valpovo krije niz kulturnih i povijesnih znamenitosti. Evo kompletnog pregleda:\n\n';
       for (const item of zna) {
@@ -292,7 +292,7 @@ export default async function handler(req, res) {
     // Gastronomija listing: generiraj direktno bez AI (eliminira hallucination restorana)
     // Ako korisnik pita za radno vrijeme ili specifično mjesto → preskoči listing, pusti AI s kontekstom
     const radnoVrijemeQuery = ['radno vrij','kada radi','radi li','do kada rad','od kada rad','opening hours','what time','öffnungszeiten','geöffnet','otvoreno','zatvoreno'].some(k => message.toLowerCase().includes(k));
-    const isGastroListing = category === 'gastronomija' && lastCategory !== 'gastronomija' && !radnoVrijemeQuery;
+    const isGastroListing = category === 'gastronomija' && !radnoVrijemeQuery;
     if (isGastroListing) {
       const gastro = db.gastronomija || [];
 
@@ -331,23 +331,25 @@ export default async function handler(req, res) {
       if (brzaHrana.length) {
         reply += '🍕 **Brza hrana i pizzerije**\n\n';
         for (const item of brzaHrana) {
+          if (item.IMAGE_URL) reply += `[[IMG:${item.IMAGE_URL}]]`;
           reply += `**${item.naziv}**\n`;
           if (item.opis) reply += `${item.opis}\n`;
           if (item.adresa) reply += `📍 ${item.adresa}\n`;
           reply += `[Otvori na karti](${mapsUrl(item)})\n`;
           if (item.web) reply += `[Više informacija](${item.web})\n`;
-          reply += '\n';
+          reply += `[[CLR]]\n\n`;
         }
       }
 
       if (caffeBarovi.length) {
         reply += '☕ **Caffe barovi i kavane**\n\n';
         for (const item of caffeBarovi) {
+          if (item.IMAGE_URL) reply += `[[IMG:${item.IMAGE_URL}]]`;
           reply += `**${item.naziv}**\n`;
           if (item.opis) reply += `${item.opis}\n`;
           reply += `[Otvori na karti](${mapsUrl(item)})\n`;
           if (item.web) reply += `[Više informacija](${item.web})\n`;
-          reply += '\n';
+          reply += `[[CLR]]\n\n`;
         }
       }
 
@@ -355,7 +357,7 @@ export default async function handler(req, res) {
     }
 
     // Sport listing: generiraj direktno bez AI (opći upit o sportu/klubovima)
-    const isSportListing = category === 'sport' && lastCategory !== 'sport';
+    const isSportListing = category === 'sport';
     if (isSportListing) {
       const s = db.sport;
       const sportEmoji = {
@@ -498,6 +500,11 @@ PRAVILA ZA BROJ REZULTATA:
 RADNO VRIJEME: Mnogi unosi u bazi imaju polje "radno_vrijeme". Kad korisnik pita kada nešto radi, je li otvoreno, do kada radi i slično:
 - Ako postoji "radno_vrijeme" u bazi → prikaži ga jasno (emoji 🕐 ispred)
 - Ako NE postoji → reci "Za aktualno radno vrijeme preporučujemo provjeru na [Google Maps](https://www.google.com/maps/search/?api=1&query=NAZIV+Valpovo) ili kontakt s mjestom." — NIKAD ne izmišljaj radno vrijeme!
+
+VREMENSKA PROGNOZA: Nemaš pristup vremenskim podacima u realnom vremenu niti prognozi za buduće dane. Ako korisnik pita o vremenu:
+- Reci kratko i jasno da nemaš vremensku prognozu
+- Uputi ga na meteo.hr ili hr.weather.com za prognozu
+- Odmah ponudi korisnu alternativu: "Ako mi kažeš kakvo vrijeme očekuješ (sunčano, kišno, vjetrovito), predložim aktivnosti koje odgovaraju takvom vremenu."
 
 PRAVILO: AKO PODATAK NIJE U BAZI — odgovori iskreno: "Trenutno nemam te podatke. Za više informacija obratite se Turističkoj zajednici Valpovo: [tz.valpovo.hr](https://tz.valpovo.hr) ili tel. 031 651 256." NIKAD ne izmišljaj podatke koji nisu u bazi.
 
