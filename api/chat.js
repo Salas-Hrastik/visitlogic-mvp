@@ -211,10 +211,21 @@ export default async function handler(req, res) {
       return res.status(200).json({ reply: weatherReply, category: lastCategory || null, suggestions: getSuggestions(lastCategory), images: [] });
     }
 
+    // Konverzacijski/retoričko pitanje — kratki AI odgovor s preporukom, NE puni listing
+    // Primjeri: "Što bi mi preporučio za ručak?", "Koji hotel preporučuješ?", "Savjetuješ li koji restoran?"
+    const isRecommendationQuery = [
+      'preporuč', 'savjetuješ', 'savjet', 'što bi', 'sto bi', 'koji bi', 'koja bi',
+      'kakvo bi', 'kamo bi', 'gdje bi preporuč', 'predloži', 'predlažeš',
+      // EN
+      'recommend', 'suggest', 'advice', 'what would you', 'which would you', 'where would you',
+      // DE
+      'empfehl', 'vorschlag', 'was würdest', 'was empf'
+    ].some(k => message.toLowerCase().includes(k));
+
     // Događanja listing: filtriraj prošle i generiraj direktno bez AI
     // Ako korisnik pita za SPECIFIČNU manifestaciju po imenu → preskoči listing, pusti AI da odgovori konkretno
     const specificEventQuery = ['fišijad','fisijad','matijafest','rockaraj','reunited','vašar','vasar','ljeto valpov','craft beer','staza zdravlja','festival sira','ribljeg paprikaš','ribljeg paprikas','kuhanje fiš','kuhanje fis'].some(k => message.toLowerCase().includes(k));
-    if (category === 'dogadanja' && !specificEventQuery && matched) {
+    if (category === 'dogadanja' && !specificEventQuery && !isRecommendationQuery && matched) {
       const currentMonth = new Date().getMonth() + 1;
       const upcoming = db.dogadanja.filter(e => eventMaxMonth(e.vrijeme) >= currentMonth);
       let reply = upcoming.length
@@ -233,7 +244,7 @@ export default async function handler(req, res) {
 
     // Smještaj listing: generiraj direktno bez AI (sprječava hallucination)
     // matched: false = fallback (npr. vremenski upit) → NE aktiviraj pre-gen
-    if (category === 'smjestaj' && matched) {
+    if (category === 'smjestaj' && !isRecommendationQuery && matched) {
       const s = db.smjestaj;
       const msgL = message.toLowerCase();
 
@@ -285,7 +296,7 @@ export default async function handler(req, res) {
     // Znamenitosti listing: generiraj direktno bez AI
     // Specifični upit (dvorac, muzej, kula...) → pusti AI da odgovori detaljno
     const specificZnaQuery = ['dvorac','prandau','muzej','kula','kazalište','kazaliste','pivovara','konjušnice','konjusnice','pučka škola','pucka skola','memorijaln','centar kulture','katančić','katancic','fortuna'].some(k => message.toLowerCase().includes(k));
-    if (category === 'znamenitosti' && !specificZnaQuery && matched) {
+    if (category === 'znamenitosti' && !specificZnaQuery && !isRecommendationQuery && matched) {
       const zna = db.znamenitosti || [];
       let reply = 'Valpovo krije niz kulturnih i povijesnih znamenitosti. Evo kompletnog pregleda:\n\n';
       for (const item of zna) {
@@ -302,9 +313,9 @@ export default async function handler(req, res) {
     }
 
     // Gastronomija listing: generiraj direktno bez AI (eliminira hallucination restorana)
-    // Ako korisnik pita za radno vrijeme ili specifično mjesto → preskoči listing, pusti AI s kontekstom
+    // Ako korisnik pita za radno vrijeme, specifično mjesto ili daje preporuku → preskoči listing, pusti AI s kontekstom
     const radnoVrijemeQuery = ['radno vrij','kada radi','radi li','do kada rad','od kada rad','opening hours','what time','öffnungszeiten','geöffnet','otvoreno','zatvoreno'].some(k => message.toLowerCase().includes(k));
-    const isGastroListing = category === 'gastronomija' && !radnoVrijemeQuery && matched;
+    const isGastroListing = category === 'gastronomija' && !radnoVrijemeQuery && !isRecommendationQuery && matched;
     if (isGastroListing) {
       const gastro = db.gastronomija || [];
 
@@ -369,7 +380,7 @@ export default async function handler(req, res) {
     }
 
     // Sport listing: generiraj direktno bez AI (opći upit o sportu/klubovima)
-    const isSportListing = category === 'sport' && matched;
+    const isSportListing = category === 'sport' && !isRecommendationQuery && matched;
     if (isSportListing) {
       const s = db.sport;
       const sportEmoji = {
@@ -414,7 +425,7 @@ export default async function handler(req, res) {
     // Okolica listing: generiraj direktno bez AI samo kad korisnik traži opći popis izleta
     // (sadrži 'izlet') — specifična pitanja (vinske ceste, Kopački rit...) idu na AI
     const msgLower = message.toLowerCase();
-    const isOkolicaListing = category === 'okolica' && msgLower.includes('izlet') && matched;
+    const isOkolicaListing = category === 'okolica' && msgLower.includes('izlet') && !isRecommendationQuery && matched;
     if (isOkolicaListing) {
       const izleti = db.okolica?.izleti || [];
       let reply = 'Preporučeni izleti iz Valpova — od najbližeg prema daljem:\n\n';
@@ -517,6 +528,8 @@ VREMENSKA PROGNOZA: Nemaš pristup vremenskim podacima u realnom vremenu niti pr
 - Reci kratko i jasno da nemaš vremensku prognozu
 - Uputi ga na meteo.hr ili hr.weather.com za prognozu
 - Odmah ponudi korisnu alternativu: "Ako mi kažeš kakvo vrijeme očekuješ (sunčano, kišno, vjetrovito), predložim aktivnosti koje odgovaraju takvom vremenu."
+
+GOOGLE MAPS ZA DETALJE KOJI NEDOSTAJU: Ako korisnik pita za jelovnik, menu, ponudu jela, cijene ili druge detalje o restoranu ili ugostiteljskom objektu koji nisu u bazi — uputi ga na Google Maps gdje može vidjeti slike, recenzije i ažurirane informacije: [Pogledaj na Google Maps](https://www.google.com/maps/search/?api=1&query=NAZIV+Valpovo). Zamijeni NAZIV s točnim nazivom objekta. Ovo vrijedi za sve kategorije — smještaj, sport, znamenitosti — kad detalji nedostaju u bazi, Google Maps je prvi izbor za aktualne informacije.
 
 PRAVILO: AKO PODATAK NIJE U BAZI — odgovori iskreno: "Trenutno nemam te podatke. Za više informacija obratite se Turističkoj zajednici Valpovo: [tz.valpovo.hr](https://tz.valpovo.hr) ili tel. 031 651 256." NIKAD ne izmišljaj podatke koji nisu u bazi.
 
