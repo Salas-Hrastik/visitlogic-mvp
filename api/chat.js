@@ -1,6 +1,5 @@
 import OpenAI from "openai";
 import fs from "fs";
-import path from "path";
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY
@@ -12,19 +11,14 @@ export default async function handler(req, res) {
 
     const { message } = req.body;
 
-    // Učitavanje baze
-    const dbPath = path.join(process.cwd(), "data", "biograd_clean.json");
-
-    const raw = fs.readFileSync(dbPath, "utf8");
+    // učitavanje baze
+    const raw = fs.readFileSync("./data/biograd_clean.json", "utf8");
     const data = JSON.parse(raw);
 
-    // filtriranje restorana
-    const restorani = data
-      .filter(o => o.kategorija === "restaurant")
-      .slice(0, 20);
+    // filtriraj restorane
+    const restorani = data.filter(o => o.kategorija === "restaurant");
 
-    // kontekst za AI
-    const context = JSON.stringify(restorani);
+    const context = JSON.stringify(restorani.slice(0,20));
 
     const completion = await openai.chat.completions.create({
       model: "gpt-4o-mini",
@@ -34,11 +28,8 @@ export default async function handler(req, res) {
           content: `
 Ti si AI turistički informator za Biograd na Moru.
 
-Koristi podatke iz baze objekata kada odgovaraš.
+Ako korisnik traži restorane koristi ovu bazu:
 
-Ako korisnik traži restorane, koristi isključivo ovu bazu.
-
-Baza restorana:
 ${context}
 `
         },
@@ -50,17 +41,15 @@ ${context}
       temperature: 0.3
     });
 
-    const reply = completion.choices[0].message.content;
-
     res.status(200).json({
-      reply
+      reply: completion.choices[0].message.content
     });
 
   } catch (error) {
 
-    console.error(error);
+    console.error("ERROR:", error);
 
-    res.status(500).json({
+    res.status(200).json({
       reply: "Greška pri čitanju baze podataka."
     });
 
