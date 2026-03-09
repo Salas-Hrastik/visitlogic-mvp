@@ -123,10 +123,12 @@ function getRelevantContext(message, db, lastCategory) {
     return { context: CATEGORY_CONTEXTS.parking(db), category: 'parking' };
 
   if (msg.includes('ljekar') || msg.includes('banka') || msg.includes('bankomat') || msg.includes('taksi') || msg.includes('taxi') || msg.includes('autobus') || msg.includes('uslug')
+    // Auto servisi
+    || msg.includes('auto servis') || msg.includes('autoservis') || msg.includes('servis auta') || msg.includes('popravak auta') || msg.includes('popravit auto') || msg.includes('popraviti auto') || msg.includes('mehanik') || msg.includes('automehanik') || msg.includes('vulkan') || msg.includes('vulkanizer') || msg.includes('autolimar') || msg.includes('karoser') || msg.includes('karlo servis') || msg.includes('galičić') || msg.includes('galicic') || msg.includes('valentić') || msg.includes('valentic') || msg.includes('autocentar')
     // EN
-    || msg.includes('doctor') || msg.includes('pharmacy') || msg.includes('bank') || msg.includes('atm') || msg.includes('cash') || msg.includes('bus') || msg.includes('service') || msg.includes('post office')
+    || msg.includes('doctor') || msg.includes('pharmacy') || msg.includes('bank') || msg.includes('atm') || msg.includes('cash') || msg.includes('bus') || msg.includes('service') || msg.includes('post office') || msg.includes('car repair') || msg.includes('mechanic') || msg.includes('garage') || msg.includes('tyre') || msg.includes('tire')
     // DE
-    || msg.includes('arzt') || msg.includes('apotheke') || msg.includes('bank') || msg.includes('geldautomat') || msg.includes('bus') || msg.includes('taxi') || msg.includes('post'))
+    || msg.includes('arzt') || msg.includes('apotheke') || msg.includes('bank') || msg.includes('geldautomat') || msg.includes('bus') || msg.includes('taxi') || msg.includes('post') || msg.includes('werkstatt') || msg.includes('kfz') || msg.includes('mechaniker') || msg.includes('reifenwechsel'))
     return { context: CATEGORY_CONTEXTS.usluge(db), category: 'usluge' };
 
   if (msg.includes('šetn') || msg.includes('bicikl') || msg.includes('perivoj') || msg.includes('park') || msg.includes('priroda') || msg.includes('ribolov') || msg.includes('drava') || msg.includes('šuma')
@@ -222,10 +224,23 @@ export default async function handler(req, res) {
       'empfehl', 'vorschlag', 'was würdest', 'was empf'
     ].some(k => message.toLowerCase().includes(k));
 
+    // Upiti za detalje o specifičnoj temi/osobi/objektu — preskoči pre-gen listing, pusti AI da odgovori detaljno
+    // Primjeri: "zanima me više o Katančiću", "reci mi više o dvorcu", "detaljnije o MatijafesT-u"
+    const isDetailQuery = [
+      'zanima me više', 'zanima me detalj', 'reci mi više', 'recite mi više',
+      'više o', 'više informacij', 'detaljn', 'tko je', 'što je to', 'sto je to',
+      'što je bio', 'sto je bio', 'koji je to', 'koja je to', 'govori mi o',
+      'ispričaj mi', 'ispricaj mi', 'objasni mi', 'o čemu se radi', 'o cemu se radi',
+      // EN
+      'tell me more', 'more about', 'details about', 'who is', 'what is', 'who was', 'what was', 'explain',
+      // DE
+      'erzähl mir mehr', 'mehr über', 'details über', 'wer ist', 'was ist', 'erkläre'
+    ].some(k => message.toLowerCase().includes(k));
+
     // Događanja listing: filtriraj prošle i generiraj direktno bez AI
     // Ako korisnik pita za SPECIFIČNU manifestaciju po imenu → preskoči listing, pusti AI da odgovori konkretno
-    const specificEventQuery = ['fišijad','fisijad','matijafest','rockaraj','reunited','vašar','vasar','ljeto valpov','craft beer','staza zdravlja','festival sira','ribljeg paprikaš','ribljeg paprikas','kuhanje fiš','kuhanje fis'].some(k => message.toLowerCase().includes(k));
-    if (category === 'dogadanja' && !specificEventQuery && !isRecommendationQuery && matched) {
+    const specificEventQuery = ['fišijad','fisijad','matijafest','rockaraj','reunited','vašar','vasar','ljeto valpov','craft beer','staza zdravlja','festival sira','ribljeg paprikaš','ribljeg paprikas','kuhanje fiš','kuhanje fis','katančić','katancic','matija petar','matiji petru'].some(k => message.toLowerCase().includes(k));
+    if (category === 'dogadanja' && !specificEventQuery && !isRecommendationQuery && !isDetailQuery && matched) {
       const currentMonth = new Date().getMonth() + 1;
       const upcoming = db.dogadanja.filter(e => eventMaxMonth(e.vrijeme) >= currentMonth);
       let reply = upcoming.length
@@ -244,7 +259,7 @@ export default async function handler(req, res) {
 
     // Smještaj listing: generiraj direktno bez AI (sprječava hallucination)
     // matched: false = fallback (npr. vremenski upit) → NE aktiviraj pre-gen
-    if (category === 'smjestaj' && !isRecommendationQuery && matched) {
+    if (category === 'smjestaj' && !isRecommendationQuery && !isDetailQuery && matched) {
       const s = db.smjestaj;
       const msgL = message.toLowerCase();
 
@@ -296,7 +311,7 @@ export default async function handler(req, res) {
     // Znamenitosti listing: generiraj direktno bez AI
     // Specifični upit (dvorac, muzej, kula...) → pusti AI da odgovori detaljno
     const specificZnaQuery = ['dvorac','prandau','muzej','kula','kazalište','kazaliste','pivovara','konjušnice','konjusnice','pučka škola','pucka skola','memorijaln','centar kulture','katančić','katancic','fortuna'].some(k => message.toLowerCase().includes(k));
-    if (category === 'znamenitosti' && !specificZnaQuery && !isRecommendationQuery && matched) {
+    if (category === 'znamenitosti' && !specificZnaQuery && !isRecommendationQuery && !isDetailQuery && matched) {
       const zna = db.znamenitosti || [];
       let reply = 'Valpovo krije niz kulturnih i povijesnih znamenitosti. Evo kompletnog pregleda:\n\n';
       for (const item of zna) {
@@ -315,7 +330,7 @@ export default async function handler(req, res) {
     // Gastronomija listing: generiraj direktno bez AI (eliminira hallucination restorana)
     // Ako korisnik pita za radno vrijeme, specifično mjesto ili daje preporuku → preskoči listing, pusti AI s kontekstom
     const radnoVrijemeQuery = ['radno vrij','kada radi','radi li','do kada rad','od kada rad','opening hours','what time','öffnungszeiten','geöffnet','otvoreno','zatvoreno'].some(k => message.toLowerCase().includes(k));
-    const isGastroListing = category === 'gastronomija' && !radnoVrijemeQuery && !isRecommendationQuery && matched;
+    const isGastroListing = category === 'gastronomija' && !radnoVrijemeQuery && !isRecommendationQuery && !isDetailQuery && matched;
     if (isGastroListing) {
       const gastro = db.gastronomija || [];
 
@@ -380,7 +395,7 @@ export default async function handler(req, res) {
     }
 
     // Sport listing: generiraj direktno bez AI (opći upit o sportu/klubovima)
-    const isSportListing = category === 'sport' && !isRecommendationQuery && matched;
+    const isSportListing = category === 'sport' && !isRecommendationQuery && !isDetailQuery && matched;
     if (isSportListing) {
       const s = db.sport;
       const sportEmoji = {
@@ -425,7 +440,7 @@ export default async function handler(req, res) {
     // Okolica listing: generiraj direktno bez AI samo kad korisnik traži opći popis izleta
     // (sadrži 'izlet') — specifična pitanja (vinske ceste, Kopački rit...) idu na AI
     const msgLower = message.toLowerCase();
-    const isOkolicaListing = category === 'okolica' && msgLower.includes('izlet') && !isRecommendationQuery && matched;
+    const isOkolicaListing = category === 'okolica' && msgLower.includes('izlet') && !isRecommendationQuery && !isDetailQuery && matched;
     if (isOkolicaListing) {
       const izleti = db.okolica?.izleti || [];
       let reply = 'Preporučeni izleti iz Valpova — od najbližeg prema daljem:\n\n';
