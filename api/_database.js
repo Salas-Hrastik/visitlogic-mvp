@@ -1017,10 +1017,16 @@ export const db = {
                 "napomena": "Besplatno — dio europske biciklističke mreže"
             },
             {
-                "naziv": "Biciklistička ruta Valpovo – Belišće – Osijek",
-                "opis": "Popularna biciklistička ruta koja iz Valpova vodi prema Osijeku (30 km). Preporučuje TZ Osijek — prolazi manjim prometnim lokalnim cestama uz Dravu.",
-                "maps_url": "https://www.google.com/maps/dir/Valpovo/Osijek",
-                "napomena": "Ruta TZ Osijek — cesta Valpovo → Belišće → Osijek"
+                "naziv": "Biciklistička staza prema Ladimirevcima",
+                "opis": "Biciklistička staza iz Valpova prema naselju Ladimirevci — ravničarski teren idealan za rekreativnu vožnju, prolazi kroz slavonske njive i sela.",
+                "maps_url": "https://www.google.com/maps/dir/Valpovo/Ladimirevci",
+                "napomena": "Lokalna biciklistička ruta Valpovo → Ladimirevci"
+            },
+            {
+                "naziv": "Biciklistička staza prema Belišću – Veliškovci – Gat",
+                "opis": "Biciklistička staza iz Valpova prema Belišću, a odatle dalje kroz naselja Veliškovci i Gat — blaga ravničarska ruta pogodna za obitelji i rekreativce.",
+                "maps_url": "https://www.google.com/maps/dir/Valpovo/Belišće",
+                "napomena": "Lokalna biciklistička ruta Valpovo → Belišće → Veliškovci → Gat"
             }
         ],
         "ribolov": [

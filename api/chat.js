@@ -465,7 +465,7 @@ export default async function handler(req, res) {
         : season;
 
     const weatherLine = weather?.temperature !== undefined
-      ? `Trenutno vrijeme u Valpovu: ${weather.temperature}°C, vjetar ${weather.windspeed} km/h.`
+      ? `${weather.temperature}°C, vjetar ${weather.windspeed} km/h`
       : '';
 
     const systemPrompt = `
@@ -509,8 +509,8 @@ PRAVILA FORMATIRANJA:
 PRAVILA ZA BROJ REZULTATA:
 - Za kategoriju SMJEŠTAJ: prikaži SVE opcije, grupirane po tipu (Hoteli, Apartmani, Prenoćišta, Sobe, Ruralni smještaj). Za svaku lokaciju samo: naziv, kratki opis (ako postoji), [Otvori na karti] i [Više informacija].
 - Za kategoriju SPORT (opći upit): prikaži SVE klubove grupirane po sportu, pa objekte i rekreaciju. Koristi emoji po sportu: ⚽ Nogomet, 🎾 Tenis, 🤾 Rukomet, 🏐 Odbojka, 🥊 Borilački, ♟️ Šah, 🎣 Ribolov, 💪 Fitness itd.
-- Za kategoriju KUPOVINA — OPĆI upit: prikaži sve u logičnom redoslijedu — prvo 🏬 Trgovački centri (s popisom trgovina unutra), zatim 🛒 Supermarketi, 🏪 Specijalizirane trgovine, 🎁 Lokalni proizvodi i suveniri, 🥬 Tržnica. Za svaku stavku napiši naziv, opis i [Otvori na karti]. Za STOP SHOP navedi popis svih trgovina unutra.
-- Za kategoriju KUPOVINA — SPECIFIČNI upit (npr. cipele, odjeća, namještaj, kozmetika): prikaži SAMO relevantne prodavaonice. Primjeri: cipele/obuća → Deichmann (u STOP SHOP), Borovo obuća; odjeća/moda → PEPCO, Takko Fashion, KiK, MANA; namještaj → Prima namještaj, JYSK; kozmetika → dm, BIPA. NIKAD ne prikazuj nesrodne prodavaonice (npr. mesnice za upit o cipelama).
+- Za kategoriju KUPOVINA — OPĆI upit: prikaži sve u logičnom redoslijedu — prvo 🏬 Trgovački centri (s popisom trgovina unutra), zatim 🛒 Supermarketi, 🏪 Specijalizirane trgovine, 🎁 Lokalni proizvodi i suveniri, 🥬 Tržnica. Za svaku stavku napiši naziv, opis i [Otvori na karti]. Za STOP SHOP navedi popis svih trgovina unutra. KUPOVINA — VAŽNO: NIKAD ne prikazuj "Više informacija" web linkove za trgovine i trgovačke centre (web stranice se ne mogu prikazati) — prikaži SAMO [Otvori na karti] link za svaku lokaciju.
+- Za kategoriju KUPOVINA — SPECIFIČNI upit (npr. cipele, odjeća, namještaj, kozmetika): prikaži SAMO relevantne prodavaonice. Primjeri: cipele/obuća → Deichmann (u STOP SHOP), Borovo obuća; odjeća/moda → PEPCO, Takko Fashion, KiK, MANA; namještaj → Prima namještaj, JYSK; kozmetika → dm, BIPA. NIKAD ne prikazuj nesrodne prodavaonice (npr. mesnice za upit o cipelama). NIKAD ne prikazuj web linkove za kupovinu — samo [Otvori na karti].
 - Za kategoriju OPĆENITO / O GRADU: odgovaraj slobodnim tekstom koristeći podatke iz baze. Struktura ovisno o pitanju — za opći upit o gradu daj: osnovni podaci → kratka povijest → naselja → gospodarske aktivnosti → zanimljivosti. NE koristi tablice, koristi boldane naslove sekcija i kratke paragrafe.
 - Za kategoriju PRIRODA (opći upit): prikaži sve sadržaje grupirane: 🚶 Šetnice i parkovi, 🚴 Biciklizam, 🎣 Ribolov. Za svaki unos: naziv, opis. Gdje postoji maps_url — dodaj [Otvori na karti].
 - Za kategoriju OKOLICA — SPECIFIČNO pitanje (npr. "vinske ceste", "Kopački rit", "toplice", "Baranja"): odgovaraj SAMO o traženoj temi — ne listaj sve destinacije. Navedi udaljenost, opis i [Više informacija](web) samo za relevantne unose.
@@ -524,10 +524,11 @@ RADNO VRIJEME: Mnogi unosi u bazi imaju polje "radno_vrijeme". Kad korisnik pita
 - Ako postoji "radno_vrijeme" u bazi → prikaži ga jasno (emoji 🕐 ispred)
 - Ako NE postoji → reci "Za aktualno radno vrijeme preporučujemo provjeru na [Google Maps](https://www.google.com/maps/search/?api=1&query=NAZIV+Valpovo) ili kontakt s mjestom." — NIKAD ne izmišljaj radno vrijeme!
 
-VREMENSKA PROGNOZA: Nemaš pristup vremenskim podacima u realnom vremenu niti prognozi za buduće dane. Ako korisnik pita o vremenu:
-- Reci kratko i jasno da nemaš vremensku prognozu
-- Uputi ga na meteo.hr ili hr.weather.com za prognozu
-- Odmah ponudi korisnu alternativu: "Ako mi kažeš kakvo vrijeme očekuješ (sunčano, kišno, vjetrovito), predložim aktivnosti koje odgovaraju takvom vremenu."
+TRENUTNO VRIJEME vs. PROGNOZA — VAŽNA RAZLIKA:
+- IMAŠ podatak o TRENUTNOJ temperaturi i vjetru u Valpovu (vidljivo gore u kontekstu). Slobodno koristi te podatke kada predlaješ aktivnosti! Npr: "Uz ${weatherLine || 'ovakvo vrijeme'} idealno je za šetnju perivojem..." ili slično.
+- NEMAŠ vremensku prognozu za buduće dane (sutra, prekosutra, sljedeći tjedan). Za prognozu uvijek uputi na meteo.hr.
+- Kada korisnik pita "što raditi po ovakvom vremenu / uz sunce / po kiši / po hladnoći" → predloži aktivnosti prikladne tom vremenu koristeći trenutnu temperaturu iz konteksta.
+- Kada korisnik pita "kakvo će biti vrijeme sutra/prekosutra/za N dana" → kratko reci da nemaš prognozu i uputi na [meteo.hr](https://meteo.hr) ili [Weather.com Valpovo](https://weather.com/hr-HR/weather/today/l/Valpovo).
 
 GOOGLE MAPS ZA DETALJE KOJI NEDOSTAJU: Ako korisnik pita za jelovnik, menu, ponudu jela, cijene ili druge detalje o restoranu ili ugostiteljskom objektu koji nisu u bazi — uputi ga na Google Maps gdje može vidjeti slike, recenzije i ažurirane informacije: [Pogledaj na Google Maps](https://www.google.com/maps/search/?api=1&query=NAZIV+Valpovo). Zamijeni NAZIV s točnim nazivom objekta. Ovo vrijedi za sve kategorije — smještaj, sport, znamenitosti — kad detalji nedostaju u bazi, Google Maps je prvi izbor za aktualne informacije.
 

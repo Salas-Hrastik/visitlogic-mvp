@@ -802,13 +802,12 @@
             raw = raw.replace(/\[[^\]]*\]\([^)]*$/, '');
             raw = raw.replace(/\[[^\]]*$/, '');
 
-            // 1a. [[IMG:url]] — pre-gen inline thumbnail (nije AI, smije se prikazati)
-            raw = raw.replace(/\[\[IMG:(https?:[^\]]+)\]\]/g,
-                '<img class="item-thumb" src="$1" loading="lazy" alt="">');
-            // 1b. [[CLR]] — čisti float nakon stavke s minijaturom
+            // 1b. [[CLR]] — čisti float nakon stavke s minijaturom (rano, sigurno)
             raw = raw.replace(/\[\[CLR\]\]/g, '<div style="clear:both"></div>');
             // 1c. Markdown slike: ![alt](url) → potpuno ukloni (AI ne smije prikazivati slike)
             raw = raw.replace(/!\[([^\]]*)\]\([^)]+\)/g, '');
+            // NAPOMENA: [[IMG:url]] se zamjenjuje NAKON combo regexpa (korak 1a*)
+            // jer combo regex za telefone (04/NNNN) može korumpirati URL unutar src="" atributa
 
             // 2. Bold
             raw = raw.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
@@ -841,6 +840,11 @@
                 }
                 return match;
             });
+
+            // 1a* [[IMG:url]] — pre-gen inline thumbnail — zamjena NAKON combo regexpa
+            // (sprječava phone-regex od korumpiranja URL-a unutar src="" atributa)
+            raw = raw.replace(/\[\[IMG:(https?:[^\]]+)\]\]/g,
+                '<img class="item-thumb" src="$1" loading="lazy" alt="">');
 
             // 3. 📍 GPS koordinate (ako nisu dio linka)
             raw = raw.replace(/(?![^<]*<\/a>)(📍\s*(\d+\.\d+)\s*,\s*(\d+\.\d+))/g, (match, full, lat, lng) => {
