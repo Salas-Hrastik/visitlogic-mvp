@@ -1,5 +1,6 @@
 import OpenAI from "openai";
 import fs from "fs";
+import path from "path";
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY
@@ -11,12 +12,23 @@ export default async function handler(req, res) {
 
     const { message } = req.body;
 
-    // učitavanje baze
-    const raw = fs.readFileSync("./data/biograd_clean.json", "utf8");
+    // apsolutna putanja do projekta
+    const filePath = path.join(process.cwd(), "data", "biograd_clean.json");
+
+    // provjera postoji li datoteka
+    if (!fs.existsSync(filePath)) {
+      return res.status(200).json({
+        reply: "Baza podataka nije pronađena na serveru."
+      });
+    }
+
+    const raw = fs.readFileSync(filePath, "utf8");
     const data = JSON.parse(raw);
 
-    // filtriraj restorane
-    const restorani = data.filter(o => o.kategorija === "restaurant");
+    // filtriranje restorana
+    const restorani = data.filter(o => 
+      o.kategorija && o.kategorija.toLowerCase().includes("restaurant")
+    );
 
     const context = JSON.stringify(restorani.slice(0,20));
 
@@ -28,7 +40,7 @@ export default async function handler(req, res) {
           content: `
 Ti si AI turistički informator za Biograd na Moru.
 
-Ako korisnik traži restorane koristi ovu bazu:
+Kada korisnik pita za restorane koristi ovu bazu:
 
 ${context}
 `
@@ -47,7 +59,7 @@ ${context}
 
   } catch (error) {
 
-    console.error("ERROR:", error);
+    console.error(error);
 
     res.status(200).json({
       reply: "Greška pri čitanju baze podataka."
