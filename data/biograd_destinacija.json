@@ -1,0 +1,3050 @@
+[
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "parking",
+    "lat": 43.9396538,
+    "lon": 15.4464649,
+    "google_maps": "https://www.google.com/maps?q=43.9396538,15.4464649",
+    "tip": "infrastruktura"
+  },
+  {
+    "naziv": "Biograd na Moru",
+    "kategorija": "ferry_terminal",
+    "lat": 43.9393683,
+    "lon": 15.4397343,
+    "google_maps": "https://www.google.com/maps?q=43.9393683,15.4397343",
+    "tip": "nautika"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "parking",
+    "lat": 43.9363932,
+    "lon": 15.443169,
+    "google_maps": "https://www.google.com/maps?q=43.9363932,15.443169",
+    "tip": "infrastruktura"
+  },
+  {
+    "naziv": "Belvedere",
+    "kategorija": "cafe",
+    "lat": 43.9349799,
+    "lon": 15.4450119,
+    "google_maps": "https://www.google.com/maps?q=43.9349799,15.4450119",
+    "tip": "gastronomija"
+  },
+  {
+    "naziv": "Konzum",
+    "kategorija": "supermarket",
+    "lat": 43.9411442,
+    "lon": 15.4457263,
+    "google_maps": "https://www.google.com/maps?q=43.9411442,15.4457263",
+    "tip": "infrastruktura"
+  },
+  {
+    "naziv": "Aqua",
+    "kategorija": "nightclub",
+    "lat": 43.9304937,
+    "lon": 15.4482198,
+    "google_maps": "https://www.google.com/maps?q=43.9304937,15.4482198",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "cafe",
+    "lat": 43.9373829,
+    "lon": 15.4438744,
+    "google_maps": "https://www.google.com/maps?q=43.9373829,15.4438744",
+    "tip": "gastronomija"
+  },
+  {
+    "naziv": "Pocco Locco cocktail bar",
+    "kategorija": "nightclub",
+    "lat": 43.9305444,
+    "lon": 15.4491075,
+    "google_maps": "https://www.google.com/maps?q=43.9305444,15.4491075",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Šumpreš",
+    "kategorija": "cafe",
+    "lat": 43.9361938,
+    "lon": 15.4432296,
+    "google_maps": "https://www.google.com/maps?q=43.9361938,15.4432296",
+    "tip": "gastronomija"
+  },
+  {
+    "naziv": "Škverić",
+    "kategorija": "cafe",
+    "lat": 43.9443758,
+    "lon": 15.4457095,
+    "google_maps": "https://www.google.com/maps?q=43.9443758,15.4457095",
+    "tip": "gastronomija"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "cafe",
+    "lat": 43.9312913,
+    "lon": 15.4465561,
+    "google_maps": "https://www.google.com/maps?q=43.9312913,15.4465561",
+    "tip": "gastronomija"
+  },
+  {
+    "naziv": "Cassa Vecchia",
+    "kategorija": "restaurant",
+    "lat": 43.9374315,
+    "lon": 15.4420491,
+    "google_maps": "https://www.google.com/maps?q=43.9374315,15.4420491",
+    "tip": "gastronomija"
+  },
+  {
+    "naziv": "Lavender",
+    "kategorija": "cafe",
+    "lat": 43.9347963,
+    "lon": 15.4436956,
+    "google_maps": "https://www.google.com/maps?q=43.9347963,15.4436956",
+    "tip": "gastronomija"
+  },
+  {
+    "naziv": "Kiss",
+    "kategorija": "cafe",
+    "lat": 43.9380558,
+    "lon": 15.4434137,
+    "google_maps": "https://www.google.com/maps?q=43.9380558,15.4434137",
+    "tip": "gastronomija"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "cafe",
+    "lat": 43.9334942,
+    "lon": 15.4446366,
+    "google_maps": "https://www.google.com/maps?q=43.9334942,15.4446366",
+    "tip": "gastronomija"
+  },
+  {
+    "naziv": "Queen bar",
+    "kategorija": "nightclub",
+    "lat": 43.9304504,
+    "lon": 15.4495744,
+    "google_maps": "https://www.google.com/maps?q=43.9304504,15.4495744",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Ljekarne Pervan",
+    "kategorija": "pharmacy",
+    "lat": 43.9396983,
+    "lon": 15.4467574,
+    "google_maps": "https://www.google.com/maps?q=43.9396983,15.4467574",
+    "tip": "infrastruktura"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "convenience",
+    "lat": 43.9417628,
+    "lon": 15.4454039,
+    "google_maps": "https://www.google.com/maps?q=43.9417628,15.4454039",
+    "tip": "infrastruktura"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "restaurant",
+    "lat": 43.942084,
+    "lon": 15.4452033,
+    "google_maps": "https://www.google.com/maps?q=43.942084,15.4452033",
+    "tip": "gastronomija"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "atm",
+    "lat": 43.9423203,
+    "lon": 15.445116,
+    "google_maps": "https://www.google.com/maps?q=43.9423203,15.445116",
+    "tip": "infrastruktura"
+  },
+  {
+    "naziv": "Bure",
+    "kategorija": "supermarket",
+    "lat": 43.9398416,
+    "lon": 15.4679636,
+    "google_maps": "https://www.google.com/maps?q=43.9398416,15.4679636",
+    "tip": "infrastruktura"
+  },
+  {
+    "naziv": "U Šime",
+    "kategorija": "restaurant",
+    "lat": 43.9378857,
+    "lon": 15.4720443,
+    "google_maps": "https://www.google.com/maps?q=43.9378857,15.4720443",
+    "tip": "gastronomija"
+  },
+  {
+    "naziv": "Hotel Bolero",
+    "kategorija": "hotel",
+    "lat": 43.9416147,
+    "lon": 15.4496439,
+    "google_maps": "https://www.google.com/maps?q=43.9416147,15.4496439",
+    "tip": "smještaj"
+  },
+  {
+    "naziv": "Blandona",
+    "kategorija": "cafe",
+    "lat": 43.9366646,
+    "lon": 15.4415819,
+    "google_maps": "https://www.google.com/maps?q=43.9366646,15.4415819",
+    "tip": "gastronomija"
+  },
+  {
+    "naziv": "Auto Hrvatska",
+    "kategorija": "motorcycle",
+    "lat": 43.9382076,
+    "lon": 15.4464459,
+    "google_maps": "https://www.google.com/maps?q=43.9382076,15.4464459",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Bošana",
+    "kategorija": "cafe",
+    "lat": 43.9479934,
+    "lon": 15.4433532,
+    "google_maps": "https://www.google.com/maps?q=43.9479934,15.4433532",
+    "tip": "gastronomija"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "cafe",
+    "lat": 43.9476254,
+    "lon": 15.4463811,
+    "google_maps": "https://www.google.com/maps?q=43.9476254,15.4463811",
+    "tip": "gastronomija"
+  },
+  {
+    "naziv": "Bure",
+    "kategorija": "convenience",
+    "lat": 43.9476657,
+    "lon": 15.4464431,
+    "google_maps": "https://www.google.com/maps?q=43.9476657,15.4464431",
+    "tip": "infrastruktura"
+  },
+  {
+    "naziv": "Adriatic",
+    "kategorija": "bakery",
+    "lat": 43.9379753,
+    "lon": 15.4535359,
+    "google_maps": "https://www.google.com/maps?q=43.9379753,15.4535359",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Bure Market",
+    "kategorija": "convenience",
+    "lat": 43.9354996,
+    "lon": 15.4572185,
+    "google_maps": "https://www.google.com/maps?q=43.9354996,15.4572185",
+    "tip": "infrastruktura"
+  },
+  {
+    "naziv": "Bure Market",
+    "kategorija": "convenience",
+    "lat": 43.9372061,
+    "lon": 15.4505465,
+    "google_maps": "https://www.google.com/maps?q=43.9372061,15.4505465",
+    "tip": "infrastruktura"
+  },
+  {
+    "naziv": "Martin",
+    "kategorija": "bakery",
+    "lat": 43.9381359,
+    "lon": 15.4507091,
+    "google_maps": "https://www.google.com/maps?q=43.9381359,15.4507091",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Camp Ljutić",
+    "kategorija": "tourism",
+    "lat": 43.9269296,
+    "lon": 15.4536739,
+    "google_maps": "https://www.google.com/maps?q=43.9269296,15.4536739",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Kaldi",
+    "kategorija": "cafe",
+    "lat": 43.9374125,
+    "lon": 15.4447394,
+    "google_maps": "https://www.google.com/maps?q=43.9374125,15.4447394",
+    "tip": "gastronomija"
+  },
+  {
+    "naziv": "dm",
+    "kategorija": "chemist",
+    "lat": 43.9384397,
+    "lon": 15.4444566,
+    "google_maps": "https://www.google.com/maps?q=43.9384397,15.4444566",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Dišpetoža",
+    "kategorija": "cafe",
+    "lat": 43.9292278,
+    "lon": 15.4511264,
+    "google_maps": "https://www.google.com/maps?q=43.9292278,15.4511264",
+    "tip": "gastronomija"
+  },
+  {
+    "naziv": "Lolipop",
+    "kategorija": "cafe",
+    "lat": 43.9327576,
+    "lon": 15.4466523,
+    "google_maps": "https://www.google.com/maps?q=43.9327576,15.4466523",
+    "tip": "gastronomija"
+  },
+  {
+    "naziv": "Mattina obuća",
+    "kategorija": "shoes",
+    "lat": 43.9375993,
+    "lon": 15.4447718,
+    "google_maps": "https://www.google.com/maps?q=43.9375993,15.4447718",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "PBZ",
+    "kategorija": "bank",
+    "lat": 43.9374989,
+    "lon": 15.4448449,
+    "google_maps": "https://www.google.com/maps?q=43.9374989,15.4448449",
+    "tip": "infrastruktura"
+  },
+  {
+    "naziv": "Restaurant park Soline",
+    "kategorija": "restaurant",
+    "lat": 43.9280412,
+    "lon": 15.4521856,
+    "google_maps": "https://www.google.com/maps?q=43.9280412,15.4521856",
+    "tip": "gastronomija"
+  },
+  {
+    "naziv": "Sakić",
+    "kategorija": "butcher",
+    "lat": 43.9383575,
+    "lon": 15.4442951,
+    "google_maps": "https://www.google.com/maps?q=43.9383575,15.4442951",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "atm",
+    "lat": 43.9375573,
+    "lon": 15.4448018,
+    "google_maps": "https://www.google.com/maps?q=43.9375573,15.4448018",
+    "tip": "infrastruktura"
+  },
+  {
+    "naziv": "Porto",
+    "kategorija": "cafe",
+    "lat": 43.93779,
+    "lon": 15.4440383,
+    "google_maps": "https://www.google.com/maps?q=43.93779,15.4440383",
+    "tip": "gastronomija"
+  },
+  {
+    "naziv": "Firma",
+    "kategorija": "cafe",
+    "lat": 43.937791,
+    "lon": 15.445186,
+    "google_maps": "https://www.google.com/maps?q=43.937791,15.445186",
+    "tip": "gastronomija"
+  },
+  {
+    "naziv": "Fabio",
+    "kategorija": "cafe",
+    "lat": 43.938738,
+    "lon": 15.4438629,
+    "google_maps": "https://www.google.com/maps?q=43.938738,15.4438629",
+    "tip": "gastronomija"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "atm",
+    "lat": 43.9411805,
+    "lon": 15.4457318,
+    "google_maps": "https://www.google.com/maps?q=43.9411805,15.4457318",
+    "tip": "infrastruktura"
+  },
+  {
+    "naziv": "Biograd promet",
+    "kategorija": "hardware",
+    "lat": 43.9386968,
+    "lon": 15.4466046,
+    "google_maps": "https://www.google.com/maps?q=43.9386968,15.4466046",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Žuti",
+    "kategorija": "cafe",
+    "lat": 43.9227541,
+    "lon": 15.4584671,
+    "google_maps": "https://www.google.com/maps?q=43.9227541,15.4584671",
+    "tip": "gastronomija"
+  },
+  {
+    "naziv": "Geoss",
+    "kategorija": "clothes",
+    "lat": 43.9371116,
+    "lon": 15.4431011,
+    "google_maps": "https://www.google.com/maps?q=43.9371116,15.4431011",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Luiđi",
+    "kategorija": "bakery",
+    "lat": 43.9374169,
+    "lon": 15.4439611,
+    "google_maps": "https://www.google.com/maps?q=43.9374169,15.4439611",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Millenum",
+    "kategorija": "restaurant",
+    "lat": 43.9370415,
+    "lon": 15.4431807,
+    "google_maps": "https://www.google.com/maps?q=43.9370415,15.4431807",
+    "tip": "gastronomija"
+  },
+  {
+    "naziv": "Bure",
+    "kategorija": "convenience",
+    "lat": 43.9370271,
+    "lon": 15.4448631,
+    "google_maps": "https://www.google.com/maps?q=43.9370271,15.4448631",
+    "tip": "infrastruktura"
+  },
+  {
+    "naziv": "Tržnica Biograd na moru",
+    "kategorija": "marketplace",
+    "lat": 43.9382876,
+    "lon": 15.4441876,
+    "google_maps": "https://www.google.com/maps?q=43.9382876,15.4441876",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "seafood",
+    "lat": 43.9383656,
+    "lon": 15.4441489,
+    "google_maps": "https://www.google.com/maps?q=43.9383656,15.4441489",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "toilets",
+    "lat": 43.9402573,
+    "lon": 15.439208,
+    "google_maps": "https://www.google.com/maps?q=43.9402573,15.439208",
+    "tip": "infrastruktura"
+  },
+  {
+    "naziv": "Roko",
+    "kategorija": "restaurant",
+    "lat": 43.938553,
+    "lon": 15.4400265,
+    "google_maps": "https://www.google.com/maps?q=43.938553,15.4400265",
+    "tip": "gastronomija"
+  },
+  {
+    "naziv": "Tenis centar Ilirija",
+    "kategorija": "cafe",
+    "lat": 43.9322697,
+    "lon": 15.4499316,
+    "google_maps": "https://www.google.com/maps?q=43.9322697,15.4499316",
+    "tip": "gastronomija"
+  },
+  {
+    "naziv": "Lav Adria",
+    "kategorija": "laundry",
+    "lat": 43.9397648,
+    "lon": 15.4473185,
+    "google_maps": "https://www.google.com/maps?q=43.9397648,15.4473185",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Klara",
+    "kategorija": "bakery",
+    "lat": 43.93785,
+    "lon": 15.4444353,
+    "google_maps": "https://www.google.com/maps?q=43.93785,15.4444353",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Adriatic",
+    "kategorija": "bakery",
+    "lat": 43.9380322,
+    "lon": 15.4400747,
+    "google_maps": "https://www.google.com/maps?q=43.9380322,15.4400747",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Amorella",
+    "kategorija": "cafe",
+    "lat": 43.9381215,
+    "lon": 15.4438459,
+    "google_maps": "https://www.google.com/maps?q=43.9381215,15.4438459",
+    "tip": "gastronomija"
+  },
+  {
+    "naziv": "Andrea",
+    "kategorija": "bakery",
+    "lat": 43.9384236,
+    "lon": 15.4442312,
+    "google_maps": "https://www.google.com/maps?q=43.9384236,15.4442312",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Aquarium",
+    "kategorija": "restaurant",
+    "lat": 43.9370606,
+    "lon": 15.4409039,
+    "google_maps": "https://www.google.com/maps?q=43.9370606,15.4409039",
+    "tip": "gastronomija"
+  },
+  {
+    "naziv": "Balun",
+    "kategorija": "cafe",
+    "lat": 43.9386347,
+    "lon": 15.4448041,
+    "google_maps": "https://www.google.com/maps?q=43.9386347,15.4448041",
+    "tip": "gastronomija"
+  },
+  {
+    "naziv": "Barba",
+    "kategorija": "restaurant",
+    "lat": 43.9376147,
+    "lon": 15.4405483,
+    "google_maps": "https://www.google.com/maps?q=43.9376147,15.4405483",
+    "tip": "gastronomija"
+  },
+  {
+    "naziv": "Cabala",
+    "kategorija": "ice_cream",
+    "lat": 43.9377704,
+    "lon": 15.4402359,
+    "google_maps": "https://www.google.com/maps?q=43.9377704,15.4402359",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Carpymore",
+    "kategorija": "restaurant",
+    "lat": 43.9368421,
+    "lon": 15.4426777,
+    "google_maps": "https://www.google.com/maps?q=43.9368421,15.4426777",
+    "tip": "gastronomija"
+  },
+  {
+    "naziv": "Caruso bar",
+    "kategorija": "cafe",
+    "lat": 43.9376902,
+    "lon": 15.4402986,
+    "google_maps": "https://www.google.com/maps?q=43.9376902,15.4402986",
+    "tip": "gastronomija"
+  },
+  {
+    "naziv": "Dalmatino",
+    "kategorija": "restaurant",
+    "lat": 43.9367279,
+    "lon": 15.4429558,
+    "google_maps": "https://www.google.com/maps?q=43.9367279,15.4429558",
+    "tip": "gastronomija"
+  },
+  {
+    "naziv": "Erste Bank",
+    "kategorija": "bank",
+    "lat": 43.9364243,
+    "lon": 15.4434126,
+    "google_maps": "https://www.google.com/maps?q=43.9364243,15.4434126",
+    "tip": "infrastruktura"
+  },
+  {
+    "naziv": "Erste Bank",
+    "kategorija": "atm",
+    "lat": 43.9364452,
+    "lon": 15.4434113,
+    "google_maps": "https://www.google.com/maps?q=43.9364452,15.4434113",
+    "tip": "infrastruktura"
+  },
+  {
+    "naziv": "Erste",
+    "kategorija": "atm",
+    "lat": 43.9396233,
+    "lon": 15.4398587,
+    "google_maps": "https://www.google.com/maps?q=43.9396233,15.4398587",
+    "tip": "infrastruktura"
+  },
+  {
+    "naziv": "Europa",
+    "kategorija": "restaurant",
+    "lat": 43.9373357,
+    "lon": 15.4405025,
+    "google_maps": "https://www.google.com/maps?q=43.9373357,15.4405025",
+    "tip": "gastronomija"
+  },
+  {
+    "naziv": "Europek",
+    "kategorija": "bakery",
+    "lat": 43.939524,
+    "lon": 15.4451313,
+    "google_maps": "https://www.google.com/maps?q=43.939524,15.4451313",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Fibra",
+    "kategorija": "restaurant",
+    "lat": 43.9378001,
+    "lon": 15.4402176,
+    "google_maps": "https://www.google.com/maps?q=43.9378001,15.4402176",
+    "tip": "gastronomija"
+  },
+  {
+    "naziv": "Glorija",
+    "kategorija": "florist",
+    "lat": 43.9379352,
+    "lon": 15.4437452,
+    "google_maps": "https://www.google.com/maps?q=43.9379352,15.4437452",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Hobos",
+    "kategorija": "cafe",
+    "lat": 43.9381598,
+    "lon": 15.4401081,
+    "google_maps": "https://www.google.com/maps?q=43.9381598,15.4401081",
+    "tip": "gastronomija"
+  },
+  {
+    "naziv": "In",
+    "kategorija": "hotel",
+    "lat": 43.9410916,
+    "lon": 15.4460899,
+    "google_maps": "https://www.google.com/maps?q=43.9410916,15.4460899",
+    "tip": "smještaj"
+  },
+  {
+    "naziv": "Izvorka",
+    "kategorija": "hairdresser",
+    "lat": 43.9367741,
+    "lon": 15.4428349,
+    "google_maps": "https://www.google.com/maps?q=43.9367741,15.4428349",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Judy shop",
+    "kategorija": "clothes",
+    "lat": 43.9388501,
+    "lon": 15.4435774,
+    "google_maps": "https://www.google.com/maps?q=43.9388501,15.4435774",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Kornati",
+    "kategorija": "cafe",
+    "lat": 43.9390143,
+    "lon": 15.4433896,
+    "google_maps": "https://www.google.com/maps?q=43.9390143,15.4433896",
+    "tip": "gastronomija"
+  },
+  {
+    "naziv": "Kroštula",
+    "kategorija": "convenience",
+    "lat": 43.9364914,
+    "lon": 15.4434471,
+    "google_maps": "https://www.google.com/maps?q=43.9364914,15.4434471",
+    "tip": "infrastruktura"
+  },
+  {
+    "naziv": "LaMar",
+    "kategorija": "cafe",
+    "lat": 43.9383333,
+    "lon": 15.4400109,
+    "google_maps": "https://www.google.com/maps?q=43.9383333,15.4400109",
+    "tip": "gastronomija"
+  },
+  {
+    "naziv": "M&L",
+    "kategorija": "cafe",
+    "lat": 43.9365404,
+    "lon": 15.4423789,
+    "google_maps": "https://www.google.com/maps?q=43.9365404,15.4423789",
+    "tip": "gastronomija"
+  },
+  {
+    "naziv": "Malibu",
+    "kategorija": "cafe",
+    "lat": 43.9386848,
+    "lon": 15.4449909,
+    "google_maps": "https://www.google.com/maps?q=43.9386848,15.4449909",
+    "tip": "gastronomija"
+  },
+  {
+    "naziv": "Malo misto",
+    "kategorija": "cafe",
+    "lat": 43.9367993,
+    "lon": 15.4413087,
+    "google_maps": "https://www.google.com/maps?q=43.9367993,15.4413087",
+    "tip": "gastronomija"
+  },
+  {
+    "naziv": "Marco Polo",
+    "kategorija": "cafe",
+    "lat": 43.939073,
+    "lon": 15.4432924,
+    "google_maps": "https://www.google.com/maps?q=43.939073,15.4432924",
+    "tip": "gastronomija"
+  },
+  {
+    "naziv": "Miami",
+    "kategorija": "ice_cream",
+    "lat": 43.9364309,
+    "lon": 15.4422818,
+    "google_maps": "https://www.google.com/maps?q=43.9364309,15.4422818",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Misterija",
+    "kategorija": "clothes",
+    "lat": 43.9370795,
+    "lon": 15.4420881,
+    "google_maps": "https://www.google.com/maps?q=43.9370795,15.4420881",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "More 2",
+    "kategorija": "convenience",
+    "lat": 43.9384406,
+    "lon": 15.4400796,
+    "google_maps": "https://www.google.com/maps?q=43.9384406,15.4400796",
+    "tip": "infrastruktura"
+  },
+  {
+    "naziv": "Mornar club",
+    "kategorija": "cafe",
+    "lat": 43.9374722,
+    "lon": 15.4404228,
+    "google_maps": "https://www.google.com/maps?q=43.9374722,15.4404228",
+    "tip": "gastronomija"
+  },
+  {
+    "naziv": "Nakićen",
+    "kategorija": "butcher",
+    "lat": 43.9381907,
+    "lon": 15.4438211,
+    "google_maps": "https://www.google.com/maps?q=43.9381907,15.4438211",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Nico",
+    "kategorija": "fast_food",
+    "lat": 43.9364797,
+    "lon": 15.4423358,
+    "google_maps": "https://www.google.com/maps?q=43.9364797,15.4423358",
+    "tip": "gastronomija"
+  },
+  {
+    "naziv": "OTP Banka",
+    "kategorija": "atm",
+    "lat": 43.9377709,
+    "lon": 15.443994,
+    "google_maps": "https://www.google.com/maps?q=43.9377709,15.443994",
+    "tip": "infrastruktura"
+  },
+  {
+    "naziv": "Obala",
+    "kategorija": "cafe",
+    "lat": 43.9365742,
+    "lon": 15.4416588,
+    "google_maps": "https://www.google.com/maps?q=43.9365742,15.4416588",
+    "tip": "gastronomija"
+  },
+  {
+    "naziv": "Riva",
+    "kategorija": "restaurant",
+    "lat": 43.9365925,
+    "lon": 15.4419852,
+    "google_maps": "https://www.google.com/maps?q=43.9365925,15.4419852",
+    "tip": "gastronomija"
+  },
+  {
+    "naziv": "Romana",
+    "kategorija": "hairdresser",
+    "lat": 43.9387857,
+    "lon": 15.443672,
+    "google_maps": "https://www.google.com/maps?q=43.9387857,15.443672",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Silver",
+    "kategorija": "cafe",
+    "lat": 43.9368659,
+    "lon": 15.4412382,
+    "google_maps": "https://www.google.com/maps?q=43.9368659,15.4412382",
+    "tip": "gastronomija"
+  },
+  {
+    "naziv": "Slobodna Dalmacija",
+    "kategorija": "kiosk",
+    "lat": 43.9409624,
+    "lon": 15.4454819,
+    "google_maps": "https://www.google.com/maps?q=43.9409624,15.4454819",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Sonik",
+    "kategorija": "convenience",
+    "lat": 43.9379064,
+    "lon": 15.4446196,
+    "google_maps": "https://www.google.com/maps?q=43.9379064,15.4446196",
+    "tip": "infrastruktura"
+  },
+  {
+    "naziv": "OTP banka",
+    "kategorija": "bank",
+    "lat": 43.9363436,
+    "lon": 15.4433399,
+    "google_maps": "https://www.google.com/maps?q=43.9363436,15.4433399",
+    "tip": "infrastruktura"
+  },
+  {
+    "naziv": "OTP Banka",
+    "kategorija": "atm",
+    "lat": 43.937095,
+    "lon": 15.4435368,
+    "google_maps": "https://www.google.com/maps?q=43.937095,15.4435368",
+    "tip": "infrastruktura"
+  },
+  {
+    "naziv": "Takac",
+    "kategorija": "fast_food",
+    "lat": 43.9390125,
+    "lon": 15.4449928,
+    "google_maps": "https://www.google.com/maps?q=43.9390125,15.4449928",
+    "tip": "gastronomija"
+  },
+  {
+    "naziv": "Tisak",
+    "kategorija": "kiosk",
+    "lat": 43.9360851,
+    "lon": 15.4431299,
+    "google_maps": "https://www.google.com/maps?q=43.9360851,15.4431299",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Tisak",
+    "kategorija": "kiosk",
+    "lat": 43.9365732,
+    "lon": 15.4433866,
+    "google_maps": "https://www.google.com/maps?q=43.9365732,15.4433866",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Tisak",
+    "kategorija": "kiosk",
+    "lat": 43.9379836,
+    "lon": 15.4448868,
+    "google_maps": "https://www.google.com/maps?q=43.9379836,15.4448868",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Tonči",
+    "kategorija": "cafe",
+    "lat": 43.9365358,
+    "lon": 15.4418406,
+    "google_maps": "https://www.google.com/maps?q=43.9365358,15.4418406",
+    "tip": "gastronomija"
+  },
+  {
+    "naziv": "Troskot",
+    "kategorija": "optician",
+    "lat": 43.9373423,
+    "lon": 15.4437777,
+    "google_maps": "https://www.google.com/maps?q=43.9373423,15.4437777",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Vapor",
+    "kategorija": "restaurant",
+    "lat": 43.9380711,
+    "lon": 15.4400614,
+    "google_maps": "https://www.google.com/maps?q=43.9380711,15.4400614",
+    "tip": "gastronomija"
+  },
+  {
+    "naziv": "Visus",
+    "kategorija": "optician",
+    "lat": 43.93692,
+    "lon": 15.442192,
+    "google_maps": "https://www.google.com/maps?q=43.93692,15.442192",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Money Exchange",
+    "kategorija": "atm",
+    "lat": 43.9368897,
+    "lon": 15.4410741,
+    "google_maps": "https://www.google.com/maps?q=43.9368897,15.4410741",
+    "tip": "infrastruktura"
+  },
+  {
+    "naziv": "Zavičajni muzej",
+    "kategorija": "museum",
+    "lat": 43.937899,
+    "lon": 15.4402176,
+    "google_maps": "https://www.google.com/maps?q=43.937899,15.4402176",
+    "tip": "atrakcija"
+  },
+  {
+    "naziv": "iNovine",
+    "kategorija": "kiosk",
+    "lat": 43.9376805,
+    "lon": 15.443988,
+    "google_maps": "https://www.google.com/maps?q=43.9376805,15.443988",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "iNovine",
+    "kategorija": "kiosk",
+    "lat": 43.9388946,
+    "lon": 15.4449946,
+    "google_maps": "https://www.google.com/maps?q=43.9388946,15.4449946",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "kiosk",
+    "lat": 43.9372962,
+    "lon": 15.4434635,
+    "google_maps": "https://www.google.com/maps?q=43.9372962,15.4434635",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Ljekarne Soline Farm",
+    "kategorija": "pharmacy",
+    "lat": 43.9385687,
+    "lon": 15.4446611,
+    "google_maps": "https://www.google.com/maps?q=43.9385687,15.4446611",
+    "tip": "infrastruktura"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "cafe",
+    "lat": 43.9449816,
+    "lon": 15.445077,
+    "google_maps": "https://www.google.com/maps?q=43.9449816,15.445077",
+    "tip": "gastronomija"
+  },
+  {
+    "naziv": "Fast food oaza",
+    "kategorija": "fast_food",
+    "lat": 43.945161,
+    "lon": 15.4449817,
+    "google_maps": "https://www.google.com/maps?q=43.945161,15.4449817",
+    "tip": "gastronomija"
+  },
+  {
+    "naziv": "Šangulin",
+    "kategorija": "ticket",
+    "lat": 43.9365522,
+    "lon": 15.4420832,
+    "google_maps": "https://www.google.com/maps?q=43.9365522,15.4420832",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Šangulin",
+    "kategorija": "cafe",
+    "lat": 43.9367182,
+    "lon": 15.4414305,
+    "google_maps": "https://www.google.com/maps?q=43.9367182,15.4414305",
+    "tip": "gastronomija"
+  },
+  {
+    "naziv": "Šare",
+    "kategorija": "restaurant",
+    "lat": 43.9368944,
+    "lon": 15.4432318,
+    "google_maps": "https://www.google.com/maps?q=43.9368944,15.4432318",
+    "tip": "gastronomija"
+  },
+  {
+    "naziv": "Števanja",
+    "kategorija": "butcher",
+    "lat": 43.9378813,
+    "lon": 15.4442928,
+    "google_maps": "https://www.google.com/maps?q=43.9378813,15.4442928",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Adriatic",
+    "kategorija": "restaurant",
+    "lat": 43.9345276,
+    "lon": 15.4440418,
+    "google_maps": "https://www.google.com/maps?q=43.9345276,15.4440418",
+    "tip": "gastronomija"
+  },
+  {
+    "naziv": "Ljetno kino Biograd",
+    "kategorija": "cinema",
+    "lat": 43.935779,
+    "lon": 15.4482283,
+    "google_maps": "https://www.google.com/maps?q=43.935779,15.4482283",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Mia",
+    "kategorija": "caravan_site",
+    "lat": 43.9344244,
+    "lon": 15.4484315,
+    "google_maps": "https://www.google.com/maps?q=43.9344244,15.4484315",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Slad",
+    "kategorija": "fast_food",
+    "lat": 43.9330448,
+    "lon": 15.4462203,
+    "google_maps": "https://www.google.com/maps?q=43.9330448,15.4462203",
+    "tip": "gastronomija"
+  },
+  {
+    "naziv": "Stari bunar",
+    "kategorija": "restaurant",
+    "lat": 43.9361089,
+    "lon": 15.4453168,
+    "google_maps": "https://www.google.com/maps?q=43.9361089,15.4453168",
+    "tip": "gastronomija"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "bakery",
+    "lat": 43.933678,
+    "lon": 15.4442882,
+    "google_maps": "https://www.google.com/maps?q=43.933678,15.4442882",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "kiosk",
+    "lat": 43.9355885,
+    "lon": 15.4434264,
+    "google_maps": "https://www.google.com/maps?q=43.9355885,15.4434264",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "parking_entrance",
+    "lat": 43.9415166,
+    "lon": 15.4541704,
+    "google_maps": "https://www.google.com/maps?q=43.9415166,15.4541704",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "parking_entrance",
+    "lat": 43.9421598,
+    "lon": 15.4534992,
+    "google_maps": "https://www.google.com/maps?q=43.9421598,15.4534992",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Bagar",
+    "kategorija": "doityourself",
+    "lat": 43.938617,
+    "lon": 15.4434714,
+    "google_maps": "https://www.google.com/maps?q=43.938617,15.4434714",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Balde",
+    "kategorija": "cafe",
+    "lat": 43.938621,
+    "lon": 15.4430248,
+    "google_maps": "https://www.google.com/maps?q=43.938621,15.4430248",
+    "tip": "gastronomija"
+  },
+  {
+    "naziv": "Boknjac",
+    "kategorija": "veterinary",
+    "lat": 43.938051,
+    "lon": 15.4451277,
+    "google_maps": "https://www.google.com/maps?q=43.938051,15.4451277",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Borovo",
+    "kategorija": "shoes",
+    "lat": 43.9377528,
+    "lon": 15.4450634,
+    "google_maps": "https://www.google.com/maps?q=43.9377528,15.4450634",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Bure",
+    "kategorija": "convenience",
+    "lat": 43.938804,
+    "lon": 15.4432415,
+    "google_maps": "https://www.google.com/maps?q=43.938804,15.4432415",
+    "tip": "infrastruktura"
+  },
+  {
+    "naziv": "Cocolino",
+    "kategorija": "restaurant",
+    "lat": 43.9374245,
+    "lon": 15.4424117,
+    "google_maps": "https://www.google.com/maps?q=43.9374245,15.4424117",
+    "tip": "gastronomija"
+  },
+  {
+    "naziv": "Dado",
+    "kategorija": "veterinary",
+    "lat": 43.9389399,
+    "lon": 15.4430939,
+    "google_maps": "https://www.google.com/maps?q=43.9389399,15.4430939",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Dakar",
+    "kategorija": "confectionery",
+    "lat": 43.9381371,
+    "lon": 15.4458247,
+    "google_maps": "https://www.google.com/maps?q=43.9381371,15.4458247",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Doris",
+    "kategorija": "hairdresser",
+    "lat": 43.9383272,
+    "lon": 15.4466815,
+    "google_maps": "https://www.google.com/maps?q=43.9383272,15.4466815",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Duo peka Biograd",
+    "kategorija": "bakery",
+    "lat": 43.9380012,
+    "lon": 15.444967,
+    "google_maps": "https://www.google.com/maps?q=43.9380012,15.444967",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Erste",
+    "kategorija": "atm",
+    "lat": 43.9418905,
+    "lon": 15.4531064,
+    "google_maps": "https://www.google.com/maps?q=43.9418905,15.4531064",
+    "tip": "infrastruktura"
+  },
+  {
+    "naziv": "Erste",
+    "kategorija": "atm",
+    "lat": 43.9424672,
+    "lon": 15.4455523,
+    "google_maps": "https://www.google.com/maps?q=43.9424672,15.4455523",
+    "tip": "infrastruktura"
+  },
+  {
+    "naziv": "Farmacija",
+    "kategorija": "pharmacy",
+    "lat": 43.9417059,
+    "lon": 15.4530007,
+    "google_maps": "https://www.google.com/maps?q=43.9417059,15.4530007",
+    "tip": "infrastruktura"
+  },
+  {
+    "naziv": "Fina",
+    "kategorija": "bank",
+    "lat": 43.9369871,
+    "lon": 15.4445084,
+    "google_maps": "https://www.google.com/maps?q=43.9369871,15.4445084",
+    "tip": "infrastruktura"
+  },
+  {
+    "naziv": "Flex Zadar",
+    "kategorija": "bed",
+    "lat": 43.9403246,
+    "lon": 15.4483673,
+    "google_maps": "https://www.google.com/maps?q=43.9403246,15.4483673",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Gavrilović",
+    "kategorija": "convenience",
+    "lat": 43.937699,
+    "lon": 15.4449121,
+    "google_maps": "https://www.google.com/maps?q=43.937699,15.4449121",
+    "tip": "infrastruktura"
+  },
+  {
+    "naziv": "Glamour",
+    "kategorija": "hairdresser",
+    "lat": 43.9386843,
+    "lon": 15.443363,
+    "google_maps": "https://www.google.com/maps?q=43.9386843,15.443363",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Guste",
+    "kategorija": "restaurant",
+    "lat": 43.9393256,
+    "lon": 15.4418628,
+    "google_maps": "https://www.google.com/maps?q=43.9393256,15.4418628",
+    "tip": "gastronomija"
+  },
+  {
+    "naziv": "IT centar",
+    "kategorija": "computer",
+    "lat": 43.9382901,
+    "lon": 15.4462679,
+    "google_maps": "https://www.google.com/maps?q=43.9382901,15.4462679",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Inej",
+    "kategorija": "car_parts",
+    "lat": 43.9384757,
+    "lon": 15.446404,
+    "google_maps": "https://www.google.com/maps?q=43.9384757,15.446404",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Jelena",
+    "kategorija": "restaurant",
+    "lat": 43.9417377,
+    "lon": 15.4507124,
+    "google_maps": "https://www.google.com/maps?q=43.9417377,15.4507124",
+    "tip": "gastronomija"
+  },
+  {
+    "naziv": "Lantana",
+    "kategorija": "florist",
+    "lat": 43.9387381,
+    "lon": 15.4433256,
+    "google_maps": "https://www.google.com/maps?q=43.9387381,15.4433256",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Mamma Mia",
+    "kategorija": "restaurant",
+    "lat": 43.9375779,
+    "lon": 15.4423706,
+    "google_maps": "https://www.google.com/maps?q=43.9375779,15.4423706",
+    "tip": "gastronomija"
+  },
+  {
+    "naziv": "Marčelo",
+    "kategorija": "hairdresser",
+    "lat": 43.9381614,
+    "lon": 15.4465311,
+    "google_maps": "https://www.google.com/maps?q=43.9381614,15.4465311",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Konzum",
+    "kategorija": "supermarket",
+    "lat": 43.941683,
+    "lon": 15.4537434,
+    "google_maps": "https://www.google.com/maps?q=43.941683,15.4537434",
+    "tip": "infrastruktura"
+  },
+  {
+    "naziv": "Ninan",
+    "kategorija": "fast_food",
+    "lat": 43.9378636,
+    "lon": 15.4438544,
+    "google_maps": "https://www.google.com/maps?q=43.9378636,15.4438544",
+    "tip": "gastronomija"
+  },
+  {
+    "naziv": "OTP banka",
+    "kategorija": "bank",
+    "lat": 43.9383052,
+    "lon": 15.4460465,
+    "google_maps": "https://www.google.com/maps?q=43.9383052,15.4460465",
+    "tip": "infrastruktura"
+  },
+  {
+    "naziv": "OTP",
+    "kategorija": "atm",
+    "lat": 43.9383139,
+    "lon": 15.4460684,
+    "google_maps": "https://www.google.com/maps?q=43.9383139,15.4460684",
+    "tip": "infrastruktura"
+  },
+  {
+    "naziv": "PBZ",
+    "kategorija": "atm",
+    "lat": 43.9375187,
+    "lon": 15.4448224,
+    "google_maps": "https://www.google.com/maps?q=43.9375187,15.4448224",
+    "tip": "infrastruktura"
+  },
+  {
+    "naziv": "Panda",
+    "kategorija": "fast_food",
+    "lat": 43.9379931,
+    "lon": 15.4449296,
+    "google_maps": "https://www.google.com/maps?q=43.9379931,15.4449296",
+    "tip": "gastronomija"
+  },
+  {
+    "naziv": "Pivac",
+    "kategorija": "butcher",
+    "lat": 43.9373989,
+    "lon": 15.4440861,
+    "google_maps": "https://www.google.com/maps?q=43.9373989,15.4440861",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Bistro Rene",
+    "kategorija": "restaurant",
+    "lat": 43.9418429,
+    "lon": 15.453561,
+    "google_maps": "https://www.google.com/maps?q=43.9418429,15.453561",
+    "tip": "gastronomija"
+  },
+  {
+    "naziv": "s.Oliver",
+    "kategorija": "clothes",
+    "lat": 43.9378949,
+    "lon": 15.445266,
+    "google_maps": "https://www.google.com/maps?q=43.9378949,15.445266",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Sanja",
+    "kategorija": "dry_cleaning",
+    "lat": 43.9393982,
+    "lon": 15.4411789,
+    "google_maps": "https://www.google.com/maps?q=43.9393982,15.4411789",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Sirena",
+    "kategorija": "cafe",
+    "lat": 43.9369037,
+    "lon": 15.4446187,
+    "google_maps": "https://www.google.com/maps?q=43.9369037,15.4446187",
+    "tip": "gastronomija"
+  },
+  {
+    "naziv": "Stari grad",
+    "kategorija": "restaurant",
+    "lat": 43.9376922,
+    "lon": 15.4419183,
+    "google_maps": "https://www.google.com/maps?q=43.9376922,15.4419183",
+    "tip": "gastronomija"
+  },
+  {
+    "naziv": "Tokić",
+    "kategorija": "car_parts",
+    "lat": 43.9383805,
+    "lon": 15.446556,
+    "google_maps": "https://www.google.com/maps?q=43.9383805,15.446556",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Turistička zajednica grada Biograda na moru",
+    "kategorija": "information",
+    "lat": 43.9373626,
+    "lon": 15.4441085,
+    "google_maps": "https://www.google.com/maps?q=43.9373626,15.4441085",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Vila Marijana",
+    "kategorija": "restaurant",
+    "lat": 43.9376398,
+    "lon": 15.442849,
+    "google_maps": "https://www.google.com/maps?q=43.9376398,15.442849",
+    "tip": "gastronomija"
+  },
+  {
+    "naziv": "Peperino",
+    "kategorija": "restaurant",
+    "lat": 43.9373074,
+    "lon": 15.4428658,
+    "google_maps": "https://www.google.com/maps?q=43.9373074,15.4428658",
+    "tip": "gastronomija"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "bureau_de_change",
+    "lat": 43.9381271,
+    "lon": 15.4434264,
+    "google_maps": "https://www.google.com/maps?q=43.9381271,15.4434264",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "atm",
+    "lat": 43.9474889,
+    "lon": 15.4461765,
+    "google_maps": "https://www.google.com/maps?q=43.9474889,15.4461765",
+    "tip": "infrastruktura"
+  },
+  {
+    "naziv": "Bazilika",
+    "kategorija": "restaurant",
+    "lat": 43.9383107,
+    "lon": 15.4409105,
+    "google_maps": "https://www.google.com/maps?q=43.9383107,15.4409105",
+    "tip": "gastronomija"
+  },
+  {
+    "naziv": "Bijeli delfin",
+    "kategorija": "restaurant",
+    "lat": 43.9368292,
+    "lon": 15.4437477,
+    "google_maps": "https://www.google.com/maps?q=43.9368292,15.4437477",
+    "tip": "gastronomija"
+  },
+  {
+    "naziv": "Danilo",
+    "kategorija": "restaurant",
+    "lat": 43.9387507,
+    "lon": 15.4404294,
+    "google_maps": "https://www.google.com/maps?q=43.9387507,15.4404294",
+    "tip": "gastronomija"
+  },
+  {
+    "naziv": "Figa",
+    "kategorija": "restaurant",
+    "lat": 43.9372495,
+    "lon": 15.4423522,
+    "google_maps": "https://www.google.com/maps?q=43.9372495,15.4423522",
+    "tip": "gastronomija"
+  },
+  {
+    "naziv": "Hrid",
+    "kategorija": "hostel",
+    "lat": 43.9423717,
+    "lon": 15.449885,
+    "google_maps": "https://www.google.com/maps?q=43.9423717,15.449885",
+    "tip": "smještaj"
+  },
+  {
+    "naziv": "Irena",
+    "kategorija": "hairdresser",
+    "lat": 43.9379776,
+    "lon": 15.4447431,
+    "google_maps": "https://www.google.com/maps?q=43.9379776,15.4447431",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Kreditna banka Zagreb",
+    "kategorija": "atm",
+    "lat": 43.9379722,
+    "lon": 15.4440778,
+    "google_maps": "https://www.google.com/maps?q=43.9379722,15.4440778",
+    "tip": "infrastruktura"
+  },
+  {
+    "naziv": "Liburnija",
+    "kategorija": "restaurant",
+    "lat": 43.9371634,
+    "lon": 15.4424644,
+    "google_maps": "https://www.google.com/maps?q=43.9371634,15.4424644",
+    "tip": "gastronomija"
+  },
+  {
+    "naziv": "Stanić",
+    "kategorija": "convenience",
+    "lat": 43.942276,
+    "lon": 15.4545024,
+    "google_maps": "https://www.google.com/maps?q=43.942276,15.4545024",
+    "tip": "infrastruktura"
+  },
+  {
+    "naziv": "Tende Rivjera",
+    "kategorija": "curtain",
+    "lat": 43.9378848,
+    "lon": 15.444545,
+    "google_maps": "https://www.google.com/maps?q=43.9378848,15.444545",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Vindija",
+    "kategorija": "convenience",
+    "lat": 43.9377274,
+    "lon": 15.4449889,
+    "google_maps": "https://www.google.com/maps?q=43.9377274,15.4449889",
+    "tip": "infrastruktura"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "doityourself",
+    "lat": 43.9364054,
+    "lon": 15.454956,
+    "google_maps": "https://www.google.com/maps?q=43.9364054,15.454956",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "JYSK",
+    "kategorija": "furniture",
+    "lat": 43.941092,
+    "lon": 15.4543894,
+    "google_maps": "https://www.google.com/maps?q=43.941092,15.4543894",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Boši",
+    "kategorija": "cafe",
+    "lat": 43.9411586,
+    "lon": 15.4546906,
+    "google_maps": "https://www.google.com/maps?q=43.9411586,15.4546906",
+    "tip": "gastronomija"
+  },
+  {
+    "naziv": "Auto Optimus",
+    "kategorija": "fuel",
+    "lat": 43.9425209,
+    "lon": 15.4566263,
+    "google_maps": "https://www.google.com/maps?q=43.9425209,15.4566263",
+    "tip": "infrastruktura"
+  },
+  {
+    "naziv": "Vila Nikolina",
+    "kategorija": "hostel",
+    "lat": 43.9424245,
+    "lon": 15.4481758,
+    "google_maps": "https://www.google.com/maps?q=43.9424245,15.4481758",
+    "tip": "smještaj"
+  },
+  {
+    "naziv": "Lučka kapetanija Zadar, ispostava Biograd na Moru",
+    "kategorija": "harbourmaster",
+    "lat": 43.9382273,
+    "lon": 15.4400635,
+    "google_maps": "https://www.google.com/maps?q=43.9382273,15.4400635",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Vila Medvedec",
+    "kategorija": "hostel",
+    "lat": 43.9418464,
+    "lon": 15.4488053,
+    "google_maps": "https://www.google.com/maps?q=43.9418464,15.4488053",
+    "tip": "smještaj"
+  },
+  {
+    "naziv": "Apartmani Ana",
+    "kategorija": "apartment",
+    "lat": 43.9411485,
+    "lon": 15.4474774,
+    "google_maps": "https://www.google.com/maps?q=43.9411485,15.4474774",
+    "tip": "smještaj"
+  },
+  {
+    "naziv": "Apartman Joso Barbara",
+    "kategorija": "guest_house",
+    "lat": 43.9362608,
+    "lon": 15.4454271,
+    "google_maps": "https://www.google.com/maps?q=43.9362608,15.4454271",
+    "tip": "smještaj"
+  },
+  {
+    "naziv": "Meduza",
+    "kategorija": "restaurant",
+    "lat": 43.9355114,
+    "lon": 15.451015,
+    "google_maps": "https://www.google.com/maps?q=43.9355114,15.451015",
+    "tip": "gastronomija"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "viewpoint",
+    "lat": 43.9240051,
+    "lon": 15.481654,
+    "google_maps": "https://www.google.com/maps?q=43.9240051,15.481654",
+    "tip": "atrakcija"
+  },
+  {
+    "naziv": "Caffe Bar L&M",
+    "kategorija": "cafe",
+    "lat": 43.9365026,
+    "lon": 15.4423447,
+    "google_maps": "https://www.google.com/maps?q=43.9365026,15.4423447",
+    "tip": "gastronomija"
+  },
+  {
+    "naziv": "OTP",
+    "kategorija": "atm",
+    "lat": 43.9413051,
+    "lon": 15.4535874,
+    "google_maps": "https://www.google.com/maps?q=43.9413051,15.4535874",
+    "tip": "infrastruktura"
+  },
+  {
+    "naziv": "Müller",
+    "kategorija": "chemist",
+    "lat": 43.94197,
+    "lon": 15.4534034,
+    "google_maps": "https://www.google.com/maps?q=43.94197,15.4534034",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Exclusive Exchange",
+    "kategorija": "bureau_de_change",
+    "lat": 43.9417618,
+    "lon": 15.453663,
+    "google_maps": "https://www.google.com/maps?q=43.9417618,15.453663",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Zagrebačka banka",
+    "kategorija": "atm",
+    "lat": 43.9413832,
+    "lon": 15.4537254,
+    "google_maps": "https://www.google.com/maps?q=43.9413832,15.4537254",
+    "tip": "infrastruktura"
+  },
+  {
+    "naziv": "Intersport",
+    "kategorija": "sports",
+    "lat": 43.9413217,
+    "lon": 15.4533936,
+    "google_maps": "https://www.google.com/maps?q=43.9413217,15.4533936",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Amy",
+    "kategorija": "cafe",
+    "lat": 43.9392417,
+    "lon": 15.4401651,
+    "google_maps": "https://www.google.com/maps?q=43.9392417,15.4401651",
+    "tip": "gastronomija"
+  },
+  {
+    "naziv": "Grill Mama Neda",
+    "kategorija": "fast_food",
+    "lat": 43.9394742,
+    "lon": 15.4472724,
+    "google_maps": "https://www.google.com/maps?q=43.9394742,15.4472724",
+    "tip": "gastronomija"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "toilets",
+    "lat": 43.9331453,
+    "lon": 15.4530549,
+    "google_maps": "https://www.google.com/maps?q=43.9331453,15.4530549",
+    "tip": "infrastruktura"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "parking",
+    "lat": 43.9307265,
+    "lon": 15.4522676,
+    "google_maps": "https://www.google.com/maps?q=43.9307265,15.4522676",
+    "tip": "infrastruktura"
+  },
+  {
+    "naziv": "Camp Bakija",
+    "kategorija": "camp_site",
+    "lat": 43.9234844,
+    "lon": 15.4559072,
+    "google_maps": "https://www.google.com/maps?q=43.9234844,15.4559072",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "charging_station",
+    "lat": 43.9385784,
+    "lon": 15.4441256,
+    "google_maps": "https://www.google.com/maps?q=43.9385784,15.4441256",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Haus Marijan",
+    "kategorija": "chalet",
+    "lat": 43.9457389,
+    "lon": 15.4454609,
+    "google_maps": "https://www.google.com/maps?q=43.9457389,15.4454609",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "veterinary",
+    "lat": 43.9393715,
+    "lon": 15.4414967,
+    "google_maps": "https://www.google.com/maps?q=43.9393715,15.4414967",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Vencel horse riding club",
+    "kategorija": "horse_riding",
+    "lat": 43.9610196,
+    "lon": 15.4960387,
+    "google_maps": "https://www.google.com/maps?q=43.9610196,15.4960387",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Ljekarne Soline farm",
+    "kategorija": "pharmacy",
+    "lat": 43.9396559,
+    "lon": 15.4468372,
+    "google_maps": "https://www.google.com/maps?q=43.9396559,15.4468372",
+    "tip": "infrastruktura"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "atm",
+    "lat": 43.9424199,
+    "lon": 15.4552788,
+    "google_maps": "https://www.google.com/maps?q=43.9424199,15.4552788",
+    "tip": "infrastruktura"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "atm",
+    "lat": 43.9448258,
+    "lon": 15.453693,
+    "google_maps": "https://www.google.com/maps?q=43.9448258,15.453693",
+    "tip": "infrastruktura"
+  },
+  {
+    "naziv": "Franjo Tuđman",
+    "kategorija": "artwork",
+    "lat": 43.9374751,
+    "lon": 15.4446799,
+    "google_maps": "https://www.google.com/maps?q=43.9374751,15.4446799",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Crvena Luka Hotel & Resort",
+    "kategorija": "hotel",
+    "lat": 43.9195258,
+    "lon": 15.477984,
+    "google_maps": "https://www.google.com/maps?q=43.9195258,15.477984",
+    "tip": "smještaj"
+  },
+  {
+    "naziv": "Bure",
+    "kategorija": "supermarket",
+    "lat": 43.9254765,
+    "lon": 15.4570054,
+    "google_maps": "https://www.google.com/maps?q=43.9254765,15.4570054",
+    "tip": "infrastruktura"
+  },
+  {
+    "naziv": "Soba 2+2",
+    "kategorija": "guest_house",
+    "lat": 43.9364254,
+    "lon": 15.4447526,
+    "google_maps": "https://www.google.com/maps?q=43.9364254,15.4447526",
+    "tip": "smještaj"
+  },
+  {
+    "naziv": "Konoba In vino veritas (Hilton)",
+    "kategorija": "pub",
+    "lat": 43.937929,
+    "lon": 15.440957,
+    "google_maps": "https://www.google.com/maps?q=43.937929,15.440957",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Natural Food and Wine Shop",
+    "kategorija": "wine",
+    "lat": 43.9382584,
+    "lon": 15.4433181,
+    "google_maps": "https://www.google.com/maps?q=43.9382584,15.4433181",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "artwork",
+    "lat": 43.9363296,
+    "lon": 15.4428171,
+    "google_maps": "https://www.google.com/maps?q=43.9363296,15.4428171",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "slipway",
+    "lat": 43.9435906,
+    "lon": 15.4442543,
+    "google_maps": "https://www.google.com/maps?q=43.9435906,15.4442543",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "toilets",
+    "lat": 43.9440276,
+    "lon": 15.4553503,
+    "google_maps": "https://www.google.com/maps?q=43.9440276,15.4553503",
+    "tip": "infrastruktura"
+  },
+  {
+    "naziv": "apartman",
+    "kategorija": "hotel",
+    "lat": 43.9445711,
+    "lon": 15.4477992,
+    "google_maps": "https://www.google.com/maps?q=43.9445711,15.4477992",
+    "tip": "smještaj"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "jewelry",
+    "lat": 43.9418237,
+    "lon": 15.4532039,
+    "google_maps": "https://www.google.com/maps?q=43.9418237,15.4532039",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "slipway",
+    "lat": 43.9411263,
+    "lon": 15.4452068,
+    "google_maps": "https://www.google.com/maps?q=43.9411263,15.4452068",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "slipway",
+    "lat": 43.9408068,
+    "lon": 15.4450237,
+    "google_maps": "https://www.google.com/maps?q=43.9408068,15.4450237",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "ship_chandler",
+    "lat": 43.9393672,
+    "lon": 15.4408496,
+    "google_maps": "https://www.google.com/maps?q=43.9393672,15.4408496",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "ship_chandler",
+    "lat": 43.9417624,
+    "lon": 15.445487,
+    "google_maps": "https://www.google.com/maps?q=43.9417624,15.445487",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "chalet",
+    "lat": 43.9426961,
+    "lon": 15.4488349,
+    "google_maps": "https://www.google.com/maps?q=43.9426961,15.4488349",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Beton Lučko",
+    "kategorija": "artwork",
+    "lat": 43.9419667,
+    "lon": 15.4458729,
+    "google_maps": "https://www.google.com/maps?q=43.9419667,15.4458729",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "information",
+    "lat": 43.9326053,
+    "lon": 15.4315399,
+    "google_maps": "https://www.google.com/maps?q=43.9326053,15.4315399",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Orcula",
+    "kategorija": "restaurant",
+    "lat": 43.9402433,
+    "lon": 15.4570293,
+    "google_maps": "https://www.google.com/maps?q=43.9402433,15.4570293",
+    "tip": "gastronomija"
+  },
+  {
+    "naziv": "Guest House Dia",
+    "kategorija": "guest_house",
+    "lat": 43.94264,
+    "lon": 15.4512381,
+    "google_maps": "https://www.google.com/maps?q=43.94264,15.4512381",
+    "tip": "smještaj"
+  },
+  {
+    "naziv": "Villa Maimare",
+    "kategorija": "guest_house",
+    "lat": 43.9358964,
+    "lon": 15.4461643,
+    "google_maps": "https://www.google.com/maps?q=43.9358964,15.4461643",
+    "tip": "smještaj"
+  },
+  {
+    "naziv": "Konoba Kampanel",
+    "kategorija": "restaurant",
+    "lat": 43.9374743,
+    "lon": 15.4418558,
+    "google_maps": "https://www.google.com/maps?q=43.9374743,15.4418558",
+    "tip": "gastronomija"
+  },
+  {
+    "naziv": "Uvik kontra burgers & beer",
+    "kategorija": "restaurant",
+    "lat": 43.9395909,
+    "lon": 15.4451347,
+    "google_maps": "https://www.google.com/maps?q=43.9395909,15.4451347",
+    "tip": "gastronomija"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "playground",
+    "lat": 43.9412406,
+    "lon": 15.4526858,
+    "google_maps": "https://www.google.com/maps?q=43.9412406,15.4526858",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "guest_house",
+    "lat": 43.9401904,
+    "lon": 15.4524054,
+    "google_maps": "https://www.google.com/maps?q=43.9401904,15.4524054",
+    "tip": "smještaj"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "apartment",
+    "lat": 43.9382654,
+    "lon": 15.4411374,
+    "google_maps": "https://www.google.com/maps?q=43.9382654,15.4411374",
+    "tip": "smještaj"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "apartment",
+    "lat": 43.9411671,
+    "lon": 15.4498927,
+    "google_maps": "https://www.google.com/maps?q=43.9411671,15.4498927",
+    "tip": "smještaj"
+  },
+  {
+    "naziv": "Antea",
+    "kategorija": "apartment",
+    "lat": 43.9378354,
+    "lon": 15.4478408,
+    "google_maps": "https://www.google.com/maps?q=43.9378354,15.4478408",
+    "tip": "smještaj"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "atm",
+    "lat": 43.9377451,
+    "lon": 15.4402261,
+    "google_maps": "https://www.google.com/maps?q=43.9377451,15.4402261",
+    "tip": "infrastruktura"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "atm",
+    "lat": 43.9377954,
+    "lon": 15.4438751,
+    "google_maps": "https://www.google.com/maps?q=43.9377954,15.4438751",
+    "tip": "infrastruktura"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "atm",
+    "lat": 43.9383234,
+    "lon": 15.443296,
+    "google_maps": "https://www.google.com/maps?q=43.9383234,15.443296",
+    "tip": "infrastruktura"
+  },
+  {
+    "naziv": "Škver Tours",
+    "kategorija": "travel_agency",
+    "lat": 43.9445705,
+    "lon": 15.4461689,
+    "google_maps": "https://www.google.com/maps?q=43.9445705,15.4461689",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "vending_machine",
+    "lat": 43.9550161,
+    "lon": 15.4685754,
+    "google_maps": "https://www.google.com/maps?q=43.9550161,15.4685754",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "vending_machine",
+    "lat": 43.9550275,
+    "lon": 15.4685824,
+    "google_maps": "https://www.google.com/maps?q=43.9550275,15.4685824",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Apartmány Lucie",
+    "kategorija": "apartment",
+    "lat": 43.9490614,
+    "lon": 15.4435618,
+    "google_maps": "https://www.google.com/maps?q=43.9490614,15.4435618",
+    "tip": "smještaj"
+  },
+  {
+    "naziv": "Beach bar Viva",
+    "kategorija": "cafe",
+    "lat": 43.9305676,
+    "lon": 15.4477551,
+    "google_maps": "https://www.google.com/maps?q=43.9305676,15.4477551",
+    "tip": "gastronomija"
+  },
+  {
+    "naziv": "Rene",
+    "kategorija": "restaurant",
+    "lat": 43.9295566,
+    "lon": 15.4512861,
+    "google_maps": "https://www.google.com/maps?q=43.9295566,15.4512861",
+    "tip": "gastronomija"
+  },
+  {
+    "naziv": "Pepco",
+    "kategorija": "clothes",
+    "lat": 43.9419543,
+    "lon": 15.4534393,
+    "google_maps": "https://www.google.com/maps?q=43.9419543,15.4534393",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "KiK",
+    "kategorija": "clothes",
+    "lat": 43.9418336,
+    "lon": 15.4535828,
+    "google_maps": "https://www.google.com/maps?q=43.9418336,15.4535828",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Adventure park Biograd",
+    "kategorija": "sports_centre",
+    "lat": 43.9411815,
+    "lon": 15.462344,
+    "google_maps": "https://www.google.com/maps?q=43.9411815,15.462344",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "atm",
+    "lat": 43.9189005,
+    "lon": 15.4785379,
+    "google_maps": "https://www.google.com/maps?q=43.9189005,15.4785379",
+    "tip": "infrastruktura"
+  },
+  {
+    "naziv": "Pizzeria Mamma Rosa",
+    "kategorija": "restaurant",
+    "lat": 43.9188194,
+    "lon": 15.4787887,
+    "google_maps": "https://www.google.com/maps?q=43.9188194,15.4787887",
+    "tip": "gastronomija"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "atm",
+    "lat": 43.9309998,
+    "lon": 15.479202,
+    "google_maps": "https://www.google.com/maps?q=43.9309998,15.479202",
+    "tip": "infrastruktura"
+  },
+  {
+    "naziv": "Apartman Zeljka Vidac",
+    "kategorija": "apartment",
+    "lat": 43.9330094,
+    "lon": 15.4521643,
+    "google_maps": "https://www.google.com/maps?q=43.9330094,15.4521643",
+    "tip": "smještaj"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "playground",
+    "lat": 43.9454729,
+    "lon": 15.4447814,
+    "google_maps": "https://www.google.com/maps?q=43.9454729,15.4447814",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "playground",
+    "lat": 43.9365348,
+    "lon": 15.4428407,
+    "google_maps": "https://www.google.com/maps?q=43.9365348,15.4428407",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "playground",
+    "lat": 43.9343637,
+    "lon": 15.4438674,
+    "google_maps": "https://www.google.com/maps?q=43.9343637,15.4438674",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "playground",
+    "lat": 43.9302457,
+    "lon": 15.4513139,
+    "google_maps": "https://www.google.com/maps?q=43.9302457,15.4513139",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "information",
+    "lat": 43.9443437,
+    "lon": 15.4545968,
+    "google_maps": "https://www.google.com/maps?q=43.9443437,15.4545968",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "information",
+    "lat": 43.9438343,
+    "lon": 15.4552024,
+    "google_maps": "https://www.google.com/maps?q=43.9438343,15.4552024",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "information",
+    "lat": 43.9412831,
+    "lon": 15.4491684,
+    "google_maps": "https://www.google.com/maps?q=43.9412831,15.4491684",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "information",
+    "lat": 43.9410622,
+    "lon": 15.4490263,
+    "google_maps": "https://www.google.com/maps?q=43.9410622,15.4490263",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "information",
+    "lat": 43.9396146,
+    "lon": 15.4472651,
+    "google_maps": "https://www.google.com/maps?q=43.9396146,15.4472651",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "information",
+    "lat": 43.9371508,
+    "lon": 15.4489645,
+    "google_maps": "https://www.google.com/maps?q=43.9371508,15.4489645",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "information",
+    "lat": 43.9365899,
+    "lon": 15.4495632,
+    "google_maps": "https://www.google.com/maps?q=43.9365899,15.4495632",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "information",
+    "lat": 43.9365263,
+    "lon": 15.449885,
+    "google_maps": "https://www.google.com/maps?q=43.9365263,15.449885",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "information",
+    "lat": 43.9363744,
+    "lon": 15.4501194,
+    "google_maps": "https://www.google.com/maps?q=43.9363744,15.4501194",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "information",
+    "lat": 43.927671,
+    "lon": 15.4559187,
+    "google_maps": "https://www.google.com/maps?q=43.927671,15.4559187",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "vending_machine",
+    "lat": 43.9382329,
+    "lon": 15.439653,
+    "google_maps": "https://www.google.com/maps?q=43.9382329,15.439653",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "artwork",
+    "lat": 43.9385612,
+    "lon": 15.4397945,
+    "google_maps": "https://www.google.com/maps?q=43.9385612,15.4397945",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "drinking_water",
+    "lat": 43.9548411,
+    "lon": 15.455769,
+    "google_maps": "https://www.google.com/maps?q=43.9548411,15.455769",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "drinking_water",
+    "lat": 43.9552446,
+    "lon": 15.4556912,
+    "google_maps": "https://www.google.com/maps?q=43.9552446,15.4556912",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "toilets",
+    "lat": 43.9379585,
+    "lon": 15.4436686,
+    "google_maps": "https://www.google.com/maps?q=43.9379585,15.4436686",
+    "tip": "infrastruktura"
+  },
+  {
+    "naziv": "Iločki podrumi",
+    "kategorija": "wine",
+    "lat": 43.9381037,
+    "lon": 15.4440922,
+    "google_maps": "https://www.google.com/maps?q=43.9381037,15.4440922",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "pharmacy",
+    "lat": 43.9380272,
+    "lon": 15.4439798,
+    "google_maps": "https://www.google.com/maps?q=43.9380272,15.4439798",
+    "tip": "infrastruktura"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "post_box",
+    "lat": 43.9371459,
+    "lon": 15.4435659,
+    "google_maps": "https://www.google.com/maps?q=43.9371459,15.4435659",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Garfild fast food",
+    "kategorija": "fast_food",
+    "lat": 43.9305061,
+    "lon": 15.4488446,
+    "google_maps": "https://www.google.com/maps?q=43.9305061,15.4488446",
+    "tip": "gastronomija"
+  },
+  {
+    "naziv": "Osnovna glazbena škola",
+    "kategorija": "music_school",
+    "lat": 43.9391524,
+    "lon": 15.4455492,
+    "google_maps": "https://www.google.com/maps?q=43.9391524,15.4455492",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Biograd na moru",
+    "kategorija": "charging_station",
+    "lat": 43.9392806,
+    "lon": 15.440615,
+    "google_maps": "https://www.google.com/maps?q=43.9392806,15.440615",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Candy shop",
+    "kategorija": "confectionery",
+    "lat": 43.9373764,
+    "lon": 15.4404604,
+    "google_maps": "https://www.google.com/maps?q=43.9373764,15.4404604",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "charging_station",
+    "lat": 43.9452399,
+    "lon": 15.452449,
+    "google_maps": "https://www.google.com/maps?q=43.9452399,15.452449",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "charging_station",
+    "lat": 43.9446271,
+    "lon": 15.4530806,
+    "google_maps": "https://www.google.com/maps?q=43.9446271,15.4530806",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Adria eye",
+    "kategorija": "attraction",
+    "lat": 43.9322259,
+    "lon": 15.4791359,
+    "google_maps": "https://www.google.com/maps?q=43.9322259,15.4791359",
+    "tip": "atrakcija"
+  },
+  {
+    "naziv": "Bumper Cars",
+    "kategorija": "attraction",
+    "lat": 43.9315891,
+    "lon": 15.4798168,
+    "google_maps": "https://www.google.com/maps?q=43.9315891,15.4798168",
+    "tip": "atrakcija"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "toilets",
+    "lat": 43.928582,
+    "lon": 15.4537097,
+    "google_maps": "https://www.google.com/maps?q=43.928582,15.4537097",
+    "tip": "infrastruktura"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "shower",
+    "lat": 43.9285366,
+    "lon": 15.4537644,
+    "google_maps": "https://www.google.com/maps?q=43.9285366,15.4537644",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "toilets",
+    "lat": 43.9286864,
+    "lon": 15.4538653,
+    "google_maps": "https://www.google.com/maps?q=43.9286864,15.4538653",
+    "tip": "infrastruktura"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "shower",
+    "lat": 43.9286425,
+    "lon": 15.453943,
+    "google_maps": "https://www.google.com/maps?q=43.9286425,15.453943",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "cafe",
+    "lat": 43.9295826,
+    "lon": 15.4530184,
+    "google_maps": "https://www.google.com/maps?q=43.9295826,15.4530184",
+    "tip": "gastronomija"
+  },
+  {
+    "naziv": "Gajeta",
+    "kategorija": "restaurant",
+    "lat": 43.929739,
+    "lon": 15.4514548,
+    "google_maps": "https://www.google.com/maps?q=43.929739,15.4514548",
+    "tip": "gastronomija"
+  },
+  {
+    "naziv": "Luigi",
+    "kategorija": "restaurant",
+    "lat": 43.92987,
+    "lon": 15.4514826,
+    "google_maps": "https://www.google.com/maps?q=43.92987,15.4514826",
+    "tip": "gastronomija"
+  },
+  {
+    "naziv": "Ledo",
+    "kategorija": "ice_cream",
+    "lat": 43.9303845,
+    "lon": 15.4509929,
+    "google_maps": "https://www.google.com/maps?q=43.9303845,15.4509929",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Škola Ronjenja",
+    "kategorija": "dive_centre",
+    "lat": 43.9313908,
+    "lon": 15.4465022,
+    "google_maps": "https://www.google.com/maps?q=43.9313908,15.4465022",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "bakery",
+    "lat": 43.9377458,
+    "lon": 15.4439656,
+    "google_maps": "https://www.google.com/maps?q=43.9377458,15.4439656",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "apartment",
+    "lat": 43.9294149,
+    "lon": 15.4549464,
+    "google_maps": "https://www.google.com/maps?q=43.9294149,15.4549464",
+    "tip": "smještaj"
+  },
+  {
+    "naziv": "Kaufland",
+    "kategorija": "charging_station",
+    "lat": 43.9453015,
+    "lon": 15.4523791,
+    "google_maps": "https://www.google.com/maps?q=43.9453015,15.4523791",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Lidl",
+    "kategorija": "charging_station",
+    "lat": 43.9446901,
+    "lon": 15.4532861,
+    "google_maps": "https://www.google.com/maps?q=43.9446901,15.4532861",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "ice_cream",
+    "lat": 43.9329962,
+    "lon": 15.4463182,
+    "google_maps": "https://www.google.com/maps?q=43.9329962,15.4463182",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "waste_basket",
+    "lat": 43.9276731,
+    "lon": 15.453563,
+    "google_maps": "https://www.google.com/maps?q=43.9276731,15.453563",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "recycling",
+    "lat": 43.9276845,
+    "lon": 15.4535879,
+    "google_maps": "https://www.google.com/maps?q=43.9276845,15.4535879",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "bench",
+    "lat": 43.9275382,
+    "lon": 15.4520515,
+    "google_maps": "https://www.google.com/maps?q=43.9275382,15.4520515",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "bench",
+    "lat": 43.9271487,
+    "lon": 15.4521569,
+    "google_maps": "https://www.google.com/maps?q=43.9271487,15.4521569",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "waste_basket",
+    "lat": 43.9277118,
+    "lon": 15.4519772,
+    "google_maps": "https://www.google.com/maps?q=43.9277118,15.4519772",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "fast_food",
+    "lat": 43.9277167,
+    "lon": 15.4519477,
+    "google_maps": "https://www.google.com/maps?q=43.9277167,15.4519477",
+    "tip": "gastronomija"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "bench",
+    "lat": 43.927763,
+    "lon": 15.451941,
+    "google_maps": "https://www.google.com/maps?q=43.927763,15.451941",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "waste_basket",
+    "lat": 43.9282157,
+    "lon": 15.45174,
+    "google_maps": "https://www.google.com/maps?q=43.9282157,15.45174",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "bench",
+    "lat": 43.9282903,
+    "lon": 15.4517028,
+    "google_maps": "https://www.google.com/maps?q=43.9282903,15.4517028",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "bench",
+    "lat": 43.9284031,
+    "lon": 15.4516202,
+    "google_maps": "https://www.google.com/maps?q=43.9284031,15.4516202",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "slipway",
+    "lat": 43.9290211,
+    "lon": 15.4509004,
+    "google_maps": "https://www.google.com/maps?q=43.9290211,15.4509004",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "waste_basket",
+    "lat": 43.9301345,
+    "lon": 15.4513598,
+    "google_maps": "https://www.google.com/maps?q=43.9301345,15.4513598",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "waste_basket",
+    "lat": 43.9303129,
+    "lon": 15.4511563,
+    "google_maps": "https://www.google.com/maps?q=43.9303129,15.4511563",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "dressing_room",
+    "lat": 43.9303438,
+    "lon": 15.4507201,
+    "google_maps": "https://www.google.com/maps?q=43.9303438,15.4507201",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "shower",
+    "lat": 43.9302911,
+    "lon": 15.4507384,
+    "google_maps": "https://www.google.com/maps?q=43.9302911,15.4507384",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "waste_basket",
+    "lat": 43.9303072,
+    "lon": 15.4504549,
+    "google_maps": "https://www.google.com/maps?q=43.9303072,15.4504549",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Moby Dick",
+    "kategorija": "restaurant",
+    "lat": 43.9330117,
+    "lon": 15.4464938,
+    "google_maps": "https://www.google.com/maps?q=43.9330117,15.4464938",
+    "tip": "gastronomija"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "waste_basket",
+    "lat": 43.9286459,
+    "lon": 15.4514197,
+    "google_maps": "https://www.google.com/maps?q=43.9286459,15.4514197",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "bench",
+    "lat": 43.9288549,
+    "lon": 15.4512418,
+    "google_maps": "https://www.google.com/maps?q=43.9288549,15.4512418",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "telephone",
+    "lat": 43.9318895,
+    "lon": 15.4466926,
+    "google_maps": "https://www.google.com/maps?q=43.9318895,15.4466926",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "apartmani Grcić",
+    "kategorija": "apartment",
+    "lat": 43.9427295,
+    "lon": 15.4464233,
+    "google_maps": "https://www.google.com/maps?q=43.9427295,15.4464233",
+    "tip": "smještaj"
+  },
+  {
+    "naziv": "Numero 11",
+    "kategorija": "fast_food",
+    "lat": 43.9378475,
+    "lon": 15.4445343,
+    "google_maps": "https://www.google.com/maps?q=43.9378475,15.4445343",
+    "tip": "gastronomija"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "atm",
+    "lat": 43.9367401,
+    "lon": 15.4414904,
+    "google_maps": "https://www.google.com/maps?q=43.9367401,15.4414904",
+    "tip": "infrastruktura"
+  },
+  {
+    "naziv": "More",
+    "kategorija": "social_facility",
+    "lat": 43.9420938,
+    "lon": 15.4485065,
+    "google_maps": "https://www.google.com/maps?q=43.9420938,15.4485065",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "shelter",
+    "lat": 43.9436713,
+    "lon": 15.4700592,
+    "google_maps": "https://www.google.com/maps?q=43.9436713,15.4700592",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "shelter",
+    "lat": 43.9437439,
+    "lon": 15.4701447,
+    "google_maps": "https://www.google.com/maps?q=43.9437439,15.4701447",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "shelter",
+    "lat": 43.9437303,
+    "lon": 15.4698205,
+    "google_maps": "https://www.google.com/maps?q=43.9437303,15.4698205",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "shelter",
+    "lat": 43.943786,
+    "lon": 15.469876,
+    "google_maps": "https://www.google.com/maps?q=43.943786,15.469876",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "shelter",
+    "lat": 43.9438356,
+    "lon": 15.4699255,
+    "google_maps": "https://www.google.com/maps?q=43.9438356,15.4699255",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "waste_basket",
+    "lat": 43.9401356,
+    "lon": 15.4451164,
+    "google_maps": "https://www.google.com/maps?q=43.9401356,15.4451164",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "waste_basket",
+    "lat": 43.9405833,
+    "lon": 15.4451916,
+    "google_maps": "https://www.google.com/maps?q=43.9405833,15.4451916",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Studenac",
+    "kategorija": "convenience",
+    "lat": 43.9425931,
+    "lon": 15.4476046,
+    "google_maps": "https://www.google.com/maps?q=43.9425931,15.4476046",
+    "tip": "infrastruktura"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "waste_basket",
+    "lat": 43.9285678,
+    "lon": 15.4552484,
+    "google_maps": "https://www.google.com/maps?q=43.9285678,15.4552484",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "toilets",
+    "lat": 43.9292051,
+    "lon": 15.456695,
+    "google_maps": "https://www.google.com/maps?q=43.9292051,15.456695",
+    "tip": "infrastruktura"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "waste_basket",
+    "lat": 43.9297556,
+    "lon": 15.4515756,
+    "google_maps": "https://www.google.com/maps?q=43.9297556,15.4515756",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "dressing_room",
+    "lat": 43.9269751,
+    "lon": 15.4521145,
+    "google_maps": "https://www.google.com/maps?q=43.9269751,15.4521145",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "toilets",
+    "lat": 43.9281657,
+    "lon": 15.4523791,
+    "google_maps": "https://www.google.com/maps?q=43.9281657,15.4523791",
+    "tip": "infrastruktura"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "shower",
+    "lat": 43.9272805,
+    "lon": 15.4518975,
+    "google_maps": "https://www.google.com/maps?q=43.9272805,15.4518975",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "waste_basket",
+    "lat": 43.9271229,
+    "lon": 15.4521701,
+    "google_maps": "https://www.google.com/maps?q=43.9271229,15.4521701",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "toilets",
+    "lat": 43.928194,
+    "lon": 15.454783,
+    "google_maps": "https://www.google.com/maps?q=43.928194,15.454783",
+    "tip": "infrastruktura"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "bench",
+    "lat": 43.9362811,
+    "lon": 15.4419471,
+    "google_maps": "https://www.google.com/maps?q=43.9362811,15.4419471",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "waste_basket",
+    "lat": 43.9326654,
+    "lon": 15.4464714,
+    "google_maps": "https://www.google.com/maps?q=43.9326654,15.4464714",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "bench",
+    "lat": 43.9361143,
+    "lon": 15.4425873,
+    "google_maps": "https://www.google.com/maps?q=43.9361143,15.4425873",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "waste_basket",
+    "lat": 43.9331623,
+    "lon": 15.4458938,
+    "google_maps": "https://www.google.com/maps?q=43.9331623,15.4458938",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "waste_basket",
+    "lat": 43.9371232,
+    "lon": 15.4403646,
+    "google_maps": "https://www.google.com/maps?q=43.9371232,15.4403646",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "waste_basket",
+    "lat": 43.9329034,
+    "lon": 15.4462934,
+    "google_maps": "https://www.google.com/maps?q=43.9329034,15.4462934",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "bench",
+    "lat": 43.9362109,
+    "lon": 15.4416569,
+    "google_maps": "https://www.google.com/maps?q=43.9362109,15.4416569",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "waste_basket",
+    "lat": 43.9317812,
+    "lon": 15.4468718,
+    "google_maps": "https://www.google.com/maps?q=43.9317812,15.4468718",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "waste_basket",
+    "lat": 43.9324203,
+    "lon": 15.4465192,
+    "google_maps": "https://www.google.com/maps?q=43.9324203,15.4465192",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "waste_basket",
+    "lat": 43.9330962,
+    "lon": 15.4460086,
+    "google_maps": "https://www.google.com/maps?q=43.9330962,15.4460086",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "waste_basket",
+    "lat": 43.9310764,
+    "lon": 15.4477246,
+    "google_maps": "https://www.google.com/maps?q=43.9310764,15.4477246",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "bench",
+    "lat": 43.9362707,
+    "lon": 15.4421066,
+    "google_maps": "https://www.google.com/maps?q=43.9362707,15.4421066",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "bench",
+    "lat": 43.9376019,
+    "lon": 15.4400472,
+    "google_maps": "https://www.google.com/maps?q=43.9376019,15.4400472",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "bench",
+    "lat": 43.936325,
+    "lon": 15.4413133,
+    "google_maps": "https://www.google.com/maps?q=43.936325,15.4413133",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "bench",
+    "lat": 43.9364277,
+    "lon": 15.4411701,
+    "google_maps": "https://www.google.com/maps?q=43.9364277,15.4411701",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "waste_basket",
+    "lat": 43.9327622,
+    "lon": 15.446439,
+    "google_maps": "https://www.google.com/maps?q=43.9327622,15.446439",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "bench",
+    "lat": 43.9360415,
+    "lon": 15.4428097,
+    "google_maps": "https://www.google.com/maps?q=43.9360415,15.4428097",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "bench",
+    "lat": 43.9365521,
+    "lon": 15.4409824,
+    "google_maps": "https://www.google.com/maps?q=43.9365521,15.4409824",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "bench",
+    "lat": 43.9374267,
+    "lon": 15.4401556,
+    "google_maps": "https://www.google.com/maps?q=43.9374267,15.4401556",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "waste_basket",
+    "lat": 43.9322624,
+    "lon": 15.4465698,
+    "google_maps": "https://www.google.com/maps?q=43.9322624,15.4465698",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "waste_basket",
+    "lat": 43.9333345,
+    "lon": 15.4456057,
+    "google_maps": "https://www.google.com/maps?q=43.9333345,15.4456057",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "waste_basket",
+    "lat": 43.9334489,
+    "lon": 15.4454065,
+    "google_maps": "https://www.google.com/maps?q=43.9334489,15.4454065",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "waste_basket",
+    "lat": 43.9330455,
+    "lon": 15.4460832,
+    "google_maps": "https://www.google.com/maps?q=43.9330455,15.4460832",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "bench",
+    "lat": 43.9361976,
+    "lon": 15.441529,
+    "google_maps": "https://www.google.com/maps?q=43.9361976,15.441529",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "bench",
+    "lat": 43.9361916,
+    "lon": 15.4423521,
+    "google_maps": "https://www.google.com/maps?q=43.9361916,15.4423521",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "bench",
+    "lat": 43.9373145,
+    "lon": 15.4402328,
+    "google_maps": "https://www.google.com/maps?q=43.9373145,15.4402328",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "bicycle_repair_station",
+    "lat": 43.9411325,
+    "lon": 15.4453861,
+    "google_maps": "https://www.google.com/maps?q=43.9411325,15.4453861",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "drinking_water",
+    "lat": 43.9407682,
+    "lon": 15.4452984,
+    "google_maps": "https://www.google.com/maps?q=43.9407682,15.4452984",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "bicycle_repair_station",
+    "lat": 43.9260912,
+    "lon": 15.4800509,
+    "google_maps": "https://www.google.com/maps?q=43.9260912,15.4800509",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "vending_machine",
+    "lat": 43.9362476,
+    "lon": 15.4414783,
+    "google_maps": "https://www.google.com/maps?q=43.9362476,15.4414783",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "waste_basket",
+    "lat": 43.9361867,
+    "lon": 15.4423945,
+    "google_maps": "https://www.google.com/maps?q=43.9361867,15.4423945",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Coffee Time 3",
+    "kategorija": "cafe",
+    "lat": 43.9453016,
+    "lon": 15.451992,
+    "google_maps": "https://www.google.com/maps?q=43.9453016,15.451992",
+    "tip": "gastronomija"
+  },
+  {
+    "naziv": "Coastal Comfort Family Apartment",
+    "kategorija": "apartment",
+    "lat": 43.924583,
+    "lon": 15.4589741,
+    "google_maps": "https://www.google.com/maps?q=43.924583,15.4589741",
+    "tip": "smještaj"
+  },
+  {
+    "naziv": "Nepoznato",
+    "kategorija": "artwork",
+    "lat": 43.9364373,
+    "lon": 15.4424353,
+    "google_maps": "https://www.google.com/maps?q=43.9364373,15.4424353",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "EuroSpin",
+    "kategorija": "supermarket",
+    "lat": 43.9458327,
+    "lon": 15.4540096,
+    "google_maps": "https://www.google.com/maps?q=43.9458327,15.4540096",
+    "tip": "infrastruktura"
+  },
+  {
+    "naziv": "Sinsay",
+    "kategorija": "clothes",
+    "lat": 43.9461424,
+    "lon": 15.4547568,
+    "google_maps": "https://www.google.com/maps?q=43.9461424,15.4547568",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "TEDi",
+    "kategorija": "variety_store",
+    "lat": 43.9460767,
+    "lon": 15.4545535,
+    "google_maps": "https://www.google.com/maps?q=43.9460767,15.4545535",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Ljekarna Švaljek",
+    "kategorija": "pharmacy",
+    "lat": 43.9460325,
+    "lon": 15.4544355,
+    "google_maps": "https://www.google.com/maps?q=43.9460325,15.4544355",
+    "tip": "infrastruktura"
+  },
+  {
+    "naziv": "Bipa",
+    "kategorija": "chemist",
+    "lat": 43.9459423,
+    "lon": 15.4542374,
+    "google_maps": "https://www.google.com/maps?q=43.9459423,15.4542374",
+    "tip": "ostalo"
+  },
+  {
+    "naziv": "Pečenjara Brkljača",
+    "kategorija": "restaurant",
+    "lat": 43.9416165,
+    "lon": 15.4547397,
+    "google_maps": "https://www.google.com/maps?q=43.9416165,15.4547397",
+    "tip": "gastronomija"
+  }
+]
