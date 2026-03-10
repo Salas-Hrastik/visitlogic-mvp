@@ -238,9 +238,12 @@ export default async function handler(req, res) {
       'erzähl mir mehr', 'mehr über', 'details über', 'wer ist', 'was ist', 'erkläre'
     ].some(k => message.toLowerCase().includes(k));
 
+    // Normalizirani upit — definiran OVDJE, dostupan svim pre-gen blokovima ispod
+    const msgLower = message.toLowerCase();
+
     // Događanja listing: filtriraj prošle i generiraj direktno bez AI
     // Ako korisnik pita za SPECIFIČNU manifestaciju po imenu → preskoči listing, pusti AI da odgovori konkretno
-    const specificEventQuery = ['fišijad','fisijad','matijafest','rockaraj','reunited','vašar','vasar','ljeto valpov','craft beer','staza zdravlja','festival sira','ribljeg paprikaš','ribljeg paprikas','kuhanje fiš','kuhanje fis','katančić','katancic','matija petar','matiji petru'].some(k => message.toLowerCase().includes(k));
+    const specificEventQuery = ['fišijad','fisijad','matijafest','rockaraj','reunited','vašar','vasar','ljeto valpov','craft beer','staza zdravlja','festival sira','ribljeg paprikaš','ribljeg paprikas','kuhanje fiš','kuhanje fis','katančić','katancic','matija petar','matiji petru'].some(k => msgLower.includes(k));
     if (category === 'dogadanja' && !specificEventQuery && !isRecommendationQuery && !isDetailQuery && matched) {
       const currentMonth = new Date().getMonth() + 1;
       const upcoming = db.dogadanja.filter(e => eventMaxMonth(e.vrijeme) >= currentMonth);
@@ -455,7 +458,6 @@ export default async function handler(req, res) {
 
     // Okolica listing: generiraj direktno bez AI samo kad korisnik traži opći popis izleta
     // (sadrži 'izlet') — specifična pitanja (vinske ceste, Kopački rit...) idu na AI
-    const msgLower = message.toLowerCase();
     const isOkolicaListing = category === 'okolica' && msgLower.includes('izlet') && !isRecommendationQuery && !isDetailQuery && matched;
     if (isOkolicaListing) {
       const izleti = db.okolica?.izleti || [];
