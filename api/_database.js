@@ -993,19 +993,6 @@ export const db = {
                 "adresa": "Uz dvorac Prandau-Normann, centar Valpova",
                 "maps_url": "https://www.google.com/maps/dir/?api=1&destination=45.6589474,18.4153698",
                 "napomena": "Besplatno, otvoreno cijele godine"
-            },
-            {
-                "naziv": "Šetnica uz rijeku Karašicu",
-                "opis": "Rječica Karašica protječe uz sam dvorac i perivoj. Može se šetati uz obalu prema ušću s rijekom Dravom (~2 km prema sjeveru). Na ušću se nalazi vikend naselje Karašica i Udičarski dom.",
-                "adresa": "Karašica, Valpovo — prema Dravi",
-                "maps_url": "https://www.google.com/maps/search/?api=1&query=rijeka+Karašica+Valpovo",
-                "napomena": "Besplatno, prirodna šetnica"
-            },
-            {
-                "naziv": "Udičarski dom Karašica",
-                "opis": "Ugostiteljski objekt uz ušće Karašice i Drave, ~2 km sjeverno od dvorca. Povremeno se poslužuje fiš paprikaš od svježe riječne ribe. Odlično za opuštanje uz vodu.",
-                "adresa": "Karašica (vikend naselje uz Dravu), Valpovo",
-                "maps_url": "https://www.google.com/maps/search/?api=1&query=Udičarski+dom+Karašica+Valpovo"
             }
         ],
         "biciklizam": [
