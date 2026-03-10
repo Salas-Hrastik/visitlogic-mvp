@@ -264,15 +264,16 @@ export default async function handler(req, res) {
       const s = db.smjestaj;
       const msgL = message.toLowerCase();
 
-      // Detektiraj specifičnu podkategoriju iz upita
+      // Detektiraj specifičnu podkategoriju iz upita (bez međusobnih isključenja!)
       const wantsSobe      = msgL.includes('sob') || msgL.includes('room');
-      const wantsHotel     = msgL.includes('hotel') && !wantsSobe;
-      const wantsApartman  = (msgL.includes('apartman') || msgL.includes('studio')) && !wantsSobe;
+      const wantsHotel     = msgL.includes('hotel');
+      const wantsApartman  = msgL.includes('apartman') || msgL.includes('studio');
       const wantsRuralni   = msgL.includes('ruralni') || msgL.includes('holiday') || msgL.includes('dvori') || msgL.includes('seoski') || msgL.includes('seosk') || msgL.includes('gospodarstv') || msgL.includes('farma') || msgL.includes('agro') || msgL.includes('rural') || msgL.includes('bauernhof');
       const wantsPrenociste= msgL.includes('prenoć') || msgL.includes('prenoc') || msgL.includes('noćiš') || msgL.includes('nocis');
 
-      // Ako nema specifičnog zahtjeva → prikaži sve
-      const showAll = !wantsSobe && !wantsHotel && !wantsApartman && !wantsRuralni && !wantsPrenociste;
+      // Prikaži sve ako: nema nijednog filtera, ili ima 2+ tipova (korisnik traži pregled svih)
+      const typeCount = [wantsSobe, wantsHotel, wantsApartman, wantsRuralni, wantsPrenociste].filter(Boolean).length;
+      const showAll = typeCount === 0 || typeCount >= 2;
 
       const allSections = [
         { key: 'hoteli',           icon: '🏨', label: 'Hoteli',            show: showAll || wantsHotel },
@@ -351,9 +352,23 @@ export default async function handler(req, res) {
         !restorani.includes(g) && !brzaHrana.includes(g)
       );
 
-      let reply = 'Valpovo ima bogatu ugostiteljsku ponudu — od tradicionalnih slavonskih restorana do caffe barova. Evo kompletnog pregleda:\n\n';
+      // Odredi što prikazati na temelju namjere upita
+      const wantsDining = ['ručati','ručak','večerati','večera','jesti','objedovati',
+        'lunch','dinner','eat','speisen','mittagessen','abendessen'].some(k => msgLower.includes(k));
+      const wantsCafe   = ['kafić','kava','kavana','caffe','café','bar','kafe',
+        'coffee','café','kaffee'].some(k => msgLower.includes(k));
 
-      if (restorani.length) {
+      const showRestorani   = !wantsCafe;   // skrivaj restorane samo ako traži samo cafe
+      const showBrzaHrana   = !wantsCafe;
+      const showCaffeBarovi = !wantsDining; // skrivaj caffe barove samo ako traži samo restoran
+
+      let reply = wantsDining
+        ? 'Restorani i mjesta za objedovanje u Valpovu:\n\n'
+        : wantsCafe
+          ? 'Caffe barovi i kavane u Valpovu:\n\n'
+          : 'Valpovo ima bogatu ugostiteljsku ponudu — od tradicijskih slavonskih restorana do caffe barova. Evo pregleda:\n\n';
+
+      if (restorani.length && showRestorani) {
         reply += '🍽️ **Restorani**\n\n';
         for (const item of restorani) {
           if (item.IMAGE_URL) reply += `[[IMG:${item.IMAGE_URL}]]`;
@@ -367,7 +382,7 @@ export default async function handler(req, res) {
         }
       }
 
-      if (brzaHrana.length) {
+      if (brzaHrana.length && showBrzaHrana) {
         reply += '🍕 **Brza hrana i pizzerije**\n\n';
         for (const item of brzaHrana) {
           if (item.IMAGE_URL) reply += `[[IMG:${item.IMAGE_URL}]]`;
@@ -380,7 +395,7 @@ export default async function handler(req, res) {
         }
       }
 
-      if (caffeBarovi.length) {
+      if (caffeBarovi.length && showCaffeBarovi) {
         reply += '☕ **Caffe barovi i kavane**\n\n';
         for (const item of caffeBarovi) {
           if (item.IMAGE_URL) reply += `[[IMG:${item.IMAGE_URL}]]`;
