@@ -195,7 +195,8 @@ export default async function handler(req, res) {
 
   try {
 
-    const { message, history, category: lastCategory, weather } = req.body;
+    const { message, history, category: lastCategory, weather, inputMethod } = req.body;
+    const isVoiceInput = inputMethod === 'voice';
 
     if (!message) {
       return res.status(400).json({ reply: "Poruka je prazna." });
@@ -456,6 +457,127 @@ export default async function handler(req, res) {
       return res.status(200).json({ reply, category, suggestions: getSuggestions(category), images: extractImages(context) });
     }
 
+    // === USLUGE PRE-GEN ===
+    // Zdravstvo, banke, auto servisi, taksi, benzinske, frizeraji, parking
+    // Sprječava AI haluciniranje naziva institucija koje NE postoje u Valpovu
+    const isUslugeCategory = ['usluge','benzinske','frizeraji','parking'].includes(category);
+    if (isUslugeCategory && !isRecommendationQuery && !isDetailQuery && matched) {
+      const u = db.usluge;
+      const ml = msgLower;
+      let reply = '';
+
+      if (ml.includes('ljekar') || ml.includes('apoteka') || ml.includes('ljekarn') ||
+          ml.includes('zdravst') || ml.includes('doktor') || ml.includes('liječnik') ||
+          ml.includes('hitna') || ml.includes('doctor') || ml.includes('pharmacy') || ml.includes('farmac')) {
+        reply = '🏥 Zdravstvene ustanove i ljekarne u Valpovu:\n\n';
+        for (const item of u.zdravstvo || []) {
+          reply += `**${item.naziv}**\n`;
+          if (item.adresa) reply += `📍 ${item.adresa}\n`;
+          if (item.telefon) reply += `📞 ${item.telefon}\n`;
+          const murl = item.maps_url || `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(item.naziv + ' Valpovo')}`;
+          reply += `[Otvori na karti](${murl})\n\n`;
+        }
+
+      } else if (ml.includes('bankomat') || ml.includes('atm') || ml.includes('gotovina') || ml.includes('cash')) {
+        reply = '🏧 Bankomati u Valpovu:\n\n';
+        for (const item of u.bankomati || []) {
+          reply += `**${item.naziv}**\n`;
+          if (item.adresa) reply += `📍 ${item.adresa}\n`;
+          if (item.napomena) reply += `ℹ️ ${item.napomena}\n`;
+          reply += `[Otvori na karti](${item.maps_url})\n\n`;
+        }
+
+      } else if (ml.includes('banka') || ml.includes('banke') || ml.includes('pošta') ||
+                 ml.includes('posta') || ml.includes('bank') || ml.includes('post office')) {
+        reply = '🏦 Banke i pošta u Valpovu:\n\n';
+        for (const item of u.banke_i_posta || []) {
+          reply += `**${item.naziv}**\n`;
+          if (item.adresa) reply += `📍 ${item.adresa}\n`;
+          if (item.telefon) reply += `📞 ${item.telefon}\n`;
+          if (item.radno_vrijeme) reply += `🕐 ${item.radno_vrijeme}\n`;
+          if (item.maps_url) reply += `[Otvori na karti](${item.maps_url})\n`;
+          reply += '\n';
+        }
+
+      } else if (ml.includes('auto') || ml.includes('servis') || ml.includes('mehanik') ||
+                 ml.includes('popravak') || ml.includes('vulkan') || ml.includes('autocentar') ||
+                 ml.includes('car repair') || ml.includes('mechanic') || ml.includes('werkstatt')) {
+        reply = '🔧 Auto servisi u Valpovu:\n\n';
+        for (const item of u.auto_servisi || []) {
+          reply += `**${item.naziv}**\n`;
+          if (item.adresa) reply += `📍 ${item.adresa}\n`;
+          if (item.telefon) reply += `📞 ${item.telefon}\n`;
+          const murl = item.maps_url || `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(item.naziv + ' Valpovo')}`;
+          reply += `[Otvori na karti](${murl})\n\n`;
+        }
+
+      } else if (ml.includes('taksi') || ml.includes('taxi') || ml.includes('cab')) {
+        reply = '🚕 Taksi prijevoz iz/do Valpova:\n\n';
+        for (const item of u.taksi || []) {
+          reply += `**${item.naziv}**\n`;
+          if (item.telefon) reply += `📞 ${item.telefon}\n`;
+          if (item.napomena) reply += `ℹ️ ${item.napomena}\n`;
+          reply += '\n';
+        }
+
+      } else if (ml.includes('autobus') || ml.includes('kolodvor') || ml.includes('vozni red')) {
+        reply = '🚌 Autobusni prijevoz iz/do Valpova:\n\n';
+        for (const item of u.autobusni_prijevoz || []) {
+          reply += `**${item.naziv}**\n`;
+          if (item.adresa) reply += `📍 ${item.adresa}\n`;
+          if (item.napomena) reply += `ℹ️ ${item.napomena}\n`;
+          if (item.maps_url) reply += `[Otvori na karti](${item.maps_url})\n`;
+          reply += '\n';
+        }
+
+      } else if (category === 'benzinske' || ml.includes('benzin') || ml.includes('goriv') || ml.includes('pumpa')) {
+        reply = '⛽ Benzinske stanice u Valpovu:\n\n';
+        for (const item of u.benzinske_stanice || []) {
+          reply += `**${item.naziv}**\n`;
+          if (item.adresa) reply += `📍 ${item.adresa}\n`;
+          if (item.napomena) reply += `ℹ️ ${item.napomena}\n`;
+          reply += `[Otvori na karti](${item.maps_url})\n\n`;
+        }
+
+      } else if (category === 'frizeraji' || ml.includes('frizer') || ml.includes('kozmet') ||
+                 ml.includes('barber') || ml.includes('brica')) {
+        reply = '💈 Frizeraji i kozmetički saloni u Valpovu:\n\n';
+        for (const item of u.frizeraji || []) {
+          reply += `**${item.naziv}**\n`;
+          if (item.adresa) reply += `📍 ${item.adresa}\n`;
+          if (item.telefon) reply += `📞 ${item.telefon}\n`;
+          reply += `[Otvori na karti](${item.maps_url})\n\n`;
+        }
+
+      } else if (category === 'parking' || ml.includes('parking') || ml.includes('parkir')) {
+        reply = '🅿️ Parkirališta u Valpovu (sva besplatna):\n\n';
+        for (const item of u.parkiralista || []) {
+          reply += `**${item.naziv}**\n`;
+          if (item.opis) reply += `${item.opis}\n`;
+          if (item.napomena) reply += `ℹ️ ${item.napomena}\n`;
+          reply += `[Otvori na karti](${item.maps_url})\n\n`;
+        }
+
+      } else {
+        // Opći pregled svih usluga
+        reply = 'Pregled usluga dostupnih u Valpovu:\n\n';
+        reply += '🏥 **Zdravstvo:** Dom zdravlja (📞 194 Hitna), Ljekarna Srce (📞 031 651 350), Ljekarna Kalenić (📞 031 650 290)\n\n';
+        reply += '🏦 **Banke:** Slatinska banka, OTP banka, HPB, PBZ · 📮 Hrvatska pošta\n\n';
+        reply += '🏧 **Bankomati:** HPB (24/7), Slatinska, OTP, PBZ\n\n';
+        reply += '⛽ **Benzinske:** INA, Petrol, Euro Petrol/NTL\n\n';
+        reply += '🔧 **Auto servisi:** Autocentar Ivica, Galičić, Valentić, Dabo, Karlo servis\n\n';
+        reply += '🚕 **Taksi:** Panda 📞 099 666 000 9 · Goran 📞 +385 95 310 3100\n\n';
+        reply += '🚌 **Autobus:** Kolodvor Valpovo — 22 linije/dan prema Osijeku\n\n';
+        reply += '💈 **Frizeraji:** Salon Erika, Salon Iris, Beauty, Barbershop\n\n';
+        reply += '🅿️ **Parkiranje:** Sve besplatno — uz dvorac, Trg Tomislava, STOP SHOP\n\n';
+        reply += 'Pitajte za detalje o bilo kojoj kategoriji!';
+      }
+
+      if (reply) {
+        return res.status(200).json({ reply, category, suggestions: getSuggestions(category), images: [] });
+      }
+    }
+
     // Datum i godišnje doba (server-side, uvijek točno)
     const now = new Date();
     const day = now.getDate();
@@ -500,7 +622,12 @@ KRITIČNO PRAVILO — JEZIK I PISMO: Uvijek odgovaraj ISKLJUČIVO na jeziku koji
 - Pitanje na talijanskom → cijeli odgovor na talijanskom ([Apri sulla mappa], [Più informazioni])
 - Pitanje na hrvatskom → odgovor na hrvatskom ([Otvori na karti], [Više informacija])
 - Za bilo koji drugi jezik → odgovaraj na tom jeziku
-APSOLUTNA ZABRANA ĆIRILICE: Bez obzira na jezik korisnika — NIKAD ne koristi ćirilično pismo (кирилица). Uvijek koristi latinično pismo (abeceda). Čak i ako korisnik piše na srpskom ili bosanskom, odgovaraj latiničnim pismom. Ovo je nepromjenjivo pravilo.
+APSOLUTNA ZABRANA ĆIRILICE: Bez obzira na jezik — NIKAD ne koristi ćirilično pismo. Uvijek latinica. Nepromjenjivo pravilo.
+${isVoiceInput ? `GLASOVNI UNOS — POSEBNA PRAVILA:
+- Korisnik je postavio pitanje glasom (speech-to-text). Odgovor mora biti u latiničnom pismu.
+- Piši kraće i jasnije rečenice — odgovor će se čitati naglas (TTS).
+- Izbjegavaj složene markdown strukture — preferiraj kratke paragrafe.
+- Ne koristi tablice. Emoji su OK.` : ''}
 Podatke iz baze prevedi na jezik korisnika. Nazive mjesta, ulica i institucija ostavi u izvornom obliku.
 
 Ti si digitalni turistički informator grada Valpova.

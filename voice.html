@@ -1086,6 +1086,7 @@
                 if (data.text) {
                     inputEl.value = data.text;
                     inputEl.placeholder = "Postavite pitanje...";
+                    lastInputMethod = 'voice';
                     sendMessage();
                 } else {
                     throw new Error(data.error || "Prazan tekst");
@@ -1122,8 +1123,11 @@
         /* ── SEND ── */
         const conversationHistory = [];
         let currentCategory = null;
+        let lastInputMethod = 'text'; // 'text' ili 'voice' — postavlja se prije poziva sendMessage()
 
         async function sendMessage() {
+            const inputMethod = lastInputMethod;
+            lastInputMethod = 'text'; // resetiraj za sljedeći unos
             const text = inputEl.value.trim();
             if (!text || isProcessing) return;
 
@@ -1148,7 +1152,8 @@
                         message: text,
                         history: conversationHistory.slice(-6),
                         category: currentCategory,
-                        weather: currentWeather
+                        weather: currentWeather,
+                        inputMethod: inputMethod
                     })
                 });
 
