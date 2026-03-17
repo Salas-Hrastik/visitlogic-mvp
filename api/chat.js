@@ -44,6 +44,10 @@ function eventMaxMonth(vrijeme) {
   const months = (vrijeme || '').split('/').map(p => MONTH_MAP[p.trim()]).filter(Boolean);
   return months.length ? Math.max(...months) : 12;
 }
+function eventMinMonth(vrijeme) {
+  const months = (vrijeme || '').split('/').map(p => MONTH_MAP[p.trim()]).filter(Boolean);
+  return months.length ? Math.min(...months) : 1;
+}
 
 // Vrati { context, category } — category se pamti i šalje nazad klijentu
 function getRelevantContext(message, db, lastCategory) {
@@ -425,18 +429,70 @@ export default async function handler(req, res) {
     const specificEventQuery = ['fišijad','fisijad','matijafest','rockaraj','reunited','vašar','vasar','ljeto valpov','craft beer','staza zdravlja','festival sira','ribljeg paprikaš','ribljeg paprikas','kuhanje fiš','kuhanje fis','katančić','katancic','matija petar','matiji petru'].some(k => msgLower.includes(k));
     if (category === 'dogadanja' && !specificEventQuery && !isRecommendationQuery && !isDetailQuery && matched) {
       const currentMonth = new Date().getMonth() + 1;
+      const currentDay   = new Date().getDate();
+      const monthNames   = ['siječnju','veljači','ožujku','travnju','svibnju','lipnju',
+                            'srpnju','kolovozu','rujnu','listopadu','studenom','prosincu'];
+
+      // Sve predstojeće (kraj ove godine)
       const upcoming = db.dogadanja.filter(e => eventMaxMonth(e.vrijeme) >= currentMonth);
-      let reply = upcoming.length
-        ? `Predstojeće manifestacije u Valpovu (${new Date().getFullYear()}):\n\n`
-        : 'Nema predstojećih manifestacija za ostatak ove godine.';
-      for (const e of upcoming) {
-        if (e.IMAGE_URL) reply += `[[IMG:${e.IMAGE_URL}]]`;
-        reply += `**${e.naziv}**\n`;
-        reply += `📅 ${e.vrijeme}\n`;
-        reply += `${e.opis}\n`;
-        reply += e.web ? `[Više informacija](${e.web})\n` : `[Više informacija na TZ Valpovo](https://tz.valpovo.hr/manifestacije/)\n`;
-        reply += `[[CLR]]\n\n`;
+      // Samo ovomjesečne (max >= trenutni I min <= trenutni)
+      const thisMonthEvents = upcoming.filter(e => eventMinMonth(e.vrijeme) <= currentMonth);
+
+      // Detektira preciznost upita
+      const wantsThisWeek = ['ovaj tjedan','ovog tjedna','ovaj vikend','ovog vikenda',
+        'this week','diese woche','danas','today','večeras','tonight','sutra','tomorrow']
+        .some(k => msgLower.includes(k));
+      const wantsThisMonth = !wantsThisWeek && ['ovaj mjese','ovog mjese','this month',
+        'diesen monat','u ovom mjes'].some(k => msgLower.includes(k));
+
+      const helper = (e) => {
+        let s = '';
+        if (e.IMAGE_URL) s += `[[IMG:${e.IMAGE_URL}]]`;
+        s += `**${e.naziv}**\n`;
+        s += `📅 ${e.vrijeme}\n`;
+        s += `${e.opis}\n`;
+        s += e.web ? `[Više informacija](${e.web})\n` : `[Više informacija na TZ Valpovo](https://tz.valpovo.hr/manifestacije/)\n`;
+        s += `[[CLR]]\n\n`;
+        return s;
+      };
+
+      let reply = '';
+
+      if (wantsThisWeek || wantsThisMonth) {
+        // Precizni upit: ovaj tjedan / ovaj mjesec
+        if (thisMonthEvents.length > 0) {
+          reply = wantsThisWeek
+            ? `🗓️ Evo što se zbiva u Valpovu ovaj tjedan / ovog vikenda (${currentDay}. ${monthNames[currentMonth - 1]}):\n\n`
+            : `🗓️ Manifestacije u Valpovu ovog mjeseca (${monthNames[currentMonth - 1]}):\n\n`;
+          for (const e of thisMonthEvents) reply += helper(e);
+          const next = upcoming.find(e => !thisMonthEvents.includes(e));
+          if (next) reply += `\n📌 Sljedeća nadolazeća: **${next.naziv}** — 📅 ${next.vrijeme}`;
+        } else {
+          // Nema ništa ovaj tjedan/mjesec
+          reply = wantsThisWeek
+            ? `🗓️ Ovog tjedna (${currentDay}. ${monthNames[currentMonth - 1]}) u Valpovu nema planiranih manifestacija.\n\n`
+            : `🗓️ U ${monthNames[currentMonth - 1]} u Valpovu nema planiranih manifestacija.\n\n`;
+          if (upcoming.length > 0) {
+            reply += `Sljedeće nadolazeće manifestacije:\n\n`;
+            for (const e of upcoming.slice(0, 2)) reply += helper(e);
+          }
+        }
+      } else {
+        // Opći upit — prikaži sljedećih MAX 5, ostatak najavi
+        const MAX_SHOWN = 5;
+        const shown = upcoming.slice(0, MAX_SHOWN);
+        if (shown.length) {
+          reply = `Predstojeće manifestacije u Valpovu:\n\n`;
+          for (const e of shown) reply += helper(e);
+          if (upcoming.length > MAX_SHOWN) {
+            const rest = upcoming.slice(MAX_SHOWN).map(e => `${e.naziv} (${e.vrijeme})`).join(', ');
+            reply += `📌 I još ${upcoming.length - MAX_SHOWN}: ${rest}\n`;
+          }
+        } else {
+          reply = 'Nema predstojećih manifestacija za ostatak ove godine. Za više informacija: [tz.valpovo.hr](https://tz.valpovo.hr/manifestacije/)';
+        }
       }
+
       return res.status(200).json({ reply, category, suggestions: getSuggestions(category), images: extractImages(context) });
     }
 
