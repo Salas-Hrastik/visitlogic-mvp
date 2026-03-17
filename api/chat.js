@@ -243,6 +243,183 @@ export default async function handler(req, res) {
     // Normalizirani upit — definiran OVDJE, dostupan svim pre-gen blokovima ispod
     const msgLower = message.toLowerCase();
 
+    // ═══════════════════════════════════════════════════════════════════
+    // FAQ PRE-GEN: Tipična posjetiteljska pitanja (bez AI, bez halucinacije)
+    // Odgovara PRIJE category pre-genova — ključne riječi su dovoljno specifične
+    // ═══════════════════════════════════════════════════════════════════
+    {
+      const ml = msgLower;
+      let faqReply = null;
+
+      // 1. TURISTIČKA ZAJEDNICA / INFO PUNKT
+      if (!faqReply && (ml.includes('turistič') || ml.includes('info centar') || ml.includes('info punkt') ||
+          ml.includes('tourist info') || ml.includes('turistinfo') || ml.includes('tz valpov') ||
+          ml.includes('turistični ured') || ml.includes('turistički ured'))) {
+        faqReply =
+          '🏢 **Turistička zajednica Grada Valpova**\n\n' +
+          '📍 Trg kralja Tomislava 2, 31550 Valpovo\n' +
+          '📞 +385 31 656 200\n' +
+          '✉️ tzgvalpovo@gmail.com\n' +
+          '[Otvori na karti](https://www.google.com/maps/search/?api=1&query=Turisticka+zajednica+Valpovo)\n' +
+          '[Više informacija](https://tz.valpovo.hr)\n\n' +
+          '🗺️ [Virtualna šetnja Valpovom](https://tz.valpovo.hr/2025/01/17/virtualna-setnja-valpovo-gdje-najbolje-pocinje/)';
+      }
+
+      // 2. BESPLATNO — što je besplatno u Valpovu
+      if (!faqReply && (ml.includes('besplatno') || ml.includes('besplatn') || ml.includes('bez naplate') ||
+          ml.includes('bez plaćanja') || ml.includes('što ne košta') || ml.includes('sto ne kosta') ||
+          (ml.includes('free') && (ml.includes('valpov') || ml.includes('što') || ml.includes('sto'))))) {
+        faqReply =
+          '🎁 Besplatni sadržaji u Valpovu:\n\n' +
+          '🌳 **Perivoj dvorca Prandau-Normann** — Engleski perivoj, aleje starih stabala, šetnja uz rječicu Karašicu. Otvoreno cijele godine.\n' +
+          '[Otvori na karti](https://www.google.com/maps/dir/?api=1&destination=45.6589474,18.4153698)\n\n' +
+          '🚴 **Biciklistička staza uz rijeku Dravu** (EuroVelo 13/6) — ~2 km od centra, panoramska vožnja uz nasip.\n\n' +
+          '🚶 **Šetnja centrom** — Trg kralja Tomislava, fasade, crkve i povijesni objekti.\n\n' +
+          '🅿️ **Parkiranje** — Sva parkirališta u Valpovu su besplatna.\n\n' +
+          '🎣 **Ribolov** — Pristup rijekama besplatan (ribolovna dozvola se kupuje kod lokalnih udruga).\n\n' +
+          'ℹ️ Za ulaznice u Muzej Valpovštine i Katančićev vremeplov obratite se TZ: 📞 +385 31 656 200';
+      }
+
+      // 3. ZA DJECU / OBITELJ
+      if (!faqReply && (ml.includes('djec') || ml.includes('dijete') || ml.includes('beba') ||
+          ml.includes('obitelj') || ml.includes('obiteljs') || ml.includes('kids') ||
+          ml.includes('children') || ml.includes('family') || ml.includes('kinder') ||
+          ml.includes('klinci') || ml.includes('malom djetetu') || ml.includes('s djecom'))) {
+        faqReply =
+          '👨‍👩‍👧 Valpovo s djecom i obitelju:\n\n' +
+          '🌳 **Perivoj dvorca** — Sigurna, besplatna šetnja za sve uzraste.\n\n' +
+          '🏛️ **Katančićev vremeplov** — Edukacijsko-interpretacijski centar, interaktivno za djecu.\n' +
+          '🕐 Pon 07:00–19:00 | Uto–Pet 07:00–15:00\n\n' +
+          '🎭 **Godišnji festivali za djecu:**\n' +
+          '• Dječji gradski karneval (veljača) — maskiranje i zabava\n' +
+          '• Uskrs u Valpovu (ožujak/travanj) — radionice, potraga za pisanicama\n' +
+          '• MatijafesT (svibanj) — edukativni festival za mlade\n\n' +
+          '🎾 **Sportski klubovi za djecu:** Teniska škola, Karate klub, Savate (boks)\n\n' +
+          '💧 **U blizini (9 km): [Bizovačke toplice](https://www.bizovacke-toplice.hr)** — Aquapark s toboganima, idealno za obitelji!';
+      }
+
+      // 4. KOLIKO DUGO / PLAN POSJETA / TRAJANJE
+      if (!faqReply && (ml.includes('koliko dugo') || ml.includes('koliko vremena') || ml.includes('koliko sati') ||
+          ml.includes('how long') || ml.includes('wie lange') || ml.includes('plan posjeta') ||
+          ml.includes('vikend plan') || ml.includes('jednodnevni') ||
+          (ml.includes('koliko') && (ml.includes('sati') || ml.includes('dana'))))) {
+        faqReply =
+          '🗺️ Preporučeni plan obilaska Valpova:\n\n' +
+          '⏱️ **Poludnevni posjet (3–4 sata):**\n' +
+          '✅ Perivoj i Dvorac Prandau-Normann\n' +
+          '✅ Katančićev vremeplov\n' +
+          '✅ Šetnja centrom — Trg i okolica\n' +
+          '✅ Kava u lokalnom caffe baru\n\n' +
+          '☀️ **Cijeli dan (6–8 sati):**\n' +
+          '✅ Sve gore + Muzej Valpovštine + ručak u restoranu\n' +
+          '✅ Biciklistička staza uz Dravu\n' +
+          '✅ Razgledavanje svih znamenitosti\n\n' +
+          '🏕️ **Vikend u Valpovu:**\n' +
+          '✅ Sve gore + Bizovačke toplice (9 km) ili Kopački rit (45 km)\n\n' +
+          '💡 Za pregled programa i događanja: [tz.valpovo.hr](https://tz.valpovo.hr)';
+      }
+
+      // 5. NA KIŠU / LOŠE VRIJEME / INDOOR
+      if (!faqReply && (ml.includes('kiša') || ml.includes('kišni') || ml.includes('kišno') ||
+          ml.includes('loše vrij') || ml.includes('lose vrij') || ml.includes('lose vreme') ||
+          ml.includes('rainy') || ml.includes('rain day') || ml.includes('unutra') ||
+          ml.includes('indoor') || ml.includes('zatvoreno') || ml.includes('shelter'))) {
+        faqReply =
+          '🌧️ Što raditi na kišu u Valpovu:\n\n' +
+          '🏛️ **Muzej Valpovštine** (unutar dvorca)\n' +
+          '🕐 Pon, Čet 16:00–19:00 | Uto–Pet 10:00–12:00\n' +
+          '[Otvori na karti](https://www.google.com/maps/search/?api=1&query=Muzej+Valpovstine)\n\n' +
+          '📚 **Katančićev vremeplov** — Edukacijski centar\n' +
+          '🕐 Pon 07:00–19:00 | Uto–Pet 07:00–15:00\n\n' +
+          '☕ **Caffe barovi** — Forum, Prandau, Gradska kavana, Space\n\n' +
+          '🏬 **STOP SHOP Valpovo** — 11 trgovina u zatvorenom\n' +
+          '[Otvori na karti](https://www.google.com/maps/search/?api=1&query=STOP+SHOP+Valpovo)\n\n' +
+          '💧 **Bizovačke toplice (9 km)** — Zatvoreni bazeni i saune, savršeni za kišni dan!\n' +
+          '[Više informacija](https://www.bizovacke-toplice.hr)';
+      }
+
+      // 6. SUVENIRI / POKLONI / LOKALNI PROIZVODI
+      if (!faqReply && (ml.includes('suvenir') || ml.includes('souvenir') || ml.includes('poklon') ||
+          ml.includes('gift') || ml.includes('majica') || ml.includes('šalica') ||
+          ml.includes('salica') || ml.includes('lokalni proizvod') || ml.includes('kulen') ||
+          ml.includes('suvenirnic'))) {
+        faqReply =
+          '🎁 Suveniri i lokalni proizvodi iz Valpova:\n\n' +
+          '🏛️ **Suvenirnica — Katančićev vremeplov**\n' +
+          '📍 Trg kralja Tomislava, Valpovo\n' +
+          'Majice, duksevi, šalice, razglednice s motivima Valpova — od 5€ do 25€\n' +
+          '[Otvori na karti](https://www.google.com/maps/search/?api=1&query=Katancic+centar+Valpovo)\n\n' +
+          '🥩 **PPK Valpovo** — Slavonski kulen, kobasice, suhomesnati specijaliteti\n\n' +
+          '🍷 **Agropark Valpovo** — Domaće voće, povrće, med, vino\n\n' +
+          '💡 Najtraženiji suvenir: slika dvorca, slavonski kulen i domaća medovača.';
+      }
+
+      // 7. ULAZNICE / CIJENE (opći upit — ne za specifičnu lokaciju)
+      if (!faqReply && (ml.includes('ulaznic') || ml.includes('cijena ulaz') || ml.includes('koliko košta ulaz') ||
+          ml.includes('koliko kosta ulaz') || ml.includes('naplaćuje li se ulaz') || ml.includes('ticket price') ||
+          ml.includes('admission fee') || ml.includes('eintrittspr') ||
+          (ml.includes('koliko košta') && !ml.includes('toplice') && !ml.includes('restoran') && !ml.includes('hotel')))) {
+        faqReply =
+          '💰 Ulaznice i cijene u Valpovu:\n\n' +
+          '🌳 **Perivoj dvorca Prandau-Normann** — **Besplatno**, otvoreno cijele godine\n\n' +
+          '🏛️ **Muzej Valpovštine** (unutar dvorca)\n' +
+          'Za aktualne cijene i radno vrijeme obratite se Turističkoj zajednici:\n' +
+          '📞 +385 31 656 200 | [tz.valpovo.hr](https://tz.valpovo.hr)\n\n' +
+          '📚 **Katančićev vremeplov** — za informacije o cijenama: 📞 +385 31 656 200\n\n' +
+          '**Izleti u okolici:**\n' +
+          '💧 Bizovačke toplice (9 km): od 10€ odrasli / od 7€ djeca\n' +
+          '🦢 Kopački rit (45 km): 3€ ulaz / 13€ s vožnjom brodom';
+      }
+
+      // 8. VIRTUALNA ŠETNJA / ONLINE
+      if (!faqReply && (ml.includes('virtualna') || ml.includes('virtual') || ml.includes('360') ||
+          ml.includes('online šetn') || ml.includes('online setn'))) {
+        faqReply =
+          '🌐 Virtualna šetnja Valpovom:\n\n' +
+          'Istražite Valpovo iz udobnosti svog doma — ulice, dvorac i perivoj u 360°!\n\n' +
+          '[🗺️ Otvorite virtualnu šetnju](https://tz.valpovo.hr/2025/01/17/virtualna-setnja-valpovo-gdje-najbolje-pocinje/)\n\n' +
+          'Više sadržaja, galerija i informacija: [tz.valpovo.hr](https://tz.valpovo.hr)';
+      }
+
+      // 9. PRISTUPAČNOST / KOLICA / INVALIDI
+      if (!faqReply && (ml.includes('invalid') || ml.includes('pristupačn') || ml.includes('pristupacn') ||
+          ml.includes('kolica') || ml.includes('wheelchair') || ml.includes('accessible') ||
+          ml.includes('hendikep') || ml.includes('handikap') || ml.includes('disability'))) {
+        faqReply =
+          '♿ Pristupačnost u Valpovu:\n\n' +
+          '✅ **Perivoj dvorca** — Ravni tereni, pogodno za kolica\n' +
+          '✅ **STOP SHOP** — Moderni trgovački centar, potpuno pristupačan\n' +
+          '✅ **Konzum Maxi, Plodine** — Pristupačan ulaz i hodnici\n\n' +
+          'Za detalje o pristupačnosti muzeja, dvoraca i sportskih dvorana:\n' +
+          '📞 **+385 31 656 200**\n' +
+          '✉️ tzgvalpovo@gmail.com\n' +
+          '[tz.valpovo.hr](https://tz.valpovo.hr)';
+      }
+
+      // 10. KONTAKT / OPĆE INFORMACIJE (fallback za generička "info" pitanja)
+      if (!faqReply && (ml.includes('kontakt') || ml.includes('contact') || ml.includes('telefon tz') ||
+          ml.includes('email tz') || ml.includes('info o valpovu') || ml.includes('informacije o valpov'))) {
+        faqReply =
+          'ℹ️ Kontakt i informacije o Valpovu:\n\n' +
+          '🏢 **Turistička zajednica Grada Valpova**\n' +
+          '📍 Trg kralja Tomislava 2, 31550 Valpovo\n' +
+          '📞 +385 31 656 200\n' +
+          '✉️ tzgvalpovo@gmail.com\n' +
+          '[Više informacija](https://tz.valpovo.hr)\n\n' +
+          '🌐 [Virtualna šetnja](https://tz.valpovo.hr/2025/01/17/virtualna-setnja-valpovo-gdje-najbolje-pocinje/)';
+      }
+
+      if (faqReply) {
+        return res.status(200).json({
+          reply: faqReply,
+          category: category || 'opcenito',
+          suggestions: getSuggestions(category || 'opcenito'),
+          images: []
+        });
+      }
+    }
+    // ═══════════════════════════════════════════════════════════════════
+
     // Događanja listing: filtriraj prošle i generiraj direktno bez AI
     // Ako korisnik pita za SPECIFIČNU manifestaciju po imenu → preskoči listing, pusti AI da odgovori konkretno
     const specificEventQuery = ['fišijad','fisijad','matijafest','rockaraj','reunited','vašar','vasar','ljeto valpov','craft beer','staza zdravlja','festival sira','ribljeg paprikaš','ribljeg paprikas','kuhanje fiš','kuhanje fis','katančić','katancic','matija petar','matiji petru'].some(k => msgLower.includes(k));
