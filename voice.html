@@ -920,20 +920,20 @@
         }
 
         /* ── DODAJ PORUKU ── */
-        function addMessage(content, type = "ai") {
+        function addMessage(content, type = "ai", lang = null) {
             const div = document.createElement("div");
             div.className = "message " + type;
 
             if (type === "ai") {
                 const html = formatAI(content);
+                const headerLabel = AI_HEADER_LABELS[lang || currentLang] || AI_HEADER_LABELS.hr;
                 div.innerHTML = `
                     <div class="ai-header">
-                        <span style="font-size: 0.8em; opacity: 0.5; font-weight: bold;">TURISTIČKI INFORMATOR</span>
+                        <span style="font-size: 0.8em; opacity: 0.5; font-weight: bold;">${headerLabel}</span>
                         <button class="speak-btn">🔊</button>
                     </div>
                     <div class="ai-content">${html}</div>
                 `;
-                // addEventListener umjesto inline onclick — sigurno za posebne znakove i mobilne browsere
                 div.querySelector('.speak-btn').addEventListener('click', function () {
                     speakText(this, content);
                 });
@@ -1130,12 +1130,25 @@
         let currentCategory = null;
         let lastInputMethod = 'text'; // 'text' ili 'voice' — postavlja se prije poziva sendMessage()
         let lastVoiceLang = null;    // Whisper-detektirani jezik kod glasovnog unosa (en/de/it/hr)
+        let currentLang = 'hr';      // Aktivni jezik razgovora — ažurira se pri svakom glasovnom upitu
+
+        const AI_HEADER_LABELS = {
+            hr: 'TURISTIČKI INFORMATOR',
+            en: 'TOURIST GUIDE',
+            de: 'REISEFÜHRER',
+            it: 'INFORMATORE TURISTICO',
+            fr: 'GUIDE TOURISTIQUE',
+            es: 'GUÍA TURÍSTICO',
+        };
 
         async function sendMessage() {
             const inputMethod = lastInputMethod;
             const voiceLang = lastVoiceLang;
             lastInputMethod = 'text';
-            lastVoiceLang = null; // resetiraj
+            lastVoiceLang = null;
+            if (voiceLang) currentLang = voiceLang; // ažuriraj aktivni jezik iz Whisper detekcije
+            const autoPlay = (inputMethod === 'voice'); // auto-čitaj odgovor nakon glasovnog upita
+            const activeLang = currentLang;
             const text = inputEl.value.trim();
             if (!text || isProcessing) return;
 
@@ -1172,16 +1185,20 @@
                 const ct = response.headers.get('content-type') || '';
                 if (ct.includes('text/event-stream')) {
                     // SSE streaming — AI odgovor stiže u chunkovim
-                    await handleStream(response);
+                    await handleStream(response, activeLang, autoPlay);
                 } else {
                     // JSON — pre-generirani odgovor (sport, smještaj, događanja, izleti)
                     const data = await response.json();
                     if (data.reply) {
-                        const msgDiv = addMessage(data.reply);
+                        const msgDiv = addMessage(data.reply, 'ai', activeLang);
                         conversationHistory.push({ role: "assistant", content: data.reply });
                         if (data.category) currentCategory = data.category;
-                        // Pre-gen odgovori imaju inline slike [[IMG:]] — photo strip nije potreban
                         addSuggestions(msgDiv, data.suggestions);
+                        // Auto-čitaj odgovor ako je glasovni unos
+                        if (autoPlay) {
+                            const speakBtn = msgDiv.querySelector('.speak-btn');
+                            if (speakBtn) speakText(speakBtn, data.reply);
+                        }
                     } else if (data.error) {
                         addMessage("❌ **Greška:** " + data.error + (data.details ? "\n\n" + data.details : ""));
                     } else {
@@ -1204,7 +1221,7 @@
         }
 
         /* ── SSE STREAM HANDLER ── */
-        async function handleStream(response) {
+        async function handleStream(response, lang = 'hr', autoPlay = false) {
             const reader = response.body.getReader();
             const decoder = new TextDecoder();
             let buffer = '';
@@ -1216,9 +1233,10 @@
             // Kreiraj prazan AI message div
             const msgDiv = document.createElement('div');
             msgDiv.className = 'message ai';
+            const headerLabel = AI_HEADER_LABELS[lang] || AI_HEADER_LABELS.hr;
             msgDiv.innerHTML = `
                 <div class="ai-header">
-                    <span style="font-size:0.8em;opacity:0.5;font-weight:bold;">TURISTIČKI INFORMATOR</span>
+                    <span style="font-size:0.8em;opacity:0.5;font-weight:bold;">${headerLabel}</span>
                 </div>
                 <div class="ai-content"></div>
             `;
@@ -1256,6 +1274,9 @@
             speakBtn.innerHTML = '🔊';
             speakBtn.addEventListener('click', () => speakText(speakBtn, fullText));
             msgDiv.querySelector('.ai-header').appendChild(speakBtn);
+
+            // Auto-čitaj odgovor ako je pitanje postavljeno glasom
+            if (autoPlay && fullText) speakText(speakBtn, fullText);
 
             // Spremi u povijest
             conversationHistory.push({ role: 'assistant', content: fullText });
