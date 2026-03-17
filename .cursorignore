@@ -1,0 +1,12 @@
+# Cursor AI background agent — NE MODIFICIRAJ ove datoteke automatski!
+# Ovo je Valpovo turistički chatbot. Sve promjene moraju biti eksplicitno odobrene.
+
+# Zaštićeni API fajlovi — RUČNO PISANI, ne regeneriraj automatski
+api/chat.js
+api/_database.js
+
+# Frontend
+voice.html
+
+# Vercel config
+vercel.json
