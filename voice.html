@@ -732,7 +732,18 @@
         let isRecording = false;
         let currentAudio = null;
         let currentSpeakerBtn = null;
-        let currentWeather = null; // sprema se pri učitavanju, šalje se s chatom
+        let currentWeather = null;
+
+        // ── MULTILINGUALNOST — mora biti OVDJE, prije prvog poziva addMessage() ──
+        let currentLang = 'hr';
+        const AI_HEADER_LABELS = {
+            hr: 'TURISTIČKI INFORMATOR',
+            en: 'TOURIST GUIDE',
+            de: 'REISEFÜHRER',
+            it: 'INFORMATORE TURISTICO',
+            fr: 'GUIDE TOURISTIQUE',
+            es: 'GUÍA TURÍSTICO',
+        };
 
         /* ── WELCOME PORUKA ── */
         addMessage("Dobrodošli!\n\nJa sam vaš AI digitalni turistički vodič kroz Valpovo. Ime sam dobio po znamenitom franjevcu i znanstveniku Matiji Petru Katančiću rođenom valpovčanu. Rado ću vam pomoći otkriti znamenitosti, restorane i zanimljiva mjesta u našem gradu.\n\nObzirom da sam u probnom radu moguće su i manje pogreške! Nemojte zamjeriti jer radimo na mome usavršavanju!");
@@ -1128,18 +1139,8 @@
         /* ── SEND ── */
         const conversationHistory = [];
         let currentCategory = null;
-        let lastInputMethod = 'text'; // 'text' ili 'voice' — postavlja se prije poziva sendMessage()
-        let lastVoiceLang = null;    // Whisper-detektirani jezik kod glasovnog unosa (en/de/it/hr)
-        let currentLang = 'hr';      // Aktivni jezik razgovora — ažurira se pri svakom glasovnom upitu
-
-        const AI_HEADER_LABELS = {
-            hr: 'TURISTIČKI INFORMATOR',
-            en: 'TOURIST GUIDE',
-            de: 'REISEFÜHRER',
-            it: 'INFORMATORE TURISTICO',
-            fr: 'GUIDE TOURISTIQUE',
-            es: 'GUÍA TURÍSTICO',
-        };
+        let lastInputMethod = 'text';
+        let lastVoiceLang = null;
 
         async function sendMessage() {
             const inputMethod = lastInputMethod;
@@ -1194,11 +1195,6 @@
                         conversationHistory.push({ role: "assistant", content: data.reply });
                         if (data.category) currentCategory = data.category;
                         addSuggestions(msgDiv, data.suggestions);
-                        // Auto-čitaj odgovor ako je glasovni unos
-                        if (autoPlay) {
-                            const speakBtn = msgDiv.querySelector('.speak-btn');
-                            if (speakBtn) speakText(speakBtn, data.reply);
-                        }
                     } else if (data.error) {
                         addMessage("❌ **Greška:** " + data.error + (data.details ? "\n\n" + data.details : ""));
                     } else {
@@ -1275,8 +1271,7 @@
             speakBtn.addEventListener('click', () => speakText(speakBtn, fullText));
             msgDiv.querySelector('.ai-header').appendChild(speakBtn);
 
-            // Auto-čitaj odgovor ako je pitanje postavljeno glasom
-            if (autoPlay && fullText) speakText(speakBtn, fullText);
+            // 🔊 gumb je vidljiv — korisnik klikne kad želi čuti odgovor
 
             // Spremi u povijest
             conversationHistory.push({ role: 'assistant', content: fullText });
