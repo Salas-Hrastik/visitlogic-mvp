@@ -349,13 +349,16 @@ export default async function handler(req, res) {
           ml.includes('suvenirnic'))) {
         faqReply =
           '🎁 Suveniri i lokalni proizvodi iz Valpova:\n\n' +
-          '🏛️ **Suvenirnica — Katančićev vremeplov**\n' +
+          '🏛️ **Suvenirnica Valpovo (Katančićev vremeplov)**\n' +
           '📍 Trg kralja Tomislava, Valpovo\n' +
-          'Majice, duksevi, šalice, razglednice s motivima Valpova — od 5€ do 25€\n' +
-          '[Otvori na karti](https://www.google.com/maps/search/?api=1&query=Katancic+centar+Valpovo)\n\n' +
-          '🥩 **PPK Valpovo** — Slavonski kulen, kobasice, suhomesnati specijaliteti\n\n' +
-          '🍷 **Agropark Valpovo** — Domaće voće, povrće, med, vino\n\n' +
-          '💡 Najtraženiji suvenir: slika dvorca, slavonski kulen i domaća medovača.';
+          'Majice, duksevi, šalice, ruksaci i magneti s motivima Valpova i M.P. Katančića — do 25€\n' +
+          '📧 suvenirivalpova@gmail.com\n' +
+          '[Otvori na karti](https://www.google.com/maps/search/?api=1&query=Katancic+centar+Valpovo)\n' +
+          '[Naruči online](https://suvenirnica.valpovo.hr/)\n\n' +
+          '🌿 **Agropark — Valpovačka zelena tržnica**\n' +
+          'Lokalni OPG-ovi: med, sirevi, domaće voće i povrće, sezonski proizvodi\n' +
+          '🕐 Pon–Sub 07:30–11:30\n\n' +
+          '💡 Najtraženiji suvenir: majica ili šalica s motivom dvorca i domaća medovača.';
       }
 
       // 7. ULAZNICE / CIJENE (opći upit — ne za specifičnu lokaciju)

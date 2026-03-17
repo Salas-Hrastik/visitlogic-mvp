@@ -808,15 +808,6 @@ export const db = {
                 "maps_url": "https://www.google.com/maps/search/?api=1&query=Katančićev+vremeplov+Valpovo",
                 "web": "https://suvenirnica.valpovo.hr/"
             },
-            {
-                "naziv": "PPK Valpovo – diskont mesnih proizvoda",
-                "opis": "Prodajno mjesto lokalne mesne industrije PPK Valpovo — svježe meso, kobasice, suhomesnati i domaći slavonski specijaliteti po tvorničkim cijenama.",
-                "adresa": "A. B. Šimića 27, Valpovo",
-                "telefon": "031 656 500",
-                "radno_vrijeme": "Pon–Pet: 06:00–14:00",
-                "maps_url": "https://www.google.com/maps/search/?api=1&query=PPK+Valpovo",
-                "web": "https://ppkvalpovo.hr/"
-            }
         ],
         "trznica": [
             {
