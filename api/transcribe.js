@@ -53,8 +53,10 @@ export default async function handler(req, res) {
             const formData = new FormData();
             formData.append('file', new Blob([fs.readFileSync(audioFile.filepath)], { type: audioFile.mimetype || 'audio/webm' }), 'audio.webm');
             formData.append('model', 'whisper-1');
-            // Prompt navodi Whisper da preferira latinično pismo i kontekst turizma u Hrvatskoj
-            formData.append('prompt', 'Turistički chatbot za Valpovo, Hrvatska. Transkribiraj isključivo latiničnim pismom.');
+            // verbose_json vraća i detektirani jezik — ključno za multilingual odgovore
+            formData.append('response_format', 'verbose_json');
+            // Neutralni prompt — ne biastira prema HR da Whisper slobodno detektira EN/DE/IT/HR
+            formData.append('prompt', 'Tourist chatbot for Valpovo, Croatia. Transcribe using Latin script only.');
 
             const response = await fetch("https://api.openai.com/v1/audio/transcriptions", {
                 method: "POST",
@@ -72,7 +74,17 @@ export default async function handler(req, res) {
             const data = await response.json();
             // Post-processing: konvertira svaki preostali ćirilični znak u latinicu
             const latinText = cyrillicToLatin(data.text || '');
-            return res.status(200).json({ text: latinText });
+
+            // Mapiraj Whisper jezik ("english", "german"...) → naš kod ('en','de','it','hr')
+            const WHISPER_LANG_MAP = {
+                'english':'en', 'german':'de', 'italian':'it', 'french':'fr',
+                'spanish':'es', 'croatian':'hr', 'bosnian':'hr', 'serbian':'hr',
+                'slovenian':'hr', 'hungarian':'hr'
+            };
+            const whisperLang = (data.language || '').toLowerCase();
+            const detectedLang = WHISPER_LANG_MAP[whisperLang] || 'hr';
+
+            return res.status(200).json({ text: latinText, lang: detectedLang });
 
         } catch (e) {
             console.error("Transcription Error:", e);

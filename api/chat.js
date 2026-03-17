@@ -355,7 +355,7 @@ export default async function handler(req, res) {
 
   try {
 
-    const { message, history, category: lastCategory, weather, inputMethod } = req.body;
+    const { message, history, category: lastCategory, weather, inputMethod, voiceLang } = req.body;
     const isVoiceInput = inputMethod === 'voice';
     // effectiveMessage se može prepend-ati s constraintima za recommendation upite
     let effectiveMessage = message;
@@ -402,7 +402,8 @@ export default async function handler(req, res) {
 
     // Normalizirani upit — definiran OVDJE, dostupan svim pre-gen blokovima ispod
     const msgLower = message.toLowerCase();
-    const lang = detectLang(message);
+    // voiceLang = Whisper-detektirani jezik (najpouzdaniji) — text detekcija je fallback
+    const lang = voiceLang || detectLang(message);
     const t = TR[lang] || TR.hr;
 
     // ═══════════════════════════════════════════════════════════════════
@@ -766,7 +767,9 @@ export default async function handler(req, res) {
         const poolList = pool.map(g =>
           `- ${g.naziv}${g.opis ? ': ' + g.opis : ''}${g.adresa ? ' | ' + g.adresa : ''}`
         ).join('\n');
-        effectiveMessage = `[CONSTRAINT — preporuči ISKLJUČIVO iz ovih stvarnih objekata u Valpovu, ne izmišljaj nove]\n${poolList}\n\nKorisnikovo pitanje: ${message}`;
+        const langNames = { hr:'Croatian', en:'English', de:'German', it:'Italian', fr:'French', es:'Spanish' };
+        const replyLang = langNames[lang] || 'Croatian';
+        effectiveMessage = `[CONSTRAINT: recommend ONLY from these real places in Valpovo, do not invent others. Reply in ${replyLang}.]\n${poolList}\n\nUser question: ${message}`;
         // Nema return — pada kroz na AI streaming ispod
 
       } else {

@@ -1091,6 +1091,7 @@
                     inputEl.value = data.text;
                     inputEl.placeholder = "Postavite pitanje...";
                     lastInputMethod = 'voice';
+                    lastVoiceLang = data.lang || null; // Whisper-detektirani jezik (en/de/it/hr)
                     sendMessage();
                 } else {
                     throw new Error(data.error || "Prazan tekst");
@@ -1128,10 +1129,13 @@
         const conversationHistory = [];
         let currentCategory = null;
         let lastInputMethod = 'text'; // 'text' ili 'voice' — postavlja se prije poziva sendMessage()
+        let lastVoiceLang = null;    // Whisper-detektirani jezik kod glasovnog unosa (en/de/it/hr)
 
         async function sendMessage() {
             const inputMethod = lastInputMethod;
-            lastInputMethod = 'text'; // resetiraj za sljedeći unos
+            const voiceLang = lastVoiceLang;
+            lastInputMethod = 'text';
+            lastVoiceLang = null; // resetiraj
             const text = inputEl.value.trim();
             if (!text || isProcessing) return;
 
@@ -1157,7 +1161,8 @@
                         history: conversationHistory.slice(-6),
                         category: currentCategory,
                         weather: currentWeather,
-                        inputMethod: inputMethod
+                        inputMethod: inputMethod,
+                        voiceLang: voiceLang  // Whisper-detektirani jezik — override text detection
                     })
                 });
 
