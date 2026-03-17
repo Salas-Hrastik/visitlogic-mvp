@@ -49,6 +49,162 @@ function eventMinMonth(vrijeme) {
   return months.length ? Math.min(...months) : 1;
 }
 
+// ─── LANGUAGE DETECTION ───────────────────────────────────────────────────
+function detectLang(msg) {
+  const words = msg.toLowerCase().split(/[\s,?.!;:()\-]+/);
+  const has = (list) => list.some(w => words.includes(w));
+  if (has(['what','where','how','which','when','is','are','can','do','have','show','find','tell','give','any','some','the','and','but','not','open','map','near','best','visit','see','eat','drink','stay','sleep','book','ticket','price','time','hour']))
+    return 'en';
+  if (has(['was','wo','wie','welche','wann','ist','sind','kann','haben','zeig','gibt','bitte','ich','ein','eine','der','die','das','und','oder','nicht','hier','mit','für','von','nach','beim','zum','zur']))
+    return 'de';
+  if (has(['cosa','dove','come','quale','quando','sono','può','mostra','dimmi','voglio','cerco','un','una','il','la','lo','gli','le','che','non','con','per','da','nel','nel']))
+    return 'it';
+  return 'hr';
+}
+
+const TR = {
+  hr: {
+    map:       'Otvori na karti',
+    more:      'Više informacija',
+    tzMore:    'Više informacija na TZ Valpovo',
+    web:       'Web stranica',
+    inValp:    'u Valpovu',
+    free:      'Besplatno',
+    contact:   'Kontakt',
+    upcoming:  'Predstojeće manifestacije u Valpovu',
+    noEvents:  'Trenutno nema predstojećih manifestacija. Pratite TZ Valpovo za najave!',
+    allAccom:  'Evo svih smještajnih opcija u Valpovu:',
+    hotels:    'Hoteli',
+    rural:     'Ruralni smještaj',
+    apts:      'Apartmani',
+    pensions:  'Prenoćišta',
+    rooms:     'Sobe',
+    dining:    'Restorani i mjesta za objedovanje u Valpovu:',
+    cafes:     'Caffe barovi i kavane u Valpovu:',
+    allGastro: 'Valpovo ima bogatu ugostiteljsku ponudu — od tradicijskih slavonskih restorana do caffe barova. Evo pregleda:',
+    rests:     'Restorani',
+    fastfood:  'Brza hrana i pizzerije',
+    cafesH:    'Caffe barovi i kavane',
+    health:    '🏥 Zdravstvene ustanove i ljekarne u Valpovu:',
+    atm:       '🏧 Bankomati u Valpovu:',
+    banks:     '🏦 Banke i pošta u Valpovu:',
+    autoServ:  '🔧 Auto servisi u Valpovu:',
+    taxi:      '🚕 Taksi prijevoz iz/do Valpova:',
+    bus:       '🚌 Autobusni prijevoz iz/do Valpova:',
+    fuel:      '⛽ Benzinske stanice u Valpovu:',
+    barbers:   '💈 Frizeraji i kozmetički saloni u Valpovu:',
+    parking:   '🅿️ Parkirališta u Valpovu (sva besplatna):',
+    svcOverview: 'Pregled usluga dostupnih u Valpovu:',
+    askMore:   'Pitajte za detalje o bilo kojoj kategoriji!',
+    excursions: 'Preporučeni izleti iz Valpova — od najbližeg prema daljem:',
+  },
+  en: {
+    map:       'Open on map',
+    more:      'More information',
+    tzMore:    'More information at TZ Valpovo',
+    web:       'Website',
+    inValp:    'in Valpovo',
+    free:      'Free',
+    contact:   'Contact',
+    upcoming:  'Upcoming events in Valpovo',
+    noEvents:  'No upcoming events at this time. Follow TZ Valpovo for announcements!',
+    allAccom:  'Here are all accommodation options in Valpovo:',
+    hotels:    'Hotels',
+    rural:     'Rural accommodation',
+    apts:      'Apartments',
+    pensions:  'Guesthouses',
+    rooms:     'Rooms',
+    dining:    'Restaurants and dining in Valpovo:',
+    cafes:     'Cafés and coffee bars in Valpovo:',
+    allGastro: 'Valpovo has a rich culinary offer — from traditional Slavonian restaurants to cafés. Here is an overview:',
+    rests:     'Restaurants',
+    fastfood:  'Fast food & pizzerias',
+    cafesH:    'Cafés & coffee bars',
+    health:    '🏥 Healthcare & pharmacies in Valpovo:',
+    atm:       '🏧 ATMs in Valpovo:',
+    banks:     '🏦 Banks & post office in Valpovo:',
+    autoServ:  '🔧 Car repair & auto services in Valpovo:',
+    taxi:      '🚕 Taxi services to/from Valpovo:',
+    bus:       '🚌 Bus transport to/from Valpovo:',
+    fuel:      '⛽ Petrol stations in Valpovo:',
+    barbers:   '💈 Hairdressers & beauty salons in Valpovo:',
+    parking:   '🅿️ Parking in Valpovo (all free):',
+    svcOverview: 'Services available in Valpovo:',
+    askMore:   'Ask for details on any category!',
+    excursions: 'Recommended day trips from Valpovo — nearest to farthest:',
+  },
+  de: {
+    map:       'Auf der Karte öffnen',
+    more:      'Mehr Informationen',
+    tzMore:    'Mehr Informationen – TZ Valpovo',
+    web:       'Webseite',
+    inValp:    'in Valpovo',
+    free:      'Kostenlos',
+    contact:   'Kontakt',
+    upcoming:  'Bevorstehende Veranstaltungen in Valpovo',
+    noEvents:  'Derzeit keine bevorstehenden Veranstaltungen. Folgen Sie TZ Valpovo für Ankündigungen!',
+    allAccom:  'Hier sind alle Unterkunftsmöglichkeiten in Valpovo:',
+    hotels:    'Hotels',
+    rural:     'Ländliche Unterkunft',
+    apts:      'Apartments',
+    pensions:  'Pensionen',
+    rooms:     'Zimmer',
+    dining:    'Restaurants und Gastronomie in Valpovo:',
+    cafes:     'Cafés und Kaffeebars in Valpovo:',
+    allGastro: 'Valpovo bietet ein reiches kulinarisches Angebot — von traditionellen slawonischen Restaurants bis zu Cafés. Hier ein Überblick:',
+    rests:     'Restaurants',
+    fastfood:  'Schnellimbiss & Pizzerien',
+    cafesH:    'Cafés & Kaffeebars',
+    health:    '🏥 Gesundheit & Apotheken in Valpovo:',
+    atm:       '🏧 Geldautomaten in Valpovo:',
+    banks:     '🏦 Banken & Post in Valpovo:',
+    autoServ:  '🔧 Autowerkstätten in Valpovo:',
+    taxi:      '🚕 Taxiservice nach/von Valpovo:',
+    bus:       '🚌 Busverbindungen nach/von Valpovo:',
+    fuel:      '⛽ Tankstellen in Valpovo:',
+    barbers:   '💈 Friseursalons & Kosmetik in Valpovo:',
+    parking:   '🅿️ Parkplätze in Valpovo (alle kostenlos):',
+    svcOverview: 'Verfügbare Dienstleistungen in Valpovo:',
+    askMore:   'Fragen Sie nach Details zu einer beliebigen Kategorie!',
+    excursions: 'Empfohlene Ausflüge ab Valpovo — vom nächsten zum weitesten:',
+  },
+  it: {
+    map:       'Apri sulla mappa',
+    more:      'Più informazioni',
+    tzMore:    'Più informazioni – TZ Valpovo',
+    web:       'Sito web',
+    inValp:    'a Valpovo',
+    free:      'Gratuito',
+    contact:   'Contatto',
+    upcoming:  'Prossimi eventi a Valpovo',
+    noEvents:  'Al momento non ci sono eventi imminenti. Segui TZ Valpovo per gli annunci!',
+    allAccom:  'Ecco tutte le opzioni di alloggio a Valpovo:',
+    hotels:    'Hotel',
+    rural:     'Alloggio rurale',
+    apts:      'Appartamenti',
+    pensions:  'Pensioni',
+    rooms:     'Camere',
+    dining:    'Ristoranti e ristorazione a Valpovo:',
+    cafes:     'Caffè e bar a Valpovo:',
+    allGastro: 'Valpovo offre una ricca offerta culinaria — dai tradizionali ristoranti slavoni ai caffè. Ecco una panoramica:',
+    rests:     'Ristoranti',
+    fastfood:  'Fast food e pizzerie',
+    cafesH:    'Caffè e bar',
+    health:    '🏥 Servizi sanitari e farmacie a Valpovo:',
+    atm:       '🏧 Bancomat a Valpovo:',
+    banks:     '🏦 Banche e posta a Valpovo:',
+    autoServ:  '🔧 Officine e servizi auto a Valpovo:',
+    taxi:      '🚕 Servizio taxi da/per Valpovo:',
+    bus:       '🚌 Trasporto in autobus da/per Valpovo:',
+    fuel:      '⛽ Stazioni di servizio a Valpovo:',
+    barbers:   '💈 Parrucchieri e centri estetici a Valpovo:',
+    parking:   '🅿️ Parcheggi a Valpovo (tutti gratuiti):',
+    svcOverview: 'Servizi disponibili a Valpovo:',
+    askMore:   'Chiedi dettagli su qualsiasi categoria!',
+    excursions: 'Gite consigliate da Valpovo — dalla più vicina alla più lontana:',
+  },
+};
+
 // Vrati { context, category } — category se pamti i šalje nazad klijentu
 function getRelevantContext(message, db, lastCategory) {
   const msg = message.toLowerCase();
@@ -246,6 +402,8 @@ export default async function handler(req, res) {
 
     // Normalizirani upit — definiran OVDJE, dostupan svim pre-gen blokovima ispod
     const msgLower = message.toLowerCase();
+    const lang = detectLang(message);
+    const t = TR[lang] || TR.hr;
 
     // ═══════════════════════════════════════════════════════════════════
     // FAQ PRE-GEN: Tipična posjetiteljska pitanja (bez AI, bez halucinacije)
@@ -454,7 +612,7 @@ export default async function handler(req, res) {
         s += `**${e.naziv}**\n`;
         s += `📅 ${e.vrijeme}\n`;
         s += `${e.opis}\n`;
-        s += e.web ? `[Više informacija](${e.web})\n` : `[Više informacija na TZ Valpovo](https://tz.valpovo.hr/manifestacije/)\n`;
+        s += e.web ? `[${t.more}](${e.web})\n` : `[${t.tzMore}](https://tz.valpovo.hr/manifestacije/)\n`;
         s += `[[CLR]]\n\n`;
         return s;
       };
@@ -485,14 +643,14 @@ export default async function handler(req, res) {
         const MAX_SHOWN = 5;
         const shown = upcoming.slice(0, MAX_SHOWN);
         if (shown.length) {
-          reply = `Predstojeće manifestacije u Valpovu:\n\n`;
+          reply = `${t.upcoming}:\n\n`;
           for (const e of shown) reply += helper(e);
           if (upcoming.length > MAX_SHOWN) {
             const rest = upcoming.slice(MAX_SHOWN).map(e => `${e.naziv} (${e.vrijeme})`).join(', ');
             reply += `📌 I još ${upcoming.length - MAX_SHOWN}: ${rest}\n`;
           }
         } else {
-          reply = 'Nema predstojećih manifestacija za ostatak ove godine. Za više informacija: [tz.valpovo.hr](https://tz.valpovo.hr/manifestacije/)';
+          reply = `${t.noEvents} [tz.valpovo.hr](https://tz.valpovo.hr/manifestacije/)`;
         }
       }
 
@@ -517,23 +675,23 @@ export default async function handler(req, res) {
       const showAll = typeCount === 0 || typeCount >= 2;
 
       const allSections = [
-        { key: 'hoteli',           icon: '🏨', label: 'Hoteli',            show: showAll || wantsHotel },
-        { key: 'ruralni_smjestaj', icon: '🌿', label: 'Ruralni smještaj',  show: showAll || wantsRuralni },
-        { key: 'apartmani',        icon: '🏠', label: 'Apartmani',         show: showAll || wantsApartman },
-        { key: 'prenocista',       icon: '🛏', label: 'Prenoćišta',        show: showAll || wantsPrenociste },
-        { key: 'sobe',             icon: '🔑', label: 'Sobe',              show: showAll || wantsSobe },
+        { key: 'hoteli',           icon: '🏨', label: t.hotels,   show: showAll || wantsHotel },
+        { key: 'ruralni_smjestaj', icon: '🌿', label: t.rural,    show: showAll || wantsRuralni },
+        { key: 'apartmani',        icon: '🏠', label: t.apts,     show: showAll || wantsApartman },
+        { key: 'prenocista',       icon: '🛏', label: t.pensions, show: showAll || wantsPrenociste },
+        { key: 'sobe',             icon: '🔑', label: t.rooms,    show: showAll || wantsSobe },
       ];
 
       const activeSections = allSections.filter(sec => sec.show);
 
       // Dinamičan uvod ovisno o upitu (showAll ima prioritet)
       let reply = '';
-      if (showAll)              reply = 'Evo svih smještajnih opcija u Valpovu:\n\n';
-      else if (wantsSobe)      reply = 'Evo dostupnih soba za iznajmljivanje u Valpovu:\n\n';
-      else if (wantsHotel)     reply = 'Evo hotela u Valpovu:\n\n';
-      else if (wantsApartman)  reply = 'Evo apartmana dostupnih za iznajmljivanje u Valpovu:\n\n';
-      else if (wantsRuralni)   reply = 'Evo ruralnog smještaja u okolici Valpova:\n\n';
-      else if (wantsPrenociste) reply = 'Evo prenoćišta u Valpovu:\n\n';
+      if (showAll)              reply = `${t.allAccom}\n\n`;
+      else if (wantsSobe)      reply = `${t.rooms} ${t.inValp}:\n\n`;
+      else if (wantsHotel)     reply = `${t.hotels} ${t.inValp}:\n\n`;
+      else if (wantsApartman)  reply = `${t.apts} ${t.inValp}:\n\n`;
+      else if (wantsRuralni)   reply = `${t.rural} ${t.inValp}:\n\n`;
+      else if (wantsPrenociste) reply = `${t.pensions} ${t.inValp}:\n\n`;
 
       for (const { key, icon, label } of activeSections) {
         const items = s[key];
@@ -543,8 +701,8 @@ export default async function handler(req, res) {
           if (item.IMAGE_URL) reply += `[[IMG:${item.IMAGE_URL}]]`;
           reply += `**${item.naziv}**\n`;
           if (item.opis) reply += `${item.opis}\n`;
-          reply += `[Otvori na karti](${item.maps_url})\n`;
-          reply += item.web ? `[Više informacija](${item.web})\n` : `[Više informacija na TZ Valpovo](https://tz.valpovo.hr/smjestaj-u-valpovu/)\n`;
+          reply += `[${t.map}](${item.maps_url})\n`;
+          reply += item.web ? `[${t.more}](${item.web})\n` : `[${t.tzMore}](https://tz.valpovo.hr/smjestaj-u-valpovu/)\n`;
           reply += `[[CLR]]\n\n`;
         }
       }
@@ -563,8 +721,8 @@ export default async function handler(req, res) {
         if (item.opis) reply += `${item.opis}\n`;
         if (item.radno_vrijeme) reply += `🕐 ${item.radno_vrijeme}\n`;
         if (item.adresa) reply += `📍 ${item.adresa}\n`;
-        reply += `[Otvori na karti](${item.maps_url})\n`;
-        reply += item.web ? `[Više informacija](${item.web})\n` : `[Više informacija na TZ Valpovo](https://tz.valpovo.hr/znamenitosti/)\n`;
+        reply += `[${t.map}](${item.maps_url})\n`;
+        reply += item.web ? `[${t.more}](${item.web})\n` : `[${t.tzMore}](https://tz.valpovo.hr/znamenitosti/)\n`;
         reply += `[[CLR]]\n\n`;
       }
       return res.status(200).json({ reply, category, suggestions: getSuggestions(category), images: extractImages(context) });
@@ -619,44 +777,44 @@ export default async function handler(req, res) {
         const showCaffeBarovi = showAll_gastro || wantsCafe;
 
         let reply = showAll_gastro
-          ? 'Valpovo ima bogatu ugostiteljsku ponudu — od tradicijskih slavonskih restorana do caffe barova. Evo pregleda:\n\n'
+          ? `${t.allGastro}\n\n`
           : wantsDining
-            ? 'Restorani i mjesta za objedovanje u Valpovu:\n\n'
-            : 'Caffe barovi i kavane u Valpovu:\n\n';
+            ? `${t.dining}\n\n`
+            : `${t.cafes}\n\n`;
 
         if (restorani.length && showRestorani) {
-          reply += '🍽️ **Restorani**\n\n';
+          reply += `🍽️ **${t.rests}**\n\n`;
           for (const item of restorani) {
             if (item.IMAGE_URL) reply += `[[IMG:${item.IMAGE_URL}]]`;
             reply += `**${item.naziv}**\n`;
             if (item.opis) reply += `${item.opis}\n`;
             if (item.adresa) reply += `📍 ${item.adresa}\n`;
             if (item.telefon) reply += `📞 ${item.telefon}\n`;
-            reply += `[Otvori na karti](${mapsUrl(item)})\n`;
-            if (item.web) reply += `[Više informacija](${item.web})\n`;
+            reply += `[${t.map}](${mapsUrl(item)})\n`;
+            if (item.web) reply += `[${t.more}](${item.web})\n`;
             reply += `[[CLR]]\n\n`;
           }
         }
         if (brzaHrana.length && showBrzaHrana) {
-          reply += '🍕 **Brza hrana i pizzerije**\n\n';
+          reply += `🍕 **${t.fastfood}**\n\n`;
           for (const item of brzaHrana) {
             if (item.IMAGE_URL) reply += `[[IMG:${item.IMAGE_URL}]]`;
             reply += `**${item.naziv}**\n`;
             if (item.opis) reply += `${item.opis}\n`;
             if (item.adresa) reply += `📍 ${item.adresa}\n`;
-            reply += `[Otvori na karti](${mapsUrl(item)})\n`;
-            if (item.web) reply += `[Više informacija](${item.web})\n`;
+            reply += `[${t.map}](${mapsUrl(item)})\n`;
+            if (item.web) reply += `[${t.more}](${item.web})\n`;
             reply += `[[CLR]]\n\n`;
           }
         }
         if (caffeBarovi.length && showCaffeBarovi) {
-          reply += '☕ **Caffe barovi i kavane**\n\n';
+          reply += `☕ **${t.cafesH}**\n\n`;
           for (const item of caffeBarovi) {
             if (item.IMAGE_URL) reply += `[[IMG:${item.IMAGE_URL}]]`;
             reply += `**${item.naziv}**\n`;
             if (item.opis) reply += `${item.opis}\n`;
-            reply += `[Otvori na karti](${mapsUrl(item)})\n`;
-            if (item.web) reply += `[Više informacija](${item.web})\n`;
+            reply += `[${t.map}](${mapsUrl(item)})\n`;
+            if (item.web) reply += `[${t.more}](${item.web})\n`;
             reply += `[[CLR]]\n\n`;
           }
         }
@@ -681,8 +839,8 @@ export default async function handler(req, res) {
           const emoji = sportEmoji[k.sport] || '🏅';
           reply += `${emoji} **${k.naziv}**\n`;
           if (k.opis) reply += `${k.opis}\n`;
-          if (k.maps_url) reply += `[Otvori na karti](${k.maps_url})\n`;
-          if (k.web) reply += `[Više informacija](${k.web})\n`;
+          if (k.maps_url) reply += `[${t.map}](${k.maps_url})\n`;
+          if (k.web) reply += `[${t.more}](${k.web})\n`;
           reply += '\n';
         }
       }
@@ -691,8 +849,8 @@ export default async function handler(req, res) {
         for (const o of s.objekti) {
           reply += `**${o.naziv}**\n`;
           if (o.opis) reply += `${o.opis}\n`;
-          if (o.maps_url) reply += `[Otvori na karti](${o.maps_url})\n`;
-          if (o.web) reply += `[Više informacija](${o.web})\n`;
+          if (o.maps_url) reply += `[${t.map}](${o.maps_url})\n`;
+          if (o.web) reply += `[${t.more}](${o.web})\n`;
           reply += '\n';
         }
       }
@@ -701,7 +859,7 @@ export default async function handler(req, res) {
         for (const r of s.rekreacija) {
           reply += `**${r.naziv}**\n`;
           if (r.opis) reply += `${r.opis}\n`;
-          if (r.maps_url) reply += `[Otvori na karti](${r.maps_url})\n`;
+          if (r.maps_url) reply += `[${t.map}](${r.maps_url})\n`;
           reply += '\n';
         }
       }
@@ -713,14 +871,14 @@ export default async function handler(req, res) {
     const isOkolicaListing = category === 'okolica' && msgLower.includes('izlet') && !isRecommendationQuery && !isDetailQuery && matched;
     if (isOkolicaListing) {
       const izleti = db.okolica?.izleti || [];
-      let reply = 'Preporučeni izleti iz Valpova — od najbližeg prema daljem:\n\n';
+      let reply = `${t.excursions}\n\n`;
       for (const item of izleti) {
         reply += `**${item.naziv}**\n`;
         if (item.udaljenost) reply += `📍 ${item.udaljenost}\n`;
         if (item.opis)       reply += `${item.opis}\n`;
         if (item.cijena)     reply += `💶 ${item.cijena}\n`;
-        reply += `[Otvori na karti](${item.maps_url})\n`;
-        if (item.web)        reply += `[Više informacija](${item.web})\n`;
+        reply += `[${t.map}](${item.maps_url})\n`;
+        if (item.web)        reply += `[${t.more}](${item.web})\n`;
         reply += '\n';
       }
       return res.status(200).json({ reply, category, suggestions: getSuggestions(category), images: extractImages(context) });
@@ -738,50 +896,50 @@ export default async function handler(req, res) {
       if (ml.includes('ljekar') || ml.includes('apoteka') || ml.includes('ljekarn') ||
           ml.includes('zdravst') || ml.includes('doktor') || ml.includes('liječnik') ||
           ml.includes('hitna') || ml.includes('doctor') || ml.includes('pharmacy') || ml.includes('farmac')) {
-        reply = '🏥 Zdravstvene ustanove i ljekarne u Valpovu:\n\n';
+        reply = `${t.health}\n\n`;
         for (const item of u.zdravstvo || []) {
           reply += `**${item.naziv}**\n`;
           if (item.adresa) reply += `📍 ${item.adresa}\n`;
           if (item.telefon) reply += `📞 ${item.telefon}\n`;
           const murl = item.maps_url || `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(item.naziv + ' Valpovo')}`;
-          reply += `[Otvori na karti](${murl})\n\n`;
+          reply += `[${t.map}](${murl})\n\n`;
         }
 
       } else if (ml.includes('bankomat') || ml.includes('atm') || ml.includes('gotovina') || ml.includes('cash')) {
-        reply = '🏧 Bankomati u Valpovu:\n\n';
+        reply = `${t.atm}\n\n`;
         for (const item of u.bankomati || []) {
           reply += `**${item.naziv}**\n`;
           if (item.adresa) reply += `📍 ${item.adresa}\n`;
           if (item.napomena) reply += `ℹ️ ${item.napomena}\n`;
-          reply += `[Otvori na karti](${item.maps_url})\n\n`;
+          reply += `[${t.map}](${item.maps_url})\n\n`;
         }
 
       } else if (ml.includes('banka') || ml.includes('banke') || ml.includes('pošta') ||
                  ml.includes('posta') || ml.includes('bank') || ml.includes('post office')) {
-        reply = '🏦 Banke i pošta u Valpovu:\n\n';
+        reply = `${t.banks}\n\n`;
         for (const item of u.banke_i_posta || []) {
           reply += `**${item.naziv}**\n`;
           if (item.adresa) reply += `📍 ${item.adresa}\n`;
           if (item.telefon) reply += `📞 ${item.telefon}\n`;
           if (item.radno_vrijeme) reply += `🕐 ${item.radno_vrijeme}\n`;
-          if (item.maps_url) reply += `[Otvori na karti](${item.maps_url})\n`;
+          if (item.maps_url) reply += `[${t.map}](${item.maps_url})\n`;
           reply += '\n';
         }
 
       } else if (ml.includes('auto') || ml.includes('servis') || ml.includes('mehanik') ||
                  ml.includes('popravak') || ml.includes('vulkan') || ml.includes('autocentar') ||
                  ml.includes('car repair') || ml.includes('mechanic') || ml.includes('werkstatt')) {
-        reply = '🔧 Auto servisi u Valpovu:\n\n';
+        reply = `${t.autoServ}\n\n`;
         for (const item of u.auto_servisi || []) {
           reply += `**${item.naziv}**\n`;
           if (item.adresa) reply += `📍 ${item.adresa}\n`;
           if (item.telefon) reply += `📞 ${item.telefon}\n`;
           const murl = item.maps_url || `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(item.naziv + ' Valpovo')}`;
-          reply += `[Otvori na karti](${murl})\n\n`;
+          reply += `[${t.map}](${murl})\n\n`;
         }
 
       } else if (ml.includes('taksi') || ml.includes('taxi') || ml.includes('cab')) {
-        reply = '🚕 Taksi prijevoz iz/do Valpova:\n\n';
+        reply = `${t.taxi}\n\n`;
         for (const item of u.taksi || []) {
           reply += `**${item.naziv}**\n`;
           if (item.telefon) reply += `📞 ${item.telefon}\n`;
@@ -790,46 +948,46 @@ export default async function handler(req, res) {
         }
 
       } else if (ml.includes('autobus') || ml.includes('kolodvor') || ml.includes('vozni red')) {
-        reply = '🚌 Autobusni prijevoz iz/do Valpova:\n\n';
+        reply = `${t.bus}\n\n`;
         for (const item of u.autobusni_prijevoz || []) {
           reply += `**${item.naziv}**\n`;
           if (item.adresa) reply += `📍 ${item.adresa}\n`;
           if (item.napomena) reply += `ℹ️ ${item.napomena}\n`;
-          if (item.maps_url) reply += `[Otvori na karti](${item.maps_url})\n`;
+          if (item.maps_url) reply += `[${t.map}](${item.maps_url})\n`;
           reply += '\n';
         }
 
       } else if (category === 'benzinske' || ml.includes('benzin') || ml.includes('goriv') || ml.includes('pumpa')) {
-        reply = '⛽ Benzinske stanice u Valpovu:\n\n';
+        reply = `${t.fuel}\n\n`;
         for (const item of u.benzinske_stanice || []) {
           reply += `**${item.naziv}**\n`;
           if (item.adresa) reply += `📍 ${item.adresa}\n`;
           if (item.napomena) reply += `ℹ️ ${item.napomena}\n`;
-          reply += `[Otvori na karti](${item.maps_url})\n\n`;
+          reply += `[${t.map}](${item.maps_url})\n\n`;
         }
 
       } else if (category === 'frizeraji' || ml.includes('frizer') || ml.includes('kozmet') ||
                  ml.includes('barber') || ml.includes('brica')) {
-        reply = '💈 Frizeraji i kozmetički saloni u Valpovu:\n\n';
+        reply = `${t.barbers}\n\n`;
         for (const item of u.frizeraji || []) {
           reply += `**${item.naziv}**\n`;
           if (item.adresa) reply += `📍 ${item.adresa}\n`;
           if (item.telefon) reply += `📞 ${item.telefon}\n`;
-          reply += `[Otvori na karti](${item.maps_url})\n\n`;
+          reply += `[${t.map}](${item.maps_url})\n\n`;
         }
 
       } else if (category === 'parking' || ml.includes('parking') || ml.includes('parkir')) {
-        reply = '🅿️ Parkirališta u Valpovu (sva besplatna):\n\n';
+        reply = `${t.parking}\n\n`;
         for (const item of u.parkiralista || []) {
           reply += `**${item.naziv}**\n`;
           if (item.opis) reply += `${item.opis}\n`;
           if (item.napomena) reply += `ℹ️ ${item.napomena}\n`;
-          reply += `[Otvori na karti](${item.maps_url})\n\n`;
+          reply += `[${t.map}](${item.maps_url})\n\n`;
         }
 
       } else {
         // Opći pregled svih usluga
-        reply = 'Pregled usluga dostupnih u Valpovu:\n\n';
+        reply = `${t.svcOverview}\n\n`;
         reply += '🏥 **Zdravstvo:** Dom zdravlja (📞 194 Hitna), Ljekarna Srce (📞 031 651 350), Ljekarna Kalenić (📞 031 650 290)\n\n';
         reply += '🏦 **Banke:** Slatinska banka, OTP banka, HPB, PBZ · 📮 Hrvatska pošta\n\n';
         reply += '🏧 **Bankomati:** HPB (24/7), Slatinska, OTP, PBZ\n\n';
@@ -839,7 +997,7 @@ export default async function handler(req, res) {
         reply += '🚌 **Autobus:** Kolodvor Valpovo — 22 linije/dan prema Osijeku\n\n';
         reply += '💈 **Frizeraji:** Salon Erika, Salon Iris, Beauty, Barbershop\n\n';
         reply += '🅿️ **Parkiranje:** Sve besplatno — uz dvorac, Trg Tomislava, STOP SHOP\n\n';
-        reply += 'Pitajte za detalje o bilo kojoj kategoriji!';
+        reply += `${t.askMore}`;
       }
 
       if (reply) {
