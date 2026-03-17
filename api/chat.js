@@ -364,69 +364,68 @@ export default async function handler(req, res) {
       const wantsCafe   = ['kafi','kav','caffe','café','kafe','bar',
         'coffee','kaffee','popiti','napit'].some(k => msgLower.includes(k));
 
-      // Za preporuku: AI preporučuje jela i atmosferu, ali MORA koristiti samo ove restorane
-      // → prepend stvarnog popisa u effectiveMessage kao hard constraint (AI ne može izmisliti nove)
       if (isRecommendationQuery) {
+        // AI preporučuje jela i atmosferu, ali MORA koristiti samo stvarne objekte iz baze
+        // → prepend constraint liste u effectiveMessage; listing se NE vraća, ide na AI streaming
         const pool = wantsCafe ? caffeBarovi : [...restorani, ...brzaHrana];
         const poolList = pool.map(g =>
           `- ${g.naziv}${g.opis ? ': ' + g.opis : ''}${g.adresa ? ' | ' + g.adresa : ''}`
         ).join('\n');
-        effectiveMessage = `[CONSTRAINT — koristi ISKLJUČIVO ove objekte, ne izmišljaj druge nazive restorana]\n${poolList}\n\nKorisnikovo pitanje: ${message}`;
-        // Ispadamo iz pre-gen bloka i nastavljamo na AI streaming s effectiveMessage
-      }
+        effectiveMessage = `[CONSTRAINT — preporuči ISKLJUČIVO iz ovih stvarnih objekata u Valpovu, ne izmišljaj nove]\n${poolList}\n\nKorisnikovo pitanje: ${message}`;
+        // Nema return — pada kroz na AI streaming ispod
 
-      // Ako query ima OBA tipa (npr. "restorani i kafići") → prikaži sve
-      const showAll_gastro = (wantsDining && wantsCafe) || (!wantsDining && !wantsCafe);
-      const showRestorani   = showAll_gastro || wantsDining;
-      const showBrzaHrana   = showAll_gastro || wantsDining;
-      const showCaffeBarovi = showAll_gastro || wantsCafe;
+      } else {
+        // Standardni listing: prikaži sve objekte grupirane po tipu
+        const showAll_gastro = (wantsDining && wantsCafe) || (!wantsDining && !wantsCafe);
+        const showRestorani   = showAll_gastro || wantsDining;
+        const showBrzaHrana   = showAll_gastro || wantsDining;
+        const showCaffeBarovi = showAll_gastro || wantsCafe;
 
-      let reply = showAll_gastro
-        ? 'Valpovo ima bogatu ugostiteljsku ponudu — od tradicijskih slavonskih restorana do caffe barova. Evo pregleda:\n\n'
-        : wantsDining
-          ? 'Restorani i mjesta za objedovanje u Valpovu:\n\n'
-          : 'Caffe barovi i kavane u Valpovu:\n\n';
+        let reply = showAll_gastro
+          ? 'Valpovo ima bogatu ugostiteljsku ponudu — od tradicijskih slavonskih restorana do caffe barova. Evo pregleda:\n\n'
+          : wantsDining
+            ? 'Restorani i mjesta za objedovanje u Valpovu:\n\n'
+            : 'Caffe barovi i kavane u Valpovu:\n\n';
 
-      if (restorani.length && showRestorani) {
-        reply += '🍽️ **Restorani**\n\n';
-        for (const item of restorani) {
-          if (item.IMAGE_URL) reply += `[[IMG:${item.IMAGE_URL}]]`;
-          reply += `**${item.naziv}**\n`;
-          if (item.opis) reply += `${item.opis}\n`;
-          if (item.adresa) reply += `📍 ${item.adresa}\n`;
-          if (item.telefon) reply += `📞 ${item.telefon}\n`;
-          reply += `[Otvori na karti](${mapsUrl(item)})\n`;
-          if (item.web) reply += `[Više informacija](${item.web})\n`;
-          reply += `[[CLR]]\n\n`;
+        if (restorani.length && showRestorani) {
+          reply += '🍽️ **Restorani**\n\n';
+          for (const item of restorani) {
+            if (item.IMAGE_URL) reply += `[[IMG:${item.IMAGE_URL}]]`;
+            reply += `**${item.naziv}**\n`;
+            if (item.opis) reply += `${item.opis}\n`;
+            if (item.adresa) reply += `📍 ${item.adresa}\n`;
+            if (item.telefon) reply += `📞 ${item.telefon}\n`;
+            reply += `[Otvori na karti](${mapsUrl(item)})\n`;
+            if (item.web) reply += `[Više informacija](${item.web})\n`;
+            reply += `[[CLR]]\n\n`;
+          }
         }
-      }
-
-      if (brzaHrana.length && showBrzaHrana) {
-        reply += '🍕 **Brza hrana i pizzerije**\n\n';
-        for (const item of brzaHrana) {
-          if (item.IMAGE_URL) reply += `[[IMG:${item.IMAGE_URL}]]`;
-          reply += `**${item.naziv}**\n`;
-          if (item.opis) reply += `${item.opis}\n`;
-          if (item.adresa) reply += `📍 ${item.adresa}\n`;
-          reply += `[Otvori na karti](${mapsUrl(item)})\n`;
-          if (item.web) reply += `[Više informacija](${item.web})\n`;
-          reply += `[[CLR]]\n\n`;
+        if (brzaHrana.length && showBrzaHrana) {
+          reply += '🍕 **Brza hrana i pizzerije**\n\n';
+          for (const item of brzaHrana) {
+            if (item.IMAGE_URL) reply += `[[IMG:${item.IMAGE_URL}]]`;
+            reply += `**${item.naziv}**\n`;
+            if (item.opis) reply += `${item.opis}\n`;
+            if (item.adresa) reply += `📍 ${item.adresa}\n`;
+            reply += `[Otvori na karti](${mapsUrl(item)})\n`;
+            if (item.web) reply += `[Više informacija](${item.web})\n`;
+            reply += `[[CLR]]\n\n`;
+          }
         }
-      }
-
-      if (caffeBarovi.length && showCaffeBarovi) {
-        reply += '☕ **Caffe barovi i kavane**\n\n';
-        for (const item of caffeBarovi) {
-          if (item.IMAGE_URL) reply += `[[IMG:${item.IMAGE_URL}]]`;
-          reply += `**${item.naziv}**\n`;
-          if (item.opis) reply += `${item.opis}\n`;
-          reply += `[Otvori na karti](${mapsUrl(item)})\n`;
-          if (item.web) reply += `[Više informacija](${item.web})\n`;
-          reply += `[[CLR]]\n\n`;
+        if (caffeBarovi.length && showCaffeBarovi) {
+          reply += '☕ **Caffe barovi i kavane**\n\n';
+          for (const item of caffeBarovi) {
+            if (item.IMAGE_URL) reply += `[[IMG:${item.IMAGE_URL}]]`;
+            reply += `**${item.naziv}**\n`;
+            if (item.opis) reply += `${item.opis}\n`;
+            reply += `[Otvori na karti](${mapsUrl(item)})\n`;
+            if (item.web) reply += `[Više informacija](${item.web})\n`;
+            reply += `[[CLR]]\n\n`;
+          }
         }
-      }
 
-      return res.status(200).json({ reply, category, suggestions: getSuggestions(category), images: extractImages(context) });
+        return res.status(200).json({ reply, category, suggestions: getSuggestions(category), images: extractImages(context) });
+      }
     }
 
     // Sport listing: generiraj direktno bez AI (opći upit o sportu/klubovima)
