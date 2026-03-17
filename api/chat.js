@@ -595,8 +595,9 @@ export default async function handler(req, res) {
       );
 
       // Odredi što prikazati na temelju namjere upita
-      const wantsDining = ['ručati','ručak','večerati','večera','večer','jesti','objedovati',
-        'lunch','dinner','eat','speisen','mittagessen','abendessen'].some(k => msgLower.includes(k));
+      const wantsDining = ['restoran','ručati','ručak','večerati','večera','večer','jesti','objedovati',
+        'pizza','burger','hrana','restaurant','lunch','dinner','eat','food',
+        'speisen','mittagessen','abendessen','gaststätte'].some(k => msgLower.includes(k));
       const wantsCafe   = ['kafi','kav','caffe','café','kafe','bar',
         'coffee','kaffee','popiti','napit'].some(k => msgLower.includes(k));
 
