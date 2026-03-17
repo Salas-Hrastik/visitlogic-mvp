@@ -64,7 +64,7 @@ function getRelevantContext(message, db, lastCategory) {
     || msg.includes('unterkunft') || msg.includes('schlafen') || msg.includes('übernacht') || msg.includes('zimmer') || msg.includes('bauernhof'))
     return { context: CATEGORY_CONTEXTS.smjestaj(db), category: 'smjestaj' };
 
-  if (msg.includes('jelo') || msg.includes('restoran') || msg.includes('hrana') || msg.includes('pizza') || msg.includes('burger') || msg.includes('jesti') || msg.includes('ručati') || msg.includes('ručak') || msg.includes('večerati') || msg.includes('večera') || msg.includes('doručak') || msg.includes('kafi') || msg.includes('kav') || msg.includes('bar') || msg.includes('ugostit') || msg.includes('popiti') || msg.includes('napit') || msg.includes('radno vrij') || msg.includes('kada radi') || msg.includes('do kada rad') || msg.includes('od kada rad') || msg.includes('radi li') || msg.includes('je li otvor') || msg.includes('opening hours') || msg.includes('what time') || msg.includes('öffnungszeiten') || msg.includes('geöffnet')
+  if (msg.includes('jelo') || msg.includes('restoran') || msg.includes('hrana') || msg.includes('pizza') || msg.includes('burger') || msg.includes('jesti') || msg.includes('ručati') || msg.includes('ručak') || msg.includes('večer') || msg.includes('objedovati') || msg.includes('doručak') || msg.includes('kafi') || msg.includes('kav') || msg.includes('bar') || msg.includes('ugostit') || msg.includes('popiti') || msg.includes('napit') || msg.includes('radno vrij') || msg.includes('kada radi') || msg.includes('do kada rad') || msg.includes('od kada rad') || msg.includes('radi li') || msg.includes('je li otvor') || msg.includes('opening hours') || msg.includes('what time') || msg.includes('öffnungszeiten') || msg.includes('geöffnet')
     // EN
     || msg.includes('restaurant') || msg.includes('food') || msg.includes('eat') || msg.includes('dinner') || msg.includes('lunch') || msg.includes('breakfast') || msg.includes('cafe') || msg.includes('coffee') || msg.includes('drink') || msg.includes('where to eat') || msg.includes('place to eat')
     // DE
@@ -333,9 +333,10 @@ export default async function handler(req, res) {
     }
 
     // Gastronomija listing: generiraj direktno bez AI (eliminira hallucination restorana)
-    // Ako korisnik pita za radno vrijeme, specifično mjesto ili daje preporuku → preskoči listing, pusti AI s kontekstom
+    // Ako korisnik pita za radno vrijeme ili specifičan detalj → preskoči listing, pusti AI s kontekstom
+    // NAPOMENA: isRecommendationQuery se više NE preskače — pre-gen sprječava halucinaciju čak i za preporuke
     const radnoVrijemeQuery = ['radno vrij','kada radi','radi li','do kada rad','od kada rad','opening hours','what time','öffnungszeiten','geöffnet','otvoreno','zatvoreno'].some(k => message.toLowerCase().includes(k));
-    const isGastroListing = category === 'gastronomija' && !radnoVrijemeQuery && !isRecommendationQuery && !isDetailQuery && matched;
+    const isGastroListing = category === 'gastronomija' && !radnoVrijemeQuery && !isDetailQuery && matched;
     if (isGastroListing) {
       const gastro = db.gastronomija || [];
 
@@ -356,10 +357,30 @@ export default async function handler(req, res) {
       );
 
       // Odredi što prikazati na temelju namjere upita
-      const wantsDining = ['ručati','ručak','večerati','večera','jesti','objedovati',
+      const wantsDining = ['ručati','ručak','večerati','večera','večer','jesti','objedovati',
         'lunch','dinner','eat','speisen','mittagessen','abendessen'].some(k => msgLower.includes(k));
       const wantsCafe   = ['kafi','kav','caffe','café','kafe','bar',
         'coffee','kaffee','popiti','napit'].some(k => msgLower.includes(k));
+
+      // Za preporuku o večeri/ručku: prikaži samo restorane (2-3) s preporučnim uvodom
+      if (isRecommendationQuery) {
+        const preporuka = wantsCafe ? caffeBarovi : restorani;
+        const limit = preporuka.slice(0, 3);
+        let reply = wantsCafe
+          ? 'Za kavu i piće u Valpovu preporučujem:\n\n'
+          : 'Za večeru (ili ručak) u Valpovu preporučujem:\n\n';
+        for (const item of limit) {
+          if (item.IMAGE_URL) reply += `[[IMG:${item.IMAGE_URL}]]`;
+          reply += `**${item.naziv}**\n`;
+          if (item.opis) reply += `${item.opis}\n`;
+          if (item.adresa) reply += `📍 ${item.adresa}\n`;
+          if (item.telefon) reply += `📞 ${item.telefon}\n`;
+          reply += `[Otvori na karti](${mapsUrl(item)})\n`;
+          if (item.web) reply += `[Više informacija](${item.web})\n`;
+          reply += `[[CLR]]\n\n`;
+        }
+        return res.status(200).json({ reply, category, suggestions: getSuggestions(category), images: extractImages(context) });
+      }
 
       // Ako query ima OBA tipa (npr. "restorani i kafići") → prikaži sve
       const showAll_gastro = (wantsDining && wantsCafe) || (!wantsDining && !wantsCafe);
