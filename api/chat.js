@@ -197,6 +197,8 @@ export default async function handler(req, res) {
 
     const { message, history, category: lastCategory, weather, inputMethod } = req.body;
     const isVoiceInput = inputMethod === 'voice';
+    // effectiveMessage se može prepend-ati s constraintima za recommendation upite
+    let effectiveMessage = message;
 
     if (!message) {
       return res.status(400).json({ reply: "Poruka je prazna." });
@@ -362,24 +364,15 @@ export default async function handler(req, res) {
       const wantsCafe   = ['kafi','kav','caffe','café','kafe','bar',
         'coffee','kaffee','popiti','napit'].some(k => msgLower.includes(k));
 
-      // Za preporuku o večeri/ručku: prikaži samo restorane (2-3) s preporučnim uvodom
+      // Za preporuku: AI preporučuje jela i atmosferu, ali MORA koristiti samo ove restorane
+      // → prepend stvarnog popisa u effectiveMessage kao hard constraint (AI ne može izmisliti nove)
       if (isRecommendationQuery) {
-        const preporuka = wantsCafe ? caffeBarovi : restorani;
-        const limit = preporuka.slice(0, 3);
-        let reply = wantsCafe
-          ? 'Za kavu i piće u Valpovu preporučujem:\n\n'
-          : 'Za večeru (ili ručak) u Valpovu preporučujem:\n\n';
-        for (const item of limit) {
-          if (item.IMAGE_URL) reply += `[[IMG:${item.IMAGE_URL}]]`;
-          reply += `**${item.naziv}**\n`;
-          if (item.opis) reply += `${item.opis}\n`;
-          if (item.adresa) reply += `📍 ${item.adresa}\n`;
-          if (item.telefon) reply += `📞 ${item.telefon}\n`;
-          reply += `[Otvori na karti](${mapsUrl(item)})\n`;
-          if (item.web) reply += `[Više informacija](${item.web})\n`;
-          reply += `[[CLR]]\n\n`;
-        }
-        return res.status(200).json({ reply, category, suggestions: getSuggestions(category), images: extractImages(context) });
+        const pool = wantsCafe ? caffeBarovi : [...restorani, ...brzaHrana];
+        const poolList = pool.map(g =>
+          `- ${g.naziv}${g.opis ? ': ' + g.opis : ''}${g.adresa ? ' | ' + g.adresa : ''}`
+        ).join('\n');
+        effectiveMessage = `[CONSTRAINT — koristi ISKLJUČIVO ove objekte, ne izmišljaj druge nazive restorana]\n${poolList}\n\nKorisnikovo pitanje: ${message}`;
+        // Ispadamo iz pre-gen bloka i nastavljamo na AI streaming s effectiveMessage
       }
 
       // Ako query ima OBA tipa (npr. "restorani i kafići") → prikaži sve
@@ -734,9 +727,9 @@ ${JSON.stringify(stripImages(context))}
       messages: [
         { role: "system", content: systemPrompt },
         ...historyMessages,
-        { role: "user", content: message }
+        { role: "user", content: effectiveMessage }
       ],
-      temperature: 0.3,
+      temperature: isRecommendationQuery ? 0.5 : 0.3,
       max_tokens: category === 'opcenito' ? 900 : 500,
       stream: true
     });
