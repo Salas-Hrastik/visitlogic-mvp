@@ -288,14 +288,14 @@ export default async function handler(req, res) {
 
       const activeSections = allSections.filter(sec => sec.show);
 
-      // Dinamičan uvod ovisno o upitu
+      // Dinamičan uvod ovisno o upitu (showAll ima prioritet)
       let reply = '';
-      if (wantsSobe)       reply = 'Evo dostupnih soba za iznajmljivanje u Valpovu:\n\n';
-      else if (wantsHotel) reply = 'Evo hotela u Valpovu:\n\n';
-      else if (wantsApartman) reply = 'Evo apartmana dostupnih za iznajmljivanje u Valpovu:\n\n';
-      else if (wantsRuralni)  reply = 'Evo ruralnog smještaja u okolici Valpova:\n\n';
+      if (showAll)              reply = 'Evo svih smještajnih opcija u Valpovu:\n\n';
+      else if (wantsSobe)      reply = 'Evo dostupnih soba za iznajmljivanje u Valpovu:\n\n';
+      else if (wantsHotel)     reply = 'Evo hotela u Valpovu:\n\n';
+      else if (wantsApartman)  reply = 'Evo apartmana dostupnih za iznajmljivanje u Valpovu:\n\n';
+      else if (wantsRuralni)   reply = 'Evo ruralnog smještaja u okolici Valpova:\n\n';
       else if (wantsPrenociste) reply = 'Evo prenoćišta u Valpovu:\n\n';
-      else reply = 'Evo svih smještajnih opcija u Valpovu:\n\n';
 
       for (const { key, icon, label } of activeSections) {
         const items = s[key];
@@ -361,15 +361,17 @@ export default async function handler(req, res) {
       const wantsCafe   = ['kafić','kava','kavana','caffe','café','bar','kafe',
         'coffee','café','kaffee'].some(k => msgLower.includes(k));
 
-      const showRestorani   = !wantsCafe;   // skrivaj restorane samo ako traži samo cafe
-      const showBrzaHrana   = !wantsCafe;
-      const showCaffeBarovi = !wantsDining; // skrivaj caffe barove samo ako traži samo restoran
+      // Ako query ima OBA tipa (npr. "restorani i kafići") → prikaži sve
+      const showAll_gastro = (wantsDining && wantsCafe) || (!wantsDining && !wantsCafe);
+      const showRestorani   = showAll_gastro || wantsDining;
+      const showBrzaHrana   = showAll_gastro || wantsDining;
+      const showCaffeBarovi = showAll_gastro || wantsCafe;
 
-      let reply = wantsDining
-        ? 'Restorani i mjesta za objedovanje u Valpovu:\n\n'
-        : wantsCafe
-          ? 'Caffe barovi i kavane u Valpovu:\n\n'
-          : 'Valpovo ima bogatu ugostiteljsku ponudu — od tradicijskih slavonskih restorana do caffe barova. Evo pregleda:\n\n';
+      let reply = showAll_gastro
+        ? 'Valpovo ima bogatu ugostiteljsku ponudu — od tradicijskih slavonskih restorana do caffe barova. Evo pregleda:\n\n'
+        : wantsDining
+          ? 'Restorani i mjesta za objedovanje u Valpovu:\n\n'
+          : 'Caffe barovi i kavane u Valpovu:\n\n';
 
       if (restorani.length && showRestorani) {
         reply += '🍽️ **Restorani**\n\n';
@@ -727,13 +729,18 @@ ${JSON.stringify(stripImages(context))}
 
   } catch (error) {
 
-    console.error("CHAT ERROR:", error);
+    console.error("CHAT ERROR:", error.message, error.stack);
+
+    if (!res.headersSent) {
+      // Greška se dogodila PRIJE SSE headera — vrati čisti JSON koji frontend može parsirati
+      return res.status(500).json({ error: 'Greška servera', details: error.message });
+    }
+
+    // Greška se dogodila TIJEKOM SSE streaminga — pošalji error frame i završi stream
     try {
       res.write(`data: ${JSON.stringify({ error: true })}\n\n`);
       res.end();
-    } catch {
-      res.status(500).json({ reply: "Došlo je do greške na serveru." });
-    }
+    } catch { /* stream već završen */ }
 
   }
 
