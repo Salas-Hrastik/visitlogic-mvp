@@ -418,22 +418,30 @@ export default async function handler(req, res) {
       'kultura', 'tradicija', 'običaj', 'folklor', 'porijeklo', 'odakle dolazi',
       'što znači naziv', 'legenda', 'predaja', 'zašto se zove',
       'culture', 'tradition', 'custom', 'folklore', 'origin', 'legend',
-      'kultur', 'tradition', 'brauchtum', 'ursprung',
+      'kultur', 'brauchtum', 'ursprung',
       // Putovanje i praktični savjeti
       'kako doći', 'kako stići', 'kojim putem', 'kojim prijevozom',
       'how to get', 'how far', 'how to reach', 'directions',
       'wie kommt man', 'wie weit', 'wie lange dauert',
-      // Hrana i pića općenito (ne lokalni objekti)
-      'slavonsk', 'baranjsk', 'dravsk', 'dunavsk', 'kulen', 'fiš paprikaš', 'fis paprikas',
-      'čobanac', 'cobanac', 'šaranček', 'medovač', 'rakija', 'domaće vino', 'domaći sir',
-      'autohtoni', 'način pripreme', 'način kuhanja', 'regionalni',
-      'fish stew', 'slavonian', 'baranja', 'typical food', 'local food',
+      // Hrana i pića — sastojci, jela, regionalni nazivi
+      'slavonij', 'slavonsk', 'baranjsk', 'baranj', 'dravsk', 'dunavsk', 'posavsk', 'podravsk',
+      'kulen', 'fiš', 'paprikaš', 'paprikas', 'čobanac', 'cobanac', 'šaranček',
+      'medovač', 'rakija', 'domaće vino', 'domaći sir', 'autohtoni',
+      'šaran', 'saran', 'som ', 'štuka', 'riblj', 'riba', 'luc',
+      'krumpir', 'rajčic', 'mrkva', 'paprika', 'luk', 'češnjak', 'ulje', 'maslin',
+      'varivo', 'gulaš', 'gulas', 'maneštra', 'juha', 'temeljac',
+      'način pripreme', 'način kuhanja', 'regionalni', 'tradicionaln',
+      'fish stew', 'slavonian', 'typical food', 'local food',
+      // Reakcije i ispravci u razgovoru (konverzacijski kontekst)
+      'nije to', 'to nije', 'nije dobar', 'nije pravi', 'nije točno', 'pogrešno',
+      'drugi recept', 'bolji recept', 'pravi recept', 'što misliš', 'zar nema',
+      'ima li još', 'ne slažem', 'ali zar', 'pa to je', 'pa nije',
       // Klima, priroda, geografija
       'klima', 'podneblje', 'godišnja doba', 'best time to visit',
       'beste reisezeit', 'wann besuchen',
-      // Valuta, jezik
+      // Valuta, jezik, prehrana
       'valuta', 'plaćanje', 'govore li', 'koji jezik', 'currency', 'payment',
-      'vegetar', 'vegan', 'bezgluten', 'alergij', 'vegetarian', 'vegan',
+      'vegetar', 'vegan', 'bezgluten', 'alergij', 'vegetarian',
     ].some(k => msgLower.includes(k));
 
     // ═══════════════════════════════════════════════════════════════════
@@ -787,10 +795,9 @@ export default async function handler(req, res) {
       const wantsDining = ['restoran','ručati','ručak','večerati','večera','večer','jesti','objedovati',
         'pizza','burger','hrana','restaurant','lunch','dinner','eat','food',
         'speisen','mittagessen','abendessen','gaststätte'].some(k => msgLower.includes(k));
-      // 'bar' mora biti zasebna riječ — ne smije matchati 'baranjski', 'barbecue', 'barem'...
-      const hasBarWord = /\bbar\b/i.test(message);
-      const wantsCafe = hasBarWord || ['kafi','kav','caffe','café','kafe',
-        'coffee','kaffee','popiti','napit'].some(k => msgLower.includes(k));
+      // Café detekcija — sve kao zasebne riječi da ne matchamo 'baranjski', 'kavo' (uzvik)...
+      const wantsCafe = /\b(bar|kava|kave|kavu|kavom|kafić|kafic|kafiću|kafica|caffe|café|kafe|coffee|kaffee)\b/i.test(message)
+        || msgLower.includes('popiti') || msgLower.includes('napit');
 
       if (isRecommendationQuery) {
         // AI preporučuje jela i atmosferu, ali MORA koristiti samo stvarne objekte iz baze
