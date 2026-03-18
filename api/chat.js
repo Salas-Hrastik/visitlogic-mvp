@@ -406,6 +406,31 @@ export default async function handler(req, res) {
     const lang = voiceLang || detectLang(message);
     const t = TR[lang] || TR.hr;
 
+    // ── KONVERZACIJSKI NAČIN (SUSTAVNO RJEŠENJE) ──────────────────────────
+    // Ako razgovor ima history (≥2 poruke = 1 razmjena) I upit nije
+    // eksplicitni zahtjev za listanjem → AI vodi slobodni razgovor.
+    // Pre-gen blokovi (koji prikazuju liste objekata) se preskakaju.
+    // AI prima puni history + bazu → razumije kontekst i odgovara prirodno.
+    const isDirectListingRequest = [
+      // HR — eksplicitni zahtjevi za listanjem/popisom
+      'koji postoje', 'koji ima', 'što postoji', 'sto postoji',
+      'što ima u', 'sto ima u', 'prikaži', 'prikazi', 'nabroji',
+      'sve restorane', 'sve hotele', 'svi restorani', 'sva smještaj',
+      'lista ', 'popis ', 'pregled svih', 'pregled smještaj',
+      'gdje ručati', 'gdje jesti', 'gdje spavati', 'gdje kupiti',
+      'koji smještaj', 'koji restorani', 'koji kafići', 'koji klubovi',
+      'što se događa', 'koji festivali', 'koji izleti',
+      // EN
+      'show me all', 'list all', 'what are the', 'show all', 'all restaurants',
+      'all hotels', 'where to eat', 'where to stay', 'what events',
+      // DE
+      'zeig mir alle', 'alle restaurants', 'alle hotels', 'was gibt es',
+    ].some(k => msgLower.includes(k));
+
+    const conversationHistory = Array.isArray(history) ? history : [];
+    // Konverzacijski način: history ima poruke I nije direktni zahtjev za listanjem
+    const isConversationalMode = conversationHistory.length >= 2 && !isDirectListingRequest;
+
     // Opća pitanja o kulturi, receptima, savjetima, prirodi, putovanju —
     // preskačemo SVE pre-gen blokove i pustimo AI da odgovori slobodnim znanjem
     const isGeneralKnowledgeQuery = [
@@ -627,7 +652,7 @@ export default async function handler(req, res) {
     // Događanja listing: filtriraj prošle i generiraj direktno bez AI
     // Ako korisnik pita za SPECIFIČNU manifestaciju po imenu → preskoči listing, pusti AI da odgovori konkretno
     const specificEventQuery = ['fišijad','fisijad','matijafest','rockaraj','reunited','vašar','vasar','ljeto valpov','craft beer','staza zdravlja','festival sira','ribljeg paprikaš','ribljeg paprikas','kuhanje fiš','kuhanje fis','katančić','katancic','matija petar','matiji petru'].some(k => msgLower.includes(k));
-    if (category === 'dogadanja' && !specificEventQuery && !isRecommendationQuery && !isDetailQuery && !isGeneralKnowledgeQuery && matched) {
+    if (category === 'dogadanja' && !specificEventQuery && !isRecommendationQuery && !isDetailQuery && !isGeneralKnowledgeQuery && !isConversationalMode && matched) {
       const currentMonth = new Date().getMonth() + 1;
       const currentDay   = new Date().getDate();
       const monthNames   = ['siječnju','veljači','ožujku','travnju','svibnju','lipnju',
@@ -698,7 +723,7 @@ export default async function handler(req, res) {
 
     // Smještaj listing: generiraj direktno bez AI (sprječava hallucination)
     // matched: false = fallback (npr. vremenski upit) → NE aktiviraj pre-gen
-    if (category === 'smjestaj' && !isRecommendationQuery && !isDetailQuery && !isGeneralKnowledgeQuery && matched) {
+    if (category === 'smjestaj' && !isRecommendationQuery && !isDetailQuery && !isGeneralKnowledgeQuery && !isConversationalMode && matched) {
       const s = db.smjestaj;
       const msgL = message.toLowerCase();
 
@@ -751,7 +776,7 @@ export default async function handler(req, res) {
     // Znamenitosti listing: generiraj direktno bez AI
     // Specifični upit (dvorac, muzej, kula...) → pusti AI da odgovori detaljno
     const specificZnaQuery = ['dvorac','prandau','muzej','kula','kazalište','kazaliste','pivovara','konjušnice','konjusnice','pučka škola','pucka skola','memorijaln','centar kulture','katančić','katancic','fortuna'].some(k => message.toLowerCase().includes(k));
-    if (category === 'znamenitosti' && !specificZnaQuery && !isRecommendationQuery && !isDetailQuery && !isGeneralKnowledgeQuery && matched) {
+    if (category === 'znamenitosti' && !specificZnaQuery && !isRecommendationQuery && !isDetailQuery && !isGeneralKnowledgeQuery && !isConversationalMode && matched) {
       const zna = db.znamenitosti || [];
       let reply = 'Valpovo krije niz kulturnih i povijesnih znamenitosti. Evo kompletnog pregleda:\n\n';
       for (const item of zna) {
@@ -771,7 +796,7 @@ export default async function handler(req, res) {
     // Ako korisnik pita za radno vrijeme ili specifičan detalj → preskoči listing, pusti AI s kontekstom
     // NAPOMENA: isRecommendationQuery se više NE preskače — pre-gen sprječava halucinaciju čak i za preporuke
     const radnoVrijemeQuery = ['radno vrij','kada radi','radi li','do kada rad','od kada rad','opening hours','what time','öffnungszeiten','geöffnet','otvoreno','zatvoreno'].some(k => message.toLowerCase().includes(k));
-    const isGastroListing = category === 'gastronomija' && !radnoVrijemeQuery && !isDetailQuery && !isGeneralKnowledgeQuery && matched;
+    const isGastroListing = category === 'gastronomija' && !radnoVrijemeQuery && !isDetailQuery && !isGeneralKnowledgeQuery && !isConversationalMode && matched;
     if (isGastroListing) {
       const gastro = db.gastronomija || [];
 
@@ -866,7 +891,7 @@ export default async function handler(req, res) {
     }
 
     // Sport listing: generiraj direktno bez AI (opći upit o sportu/klubovima)
-    const isSportListing = category === 'sport' && !isRecommendationQuery && !isDetailQuery && !isGeneralKnowledgeQuery && matched;
+    const isSportListing = category === 'sport' && !isRecommendationQuery && !isDetailQuery && !isGeneralKnowledgeQuery && !isConversationalMode && matched;
     if (isSportListing) {
       const s = db.sport;
       const sportEmoji = {
@@ -910,7 +935,7 @@ export default async function handler(req, res) {
 
     // Okolica listing: generiraj direktno bez AI samo kad korisnik traži opći popis izleta
     // (sadrži 'izlet') — specifična pitanja (vinske ceste, Kopački rit...) idu na AI
-    const isOkolicaListing = category === 'okolica' && msgLower.includes('izlet') && !isRecommendationQuery && !isDetailQuery && !isGeneralKnowledgeQuery && matched;
+    const isOkolicaListing = category === 'okolica' && msgLower.includes('izlet') && !isRecommendationQuery && !isDetailQuery && !isGeneralKnowledgeQuery && !isConversationalMode && matched;
     if (isOkolicaListing) {
       const izleti = db.okolica?.izleti || [];
       let reply = `${t.excursions}\n\n`;
@@ -930,7 +955,7 @@ export default async function handler(req, res) {
     // Zdravstvo, banke, auto servisi, taksi, benzinske, frizeraji, parking
     // Sprječava AI haluciniranje naziva institucija koje NE postoje u Valpovu
     const isUslugeCategory = ['usluge','benzinske','frizeraji','parking'].includes(category);
-    if (isUslugeCategory && !isRecommendationQuery && !isDetailQuery && !isGeneralKnowledgeQuery && matched) {
+    if (isUslugeCategory && !isRecommendationQuery && !isDetailQuery && !isGeneralKnowledgeQuery && !isConversationalMode && matched) {
       const u = db.usluge;
       const ml = msgLower;
       let reply = '';
