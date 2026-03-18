@@ -424,9 +424,10 @@ export default async function handler(req, res) {
       'how to get', 'how far', 'how to reach', 'directions',
       'wie kommt man', 'wie weit', 'wie lange dauert',
       // Hrana i pića općenito (ne lokalni objekti)
-      'slavonsk', 'kulen', 'fiš paprikaš', 'fis paprikas', 'čobanac', 'cobanac',
-      'šaranček', 'medovač', 'rakija', 'domaće vino', 'domaći sir', 'autohtoni',
-      'fish stew', 'slavonian', 'hungarian', 'typical food', 'local food',
+      'slavonsk', 'baranjsk', 'dravsk', 'dunavsk', 'kulen', 'fiš paprikaš', 'fis paprikas',
+      'čobanac', 'cobanac', 'šaranček', 'medovač', 'rakija', 'domaće vino', 'domaći sir',
+      'autohtoni', 'način pripreme', 'način kuhanja', 'regionalni',
+      'fish stew', 'slavonian', 'baranja', 'typical food', 'local food',
       // Klima, priroda, geografija
       'klima', 'podneblje', 'godišnja doba', 'best time to visit',
       'beste reisezeit', 'wann besuchen',
@@ -786,7 +787,9 @@ export default async function handler(req, res) {
       const wantsDining = ['restoran','ručati','ručak','večerati','večera','večer','jesti','objedovati',
         'pizza','burger','hrana','restaurant','lunch','dinner','eat','food',
         'speisen','mittagessen','abendessen','gaststätte'].some(k => msgLower.includes(k));
-      const wantsCafe   = ['kafi','kav','caffe','café','kafe','bar',
+      // 'bar' mora biti zasebna riječ — ne smije matchati 'baranjski', 'barbecue', 'barem'...
+      const hasBarWord = /\bbar\b/i.test(message);
+      const wantsCafe = hasBarWord || ['kafi','kav','caffe','café','kafe',
         'coffee','kaffee','popiti','napit'].some(k => msgLower.includes(k));
 
       if (isRecommendationQuery) {
