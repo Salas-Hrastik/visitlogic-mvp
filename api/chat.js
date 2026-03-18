@@ -21,12 +21,12 @@ function stripImages(data) {
 
 const CATEGORY_CONTEXTS = {
   smjestaj:     (db) => ({ grad: db.grad, smjestaj: db.smjestaj }),
-  gastronomija: (db) => ({ grad: db.grad, gastronomija: db.gastronomija }),
+  gastronomija: (db) => ({ grad: db.grad, gastronomija: db.gastronomija, lokalna_kuhinja: db.lokalna_kuhinja }),
   dogadanja:    (db) => ({ grad: db.grad, dogadanja: db.dogadanja }),
   znamenitosti: (db) => ({ grad: db.grad, znamenitosti: db.znamenitosti }),
   sport:        (db) => ({ grad: db.grad, sport: db.sport }),
   kupovina:     (db) => ({ grad: db.grad, kupovina: db.kupovina }),
-  opcenito:     (db) => ({ grad: db.grad, opcenito: db.opcenito }),
+  opcenito:     (db) => ({ grad: db.grad, opcenito: db.opcenito, lokalna_kuhinja: db.lokalna_kuhinja }),
   benzinske:    (db) => ({ grad: db.grad, benzinske_stanice: db.usluge.benzinske_stanice }),
   frizeraji:    (db) => ({ grad: db.grad, frizeraji: db.usluge.frizeraji }),
   parking:      (db) => ({ grad: db.grad, parkiralista: db.usluge.parkiralista }),

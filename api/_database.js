@@ -218,6 +218,37 @@ export const db = {
             "web": "https://tz.valpovo.hr/znamenitosti/memorijalni-centar-matije-petra-katancica/"
         }
     ],
+    "lokalna_kuhinja": {
+        "napomena": "Autentična slavonska i baranjska kuhinja — koristiti za pitanja o receptima i tradicionalnim jelima",
+        "jela": [
+            {
+                "naziv": "Baranjski fiš paprikaš",
+                "opis": "Tradicionalno jelo Baranje i Slavonije. KLJUČNO: priprema se BEZ krumpira, BEZ mrkve, BEZ rajčice, BEZ maslinovog ulja! Jedini pravi sastojci su: svježa riba (šaran, som, smuđ, štuka), luk, crvena mljevena paprika (slatka + ljuta), sol i voda. Kuha se u kotlu na laganoj vatri bez miješanja. Luk se ne prži — stavlja se sirov zajedno s ribom. Paprika daje boju i okus — mora je biti puno. Baranjska varijanta ima više paprike i jača je od slavonske. Poslužuje se uz domaći kruh.",
+                "razlike": "Baranjski — više paprike, jači okus; Slavonski — nešto blaži; Dravski — riba isključivo iz Drave (šaran, smuđ)"
+            },
+            {
+                "naziv": "Slavonski kulen",
+                "opis": "Autohtona slavonska kobasica od svinjskog mesa s lukom, češnjakom, paprikama (slatka i ljuta crvena) i solju. Suši se i dimi. Zaštićena oznaka izvornosti. Karakteristična crvena boja i pikantni okus. NE smije se brkati s kulenovom sekom (tanja, manje začinjena varijanta)."
+            },
+            {
+                "naziv": "Čobanac",
+                "opis": "Slavonski pastirski paprikaš od miješanog mesa (svinjetina, govedina, janjetina, divljač). Obavezno puno crvene paprike, luk, vino. Kuha se dugo na laganoj vatri. NE sadrži krumpir ni rajčicu — to bi ga učinilo gulašem."
+            },
+            {
+                "naziv": "Slavonska kobasica i suhomesnati proizvodi",
+                "opis": "Tradicija suhomesnatih proizvoda: kulen, kulenska seka, slavonska kobasica, špek, čvarci. Osnova zimnice. Rade se od svinja hranjenih žirom i kukuruzom."
+            },
+            {
+                "naziv": "Domaći sir i vrhnje",
+                "opis": "Slavonski domaći svježi sir (surutka, kiselo mlijeko). Poslužuje se s kajmakom ili vrhnjem uz domaći kruh i slaninom."
+            },
+            {
+                "naziv": "Medovača i domaća rakija",
+                "opis": "Medovača = rakija s medom, tipična slavonska. Šljivovica, lozovača i voćne rakije su temelj slavonske tradicije. Pije se uz zakusku (kulen, sir, kruh)."
+            }
+        ],
+        "savjeti": "Za autentičnu slavonsku i baranjsku kuhinju: bez maslinovog ulja (koristi se svinjska mast ili suncokretiovo ulje), bez rajčice u paprikašima, puno crvene paprike, luk kao baza. Jednostavnost sastojaka = bogatstvo okusa."
+    },
     "gastronomija": [
         {
             "naziv": "Restoran Jovalija",
