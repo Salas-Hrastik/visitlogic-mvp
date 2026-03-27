@@ -1,5 +1,6 @@
 import OpenAI from "openai";
 import { db } from "./_database.js";
+import { scrapedContent } from "./_scraped_content.js";
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY
@@ -17,6 +18,37 @@ function stripImages(data) {
     return out;
   }
   return data;
+}
+
+// Gradi sekciju s auto-skrapanim sadržajem (novosti, aktualne manifestacije)
+function buildScrapedSection() {
+  const s = scrapedContent;
+  if (!s || (!s.novosti_tz?.length && !s.novosti_grad?.length && !s.manifestacije_aktualne?.length)) {
+    return '';
+  }
+  const lines = ['\nAKTUALNI SADRŽAJ (automatski dohvaćen s web stranica grada):'];
+  if (s.meta?.zadnje_azuriranje) {
+    lines.push(`Zadnje ažuriranje: ${s.meta.zadnje_azuriranje.substring(0, 10)}`);
+  }
+  if (s.novosti_tz?.length) {
+    lines.push('\nNajnovije vijesti — Turistička zajednica Valpovo:');
+    s.novosti_tz.forEach(n => {
+      lines.push(`• [${n.datum || ''}] ${n.naslov}${n.kratki_opis ? ' — ' + n.kratki_opis : ''}`);
+    });
+  }
+  if (s.novosti_grad?.length) {
+    lines.push('\nNajnovije vijesti — Grad Valpovo:');
+    s.novosti_grad.forEach(n => {
+      lines.push(`• [${n.datum || ''}] ${n.naslov}${n.kratki_opis ? ' — ' + n.kratki_opis : ''}`);
+    });
+  }
+  if (s.manifestacije_aktualne?.length) {
+    lines.push('\nAktualne manifestacije (s datumima):');
+    s.manifestacije_aktualne.forEach(m => {
+      lines.push(`• ${m.naziv}${m.datum ? ' (' + m.datum + ')' : ''}${m.opis ? ' — ' + m.opis : ''}`);
+    });
+  }
+  return lines.join('\n');
 }
 
 const CATEGORY_CONTEXTS = {
@@ -211,10 +243,14 @@ function getRelevantContext(message, db, lastCategory) {
 
   // HR + EN + DE ključne riječi
   if (msg.includes('povijest') || msg.includes('histori') || msg.includes('osnovan') || msg.includes('općenito') || msg.includes('o gradu') || msg.includes('o valpovu') || msg.includes('stanovic') || msg.includes('stanovništv') || msg.includes('naselje') || msg.includes('geografij') || msg.includes('gospodarsk') || msg.includes('industrij') || msg.includes('poznat') || msg.includes('zanimljiv') || msg.includes('iovallium') || msg.includes('prandau') || msg.includes('rimsk') || msg.includes('osmansk') || msg.includes('gradonačelnik') || msg.includes('udaljenost')
+    // Lokalna industrija i brendovi
+    || msg.includes('valko') || msg.includes('valpovka') || msg.includes('stočna hrana') || msg.includes('stocna hrana') || msg.includes('tvornic') || msg.includes('industrijska proizvod') || msg.includes('prva industrijska') || msg.includes('kolači iz') || msg.includes('kolaci iz') || msg.includes('pivovara') || msg.includes('krmn')
+    // Poljoprivreda
+    || msg.includes('poljoprivred') || msg.includes('ratarstvo') || msg.includes('stočarstvo') || msg.includes('stocarstvo') || msg.includes('kukuruz') || msg.includes('pšenica') || msg.includes('psenica') || msg.includes('suncokret') || msg.includes('šećerna repa') || msg.includes('secerna repa') || msg.includes('soja') || msg.includes('voćnjak') || msg.includes('vocnjak') || msg.includes('uzgoj')
     // EN
-    || msg.includes('history') || msg.includes('about') || msg.includes('general') || msg.includes('population') || msg.includes('founded') || msg.includes('tell me about') || msg.includes('what is valpovo') || msg.includes('economy') || msg.includes('industry') || msg.includes('famous')
+    || msg.includes('history') || msg.includes('about') || msg.includes('general') || msg.includes('population') || msg.includes('founded') || msg.includes('tell me about') || msg.includes('what is valpovo') || msg.includes('economy') || msg.includes('industry') || msg.includes('famous') || msg.includes('agriculture') || msg.includes('farming') || msg.includes('crops')
     // DE
-    || msg.includes('geschichte') || msg.includes('über') || msg.includes('einwohner') || msg.includes('gegründet') || msg.includes('wirtschaft'))
+    || msg.includes('geschichte') || msg.includes('über') || msg.includes('einwohner') || msg.includes('gegründet') || msg.includes('wirtschaft') || msg.includes('landwirtschaft') || msg.includes('anbau'))
     return { context: CATEGORY_CONTEXTS.opcenito(db), category: 'opcenito' };
 
   if (msg.includes('smještaj') || msg.includes('smjestaj') || msg.includes('hotel') || msg.includes('noćen') || msg.includes('nocen') || msg.includes('apartman') || msg.includes('sobe') || msg.includes('soba') || msg.includes('sob ') || msg.includes('villa') || msg.includes('ruralni') || msg.includes('seoski') || msg.includes('seosk') || msg.includes('gospodarstv') || msg.includes('farma') || msg.includes('agro') || msg.includes('prenoćiš') || msg.includes('prenocis') || msg.includes('prenoćišt') || msg.includes('privatni smještaj') || msg.includes('iznajm')
@@ -270,8 +306,9 @@ function getRelevantContext(message, db, lastCategory) {
     return { context: CATEGORY_CONTEXTS.benzinske(db), category: 'benzinske' };
 
   if (msg.includes('frizer') || msg.includes('brica') || msg.includes('kozmet') || msg.includes('salon') || msg.includes('barber')
+    || msg.includes('šišanj') || msg.includes('sisanj') || msg.includes('šiša') || msg.includes('frizur')
     // EN
-    || msg.includes('hairdresser') || msg.includes('haircut') || msg.includes('barber') || msg.includes('beauty salon')
+    || msg.includes('hairdresser') || msg.includes('haircut') || msg.includes('beauty salon')
     // DE
     || msg.includes('friseur') || msg.includes('frisör') || msg.includes('haarschnitt'))
     return { context: CATEGORY_CONTEXTS.frizeraji(db), category: 'frizeraji' };
@@ -652,6 +689,34 @@ export default async function handler(req, res) {
     // Događanja listing: filtriraj prošle i generiraj direktno bez AI
     // Ako korisnik pita za SPECIFIČNU manifestaciju po imenu → preskoči listing, pusti AI da odgovori konkretno
     const specificEventQuery = ['fišijad','fisijad','matijafest','rockaraj','reunited','vašar','vasar','ljeto valpov','craft beer','staza zdravlja','festival sira','ribljeg paprikaš','ribljeg paprikas','kuhanje fiš','kuhanje fis','katančić','katancic','matija petar','matiji petru'].some(k => msgLower.includes(k));
+    // ── NOVOSTI pre-gen blok (skrapani sadržaj s thumbnailima) ─────────────
+    const wantsNovosti = ['novosti', 'vijesti', 'aktualnost', 'što je novo', 'sto je novo',
+      'što se nedavno', 'što se zadnje', 'news', 'aktualno', 'najnovije']
+      .some(k => msgLower.includes(k));
+
+    if (wantsNovosti && !isConversationalMode && !isGeneralKnowledgeQuery && scrapedContent?.novosti_tz?.length) {
+      const ts = scrapedContent.meta?.zadnje_azuriranje?.substring(0, 10) || '';
+      let reply = `📰 Najnovije vijesti iz Valpova${ts ? ` (ažurirano ${ts})` : ''}:\n\n`;
+
+      for (const n of scrapedContent.novosti_tz.slice(0, 6)) {
+        if (n.IMAGE_URL) reply += `[[IMG:${n.IMAGE_URL}]]`;
+        reply += `**${n.naslov}**\n`;
+        if (n.datum) reply += `📅 ${n.datum}\n`;
+        if (n.kratki_opis) reply += `${n.kratki_opis.substring(0, 180)}...\n`;
+        reply += `[Pročitaj više](${n.link})\n`;
+        reply += `[[CLR]]\n\n`;
+      }
+
+      if (scrapedContent.novosti_grad?.length) {
+        reply += `**Vijesti Grada Valpova:**\n`;
+        for (const n of scrapedContent.novosti_grad.slice(0, 3)) {
+          reply += `• **${n.naslov}**${n.datum ? ` (${n.datum})` : ''} — [Pročitaj](${n.link})\n`;
+        }
+      }
+
+      return res.status(200).json({ reply, category: 'dogadanja', suggestions: getSuggestions('dogadanja') });
+    }
+
     if (category === 'dogadanja' && !specificEventQuery && !isRecommendationQuery && !isDetailQuery && !isGeneralKnowledgeQuery && !isConversationalMode && matched) {
       const currentMonth = new Date().getMonth() + 1;
       const currentDay   = new Date().getDate();
@@ -1034,14 +1099,17 @@ export default async function handler(req, res) {
         }
 
       } else if (category === 'frizeraji' || ml.includes('frizer') || ml.includes('kozmet') ||
-                 ml.includes('barber') || ml.includes('brica')) {
+                 ml.includes('barber') || ml.includes('brica') ||
+                 ml.includes('šišanj') || ml.includes('sisanj') || ml.includes('šiša') || ml.includes('frizur')) {
         reply = `${t.barbers}\n\n`;
         for (const item of u.frizeraji || []) {
           reply += `**${item.naziv}**\n`;
           if (item.adresa) reply += `📍 ${item.adresa}\n`;
           if (item.telefon) reply += `📞 ${item.telefon}\n`;
+          if (item.napomena) reply += `ℹ️ ${item.napomena}\n`;
           reply += `[${t.map}](${item.maps_url})\n\n`;
         }
+        reply += `\nℹ️ U Valpovu djeluje ukupno ~20 frizerskih salona. Za kompletnu listu s radnim vremenima posjetite [Google Maps](https://www.google.com/maps/search/frizerski+salon+Valpovo).\n`;
 
       } else if (category === 'parking' || ml.includes('parking') || ml.includes('parkir')) {
         reply = `${t.parking}\n\n`;
@@ -1171,21 +1239,56 @@ TRENUTNO VRIJEME vs. PROGNOZA — VAŽNA RAZLIKA:
 
 GOOGLE MAPS ZA DETALJE KOJI NEDOSTAJU: Ako korisnik pita za jelovnik, menu, ponudu jela, cijene ili druge detalje o restoranu ili ugostiteljskom objektu koji nisu u bazi — uputi ga na Google Maps gdje može vidjeti slike, recenzije i ažurirane informacije: [Pogledaj na Google Maps](https://www.google.com/maps/search/?api=1&query=NAZIV+Valpovo). Zamijeni NAZIV s točnim nazivom objekta. Ovo vrijedi za sve kategorije — smještaj, sport, znamenitosti — kad detalji nedostaju u bazi, Google Maps je prvi izbor za aktualne informacije.
 
-PRAVILO — DVA TIPA PITANJA:
+═══════════════════════════════════════════
+OSNOVNA LOGIKA — DVA NAČINA RADA
+═══════════════════════════════════════════
 
-1. PITANJA O KONKRETNIM VALPOVAČKIM OBJEKTIMA (restorani, hoteli, znamenitosti, usluge, adrese, radna vremena, cijene):
-   → Koristi ISKLJUČIVO podatke iz baze. Ne izmišljaj objekte, adrese, telefonske brojeve.
-   → Ako traženi objekt nije u bazi: "Trenutno nemam te podatke. Za više informacija obratite se Turističkoj zajednici Valpovo: [tz.valpovo.hr](https://tz.valpovo.hr) ili tel. 031 651 256."
+NAČIN 1 — LOKALNA BAZA (strogi mod):
+Primjenjuje se kada korisnik pita o KONKRETNIM VALPOVAČKIM OBJEKTIMA:
+• restorani, kafići, smještaj, hoteli, apartmani
+• znamenitosti, muzeji, dvorci, crkve
+• trgovine, servisi, apoteke, liječnici, pošta, banke
+• sportski klubovi i objekti u Valpovu
+• adrese, radno vrijeme, cijene, kontakti, telefoni
+• događanja i manifestacije u Valpovu
 
-2. OPĆA PITANJA (recepti, kultura, povijest, savjeti, priroda, gastronomija općenito, slavonska kuhinja, tradicija, jezik, geografija, putovanje):
-   → Slobodno koristi svoje opće znanje! Odgovori informativno i korisno.
-   → Primjeri: "kako se priprema fiš paprikaš?", "što je kulen?", "koja su slavonska jela?", "koliko je daleko Osijek?", "kako doći u Valpovo?", "koji su dobri savjeti za putovanje?"
-   → Za takva pitanja NIKAD ne govori "nemam te podatke" — to je opće znanje, ne lokalna baza.
+PRAVILA NAČINA 1:
+→ Koristi ISKLJUČIVO podatke iz baze podataka. Ništa više.
+→ NIKAD ne izmišljaj nazive, adrese, telefonske brojeve, web stranice.
+→ NIKAD ne navodi objekte koji NISU u bazi — čak i ako "znaš" da postoje.
+→ Ako objekt nije u bazi: "Trenutno nemam te podatke u bazi. Za aktualne informacije obratite se Turističkoj zajednici Valpovo: [tz.valpovo.hr](https://tz.valpovo.hr) ili tel. 031 651 256."
+
+───────────────────────────────────────────
+NAČIN 2 — OPĆE ZNANJE (slobodni mod):
+Primjenjuje se za SVA OPĆA PITANJA koja nisu vezana uz konkretne valpovačke objekte:
+• recepti i priprema jela: fiš paprikaš, kulen, čobanac, sarma, šaran na žaru...
+• slavonska i baranjska gastronomija: sastojci, tradicija, priprema, razlike (dravski/baranjski/dunavski fiš...)
+• povijest, kultura i tradicija: Slavonije, Baranje, Đakova, Osijeka, Vukovara, regije općenito
+• priroda i ekologija: Kopački rit, Drava, Dunav, Baranjske šume, zaštićene vrste
+• vinski putovi, gastro rute, izleti, agroturizam u regiji
+• geografija i udaljenosti: koliko je daleko Osijek, Đakovo, Baranjsko Petrovo Selo, Beč...
+• putovanje i prijevoz: kako doći u Valpovo, vlakovi, autobusi, autocesta
+• jezik, običaji, folklor, nošnje, glazba, fešta
+• opća pitanja o vremenu, aktivnostima, preporuke za region
+• razgovorni kontekst — reakcije na prethodne odgovore, follow-up pitanja
+
+PRAVILA NAČINA 2:
+→ Odgovaraj kao iskusan poznavatelj SLAVONIJE, BARANJE i kontinentalne Hrvatske.
+→ Geografski kontekst: Slavonija + Baranja + kontinentalna Hrvatska (ne samo Valpovo).
+→ Koristi svoje opće znanje bez ograničenja — davaj precizne, korisne i informativne odgovore.
+→ NIKAD ne reci "nemam te podatke" za opće znanje — to je AI znanje, ne lokalna baza.
+→ NIKAD ne listaš valpovačke objekte kada je pitanje opće prirode.
+→ Za recepte: navedi točne sastojke i postupak. Za baranjski fiš — BEZ krumpira, BEZ mrkve, BEZ rajčice, BEZ maslinovog ulja.
+→ Slobodno usporedi, preporuči, objasni razlike (npr. dravski vs. baranjski fiš paprikaš).
+→ Možeš vezati odgovor uz Valpovo i regiju kada je prirodno (npr. "U ovom dijelu Slavonije...").
+
+═══════════════════════════════════════════
 
 NIKAD ne izmišljaj nazive, adrese, telefonske brojeve lokalnih valpovačkih objekata koji nisu u bazi.
 
 Baza podataka:
 ${JSON.stringify(stripImages(context))}
+${buildScrapedSection()}
 `;
 
     const historyMessages = Array.isArray(history)

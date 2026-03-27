@@ -118,14 +118,47 @@ export const db = {
             "Muzej Valpovštine osnovan je 1956. i smješten je unutar dvorca.",
             "Suvenirnica grada Valpova otvorena je u svibnju 2023. u Katančićevom vremeplovu.",
             "Godišnja manifestacija 'Ljeto valpovačko' traje od 1968. godine (57. izdanje u 2025.).",
-            "Na području Valpova žive 4 naroda i više vjerskih zajednica — slavenska multietničnost tipična za Slavoniju."
-        ]
+            "Na području Valpova žive 4 naroda i više vjerskih zajednica — slavenska multietničnost tipična za Slavoniju.",
+            "Valko kolači — Valpovo je rodno mjesto PRVE industrijske proizvodnje kolača u Hrvatskoj. Tvornica 'Valko' (kasnije poznata i kao 'Zvijezda') bila je pionir slastičarske industrije u cijeloj državi.",
+            "Valpovka — poznati brand stočne hrane (krmnih smjesa) koji se proizvodi / producirao u Valpovu i distribuira po cijeloj regiji. Sinonim za kvalitetnu stočnu hranu u Slavoniji i Baranji."
+        ],
+        "povijest_industrije": [
+            {
+                "naziv": "Valko kolači",
+                "opis": "Prva industrijska proizvodnja kolača u Hrvatskoj. Tvornica smještena u Valpovu bila je pionir u industrijskom slastičarstvu. Valko kolači postali su prepoznatljiv brand širom bivše Jugoslavije i Hrvatske. Ovo je jedna od najznačajnijih industrijskih prekretnica u povijesti Valpova.",
+                "znacaj": "Prva industrijska proizvodnja kolača u cijeloj Hrvatskoj"
+            },
+            {
+                "naziv": "Valpovka",
+                "opis": "Poznati brand stočne hrane (krmnih smjesa i koncentrata) iz Valpova. Valpovka je postala sinonim za kvalitetnu stočnu hranu u Slavoniji, Baranji i široj regiji. Distribuirala se kroz poljoprivredne zadruge i specijalizirane prodavaonice.",
+                "znacaj": "Regionalno prepoznatljivi brand stočne hrane"
+            },
+            {
+                "naziv": "Pivovara Prandau",
+                "opis": "U sklopu dvorca Prandau-Normann djelovala je pivovara — jedna od prvih u Slavoniji. Obitelj Prandau bila je pionir industrijske proizvodnje u regiji.",
+                "znacaj": "Jedna od prvih slavonskih pivovara, 18./19. st."
+            }
+        ],
+        "poljoprivreda": {
+            "opis": "Valpovštinu karakterizira plodno panonsko tlo pogodno za ratarstvo i stočarstvo. Više od 60% površine je poljoprivredno zemljište.",
+            "glavne_kulture": [
+                "Kukuruz — dominantna kultura, uzgaja se na velikim površinama, koristi se za prehranu i stočarstvo",
+                "Pšenica — tradicionalna žitarica valpovačkog kraja",
+                "Suncokret — važna industrijska kultura za preradu",
+                "Šećerna repa — uzgoj za šećerane u regiji",
+                "Soja — sve zastupljenija kultura u suvremenom uzgoju",
+                "Ječam — uzgaja se kao stočna hrana i za pivarstvo"
+            ],
+            "stocarstvo": "Uzgoj svinja, goveda i peradi — tradicija valpovačkog kraja. Svinjogojstvo posebno razvijeno zbog tradicije pravljenja slavonskog kulena i suhomesnatih proizvoda.",
+            "vocarstvo": "Šljive, jabuke, kruške — voćnjaci u rubnim zonama naselja. Šljiva je osnova za domaću rakiju šljivovicu.",
+            "napomena": "Specifični podaci o pojedinim OPG-ima i uzgajivačima dostupni su na HGK (Hrvatska gospodarska komora) ili HAPIH-u."
+        }
     },
     "znamenitosti": [
         {
             "naziv": "Dvorac Prandau-Normann i perivoj",
             "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2018/04/dvorac-photo.jpg",
-            "opis": "Barokni dvorac iz 18. st. sa srednjovjekovnom kulom i engleskim perivojem.",
+            "opis": "Cjelinu dvorca čine: pročelna barokna palača (18. st.), srednjovjekovna kula (najstariji i spomenički najvrijedniji dio), dvorska kapelica Presvetog Trojstva i engleski perivoj. Kompleks je obnavljan sedam puta kroz povijest. Car Karlo VI. 1721. posjed daruje barunu Antunu Petru Hilleprand von Prandau. Obitelj Prandau (do 1885.) i potom Normann-Ehrenfels (do 1944.) razvijaju grad i grade kulturne institucije. Muzej Valpovštine smješten je unutar dvorca od 1956.",
             "adresa": "Ul. Dvorac Norman-Prandau 1",
             "koordinate": { "lat": 45.6589474, "lng": 18.4153698 },
             "maps_url": "https://www.google.com/maps/dir/?api=1&destination=45.6589474,18.4153698",
@@ -134,7 +167,7 @@ export const db = {
         {
             "naziv": "Muzej Valpovštine",
             "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2018/04/muzej-1920x1280.jpg",
-            "opis": "Muzej smješten u dvorcu s bogatim zbirkama o povijesti Valpovštine.",
+            "opis": "Osnovan 1956. u dvorcu Prandau-Normann. Sadrži više od 10.000 katalogiziranih predmeta u jedanaest soba. Zbirke: povijesna, arheološka, lovačka, etnografska, zoološko-geološka, vatrogasna, obrtnička. Sam dvorac — srednjovjekovno-barokna cjelina — smatra se 'najvećim i najvrijednijim eksponatom'. Moguće organizirati grupne obilazce s vodičem uz prethodnu najavu. Ravnatelj: Stjepan Vidaković.",
             "adresa": "Ul. Dvorac Norman-Prandau, Valpovo",
             "maps_url": "https://www.google.com/maps/dir/?api=1&destination=45.6589474,18.4153698",
             "radno_vrijeme": "Pon, Čet: 16:00–19:00 | Uto, Sri, Pet: 10:00–12:00 | Grupni posjeti uz najavu: 031/650-639",
@@ -165,7 +198,7 @@ export const db = {
         {
             "naziv": "Hotel Fortuna",
             "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2018/04/hotel-fortuna-1920-1280.jpg",
-            "opis": "Sagrađen 1807. godine od strane baruna Josipa Prandaua — jedan od tri najstarija sačuvana svratišta u sjeveroistočnoj Hrvatskoj.",
+            "opis": "Sagrađen 1807. godine od strane baruna Josipa Prandaua — jedan od tri najstarija sačuvana svratišta (hotela) u sjeveroistočnoj Hrvatskoj i jedan od najstarijih hotela u cijeloj zemlji. Povijesna građevina koja svjedoči o razvoju turizma i putničkih usluga za vrijeme Prandau vlastelinstava.",
             "adresa": "Valpovo",
             "maps_url": "https://www.google.com/maps/search/?api=1&query=Hotel+Fortuna+Valpovo",
             "web": "https://tz.valpovo.hr/znamenitosti/hotel-fortuna/"
@@ -181,7 +214,7 @@ export const db = {
         {
             "naziv": "Prandauovo kazalište",
             "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2018/04/prandauvo-kazaliste-1920-1280.jpg",
-            "opis": "Najstarija sačuvana kazališna zgrada u kontinentalnoj Hrvatskoj, podignuta 1809. godine od baruna Josefa Ignaca Hillepranda od Prandaua.",
+            "opis": "Najstarija sačuvana kazališna zgrada u kontinentalnoj Hrvatskoj. Podigao ju je 1809. baron Josef Ignac Hilleprand von Prandau, arhitekt Anton Hartmann. Kapacitet: ~100 gostiju. Prandau obitelj primila je glazbeno obrazovanje i redovito priređivala kazališne sezone i koncerte usporedive s europskim gradovima toga doba. Značaj kazališta nadilazi lokalne i regionalne okvire — od nacionalne je važnosti.",
             "adresa": "Valpovo",
             "maps_url": "https://www.google.com/maps/search/?api=1&query=Prandauovo+kazalište+Valpovo",
             "web": "https://tz.valpovo.hr/znamenitosti/prandauovo-kazaliste/"
@@ -415,14 +448,14 @@ export const db = {
         {
             "naziv": "MatijafesT",
             "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2025/03/1-matijafest-1024x683.jpg",
-            "opis": "Kulturno-edukativni festival za djecu o ostavštini M.P. Katančića.",
+            "opis": "Kulturno-edukativni festival za djecu predškolske i školske dobi posvećen ostavštini Matije Petra Katančića — 'najučenijeg Slavonca svoga doba'. Program uključuje interaktivne radionice izrade suvenira, upoznavanje s Katančićevim doprinosom znanosti i kulturi, te kreativne aktivnosti za mlade. Organizira TZ Grad Valpovo.",
             "vrijeme": "Svibanj",
             "web": "https://tz.valpovo.hr/manifestacije/matijafest/"
         },
         {
             "naziv": "Festival sira i vina",
             "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2025/03/1-festival-sira-i-vina-1-1024x684.jpg",
-            "opis": "Eno-gastro festival u dvorcu uz degustacije i glazbu.",
+            "opis": "Eno-gastro festival u dvorištu dvorca Prandau-Normann uz degustacije sireva i vina lokalnih i regionalnih proizvođača. Cilj festivala je promicanje i tržišna afirmacija kvalitetnih domaćih sirana i vinara, uz istovremeno brendiranje valpovačkog dvorca kao turističke destinacije. Prezentacije na hrvatskom, engleskom i njemačkom jeziku.",
             "vrijeme": "Svibanj",
             "web": "https://tz.valpovo.hr/manifestacije/festival-sira-i-vina/"
         },
@@ -436,8 +469,8 @@ export const db = {
         {
             "naziv": "Ljeto valpovačko",
             "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2025/03/1-2-1024x681.jpg",
-            "opis": "Najveća smotra folklora i tradicijske kulture.",
-            "vrijeme": "Lipanj",
+            "opis": "Najstarija i najznačajnija smotra amaterske kulturne kreativnosti u regiji. Manifestacija traje neprekidno od 1968. godine (57. izdanje u 2025.) i posvećena je očuvanju slavonskih baštinskih tradicija i folklora. Odvija se zadnjeg tjedna u lipnju. Prepoznata i izvan regionalnih granica — sudionici dolaze iz cijele Hrvatske i inozemstva.",
+            "vrijeme": "Lipanj — zadnji tjedan",
             "web": "https://tz.valpovo.hr/manifestacije/ljeto-valpovacko/"
         },
         {
@@ -457,8 +490,9 @@ export const db = {
         {
             "naziv": "Fišijada Nard",
             "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2025/03/1-fisijada-nard-1-1024x683.jpg",
-            "opis": "Polufinalno državno natjecanje u kuhanju fiša.",
-            "vrijeme": "Kolovoz",
+            "opis": "NAJSTARIJA Fišijada u Hrvatskoj — odvija se u naselju Nard pokraj Valpova. Od 2019. godine nositelj statusa polufinalnog državnog natjecanja u kuhanju ribljeg paprikaša (dodjela TZ Osječko-baranjske županije). Uz natjecanje u kuhanju fiš paprikaša nude se i šaran na ražnju i pohani šaran. Program uključuje nastupe tamburaškog orkestra. Valpovška regija redovito iznjedruje finaliste i prvake državnog natjecanja.",
+            "vrijeme": "Kolovoz — zadnja subota",
+            "lokacija": "Nard (naselje uz Valpovo)",
             "web": "https://tz.valpovo.hr/manifestacije/fisijada-nard-polufinalno-drzavno-natjecanje-u-kuhanju-ribljeg-paprikasa/"
         },
         {
@@ -672,24 +706,88 @@ export const db = {
         ],
         "frizeraji": [
             {
-                "naziv": "Frizerski salon Erika",
+                "naziv": "Frizerski salon Cool",
+                "adresa": "Osječka ulica 44, Valpovo",
+                "telefon": "099 350 2909",
+                "napomena": "5.0★ (39 recenzija) — jedan od najbolje ocijenjenih salona u Valpovu",
+                "maps_url": "https://www.google.com/maps/search/?api=1&query=Frizerski+salon+Cool+Dejana+Budic+Valpovo"
+            },
+            {
+                "naziv": "Frizerski salon Đurđica",
+                "adresa": "Nikole Tesle 39, Valpovo",
+                "napomena": "4.9★ · Pon/Sri/Pet: 08–16h · Uto/Čet: 13–19h · Sub: 08–13h",
+                "maps_url": "https://www.google.com/maps/search/?api=1&query=Frizerski+salon+%C4%90ur%C4%91ica+Valpovo"
+            },
+            {
+                "naziv": "Frizerski salon Viva",
+                "adresa": "Vijenac 107. brigade HV 3, Valpovo",
+                "napomena": "4.7★ (87 recenzija)",
+                "maps_url": "https://www.google.com/maps/search/?api=1&query=Frizerski+salon+Viva+Valpovo"
+            },
+            {
+                "naziv": "Studio Reina",
+                "adresa": "Osječka ulica 14C, Valpovo",
+                "napomena": "5.0★ — frizerski studio",
+                "maps_url": "https://www.google.com/maps/search/?api=1&query=Studio+Reina+frizerski+Valpovo"
+            },
+            {
+                "naziv": "Frizerski studio Glow",
+                "adresa": "Vijenac Hrvatske Republike 5A, Valpovo",
+                "maps_url": "https://www.google.com/maps/search/?api=1&query=Frizerski+studio+Glow+Valpovo"
+            },
+            {
+                "naziv": "Frizerski salon MegaLook",
+                "adresa": "Matije Gupca 42, Valpovo",
+                "telefon": "091 733 4615",
+                "maps_url": "https://www.google.com/maps/search/?api=1&query=Frizerski+salon+MegaLook+Valpovo"
+            },
+            {
+                "naziv": "Frizerski salon Belleza",
+                "adresa": "Ul. dr. Franje Tuđmana 1, Valpovo",
+                "maps_url": "https://www.google.com/maps/search/?api=1&query=Frizerski+salon+Belleza+Valpovo"
+            },
+            {
+                "naziv": "Frizerski salon Mira",
+                "adresa": "Josipa Jurja Strossmayera 8, Valpovo",
+                "telefon": "031 651 120",
+                "maps_url": "https://www.google.com/maps/search/?api=1&query=Frizerski+salon+Mira+Valpovo"
+            },
+            {
+                "naziv": "Salon Beauty",
+                "adresa": "Vijenac Hrvatske Republike 8, Valpovo",
+                "napomena": "Frizerski i kozmetički salon (šišanje, bojanje, manikura, trajni lak)",
+                "maps_url": "https://www.google.com/maps/search/?api=1&query=Salon+Beauty+Valpovo"
+            },
+            {
+                "naziv": "Frizerski salon Picasso",
+                "adresa": "Kolodvorska 4, Valpovo",
+                "maps_url": "https://www.google.com/maps/search/?api=1&query=Frizerski+salon+Picasso+Valpovo"
+            },
+            {
+                "naziv": "Frizerski studio Mirakul",
                 "adresa": "Valpovo",
-                "maps_url": "https://www.google.com/maps/search/?api=1&query=frizerski+salon+Erika+Valpovo"
+                "maps_url": "https://www.google.com/maps/search/?api=1&query=Frizerski+studio+Mirakul+Valpovo"
+            },
+            {
+                "naziv": "Frizerski salon Lorna",
+                "adresa": "Valpovo",
+                "maps_url": "https://www.google.com/maps/search/?api=1&query=Frizerski+salon+Lorna+Valpovo"
+            },
+            {
+                "naziv": "Frizerski salon Toni",
+                "adresa": "Valpovo",
+                "maps_url": "https://www.google.com/maps/search/?api=1&query=Frizerski+salon+Toni+Valpovo"
             },
             {
                 "naziv": "Frizerski salon Iris",
                 "adresa": "Valpovo",
-                "maps_url": "https://www.google.com/maps/search/?api=1&query=frizerski+salon+Iris+Valpovo"
+                "maps_url": "https://www.google.com/maps/search/?api=1&query=Frizerski+salon+Iris+Valpovo"
             },
             {
-                "naziv": "Kozmetički salon Beauty",
-                "adresa": "Valpovo",
-                "maps_url": "https://www.google.com/maps/search/?api=1&query=kozmeticki+salon+Valpovo"
-            },
-            {
-                "naziv": "Barbershop Valpovo",
-                "adresa": "Valpovo",
-                "maps_url": "https://www.google.com/maps/search/?api=1&query=barbershop+Valpovo"
+                "naziv": "FrizzStyle — mobilni frizer",
+                "adresa": "Valpovo (dolazak na adresu)",
+                "napomena": "Frizerske usluge u vašem domu — sve vrste friziranja",
+                "maps_url": "https://www.google.com/maps/search/?api=1&query=FrizzStyle+Valpovo"
             }
         ],
         "taksi": [
