@@ -96,6 +96,7 @@
             object-fit: cover;
             object-position: center 50%;
             display: block;
+            transition: opacity 1.2s ease;
         }
 
         #hero-banner-overlay {
@@ -750,8 +751,8 @@
         </div>
 
         <div id="hero-banner">
-            <img src="img/centar-grada.png"
-                 alt="Centar grada Valpova" loading="eager">
+            <img id="hero-img" src="img/centar-dan.jpg"
+                 alt="Centar grada Valpova — dnevna vizura" loading="eager">
             <div id="hero-banner-overlay">
                 <div class="hero-weather">
                     Sada je u Valpovu: <span id="weather">⏳</span>
@@ -1402,6 +1403,24 @@
             const chatEl = document.getElementById('chat');
             chatEl.style.top = (hero.offsetTop + hero.offsetHeight) + 'px';
         }
+
+        /* ── HERO SLIKA: dnevna (6-20h) / noćna (20-6h) ── */
+        function applyHeroImage() {
+            const hour = new Date().getHours();
+            const isDay = hour >= 6 && hour < 20;
+            const img = document.getElementById('hero-img');
+            if (!img) return;
+            const newSrc = isDay ? 'img/centar-dan.jpg' : 'img/centar-noc.png';
+            if (img.src.endsWith(newSrc)) return; // već ispravna slika
+            img.style.opacity = '0';
+            setTimeout(() => {
+                img.src = newSrc;
+                img.alt = isDay ? 'Centar grada Valpova — dnevna vizura'
+                                : 'Centar grada Valpova — noćna vizura';
+                img.style.opacity = '1';
+            }, 300);
+        }
+        applyHeroImage();
 
         /* ── BANNER: ispuni sav slobodni prostor do alatne trake ── */
         function setBannerHeight() {
