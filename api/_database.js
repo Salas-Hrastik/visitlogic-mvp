@@ -122,6 +122,13 @@ export const db = {
             "Valko kolači — Valpovo je rodno mjesto PRVE industrijske proizvodnje kolača u Hrvatskoj. Tvornica 'Valko' (kasnije poznata i kao 'Zvijezda') bila je pionir slastičarske industrije u cijeloj državi.",
             "Valpovka — poznati brand stočne hrane (krmnih smjesa) koji se proizvodi / producirao u Valpovu i distribuira po cijeloj regiji. Sinonim za kvalitetnu stočnu hranu u Slavoniji i Baranji."
         ],
+        "gradovi_prijatelji": [
+            { "naziv": "Komlo", "drzava": "Mađarska" },
+            { "naziv": "Tisno", "drzava": "Hrvatska" },
+            { "naziv": "Kupres", "drzava": "Bosna i Hercegovina" },
+            { "naziv": "Biała Rawska", "drzava": "Poljska" },
+            { "naziv": "Donji Miholjac", "drzava": "Hrvatska" }
+        ],
         "povijest_industrije": [
             {
                 "naziv": "Valko kolači",
@@ -191,9 +198,15 @@ export const db = {
         {
             "naziv": "Crkve i kapele",
             "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2018/04/dvorska-kapela-kapelica-1-e1525723165441-300x200.jpg",
-            "opis": "Sakralni objekti na području grada Valpova, uključujući crkve i kapele.",
+            "opis": "Na području Valpova nalazi se više sakralnih objekata: Župna crkva Bezgrešnog začeća BDM (1722.–1737., barokna s organama iz 1805.), Dvorska kapela Sv. Trojstva u dvorcu (15. st., barok., orgulje Angster 1876.), Kapela Sv. Roka na Zelenom brijegu (1796., zavjetna), Grobljanska kapela Uzvišenja sv. Križa (1880., neo-barok/gotika) i Kapelica Gospe Lurdske.",
             "maps_url": "https://www.google.com/maps/search/?api=1&query=crkva+Valpovo",
             "web": "https://tz.valpovo.hr/znamenitosti/crkve-i-kapele/"
+        },
+        {
+            "naziv": "Spomen-obilježja Valpova",
+            "opis": "Katančićevo poprsje — skulptura u parku ispred dvorca, naručio Gustav Prandau 1873. u čast franjevca Matije Petra Katančića. Spomenik Majke Božje s Isusom — na glavnom trgu, postavljen 1900. Katančićeva biblija — faksimil prvog prijevoda Biblije na hrvatski. Fabijan Šovagović — bista u Ladimirevcu na trgu (unveil 2007.), skulptor Stipe Sikirica.",
+            "maps_url": "https://www.google.com/maps/search/?api=1&query=Valpovo+spomen+obilježja",
+            "web": "https://tz.valpovo.hr/znamenitosti/spomen-obiljezja/"
         },
         {
             "naziv": "Hotel Fortuna",
@@ -309,9 +322,10 @@ export const db = {
         {
             "naziv": "Bar i Pizzeria HEX",
             "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2022/04/unnamed-4-pizzeria-hex-valpovo-854x640.jpg",
-            "opis": "Najpopularnije mjesto za pizzu i druženje.",
+            "opis": "Specijalist za originalnu napuljsku pizzu pečenu na 485°C. Ponuda: Margherita, Vesuvio, HEX (dimljena piletina), Prosciutto (pršut, rukola), Slavonska pizza, deserti. Renoviran 2022.",
             "adresa": "Trg kralja Tomislava 18, Valpovo",
-            "radno_vrijeme": "Ned–Pon: 10:00–23:00 | Uto–Sub: 10:00–24:00",
+            "telefon": "031/588-864",
+            "radno_vrijeme": "Ned–Pon: 10:00–23:00 | Uto–Sub: 10:00–24:00 | Kuhinja: Uto–Sub 11:00–23:00, Ned–Pon 14:00–22:00",
             "web": "https://tz.valpovo.hr/ugostiteljstvo/bar-i-pizzeria-hex-valpovo/"
         },
         {
@@ -324,9 +338,10 @@ export const db = {
         },
         {
             "naziv": "Gurman – Objekt brze prehrane",
-            "opis": "Brza prehrana u Valpovu.",
-            "adresa": "Valpovo",
-            "radno_vrijeme": "Pon–Sub: 13:00–21:00 | Ned: 14:00–21:00",
+            "opis": "Brza prehrana: pizze, panirana jela, roštilj, lignje, tjestenine, rižota, salate. Dostava dostupna.",
+            "adresa": "Augusta Šenoe 107, Valpovo",
+            "telefon": "031/653-077",
+            "radno_vrijeme": "Objekt: Pon–Sub 13:00–21:00, Ned 14:00–21:00 | Dostava: Pon–Pet 08:30–22:00, Sub 10:00–22:00, Ned 12:30–22:00",
             "maps_url": "https://www.google.com/maps/search/?api=1&query=Gurman+Valpovo",
             "web": "https://tz.valpovo.hr/ugostiteljstvo/gurman/"
         },
@@ -396,8 +411,9 @@ export const db = {
         {
             "naziv": "Barcode Caffe & Night Bar",
             "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2018/04/23916556_1909458369319888_384810895355494538_o_1.jpg",
-            "opis": "Caffe i noćni bar u Valpovu.",
-            "adresa": "Valpovo",
+            "opis": "Renoviran caffe i noćni bar s GameRoomom (bilijar, stolni nogomet, pikado, jukebox, PS4). Vikend: DJ i live glazba. Privatni eventi i proslave.",
+            "adresa": "Osječka 14, Valpovo",
+            "telefon": "091/210-0500",
             "radno_vrijeme": "Pon–Čet: 08:00–23:00 | Pet: 08:00–04:00 | Sub: 09:00–04:00 | Ned: 09:00–23:00",
             "maps_url": "https://www.google.com/maps/search/?api=1&query=Barcode+Caffe+Valpovo",
             "web": "https://tz.valpovo.hr/ugostiteljstvo/barcode-caffe-night-bar/"
@@ -405,8 +421,8 @@ export const db = {
         {
             "naziv": "Caffe Bar Brm Brm",
             "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2018/04/IMG-9e02fa1b72ffc4cac7f3ddd896cbac5e-V.jpg",
-            "opis": "Caffe bar u Valpovu.",
-            "adresa": "Valpovo",
+            "opis": "Caffe bar u sklopu benzinske crpke Petrol, na valpovačkoj obilaznici. Alkoholna i bezalkoholna pića, vrhunska kava. Mimo gradske gužve.",
+            "adresa": "Bizovačka 6, Valpovo",
             "radno_vrijeme": "Pon–Pet: 06:00–22:00 | Sub–Ned: 08:00–22:00",
             "maps_url": "https://www.google.com/maps/search/?api=1&query=Caffe+Bar+Brm+Brm+Valpovo",
             "web": "https://tz.valpovo.hr/ugostiteljstvo/caffe-bar-brm-brm/"
@@ -414,8 +430,8 @@ export const db = {
         {
             "naziv": "Caffe Bar Aqua Valpovo",
             "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2022/04/160862921_284864409878535_1700317226212063352_n.jpg",
-            "opis": "Caffe bar u Valpovu.",
-            "adresa": "Valpovo",
+            "opis": "Ugodan prostor sa svjetlosnim efektima i terasom. Nudi 15–20 vrsta piva (2 točena), 5 vrsta vina. Neutralna glazba prilagođena opuštenom druženju.",
+            "adresa": "Braće Radić 28, Valpovo",
             "radno_vrijeme": "Pon–Čet: 08:00–00:00 | Pet–Sub: 08:00–02:00 | Ned: 09:00–00:00",
             "maps_url": "https://www.google.com/maps/search/?api=1&query=Caffe+Bar+Aqua+Valpovo",
             "web": "https://tz.valpovo.hr/ugostiteljstvo/caffe-bar-aqua-valpovo/"
