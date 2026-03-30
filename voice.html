@@ -81,8 +81,13 @@
         #hero-banner {
             position: relative;
             width: 100%;
-            height: 220px;
+            height: 220px; /* početna vrijednost, JS postavlja na puni ekran */
             overflow: hidden;
+            transition: height 0.35s ease;
+        }
+
+        #hero-banner.collapsed {
+            height: 0 !important;
         }
 
         #hero-banner img {
@@ -1211,6 +1216,7 @@
             const text = inputEl.value.trim();
             if (!text || isProcessing) return;
 
+            collapseBanner();
             addMessage(text, "user");
             inputEl.value = "";
 
@@ -1391,16 +1397,45 @@
         loadWeather();
 
         /* ── DINAMIČKA VISINA CHATA ── */
-        // Chat top = visina headera + visina hero panela (hero se mijenja ovisno o ekranu)
         function adjustChatTop() {
             const hero = document.getElementById('hero');
             const chatEl = document.getElementById('chat');
             chatEl.style.top = (hero.offsetTop + hero.offsetHeight) + 'px';
         }
-        window.addEventListener('resize', adjustChatTop);
-        // Pozovi odmah i malo odgođeno (da se weather učita i hero dobije pravu visinu)
+
+        /* ── BANNER: ispuni sav slobodni prostor do alatne trake ── */
+        function setBannerHeight() {
+            const banner = document.getElementById('hero-banner');
+            if (!banner || banner.classList.contains('collapsed')) return;
+            const heroEl   = document.getElementById('hero');
+            const welcome  = document.getElementById('welcome-compact');
+            const buttons  = document.querySelector('.hero-buttons-row');
+            const inputArea = document.getElementById('input-area');
+            const used = heroEl.offsetTop
+                       + welcome.offsetHeight
+                       + buttons.offsetHeight
+                       + (inputArea ? inputArea.offsetHeight : 72);
+            const available = window.innerHeight - used;
+            banner.style.height = Math.max(available, 60) + 'px';
+            adjustChatTop();
+        }
+
+        /* ── SKUPI BANNER pri prvoj poslanoj poruci ── */
+        let bannerCollapsed = false;
+        function collapseBanner() {
+            if (bannerCollapsed) return;
+            bannerCollapsed = true;
+            const banner = document.getElementById('hero-banner');
+            if (banner) {
+                banner.classList.add('collapsed');
+                setTimeout(adjustChatTop, 370);
+            }
+        }
+
+        window.addEventListener('resize', () => { setBannerHeight(); adjustChatTop(); });
+        setBannerHeight();
         adjustChatTop();
-        setTimeout(adjustChatTop, 500);
+        setTimeout(() => { setBannerHeight(); adjustChatTop(); }, 500);
     </script>
 
 </body>
