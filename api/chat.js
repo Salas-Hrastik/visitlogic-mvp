@@ -1017,6 +1017,100 @@ export default async function handler(req, res) {
       return res.status(200).json({ reply, category, suggestions: getSuggestions(category), images: extractImages(context) });
     }
 
+    // === KUPOVINA PRE-GEN ===
+    // Web linkovi za trgovine namjerno izostavljeni — stranice ne rade
+    const isKupovinaListing = category === 'kupovina' && !isRecommendationQuery && !isDetailQuery && !isGeneralKnowledgeQuery && !isConversationalMode && matched;
+    if (isKupovinaListing) {
+      const k = db.kupovina;
+      const ml = msgLower;
+
+      const helper = (item, icon = '') => {
+        let s = '';
+        if (icon) s += `${icon} `;
+        s += `**${item.naziv}**\n`;
+        if (item.opis) s += `${item.opis}\n`;
+        if (item.adresa) s += `📍 ${item.adresa}\n`;
+        if (item.radno_vrijeme) s += `🕐 ${item.radno_vrijeme}\n`;
+        if (item.telefon) s += `📞 ${item.telefon}\n`;
+        if (item.maps_url) s += `[${t.map}](${item.maps_url})\n`;
+        s += `[[CLR]]\n\n`;
+        return s;
+      };
+
+      // Specifični upit (npr. cipele, odjeća, kozmetika)?
+      const wantsFood    = ['prehrambeni','supermarket','namirnic','groceri'].some(k => ml.includes(k));
+      const wantsShoes   = ['cipele','obuća','obuca','shoes'].some(k => ml.includes(k));
+      const wantsClothes = ['odjeća','odjeca','moda','fashion','clothes'].some(k => ml.includes(k));
+      const wantsDrug    = ['kozmetik','drogerij','dm','bipa','ljekovit'].some(k => ml.includes(k));
+      const wantsFurni   = ['namještaj','namjestaj','furniture','jysk'].some(k => ml.includes(k));
+      const wantsSuv     = ['suvenir','lokalni','opg','tržnic','trznic'].some(k => ml.includes(k));
+      const specificQuery = wantsFood || wantsShoes || wantsClothes || wantsDrug || wantsFurni || wantsSuv;
+
+      let reply = '';
+      if (!specificQuery) {
+        // Opći pregled svih kategorija
+        reply = `🛍️ Kupovina u Valpovu — kompletni pregled:\n\n`;
+
+        if (k.trgovacki_centri?.length) {
+          reply += `🏬 **Trgovački centri**\n\n`;
+          for (const item of k.trgovacki_centri) {
+            reply += helper(item, '🏬');
+            if (item.trgovine_u_centru?.length) {
+              reply += `Trgovine unutar centra: ${item.trgovine_u_centru.join(', ')}\n\n`;
+            }
+          }
+        }
+        if (k.supermarketi?.length) {
+          reply += `🛒 **Supermarketi**\n\n`;
+          for (const item of k.supermarketi) reply += helper(item, '🛒');
+        }
+        if (k.specijalizirane_trgovine?.length) {
+          reply += `🏪 **Specijalizirane trgovine**\n\n`;
+          for (const item of k.specijalizirane_trgovine) reply += helper(item, '🏪');
+        }
+        if (k.lokalni_i_suveniri?.length) {
+          reply += `🎁 **Lokalni proizvodi i suveniri**\n\n`;
+          for (const item of k.lokalni_i_suveniri) reply += helper(item, '🎁');
+        }
+        if (k.trznica) {
+          reply += `🥬 **Tržnica**\n\n`;
+          reply += helper(k.trznica, '🥬');
+        }
+      } else {
+        // Filtrirani prikaz
+        const allItems = [
+          ...(k.trgovacki_centri || []),
+          ...(k.supermarketi || []),
+          ...(k.specijalizirane_trgovine || []),
+          ...(k.lokalni_i_suveniri || []),
+        ];
+        const filter = (item) =>
+          (wantsFood   && (item.naziv?.toLowerCase().includes('konzum') || item.naziv?.toLowerCase().includes('plodine') || item.naziv?.toLowerCase().includes('tommy') || item.naziv?.toLowerCase().includes('lidl'))) ||
+          (wantsShoes  && (item.naziv?.toLowerCase().includes('obuć') || item.naziv?.toLowerCase().includes('borovo') || item.naziv?.toLowerCase().includes('deichmann'))) ||
+          (wantsClothes && (item.naziv?.toLowerCase().includes('pepco') || item.naziv?.toLowerCase().includes('takko') || item.naziv?.toLowerCase().includes('kik') || item.naziv?.toLowerCase().includes('mana'))) ||
+          (wantsDrug   && (item.naziv?.toLowerCase().includes('dm') || item.naziv?.toLowerCase().includes('bipa'))) ||
+          (wantsFurni  && (item.naziv?.toLowerCase().includes('jysk') || item.naziv?.toLowerCase().includes('prima') || item.naziv?.toLowerCase().includes('namješ')));
+        const filtered = allItems.filter(filter);
+        if (filtered.length) {
+          reply = `🛍️ Relevantne prodavaonice:\n\n`;
+          for (const item of filtered) reply += helper(item);
+        } else {
+          // Fallback — prikaži supermarkete
+          reply = `🛍️ Kupovina u Valpovu:\n\n`;
+          for (const item of (k.supermarketi || [])) reply += helper(item, '🛒');
+        }
+        if (wantsSuv) {
+          if (k.lokalni_i_suveniri?.length) {
+            reply += `\n🎁 **Lokalni proizvodi i suveniri**\n\n`;
+            for (const item of k.lokalni_i_suveniri) reply += helper(item, '🎁');
+          }
+          if (k.trznica) reply += helper(k.trznica, '🥬');
+        }
+      }
+
+      return res.status(200).json({ reply, category, suggestions: getSuggestions(category), images: extractImages(context) });
+    }
+
     // === USLUGE PRE-GEN ===
     // Zdravstvo, banke, auto servisi, taksi, benzinske, frizeraji, parking
     // Sprječava AI haluciniranje naziva institucija koje NE postoje u Valpovu
