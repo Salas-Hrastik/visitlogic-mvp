@@ -65,18 +65,45 @@
             top: 90px;
             left: 0;
             right: 0;
-            background: #e9ecef;
-            padding: 8px 20px 10px;
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
             z-index: 9;
-            border-bottom: 1px solid #ccc;
+            border-bottom: 2px solid #0f6b3c;
+            background: #1a4a2e;
+        }
+
+        #hero-banner {
+            position: relative;
+            width: 100%;
+            height: 140px;
+            overflow: hidden;
+        }
+
+        #hero-banner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 55%;
+            display: block;
+        }
+
+        #hero-banner-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(10,40,20,0.72));
+            padding: 18px 16px 8px;
         }
 
         .hero-weather {
-            font-size: 15px;
+            font-size: 14px;
             font-weight: 600;
+            color: #d8f0e2;
+            text-shadow: 0 1px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero-buttons-row {
+            padding: 7px 12px 8px;
+            background: #e9ecef;
         }
 
         .quick-buttons {
@@ -646,12 +673,18 @@
 
             #hero {
                 top: 60px;
-                padding: 6px 12px 8px;
-                gap: 5px;
+            }
+
+            #hero-banner {
+                height: 105px;
             }
 
             .hero-weather {
-                font-size: 13px;
+                font-size: 12px;
+            }
+
+            .hero-buttons-row {
+                padding: 5px 8px 7px;
             }
 
             .quick-buttons button {
@@ -680,20 +713,28 @@
     </div>
 
     <div id="hero">
-        <div class="hero-weather">
-            Sada je u Valpovu: <span id="weather">... učitavam</span>
+        <div id="hero-banner">
+            <img src="https://tz.valpovo.hr/wp-content/uploads/2018/04/dvorac-photo.jpg"
+                 alt="Dvorac Normann-Prandau, Valpovo" loading="eager">
+            <div id="hero-banner-overlay">
+                <div class="hero-weather">
+                    Sada je u Valpovu: <span id="weather">⏳</span>
+                </div>
+            </div>
         </div>
 
-        <div class="quick-buttons">
-            <button onclick="quickAsk('Koje su glavne znamenitosti i atrakcije u Valpovu?')">🏛️ Znamenitosti</button>
-            <button onclick="quickAsk('Koji restorani i kafići postoje u Valpovu?')">🍽️ Gastronomija</button>
-            <button onclick="quickAsk('Koje manifestacije i festivali se održavaju u Valpovu?')">🎉 Događanja</button>
-            <button onclick="quickAsk('Koji smještaj postoji u Valpovu? Hoteli, apartmani, sobe.')">🏨 Smještaj</button>
-            <button onclick="quickAsk('Kakva je priroda u okolici Valpova i koje su mogućnosti za rekreaciju i šetnju?')">🌿 Priroda</button>
-            <button onclick="quickAsk('Izleti iz Valpova — koje destinacije i mjesta ima u okolici?')">🗺️ Izleti</button>
-            <button onclick="quickAsk('Koji sportski klubovi i sportski sadržaji postoje u Valpovu?')">⚽ Sport</button>
-            <button onclick="quickAsk('Gdje mogu kupovati u Valpovu? Koje trgovine i shopping centri postoje?')">🛍️ Kupovina</button>
-            <button onclick="quickAsk('Reci mi općenite informacije o gradu Valpovu — povijest, naselja, gospodarstvo i zanimljivosti.')">ℹ️ O gradu</button>
+        <div class="hero-buttons-row">
+            <div class="quick-buttons">
+                <button onclick="quickAsk('Koje su glavne znamenitosti i atrakcije u Valpovu?')">🏛️ Znamenitosti</button>
+                <button onclick="quickAsk('Koji restorani i kafići postoje u Valpovu?')">🍽️ Gastronomija</button>
+                <button onclick="quickAsk('Koje manifestacije i festivali se održavaju u Valpovu?')">🎉 Događanja</button>
+                <button onclick="quickAsk('Koji smještaj postoji u Valpovu? Hoteli, apartmani, sobe.')">🏨 Smještaj</button>
+                <button onclick="quickAsk('Kakva je priroda u okolici Valpova i koje su mogućnosti za rekreaciju i šetnju?')">🌿 Priroda</button>
+                <button onclick="quickAsk('Izleti iz Valpova — koje destinacije i mjesta ima u okolici?')">🗺️ Izleti</button>
+                <button onclick="quickAsk('Koji sportski klubovi i sportski sadržaji postoje u Valpovu?')">⚽ Sport</button>
+                <button onclick="quickAsk('Gdje mogu kupovati u Valpovu? Koje trgovine i shopping centri postoje?')">🛍️ Kupovina</button>
+                <button onclick="quickAsk('Reci mi općenite informacije o gradu Valpovu — povijest, naselja, gospodarstvo i zanimljivosti.')">ℹ️ O gradu</button>
+            </div>
         </div>
     </div>
 
@@ -746,7 +787,7 @@
         };
 
         /* ── WELCOME PORUKA ── */
-        addMessage("Dobrodošli!\n\nJa sam vaš AI digitalni turistički vodič kroz Valpovo. Ime sam dobio po znamenitom franjevcu i znanstveniku Matiji Petru Katančiću rođenom valpovčanu. Rado ću vam pomoći otkriti znamenitosti, restorane i zanimljiva mjesta u našem gradu.\n\nObzirom da sam u probnom radu moguće su i manje pogreške! Nemojte zamjeriti jer radimo na mome usavršavanju!");
+        addMessage("Dobrodošli u Valpovo! Ja sam **Matija** — vaš AI turistički vodič, nazvan po znamenitom valpovčaninu Matiji Petru Katančiću. Odaberite temu iznad ili postavite pitanje. 🌿");
 
         /* ── SCROLL LOCK ── */
         function setLock(locked) {
