@@ -465,8 +465,9 @@ export default async function handler(req, res) {
     ].some(k => msgLower.includes(k));
 
     const conversationHistory = Array.isArray(history) ? history : [];
-    // Konverzacijski način: history ima poruke I nije direktni zahtjev za listanjem
-    const isConversationalMode = conversationHistory.length >= 2 && !isDirectListingRequest;
+    // Konverzacijski način: history ima poruke I nije direktni zahtjev I nije jasno prepoznata kategorija
+    // Ako je kategorija jasno prepoznata (matched=true), uvijek koristi pre-gen — bez obzira na history
+    const isConversationalMode = conversationHistory.length >= 2 && !isDirectListingRequest && !matched;
 
     // Opća pitanja o kulturi, receptima, savjetima, prirodi, putovanju —
     // preskačemo SVE pre-gen blokove i pustimo AI da odgovori slobodnim znanjem
