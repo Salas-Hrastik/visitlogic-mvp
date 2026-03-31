@@ -6,7 +6,8 @@ export const db = {
         "telefon": "+385 31 656 200",
         "email": "tzgvalpovo@gmail.com",
         "web": "https://tz.valpovo.hr",
-        "virtualna_setnja": "https://tz.valpovo.hr/2025/01/17/virtualna-setnja-valpovo-gdje-najbolje-pocinje/"
+        "virtualna_setnja": "https://tz.valpovo.hr/2025/01/17/virtualna-setnja-valpovo-gdje-najbolje-pocinje/",
+        "virtualna_setnja_opis": "67 panorama: Muzej Valpovštine, středovjekovna kula, dvorska kapela, centar grada, crkva. Izradio virtualno360.hr u suradnji s TZ i Gradom Valpovo."
     },
     "opcenito": {
         "osnovni_podaci": {
@@ -593,40 +594,45 @@ export const db = {
             {
                 "naziv": "Apartman Tea Valpovo",
                 "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2022/12/IMG-20220505-WA0055-apartman-tea-valpovo.jpg",
-                "opis": "Apartman za kratki i duži boravak.",
-                "adresa": "Valpovo",
+                "opis": "Moderno-vintage ambijent. Spavaća soba (2 odvojena kreveta), dnevni boravak sa sofom, terasa. Opremljena kuhinja, perilica, roštilj. Blizu termalnih izvora.",
+                "adresa": "Učka 57, Valpovo",
+                "telefon": "091/913-0596",
                 "maps_url": "https://www.google.com/maps/search/?api=1&query=Apartman+Tea+Valpovo",
                 "web": "https://tz.valpovo.hr/smjestaj-u-valpovu/apartman-tea-valpovo/"
             },
             {
                 "naziv": "Apartman Ana 1 Valpovo",
                 "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2023/01/apartman.jpg",
-                "opis": "Apartman za iznajmljivanje.",
-                "adresa": "Valpovo",
+                "opis": "38 m², 250 m od centra (2 min hoda). Spavaća soba, kupaonica, hodnik, dnevni boravak s kuhinjom. Velika terasa, besplatno parkiranje. 450 m od dvorca.",
+                "adresa": "Ivana Gundulića 23, Valpovo",
+                "telefon": "098/979-5773",
                 "maps_url": "https://www.google.com/maps/search/?api=1&query=Apartman+Ana+Valpovo",
                 "web": "https://tz.valpovo.hr/smjestaj-u-valpovu/apartman-ana-1-valpovo/"
             },
             {
                 "naziv": "Apartmani Nives i Lea Valpovo",
                 "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2023/01/DSC6439apartmani-nives-valpovo.jpg",
-                "opis": "Dva apartmana za iznajmljivanje.",
-                "adresa": "Valpovo",
+                "opis": "2 apartmana, ukupno 10 osoba. Nives (3★, 90 m²): 3 spavaće sobe, kada, terasa, balkon. Lea (4★): kat s odvojenim ulazom. 300 m od centra, mirna ulica. WiFi, parking.",
+                "adresa": "Ivana Gorana Kovačića 25, Valpovo",
+                "telefon": "091/488-8202",
                 "maps_url": "https://www.google.com/maps/search/?api=1&query=Apartmani+Nives+Lea+Valpovo",
                 "web": "https://tz.valpovo.hr/smjestaj-u-valpovu/apartmani-nives-i-lea-valpovo/"
             },
             {
                 "naziv": "Studio apartman M Valpovo",
                 "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2023/03/IMG_1577-apartman-studio-m-valpovo.jpg",
-                "opis": "Studio apartman za iznajmljivanje.",
-                "adresa": "Valpovo",
+                "opis": "28 m² studio, 2 min hoda od centra. Spavaća soba, kupaonica, kuhinja. Klima, moderno opremljeno, besplatno parkiranje.",
+                "adresa": "Kralja Petra Krešimira IV 6, Valpovo",
+                "telefon": "099/838-4766",
                 "maps_url": "https://www.google.com/maps/search/?api=1&query=Studio+apartman+M+Valpovo",
                 "web": "https://tz.valpovo.hr/smjestaj-u-valpovu/studio-apartman-m-valpovo/"
             },
             {
                 "naziv": "Apartman Centar Valpovo",
                 "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2025/10/Slika-1-apartman-centar-valpovo.jpg",
-                "opis": "Apartman u centru Valpova.",
-                "adresa": "Valpovo",
+                "opis": "65 m², 4+2 osobe. Na 2. katu s liftom, pogled na dvorac Prandau-Normann. 2 spavaće sobe, dnevni boravak s kuhinjom. Klima, WiFi. U samom centru.",
+                "adresa": "Osječka 6, Valpovo",
+                "telefon": "099/244-3708",
                 "maps_url": "https://www.google.com/maps/search/?api=1&query=Apartman+Centar+Valpovo",
                 "web": "https://tz.valpovo.hr/smjestaj-u-valpovu/apartman-centar-valpovo/"
             }
@@ -653,7 +659,9 @@ export const db = {
             {
                 "naziv": "Privatni smještaj Tolić",
                 "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2018/04/tolic-1.jpg",
-                "adresa": "Valpovo",
+                "opis": "3 sobe s vlastitim kupaonicama (3★), zajednički dnevni boravak, kuhinja, blagovaona. Uz cestu Valpovo–Bizovac, 4 km od Bizovačkih toplica, 5 km od Valpova.",
+                "adresa": "Vladimira Nazora 2, Ladimirevci (5 km od Valpova)",
+                "telefon": "097/730-5708",
                 "maps_url": "https://www.google.com/maps/search/?api=1&query=Smještaj+Tolić+Valpovo",
                 "web": "https://tz.valpovo.hr/smjestaj-u-valpovu/privatni-smjestaj-tolic/"
             }
@@ -662,21 +670,27 @@ export const db = {
             {
                 "naziv": "Sobe za iznajmljivanje Čičak",
                 "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2021/09/čičak6.jpg",
-                "adresa": "Valpovo",
+                "opis": "Moderno opremljene sobe, klimatizirane, WiFi, vlastita kupaonica, TV. Mogućnost pripreme obroka.",
+                "adresa": "Bana Ivana Mažuranića 10, Valpovo",
+                "telefon": "095/900-1307",
                 "maps_url": "https://www.google.com/maps/search/?api=1&query=Sobe+Čičak+Valpovo",
                 "web": "https://tz.valpovo.hr/smjestaj-u-valpovu/sobe-za-iznajmljivanje-cicak/"
             },
             {
                 "naziv": "Soba za iznajmljivanje Draft Room",
                 "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2021/02/2.jpg",
-                "adresa": "Valpovo",
+                "opis": "2 odvojena kreveta (spajaju se), razvlačeća sofa za djecu, odvojena kupaonica. HDMI, prostor za bicikl, sef. 50 m od sportske dvorane. Airbnb.",
+                "adresa": "Franje Tuđmana 1-3, Valpovo",
+                "telefon": "+385 98 281 183",
                 "maps_url": "https://www.google.com/maps/search/?api=1&query=Draft+Room+Valpovo",
                 "web": "https://tz.valpovo.hr/smjestaj-u-valpovu/soba-za-iznajmljivanje-draft-room/"
             },
             {
                 "naziv": "Soba VaLux Valpovo",
                 "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2024/03/00-valux-valpovo-sobe.jpg",
-                "adresa": "Valpovo",
+                "opis": "Nova luksuzna soba, 39 m², na 1. katu obiteljske kuće. Bračni krevet, walk-in tuš, Smart TV 139 cm, kuhinjski kutak. Pokriveno parkiranje s daljinskim. 1 km od centra.",
+                "adresa": "Dobriše Cesarića 58, Valpovo",
+                "telefon": "+385 91 923 7472",
                 "maps_url": "https://www.google.com/maps/search/?api=1&query=VaLux+Valpovo",
                 "web": "https://tz.valpovo.hr/smjestaj-u-valpovu/soba-valux-valpovo/"
             }
