@@ -299,18 +299,20 @@ export const db = {
         {
             "naziv": "Restoran Jovalija",
             "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2025/10/IMG_2698-restoran-jovalija-valpovo-2025.jpg",
-            "opis": "Moderni restoran s vrhunskom ponudom slavonskih jela i jela s roštilja.",
+            "opis": "Moderan restoran u centru Valpova. Specijaliziran za slavonska jela, roštilj, wok jela i pizzu hrskave korice. Domaći kolači. Catering s dostavom. Pogodan za obiteljska i poslovna okupljanja.",
             "adresa": "Ive Lole Ribara 1, Valpovo",
             "telefon": "+385 31 651 895",
+            "mobitel": "+385 99 579 1666",
             "radno_vrijeme": "Pon–Ned: 08:00–22:00",
             "web": "https://tz.valpovo.hr/ugostiteljstvo/restoran-jovalija/"
         },
         {
             "naziv": "Hotel & Restoran Park Valpovo",
             "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2022/04/parkvalpovo003-853x640.jpg",
-            "opis": "Tradicionalni slavonski restoran s bogatom ponudom jela i pića.",
-            "adresa": "Ive Lole Ribara 10, Valpovo",
+            "opis": "Restoran u sklopu dvorca Prandau-Normann. Kapacitet 280 osoba. Slavonski specijaliteti: čobanac, fiš, jela ispod peke. Dvorana za svečanosti, vjenčanja, konferencije. Besplatno punjenje EV vozila.",
+            "adresa": "Trg kralja Tomislava 2, Valpovo",
             "telefon": "+385 31 651 230",
+            "email": "info@restoran-park.hr",
             "radno_vrijeme": "Pon–Sub: 08:00–22:00 | Ned: 10:00–16:00",
             "web": "https://tz.valpovo.hr/ugostiteljstvo/restoran-park/"
         },
@@ -331,8 +333,9 @@ export const db = {
         {
             "naziv": "Caffe Bar Forum",
             "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2025/03/caffe-bar-forum-valpovo9-comp.jpg",
-            "opis": "Caffe bar u centru Valpova.",
-            "adresa": "Valpovo",
+            "opis": "Caffe bar unutar Agropark-a (zelene tržnice). Topli napici, hladni sokovi, mali izbor pića.",
+            "adresa": "Vijenac Republike Hrvatske 16, Valpovo",
+            "telefon": "099/409-2921",
             "maps_url": "https://www.google.com/maps/search/?api=1&query=Caffe+Bar+Forum+Valpovo",
             "web": "https://tz.valpovo.hr/ugostiteljstvo/caffe-bar-forum/"
         },
@@ -348,8 +351,8 @@ export const db = {
         {
             "naziv": "Caffe Bar Kolaž",
             "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2022/04/1-2.jpg",
-            "opis": "Caffe bar u Valpovu.",
-            "adresa": "Valpovo",
+            "opis": "Šareni caffe bar na glavnom trgu. Lavazza kava, 15+ vrsta piva, 30 vrsta žestokih pića. Prostrana terasa, zanimljiv interijer s umjetničkim detaljima. Pet-friendly. Tematske zabave.",
+            "adresa": "Trg kralja Tomislava 16, Valpovo",
             "radno_vrijeme": "Pon, Čet, Ned: 08:00–00:00 | Pet–Sub: 08:00–02:00",
             "maps_url": "https://www.google.com/maps/search/?api=1&query=Caffe+Bar+Kolaž+Valpovo",
             "web": "https://tz.valpovo.hr/ugostiteljstvo/caffe-bar-kolaz/"
@@ -357,8 +360,8 @@ export const db = {
         {
             "naziv": "Caffe Night Bar Blue",
             "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2022/04/cb-blue-cover-logo.jpg",
-            "opis": "Caffe i noćni bar u Valpovu.",
-            "adresa": "Valpovo",
+            "opis": "Malo obiteljsko caffe bar otvoreno 2001. u centru grada. Ugodna atmosfera za razgovor danju, zabava vikendom. Široki izbor pića.",
+            "adresa": "Trg kralja Tomislava 1, Valpovo",
             "radno_vrijeme": "Ned–Čet: 08:00–00:00 | Pet–Sub: 08:00–04:00",
             "maps_url": "https://www.google.com/maps/search/?api=1&query=Night+Bar+Blue+Valpovo",
             "web": "https://tz.valpovo.hr/ugostiteljstvo/caffe-night-bar-blue/"
@@ -366,8 +369,8 @@ export const db = {
         {
             "naziv": "Caffe Bar Passage",
             "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2018/04/30705564_1544146202381079_2303070350126088192_n-1.jpg",
-            "opis": "Caffe bar u Valpovu.",
-            "adresa": "Valpovo",
+            "opis": "U centru grada. Velika terasa, 30 vrsta piva (domaći i strani craftovi), rock glazba. Ugodan ambijent, vrhunska usluga.",
+            "adresa": "Trg kralja Tomislava 16, Valpovo",
             "radno_vrijeme": "Pon–Čet: 07:00–24:00 | Pet–Sub: 07:00–02:00 | Ned: 08:00–24:00",
             "maps_url": "https://www.google.com/maps/search/?api=1&query=Caffe+Bar+Passage+Valpovo",
             "web": "https://tz.valpovo.hr/ugostiteljstvo/caffe-bar-passage/"
@@ -375,8 +378,8 @@ export const db = {
         {
             "naziv": "Caffe Bar Space",
             "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2022/04/cb-space.jpg",
-            "opis": "Caffe bar u Valpovu.",
-            "adresa": "Valpovo",
+            "opis": "Caffe bar u prostoru gradske školske dvorane. Raznovrstan izbor piva, alkoholnih i bezalkoholnih pića. Natjecanja u pikadu, razna jela.",
+            "adresa": "Dr. Franje Tuđmana 4, Valpovo",
             "radno_vrijeme": "Pon–Čet: 08:00–00:00 | Pet–Sub: 08:00–02:00 | Ned: 08:00–00:00",
             "maps_url": "https://www.google.com/maps/search/?api=1&query=Caffe+Bar+Space+Valpovo",
             "web": "https://tz.valpovo.hr/ugostiteljstvo/caffe-bar-space/"
@@ -384,8 +387,9 @@ export const db = {
         {
             "naziv": "Caffe Bar Best",
             "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2018/04/20180115_064620_1.jpg",
-            "opis": "Caffe bar u Valpovu.",
-            "adresa": "Valpovo",
+            "opis": "Dvije etaže, u centru pokraj crkve. 20+ godina rada. Pub kviz petkom, live glazba subotom. Prima sve generacije. Bogat izbor piva.",
+            "adresa": "Trg kralja Tomislava 15, Valpovo",
+            "telefon": "091/721-4666",
             "radno_vrijeme": "Svaki dan: 08:00–02:00",
             "maps_url": "https://www.google.com/maps/search/?api=1&query=Caffe+Bar+Best+Valpovo",
             "web": "https://tz.valpovo.hr/ugostiteljstvo/caffe-bar-best/"
@@ -393,8 +397,8 @@ export const db = {
         {
             "naziv": "Gradska Kavana Valpovo",
             "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2018/04/20180412_160629_1.jpg",
-            "opis": "Gradska kavana u centru Valpova.",
-            "adresa": "Valpovo",
+            "opis": "Dvije široke terase s pogledom na grad. Bezalkoholna i alkoholna pića, topli napici, sladoled, slushy. Pop-rock glazba.",
+            "adresa": "Vijenac 107. brigade HV 1, Valpovo",
             "radno_vrijeme": "Svaki dan: 07:00–23:00",
             "maps_url": "https://www.google.com/maps/search/?api=1&query=Gradska+Kavana+Valpovo",
             "web": "https://tz.valpovo.hr/ugostiteljstvo/gradska-kavana-valpovo/"
@@ -402,8 +406,9 @@ export const db = {
         {
             "naziv": "Gradska Kavana Katančić",
             "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2018/04/kavana-katancic-cover.jpg",
-            "opis": "Kavana nazvana po poznatom valpovačkom pjesniku Matiji Petru Katančiću.",
-            "adresa": "Valpovo",
+            "opis": "U sklopu Centra kulture. Opuštena atmosfera danju, glazbeni događaji vikendom (domaći i strani izvođači).",
+            "adresa": "Trg kralja Tomislava 2 (Centar kulture), Valpovo",
+            "telefon": "031/653-066",
             "radno_vrijeme": "Pon–Čet: 08:00–00:00 | Pet–Sub: 08:00–04:00 | Ned: 08:00–00:00",
             "maps_url": "https://www.google.com/maps/search/?api=1&query=Gradska+Kavana+Katančić+Valpovo",
             "web": "https://tz.valpovo.hr/ugostiteljstvo/gradska-kavana-katancic/"
@@ -439,8 +444,8 @@ export const db = {
         {
             "naziv": "Caffe Bar Prandau",
             "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2024/01/unnamed-1-caffe-bar-prandau-valpovo.jpg",
-            "opis": "Caffe bar nazvan po barunima Prandau, u Valpovu.",
-            "adresa": "Valpovo",
+            "opis": "Tradicionalna atmosfera, sve generacije dobrodošle. Široki izbor pića i toplih napitaka, ljubazno osoblje.",
+            "adresa": "Matije Gupca 27, Valpovo",
             "radno_vrijeme": "Pon–Sub: 07:00–23:00 | Ned: 08:00–13:00 i 17:00–23:00",
             "maps_url": "https://www.google.com/maps/search/?api=1&query=Caffe+Bar+Prandau+Valpovo",
             "web": "https://tz.valpovo.hr/ugostiteljstvo/caffe-bar-prandau/"
@@ -545,17 +550,20 @@ export const db = {
             {
                 "naziv": "Hotel Villa Valpovo",
                 "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2023/10/1-hoitel-villa-valpovo-2023.jpg",
-                "opis": "Moderan hotel s vrhunskom uslugom, smješten desetak minuta hoda od centra Valpova.",
-                "adresa": "Bana Josipa Jelačića 1",
+                "opis": "4-zvjezdični hotel na obali Karašice. 32 dvokrevetne sobe + 4 luksuzna apartmana. Recepcija 24/7, restoran (do 80 gostiju), event dvorane (do 300 gostiju). Slavonska kuhinja i jela po narudžbi.",
+                "adresa": "Bana Josipa Jelačića 1, Valpovo",
+                "telefon": "031/651-960",
+                "email": "hotel.villa.valpovo@gmail.com",
                 "maps_url": "https://www.google.com/maps/search/?api=1&query=Hotel+Villa+Valpovo",
                 "web": "https://tz.valpovo.hr/smjestaj-u-valpovu/villa-valpovo/"
             },
             {
                 "naziv": "Hotel & Restoran Park Valpovo",
                 "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2022/04/parkvalpovo003-853x640.jpg",
-                "opis": "Hotel i restoran s tradicijom slavonske kuhinje.",
-                "adresa": "Ive Lole Ribara 10",
+                "opis": "4-zvjezdični hotel uz dvorac Prandau-Normann. 6 soba (5 standard + 1 deluxe). Restoran 280 mjesta, slavonski specijaliteti. Besplatno parkiranje i punjenje EV vozila. 9 km od Bizovačkih toplica.",
+                "adresa": "Trg kralja Tomislava 2, Valpovo",
                 "telefon": "+385 31 651 230",
+                "email": "info@restoran-park.hr",
                 "maps_url": "https://www.google.com/maps/search/?api=1&query=Hotel+Park+Valpovo",
                 "web": "https://tz.valpovo.hr/smjestaj-u-valpovu/hotel-restoran-park-valpovo/"
             }
@@ -564,16 +572,19 @@ export const db = {
             {
                 "naziv": "Valpovački dvori",
                 "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2018/04/20180103_150327.jpg",
-                "opis": "Ruralni smještaj s autentičnim slavonskim ugođajem.",
-                "adresa": "Matije Gupca 95",
+                "opis": "4 sobe (2 kreveta + extra), privatne kupaonice, TV, WiFi, klima, grijanje. 1 km od centra, privatno parkiranje. Obiteljska atmosfera.",
+                "adresa": "Matije Gupca 95, Valpovo",
+                "telefon": "098/722-234",
+                "email": "valpovacki.dvori@gmail.com",
                 "maps_url": "https://www.google.com/maps/search/?api=1&query=Valpovački+dvori",
                 "web": "https://tz.valpovo.hr/smjestaj-u-valpovu/valpovacki-dvori/"
             },
             {
                 "naziv": "Olive Holiday House",
                 "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2024/03/0.jpg",
-                "opis": "Holiday house za odmor u Valpovu.",
-                "adresa": "Valpovo",
+                "opis": "5-zvjezdična seoska kuća u Harkanovcima (naselje Valpova). Dnevni boravak, kuhinja, spavaća soba s bračnim krevetom, vrt 1600+ m². Pet-friendly, besplatan internet. 35 min od mađarske granice.",
+                "adresa": "Matije Gupca 22, Harkanovci (Valpovo)",
+                "telefon": "+36 30 723 9077",
                 "maps_url": "https://www.google.com/maps/search/?api=1&query=Olive+Holiday+House+Valpovo",
                 "web": "https://tz.valpovo.hr/smjestaj-u-valpovu/olive-holiday-house/"
             }
@@ -624,14 +635,18 @@ export const db = {
             {
                 "naziv": "M&S Prenoćište Valpovo",
                 "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2018/04/mS_prenociste_01.jpg",
-                "adresa": "Valpovo",
+                "opis": "Luksuzne sobe s podnim grijanjem, klima, mini bar, sef, hidromasažni tuš. Bankomat na ulazu, kozmetički salon u dvorištu. Pogled na Karašicu i dvorac.",
+                "adresa": "Trg kralja Tomislava 6, Valpovo",
+                "telefon": "031/652-066",
                 "maps_url": "https://www.google.com/maps/search/?api=1&query=MS+prenociste+Valpovo",
                 "web": "https://tz.valpovo.hr/smjestaj-u-valpovu/ms-prenociste-valpovo/"
             },
             {
                 "naziv": "Prenoćište Setnik",
                 "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2018/04/91993871.jpg",
-                "adresa": "Valpovo",
+                "opis": "2 sobe (3–6 osoba), WiFi, klima, TV, kuhinja, vlastite kupaonice. 50 m² pokrivena terasa s roštiljom i ljetnom kuhinjom. Perilica/sušilica rublja. Kućni ljubimci OK.",
+                "adresa": "Osječka 48, Valpovo",
+                "telefon": "031/652-719",
                 "maps_url": "https://www.google.com/maps/search/?api=1&query=Prenoćište+Setnik+Valpovo",
                 "web": "https://tz.valpovo.hr/smjestaj-u-valpovu/prenociste-setnik/"
             },
