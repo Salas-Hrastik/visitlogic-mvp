@@ -166,7 +166,7 @@ export const db = {
         {
             "naziv": "Dvorac Prandau-Normann i perivoj",
             "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2018/04/dvorac-photo.jpg",
-            "opis": "Cjelinu dvorca čine: pročelna barokna palača (18. st.), srednjovjekovna kula (najstariji i spomenički najvrijedniji dio), dvorska kapelica Presvetog Trojstva i engleski perivoj. Kompleks je obnavljan sedam puta kroz povijest. Car Karlo VI. 1721. posjed daruje barunu Antunu Petru Hilleprand von Prandau. Obitelj Prandau (do 1885.) i potom Normann-Ehrenfels (do 1944.) razvijaju grad i grade kulturne institucije. Muzej Valpovštine smješten je unutar dvorca od 1956.",
+            "opis": "Cjelinu dvorca čine: pročelna barokna palača (18. st.), srednjovjekovna kula (najstariji i spomenički najvrijedniji dio), dvorska kapelica Presvetog Trojstva i engleski perivoj. Kompleks broji 62 sobe (431 m²) i okružen je engleskim perivojem površine 25 ha — najstarijim baroknim parkom u kontinentalnoj Hrvatskoj, stariji i od Maksimira. Tvrđavu na ovom mjestu gradili su ban Ivan Morović 1405.–1407. Car Karlo VI. 1721. posjed daruje barunu Antunu Petru Hilleprand von Prandau. Obitelj Prandau (do 1885.) i potom Normann-Ehrenfels (do 1944.) razvijaju grad i grade kulturne institucije. Muzej Valpovštine smješten je unutar dvorca od 1956.",
             "adresa": "Ul. Dvorac Norman-Prandau 1",
             "koordinate": { "lat": 45.6589474, "lng": 18.4153698 },
             "maps_url": "https://www.google.com/maps/dir/?api=1&destination=45.6589474,18.4153698",
@@ -176,6 +176,8 @@ export const db = {
             "naziv": "Muzej Valpovštine",
             "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2018/04/muzej-1920x1280.jpg",
             "opis": "Osnovan 1956. u dvorcu Prandau-Normann. Sadrži više od 10.000 katalogiziranih predmeta u jedanaest soba. Zbirke: povijesna, arheološka, lovačka, etnografska, zoološko-geološka, vatrogasna, obrtnička. Sam dvorac — srednjovjekovno-barokna cjelina — smatra se 'najvećim i najvrijednijim eksponatom'. Moguće organizirati grupne obilazce s vodičem uz prethodnu najavu. Ravnatelj: Stjepan Vidaković.",
+            "telefon": "+385 31 650 639",
+            "email": "valpovstinemuzej@gmail.com",
             "adresa": "Ul. Dvorac Norman-Prandau, Valpovo",
             "maps_url": "https://www.google.com/maps/dir/?api=1&destination=45.6589474,18.4153698",
             "radno_vrijeme": "Pon, Čet: 16:00–19:00 | Uto, Sri, Pet: 10:00–12:00 | Grupni posjeti uz najavu: 031/650-639",
@@ -484,7 +486,7 @@ export const db = {
         {
             "naziv": "Vashar festival",
             "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2025/09/Vashar-promo-naslovna-1024x678.jpg",
-            "opis": "Glazbeni festival autorskih bendova na otvorenom.",
+            "opis": "Glazbeni festival autorskih bendova na otvorenom koji obuhvaća rock, metal, blues, grunge, punk i alternativnu scenu.",
             "vrijeme": "Svibanj/Lipanj",
             "web": "https://tz.valpovo.hr/manifestacije/vashar-festival/"
         },
@@ -498,7 +500,7 @@ export const db = {
         {
             "naziv": "Reunited festival",
             "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2025/03/1-3-1024x684.jpg",
-            "opis": "Glazbeni festival hip-hopa i elektronske scene.",
+            "opis": "Glazbeni festival koji okuplja istaknutu hrvatsku hip-hop, dub i elektronsku scenu. Program uključuje edukativne radionice i umjetničke izložbe.",
             "vrijeme": "Srpanj",
             "web": "https://tz.valpovo.hr/manifestacije/reunited-festival/"
         },
@@ -520,7 +522,7 @@ export const db = {
         {
             "naziv": "Valpovo Craft Beer Fest",
             "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2025/03/1-valpovo-craft-beer-fest-1-1024x683.jpg",
-            "opis": "Promocija hrvatskih craft piva uz gastro ponudu i koncerte.",
+            "opis": "Festival craft piva u dvorištu dvorca Prandau-Normann — 13+ pivovara iz cijele Hrvatske, gastro ponuda i nastupi live bendova.",
             "vrijeme": "Rujan",
             "web": "https://tz.valpovo.hr/manifestacije/craft-beer-festival/"
         },
@@ -534,14 +536,14 @@ export const db = {
         {
             "naziv": "Dani Matije Petra Katančića",
             "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2025/03/1-dani-matije-petra-katancica-1024x768.jpg",
-            "opis": "Kulturno-znanstvena manifestacija posvećena M.P. Katančiću.",
+            "opis": "Kulturno-znanstvena manifestacija posvećena M.P. Katančiću: stručne radionice i predavanja, sajam knjiga, promocije i književne večeri, koncerti klasične glazbe. Cilj: digitalizacija i prijevod povijesnih djela.",
             "vrijeme": "Listopad",
             "web": "https://tz.valpovo.hr/manifestacije/dani-matije-petra-katancica/"
         },
         {
             "naziv": "Advent u Valpovu",
             "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2025/03/1-advent-u-valpovu-1-1024x768.jpg",
-            "opis": "Zimska bajka, klizalište i božićni sajam.",
+            "opis": "Prosinačka zimska bajka s božićnim sajmom, klizalištem, glazbenim nastupima, tematskim predstavama, izložbama, gastro događanjima, sportskim turnirima i živim jaslicama.",
             "vrijeme": "Prosinac",
             "web": "https://tz.valpovo.hr/manifestacije/advent-u-valpovu/"
         }
