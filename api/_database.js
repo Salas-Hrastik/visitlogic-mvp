@@ -201,7 +201,7 @@ export const db = {
         {
             "naziv": "Crkve i kapele",
             "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2018/04/dvorska-kapela-kapelica-1-e1525723165441-300x200.jpg",
-            "opis": "Na području Valpova nalazi se više sakralnih objekata: Župna crkva Bezgrešnog začeća BDM (1722.–1737., barokna s organama iz 1805.), Dvorska kapela Sv. Trojstva u dvorcu (15. st., barok., orgulje Angster 1876.), Kapela Sv. Roka na Zelenom brijegu (1796., zavjetna), Grobljanska kapela Uzvišenja sv. Križa (1880., neo-barok/gotika) i Kapelica Gospe Lurdske.",
+            "opis": "Na području Valpova nalazi se više sakralnih objekata: Župna crkva Bezgrešnog začeća BDM (1722.–1737., barokna s organama iz 1805.), Dvorska kapela Sv. Trojstva u dvorcu (15. st., barok., orgulje Angster 1876.), Kapela Sv. Roka na Zelenom brijegu (1796., zavjetna), Grobljanska kapela Uzvišenja sv. Križa (1880., neo-barok/gotika) i Kapelica Gospe Lurdske, te Srpska pravoslavna crkva Sv. Georgija (Osječka ul. 21).",
             "maps_url": "https://www.google.com/maps/search/?api=1&query=crkva+Valpovo",
             "web": "https://tz.valpovo.hr/znamenitosti/crkve-i-kapele/"
         },
@@ -307,6 +307,7 @@ export const db = {
             "telefon": "+385 31 651 895",
             "mobitel": "+385 99 579 1666",
             "radno_vrijeme": "Pon–Ned: 08:00–22:00",
+            "napomena": "4.9★ (48 recenzija)",
             "web": "https://tz.valpovo.hr/ugostiteljstvo/restoran-jovalija/"
         },
         {
@@ -322,7 +323,8 @@ export const db = {
         {
             "naziv": "PIGment Burger Bar",
             "opis": "Vrhunski burgeri i moderna atmosfera u centru Valpova.",
-            "adresa": "Trg kralja Tomislava 7, Valpovo"
+            "adresa": "Trg kralja Tomislava 7, Valpovo",
+            "napomena": "5.0★ (29 recenzija) — burgeri, pulled pork"
         },
         {
             "naziv": "Bar i Pizzeria HEX",
@@ -452,6 +454,68 @@ export const db = {
             "radno_vrijeme": "Pon–Sub: 07:00–23:00 | Ned: 08:00–13:00 i 17:00–23:00",
             "maps_url": "https://www.google.com/maps/search/?api=1&query=Caffe+Bar+Prandau+Valpovo",
             "web": "https://tz.valpovo.hr/ugostiteljstvo/caffe-bar-prandau/"
+        },
+        {
+            "naziv": "Fast Food Vesperas",
+            "adresa": "Ul. Zrinsko Frankopanska 48, Valpovo",
+            "opis": "Burgeri, hot dog, sendviči — 4.9★ (118 recenzija)",
+            "maps_url": "https://www.google.com/maps/search/?api=1&query=Fast+Food+Vesperas+Valpovo"
+        },
+        {
+            "naziv": "Fast Food Lana",
+            "adresa": "Osječka ul. 14, Valpovo",
+            "opis": "Kebab, brza hrana — 4.0★ (58 recenzija)",
+            "maps_url": "https://www.google.com/maps/search/?api=1&query=Fast+Food+Lana+Valpovo"
+        },
+        {
+            "naziv": "RasoPaso",
+            "adresa": "Strossmayerova ul. 2, Valpovo",
+            "opis": "Restoran — 4.4★ (52 recenzije)",
+            "maps_url": "https://www.google.com/maps/search/?api=1&query=RasoPaso+Valpovo"
+        },
+        {
+            "naziv": "Pekara Čičak d.o.o.",
+            "adresa": "Kolodvorska ul. 3, Valpovo",
+            "opis": "Pekara — 4.5★ (96 recenzija)",
+            "radno_vrijeme": "Pon–Sub: 06:00–20:00",
+            "maps_url": "https://www.google.com/maps/search/?api=1&query=Čičak+pekara+Valpovo"
+        },
+        {
+            "naziv": "Pekara El Pan",
+            "adresa": "Osječka ul. 20, Valpovo",
+            "opis": "Pekara — 3.4★ (24 recenzije)",
+            "radno_vrijeme": "Gotovo non-stop",
+            "maps_url": "https://www.google.com/maps/search/?api=1&query=El+Pan+pekara+Valpovo"
+        },
+        {
+            "naziv": "Cafe Barba",
+            "adresa": "Osječka ul. 8, Valpovo",
+            "opis": "4.7★ (109 recenzija)",
+            "maps_url": "https://www.google.com/maps/search/?api=1&query=Cafe+Barba+Valpovo"
+        },
+        {
+            "naziv": "Caffe Bar House",
+            "adresa": "Ul. Braće Radić, Valpovo",
+            "opis": "4.7★ (17 recenzija)",
+            "maps_url": "https://www.google.com/maps/search/?api=1&query=Caffe+Bar+House+Valpovo"
+        },
+        {
+            "naziv": "Baza",
+            "adresa": "Ul. kralja Petra Krešimira IV 1, Valpovo",
+            "opis": "Rock atmosfera, live glazba — 4.6★ (276 recenzija)",
+            "maps_url": "https://www.google.com/maps/search/?api=1&query=Baza+bar+Valpovo"
+        },
+        {
+            "naziv": "Caffe Bar Vespera",
+            "adresa": "Ul. Zrinsko Frankopanska 48, Valpovo",
+            "opis": "4.7★ (105 recenzija)",
+            "maps_url": "https://www.google.com/maps/search/?api=1&query=Caffe+Bar+Vespera+Valpovo"
+        },
+        {
+            "naziv": "Caffe Night Bar City",
+            "adresa": "Ul. bana Ivana Mažuranića 8, Valpovo",
+            "opis": "Noćni bar — 4.5★ (98 recenzija)",
+            "maps_url": "https://www.google.com/maps/search/?api=1&query=Caffe+Night+Bar+City+Valpovo"
         }
     ],
     "dogadanja": [
@@ -762,12 +826,15 @@ export const db = {
             {
                 "naziv": "Frizerski salon Đurđica",
                 "adresa": "Nikole Tesle 39, Valpovo",
-                "napomena": "4.9★ · Pon/Sri/Pet: 08–16h · Uto/Čet: 13–19h · Sub: 08–13h",
+                "telefon": "+385 31 651 016",
+                "napomena": "4.9★ (36 recenzija) — odlično bojanje i balayage · Naizmjenične smjene Pon–Sub",
                 "maps_url": "https://www.google.com/maps/search/?api=1&query=Frizerski+salon+%C4%90ur%C4%91ica+Valpovo"
             },
             {
                 "naziv": "Frizerski salon Viva",
                 "adresa": "Vijenac 107. brigade HV 3, Valpovo",
+                "telefon": "+385 31 651 244",
+                "radno_vrijeme": "Pon–Pet: 09:00–20:00 | Sub: 08:00–13:00",
                 "napomena": "4.7★ (87 recenzija)",
                 "maps_url": "https://www.google.com/maps/search/?api=1&query=Frizerski+salon+Viva+Valpovo"
             },
@@ -780,12 +847,14 @@ export const db = {
             {
                 "naziv": "Frizerski studio Glow",
                 "adresa": "Vijenac Hrvatske Republike 5A, Valpovo",
+                "telefon": "+385 99 281 8667",
                 "maps_url": "https://www.google.com/maps/search/?api=1&query=Frizerski+studio+Glow+Valpovo"
             },
             {
                 "naziv": "Frizerski salon MegaLook",
                 "adresa": "Matije Gupca 42, Valpovo",
                 "telefon": "091 733 4615",
+                "napomena": "4.9★ (40 recenzija) · Naizmjenične smjene Pon–Pet | Sub: 08:00–13:00",
                 "maps_url": "https://www.google.com/maps/search/?api=1&query=Frizerski+salon+MegaLook+Valpovo"
             },
             {
@@ -797,6 +866,7 @@ export const db = {
                 "naziv": "Frizerski salon Mira",
                 "adresa": "Josipa Jurja Strossmayera 8, Valpovo",
                 "telefon": "031 651 120",
+                "napomena": "4.7★ (19 recenzija)",
                 "maps_url": "https://www.google.com/maps/search/?api=1&query=Frizerski+salon+Mira+Valpovo"
             },
             {
@@ -835,6 +905,61 @@ export const db = {
                 "adresa": "Valpovo (dolazak na adresu)",
                 "napomena": "Frizerske usluge u vašem domu — sve vrste friziranja",
                 "maps_url": "https://www.google.com/maps/search/?api=1&query=FrizzStyle+Valpovo"
+            },
+            {
+                "naziv": "Frizerski salon Mitian",
+                "adresa": "Vijenac 107. brigade HV 1, Valpovo",
+                "radno_vrijeme": "Pon–Pet: 08:00–20:00 | Sub: 08:00–13:00",
+                "napomena": "5.0★",
+                "maps_url": "https://www.google.com/maps/search/?api=1&query=Frizerski+salon+Mitian+Valpovo"
+            },
+            {
+                "naziv": "Barbershop Industry",
+                "adresa": "J.J. Strossmayera 8, Valpovo",
+                "radno_vrijeme": "Naizmjenične smjene Pon–Pet | Sub: 08:00–13:00",
+                "napomena": "4.8★ — brijačnica / barbershop",
+                "maps_url": "https://www.google.com/maps/search/?api=1&query=Barbershop+Industry+Valpovo"
+            },
+            {
+                "naziv": "Frizerski salon Black",
+                "adresa": "Braće Radić 16, Valpovo",
+                "telefon": "+385 99 405 9316",
+                "radno_vrijeme": "Pon–Pet: 09:00–19:00 | Sub: 08:00–13:00",
+                "napomena": "4.9★ (31 recenzija)",
+                "maps_url": "https://www.google.com/maps/search/?api=1&query=Frizerski+salon+Black+Valpovo"
+            }
+        ],
+        "saloni_za_uljepsavanje": [
+            {
+                "naziv": "Kozmetički salon Jo-Ann",
+                "adresa": "Ul. Braće Radić 16, Valpovo",
+                "telefon": "+385 31 652 070",
+                "radno_vrijeme": "Pon–Pet: 08:00–19:00 | Sub: 08:00–13:00",
+                "napomena": "5.0★ — masaže, kozmetika, spa",
+                "maps_url": "https://www.google.com/maps/search/?api=1&query=Kozmetički+salon+Jo-Ann+Valpovo"
+            },
+            {
+                "naziv": "HP Beauty zone",
+                "adresa": "Vijenac 107. Brigade HV 6, Valpovo",
+                "telefon": "+385 95 380 0941",
+                "radno_vrijeme": "Pon–Pet: 08:00–20:00 | Sub: 08:00–13:00",
+                "napomena": "5.0★ — nokti, šminkanje",
+                "maps_url": "https://www.google.com/maps/search/?api=1&query=HP+Beauty+zone+Valpovo"
+            },
+            {
+                "naziv": "Beauty atelier Kriss",
+                "adresa": "Osječka ul. 35, Valpovo",
+                "telefon": "+385 91 515 2401",
+                "radno_vrijeme": "Pon–Pet: 09:00–19:00 | Sub: 08:00–13:00",
+                "napomena": "4.7★ (50 recenzija) — šminkanje, uljepšavanje",
+                "maps_url": "https://www.google.com/maps/search/?api=1&query=Beauty+atelier+Kriss+Valpovo"
+            },
+            {
+                "naziv": "Kozmetički studio Lumos",
+                "adresa": "Vijenac 107. brigade HV 3, Valpovo",
+                "radno_vrijeme": "Naizmjenične smjene | Sub: 08:00–13:00",
+                "napomena": "5.0★ — pedikura, obrve, kozmetika",
+                "maps_url": "https://www.google.com/maps/search/?api=1&query=Kozmetički+studio+Lumos+Valpovo"
             }
         ],
         "taksi": [
@@ -971,6 +1096,21 @@ export const db = {
                 "radno_vrijeme": "Pon–Pet: 08:00–20:00 | Sub: 08:00–13:00 | Ned: zatvoreno",
                 "maps_url": "https://www.google.com/maps/search/?api=1&query=Prima+namještaj+Valpovo",
                 "web": "https://www.prima-namjestaj.hr/prima-namjestaj-valpovo"
+            },
+            {
+                "naziv": "Vinkoprom",
+                "adresa": "Ul. J.J. Strossmayera 85, Valpovo",
+                "telefon": "+385 31 599 874",
+                "opis": "Građevinski materijal i mješovita roba — 4.2★ (233 recenzije)",
+                "radno_vrijeme": "Pon–Sub: 07:00–20:00 | Ned: zatvoreno",
+                "maps_url": "https://www.google.com/maps/search/?api=1&query=Vinkoprom+Valpovo"
+            },
+            {
+                "naziv": "Centar tehnike Valpovo",
+                "adresa": "Osječka ul. 6, Valpovo",
+                "opis": "Trgovina elektronike — 4.5★ (71 recenzija)",
+                "radno_vrijeme": "Pon–Pet: 08:00–20:00 | Sub: 08:00–13:00",
+                "maps_url": "https://www.google.com/maps/search/?api=1&query=Centar+tehnike+Valpovo"
             }
         ],
         "lokalni_i_suveniri": [
@@ -1104,6 +1244,22 @@ export const db = {
                 "adresa": "Valpovo",
                 "maps_url": "https://www.google.com/maps/search/?api=1&query=ribolov+Valpovo",
                 "web": "https://zsruavalpovo.hr/"
+            }
+        ],
+        "teretane": [
+            {
+                "naziv": "SC Ružić",
+                "adresa": "Ul. Nikole Tesle 28, Valpovo",
+                "ocjena": "4.7★ (37 recenzija)",
+                "radno_vrijeme": "Pon–Sub: 08:00–22:00 | Ned: zatvoreno",
+                "maps_url": "https://www.google.com/maps/search/?api=1&query=SC+Ružić+teretana+Valpovo"
+            },
+            {
+                "naziv": "StrongFit",
+                "adresa": "Starovalpovački put 1, Valpovo",
+                "ocjena": "5.0★ (8 recenzija)",
+                "radno_vrijeme": "Pon–Pet: 08:00–11:00 / 16:00–21:00 | Sub-Ned: zatvoreno",
+                "maps_url": "https://www.google.com/maps/search/?api=1&query=StrongFit+teretana+Valpovo"
             }
         ],
         "objekti": [
