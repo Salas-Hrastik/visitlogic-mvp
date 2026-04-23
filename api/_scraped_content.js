@@ -1,11 +1,11 @@
 // AUTO-GENERATED — ne editiraj ručno!
-// Zadnje skrapanje: 2026-03-18 14:35 UTC
+// Zadnje skrapanje: 2026-04-23 19:49 UTC
 // Izvor: tz.valpovo.hr, valpovo.hr
 // GitHub Actions job: scrape-valpovo (tjedno, ponedjeljkom u 6:00)
 
 export const scrapedContent = {
   "meta": {
-    "zadnje_azuriranje": "2026-03-18T14:35:46.995Z",
+    "zadnje_azuriranje": "2026-04-23T19:49:34.980Z",
     "izvori": [
       "https://tz.valpovo.hr",
       "https://valpovo.hr"
@@ -13,88 +13,88 @@ export const scrapedContent = {
   },
   "novosti_tz": [
     {
-      "naslov": "USKRS U VALPOVU 2026.",
-      "datum": "ožu. 16, 2026",
-      "kratki_opis": "USKRS U VALPOVU 2026. 28. ožujka – 04. travnja 2026. godine Dobro došli u šareni svijet mašte! Subota, 28. ožujka 2026. godine Agropark ...",
-      "link": "https://tz.valpovo.hr/2026/03/16/33333/",
-      "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/03/uskrs-u-valpovu-cover-2026.jpg"
+      "naslov": "Zagrebački kvartet gostuje u Valpovu – vrhunska večer komorne glazbe uz besplatan ulaz",
+      "datum": "tra. 23, 2026",
+      "kratki_opis": "Ustanova za kulturne djelatnosti „Ante Evetović Miroljub“ Valpovo s ponosom najavljuje koncert jednog od najuglednijih hrvatskih komornih ansambala – Zagrebačkog kvarteta, koji će se održati u ...",
+      "link": "https://tz.valpovo.hr/2026/04/23/zagrebacki-kvartet-gostuje-u-valpovu-vrhunska-vecer-komorne-glazbe-uz-besplatan-ulaz/",
+      "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/04/zagrebacki-kvartet-2026-najava-valpovo.jpg"
     },
     {
-      "naslov": "HIT KOMEDIJA „ PAPUČARI “",
-      "datum": "ožu. 05, 2026",
-      "kratki_opis": "Ustanova za kulturne djelatnosti „Ante Evetović Miroljub“ Valpovo i TEATAR GAVRAN Vam donose HIT KOMEDIJU „ PAPUČARI “ Vrijeme: Utorak, 24.3.2026. u 20:00 sati ...",
-      "link": "https://tz.valpovo.hr/2026/03/05/hit-komedija-papucari/",
-      "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/03/VODORAVNI-PLAKAT-papucari-komedija-2026.jpg"
+      "naslov": "PRIJAVE ZA „REVIJU PJEVAČA AMATERA“ NA 58. LJETU VALPOVAČKOM",
+      "datum": "tra. 22, 2026",
+      "kratki_opis": "Tradicionalna „Revija pjevača amatera“ dio je programa Ljeta valpovačkog već dugi niz godina gdje su mnogi glazbeni talenti svu svoju pjevačku raskoš otkrili upravo ...",
+      "link": "https://tz.valpovo.hr/2026/04/22/prijave-za-reviju-pjevaca-amatera-na-58-ljetu-valpovackom/",
+      "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/04/revija-pjevaca-poziv-2026.jpg"
     },
     {
-      "naslov": "OBILJEŽAVANJE MEĐUNARODNOG DANA RIJETKIH BOLESTI – 28. veljače 2026.",
-      "datum": "ožu. 01, 2026",
-      "kratki_opis": "Hrvatski savez za rijetke bolesti i ove godine obilježava Međunarodni dan rijetkih bolesti, koji se tradicionalno slavi krajem veljače diljem svijeta. Jedan od ključnih ...",
-      "link": "https://tz.valpovo.hr/2026/03/01/obiljezavanje-medunarodnog-dana-rijetkih-bolesti-28-veljace-2026/",
-      "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/03/IMG_6081.jpeg"
+      "naslov": "ČOBANIJADA U HARKANOVCIMA 2026.",
+      "datum": "tra. 21, 2026",
+      "kratki_opis": "Harkanovci će u subotu, 23. svibnja 2026. godine, biti domaćin jedne od najveselijih i najmirisnijih manifestacija ovoga kraja – Čobanijade u Harkanovcima, koja će ...",
+      "link": "https://tz.valpovo.hr/2026/04/21/cobanijada-u-harkanovcima-2026/",
+      "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/04/Plakat-Harkanovci.jpg"
     },
     {
-      "naslov": "VALENTINOVSKA ZABAVA 14.2.2026.",
-      "datum": "velj. 16, 2026",
-      "kratki_opis": "U subotu, 14.2.2026. godine, je u novootvorenom Domu kulture „Fabijan Šovagović“ održana, u organizaciji NK Slavonac Ladimirevci i Udruga žena Lavice Ladimirevci, prva po ...",
-      "link": "https://tz.valpovo.hr/2026/02/16/valentinovska-zabava-14-2-2026/",
-      "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/02/valentinovska-zabava-ladimirevci-2026-4-comp.jpg"
+      "naslov": "SEDMI FESTIVAL SIRA & VINA U VALPOVU",
+      "datum": "tra. 16, 2026",
+      "kratki_opis": "Dame i gospodo, pred nama je dugo očekivani eno-gastronomski događaj – FESTIVAL SIRA & VINA 2026., koji će se održati u subotu, 09. svibnja ...",
+      "link": "https://tz.valpovo.hr/2026/04/16/sedmi-festival-sira-vina-u-valpovu/",
+      "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/04/sedmi-festival-sira-vina-2026-cover-fb.jpg"
     },
     {
-      "naslov": "U znaku veselja i mašte održan 32. Dječji gradski karneval u Valpovu",
-      "datum": "velj. 15, 2026",
-      "kratki_opis": "Središnji trg kralja Tomislava u Valpovu jučer je ponovno bio ispunjen smijehom, bojama i razigranom atmosferom tijekom održavanja 32. Dječjeg gradskog karnevala. Grad je ...",
-      "link": "https://tz.valpovo.hr/2026/02/15/u-znaku-veselja-i-maste-odrzan-32-djecji-gradski-karneval-u-valpovu/",
-      "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/02/634343869_916513124100916_1653997138633113388_nPRVAAAASLIKA-32-djecji-gradski-karneval.jpg"
+      "naslov": "Javni poziv za izbor najljepše uređenih prostora na području Grada Valpova u 2026. godini",
+      "datum": "tra. 07, 2026",
+      "kratki_opis": "Na temelju Programa rada i financijskog plana za 2026. godinu, Turistička zajednica Grada Valpova objavljuje JAVNI POZIV za izbor najljepše uređenih prostora na području ...",
+      "link": "https://tz.valpovo.hr/2026/04/07/javni-poziv-za-izbor-najljepse-uredenih-prostora-na-podrucju-grada-valpova-u-2026-godini/",
+      "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/04/IMG_6313.jpeg"
     },
     {
-      "naslov": "HIT KOMEDIJA:  „ PARAZITSKA POSLA “",
-      "datum": "velj. 09, 2026",
-      "kratki_opis": "Ustanova za kulturne djelatnosti „Ante Evetović Miroljub“ Valpovo i Kazalište MORUZGVA Vam donose HIT KOMEDIJU: „ PARAZITSKA POSLA “ Vrijeme: Utorak, 24.2.2026. u 20:00 ...",
-      "link": "https://tz.valpovo.hr/2026/02/09/hit-komedija-parazitska-posla/",
-      "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/02/parazitska-posla-plakat.jpg"
+      "naslov": "USKRS U VALPOVU 2026.: ANIMATORSKI PROGRAM, SAJAM, MOTO-ZEČEVI",
+      "datum": "tra. 05, 2026",
+      "kratki_opis": "Valpovo je jučer, u ugodnim prijepodnevnim satima i uz lijep proljetni dan, bilo domaćin posljednjeg dana manifestacije „Uskrs u Valpovu 2026.”, koja je ispred ...",
+      "link": "https://tz.valpovo.hr/2026/04/05/uskrs-u-valpovu-2026-animatorski-program-sajam-moto-zecevi/",
+      "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/04/660444832_955199650232263_8817790921818138541_n-USKRS-U-VALPOVU-2026-ANIMATORSKI-PROGRAM-USKRSNI-SAJAM-KOD-DVORCA_MOTO-ZECEVI.jpg"
     },
     {
-      "naslov": "Javni poziv bračnim parovima koji u 2026. godini slave zlatni i dijamantni pir",
-      "datum": "velj. 09, 2026",
-      "kratki_opis": "Pozivaju se bračni parovi s područja Grada Valpova i prigradskih naselja Grada Valpova, koji u 2026. godini slave 50, 60 ili dužu, „okruglu“ obljetnicu ...",
-      "link": "https://tz.valpovo.hr/2026/02/09/javni-poziv-bracnim-parovima-koji-u-2026-godini-slave-zlatni-i-dijamantni-pir/",
-      "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/02/vsz-2026-drugivizual.jpg"
+      "naslov": "USKRS U VALPOVU 2026.: MOTO-ZEČEVI U PRIGRADSKIM NASELJIMA – EDUKIDO RADIONICA",
+      "datum": "tra. 04, 2026",
+      "kratki_opis": "Jučer su u poslijepodnevnim satima, u sklopu manifestacije „Uskrs u Valpovu 2026.“, tradicionalno vrijedni članovi Moto kluba „2 grada“ Valpovo-Belišće posjetili prigradska naselja grada ...",
+      "link": "https://tz.valpovo.hr/2026/04/04/uskrs-u-valpovu-2026-moto-zecevi-u-prigradskim-naseljima-edukido-radionica/",
+      "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/04/661694437_954097253675836_2592566160787198355_n-USKRS-U-VALPOVU-2026-MOTO-ZECEVI-U-PRIGRADSKIM-NASELJIMA-EDUKIDO-RADIONICA.jpg"
     },
     {
-      "naslov": "32. DJEČJI GRADSKI KARNEVAL U VALPOVU",
-      "datum": "velj. 05, 2026",
-      "kratki_opis": "Turistička zajednica Grada Valpova i Grad Valpovo, u suradnji s Puhačkim orkestrom DVD-a Valpovo, Gradskim društvom Crvenoga križa Valpovo, Mažoretkinjama grada Valpova, Odredom izviđača ...",
-      "link": "https://tz.valpovo.hr/2026/02/05/32-djecji-gradski-karneval-u-valpovu/",
-      "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/02/karneval-cover-fb-2026-plakat-horizontalni.jpg"
+      "naslov": "USKRS U VALPOVU 2026.: EDUKIDO USKRSNA RADIONICA",
+      "datum": "tra. 03, 2026",
+      "kratki_opis": "U sklopu manifestacije „Uskrs u Valpovu 2026.“, jučer, 2. travnja 2026. godine, u Edukacijsko-interpretacijskom centru Matije Petra Katančića održana je kreativna Edukido radionica s ...",
+      "link": "https://tz.valpovo.hr/2026/04/03/uskrs-u-valpovu-2026-edukido-uskrsna-radionica/",
+      "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/04/661842179_953284920423736_7138785636984074209_n-USKRS-U-VALPOVU-2026-EDUKIDO-USKRSNA-RADIONICA.jpg"
     },
     {
-      "naslov": "Otvorenje izložbe Gordane Perić – „Zelena olovka“",
-      "datum": "sij. 29, 2026",
-      "kratki_opis": "Ustanova za kulturne djelatnosti „Ante Evetović Miroljub“ Valpovo poziva sve zainteresirane na otvorenje izložbe „Zelena olovka“ autorice Gordane Perić, koje će se održati u ...",
-      "link": "https://tz.valpovo.hr/2026/01/29/otvorenje-izlozbe-gordane-peric-zelena-olovka/",
-      "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/01/plakat-izlozbe.jpg"
+      "naslov": "USKRS U VALPOVU 2026.: POTRAGA ZA PISANICAMA U LADIMIREVCIMA",
+      "datum": "tra. 01, 2026",
+      "kratki_opis": "U sklopu manifestacije „Uskrs u Valpovu 2026.”, danas je u područnom odjelu Ladimirevci Dječjeg vrtića „Maza” Valpovo održana vesela uskrsna aktivnost za najmlađe pod ...",
+      "link": "https://tz.valpovo.hr/2026/04/01/uskrs-u-valpovu-2026-potraga-za-pisanicama-u-ladimirevcima/",
+      "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/04/659125229_951821733903388_5357011677621823738_n-uskrs-u-valpovu-2025-potraga-za-pisanicama-ladimirevci.jpg"
     },
     {
-      "naslov": "NOĆ MUZEJA 2026. U MUZEJU VALPOVŠTINE",
-      "datum": "sij. 26, 2026",
-      "kratki_opis": "Sažetak programa U dvorcu će posjetitelji moći pogledati stalnu izložbu o valpovačkim vlastelinima, geološku izložbu, izložbu 107. brigade i „Sokolski pokret u Valpovštini“. Za ...",
-      "link": "https://tz.valpovo.hr/2026/01/26/noc-muzeja-2026-u-muzeju-valpovstine/",
-      "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/01/noc-muzeja-2026-plakat.jpg"
+      "naslov": "USKRS U VALPOVU 2026.: POTRAGA ZA PISANICAMA",
+      "datum": "ožu. 31, 2026",
+      "kratki_opis": "U sklopu manifestacije „Uskrs u Valpovu 2026.”, danas je u prekrasnom ambijentu baroknog perivoja u Valpovu održana „Potraga za pisanicama”. U ovoj razigranoj uskrsnoj ...",
+      "link": "https://tz.valpovo.hr/2026/03/31/uskrs-u-valpovu-2026-potraga-za-pisanicama/",
+      "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/03/DJI_0897-2-uskrs-u-valpovu-2025-potraga-za-pisanicama.jpg"
     }
   ],
   "novosti_grad": [
     {
-      "naslov": "KREĆE OBNOVA VALPOVAČKOG PARKA",
-      "datum": "17. 03. 2026.",
+      "naslov": "PRIJAVE ZA „REVIJU PJEVAČA AMATERA“ NA 58. LJETU VALPOVAČKOM",
+      "datum": "22. 04. 2026.",
       "kratki_opis": "",
-      "link": "https://valpovo.hr/2026/03/17/krece-obnova-valpovackog-parka/"
+      "link": "https://valpovo.hr/2026/04/22/prijave-za-reviju-pjevaca-amatera-na-58-ljetu-valpovackom/"
     },
     {
-      "naslov": "Obilježen Međunarodni dan žena u memorijalnom centru M. P. Katančić",
-      "datum": "10. 03. 2026.",
+      "naslov": "NOVI RADOVI U VALPOVU",
+      "datum": "16. 04. 2026.",
       "kratki_opis": "",
-      "link": "https://valpovo.hr/2026/03/10/obiljezen-medunarodni-dan-zena-u-memorijalnom-centru-m-p-katancic/"
+      "link": "https://valpovo.hr/2026/04/16/novi-radovi-u-valpovu/"
     }
   ],
   "manifestacije_aktualne": [
