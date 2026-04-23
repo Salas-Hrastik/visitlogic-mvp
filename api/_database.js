@@ -117,7 +117,7 @@ export const db = {
             "Dvorac Prandau-Normann obnavljan je sedam puta kroz povijest.",
             "Prandauovo kazalište (1809.) najstarija je sačuvana kazališna zgrada u kontinentalnoj Hrvatskoj.",
             "Muzej Valpovštine osnovan je 1956. i smješten je unutar dvorca.",
-            "Suvenirnica grada Valpova otvorena je u svibnju 2023. u Katančićevom vremeplovu.",
+            "Suvenirnica grada Valpova otvorena je u svibnju 2023. u sklopu Edukacijsko-interpretacijskog centra Matije Petra Katančića.",
             "Godišnja manifestacija 'Ljeto valpovačko' traje od 1968. godine (57. izdanje u 2025.).",
             "Na području Valpova žive 4 naroda i više vjerskih zajednica — slavenska multietničnost tipična za Slavoniju.",
             "Valko kolači — Valpovo je rodno mjesto PRVE industrijske proizvodnje kolača u Hrvatskoj. Tvornica 'Valko' (kasnije poznata i kao 'Zvijezda') bila je pionir slastičarske industrije u cijeloj državi.",
@@ -191,10 +191,10 @@ export const db = {
             "web": "https://tz.valpovo.hr/znamenitosti/srednjovjekovna-kula"
         },
         {
-            "naziv": "Katančićev vremeplov",
+            "naziv": "Edukacijsko-interpretacijski centar Matije Petra Katančića",
             "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2025/03/20250313_113711-edukacijski-centar-matije-pater-katancic-valpovo-550x360.jpg",
             "opis": "Obnovljena zgrada stare škole iz 1859. godine — edukacijsko-interpretacijski centar i suvenirnica grada Valpova.",
-            "maps_url": "https://www.google.com/maps/search/?api=1&query=Katančićev+vremeplov+Valpovo",
+            "maps_url": "https://www.google.com/maps/search/?api=1&query=Edukacijsko+interpretacijski+centar+Katančić+Valpovo",
             "radno_vrijeme": "Pon: 07:00–19:00 | Uto–Pet: 07:00–15:00",
             "web": "https://tz.valpovo.hr/znamenitosti/edukacijsko-interpretacijski-centar-matije-petra-katancica-suvenirnica-grada-valpova/"
         },
@@ -252,9 +252,10 @@ export const db = {
             "web": "https://tz.valpovo.hr/znamenitosti/pivovara-valpovo/"
         },
         {
-            "naziv": "Centar kulture Matija Petar Katančić",
-            "opis": "Središte kulturno-društvenih događanja u Valpovu, smješten pored dvorca Prandau-Normann.",
-            "adresa": "Valpovo",
+            "naziv": "Centar kulture \"Matija Petar Katančić\"",
+            "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2012/06/Kulturni_centar-Valpovo.jpeg",
+            "opis": "Središte kulturno-društvenih događanja u Valpovu, otvoren 27. listopada 2011. Višenamjenska dvorana s 339 mjesta (2 galerijske razine) i pozornicom 14 × 10 m. Površina objekta: 1.499,92 m². Suvrena staklena arhitektura u srcu Valpova — kino projekcije, kazalište, koncerti, seminari, izložbe.",
+            "adresa": "Trg kralja Tomislava 2, Valpovo",
             "maps_url": "https://www.google.com/maps/search/?api=1&query=Centar+kulture+Katančić+Valpovo",
             "web": "https://tz.valpovo.hr/znamenitosti/centar-kulture-matija-petar-katancic/"
         },
@@ -521,8 +522,8 @@ export const db = {
     "dogadanja": [
         {
             "naziv": "Dječji gradski karneval",
-            "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2025/03/1djecji-gradski-karneval-valpovo-1024x576.jpg",
-            "opis": "Maskirana povorka i zabavni program za djecu.",
+            "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2025/03/1djecji-gradski-karneval-valpovo.jpg",
+            "opis": "Tradicionalna zabavna manifestacija u veljači (pred korizmu). Maskirana i kostimirana povorka, prezentacija i izbor najljepše maske, te glazbeni program za djecu. Potiče kreativno izražavanje i maštu.",
             "vrijeme": "Veljača",
             "web": "https://tz.valpovo.hr/manifestacije/djecji-gradski-karneval/"
         },
@@ -534,7 +535,7 @@ export const db = {
             "web": "https://tz.valpovo.hr/manifestacije/uskrs-u-valpovu/"
         },
         {
-            "naziv": "MatijafesT",
+            "naziv": "Matijafest",
             "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2025/03/1-matijafest-1024x683.jpg",
             "opis": "Kulturno-edukativni festival za djecu predškolske i školske dobi posvećen ostavštini Matije Petra Katančića — 'najučenijeg Slavonca svoga doba'. Program uključuje interaktivne radionice izrade suvenira, upoznavanje s Katančićevim doprinosom znanosti i kulturi, te kreativne aktivnosti za mlade. Organizira TZ Grad Valpovo.",
             "vrijeme": "Svibanj",
@@ -1115,8 +1116,8 @@ export const db = {
         ],
         "lokalni_i_suveniri": [
             {
-                "naziv": "Suvenirnica Valpovo (Katančićev vremeplov)",
-                "opis": "Jedina gradska suvenirnica, otvorena 2023. u sklopu Katančićevog vremeplova. Nudi majice, dukseve, šalice, ruksake i magnete s motivima Valpova i Matije Petra Katančića. Online narudžba dostupna. Maks. cijena 25 €.",
+                "naziv": "Suvenirnica Valpovo (Edukacijsko-interpretacijski centar Matije Petra Katančića)",
+                "opis": "Gradska suvenirnica, otvorena 2023. u sklopu Edukacijsko-interpretacijskog centra Matije Petra Katančića. Nudi majice, dukse, šalice, ruksake, magnete i razne druge proizvode s motivima Valpova i Matije Petra Katančića. Online narudžba dostupna na: https://suvenirnica.valpovo.hr/",
                 "adresa": "Trg kralja Tomislava 14, Valpovo",
                 "telefon": "+385 31 293 288",
                 "email": "suvenirivalpova@gmail.com",
@@ -1222,13 +1223,6 @@ export const db = {
                 "adresa": "Valpovo",
                 "telefon": "098 915 6333",
                 "maps_url": "https://www.google.com/maps/search/?api=1&query=Karate+klub+Valpovo"
-            },
-            {
-                "sport": "Savate (francuski boks)",
-                "naziv": "Savate klub Valpovo",
-                "opis": "Klub koji trenira savate (francuski boks) za djecu i odrasle. Natječe se na gradskoj, županijskoj i državnoj razini.",
-                "adresa": "Valpovo",
-                "maps_url": "https://www.google.com/maps/search/?api=1&query=Savate+klub+Valpovo"
             },
             {
                 "sport": "Šah",
