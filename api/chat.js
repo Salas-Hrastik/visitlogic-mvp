@@ -1072,9 +1072,9 @@ export default async function handler(req, res) {
           reply += `🎁 **Lokalni proizvodi i suveniri**\n\n`;
           for (const item of k.lokalni_i_suveniri) reply += helper(item, '🎁');
         }
-        if (k.trznica) {
+        if (k.trznica?.length) {
           reply += `🥬 **Tržnica**\n\n`;
-          reply += helper(k.trznica, '🥬');
+          for (const item of k.trznica) reply += helper(item, '🥬');
         }
       } else {
         // Filtrirani prikaz
@@ -1104,7 +1104,7 @@ export default async function handler(req, res) {
             reply += `\n🎁 **Lokalni proizvodi i suveniri**\n\n`;
             for (const item of k.lokalni_i_suveniri) reply += helper(item, '🎁');
           }
-          if (k.trznica) reply += helper(k.trznica, '🥬');
+          if (k.trznica?.length) for (const item of k.trznica) reply += helper(item, '🥬');
         }
       }
 

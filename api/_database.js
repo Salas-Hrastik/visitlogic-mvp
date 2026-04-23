@@ -1006,10 +1006,10 @@ export const db = {
             },
             {
                 "naziv": "Parkiralište Trg kralja Tomislava",
-                "opis": "Javno parkiralište u centru grada uz glavni trg.",
+                "opis": "Javno naplatno parkiralište u centru grada uz glavni trg.",
                 "adresa": "Trg kralja Tomislava, Valpovo",
                 "maps_url": "https://www.google.com/maps/search/?api=1&query=parking+Trg+kralja+Tomislava+Valpovo",
-                "napomena": "Besplatno, ograničeno trajanje"
+                "napomena": "Naplatno — kovanice, SMS ili aplikacija"
             },
             {
                 "naziv": "Parkiralište STOP SHOP Valpovo",
@@ -1019,11 +1019,11 @@ export const db = {
                 "napomena": "Besplatno, veći kapacitet"
             },
             {
-                "naziv": "Ulično parkiranje (slobodne zone)",
-                "opis": "Besplatno uličnog parkiranje dostupno je u većini ulica u centru i okolici.",
+                "naziv": "Ulično parkiranje",
+                "opis": "Naplatno parkiranje u označenim uličnim zonama centra grada.",
                 "adresa": "Centar Valpova",
                 "maps_url": "https://www.google.com/maps/search/?api=1&query=parking+Valpovo",
-                "napomena": "Besplatno, označene parkirne trake"
+                "napomena": "Naplatno — kovanice, SMS ili aplikacija"
             }
         ]
     },
@@ -1128,10 +1128,10 @@ export const db = {
         ],
         "trznica": [
             {
-                "naziv": "Agropark — Valpovačka zelena tržnica",
-                "opis": "Tržnica lokalnih OPG-ova i obrtnika, otvorena uz potporu EU fondova. Svježe voće, povrće, med, sirevi i domaći proizvodi valpovačkih poljoprivrednika.",
-                "adresa": "Valpovački poduzetnički centar, Valpovo",
-                "radno_vrijeme": "Pon–Sub 07:30–11:30 (radno vrijeme iz probnog perioda — za aktualno provjerite na 031 656 200)",
+                "naziv": "Agropark (Zelena tržnica)",
+                "opis": "Novoizgrađena tržnica s raznim izlagačima i proizvodima lokalnih OPG-ova.",
+                "adresa": "Vijenac Republike Hrvatske 16, Valpovo",
+                "radno_vrijeme": "Pon–Sub 07:30–11:30",
                 "maps_url": "https://www.google.com/maps/search/?api=1&query=Agropark+Valpovo"
             }
         ],
