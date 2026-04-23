@@ -89,7 +89,7 @@ function detectLang(msg) {
     return 'en';
   if (has(['was','wo','wie','welche','wann','ist','sind','kann','haben','zeig','gibt','bitte','ich','ein','eine','der','die','das','und','oder','nicht','hier','mit','für','von','nach','beim','zum','zur']))
     return 'de';
-  if (has(['cosa','dove','come','quale','quando','sono','può','mostra','dimmi','voglio','cerco','un','una','il','la','lo','gli','le','che','non','con','per','da','nel','nel']))
+  if (has(['cosa','dove','come','quale','quando','sono','può','mostra','dimmi','voglio','cerco','un','una','il','la','lo','gli','le','che','non','con','per','nel','parcheggi','apri','benvenuti','gratuiti']))
     return 'it';
   return 'hr';
 }
@@ -125,7 +125,7 @@ const TR = {
     bus:       '🚌 Autobusni prijevoz iz/do Valpova:',
     fuel:      '⛽ Benzinske stanice u Valpovu:',
     barbers:   '💈 Frizeraji i kozmetički saloni u Valpovu:',
-    parking:   '🅿️ Parkirališta u Valpovu (sva besplatna):',
+    parking:   '🅿️ Parkirališta u Valpovu:',
     svcOverview: 'Pregled usluga dostupnih u Valpovu:',
     askMore:   'Pitajte za detalje o bilo kojoj kategoriji!',
     excursions: 'Preporučeni izleti iz Valpova — od najbližeg prema daljem:',
@@ -160,7 +160,7 @@ const TR = {
     bus:       '🚌 Bus transport to/from Valpovo:',
     fuel:      '⛽ Petrol stations in Valpovo:',
     barbers:   '💈 Hairdressers & beauty salons in Valpovo:',
-    parking:   '🅿️ Parking in Valpovo (all free):',
+    parking:   '🅿️ Parking in Valpovo:',
     svcOverview: 'Services available in Valpovo:',
     askMore:   'Ask for details on any category!',
     excursions: 'Recommended day trips from Valpovo — nearest to farthest:',
@@ -195,7 +195,7 @@ const TR = {
     bus:       '🚌 Busverbindungen nach/von Valpovo:',
     fuel:      '⛽ Tankstellen in Valpovo:',
     barbers:   '💈 Friseursalons & Kosmetik in Valpovo:',
-    parking:   '🅿️ Parkplätze in Valpovo (alle kostenlos):',
+    parking:   '🅿️ Parkplätze in Valpovo:',
     svcOverview: 'Verfügbare Dienstleistungen in Valpovo:',
     askMore:   'Fragen Sie nach Details zu einer beliebigen Kategorie!',
     excursions: 'Empfohlene Ausflüge ab Valpovo — vom nächsten zum weitesten:',
@@ -230,7 +230,7 @@ const TR = {
     bus:       '🚌 Trasporto in autobus da/per Valpovo:',
     fuel:      '⛽ Stazioni di servizio a Valpovo:',
     barbers:   '💈 Parrucchieri e centri estetici a Valpovo:',
-    parking:   '🅿️ Parcheggi a Valpovo (tutti gratuiti):',
+    parking:   '🅿️ Parcheggi a Valpovo:',
     svcOverview: 'Servizi disponibili a Valpovo:',
     askMore:   'Chiedi dettagli su qualsiasi categoria!',
     excursions: 'Gite consigliate da Valpovo — dalla più vicina alla più lontana:',
