@@ -720,6 +720,37 @@ export default async function handler(req, res) {
       return res.status(200).json({ reply, category: 'dogadanja', suggestions: getSuggestions('dogadanja') });
     }
 
+    // ── KIRVAJ pre-gen blok ─────────────────────────────────────────────────
+    // Specifični kirvaj upiti — odgovori kalendarom kirvaja, NE listingom manifestacija
+    const wantsKirvaj = ['kirvaj','kirchweih','proštenje','crkveni god',
+      'svetac zaštitnik','bezgrešno začeće','bezgresno zacece',
+      'velika gospa','mala gospa','parish feast'].some(k => msgLower.includes(k));
+
+    if (wantsKirvaj && !isConversationalMode && !isDetailQuery && category === 'dogadanja') {
+      const kd = db.kirvaji;
+      let reply = `⛪ **Kirvaji u valpovačkom kraju**\n\n${kd.opis}\n\n`;
+
+      // Istakni valpovački kirvaj
+      const vk = kd.kalendar?.find(e => e.naselje === 'Valpovo' && e.datum === '8. prosinca');
+      if (vk) {
+        reply += `🎉 **Kirvaj u Valpovu: ${vk.datum}** — ${vk.svetac}\n`;
+        reply += `📍 ${vk.crkva}\n`;
+        if (vk.opis) reply += `\n${vk.opis}\n`;
+        reply += `\n`;
+      }
+
+      // Cijeli kalendar
+      reply += `**📅 Kalendar kirvaja — valpovačko područje:**\n\n`;
+      for (const e of kd.kalendar) {
+        reply += `• **${e.datum}** — ${e.naselje}`;
+        if (e.svetac) reply += ` *(${e.svetac})*`;
+        if (e.napomena) reply += ` — ${e.napomena}`;
+        reply += `\n`;
+      }
+
+      return res.status(200).json({ reply, category: 'dogadanja', suggestions: getSuggestions('dogadanja') });
+    }
+
     if (category === 'dogadanja' && !specificEventQuery && !isRecommendationQuery && !isDetailQuery && !isGeneralKnowledgeQuery && !isConversationalMode && matched) {
       const currentMonth = new Date().getMonth() + 1;
       const currentDay   = new Date().getDate();
