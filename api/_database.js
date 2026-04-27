@@ -660,13 +660,15 @@ export const db = {
                 "datum": "15. kolovoza",
                 "naselje": "Valpovo",
                 "svetac": "Velika Gospa (Uznesenje BDM)",
-                "crkva": "Župna crkva Bezgrešnog začeća BDM"
+                "crkva": "Župna crkva Bezgrešnog začeća BDM",
+                "opis": "Glavni valpovački kirvaj — najveća godišnja proslava u gradu. Na blagdan Uznesenja BDM (Velika Gospa) slave se svečane mise u župnoj crkvi uz gostujuće svećenike. Središnji Trg kralja Tomislava ispunjen je štandovima s licitarima, bombonima, slatkim i slanim specijalitetima, a zabavni park s vrtuljcima privlači djecu i obitelji iz cijele okolice. Kirvaj se organski nadovezuje na festival Ljeto valpovačko koji se održava u kolovozu — kombinacija kulturnog programa i kirvajske atmosfere čini taj vikend posebno živim. Putni savjet: rezervirajte 15. kolovoza za svečani obiteljski ručak (pečenka, sarma, domaći kolači) i večernju šetnju centrom uz glazbu i kirvajske štandove."
             },
             {
                 "datum": "16. kolovoza",
                 "naselje": "Valpovo",
                 "svetac": "Sv. Rok (Zavjetni dan)",
-                "crkva": "Kapela sv. Roka"
+                "crkva": "Kapela sv. Roka",
+                "opis": "Drugi dan valpovačkog kirvaja — Zavjetni dan sv. Roka. Kapela sv. Roka izgrađena je 1796. godine kao zavjet Valpovčana Bogu zahvalnosti što je grad pošteđen od epidemije kuge. Sv. Rok lokalni je zaštitnik od kuge i bolesti, a ovaj 'drugi dan' kirvaja važan je za starije generacije Valpovčana koji ga smatraju ravnopravnim prvom danu."
             },
             {
                 "datum": "8. rujna",
