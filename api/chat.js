@@ -54,7 +54,7 @@ function buildScrapedSection() {
 const CATEGORY_CONTEXTS = {
   smjestaj:     (db) => ({ grad: db.grad, smjestaj: db.smjestaj }),
   gastronomija: (db) => ({ grad: db.grad, gastronomija: db.gastronomija, lokalna_kuhinja: db.lokalna_kuhinja }),
-  dogadanja:    (db) => ({ grad: db.grad, dogadanja: db.dogadanja }),
+  dogadanja:    (db) => ({ grad: db.grad, dogadanja: db.dogadanja, kirvaji: db.kirvaji }),
   znamenitosti: (db) => ({ grad: db.grad, znamenitosti: db.znamenitosti }),
   sport:        (db) => ({ grad: db.grad, sport: db.sport }),
   kupovina:     (db) => ({ grad: db.grad, kupovina: db.kupovina }),
@@ -270,6 +270,8 @@ function getRelevantContext(message, db, lastCategory) {
   if (msg.includes('događ') || msg.includes('dogad') || msg.includes('festival') || msg.includes('manifestac') || msg.includes('karneval') || msg.includes('advent') || msg.includes('program') || msg.includes('što se dešava') || msg.includes('što se događa') || msg.includes('sto se desava') || msg.includes('slijede') || msg.includes('uskoro')
     // Specifične manifestacije valpovštine
     || msg.includes('fišijad') || msg.includes('fisijad') || msg.includes('matijafest') || msg.includes('rockaraj') || msg.includes('reunited') || msg.includes('vašar') || msg.includes('vasar') || msg.includes('ljeto valpov') || msg.includes('craft beer') || msg.includes('staza zdravlja') || msg.includes('katančić') || msg.includes('festival sira') || msg.includes('ribljeg paprikaša') || msg.includes('ribljeg paprikasa') || msg.includes('kuhanje fiš') || msg.includes('kuhanje fis')
+    // Kirvaji / crkvene proslave
+    || msg.includes('kirvaj') || msg.includes('kirvaja') || msg.includes('kirvaju') || msg.includes('kirchweih') || msg.includes('proštenje') || msg.includes('prostenje') || msg.includes('svetac zaštitnik') || msg.includes('zaštitnik') || msg.includes('crkvena proslava') || msg.includes('župna proslava') || msg.includes('sv. florijan') || msg.includes('sv. antun') || msg.includes('sv. ivan') || msg.includes('sv. margareta') || msg.includes('sv. rok') || msg.includes('sv. katarina') || msg.includes('sv. fabijan') || msg.includes('sv. nikola') || msg.includes('velika gospa') || msg.includes('mala gospa')
     // EN
     || msg.includes('event') || msg.includes('events') || msg.includes('carnival') || msg.includes('celebration') || msg.includes('upcoming') || msg.includes('what\'s on')
     // DE

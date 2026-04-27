@@ -613,6 +613,94 @@ export const db = {
             "web": "https://tz.valpovo.hr/manifestacije/advent-u-valpovu/"
         }
     ],
+    "kirvaji": {
+        "opis": "Kirvaj (od njem. Kirchweih — posveta crkve) tradicionalna je godišnja proslava zaštitnika župne crkve u slavonskim selima. U valpovačkom kraju isključivo se koristi naziv 'kirvaj' (ne 'proštenje'). Svečana misa uz gostujuće svećenike, obiteljski ručak s pečenkom, sarmom i kolačima, licitari, lunapark, te navečer živom glazbom (tamburaši) u društvenim domovima ili kafićima. Nepisano pravilo: 'Ne dolazi se praznih ruku, ali se odlazi punih trbuha.'",
+        "kalendar": [
+            {
+                "datum": "20. siječnja",
+                "naselje": "Marjančaci",
+                "svetac": "Sv. Fabijan i Sebastijan",
+                "crkva": "Crkva sv. Fabijana i Sebastijana"
+            },
+            {
+                "datum": "25. siječnja",
+                "naselje": "Nard",
+                "svetac": "Obraćenje sv. Pavla",
+                "crkva": "Crkva sv. Margarete (glavni kirvaj u srpnju)",
+                "napomena": "Manji zimski kirvaj"
+            },
+            {
+                "datum": "4. svibnja",
+                "naselje": "Šag",
+                "svetac": "Sv. Florijan",
+                "crkva": "Crkva sv. Florijana"
+            },
+            {
+                "datum": "13. lipnja",
+                "naselje": "Ladimirevci",
+                "svetac": "Sv. Antun Padovanski",
+                "crkva": "Crkva sv. Antuna Padovanskog",
+                "napomena": "Bis i Jablan gravitiraju ovoj župi"
+            },
+            {
+                "datum": "24. lipnja",
+                "naselje": "Ivanovci",
+                "svetac": "Sv. Ivan Krstitelj",
+                "crkva": "Crkva sv. Ivana Krstitelja",
+                "napomena": "Bis pripada župi Ivanovci"
+            },
+            {
+                "datum": "13. srpnja",
+                "naselje": "Nard",
+                "svetac": "Sv. Margareta",
+                "crkva": "Crkva sv. Margarete",
+                "napomena": "Glavni kirvaj u Nardu"
+            },
+            {
+                "datum": "15. kolovoza",
+                "naselje": "Valpovo",
+                "svetac": "Velika Gospa (Uznesenje BDM)",
+                "crkva": "Župna crkva Bezgrešnog začeća BDM"
+            },
+            {
+                "datum": "16. kolovoza",
+                "naselje": "Valpovo",
+                "svetac": "Sv. Rok (Zavjetni dan)",
+                "crkva": "Kapela sv. Roka"
+            },
+            {
+                "datum": "8. rujna",
+                "naselje": "Harkanovci",
+                "svetac": "Mala Gospa (Rođenje BDM)",
+                "crkva": "Crkva Snježne Gospe"
+            },
+            {
+                "datum": "14. rujna",
+                "naselje": "Zelčin",
+                "svetac": "Ime Marijino",
+                "crkva": "Crkva Imena Marijina"
+            },
+            {
+                "datum": "13. listopada",
+                "naselje": "Veliškovci",
+                "svetac": "Sv. Rok (slave i sv. Antuna)",
+                "crkva": "Crkva sv. Roka"
+            },
+            {
+                "datum": "25. studenog",
+                "naselje": "Gat",
+                "svetac": "Sv. Katarina Aleksandrijska",
+                "crkva": "Crkva sv. Katarine"
+            },
+            {
+                "datum": "6. prosinca",
+                "naselje": "Belišće",
+                "svetac": "Sv. Nikola",
+                "crkva": "Crkva sv. Nikole Tavelića",
+                "napomena": "Susjedno naselje — često posjećuju i Valpovčani"
+            }
+        ]
+    },
     "smjestaj": {
         "hoteli": [
             {
