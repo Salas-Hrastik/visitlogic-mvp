@@ -549,6 +549,13 @@ export const db = {
             "web": "https://tz.valpovo.hr/manifestacije/festival-sira-i-vina/"
         },
         {
+            "naziv": "Čobanijada Harkanovci",
+            "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/04/Plakat-Harkanovci.jpg",
+            "opis": "Jedna od najveselijih manifestacija valpovačkog kraja — Čobanijada u Harkanovcima. Tradicijska proslava posvećena pastirskoj baštini ovog kraja uz autentičnu gastronomiju, folklorni program, natjecanja i dobru atmosferu. Manifetacija se održava u Harkanovcima, selu s bogatom tradicijom slavonskog seoskog života. U 2026. godini Čobanijada se održava u subotu, 23. svibnja 2026.",
+            "vrijeme": "Svibanj",
+            "web": "https://tz.valpovo.hr/2026/04/21/cobanijada-u-harkanovcima-2026/"
+        },
+        {
             "naziv": "Vashar festival",
             "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2025/09/Vashar-promo-naslovna-1024x678.jpg",
             "opis": "Glazbeni festival autorskih bendova na otvorenom koji obuhvaća rock, metal, blues, grunge, punk i alternativnu scenu.",
