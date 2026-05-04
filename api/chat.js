@@ -691,7 +691,8 @@ export default async function handler(req, res) {
 
     // Događanja listing: filtriraj prošle i generiraj direktno bez AI
     // Ako korisnik pita za SPECIFIČNU manifestaciju po imenu → preskoči listing, pusti AI da odgovori konkretno
-    const specificEventQuery = ['fišijad','fisijad','matijafest','rockaraj','reunited','vašar','vasar','ljeto valpov','craft beer','staza zdravlja','festival sira','ribljeg paprikaš','ribljeg paprikas','kuhanje fiš','kuhanje fis','katančić','katancic','matija petar','matiji petru'].some(k => msgLower.includes(k));
+    const specificEventQuery = ['fišijad','fisijad','matijafest','rockaraj','reunited','vašar','vasar','ljeto valpov','craft beer','staza zdravlja','festival sira','ribljeg paprikaš','ribljeg paprikas','kuhanje fiš','kuhanje fis','katančić','katancic','matija petar','matiji petru',
+      'čobanijad','cobanijad','advent','vashar','dani katančić','dani katancic','kvartet','zagreb'].some(k => msgLower.includes(k));
     // ── NOVOSTI pre-gen blok (skrapani sadržaj s thumbnailima) ─────────────
     const wantsNovosti = ['novosti', 'vijesti', 'aktualnost', 'što je novo', 'sto je novo',
       'što se nedavno', 'što se zadnje', 'news', 'aktualno', 'najnovije']
