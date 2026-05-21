@@ -512,12 +512,6 @@ export const db = {
             "opis": "4.7★ (105 recenzija)",
             "maps_url": "https://www.google.com/maps/search/?api=1&query=Caffe+Bar+Vespera+Valpovo"
         },
-        {
-            "naziv": "Caffe Night Bar City",
-            "adresa": "Ul. bana Ivana Mažuranića 8, Valpovo",
-            "opis": "Noćni bar — 4.5★ (98 recenzija)",
-            "maps_url": "https://www.google.com/maps/search/?api=1&query=Caffe+Night+Bar+City+Valpovo"
-        }
     ],
     "dogadanja": [
         {
