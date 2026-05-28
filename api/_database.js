@@ -312,14 +312,14 @@ export const db = {
             "web": "https://tz.valpovo.hr/ugostiteljstvo/restoran-jovalija/"
         },
         {
-            "naziv": "Hotel & Restoran Park Valpovo",
+            "naziv": "Restoran Park",
             "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2022/04/parkvalpovo003-853x640.jpg",
-            "opis": "Restoran u sklopu dvorca Prandau-Normann. Kapacitet 280 osoba. Slavonski specijaliteti: čobanac, fiš, jela ispod peke. Dvorana za svečanosti, vjenčanja, konferencije. Besplatno punjenje EV vozila.",
-            "adresa": "Trg kralja Tomislava 2, Valpovo",
+            "opis": "Restoran na ulazu u Valpovo, 100 m od obilaznice, u stoljetnom parku engleskog krajobraznog stila uz barokni dvorac i kulu iz 15. stoljeća. Klimatiziran objekt s dvoranom za svečanosti (280 osoba), blagovaonicom, odvojenim salonom, bifoom s TV kutkom, terasom s drvenim paviljonom, dječjim igralištem i velikim parkiralištem. Kontinentalna i slavonska kuhinja: roštilj, čobanac, riblja jela. 9 km od Bizovačkih toplica.",
+            "adresa": "Ive Lole Ribara 10, Valpovo",
             "telefon": "+385 31 651 230",
             "email": "info@restoran-park.hr",
             "radno_vrijeme": "Pon–Sub: 08:00–22:00 | Ned: 10:00–16:00",
-            "web": "https://tz.valpovo.hr/ugostiteljstvo/restoran-park/"
+            "web": "https://restoran-park.hr"
         },
         {
             "naziv": "PIGment Burger Bar",
@@ -719,12 +719,12 @@ export const db = {
             {
                 "naziv": "Hotel & Restoran Park Valpovo",
                 "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2022/04/parkvalpovo003-853x640.jpg",
-                "opis": "4-zvjezdični hotel uz dvorac Prandau-Normann. 6 soba (5 standard + 1 deluxe). Restoran 280 mjesta, slavonski specijaliteti. Besplatno parkiranje i punjenje EV vozila. 9 km od Bizovačkih toplica.",
-                "adresa": "Trg kralja Tomislava 2, Valpovo",
+                "opis": "Hotel na ulazu u Valpovo, u stoljetnom parku uz barokni dvorac Prandau-Normann. 6 soba (5 standard + 1 deluxe). Restoran s dvoranom za svečanosti (280 mjesta), slavonska i kontinentalna kuhinja. Besplatno parkiranje i punjenje EV vozila. 9 km od Bizovačkih toplica.",
+                "adresa": "Ive Lole Ribara 10, Valpovo",
                 "telefon": "+385 31 651 230",
                 "email": "info@restoran-park.hr",
                 "maps_url": "https://www.google.com/maps/search/?api=1&query=Hotel+Park+Valpovo",
-                "web": "https://tz.valpovo.hr/smjestaj-u-valpovu/hotel-restoran-park-valpovo/"
+                "web": "https://restoran-park.hr"
             }
         ],
         "ruralni_smjestaj": [
