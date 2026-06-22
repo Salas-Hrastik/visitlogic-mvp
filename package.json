@@ -6,6 +6,7 @@
         "node": "20.x"
     },
     "dependencies": {
+        "cheerio": "^1.2.0",
         "formidable": "^3.5.1",
         "openai": "^4.77.0"
     }
