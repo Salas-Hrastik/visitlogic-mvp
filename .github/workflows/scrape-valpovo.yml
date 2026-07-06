@@ -1,0 +1,54 @@
+name: Tjedno ažuriranje turističkih podataka
+
+on:
+  schedule:
+    # Svaki ponedjeljak u 6:00 UTC
+    - cron: '0 6 * * 1'
+  workflow_dispatch:
+    # Manualnom pokretanje iz GitHub UI-a
+
+jobs:
+  scrape:
+    name: Scrape tz.valpovo.hr & valpovo.hr
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repozitorija
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Postavi Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Instaliraj ovisnosti
+        run: npm install
+
+      - name: Pokreni scraper
+        run: node scripts/scrape-valpovo.js
+
+      - name: Provjeri promjene
+        id: changes
+        run: |
+          if git diff --quiet api/_scraped_content.js; then
+            echo "changed=false" >> $GITHUB_OUTPUT
+            echo "Nema novih promjena na tz.valpovo.hr"
+          else
+            echo "changed=true" >> $GITHUB_OUTPUT
+            git diff --stat api/_scraped_content.js
+          fi
+
+      - name: Commitaj i pushaj promjene
+        if: steps.changes.outputs.changed == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add api/_scraped_content.js
+          git commit -m "Automatsko tjedno azuriranje scraped content $(date +%Y-%m-%d)"
+          git push origin main
