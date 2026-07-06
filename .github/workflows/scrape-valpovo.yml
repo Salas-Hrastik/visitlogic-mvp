@@ -5,7 +5,7 @@ on:
     # Svaki ponedjeljak u 6:00 UTC
     - cron: '0 6 * * 1'
   workflow_dispatch:
-    # Manualnom pokretanje iz GitHub UI-a
+    # Manualno pokretanje iz GitHub UI-a
 
 jobs:
   scrape:
@@ -29,6 +29,9 @@ jobs:
 
       - name: Instaliraj ovisnosti
         run: npm install
+
+      - name: Instaliraj Playwright Chromium
+        run: npx playwright install chromium --with-deps
 
       - name: Pokreni scraper
         run: node scripts/scrape-valpovo.js

@@ -8,12 +8,16 @@
  *   - Novosti s tz.valpovo.hr/novosti/
  *   - Aktualne manifestacije s datumima s tz.valpovo.hr/manifestacije/
  *   - Vijesti s valpovo.hr (gradske obavijesti)
+ *
+ * Strategija dohvata (fallback lanac):
+ *   1. Node fetch s browser User-Agent
+ *   2. Playwright Chromium headless (zaobilazi bot detekciju)
  */
 
 import { writeFileSync, readFileSync } from 'fs';
 import { load } from 'cheerio';
 
-const HEADERS = {
+const FETCH_HEADERS = {
   'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36',
   'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8',
   'Accept-Language': 'hr,en-US;q=0.9,en;q=0.8',
@@ -26,23 +30,65 @@ const HEADERS = {
   'Upgrade-Insecure-Requests': '1',
 };
 
+// ─── Playwright helper (lazy-loaded) ────────────────────────────────────────
+
+let _browser = null;
+
+async function getPlaywrightBrowser() {
+  if (_browser) return _browser;
+  try {
+    const { chromium } = await import('playwright');
+    _browser = await chromium.launch({
+      headless: true,
+      args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage'],
+    });
+    return _browser;
+  } catch {
+    return null;
+  }
+}
+
+async function fetchWithPlaywright(url) {
+  const browser = await getPlaywrightBrowser();
+  if (!browser) return null;
+
+  const context = await browser.newContext({
+    userAgent: FETCH_HEADERS['User-Agent'],
+    locale: 'hr-HR',
+    extraHTTPHeaders: { 'Accept-Language': 'hr,en-US;q=0.9,en;q=0.8' },
+  });
+  const page = await context.newPage();
+  try {
+    await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 30000 });
+    await page.waitForTimeout(1500);
+    const html = await page.content();
+    return html;
+  } catch (e) {
+    console.warn(`⚠️  Playwright nije mogao dohvatiti ${url}: ${e.message}`);
+    return null;
+  } finally {
+    await context.close();
+  }
+}
+
 async function fetchHtml(url) {
+  // Pokušaj 1: Node fetch
   try {
     const res = await fetch(url, {
-      headers: HEADERS,
+      headers: FETCH_HEADERS,
       signal: AbortSignal.timeout(20000),
     });
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     return await res.text();
   } catch (e) {
-    console.warn(`⚠️  Nije moguće dohvatiti ${url}: ${e.message}`);
-    return null;
+    console.warn(`⚠️  fetch nije uspio za ${url}: ${e.message} — pokušavam Playwright...`);
   }
+
+  // Pokušaj 2: Playwright Chromium headless
+  return await fetchWithPlaywright(url);
 }
 
 // ─── Novosti s tz.valpovo.hr ────────────────────────────────────────────────
-// HTML struktura: article.side-post > .post-title h3 a (naslov+link),
-//                 .post-date a (datum), .post-body (kratki opis)
 
 async function scrapeNovostiTZ() {
   const html = await fetchHtml('https://tz.valpovo.hr/novosti/');
@@ -96,9 +142,7 @@ async function scrapeNovostiGrad() {
                    entry.match(/<description>([^<]+)<\/description>/))?.[1]
                     ?.replace(/<[^>]+>/g, '').trim().substring(0, 200) || '';
 
-    // Preskočimo administrativne/pravne dokumente koji nisu turistički relevantni
     const skip = /natječaj|javna nabava|zakon|odluka o.*zakup|oglas|pravilnik|javni poziv/i.test(title);
-    // Pretvori RSS datum u čitljivi oblik: "Tue, 17 Mar 2026 13:00:00 +0000" → "17. 03. 2026."
     const dateParsed = new Date(date);
     const dateFormatted = isNaN(dateParsed) ? date.substring(0, 16) :
       dateParsed.toLocaleDateString('hr-HR', { day: '2-digit', month: '2-digit', year: 'numeric' });
@@ -117,8 +161,6 @@ async function scrapeNovostiGrad() {
 }
 
 // ─── Manifestacije s datumima ───────────────────────────────────────────────
-// HTML struktura: article.card-post > .card-post-content .post-body h3 a
-// Datumi su dostupni na stranicama pojedinih manifestacija — skrapamo ih posebno
 
 async function scrapeManifestacije() {
   const html = await fetchHtml('https://tz.valpovo.hr/manifestacije/');
@@ -127,7 +169,6 @@ async function scrapeManifestacije() {
   const $ = load(html);
   const links = [];
 
-  // Izvuci linkove i slike svih manifestacija s listing stranice
   $('article.card-post').each((_, el) => {
     const titleEl = $(el).find('.post-body h3 a, h3 a, h2 a').first();
     const title = titleEl.text().trim();
@@ -137,7 +178,6 @@ async function scrapeManifestacije() {
     if (title && link) links.push({ naziv: title, link, imgUrl });
   });
 
-  // Za svaku manifestaciju dohvati detalje (datum, opis)
   const items = [];
   for (const { naziv, link, imgUrl } of links.slice(0, 13)) {
     const pageHtml = await fetchHtml(link);
@@ -146,9 +186,7 @@ async function scrapeManifestacije() {
       continue;
     }
     const $p = load(pageHtml);
-    // Datum iz meta ili post-date
     const datum = $p('.post-date a, .post-date, time').first().text().trim();
-    // Kratki opis — prvi paragraf sadržaja
     const opis = $p('.entry-content p, .post-content p, article p').first()
       .text().trim().replace(/\s+/g, ' ').substring(0, 250);
     items.push({
@@ -169,12 +207,11 @@ async function scrapeManifestacije() {
 function hasChanged(newData) {
   try {
     const existing = readFileSync('api/_scraped_content.js', 'utf8');
-    // Uspoređuje samo JSON dio (preskačemo timestamp liniju)
     const existingJson = existing.replace(/\/\/ Zadnje skrapanje:.*\n/, '');
     const newJson = JSON.stringify(newData);
     return !existingJson.includes(newJson.substring(20, 200));
   } catch {
-    return true; // datoteka ne postoji — svakako piši
+    return true;
   }
 }
 
@@ -203,6 +240,8 @@ async function main() {
     scrapeNovostiGrad(),
     scrapeManifestacije(),
   ]);
+
+  if (_browser) await _browser.close();
 
   const data = {
     meta: {
