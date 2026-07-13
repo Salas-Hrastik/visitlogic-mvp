@@ -1,11 +1,11 @@
 // AUTO-GENERATED — ne editiraj ručno!
-// Zadnje skrapanje: 2026-04-23 19:49 UTC
+// Zadnje skrapanje: 2026-07-13 08:59 UTC
 // Izvor: tz.valpovo.hr, valpovo.hr
 // GitHub Actions job: scrape-valpovo (tjedno, ponedjeljkom u 6:00)
 
 export const scrapedContent = {
   "meta": {
-    "zadnje_azuriranje": "2026-04-23T19:49:34.980Z",
+    "zadnje_azuriranje": "2026-07-13T08:59:00.658Z",
     "izvori": [
       "https://tz.valpovo.hr",
       "https://valpovo.hr"
@@ -13,88 +13,124 @@ export const scrapedContent = {
   },
   "novosti_tz": [
     {
-      "naslov": "Zagrebački kvartet gostuje u Valpovu – vrhunska večer komorne glazbe uz besplatan ulaz",
-      "datum": "tra. 23, 2026",
-      "kratki_opis": "Ustanova za kulturne djelatnosti „Ante Evetović Miroljub“ Valpovo s ponosom najavljuje koncert jednog od najuglednijih hrvatskih komornih ansambala – Zagrebačkog kvarteta, koji će se održati u ...",
-      "link": "https://tz.valpovo.hr/2026/04/23/zagrebacki-kvartet-gostuje-u-valpovu-vrhunska-vecer-komorne-glazbe-uz-besplatan-ulaz/",
-      "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/04/zagrebacki-kvartet-2026-najava-valpovo.jpg"
+      "naslov": "6. ROCK’A’RAJ FEST – „UNDER THE GINKO EDITION“ STIŽE U VALPOVO!",
+      "datum": "srp 11, 2026",
+      "kratki_opis": "Ovog ljeta Rock’a’raj okreće novu stranicu i donosi nešto drugačije izdanje! Šesto izdanje valpovačkog rock festivala održat će se 18. srpnja 2026. godine od 19 sati, ...",
+      "link": "https://tz.valpovo.hr/2026/07/11/6-rockaraj-fest-under-the-ginko-edition-stize-u-valpovo/",
+      "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/07/rokaraj-2026-facebook.jpg"
     },
     {
-      "naslov": "PRIJAVE ZA „REVIJU PJEVAČA AMATERA“ NA 58. LJETU VALPOVAČKOM",
-      "datum": "tra. 22, 2026",
-      "kratki_opis": "Tradicionalna „Revija pjevača amatera“ dio je programa Ljeta valpovačkog već dugi niz godina gdje su mnogi glazbeni talenti svu svoju pjevačku raskoš otkrili upravo ...",
-      "link": "https://tz.valpovo.hr/2026/04/22/prijave-za-reviju-pjevaca-amatera-na-58-ljetu-valpovackom/",
-      "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/04/revija-pjevaca-poziv-2026.jpg"
+      "naslov": "VALPOVČANKA EVELINA BARTOLOVIĆ PREDSTAVLJA OSJEČKO-BARANJSKU ŽUPANIJU NA 26. IZBORU ZA NAJUZORNIJU HRVATSKU SEOSKU ŽENU",
+      "datum": "srp 06, 2026",
+      "kratki_opis": "Valpovčanka Evelina Bartolović predstavljat će Osječko-baranjsku županiju na 26. izboru za Najuzorniju hrvatsku seosku ženu, koji će se održati 3. listopada 2026. godine u ...",
+      "link": "https://tz.valpovo.hr/2026/07/06/valpovcanka-evelina-bartolovic-predstavlja-osjecko-baranjsku-zupaniju-na-26-izboru-za-najuzorniju-hrvatsku-seosku-zenu/",
+      "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/07/evelina-bartolovic-uzorna-seoska-zena1.jpg"
     },
     {
-      "naslov": "ČOBANIJADA U HARKANOVCIMA 2026.",
-      "datum": "tra. 21, 2026",
-      "kratki_opis": "Harkanovci će u subotu, 23. svibnja 2026. godine, biti domaćin jedne od najveselijih i najmirisnijih manifestacija ovoga kraja – Čobanijade u Harkanovcima, koja će ...",
-      "link": "https://tz.valpovo.hr/2026/04/21/cobanijada-u-harkanovcima-2026/",
-      "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/04/Plakat-Harkanovci.jpg"
+      "naslov": "12. REUNITED FESTIVAL \\ 03. – 04. srpnja 2026",
+      "datum": "srp 01, 2026",
+      "kratki_opis": "Udruga Revolution Valpovo predstavlja: 12. REUNITED FESTIVAL Music / Art / D.I.Y. / Soundsystem festival Dvorac Prandau-Norman, Valpovo Valpovo će 3. i 4. srpnja ...",
+      "link": "https://tz.valpovo.hr/2026/07/01/12-reunited-festival-03-04-srpnja-2026/",
+      "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/06/REUNITED-PLAKAT-2026.jpg"
     },
     {
-      "naslov": "SEDMI FESTIVAL SIRA & VINA U VALPOVU",
-      "datum": "tra. 16, 2026",
-      "kratki_opis": "Dame i gospodo, pred nama je dugo očekivani eno-gastronomski događaj – FESTIVAL SIRA & VINA 2026., koji će se održati u subotu, 09. svibnja ...",
-      "link": "https://tz.valpovo.hr/2026/04/16/sedmi-festival-sira-vina-u-valpovu/",
-      "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/04/sedmi-festival-sira-vina-2026-cover-fb.jpg"
+      "naslov": "58. LJETO VALPOVAČKO: KONCERT GRUPE VIGOR – TRAŽENI",
+      "datum": "lip 29, 2026",
+      "kratki_opis": "Nakon bogatog folklornog programa, završnica 58. Ljeta valpovačkog preselila se na Trg kralja Tomislava, gdje je održan koncert popularne grupe Vigor, koja je svojim ...",
+      "link": "https://tz.valpovo.hr/2026/06/29/58-ljeto-valpovacko-koncert-grupe-vigor-trazeni/",
+      "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/06/733964051_1024212429997651_8848010913366967154_n58-ljeto-valpovacko-grupa-vigor-trazeni.jpg"
     },
     {
-      "naslov": "Javni poziv za izbor najljepše uređenih prostora na području Grada Valpova u 2026. godini",
-      "datum": "tra. 07, 2026",
-      "kratki_opis": "Na temelju Programa rada i financijskog plana za 2026. godinu, Turistička zajednica Grada Valpova objavljuje JAVNI POZIV za izbor najljepše uređenih prostora na području ...",
-      "link": "https://tz.valpovo.hr/2026/04/07/javni-poziv-za-izbor-najljepse-uredenih-prostora-na-podrucju-grada-valpova-u-2026-godini/",
-      "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/04/IMG_6313.jpeg"
+      "naslov": "58. LJETO VALPOVAČKO: SMOTRA FOLKLORA",
+      "datum": "lip 29, 2026",
+      "kratki_opis": "Nakon svečane povorke folklornih skupina i šokačkih zaprega, program završnog dana 58. Ljeta valpovačkog nastavljen je u prekrasnom ambijentu dvorca Prandau-Normann, gdje je održana ...",
+      "link": "https://tz.valpovo.hr/2026/06/29/58-ljeto-valpovacko-smotra-folklora/",
+      "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/06/733415114_1024191313333096_730881295354744324_n58-ljeto-valpovacko-smotra-folklora-2026.jpg"
     },
     {
-      "naslov": "USKRS U VALPOVU 2026.: ANIMATORSKI PROGRAM, SAJAM, MOTO-ZEČEVI",
-      "datum": "tra. 05, 2026",
-      "kratki_opis": "Valpovo je jučer, u ugodnim prijepodnevnim satima i uz lijep proljetni dan, bilo domaćin posljednjeg dana manifestacije „Uskrs u Valpovu 2026.”, koja je ispred ...",
-      "link": "https://tz.valpovo.hr/2026/04/05/uskrs-u-valpovu-2026-animatorski-program-sajam-moto-zecevi/",
-      "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/04/660444832_955199650232263_8817790921818138541_n-USKRS-U-VALPOVU-2026-ANIMATORSKI-PROGRAM-USKRSNI-SAJAM-KOD-DVORCA_MOTO-ZECEVI.jpg"
+      "naslov": "58. LJETO VALPOVAČKO: SVEČANA POVORKA FOLKLORNIH SKUPINA I ŠOKAČKIH ZAPREGA",
+      "datum": "lip 29, 2026",
+      "kratki_opis": "Jedan od najsvečanijih i najprepoznatljivijih trenutaka završnog dana 58. Ljeta valpovačkog bila je tradicionalna Svečana povorka folklornih skupina i šokačkih zaprega, koja je ulicama ...",
+      "link": "https://tz.valpovo.hr/2026/06/29/58-ljeto-valpovacko-svecana-povorka-folklornih-skupina-i-sokackih-zaprega/",
+      "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/06/735394500_1024177680001126_5582053916772907786_n58-ljeto-valpovacko-svecana-povorka-folkornih-skupina-kudova-i-sokackih-zaprega-2026.jpg"
     },
     {
-      "naslov": "USKRS U VALPOVU 2026.: MOTO-ZEČEVI U PRIGRADSKIM NASELJIMA – EDUKIDO RADIONICA",
-      "datum": "tra. 04, 2026",
-      "kratki_opis": "Jučer su u poslijepodnevnim satima, u sklopu manifestacije „Uskrs u Valpovu 2026.“, tradicionalno vrijedni članovi Moto kluba „2 grada“ Valpovo-Belišće posjetili prigradska naselja grada ...",
-      "link": "https://tz.valpovo.hr/2026/04/04/uskrs-u-valpovu-2026-moto-zecevi-u-prigradskim-naseljima-edukido-radionica/",
-      "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/04/661694437_954097253675836_2592566160787198355_n-USKRS-U-VALPOVU-2026-MOTO-ZECEVI-U-PRIGRADSKIM-NASELJIMA-EDUKIDO-RADIONICA.jpg"
+      "naslov": "58. LJETO VALPOVAČKO: EKO-ETNO SAJAM – AUTOHTONA JELA – PRIJEM KUD-a",
+      "datum": "lip 29, 2026",
+      "kratki_opis": "Posljednji dan 58. Ljeta valpovačkog protekao je u znaku tradicije, kulturne baštine i zajedništva, okupivši brojne sudionike i posjetitelje kroz raznovrstan program koji je ...",
+      "link": "https://tz.valpovo.hr/2026/06/29/58-ljeto-valpovacko-eko-etno-sajam-autohtona-jela-prijem-kud-a/",
+      "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/06/735439041_1495088311843729_8592021450086410494_n58-ljeto-valpovacko-eko-etno-sajam-autohtona-jela-valpovstine-prijem-kud-ova.jpg"
     },
     {
-      "naslov": "USKRS U VALPOVU 2026.: EDUKIDO USKRSNA RADIONICA",
-      "datum": "tra. 03, 2026",
-      "kratki_opis": "U sklopu manifestacije „Uskrs u Valpovu 2026.“, jučer, 2. travnja 2026. godine, u Edukacijsko-interpretacijskom centru Matije Petra Katančića održana je kreativna Edukido radionica s ...",
-      "link": "https://tz.valpovo.hr/2026/04/03/uskrs-u-valpovu-2026-edukido-uskrsna-radionica/",
-      "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/04/661842179_953284920423736_7138785636984074209_n-USKRS-U-VALPOVU-2026-EDUKIDO-USKRSNA-RADIONICA.jpg"
+      "naslov": "DALMATINO RASPJEVAO VALPOVO, A HRVATSKA POBJEDOM NAD GANOM ZAKLJUČILA JOŠ JEDNU NEZABORAVNU VEČER 58. LJETA VALPOVAČKOG",
+      "datum": "lip 29, 2026",
+      "kratki_opis": "Subotnja večer u sklopu 58. Ljeta valpovačkog donijela je pregršt glazbe, emocija i navijačkog zajedništva. Program na Trgu kralja Tomislava započeo je nastupom Tamburaškog ...",
+      "link": "https://tz.valpovo.hr/2026/06/29/dalmatino-raspjevao-valpovo-a-hrvatska-pobjedom-nad-ganom-zakljucila-jos-jednu-nezaboravnu-vecer-58-ljeta-valpovackog/",
+      "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/06/733360123_880919408391935_9135156370799255722_n58-ljeto-valpovacko-dalmatino-koncert-cuvari-noci-hrvatska-gana-svjetsko-prvenstvo-2026.jpg"
     },
     {
-      "naslov": "USKRS U VALPOVU 2026.: POTRAGA ZA PISANICAMA U LADIMIREVCIMA",
-      "datum": "tra. 01, 2026",
-      "kratki_opis": "U sklopu manifestacije „Uskrs u Valpovu 2026.”, danas je u područnom odjelu Ladimirevci Dječjeg vrtića „Maza” Valpovo održana vesela uskrsna aktivnost za najmlađe pod ...",
-      "link": "https://tz.valpovo.hr/2026/04/01/uskrs-u-valpovu-2026-potraga-za-pisanicama-u-ladimirevcima/",
-      "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/04/659125229_951821733903388_5357011677621823738_n-uskrs-u-valpovu-2025-potraga-za-pisanicama-ladimirevci.jpg"
+      "naslov": "XIII. SLAMA KUP ODUŠEVIO PUBLIKU – NAJBRŽI I NAJSPRETNIJI JAHAČI ODMJERILI SNAGE U VALPOVAČKOM PERIVOJU",
+      "datum": "lip 28, 2026",
+      "kratki_opis": "U sklopu programa 58. Ljeta valpovačkog, u subotu, 27. lipnja, u valpovačkom perivoju održan je XIII. Slama kup, tradicionalno natjecanje jahača u brzini i ...",
+      "link": "https://tz.valpovo.hr/2026/06/28/xiii-slama-kup-odusevio-publiku-najbrzi-i-najspretniji-jahaci-odmjerili-snage-u-valpovackom-perivoju/",
+      "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/06/731983479_1559190139043807_6477179516574136656_n58-ljeto-valpovacko-slama-kup-2026.jpg"
     },
     {
-      "naslov": "USKRS U VALPOVU 2026.: POTRAGA ZA PISANICAMA",
-      "datum": "ožu. 31, 2026",
-      "kratki_opis": "U sklopu manifestacije „Uskrs u Valpovu 2026.”, danas je u prekrasnom ambijentu baroknog perivoja u Valpovu održana „Potraga za pisanicama”. U ovoj razigranoj uskrsnoj ...",
-      "link": "https://tz.valpovo.hr/2026/03/31/uskrs-u-valpovu-2026-potraga-za-pisanicama/",
-      "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/03/DJI_0897-2-uskrs-u-valpovu-2025-potraga-za-pisanicama.jpg"
+      "naslov": "ZVUKOVI TRADICIJE IZ HRVATSKE, BOSNE I HERCEGOVINE I BUGARSKE ISPUNILI VALPOVO",
+      "datum": "lip 28, 2026",
+      "kratki_opis": "U sklopu 58. Ljeta valpovačkog, Trg kralja Tomislava u subotu je bio ispunjen glazbom, pjesmom i folklornom baštinom. Jutarnji program započeo je nastupom Puhačkog ...",
+      "link": "https://tz.valpovo.hr/2026/06/28/zvukovi-tradicije-iz-hrvatske-bosne-i-hercegovine-i-bugarske-ispunili-valpovo/",
+      "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/06/731078648_940413488463235_816832175165542012_n58-ljeto-valpovacko-zvukovi-tradicije-iz-bosne-i-hercegovine-bugarske-kudovi-puhaci-nastup-2026.jpg"
     }
   ],
   "novosti_grad": [
     {
-      "naslov": "PRIJAVE ZA „REVIJU PJEVAČA AMATERA“ NA 58. LJETU VALPOVAČKOM",
-      "datum": "22. 04. 2026.",
+      "naslov": "GRADONAČELNIK VALPOVA PRIMIO DOBITNICU FAUSTA VRANČIĆA",
+      "datum": "09. 07. 2026.",
       "kratki_opis": "",
-      "link": "https://valpovo.hr/2026/04/22/prijave-za-reviju-pjevaca-amatera-na-58-ljetu-valpovackom/"
+      "link": "https://valpovo.hr/2026/07/09/gradonacelnik-valpova-primio-dobitnicu-fausta-vrancica/"
     },
     {
-      "naslov": "NOVI RADOVI U VALPOVU",
-      "datum": "16. 04. 2026.",
+      "naslov": "VALPOVČANKA EVELINA BARTOLOVIĆ PREDSTAVLJA OSJEČKO-BARANJSKU ŽUPANIJU NA 26. IZBORU ZA NAJUZORNIJU HRVATSKU SEOSKU ŽENU",
+      "datum": "06. 07. 2026.",
       "kratki_opis": "",
-      "link": "https://valpovo.hr/2026/04/16/novi-radovi-u-valpovu/"
+      "link": "https://valpovo.hr/2026/07/06/valpovcanka-evelina-bartolovic-predstavlja-osjecko-baranjsku-zupaniju-na-26-izboru-za-najuzorniju-hrvatsku-seosku-zenu/"
+    },
+    {
+      "naslov": "DAN VUKOVA S DRAVE / Prigodnim programom obilježena 35. obljetnica osnivanja 107. brigade ZNG",
+      "datum": "03. 07. 2026.",
+      "kratki_opis": "",
+      "link": "https://valpovo.hr/2026/07/03/dan-vukova-s-drave-prigodnim-programom-obiljezena-35-obljetnica-osnivanja-107-brigade-zng/"
+    },
+    {
+      "naslov": "Poziv na preuzimanje paketa u okviru projekta „Humanitarni paketi GDCK-a Virovitica i partnera“",
+      "datum": "02. 07. 2026.",
+      "kratki_opis": "",
+      "link": "https://valpovo.hr/2026/07/02/poziv-na-preuzimanje-paketa-u-okviru-projekta-humanitarni-paketi-gdck-a-virovitica-i-partnera-4/"
+    },
+    {
+      "naslov": "Poziv 12. sj. G.V.2026.",
+      "datum": "01. 07. 2026.",
+      "kratki_opis": "",
+      "link": "https://valpovo.hr/2026/07/01/poziv-12-sj-g-v-2026/"
+    },
+    {
+      "naslov": "58. LJETO VALPOVAČKO: KONCERT GRUPE VIGOR &#8211; TRAŽENI",
+      "datum": "29. 06. 2026.",
+      "kratki_opis": "",
+      "link": "https://valpovo.hr/2026/06/29/58-ljeto-valpovacko-koncert-grupe-vigor-trazeni/"
+    },
+    {
+      "naslov": "58. LJETO VALPOVAČKO: SMOTRA FOLKLORA",
+      "datum": "29. 06. 2026.",
+      "kratki_opis": "",
+      "link": "https://valpovo.hr/2026/06/29/58-ljeto-valpovacko-smotra-folklora/"
+    },
+    {
+      "naslov": "58. LJETO VALPOVAČKO: SVEČANA POVORKA FOLKLORNIH SKUPINA I ŠOKAČKIH ZAPREGA",
+      "datum": "29. 06. 2026.",
+      "kratki_opis": "",
+      "link": "https://valpovo.hr/2026/06/29/58-ljeto-valpovacko-svecana-povorka-folklornih-skupina-i-sokackih-zaprega/"
     }
   ],
   "manifestacije_aktualne": [
