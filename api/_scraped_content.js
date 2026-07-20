@@ -1,11 +1,11 @@
 // AUTO-GENERATED — ne editiraj ručno!
-// Zadnje skrapanje: 2026-07-13 08:59 UTC
+// Zadnje skrapanje: 2026-07-20 06:11 UTC
 // Izvor: tz.valpovo.hr, valpovo.hr
 // GitHub Actions job: scrape-valpovo (tjedno, ponedjeljkom u 6:00)
 
 export const scrapedContent = {
   "meta": {
-    "zadnje_azuriranje": "2026-07-13T08:59:00.658Z",
+    "zadnje_azuriranje": "2026-07-20T06:11:09.715Z",
     "izvori": [
       "https://tz.valpovo.hr",
       "https://valpovo.hr"
@@ -13,11 +13,32 @@ export const scrapedContent = {
   },
   "novosti_tz": [
     {
+      "naslov": "ODRŽAN 6. ROCK’A’RAJ FEST – “UNDER THE GINKO” EDITION",
+      "datum": "srp 19, 2026",
+      "kratki_opis": "Sinoć je ispred dvorca Prandau-Normann u Valpovu održano šesto izdanje Rock’A’Raj Festa – “Under the Ginko” Edition, koje je i ove godine okupilo ljubitelje ...",
+      "link": "https://tz.valpovo.hr/2026/07/19/odrzan-6-rockaraj-fest-under-the-ginko-edition/",
+      "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/07/749355697_1040706635014897_9093384861790916669_n-rockaraj-under-the-ginko-2026.jpg"
+    },
+    {
+      "naslov": "Zbog najave lošeg vremena koncert Eurochestries Croatia 2026 seli u Centar kulture “Matija Petar Katančić” Valpovo",
+      "datum": "srp 18, 2026",
+      "kratki_opis": "Zbog najave nepovoljnih vremenskih uvjeta, koncert u sklopu međunarodnog festivala mladih glazbenika Eurochestries Croatia 2026 neće se održati na otvorenom u Dvorcu Prandau-Normann. Program ...",
+      "link": "https://tz.valpovo.hr/2026/07/18/zbog-najave-loseg-vremena-koncert-eurochestries-croatia-2026-seli-u-centar-kulture-matija-petar-katancic-valpovo/",
+      "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/07/eurochestries-2026-novo-centar-kulture.jpg"
+    },
+    {
+      "naslov": "EUROCHESTRIES U VALPOVU!",
+      "datum": "srp 16, 2026",
+      "kratki_opis": "Asocijacija Eurochestries, sa sjedištem u Francuskoj, osnovana je 1989. godine. Okuplja mladež klasične provenijencije iz cijeloga svijeta te organizira festivale, kongrese i kampove s ...",
+      "link": "https://tz.valpovo.hr/2026/07/16/eurochestries-u-valpovu/",
+      "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/07/euroochestries-valpovo.jpg"
+    },
+    {
       "naslov": "6. ROCK’A’RAJ FEST – „UNDER THE GINKO EDITION“ STIŽE U VALPOVO!",
       "datum": "srp 11, 2026",
       "kratki_opis": "Ovog ljeta Rock’a’raj okreće novu stranicu i donosi nešto drugačije izdanje! Šesto izdanje valpovačkog rock festivala održat će se 18. srpnja 2026. godine od 19 sati, ...",
       "link": "https://tz.valpovo.hr/2026/07/11/6-rockaraj-fest-under-the-ginko-edition-stize-u-valpovo/",
-      "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/07/rokaraj-2026-facebook.jpg"
+      "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/07/rokaraj-2026-fb-neww.jpg"
     },
     {
       "naslov": "VALPOVČANKA EVELINA BARTOLOVIĆ PREDSTAVLJA OSJEČKO-BARANJSKU ŽUPANIJU NA 26. IZBORU ZA NAJUZORNIJU HRVATSKU SEOSKU ŽENU",
@@ -60,77 +81,50 @@ export const scrapedContent = {
       "kratki_opis": "Posljednji dan 58. Ljeta valpovačkog protekao je u znaku tradicije, kulturne baštine i zajedništva, okupivši brojne sudionike i posjetitelje kroz raznovrstan program koji je ...",
       "link": "https://tz.valpovo.hr/2026/06/29/58-ljeto-valpovacko-eko-etno-sajam-autohtona-jela-prijem-kud-a/",
       "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/06/735439041_1495088311843729_8592021450086410494_n58-ljeto-valpovacko-eko-etno-sajam-autohtona-jela-valpovstine-prijem-kud-ova.jpg"
-    },
-    {
-      "naslov": "DALMATINO RASPJEVAO VALPOVO, A HRVATSKA POBJEDOM NAD GANOM ZAKLJUČILA JOŠ JEDNU NEZABORAVNU VEČER 58. LJETA VALPOVAČKOG",
-      "datum": "lip 29, 2026",
-      "kratki_opis": "Subotnja večer u sklopu 58. Ljeta valpovačkog donijela je pregršt glazbe, emocija i navijačkog zajedništva. Program na Trgu kralja Tomislava započeo je nastupom Tamburaškog ...",
-      "link": "https://tz.valpovo.hr/2026/06/29/dalmatino-raspjevao-valpovo-a-hrvatska-pobjedom-nad-ganom-zakljucila-jos-jednu-nezaboravnu-vecer-58-ljeta-valpovackog/",
-      "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/06/733360123_880919408391935_9135156370799255722_n58-ljeto-valpovacko-dalmatino-koncert-cuvari-noci-hrvatska-gana-svjetsko-prvenstvo-2026.jpg"
-    },
-    {
-      "naslov": "XIII. SLAMA KUP ODUŠEVIO PUBLIKU – NAJBRŽI I NAJSPRETNIJI JAHAČI ODMJERILI SNAGE U VALPOVAČKOM PERIVOJU",
-      "datum": "lip 28, 2026",
-      "kratki_opis": "U sklopu programa 58. Ljeta valpovačkog, u subotu, 27. lipnja, u valpovačkom perivoju održan je XIII. Slama kup, tradicionalno natjecanje jahača u brzini i ...",
-      "link": "https://tz.valpovo.hr/2026/06/28/xiii-slama-kup-odusevio-publiku-najbrzi-i-najspretniji-jahaci-odmjerili-snage-u-valpovackom-perivoju/",
-      "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/06/731983479_1559190139043807_6477179516574136656_n58-ljeto-valpovacko-slama-kup-2026.jpg"
-    },
-    {
-      "naslov": "ZVUKOVI TRADICIJE IZ HRVATSKE, BOSNE I HERCEGOVINE I BUGARSKE ISPUNILI VALPOVO",
-      "datum": "lip 28, 2026",
-      "kratki_opis": "U sklopu 58. Ljeta valpovačkog, Trg kralja Tomislava u subotu je bio ispunjen glazbom, pjesmom i folklornom baštinom. Jutarnji program započeo je nastupom Puhačkog ...",
-      "link": "https://tz.valpovo.hr/2026/06/28/zvukovi-tradicije-iz-hrvatske-bosne-i-hercegovine-i-bugarske-ispunili-valpovo/",
-      "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/06/731078648_940413488463235_816832175165542012_n58-ljeto-valpovacko-zvukovi-tradicije-iz-bosne-i-hercegovine-bugarske-kudovi-puhaci-nastup-2026.jpg"
     }
   ],
   "novosti_grad": [
     {
-      "naslov": "GRADONAČELNIK VALPOVA PRIMIO DOBITNICU FAUSTA VRANČIĆA",
-      "datum": "09. 07. 2026.",
+      "naslov": "ODRŽAN 6. ROCK&#8217;A&#8217;RAJ FEST – &#8220;UNDER THE GINKO&#8221; EDITION",
+      "datum": "19. 07. 2026.",
       "kratki_opis": "",
-      "link": "https://valpovo.hr/2026/07/09/gradonacelnik-valpova-primio-dobitnicu-fausta-vrancica/"
+      "link": "https://valpovo.hr/2026/07/19/odrzan-6-rockaraj-fest-under-the-ginko-edition/"
     },
     {
-      "naslov": "VALPOVČANKA EVELINA BARTOLOVIĆ PREDSTAVLJA OSJEČKO-BARANJSKU ŽUPANIJU NA 26. IZBORU ZA NAJUZORNIJU HRVATSKU SEOSKU ŽENU",
-      "datum": "06. 07. 2026.",
+      "naslov": "URUČENA NAGRADA ZA NAJBOLJI VRTIĆ",
+      "datum": "16. 07. 2026.",
       "kratki_opis": "",
-      "link": "https://valpovo.hr/2026/07/06/valpovcanka-evelina-bartolovic-predstavlja-osjecko-baranjsku-zupaniju-na-26-izboru-za-najuzorniju-hrvatsku-seosku-zenu/"
+      "link": "https://valpovo.hr/2026/07/16/urucena-nagrada-za-najbolji-vrtic/"
     },
     {
-      "naslov": "DAN VUKOVA S DRAVE / Prigodnim programom obilježena 35. obljetnica osnivanja 107. brigade ZNG",
-      "datum": "03. 07. 2026.",
+      "naslov": "Informiranje sudionika o mogućnostima sudjelovanja na projektu „Zajedno brinemo o najranjivijima II“",
+      "datum": "16. 07. 2026.",
       "kratki_opis": "",
-      "link": "https://valpovo.hr/2026/07/03/dan-vukova-s-drave-prigodnim-programom-obiljezena-35-obljetnica-osnivanja-107-brigade-zng/"
+      "link": "https://valpovo.hr/2026/07/16/informiranje-sudionika-o-mogucnostima-sudjelovanja-na-projektu-zajedno-brinemo-o-najranjivijima-ii/"
     },
     {
-      "naslov": "Poziv na preuzimanje paketa u okviru projekta „Humanitarni paketi GDCK-a Virovitica i partnera“",
-      "datum": "02. 07. 2026.",
-      "kratki_opis": "",
-      "link": "https://valpovo.hr/2026/07/02/poziv-na-preuzimanje-paketa-u-okviru-projekta-humanitarni-paketi-gdck-a-virovitica-i-partnera-4/"
+      "naslov": "Odluka o dodjeli financijskih sredstava za financiranje programa i projekata udruga iz Proračuna Grada Valpova za 2026. ",
+      "datum": "15. 07. 2026.",
+      "kratki_opis": "35. GRADONAČELNIK &#8211; Odluka o dodjeli financijskih sredstava",
+      "link": "https://valpovo.hr/2026/07/15/odluka-o-dodjeli-financijskih-sredstava-za-financiranje-programa-i-projekata-udruga-iz-proracuna-grada-valpova-za-2026-godinu/"
     },
     {
-      "naslov": "Poziv 12. sj. G.V.2026.",
-      "datum": "01. 07. 2026.",
+      "naslov": "Obavijest o novoj regulaciji prometa na Trgu kralja Tomislava u Valpovu",
+      "datum": "14. 07. 2026.",
       "kratki_opis": "",
-      "link": "https://valpovo.hr/2026/07/01/poziv-12-sj-g-v-2026/"
+      "link": "https://valpovo.hr/2026/07/14/obavijest-o-novoj-regulaciji-prometa-na-trgu-kralja-tomislava-u-valpovu/"
     },
     {
-      "naslov": "58. LJETO VALPOVAČKO: KONCERT GRUPE VIGOR &#8211; TRAŽENI",
-      "datum": "29. 06. 2026.",
-      "kratki_opis": "",
-      "link": "https://valpovo.hr/2026/06/29/58-ljeto-valpovacko-koncert-grupe-vigor-trazeni/"
+      "naslov": "Rješenje o prijmu u službu za Financije i proračun Grada Valpova na radno mjesto pod nazivom Viši stručni suradnik za ob",
+      "datum": "13. 07. 2026.",
+      "kratki_opis": "1. PROČELNICA &#8211; Rješenje o prijmu",
+      "link": "https://valpovo.hr/2026/07/13/rjesenje-o-prijmu-u-sluzbu-za-financije-i-proracun-grada-valpova-na-radno-mjesto-pod-nazivom-visi-strucni-suradnik-za-obracun-placa-evidenciju-imovine-i-naplatu-gradskih-prihoda/"
     },
     {
-      "naslov": "58. LJETO VALPOVAČKO: SMOTRA FOLKLORA",
-      "datum": "29. 06. 2026.",
-      "kratki_opis": "",
-      "link": "https://valpovo.hr/2026/06/29/58-ljeto-valpovacko-smotra-folklora/"
-    },
-    {
-      "naslov": "58. LJETO VALPOVAČKO: SVEČANA POVORKA FOLKLORNIH SKUPINA I ŠOKAČKIH ZAPREGA",
-      "datum": "29. 06. 2026.",
-      "kratki_opis": "",
-      "link": "https://valpovo.hr/2026/06/29/58-ljeto-valpovacko-svecana-povorka-folklornih-skupina-i-sokackih-zaprega/"
+      "naslov": "Rješenje o prijmu u službu za opće poslove Grada Valpova na radno mjesto pod nazivom Pomoćni radnik – 1 izvršitelj",
+      "datum": "13. 07. 2026.",
+      "kratki_opis": "1. PROČELNIK &#8211; Rješenje o prijmu &#160;",
+      "link": "https://valpovo.hr/2026/07/13/rjesenje-o-prijmu-u-sluzbu-za-opce-poslove-grada-valpova-na-radno-mjesto-pod-nazivom-pomocni-radnik-1-izvrsitelj/"
     }
   ],
   "manifestacije_aktualne": [
