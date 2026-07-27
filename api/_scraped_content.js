@@ -1,17 +1,24 @@
 // AUTO-GENERATED — ne editiraj ručno!
-// Zadnje skrapanje: 2026-07-20 08:49 UTC
+// Zadnje skrapanje: 2026-07-27 06:12 UTC
 // Izvor: tz.valpovo.hr, valpovo.hr
 // GitHub Actions job: scrape-valpovo (tjedno, ponedjeljkom u 6:00)
 
 export const scrapedContent = {
   "meta": {
-    "zadnje_azuriranje": "2026-07-20T08:49:09.913Z",
+    "zadnje_azuriranje": "2026-07-27T06:12:10.454Z",
     "izvori": [
       "https://tz.valpovo.hr",
       "https://valpovo.hr"
     ]
   },
   "novosti_tz": [
+    {
+      "naslov": "MEĐUNARODNA GLAZBENA VEČER EUROCHESTRIES CROATIA 2026 ODRŽANA U VALPOVU",
+      "datum": "srp 20, 2026",
+      "kratki_opis": "Sinoć je u velikoj dvorani Centra kulture „Matija Petar Katančić“ Valpovo održan koncert u sklopu međunarodnog festivala mladih glazbenika Eurochestries Croatia 2026. Valpovačkoj publici ...",
+      "link": "https://tz.valpovo.hr/2026/07/20/medunarodna-glazbena-vecer-eurochestries-croatia-2026-odrzana-u-valpovu/",
+      "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/07/752150889_1712265433435638_1373484735248492475_n.jpg"
+    },
     {
       "naslov": "ODRŽAN 6. ROCK’A’RAJ FEST – “UNDER THE GINKO” EDITION",
       "datum": "srp 19, 2026",
@@ -74,16 +81,21 @@ export const scrapedContent = {
       "kratki_opis": "Jedan od najsvečanijih i najprepoznatljivijih trenutaka završnog dana 58. Ljeta valpovačkog bila je tradicionalna Svečana povorka folklornih skupina i šokačkih zaprega, koja je ulicama ...",
       "link": "https://tz.valpovo.hr/2026/06/29/58-ljeto-valpovacko-svecana-povorka-folklornih-skupina-i-sokackih-zaprega/",
       "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/06/735394500_1024177680001126_5582053916772907786_n58-ljeto-valpovacko-svecana-povorka-folkornih-skupina-kudova-i-sokackih-zaprega-2026.jpg"
-    },
-    {
-      "naslov": "58. LJETO VALPOVAČKO: EKO-ETNO SAJAM – AUTOHTONA JELA – PRIJEM KUD-a",
-      "datum": "lip 29, 2026",
-      "kratki_opis": "Posljednji dan 58. Ljeta valpovačkog protekao je u znaku tradicije, kulturne baštine i zajedništva, okupivši brojne sudionike i posjetitelje kroz raznovrstan program koji je ...",
-      "link": "https://tz.valpovo.hr/2026/06/29/58-ljeto-valpovacko-eko-etno-sajam-autohtona-jela-prijem-kud-a/",
-      "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/06/735439041_1495088311843729_8592021450086410494_n58-ljeto-valpovacko-eko-etno-sajam-autohtona-jela-valpovstine-prijem-kud-ova.jpg"
     }
   ],
   "novosti_grad": [
+    {
+      "naslov": "Odluka o raspodjeli financijskih sredstava za sufinanciranje programa i projekata udruga koje doprinose razvoju sporta G",
+      "datum": "23. 07. 2026.",
+      "kratki_opis": "Izvršni odbor Zajednice športskih udruga Grada Valpova donio je odluku o raspodjeli financijskih sredstava za sufinanciranje programa i projekata sportskih udruga za 2026. godinu, a cjelovita odluka n",
+      "link": "https://valpovo.hr/2026/07/23/odluka-o-raspodjeli-financijskih-sredstava-za-sufinanciranje-programa-i-projekata-udruga-koje-doprinose-razvoju-sporta-grada-valpova-za-2026-godinu/"
+    },
+    {
+      "naslov": "MEĐUNARODNA GLAZBENA VEČER EUROCHESTRIES CROATIA 2026 ODRŽANA U VALPOVU",
+      "datum": "20. 07. 2026.",
+      "kratki_opis": "",
+      "link": "https://valpovo.hr/2026/07/20/medunarodna-glazbena-vecer-eurochestries-croatia-2026-odrzana-u-valpovu/"
+    },
     {
       "naslov": "ODRŽAN 6. ROCK&#8217;A&#8217;RAJ FEST – &#8220;UNDER THE GINKO&#8221; EDITION",
       "datum": "19. 07. 2026.",
@@ -107,24 +119,6 @@ export const scrapedContent = {
       "datum": "15. 07. 2026.",
       "kratki_opis": "35. GRADONAČELNIK &#8211; Odluka o dodjeli financijskih sredstava",
       "link": "https://valpovo.hr/2026/07/15/odluka-o-dodjeli-financijskih-sredstava-za-financiranje-programa-i-projekata-udruga-iz-proracuna-grada-valpova-za-2026-godinu/"
-    },
-    {
-      "naslov": "Obavijest o novoj regulaciji prometa na Trgu kralja Tomislava u Valpovu",
-      "datum": "14. 07. 2026.",
-      "kratki_opis": "",
-      "link": "https://valpovo.hr/2026/07/14/obavijest-o-novoj-regulaciji-prometa-na-trgu-kralja-tomislava-u-valpovu/"
-    },
-    {
-      "naslov": "Rješenje o prijmu u službu za Financije i proračun Grada Valpova na radno mjesto pod nazivom Viši stručni suradnik za ob",
-      "datum": "13. 07. 2026.",
-      "kratki_opis": "1. PROČELNICA &#8211; Rješenje o prijmu",
-      "link": "https://valpovo.hr/2026/07/13/rjesenje-o-prijmu-u-sluzbu-za-financije-i-proracun-grada-valpova-na-radno-mjesto-pod-nazivom-visi-strucni-suradnik-za-obracun-placa-evidenciju-imovine-i-naplatu-gradskih-prihoda/"
-    },
-    {
-      "naslov": "Rješenje o prijmu u službu za opće poslove Grada Valpova na radno mjesto pod nazivom Pomoćni radnik – 1 izvršitelj",
-      "datum": "13. 07. 2026.",
-      "kratki_opis": "1. PROČELNIK &#8211; Rješenje o prijmu &#160;",
-      "link": "https://valpovo.hr/2026/07/13/rjesenje-o-prijmu-u-sluzbu-za-opce-poslove-grada-valpova-na-radno-mjesto-pod-nazivom-pomocni-radnik-1-izvrsitelj/"
     }
   ],
   "manifestacije_aktualne": [
