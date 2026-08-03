@@ -1,11 +1,11 @@
 // AUTO-GENERATED — ne editiraj ručno!
-// Zadnje skrapanje: 2026-08-03 06:11 UTC
+// Zadnje skrapanje: 2026-08-03 09:33 UTC
 // Izvor: tz.valpovo.hr, valpovo.hr
 // GitHub Actions job: scrape-valpovo (tjedno, ponedjeljkom u 6:00)
 
 export const scrapedContent = {
   "meta": {
-    "zadnje_azuriranje": "2026-08-03T06:11:10.144Z",
+    "zadnje_azuriranje": "2026-08-03T09:33:20.005Z",
     "izvori": [
       "https://tz.valpovo.hr",
       "https://valpovo.hr"
