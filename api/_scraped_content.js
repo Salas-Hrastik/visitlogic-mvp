@@ -1,17 +1,24 @@
 // AUTO-GENERATED — ne editiraj ručno!
-// Zadnje skrapanje: 2026-07-27 09:40 UTC
+// Zadnje skrapanje: 2026-08-03 06:11 UTC
 // Izvor: tz.valpovo.hr, valpovo.hr
 // GitHub Actions job: scrape-valpovo (tjedno, ponedjeljkom u 6:00)
 
 export const scrapedContent = {
   "meta": {
-    "zadnje_azuriranje": "2026-07-27T09:40:06.949Z",
+    "zadnje_azuriranje": "2026-08-03T06:11:10.144Z",
     "izvori": [
       "https://tz.valpovo.hr",
       "https://valpovo.hr"
     ]
   },
   "novosti_tz": [
+    {
+      "naslov": "TURNIR ODBOJKE NA PIJESKU – 5. LABOV KUP",
+      "datum": "srp 30, 2026",
+      "kratki_opis": "U srijedu, 5. kolovoza 2026. godine, na Odmorištu “Labov” u Nardu održat će se Turnir odbojke na pijesku – 5. LABOV kup. Natjecanje počinje ...",
+      "link": "https://tz.valpovo.hr/2026/07/30/turnir-odbojke-na-pijesku-5-labov-kup/",
+      "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/07/turnir-odbojke-na-pjesku-nard-08-2026.jpg"
+    },
     {
       "naslov": "MEĐUNARODNA GLAZBENA VEČER EUROCHESTRIES CROATIA 2026 ODRŽANA U VALPOVU",
       "datum": "srp 20, 2026",
@@ -74,13 +81,6 @@ export const scrapedContent = {
       "kratki_opis": "Nakon svečane povorke folklornih skupina i šokačkih zaprega, program završnog dana 58. Ljeta valpovačkog nastavljen je u prekrasnom ambijentu dvorca Prandau-Normann, gdje je održana ...",
       "link": "https://tz.valpovo.hr/2026/06/29/58-ljeto-valpovacko-smotra-folklora/",
       "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/06/733415114_1024191313333096_730881295354744324_n58-ljeto-valpovacko-smotra-folklora-2026.jpg"
-    },
-    {
-      "naslov": "58. LJETO VALPOVAČKO: SVEČANA POVORKA FOLKLORNIH SKUPINA I ŠOKAČKIH ZAPREGA",
-      "datum": "lip 29, 2026",
-      "kratki_opis": "Jedan od najsvečanijih i najprepoznatljivijih trenutaka završnog dana 58. Ljeta valpovačkog bila je tradicionalna Svečana povorka folklornih skupina i šokačkih zaprega, koja je ulicama ...",
-      "link": "https://tz.valpovo.hr/2026/06/29/58-ljeto-valpovacko-svecana-povorka-folklornih-skupina-i-sokackih-zaprega/",
-      "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/06/735394500_1024177680001126_5582053916772907786_n58-ljeto-valpovacko-svecana-povorka-folkornih-skupina-kudova-i-sokackih-zaprega-2026.jpg"
     }
   ],
   "novosti_grad": [
@@ -107,18 +107,6 @@ export const scrapedContent = {
       "datum": "16. 07. 2026.",
       "kratki_opis": "",
       "link": "https://valpovo.hr/2026/07/16/urucena-nagrada-za-najbolji-vrtic/"
-    },
-    {
-      "naslov": "Informiranje sudionika o mogućnostima sudjelovanja na projektu „Zajedno brinemo o najranjivijima II“",
-      "datum": "16. 07. 2026.",
-      "kratki_opis": "",
-      "link": "https://valpovo.hr/2026/07/16/informiranje-sudionika-o-mogucnostima-sudjelovanja-na-projektu-zajedno-brinemo-o-najranjivijima-ii/"
-    },
-    {
-      "naslov": "Odluka o dodjeli financijskih sredstava za financiranje programa i projekata udruga iz Proračuna Grada Valpova za 2026. ",
-      "datum": "15. 07. 2026.",
-      "kratki_opis": "35. GRADONAČELNIK &#8211; Odluka o dodjeli financijskih sredstava",
-      "link": "https://valpovo.hr/2026/07/15/odluka-o-dodjeli-financijskih-sredstava-za-financiranje-programa-i-projekata-udruga-iz-proracuna-grada-valpova-za-2026-godinu/"
     }
   ],
   "manifestacije_aktualne": [
