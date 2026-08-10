@@ -1,17 +1,31 @@
 // AUTO-GENERATED — ne editiraj ručno!
-// Zadnje skrapanje: 2026-08-03 09:33 UTC
+// Zadnje skrapanje: 2026-08-10 06:13 UTC
 // Izvor: tz.valpovo.hr, valpovo.hr
 // GitHub Actions job: scrape-valpovo (tjedno, ponedjeljkom u 6:00)
 
 export const scrapedContent = {
   "meta": {
-    "zadnje_azuriranje": "2026-08-03T09:33:20.005Z",
+    "zadnje_azuriranje": "2026-08-10T06:13:45.095Z",
     "izvori": [
       "https://tz.valpovo.hr",
       "https://valpovo.hr"
     ]
   },
   "novosti_tz": [
+    {
+      "naslov": "31. FIŠIJADA U NARDU",
+      "datum": "kol 07, 2026",
+      "kratki_opis": "Već 31 godinu, tijekom ljetnih mjeseci, održava se „Fišijada u Nardu“ – natjecanje u kuhanju ribljeg paprikaša. Ova tradicionalna manifestacija prema kojoj je Grad ...",
+      "link": "https://tz.valpovo.hr/2026/08/07/31-fisijada-u-nardu/",
+      "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/08/fisijada-2026-nard-baner.jpg"
+    },
+    {
+      "naslov": "PJEŠČANI ROCK TOK VOL. 2 – Prije smo se tu kupali, sad se rocka!",
+      "datum": "kol 07, 2026",
+      "kratki_opis": "Nakon sjajnog prvog izdanja, PJEŠČANI ROCK TOK vraća se još glasniji, žešći i energičniji! U petak, 14. kolovoza, legendarna plaža PIJESAK u Ladimirevcima ponovno ...",
+      "link": "https://tz.valpovo.hr/2026/08/07/pjescani-rock-tok-vol-2-prije-smo-se-tu-kupali-sad-se-rocka/",
+      "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/08/pjescani-rok-tok-ladimirevci-2026-plakat.jpg"
+    },
     {
       "naslov": "TURNIR ODBOJKE NA PIJESKU – 5. LABOV KUP",
       "datum": "srp 30, 2026",
@@ -67,20 +81,6 @@ export const scrapedContent = {
       "kratki_opis": "Udruga Revolution Valpovo predstavlja: 12. REUNITED FESTIVAL Music / Art / D.I.Y. / Soundsystem festival Dvorac Prandau-Norman, Valpovo Valpovo će 3. i 4. srpnja ...",
       "link": "https://tz.valpovo.hr/2026/07/01/12-reunited-festival-03-04-srpnja-2026/",
       "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/06/REUNITED-PLAKAT-2026.jpg"
-    },
-    {
-      "naslov": "58. LJETO VALPOVAČKO: KONCERT GRUPE VIGOR – TRAŽENI",
-      "datum": "lip 29, 2026",
-      "kratki_opis": "Nakon bogatog folklornog programa, završnica 58. Ljeta valpovačkog preselila se na Trg kralja Tomislava, gdje je održan koncert popularne grupe Vigor, koja je svojim ...",
-      "link": "https://tz.valpovo.hr/2026/06/29/58-ljeto-valpovacko-koncert-grupe-vigor-trazeni/",
-      "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/06/733964051_1024212429997651_8848010913366967154_n58-ljeto-valpovacko-grupa-vigor-trazeni.jpg"
-    },
-    {
-      "naslov": "58. LJETO VALPOVAČKO: SMOTRA FOLKLORA",
-      "datum": "lip 29, 2026",
-      "kratki_opis": "Nakon svečane povorke folklornih skupina i šokačkih zaprega, program završnog dana 58. Ljeta valpovačkog nastavljen je u prekrasnom ambijentu dvorca Prandau-Normann, gdje je održana ...",
-      "link": "https://tz.valpovo.hr/2026/06/29/58-ljeto-valpovacko-smotra-folklora/",
-      "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/06/733415114_1024191313333096_730881295354744324_n58-ljeto-valpovacko-smotra-folklora-2026.jpg"
     }
   ],
   "novosti_grad": [
