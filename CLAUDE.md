@@ -38,3 +38,31 @@ i ima ~700 linija.
 **Pogrešna (Biograd) verzija** ima ~42-72 linije i sadrži: `beaches`, `biograd`, statički odgovor "Greška u komunikaciji sa serverom".
 
 Ako vidiš kratku verziju u repozitoriju — odmah vrati ispravnu s: `git checkout <zadnji ispravni commit> -- api/chat.js`
+
+## Događanja (prošla / u tijeku / buduća)
+
+Bot zna odgovoriti na upite o **prošlim, tekućim i budućim** događanjima. Tok podataka:
+
+| Korak | Datoteka | Napomena |
+|-------|----------|----------|
+| 1. Dohvat | `scripts/scrape-valpovo.js` | dnevno via `.github/workflows/scrape-valpovo.yml` |
+| 2. Pohrana | `api/_scraped_content.js` | AUTO-GENERATED — ne uređivati ručno |
+| 3. Prikaz | `api/chat.js` | `klasificirajDogadanja()` + pre-gen blok |
+
+### Izvori događanja
+
+- **valpovo.hr** — Modern Events Calendar: `/wp-json/wp/v2/mec-events` daje popis (i prošlih)
+  događaja, a datum se čita sa stranice događaja (`.mec-start-date-label`, npr. `"29. 08. 2026."`
+  ili `"03. - 05. 07. 2026."`). Ovo je najpouzdaniji izvor datuma.
+- **tz.valpovo.hr** — objave (`/wp-json/wp/v2/posts`); datum se izvlači iz teksta hrvatskim
+  parserom (`parseDatesFromText`) — npr. "u subotu, 29. kolovoza 2026.", "24. i 25. srpnja",
+  "od 22. do 28. lipnja".
+
+Kod dupliranih naslova prednost ima `valpovo.hr` (strukturirani datum); TZ link se čuva kao `link_alt`.
+
+### Ključno pravilo
+
+`api/_scraped_content.js` sadrži **samo ISO datume** (`datum_od` / `datum_do`).
+Status *prošlo / u tijeku / nadolazeće* računa se **u trenutku upita** u `api/chat.js`
+(`klasificirajDogadanja()`) — nikad se ne zapisuje u skrapiranu datoteku, jer bi zastario
+između dva pokretanja scrapera.

@@ -20,15 +20,95 @@ function stripImages(data) {
   return data;
 }
 
-// Gradi sekciju s auto-skrapanim sadržajem (novosti, aktualne manifestacije)
+// ─── DOGAĐANJA IZ SKRAPANOG SADRŽAJA ────────────────────────────────────────
+// Skrapani sadržaj (api/_scraped_content.js) nosi ISO datume (datum_od/datum_do),
+// a status prošlo / u tijeku / nadolazeće računa se OVDJE — u trenutku upita.
+// Razlog: datoteka se osvježava periodički pa bi status zapisan u njoj zastario.
+
+const DATE_LOCALES = { hr: 'hr-HR', en: 'en-GB', de: 'de-DE', it: 'it-IT' };
+
+function danasIso() {
+  return new Date().toISOString().substring(0, 10);
+}
+
+// "29. kolovoza 2026." / "3. – 5. srpnja 2026." / "28. lipnja – 2. srpnja 2026."
+function formatirajRaspon(od, doDat, lang = 'hr') {
+  if (!od) return '';
+  const loc = DATE_LOCALES[lang] || DATE_LOCALES.hr;
+  const dat = (iso, opts) => {
+    try {
+      return new Date(`${iso}T12:00:00Z`).toLocaleDateString(loc, opts);
+    } catch {
+      const [y, m, d] = iso.split('-');
+      return `${+d}.${+m}.${y}.`;
+    }
+  };
+  const puni = (iso) => dat(iso, { day: 'numeric', month: 'long', year: 'numeric' });
+
+  if (!doDat || doDat === od) return puni(od);
+
+  const [g1, m1] = od.split('-');
+  const [g2, m2] = doDat.split('-');
+  // Isti mjesec: "3. – 5. srpnja 2026."
+  if (g1 === g2 && m1 === m2) return `${dat(od, { day: 'numeric' })} – ${puni(doDat)}`;
+  // Ista godina: "28. lipnja – 2. srpnja 2026."
+  if (g1 === g2) return `${dat(od, { day: 'numeric', month: 'long' })} – ${puni(doDat)}`;
+  return `${puni(od)} – ${puni(doDat)}`;
+}
+
+// Razvrstava skrapana događanja prema današnjem datumu
+function klasificirajDogadanja() {
+  const svi = Array.isArray(scrapedContent?.dogadanja) ? scrapedContent.dogadanja : [];
+  const danas = danasIso();
+  const prosla = [], uTijeku = [], buduca = [];
+
+  for (const e of svi) {
+    if (!e?.datum_od) continue;
+    const kraj = e.datum_do || e.datum_od;
+    if (kraj < danas) prosla.push(e);
+    else if (e.datum_od <= danas) uTijeku.push(e);
+    else buduca.push(e);
+  }
+
+  // Prošla: najnovija prva. Nadolazeća: najbliža prva.
+  prosla.sort((a, b) => (b.datum_do || b.datum_od).localeCompare(a.datum_do || a.datum_od));
+  uTijeku.sort((a, b) => a.datum_od.localeCompare(b.datum_od));
+  buduca.sort((a, b) => a.datum_od.localeCompare(b.datum_od));
+
+  return { prosla, uTijeku, buduca, danas, ukupno: svi.length };
+}
+
+// Gradi sekciju s auto-skrapanim sadržajem (novosti, događanja, manifestacije)
 function buildScrapedSection() {
   const s = scrapedContent;
-  if (!s || (!s.novosti_tz?.length && !s.novosti_grad?.length && !s.manifestacije_aktualne?.length)) {
+  const { prosla, uTijeku, buduca } = klasificirajDogadanja();
+  if (!s || (!s.novosti_tz?.length && !s.novosti_grad?.length &&
+             !s.manifestacije_aktualne?.length && !prosla.length && !uTijeku.length && !buduca.length)) {
     return '';
   }
   const lines = ['\nAKTUALNI SADRŽAJ (automatski dohvaćen s web stranica grada):'];
   if (s.meta?.zadnje_azuriranje) {
     lines.push(`Zadnje ažuriranje: ${s.meta.zadnje_azuriranje.substring(0, 10)}`);
+  }
+
+  // Događanja s konkretnim datumima — razvrstana prema današnjem danu
+  if (prosla.length || uTijeku.length || buduca.length) {
+    const red = (e) => `• ${e.naziv} — ${formatirajRaspon(e.datum_od, e.datum_do)}` +
+      `${e.vrijeme ? `, ${e.vrijeme}` : ''}${e.opis ? ` — ${e.opis.substring(0, 120)}` : ''}` +
+      `${e.link ? ` (${e.link})` : ''}`;
+
+    if (uTijeku.length) {
+      lines.push('\nDOGAĐANJA U TIJEKU (traju danas):');
+      uTijeku.forEach(e => lines.push(red(e)));
+    }
+    if (buduca.length) {
+      lines.push('\nNADOLAZEĆA DOGAĐANJA (još se nisu održala):');
+      buduca.slice(0, 12).forEach(e => lines.push(red(e)));
+    }
+    if (prosla.length) {
+      lines.push('\nNEDAVNO ODRŽANA DOGAĐANJA (već su prošla — spominji ih samo ako korisnik pita o prošlim događanjima):');
+      prosla.slice(0, 8).forEach(e => lines.push(red(e)));
+    }
   }
   if (s.novosti_tz?.length) {
     lines.push('\nNajnovije vijesti — Turistička zajednica Valpovo:');
@@ -105,6 +185,16 @@ const TR = {
     contact:   'Kontakt',
     upcoming:  'Predstojeće manifestacije u Valpovu',
     noEvents:  'Trenutno nema predstojećih manifestacija. Pratite TZ Valpovo za najave!',
+    evOngoing: '🔴 Događanja koja su danas u tijeku',
+    evUpcom:   '🗓️ Nadolazeća događanja u Valpovu',
+    evPast:    '🕗 Nedavno održana događanja u Valpovu',
+    evAnnual:  '📌 Godišnje manifestacije valpovačkog kraja',
+    evNoOngo:  'Danas u Valpovu nema događanja u tijeku.',
+    evNoUpc:   'Trenutno nema najavljenih događanja s potvrđenim datumom.',
+    evNoPast:  'Nemam zabilježena nedavno održana događanja.',
+    evNext:    'Sljedeće nadolazeće',
+    evHeld:    'održano',
+    evMoreTz:  'Cjeloviti kalendar: [tz.valpovo.hr](https://tz.valpovo.hr/manifestacije/) i [valpovo.hr](https://valpovo.hr/events/)',
     allAccom:  'Evo svih smještajnih opcija u Valpovu:',
     hotels:    'Hoteli',
     rural:     'Ruralni smještaj',
@@ -140,6 +230,16 @@ const TR = {
     contact:   'Contact',
     upcoming:  'Upcoming events in Valpovo',
     noEvents:  'No upcoming events at this time. Follow TZ Valpovo for announcements!',
+    evOngoing: '🔴 Events taking place today',
+    evUpcom:   '🗓️ Upcoming events in Valpovo',
+    evPast:    '🕗 Recently held events in Valpovo',
+    evAnnual:  '📌 Annual events of the Valpovo area',
+    evNoOngo:  'No events are taking place in Valpovo today.',
+    evNoUpc:   'There are no announced events with a confirmed date right now.',
+    evNoPast:  'I have no recently held events on record.',
+    evNext:    'Next upcoming',
+    evHeld:    'held',
+    evMoreTz:  'Full calendar: [tz.valpovo.hr](https://tz.valpovo.hr/manifestacije/) and [valpovo.hr](https://valpovo.hr/events/)',
     allAccom:  'Here are all accommodation options in Valpovo:',
     hotels:    'Hotels',
     rural:     'Rural accommodation',
@@ -175,6 +275,16 @@ const TR = {
     contact:   'Kontakt',
     upcoming:  'Bevorstehende Veranstaltungen in Valpovo',
     noEvents:  'Derzeit keine bevorstehenden Veranstaltungen. Folgen Sie TZ Valpovo für Ankündigungen!',
+    evOngoing: '🔴 Veranstaltungen, die heute stattfinden',
+    evUpcom:   '🗓️ Bevorstehende Veranstaltungen in Valpovo',
+    evPast:    '🕗 Kürzlich stattgefundene Veranstaltungen in Valpovo',
+    evAnnual:  '📌 Jährliche Veranstaltungen der Region Valpovo',
+    evNoOngo:  'Heute finden in Valpovo keine Veranstaltungen statt.',
+    evNoUpc:   'Derzeit gibt es keine angekündigten Veranstaltungen mit bestätigtem Datum.',
+    evNoPast:  'Mir liegen keine kürzlich stattgefundenen Veranstaltungen vor.',
+    evNext:    'Als Nächstes',
+    evHeld:    'stattgefunden',
+    evMoreTz:  'Vollständiger Kalender: [tz.valpovo.hr](https://tz.valpovo.hr/manifestacije/) und [valpovo.hr](https://valpovo.hr/events/)',
     allAccom:  'Hier sind alle Unterkunftsmöglichkeiten in Valpovo:',
     hotels:    'Hotels',
     rural:     'Ländliche Unterkunft',
@@ -210,6 +320,16 @@ const TR = {
     contact:   'Contatto',
     upcoming:  'Prossimi eventi a Valpovo',
     noEvents:  'Al momento non ci sono eventi imminenti. Segui TZ Valpovo per gli annunci!',
+    evOngoing: '🔴 Eventi in corso oggi',
+    evUpcom:   '🗓️ Prossimi eventi a Valpovo',
+    evPast:    '🕗 Eventi svolti di recente a Valpovo',
+    evAnnual:  '📌 Manifestazioni annuali della zona di Valpovo',
+    evNoOngo:  'Oggi a Valpovo non ci sono eventi in corso.',
+    evNoUpc:   'Al momento non ci sono eventi annunciati con data confermata.',
+    evNoPast:  'Non ho eventi svolti di recente in archivio.',
+    evNext:    'Prossimo evento',
+    evHeld:    'svolto',
+    evMoreTz:  'Calendario completo: [tz.valpovo.hr](https://tz.valpovo.hr/manifestacije/) e [valpovo.hr](https://valpovo.hr/events/)',
     allAccom:  'Ecco tutte le opzioni di alloggio a Valpovo:',
     hotels:    'Hotel',
     rural:     'Alloggio rurale',
@@ -272,10 +392,19 @@ function getRelevantContext(message, db, lastCategory) {
     || msg.includes('fišijad') || msg.includes('fisijad') || msg.includes('matijafest') || msg.includes('rockaraj') || msg.includes('reunited') || msg.includes('vašar') || msg.includes('vasar') || msg.includes('ljeto valpov') || msg.includes('craft beer') || msg.includes('staza zdravlja') || msg.includes('katančić') || msg.includes('festival sira') || msg.includes('ribljeg paprikaša') || msg.includes('ribljeg paprikasa') || msg.includes('kuhanje fiš') || msg.includes('kuhanje fis')
     // Kirvaji / crkvene proslave
     || msg.includes('kirvaj') || msg.includes('kirvaja') || msg.includes('kirvaju') || msg.includes('kirchweih') || msg.includes('proštenje') || msg.includes('prostenje') || msg.includes('svetac zaštitnik') || msg.includes('zaštitnik') || msg.includes('crkvena proslava') || msg.includes('župna proslava') || msg.includes('sv. florijan') || msg.includes('sv. antun') || msg.includes('sv. ivan') || msg.includes('sv. margareta') || msg.includes('sv. rok') || msg.includes('sv. katarina') || msg.includes('sv. fabijan') || msg.includes('sv. nikola') || msg.includes('velika gospa') || msg.includes('mala gospa')
+    // Prošla / tekuća / buduća događanja
+    || msg.includes('prošla dogod') || msg.includes('prosla dogod') || msg.includes('prošlih dogod') || msg.includes('proslih dogod')
+    || msg.includes('protekl') || msg.includes('što je bilo') || msg.includes('sto je bilo')
+    || msg.includes('što se održa') || msg.includes('sto se odrza') || msg.includes('što je održa') || msg.includes('sto je odrza')
+    || msg.includes('održano') || msg.includes('odrzano') || msg.includes('održana') || msg.includes('odrzana')
+    || msg.includes('u tijeku') || msg.includes('trenutna dogod') || msg.includes('trenutno u valpov')
+    || msg.includes('nadolaze') || msg.includes('buduć') || msg.includes('buduc') || msg.includes('predstoje')
     // EN
     || msg.includes('event') || msg.includes('events') || msg.includes('carnival') || msg.includes('celebration') || msg.includes('upcoming') || msg.includes('what\'s on')
+    || msg.includes('past event') || msg.includes('what happened') || msg.includes('ongoing') || msg.includes('happening now')
     // DE
-    || msg.includes('veranstaltung') || msg.includes('fest') || msg.includes('feier') || msg.includes('kommende'))
+    || msg.includes('veranstaltung') || msg.includes('fest') || msg.includes('feier') || msg.includes('kommende')
+    || msg.includes('vergangene') || msg.includes('was war los') || msg.includes('laufende'))
     return { context: CATEGORY_CONTEXTS.dogadanja(db), category: 'dogadanja' };
 
   if (msg.includes('znamenitost') || msg.includes('dvorac') || msg.includes('muzej') || msg.includes('kula') || msg.includes('katančić') || msg.includes('posjet') || msg.includes('vidjeti') || msg.includes('vidjet') || msg.includes('razgled') || msg.includes('što ima') || msg.includes('sto ima')
@@ -705,7 +834,8 @@ export default async function handler(req, res) {
       for (const n of scrapedContent.novosti_tz.slice(0, 6)) {
         if (n.IMAGE_URL) reply += `[[IMG:${n.IMAGE_URL}]]`;
         reply += `**${n.naslov}**\n`;
-        if (n.datum) reply += `📅 ${n.datum}\n`;
+        const datumNovosti = n.datum_iso ? formatirajRaspon(n.datum_iso, null, lang) : n.datum;
+        if (datumNovosti) reply += `📅 ${datumNovosti}\n`;
         if (n.kratki_opis) reply += `${n.kratki_opis.substring(0, 180)}...\n`;
         reply += `[Pročitaj više](${n.link})\n`;
         reply += `[[CLR]]\n\n`;
@@ -750,6 +880,132 @@ export default async function handler(req, res) {
       }
 
       return res.status(200).json({ reply, category: 'dogadanja', suggestions: getSuggestions('dogadanja') });
+    }
+
+    // ── DOGAĐANJA S DATUMIMA pre-gen blok ───────────────────────────────────
+    // Izvor: api/_scraped_content.js (tz.valpovo.hr + valpovo.hr), status se
+    // računa u trenutku upita → prošlo / u tijeku / nadolazeće.
+    const dog = klasificirajDogadanja();
+
+    if (category === 'dogadanja' && !specificEventQuery && !isRecommendationQuery && !isDetailQuery
+        && !isGeneralKnowledgeQuery && !isConversationalMode && matched && dog.ukupno > 0) {
+
+      const pitaProsla = [
+        'prošl', 'prosl', 'protekl', 'bivš', 'bivs', 'što je bilo', 'sto je bilo',
+        'što se održa', 'sto se odrza', 'što je održa', 'sto je odrza',
+        'održano', 'odrzano', 'održana', 'odrzana', 'održani', 'odrzani',
+        'ranije', 'dosad', 'do sada', 'arhiv',
+        'past', 'what happened', 'already held', 'previous',
+        'vergangene', 'was war', 'letzte', 'stattgefunden',
+        'passat', 'già svolt', 'gia svolt',
+      ].some(k => msgLower.includes(k));
+
+      const pitaUTijeku = [
+        'u tijeku', 'trenutn', 'trenutačn', 'trenutacn', 'sada', 'danas', 'večeras', 'veceras',
+        'ovaj čas', 'ovaj cas', 'aktualno se',
+        'ongoing', 'right now', 'currently', 'today', 'tonight', 'happening now',
+        'laufende', 'gerade', 'heute', 'derzeit',
+        'in corso', 'oggi', 'adesso',
+      ].some(k => msgLower.includes(k));
+
+      const pitaBuduca = [
+        'nadolaze', 'buduć', 'buduc', 'predstoje', 'uskoro', 'slijede', 'sljedeć', 'sljedec',
+        'najav', 'planiran', 'idući', 'iduci', 'ovaj vikend', 'ovaj tjedan', 'ovaj mjese',
+        'upcoming', 'next', 'future', 'this weekend', 'this week', 'this month', 'coming',
+        'kommende', 'bevorstehend', 'nächste', 'naechste', 'dieses wochenende',
+        'prossim', 'futur', 'in arrivo',
+      ].some(k => msgLower.includes(k));
+
+      // Bez vremenske odrednice → standardni pregled (u tijeku + nadolazeća)
+      const bezOdrednice = !pitaProsla && !pitaUTijeku && !pitaBuduca;
+
+      const kartica = (e, oznaka = '') => {
+        let s = '';
+        if (e.IMAGE_URL) s += `[[IMG:${e.IMAGE_URL}]]`;
+        s += `**${e.naziv}**\n`;
+        s += `📅 ${formatirajRaspon(e.datum_od, e.datum_do, lang)}`;
+        if (e.vrijeme) s += ` · 🕒 ${e.vrijeme}`;
+        if (oznaka) s += ` · _${oznaka}_`;
+        s += `\n`;
+        if (e.opis) s += `${e.opis.substring(0, 200)}\n`;
+        if (e.link) s += `[${t.more}](${e.link})\n`;
+        s += `[[CLR]]\n\n`;
+        return s;
+      };
+
+      const skrati = (naziv, max = 62) =>
+        naziv.length > max ? `${naziv.substring(0, max - 1).trimEnd()}…` : naziv;
+
+      const redak = (e) => `• **${skrati(e.naziv, 90)}** — 📅 ${formatirajRaspon(e.datum_od, e.datum_do, lang)}` +
+        `${e.link ? ` — [${t.more}](${e.link})` : ''}\n`;
+
+      let reply = '';
+
+      if (pitaProsla) {
+        // Prošla događanja — najnovija prva
+        if (dog.prosla.length) {
+          reply += `${t.evPast}:\n\n`;
+          for (const e of dog.prosla.slice(0, 6)) reply += kartica(e, t.evHeld);
+          if (dog.prosla.length > 6) {
+            reply += `📌 ${dog.prosla.slice(6, 12).map(e => `${skrati(e.naziv)} (${formatirajRaspon(e.datum_od, e.datum_do, lang)})`).join(' · ')}\n\n`;
+          }
+        } else {
+          reply += `${t.evNoPast}\n\n`;
+        }
+        // Uz prošla uvijek ponudi i ono što tek dolazi
+        if (dog.uTijeku.length || dog.buduca.length) {
+          reply += `**${t.evNext}:**\n`;
+          for (const e of [...dog.uTijeku, ...dog.buduca].slice(0, 3)) reply += redak(e);
+          reply += `\n`;
+        }
+      } else if (pitaUTijeku && !pitaBuduca) {
+        // Događanja koja traju danas
+        if (dog.uTijeku.length) {
+          reply += `${t.evOngoing}:\n\n`;
+          for (const e of dog.uTijeku) reply += kartica(e);
+        } else {
+          reply += `${t.evNoOngo}\n\n`;
+        }
+        if (dog.buduca.length) {
+          reply += `**${t.evUpcom}:**\n`;
+          for (const e of dog.buduca.slice(0, 4)) reply += redak(e);
+          reply += `\n`;
+        }
+      } else {
+        // Nadolazeća (ili opći upit) — u tijeku pa nadolazeća
+        if (dog.uTijeku.length) {
+          reply += `${t.evOngoing}:\n\n`;
+          for (const e of dog.uTijeku) reply += kartica(e);
+        }
+        if (dog.buduca.length) {
+          reply += `${t.evUpcom}:\n\n`;
+          for (const e of dog.buduca.slice(0, 6)) reply += kartica(e);
+          if (dog.buduca.length > 6) {
+            reply += `📌 ${dog.buduca.slice(6, 12).map(e => `${skrati(e.naziv)} (${formatirajRaspon(e.datum_od, e.datum_do, lang)})`).join(' · ')}\n\n`;
+          }
+        } else if (!dog.uTijeku.length) {
+          reply += `${t.evNoUpc}\n\n`;
+        }
+
+        // Kod općeg upita dodaj i godišnje manifestacije valpovačkog kraja
+        if (bezOdrednice && Array.isArray(db.dogadanja) && db.dogadanja.length) {
+          reply += `**${t.evAnnual}:**\n`;
+          for (const e of db.dogadanja) reply += `• **${e.naziv}** — ${e.vrijeme}\n`;
+          reply += `\n`;
+        }
+      }
+
+      reply += t.evMoreTz;
+
+      const slike = [...dog.uTijeku, ...dog.buduca, ...dog.prosla]
+        .map(e => e.IMAGE_URL).filter(Boolean).slice(0, 4);
+
+      return res.status(200).json({
+        reply,
+        category: 'dogadanja',
+        suggestions: getSuggestions('dogadanja'),
+        images: slike,
+      });
     }
 
     if (category === 'dogadanja' && !specificEventQuery && !isRecommendationQuery && !isDetailQuery && !isGeneralKnowledgeQuery && !isConversationalMode && matched) {
@@ -1306,6 +1562,9 @@ VAŽNO — VREMENSKI KONTEKST:
 - Odaberi aktivnosti primjerene stvarnom godišnjem dobu i temperaturi: u proljeće/ljeto → šetnje, biciklizam, rijeka, izleti; u jesen → vinska sela, berba; u zimu → toplice, unutarnji sadržaji
 - Kraj zime / početak proljeća (veljača–ožujak): sunčaniji dani su idealni za prve šetnje i izlete, ne predlažu se zimski sportovi
 - Ako korisnik pita što se uskoro događa ili koji su predstojeći događaji — prikaži samo nadolazeće manifestacije (koje još nisu prošle)
+- Podaci o događanjima podijeljeni su u tri skupine (vidi AKTUALNI SADRŽAJ): U TIJEKU (traju danas), NADOLAZEĆA (još se nisu održala) i NEDAVNO ODRŽANA (prošla)
+- Ako korisnik izričito pita za prošla / protekla / već održana događanja ("što je bilo", "što se održalo") — koristi skupinu NEDAVNO ODRŽANA i jasno napiši da su ta događanja već prošla
+- Nikad ne predstavljaj prošlo događanje kao nadolazeće i obrnuto — provjeri datum uz svaku stavku
 
 KRITIČNO PRAVILO — JEZIK I PISMO: Uvijek odgovaraj ISKLJUČIVO na jeziku kojim je napisano korisnikovo pitanje. Ovo je apsolutni prioritet koji se nikad ne smije zanemariti.
 - Pitanje na engleskom → cijeli odgovor na engleskom, uključujući labele linkova ([Open on map], [More information])
