@@ -1,17 +1,24 @@
 // AUTO-GENERATED — ne editiraj ručno!
-// Zadnje skrapanje: 2026-08-10 07:20 UTC
+// Zadnje skrapanje: 2026-08-17 06:16 UTC
 // Izvor: tz.valpovo.hr, valpovo.hr
 // GitHub Actions job: scrape-valpovo (tjedno, ponedjeljkom u 6:00)
 
 export const scrapedContent = {
   "meta": {
-    "zadnje_azuriranje": "2026-08-10T07:20:37.613Z",
+    "zadnje_azuriranje": "2026-08-17T06:16:36.774Z",
     "izvori": [
       "https://tz.valpovo.hr",
       "https://valpovo.hr"
     ]
   },
   "novosti_tz": [
+    {
+      "naslov": "PREDSTAVNICI GRADA VALPOVA GOSTOVALI NA 22. EKO ETNO GACKOJ U OTOČCU",
+      "datum": "kol 14, 2026",
+      "kratki_opis": "Otočac je 24. i 25. srpnja bio domaćin 22. izdanja manifestacije Eko Etno Gacka, jedne od najvećih i najposjećenijih manifestacija na području Ličko-senjske županije. ...",
+      "link": "https://tz.valpovo.hr/2026/08/14/predstavnici-grada-valpova-gostovali-na-22-eko-etno-gackoj-u-otoccu/",
+      "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/08/773240449_1038636265651067_5742519568724130035_n.jpg"
+    },
     {
       "naslov": "31. FIŠIJADA U NARDU",
       "datum": "kol 07, 2026",
@@ -74,16 +81,15 @@ export const scrapedContent = {
       "kratki_opis": "Valpovčanka Evelina Bartolović predstavljat će Osječko-baranjsku županiju na 26. izboru za Najuzorniju hrvatsku seosku ženu, koji će se održati 3. listopada 2026. godine u ...",
       "link": "https://tz.valpovo.hr/2026/07/06/valpovcanka-evelina-bartolovic-predstavlja-osjecko-baranjsku-zupaniju-na-26-izboru-za-najuzorniju-hrvatsku-seosku-zenu/",
       "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/07/evelina-bartolovic-uzorna-seoska-zena1.jpg"
-    },
-    {
-      "naslov": "12. REUNITED FESTIVAL \\ 03. – 04. srpnja 2026",
-      "datum": "srp 01, 2026",
-      "kratki_opis": "Udruga Revolution Valpovo predstavlja: 12. REUNITED FESTIVAL Music / Art / D.I.Y. / Soundsystem festival Dvorac Prandau-Norman, Valpovo Valpovo će 3. i 4. srpnja ...",
-      "link": "https://tz.valpovo.hr/2026/07/01/12-reunited-festival-03-04-srpnja-2026/",
-      "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/06/REUNITED-PLAKAT-2026.jpg"
     }
   ],
   "novosti_grad": [
+    {
+      "naslov": "PREDSTAVNICI GRADA VALPOVA GOSTOVALI NA 22. EKO ETNO GACKOJ U OTOČCU",
+      "datum": "14. 08. 2026.",
+      "kratki_opis": "",
+      "link": "https://valpovo.hr/2026/08/14/predstavnici-grada-valpova-gostovali-na-22-eko-etno-gackoj-u-otoccu/"
+    },
     {
       "naslov": "Odluka o raspodjeli financijskih sredstava za sufinanciranje programa i projekata udruga koje doprinose razvoju sporta G",
       "datum": "23. 07. 2026.",
