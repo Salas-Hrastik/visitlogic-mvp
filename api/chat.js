@@ -152,12 +152,25 @@ const MONTH_MAP = {
   'Srpanj':7,'Kolovoz':8,'Rujan':9,'Listopad':10,'Studeni':11,'Prosinac':12
 };
 
+// Nazivi mjeseca traže se BILO GDJE u tekstu, ne samo kao cijela vrijednost.
+// Bez toga "Lipanj — zadnji tjedan" i "Kolovoz — zadnja subota" ne bi bili
+// prepoznati pa bi se u kolovozu prikazivali kao predstojeći (default 12).
+const MONTH_RE = new RegExp(Object.keys(MONTH_MAP).join('|'), 'gi');
+const MONTH_LOOKUP = Object.fromEntries(
+  Object.entries(MONTH_MAP).map(([naziv, broj]) => [naziv.toLowerCase(), broj])
+);
+
+function eventMonths(vrijeme) {
+  const nadeni = String(vrijeme || '').match(MONTH_RE) || [];
+  return nadeni.map(w => MONTH_LOOKUP[w.toLowerCase()]).filter(Boolean);
+}
+
 function eventMaxMonth(vrijeme) {
-  const months = (vrijeme || '').split('/').map(p => MONTH_MAP[p.trim()]).filter(Boolean);
+  const months = eventMonths(vrijeme);
   return months.length ? Math.max(...months) : 12;
 }
 function eventMinMonth(vrijeme) {
-  const months = (vrijeme || '').split('/').map(p => MONTH_MAP[p.trim()]).filter(Boolean);
+  const months = eventMonths(vrijeme);
   return months.length ? Math.min(...months) : 1;
 }
 
@@ -540,7 +553,21 @@ export default async function handler(req, res) {
     const isWeatherQuery = ['prognoz', 'forecast', 'wetter', 'vremensku prognozu'].some(k => message.toLowerCase().includes(k))
       || (['kakvo', 'kako', 'hoće', 'hoce', 'biti', 'stupnjev', 'stupnja', 'temperatura'].filter(k => message.toLowerCase().includes(k)).length >= 2 && ['vrij', 'tempera', 'kišno', 'sunčano', 'oblačno'].some(k => message.toLowerCase().includes(k)));
     if (isWeatherQuery) {
-      const weatherReply = `Nažalost, nemam pristup vremenskim podacima niti prognozi za buduće dane.\n\nZa točnu vremensku prognozu preporučujem:\n🌤️ [meteo.hr](https://meteo.hr) — Državni hidrometeorološki zavod\n🌡️ [Weather.com Valpovo](https://weather.com/hr-HR/weather/today/l/Valpovo)\n\nAko mi kažeš kakvo vrijeme očekuješ — ☀️ sunčano, 🌧️ kišno, ❄️ hladno — predložit ću aktivnosti i sadržaje koji odgovaraju!`;
+      // voice.html šalje trenutne izmjere s /api/weather (Open-Meteo) u polju `weather`.
+      // Ako ih ima, ne smijemo tvrditi da nemamo podatke — stranica ih u tom trenutku prikazuje.
+      const linkoviPrognoza =
+        `🌤️ [meteo.hr](https://meteo.hr) — Državni hidrometeorološki zavod\n` +
+        `🌡️ [Weather.com Valpovo](https://weather.com/hr-HR/weather/today/l/Valpovo)`;
+
+      const weatherReply = weather?.temperature !== undefined
+        ? `🌤️ **Trenutno u Valpovu: ${weather.temperature}°C**` +
+          `${weather.windspeed !== undefined ? `, vjetar ${weather.windspeed} km/h` : ''}.\n\n` +
+          `Za prognozu za sljedeće dane nemam podatke — provjeri:\n${linkoviPrognoza}\n\n` +
+          `Reci mi što te zanima — 🏛️ razgled, 🌿 šetnja, 🍽️ ručak — pa ću predložiti sadržaje primjerene ovakvom vremenu!`
+        : `Nažalost, nemam pristup vremenskim podacima niti prognozi za buduće dane.\n\n` +
+          `Za točnu vremensku prognozu preporučujem:\n${linkoviPrognoza}\n\n` +
+          `Ako mi kažeš kakvo vrijeme očekuješ — ☀️ sunčano, 🌧️ kišno, ❄️ hladno — predložit ću aktivnosti i sadržaje koji odgovaraju!`;
+
       return res.status(200).json({ reply: weatherReply, category: lastCategory || null, suggestions: getSuggestions(lastCategory), images: [] });
     }
 
@@ -918,6 +945,11 @@ export default async function handler(req, res) {
 
       // Bez vremenske odrednice → standardni pregled (u tijeku + nadolazeća)
       const bezOdrednice = !pitaProsla && !pitaUTijeku && !pitaBuduca;
+      // Upit spominje dvije ili više vremenskih odrednica ("bivše, sadašnje i buduće")
+      // ili izričito traži sve → prikaži sve tri skupine, ne samo jednu
+      const traziSve = [pitaProsla, pitaUTijeku, pitaBuduca].filter(Boolean).length >= 2
+        || ['sve manifestac', 'sva događan', 'sva dogadan', 'sve događaj', 'sve dogadaj',
+            'all events', 'alle veranstaltungen', 'tutti gli eventi'].some(k => msgLower.includes(k));
 
       const kartica = (e, oznaka = '') => {
         let s = '';
@@ -941,7 +973,37 @@ export default async function handler(req, res) {
 
       let reply = '';
 
-      if (pitaProsla) {
+      if (traziSve) {
+        // Upit traži više vremenskih skupina → prikaži sve tri redom
+        // (prošlo → u tijeku → nadolazeće), prošla sažeto da odgovor ostane čitljiv
+        if (dog.prosla.length) {
+          reply += `${t.evPast}:\n\n`;
+          for (const e of dog.prosla.slice(0, 8)) reply += redak(e);
+          reply += `\n`;
+        } else {
+          reply += `${t.evNoPast}\n\n`;
+        }
+
+        reply += `${t.evOngoing}:\n\n`;
+        if (dog.uTijeku.length) {
+          for (const e of dog.uTijeku) reply += kartica(e);
+        } else {
+          reply += `${t.evNoOngo}\n\n`;
+        }
+
+        reply += `${t.evUpcom}:\n\n`;
+        if (dog.buduca.length) {
+          for (const e of dog.buduca.slice(0, 5)) reply += kartica(e);
+        } else {
+          reply += `${t.evNoUpc}\n\n`;
+        }
+
+        if (Array.isArray(db.dogadanja) && db.dogadanja.length) {
+          reply += `**${t.evAnnual}:**\n`;
+          for (const e of db.dogadanja) reply += `• **${e.naziv}** — ${e.vrijeme}\n`;
+          reply += `\n`;
+        }
+      } else if (pitaProsla) {
         // Prošla događanja — najnovija prva
         if (dog.prosla.length) {
           reply += `${t.evPast}:\n\n`;
