@@ -1,5 +1,5 @@
 // AUTO-GENERATED — ne editiraj ručno!
-// Zadnje skrapanje: 2026-08-17 09:40 UTC
+// Zadnje skrapanje: 2026-08-18 06:52 UTC
 // Izvor: tz.valpovo.hr, valpovo.hr
 // GitHub Actions job: scrape-valpovo (dnevno u 6:00 UTC)
 //
@@ -9,7 +9,7 @@
 
 export const scrapedContent = {
   "meta": {
-    "zadnje_azuriranje": "2026-08-17T09:40:03.708Z",
+    "zadnje_azuriranje": "2026-08-18T06:52:07.961Z",
     "izvori": [
       "https://tz.valpovo.hr",
       "https://valpovo.hr"
@@ -507,9 +507,9 @@ export const scrapedContent = {
     },
     {
       "naziv": "„Bajkovita knjižnica” -ljetne radionice/pričaonice za djecu u Gradskoj knjižnici i čitaonici Valpovo",
-      "datum_od": "2026-08-17",
-      "datum_do": "2026-08-17",
-      "datum_tekst": "17. 08. 2026.",
+      "datum_od": "2026-08-24",
+      "datum_do": "2026-08-24",
+      "datum_tekst": "24. 08. 2026.",
       "vrijeme": "16:30 - 18:30",
       "opis": "Gradska knjižnica i čitaonica Valpovo u kolovozu nastavlja s programom „Bajkovita knjižnica“, ciklusom kreativnih radionica i pričaonica namijenjenih djeci predškolske i mlađe školske dobi. Radionice će se održavati svakog ponedjeljka u kolovozu – 3., 10., 17.",
       "link": "https://valpovo.hr/events/bajkovita-knjiznica-ljetne-radionice-pricaonice-za-djecu-u-gradskoj-knjiznici-i-citaonici-valpovo/",
