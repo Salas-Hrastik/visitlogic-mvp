@@ -1,5 +1,5 @@
 // AUTO-GENERATED — ne editiraj ručno!
-// Zadnje skrapanje: 2026-08-18 06:52 UTC
+// Zadnje skrapanje: 2026-08-20 06:53 UTC
 // Izvor: tz.valpovo.hr, valpovo.hr
 // GitHub Actions job: scrape-valpovo (dnevno u 6:00 UTC)
 //
@@ -9,7 +9,7 @@
 
 export const scrapedContent = {
   "meta": {
-    "zadnje_azuriranje": "2026-08-18T06:52:07.961Z",
+    "zadnje_azuriranje": "2026-08-20T06:53:31.257Z",
     "izvori": [
       "https://tz.valpovo.hr",
       "https://valpovo.hr"
@@ -100,6 +100,12 @@ export const scrapedContent = {
   ],
   "novosti_grad": [
     {
+      "naslov": "„Bajkovita knjižnica” u Gradskoj knjižnici i čitaonici Valpovo: priče, mašta i kreativne ruke",
+      "datum": "18. 08. 2026.",
+      "kratki_opis": "",
+      "link": "https://valpovo.hr/2026/08/18/bajkovita-knjiznica-u-gradskoj-knjiznici-i-citaonici-valpovo-price-masta-i-kreativne-ruke/"
+    },
+    {
       "naslov": "PREDSTAVNICI GRADA VALPOVA GOSTOVALI NA 22. EKO ETNO GACKOJ U OTOČCU",
       "datum": "14. 08. 2026.",
       "kratki_opis": "",
@@ -122,12 +128,6 @@ export const scrapedContent = {
       "datum": "19. 07. 2026.",
       "kratki_opis": "",
       "link": "https://valpovo.hr/2026/07/19/odrzan-6-rockaraj-fest-under-the-ginko-edition/"
-    },
-    {
-      "naslov": "URUČENA NAGRADA ZA NAJBOLJI VRTIĆ",
-      "datum": "16. 07. 2026.",
-      "kratki_opis": "",
-      "link": "https://valpovo.hr/2026/07/16/urucena-nagrada-za-najbolji-vrtic/"
     }
   ],
   "manifestacije_aktualne": [
