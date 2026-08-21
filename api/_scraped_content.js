@@ -1,5 +1,5 @@
 // AUTO-GENERATED — ne editiraj ručno!
-// Zadnje skrapanje: 2026-08-20 06:53 UTC
+// Zadnje skrapanje: 2026-08-21 06:55 UTC
 // Izvor: tz.valpovo.hr, valpovo.hr
 // GitHub Actions job: scrape-valpovo (dnevno u 6:00 UTC)
 //
@@ -9,7 +9,7 @@
 
 export const scrapedContent = {
   "meta": {
-    "zadnje_azuriranje": "2026-08-20T06:53:31.257Z",
+    "zadnje_azuriranje": "2026-08-21T06:55:01.568Z",
     "izvori": [
       "https://tz.valpovo.hr",
       "https://valpovo.hr"
@@ -122,12 +122,6 @@ export const scrapedContent = {
       "datum": "20. 07. 2026.",
       "kratki_opis": "",
       "link": "https://valpovo.hr/2026/07/20/medunarodna-glazbena-vecer-eurochestries-croatia-2026-odrzana-u-valpovu/"
-    },
-    {
-      "naslov": "ODRŽAN 6. ROCK’A’RAJ FEST – “UNDER THE GINKO” EDITION",
-      "datum": "19. 07. 2026.",
-      "kratki_opis": "",
-      "link": "https://valpovo.hr/2026/07/19/odrzan-6-rockaraj-fest-under-the-ginko-edition/"
     }
   ],
   "manifestacije_aktualne": [
