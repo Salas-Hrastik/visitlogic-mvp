@@ -1,5 +1,5 @@
 // AUTO-GENERATED — ne editiraj ručno!
-// Zadnje skrapanje: 2026-08-21 06:55 UTC
+// Zadnje skrapanje: 2026-08-22 06:47 UTC
 // Izvor: tz.valpovo.hr, valpovo.hr
 // GitHub Actions job: scrape-valpovo (dnevno u 6:00 UTC)
 //
@@ -9,14 +9,22 @@
 
 export const scrapedContent = {
   "meta": {
-    "zadnje_azuriranje": "2026-08-21T06:55:01.568Z",
+    "zadnje_azuriranje": "2026-08-22T06:47:53.203Z",
     "izvori": [
       "https://tz.valpovo.hr",
       "https://valpovo.hr"
     ],
-    "broj_dogadanja": 28
+    "broj_dogadanja": 29
   },
   "novosti_tz": [
+    {
+      "naslov": "MANIFESTACIJA “TRADICIJA U POKRETU”",
+      "datum": "kol 21, 2026",
+      "datum_iso": "2026-08-21",
+      "kratki_opis": "Konjogojska udruga Valpovštine, u suradnji s Gradom Valpovom i Turističkom zajednicom Grada Valpova, organizira manifestaciju „Tradicija u pokretu“, koja će se održati u subotu, ...",
+      "link": "https://tz.valpovo.hr/2026/08/21/manifestacija-tradicija-u-pokretu/",
+      "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/08/781680653_1068570845561809_809382827192533482_n.jpg"
+    },
     {
       "naslov": "PREDSTAVNICI GRADA VALPOVA GOSTOVALI NA 22. EKO ETNO GACKOJ U OTOČCU",
       "datum": "kol 14, 2026",
@@ -88,14 +96,6 @@ export const scrapedContent = {
       "kratki_opis": "Ovog ljeta Rock’a’raj okreće novu stranicu i donosi nešto drugačije izdanje! Šesto izdanje valpovačkog rock festivala održat će se 18. srpnja 2026. godine od 19 sati, ...",
       "link": "https://tz.valpovo.hr/2026/07/11/6-rockaraj-fest-under-the-ginko-edition-stize-u-valpovo/",
       "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/07/rokaraj-2026-fb-neww.jpg"
-    },
-    {
-      "naslov": "VALPOVČANKA EVELINA BARTOLOVIĆ PREDSTAVLJA OSJEČKO-BARANJSKU ŽUPANIJU NA 26. IZBORU ZA NAJUZORNIJU HRVATSKU SEOSKU ŽENU",
-      "datum": "srp 06, 2026",
-      "datum_iso": "2026-07-06",
-      "kratki_opis": "Valpovčanka Evelina Bartolović predstavljat će Osječko-baranjsku županiju na 26. izboru za Najuzorniju hrvatsku seosku ženu, koji će se održati 3. listopada 2026. godine u ...",
-      "link": "https://tz.valpovo.hr/2026/07/06/valpovcanka-evelina-bartolovic-predstavlja-osjecko-baranjsku-zupaniju-na-26-izboru-za-najuzorniju-hrvatsku-seosku-zenu/",
-      "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/07/evelina-bartolovic-uzorna-seoska-zena1.jpg"
     }
   ],
   "novosti_grad": [
@@ -521,6 +521,18 @@ export const scrapedContent = {
       "izvor": "valpovo.hr",
       "IMAGE_URL": "https://valpovo.hr/wp-content/uploads/2026/08/fisijada-2026-nard-baner.jpg",
       "link_alt": "https://tz.valpovo.hr/2026/08/07/31-fisijada-u-nardu/"
+    },
+    {
+      "naziv": "MANIFESTACIJA “TRADICIJA U POKRETU”",
+      "datum_od": "2026-09-19",
+      "datum_do": "2026-09-19",
+      "datum_tekst": "19. 09. 2026.",
+      "vrijeme": "10:00 - 14:00",
+      "opis": "Konjogojska udruga Valpovštine, u suradnji s Gradom Valpovom i Turističkom zajednicom Grada Valpova, organizira manifestaciju „Tradicija u pokretu“, koja će se održati u subotu, 19. rujna 2026. godine, od 10:00 do 14:00 sati u valpovačkom parku kod platane. Ov",
+      "link": "https://valpovo.hr/events/manifestacija-tradicija-u-pokretu/",
+      "izvor": "valpovo.hr",
+      "IMAGE_URL": "https://valpovo.hr/wp-content/uploads/2026/08/781680653_1068570845561809_809382827192533482_n.jpg",
+      "link_alt": "https://tz.valpovo.hr/2026/08/21/manifestacija-tradicija-u-pokretu/"
     },
     {
       "naziv": "VALPOVČANKA EVELINA BARTOLOVIĆ PREDSTAVLJA OSJEČKO-BARANJSKU ŽUPANIJU NA 26. IZBORU ZA NAJUZORNIJU HRVATSKU SEOSKU ŽENU",
