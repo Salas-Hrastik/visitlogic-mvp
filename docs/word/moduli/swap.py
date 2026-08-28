@@ -30,11 +30,21 @@ def link_rid(u):
 def img_rid(p):
     if p in imgs: return imgs[p]
     name='sw_%02d.jpg'%(len(imgs)+1)
-    shutil.copy(p, os.path.join(UNP,'word/media',name))
+    _store(p, os.path.join(UNP,'word/media',name))
     rid=new_rid(); etree.SubElement(relsroot, PKG+'Relationship', Id=rid,
       Type='http://schemas.openxmlformats.org/officeDocument/2006/relationships/image',
       Target='media/'+name); imgs[p]=rid; return rid
 
+
+def _store(src, dst, maxw=1100, q=82):
+    """Sprema sliku u media/, smanjenu na razumnu razlučivost za tisak."""
+    try:
+        im=Image.open(src).convert('RGB')
+        if im.width>maxw:
+            im=im.resize((maxw, round(im.height*maxw/im.width)), Image.LANCZOS)
+        im.save(dst,'JPEG',quality=q,optimize=True,progressive=True)
+    except Exception:
+        shutil.copy(src,dst)
 def run(txt,b=False,i=False,sz=None):
     r=etree.Element(W+'r')
     if b or i or sz:

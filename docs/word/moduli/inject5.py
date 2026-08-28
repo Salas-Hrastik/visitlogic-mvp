@@ -68,15 +68,24 @@ def link_rid(url):
 imgs={}
 def img_rid(path):
     if path in imgs: return imgs[path]
-    ext=os.path.splitext(path)[1].lower().lstrip('.'); ext='jpg' if ext in ('jpeg','img') else ext
-    name='m5_%02d.%s'%(len(imgs)+1, ext)
-    shutil.copy(path, os.path.join(UNP,'word/media',name))
+    name='m5_%02d.jpg'%(len(imgs)+1)     # _store uvijek sprema JPEG
+    _store(path, os.path.join(UNP,'word/media',name))
     rid=new_rid()
     etree.SubElement(relsroot, PKG+'Relationship', Id=rid,
       Type='http://schemas.openxmlformats.org/officeDocument/2006/relationships/image',
       Target='media/'+name)
     imgs[path]=rid; return rid
 
+
+def _store(src, dst, maxw=1100, q=82):
+    """Sprema sliku u media/, smanjenu na razumnu razlučivost za tisak."""
+    try:
+        im=Image.open(src).convert('RGB')
+        if im.width>maxw:
+            im=im.resize((maxw, round(im.height*maxw/im.width)), Image.LANCZOS)
+        im.save(dst,'JPEG',quality=q,optimize=True,progressive=True)
+    except Exception:
+        shutil.copy(src,dst)
 def run(text, bold=False, ital=False):
     r=etree.Element(W+'r')
     if bold or ital:
