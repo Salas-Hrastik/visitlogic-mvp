@@ -1,0 +1,56 @@
+# Izvori ilustracija — Modul 1
+
+Sve fotografije preuzete su s Wikimedia Commonsa i objavljene pod slobodnim licencijama.
+Sheme i crteži izvorni su rad izrađen za ovaj modul (CC BY-SA 4.0).
+
+- **apoksiomen** — Croatian Apoxyomenos Louvre n02.jpg · foto: Marie-Lan Nguyen · javno vlasništvo · https://commons.wikimedia.org/wiki/File:Croatian_Apoxyomenos_Louvre_n02.jpg
+- **augustov_hram** — Templo de Augusto y ayuntamiento, Pula, Croacia, 2017-04-17, DD 68-70 HDR.jpg · foto: Diego Delso · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Templo_de_Augusto_y_ayuntamiento,_Pula,_Croacia,_2017-04-17,_DD_68-70_HDR.jpg
+- **belec** — Church of Our Lady of Snows in Belec, Croatia - exterior.jpg · foto: Rosier-HR · CC BY-SA 3.0 · https://commons.wikimedia.org/wiki/File:Church_of_Our_Lady_of_Snows_in_Belec,_Croatia_-_exterior.jpg
+- **branimir** — Greda i zabat s natpisom kneza Branimira 879.jpg · foto: Roberta F · CC BY-SA 3.0 · https://commons.wikimedia.org/wiki/File:Greda_i_zabat_s_natpisom_kneza_Branimira_879.jpg
+- **dakovo** — Cathedral Dakovo, Croatia.JPG · foto: Modzzak · CC BY-SA 3.0 · https://commons.wikimedia.org/wiki/File:Cathedral_Dakovo,_Croatia.JPG
+- **dubrovnik_zidine** — X03.06 Minčeta, Lavrijenac.jpg · foto: Falk2 · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:X03.06_Min%C4%8Deta,_Lavrijenac.jpg
+- **dvorac_eltz** — Manor Eltz, Vukovar, Croatia.jpg · foto: Pudelek · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Manor_Eltz,_Vukovar,_Croatia.jpg
+- **eufrazijana** — Euphrasian Basilica Central Apse Mosaics.JPG · foto: Shesmax · CC BY-SA 3.0 · https://commons.wikimedia.org/wiki/File:Euphrasian_Basilica_Central_Apse_Mosaics.JPG
+- **hnk** — Croatian National Theater, Zagreb 01.jpg · foto: Bernard Gagnon · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Croatian_National_Theater,_Zagreb_01.jpg
+- **isus_skalinada** — Saint Ignatius Church (Dubrovnik) 02.jpg · foto: Bernard Gagnon · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Saint_Ignatius_Church_(Dubrovnik)_02.jpg
+- **kairos** — Kairos - Greek God of Happy Moments - Trogir - 51388042695.jpg · foto: TimeTravelRome · CC BY 2.0 · https://commons.wikimedia.org/wiki/File:Kairos_-_Greek_God_of_Happy_Moments_-_Trogir_-_51388042695.jpg
+- **karlovac** — Karlovačka zvijezda- Izvor- Digitalni Tisak.jpg · foto: Bukovacka · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Karlova%C4%8Dka_zvijezda-_Izvor-_Digitalni_Tisak.jpg
+- **kazun** — Kažuni 2013 - panoramio.jpg · foto: nikola_pu · CC BY-SA 3.0 · https://commons.wikimedia.org/wiki/File:Ka%C5%BEuni_2013_-_panoramio.jpg
+- **klaustar_dubrovnik** — CLOISTER OF THE FRANCISCAN MONASTERY IN DUBROVNIK, CROATIA.jpg · foto: JERRYE AND ROY KLOTZ MD · CC BY-SA 3.0 · https://commons.wikimedia.org/wiki/File:CLOISTER_OF_THE_FRANCISCAN_MONASTERY_IN_DUBROVNIK,_CROATIA.jpg
+- **kuca_kalina** — Zagreb - Kuća Kallina (5).jpg · foto: Fred Romero from Paris, France · CC BY 2.0 · https://commons.wikimedia.org/wiki/File:Zagreb_-_Ku%C4%87a_Kallina_(5).jpg
+- **mestrovic_paviljon** — Meštrović Pavilion 20180428 5523.jpg · foto: Branko Radovanović · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Me%C5%A1trovi%C4%87_Pavilion_20180428_5523.jpg
+- **mirogoj** — Mirogoj arkade jug.jpg · foto: Admiral Norton · CC BY-SA 3.0 · https://commons.wikimedia.org/wiki/File:Mirogoj_arkade_jug.jpg
+- **monkodonja** — Monkodonja (10).JPG · foto: Orlovic · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Monkodonja_(10).JPG
+- **morske_orgulje** — Sea organ Zadar 3.JPG · foto: Andrej Šalov · CC BY-SA 3.0 · https://commons.wikimedia.org/wiki/File:Sea_organ_Zadar_3.JPG
+- **osijek_tvrdja** — Osijek, Trg sv. Trojstva u Tvrđi.jpg · foto: Ciocolli · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Osijek,_Trg_sv._Trojstva_u_Tvr%C4%91i.jpg
+- **peristil** — Peristyle of Diocletian's Palace - Split - 51389330950.jpg · foto: TimeTravelRome · CC BY 2.0 · https://commons.wikimedia.org/wiki/File:Peristyle_of_Diocletian%27s_Palace_-_Split_-_51389330950.jpg
+- **podrumi** — Diocletian's palace substructure 1.jpg · foto: Ballota · CC BY-SA 3.0 · https://commons.wikimedia.org/wiki/File:Diocletian%27s_palace_substructure_1.jpg
+- **pula_arena** — Anfiteatro de Pula, Croacia, 2017-04-17, DD 49-57 HDR PAN.jpg · foto: Diego Delso · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Anfiteatro_de_Pula,_Croacia,_2017-04-17,_DD_49-57_HDR_PAN.jpg
+- **pula_franjevacka** — Franciscan Church, Pula - panoramio (34).jpg · foto: Tanya Dedyukhina · CC BY 3.0 · https://commons.wikimedia.org/wiki/File:Franciscan_Church,_Pula_-_panoramio_(34).jpg
+- **romanicka_kuca** — Cipiko Palace - Trogir.jpg · foto: TimeTravelRome · CC BY 2.0 · https://commons.wikimedia.org/wiki/File:Cipiko_Palace_-_Trogir.jpg
+- **salona** — Manastirine (Salona) 02.jpg · foto: Bernard Gagnon · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Manastirine_(Salona)_02.jpg
+- **sibenik_glave** — Sibenik Heads 1 659.jpg · foto: Cholo Aleman · CC BY-SA 3.0 · https://commons.wikimedia.org/wiki/File:Sibenik_Heads_1_659.jpg
+- **sibenik_katedrala** — Katedrala svetog Jakova 2017.jpg · foto: August Dominus · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Katedrala_svetog_Jakova_2017.jpg
+- **slavoluk** — Arch of the Sergii (Pula) - Close-up.jpg · foto: Terragio67 · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Arch_of_the_Sergii_(Pula)_-_Close-up.jpg
+- **sorkocevic** — Ljetnikovac Pucić - Kosor Dubrovnik RST-1726 1.jpg · foto: Sopina Ana · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Ljetnikovac_Puci%C4%87_-_Kosor_Dubrovnik_RST-1726_1.jpg
+- **sponza** — 2011 Dubrownik, Pałac Sponza (01).jpg · foto: Marcin Konsek · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:2011_Dubrownik,_Pa%C5%82ac_Sponza_(01).jpg
+- **starogradsko** — Stari Grad Plain 20250920 02.jpg · foto: Argo Navis · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Stari_Grad_Plain_20250920_02.jpg
+- **ston** — Aerial image of Ston (view from the southwest).jpg · foto: Carsten Steger · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Aerial_image_of_Ston_(view_from_the_southwest).jpg
+- **stradun** — Stradun, Dubrovnik - September 2017.jpg · foto: Martin Falbisoner · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Stradun,_Dubrovnik_-_September_2017.jpg
+- **sv_blaz** — Viktor Kovačić- Crkva sv. Blaža, Prilaz gjure Deželića- Primorska ulica, Zagreb 1910. - 1913.jpg · foto: Unknown author Unknown author · javno vlasništvo · https://commons.wikimedia.org/wiki/File:Viktor_Kova%C4%8Di%C4%87-_Crkva_sv._Bla%C5%BEa,_Prilaz_gjure_De%C5%BEeli%C4%87a-_Primorska_ulica,_Zagreb_1910._-_1913.jpg
+- **sv_donat** — Church of St. Donatus in Zadar - dome.jpg · foto: Bernard Gagnon · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Church_of_St._Donatus_in_Zadar_-_dome.jpg
+- **sv_katarina** — Interior Church of St Catherine in Zagreb 05.jpg · foto: Nxr-at · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Interior_Church_of_St_Catherine_in_Zagreb_05.jpg
+- **sv_kriz_nin** — Church of the Holy Cross, Nin.jpg · foto: Paula Borkovic · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Church_of_the_Holy_Cross,_Nin.jpg
+- **sv_marko** — St. Mark's Church, Zagreb 02.jpg · foto: Bernard Gagnon · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:St._Mark%27s_Church,_Zagreb_02.jpg
+- **sv_nikola_nin** — Church of Saint Nicholas, NIn.jpg · foto: Paula Borkovic · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Church_of_Saint_Nicholas,_NIn.jpg
+- **sv_nikola_sibenik** — Saint-Nicholas Fortress in Šibenik4.JPG · foto: Hegor · CC BY-SA 3.0 · https://commons.wikimedia.org/wiki/File:Saint-Nicholas_Fortress_in_%C5%A0ibenik4.JPG
+- **sv_spas** — Cetina 20200531 11.jpg · foto: Argo Navis · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Cetina_20200531_11.jpg
+- **sv_vlaho** — Saint Blaise's Church, Dubrovnik - September 2017.jpg · foto: Martin Falbisoner · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Saint_Blaise%27s_Church,_Dubrovnik_-_September_2017.jpg
+- **trogir_katedrala** — Trogir katedrála sv. Vavřince závěr 1.jpg · foto: VitVit · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Trogir_katedr%C3%A1la_sv._Vav%C5%99ince_z%C3%A1v%C4%9Br_1.jpg
+- **trogir_zvonik** — Croatie Trogir Saint-Laurent Campanile - panoramio.jpg · foto: rene boulay · CC BY-SA 3.0 · https://commons.wikimedia.org/wiki/File:Croatie_Trogir_Saint-Laurent_Campanile_-_panoramio.jpg
+- **trski_vrh** — Krapina, église de Trški Vrh, 14 mai 2023, vue d'ensemble.jpg · foto: Noel.guillet · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Krapina,_%C3%A9glise_de_Tr%C5%A1ki_Vrh,_14_mai_2023,_vue_d%27ensemble.jpg
+- **varazdin** — Varaždin Center Croatia 2025.jpg · foto: Ptrnc7965 · CC0 · https://commons.wikimedia.org/wiki/File:Vara%C5%BEdin_Center_Croatia_2025.jpg
+- **velika_mlaka** — Velika mlaka sv barbara.jpg · foto: Slavko Stepanić · CC BY-SA 3.0 · https://commons.wikimedia.org/wiki/File:Velika_mlaka_sv_barbara.jpg
+- **zadar_forum** — Roman forum, Zadar (P1080975).jpg · foto: Matti Blume · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Roman_forum,_Zadar_(P1080975).jpg
+- **zadar_stosija** — Cathedral of St. Anastasia in Zadar 03.jpg · foto: Bernard Gagnon · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Cathedral_of_St._Anastasia_in_Zadar_03.jpg
+- **zg_katedrala** — Zagreb cathedral at sunrise.jpg · foto: Larisa Uhryn · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Zagreb_cathedral_at_sunrise.jpg

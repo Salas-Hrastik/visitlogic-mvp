@@ -1,0 +1,2192 @@
+<title>Modul 1 — Arhitektura i urbanizam</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Literata:opsz,wght@7..72,400;7..72,600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+:root{
+  --bg:#F0F1ED; --surface:#FAFAF8; --ink:#1A2330; --body:#2C3743;
+  --muted:#66727E; --line:#CFD2CB; --hair:#DDDFD9;
+  --mark:#9E3D22; --mark-soft:#F0E2DC; --sea:#166069; --sea-soft:#DEEAEA;
+  --figbg:#E7E8E3;
+  --f-disp:"Fraunces",Georgia,"Times New Roman",serif;
+  --f-body:"Literata",Georgia,"Times New Roman",serif;
+  --f-ui:"IBM Plex Sans","Helvetica Neue",Arial,sans-serif;
+  --measure:37rem; --wide:62rem;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#11161C; --surface:#182029; --ink:#E7E9E5; --body:#C6CDD4;
+    --muted:#93A0AC; --line:#33404C; --hair:#28323C;
+    --mark:#D87A55; --mark-soft:#33221B; --sea:#5FB3B8; --sea-soft:#12292B;
+    --figbg:#1D262F;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#11161C; --surface:#182029; --ink:#E7E9E5; --body:#C6CDD4;
+  --muted:#93A0AC; --line:#33404C; --hair:#28323C;
+  --mark:#D87A55; --mark-soft:#33221B; --sea:#5FB3B8; --sea-soft:#12292B;
+  --figbg:#1D262F;
+}
+*{box-sizing:border-box}
+body{
+  margin:0; background:var(--bg); color:var(--body);
+  font-family:var(--f-body); font-size:1.0125rem; line-height:1.72;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:var(--wide); margin:0 auto; padding:0 1.5rem 6rem}
+.col{max-width:var(--measure); margin-inline:auto}
+h1,h2,h3,h4{font-family:var(--f-disp); color:var(--ink); text-wrap:balance; margin:0}
+p{margin:0 0 1.15em}
+a{color:var(--mark); text-underline-offset:2px}
+a:focus-visible,summary:focus-visible{outline:2px solid var(--mark); outline-offset:3px; border-radius:2px}
+strong{color:var(--ink); font-weight:600}
+em{font-style:italic}
+</style>
+<style>
+/* ---------- masthead ---------- */
+.masthead{border-bottom:1px solid var(--line); margin-bottom:3rem; padding:3.5rem 0 2rem}
+.eyebrow{font-family:var(--f-ui); font-size:.72rem; font-weight:600; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--mark); margin:0 0 1rem}
+.masthead h1{font-size:clamp(2.1rem,5.5vw,3.4rem); line-height:1.06; font-weight:600;
+  letter-spacing:-.02em; margin-bottom:1rem}
+.standfirst{font-size:1.15rem; color:var(--muted); max-width:34rem; margin-bottom:2rem}
+.facts{display:flex; flex-wrap:wrap; gap:0 2.5rem; font-family:var(--f-ui); font-size:.82rem;
+  border-top:1px solid var(--hair); padding-top:1rem}
+.facts div{display:flex; flex-direction:column; gap:.15rem; padding:.35rem 0}
+.facts dt{color:var(--muted); font-size:.7rem; letter-spacing:.1em; text-transform:uppercase}
+.facts dd{margin:0; color:var(--ink); font-weight:500}
+/* ---------- structure ---------- */
+section{margin:0 0 4rem}
+.sect-head{max-width:var(--measure); margin:0 auto 2rem; padding-top:1.5rem; border-top:2px solid var(--ink)}
+.sect-num{font-family:var(--f-ui); font-size:.78rem; font-weight:600; letter-spacing:.12em;
+  color:var(--mark); display:block; margin-bottom:.6rem}
+.sect-head h2{font-size:clamp(1.55rem,3.4vw,2.1rem); line-height:1.14; font-weight:600; letter-spacing:-.015em}
+h3{font-size:1.28rem; font-weight:600; line-height:1.24; margin:2.6rem 0 .9rem}
+h4{font-family:var(--f-ui); font-size:.8rem; font-weight:600; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--muted); margin:2rem 0 .7rem}
+ul,ol{margin:0 0 1.15em; padding-left:1.15rem}
+li{margin-bottom:.5em}
+li::marker{color:var(--mark)}
+/* ---------- callouts ---------- */
+.note{border-left:3px solid var(--sea); background:var(--sea-soft); padding:1rem 1.15rem;
+  margin:1.8rem 0; font-size:.95rem}
+.note .lbl{font-family:var(--f-ui); font-size:.7rem; font-weight:600; letter-spacing:.11em;
+  text-transform:uppercase; color:var(--sea); display:block; margin-bottom:.4rem}
+.note p:last-child{margin-bottom:0}
+.note.method{border-left-color:var(--mark); background:var(--mark-soft)}
+.note.method .lbl{color:var(--mark)}
+.triad{border:1px solid var(--line); background:var(--surface); padding:1.15rem 1.25rem; margin:1.8rem 0}
+.triad .lbl{font-family:var(--f-ui); font-size:.7rem; font-weight:600; letter-spacing:.11em;
+  text-transform:uppercase; color:var(--mark); display:block; margin-bottom:.7rem}
+.triad dl{margin:0; display:grid; gap:.6rem}
+.triad dt{font-family:var(--f-ui); font-size:.72rem; font-weight:600; letter-spacing:.08em;
+  text-transform:uppercase; color:var(--muted)}
+.triad dd{margin:.1rem 0 0; font-size:.95rem}
+/* ---------- tables ---------- */
+.tbl{overflow-x:auto; margin:1.8rem 0; border-top:2px solid var(--ink); border-bottom:1px solid var(--line)}
+table{border-collapse:collapse; width:100%; font-family:var(--f-ui); font-size:.86rem; line-height:1.5}
+th{text-align:left; font-weight:600; color:var(--ink); font-size:.72rem; letter-spacing:.08em;
+  text-transform:uppercase; padding:.7rem .8rem .7rem 0; border-bottom:1px solid var(--line); vertical-align:bottom}
+td{padding:.7rem .8rem .7rem 0; border-bottom:1px solid var(--hair); vertical-align:top; color:var(--body)}
+td:first-child{color:var(--ink); font-weight:500}
+tr:last-child td{border-bottom:none}
+/* ---------- figures ---------- */
+figure{margin:2.4rem auto; max-width:var(--wide)}
+figure img{display:block; width:100%; height:auto; background:var(--figbg)}
+figure svg{display:block; width:100%; height:auto; color:var(--ink)}
+figure svg text{font-family:var(--f-ui); fill:currentColor}
+figure svg .em-s{stroke:var(--mark)}
+figure svg .em-f{fill:var(--mark)}
+figure svg .sea-s{stroke:var(--sea)}
+figure svg .sea-f{fill:var(--sea)}
+.fig-frame{border:1px solid var(--line); background:var(--surface); padding:1.4rem}
+figcaption{font-family:var(--f-ui); font-size:.82rem; line-height:1.55; color:var(--body);
+  margin-top:.7rem; max-width:44rem}
+figcaption b{color:var(--ink); font-weight:600}
+.src{display:block; font-size:.72rem; color:var(--muted); margin-top:.35rem}
+.src a{color:var(--muted); text-decoration:underline}
+.duo{display:grid; gap:1rem; grid-template-columns:1fr}
+@media(min-width:640px){ .duo{grid-template-columns:1fr 1fr} }
+.trio{display:grid; gap:1rem; grid-template-columns:1fr}
+@media(min-width:720px){ .trio{grid-template-columns:repeat(3,1fr)} }
+.duo figcaption,.trio figcaption{margin-top:.5rem; font-size:.76rem}
+.duo figure,.trio figure{margin:0; display:flex; flex-direction:column}
+.duo figure img,.trio figure img{aspect-ratio:3/2; object-fit:cover; object-position:center}
+.duo figure img.fit,.trio figure img.fit{object-fit:contain; background:var(--figbg)}
+/* ---------- misc ---------- */
+.terms{font-size:.95rem; color:var(--body); border-left:3px solid var(--line); padding-left:1.1rem}
+.terms i{font-style:italic}
+.toc{font-family:var(--f-ui); font-size:.88rem; border:1px solid var(--line);
+  background:var(--surface); padding:1.25rem 1.4rem; margin:0 auto 3.5rem; max-width:var(--measure)}
+.toc h4{margin:0 0 .8rem}
+.toc ol{list-style:none; padding:0; margin:0; display:grid; gap:.45rem}
+.toc a{text-decoration:none; color:var(--ink); display:flex; gap:.7rem}
+.toc a:hover{color:var(--mark)}
+.toc span{color:var(--mark); font-variant-numeric:tabular-nums; font-weight:600; min-width:2.1rem}
+.credits{font-family:var(--f-ui); font-size:.78rem; line-height:1.5}
+.credits li{margin-bottom:.65em; color:var(--muted)}
+.credits b{color:var(--ink); font-weight:600}
+@media print{
+  body{background:#fff; color:#000; font-size:10.5pt}
+  .toc,.note{break-inside:avoid} figure{break-inside:avoid}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important; transition:none!important}}
+</style>
+
+<div class="wrap">
+
+<header class="masthead">
+  <div class="col">
+    <p class="eyebrow">Nastavna cjelina 1</p>
+    <h1>Arhitektura i urbanizam</h1>
+    <p class="standfirst">Od suhozidne gradine do armiranobetonske kupole — kako se hrvatska
+      građevina čita, datira i ispriča pred skupinom.</p>
+    <dl class="facts">
+      <div><dt>Opseg</dt><dd>4 sata predavanja</dd></div>
+      <div><dt>Metoda</dt><dd>Predavanje, vizualna analiza</dd></div>
+      <div><dt>Revizija</dt><dd>Kolovoz 2026.</dd></div>
+    </dl>
+  </div>
+</header>
+
+<div class="col">
+  <div class="note method">
+    <span class="lbl">Napomena o reviziji</span>
+    <p>Modul 1 dopunjen je u kolovozu 2026. prema propisanoj ispitnoj literaturi
+    (R. Ivančević, <em>Umjetničko blago Hrvatske</em>, cjeline 1–8). Dopune obuhvaćaju
+    pretpovijesno graditeljstvo, grčku kolonizaciju i rimsku urbanizaciju, ranobizantski sloj,
+    stambenu romaniku, gotički urbanizam, dubrovačke ljetnikovce, barokni Dubrovnik, dvorce
+    i drvene crkve te urbanizam 19. stoljeća.</p>
+  </div>
+</div>
+
+<nav class="toc">
+  <h4>Sadržaj</h4>
+  <ol>
+    <li><a href="#s11"><span>1.1</span> Pretpovijest, antika i ranobizantski sloj</a></li>
+    <li><a href="#s12"><span>1.2</span> Predromanika i ranosrednjovjekovna crkvena arhitektura</a></li>
+    <li><a href="#s13"><span>1.3</span> Romanika i gotika</a></li>
+    <li><a href="#s14"><span>1.4</span> Renesansa i Dubrovnik</a></li>
+    <li><a href="#s15"><span>1.5</span> Barok i rokoko</a></li>
+    <li><a href="#s16"><span>1.6</span> Historicizam, secesija i moderna</a></li>
+    <li><a href="#s17"><span>1.7</span> Vođenje u sakralnim i muzejskim prostorima</a></li>
+    <li><a href="#prilozi"><span>V</span> Vizualni prilozi i izvori ilustracija</a></li>
+  </ol>
+</nav>
+
+<div class="col">
+  <h3 id="ishodi">Ishodi jedinice</h3>
+  <p>Nakon ovoga modula polaznik će moći:</p>
+  <ul>
+    <li><strong>stilski odrediti</strong> ključne spomenike hrvatske arhitekture od pretpovijesti
+      do suvremenosti i obrazložiti određenje vidljivim obilježjima;</li>
+    <li>objasniti <strong>kontinuitet gradskoga tkiva</strong> na hrvatskoj obali i u kontinentalnoj
+      Hrvatskoj te razliku u urbanističkim obrascima (ovalni, ortogonalni, radijalni, zvjezdasti);</li>
+    <li>objasniti <strong>rimsku urbanizaciju i centurijaciju</strong> kao prvi veliki zahvat u
+      prostoru te njezine tragove vidljive i danas;</li>
+    <li>povezati stilske promjene s političkim i gospodarskim okolnostima obrađenima u kolegiju K1;</li>
+    <li>provesti <strong>vizualnu analizu</strong> građevine pred skupinom: prepoznati tlocrt,
+      konstrukciju, materijal i dekoraciju te iz njih izvesti dataciju;</li>
+    <li>primijeniti pravila ponašanja i vođenja u sakralnim i muzejskim prostorima.</li>
+  </ul>
+
+  <h3 id="pojmovi">Ključni pojmovi</h3>
+  <p class="terms">Gradina · kasteljer · bunja (čemer, kažun) · centurijacija · forum · peristil ·
+    protiron · supstrukcije · bazilika · centralni tlocrt · troapsidalnost · predromanika · pleter ·
+    <i>horror vacui</i> · westwerk · kontrafor · romanika · bifora · „dućan na koljeno” · gotika ·
+    dvoranska crkva (<i>Hallenkirche</i>) · klaustar · renesansa · montažna gradnja · trolisno
+    pročelje · ljetnikovac · orsan · bastion · barok · cinktor · pil · rokoko · historicizam ·
+    secesija · moderna · brutalizam · lezena · rozeta · kupola · kaseta · <i>lapidarium</i> ·
+    konzervatorski zahvat</p>
+</div>
+
+<section id="s11">
+  <div class="sect-head"><span class="sect-num">1.1</span>
+    <h2>Pretpovijest, antika i ranobizantski sloj</h2></div>
+  <div class="col">
+    <p>Rimska arhitektura na hrvatskom tlu nije „ruševina koju gledamo”, nego <strong>građevni sloj
+      u kojem se i danas živi</strong>. To je najvažnija poruka ovoga dijela modula. Prije nje,
+      međutim, stoji sloj koji se u vođenju gotovo redovito preskače — pretpovijesni.</p>
+
+    <h3>Pretpovijesno graditeljstvo: gradine, kasteljeri i kamena kuća</h3>
+    <p>U brončanom i željeznom dobu duž cijele istočne jadranske obale niču <strong>gradine</strong> —
+      naselja utvrđena suhozidom na strateški povoljnim uzvisinama. U Istri i na Kvarneru nazivaju se
+      <strong>kasteljerima</strong> i zidani su „kiklopskim” zidom u koncentričnim krugovima i ovalima
+      koji prate oblik brijega.</p>
+  </div>
+
+  <div class="duo">
+    <figure><img src="img/modul1/monkodonja.jpg" alt="Suhozidne bedeme brončanodobne gradine Monkodonja kod Rovinja">
+      <figcaption><b>Monkodonja</b> kod Rovinja — brončanodobni kasteljer sa suhozidnim bedemom
+        koji prati oblik brijega.<span class="src">Foto: Orlovic · <a href="https://commons.wikimedia.org/wiki/File:Monkodonja_(10).JPG">Monkodonja (10)</a>, Wikimedia Commons · <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a></span></figcaption></figure>
+    <figure><img src="img/modul1/kazun.jpg" alt="Kažun, valjkasta suhozidna građevina sa stožastim krovom u istarskom polju">
+      <figcaption><b>Kažun</b> u istarskom polju — ista suhozidna tehnika, neprekinuta predaja
+        do danas.<span class="src">Foto: nikola_pu · <a href="https://commons.wikimedia.org/wiki/File:Ka%C5%BEuni_2013_-_panoramio.jpg">Kažuni 2013 - panoramio</a>, Wikimedia Commons · <a href="https://creativecommons.org/licenses/by-sa/3.0">CC BY-SA 3.0</a></span></figcaption></figure>
+  </div>
+
+  <div class="col">
+    <div class="tbl"><table>
+      <thead><tr><th>Što je ostalo</th><th>Primjeri</th></tr></thead>
+      <tbody>
+        <tr><td>Razmjerno dobro očuvani kasteljeri</td>
+            <td>Picugi kod Poreča, Nezakcij kod Pule, Brijuni, Monkodonja kod Rovinja</td></tr>
+        <tr><td>Gradine koje su odredile položaj i oblik kasnijih antičkih i srednjovjekovnih gradova</td>
+            <td>Pula, Boljun, Bale, Motovun, Beram, Barban, Labin, Kastav</td></tr>
+      </tbody>
+    </table></div>
+
+    <p>Istom suhozidnom tehnikom grade se i kuće: valjkaste građevine sa stožastim krovom od kamenih
+      ploča, koje su se u poljima i vinogradima neprekinutom predajom održale do danas pod nazivima
+      <strong>bunja</strong>, <strong>čemer</strong> ili <strong>kažun</strong>.</p>
+
+    <div class="note"><span class="lbl">Iz prakse vođenja</span>
+      <p>Kažun uz istarsku cestu i gradina na brijegu iznad njega isti su graditeljski postupak
+        razmaknut tri tisuće godina. To je najkraći način da se gostu pokaže što znači „kontinuitet” —
+        a ujedno poveznica s Modulom 6 (tradicijsko graditeljstvo).</p></div>
+
+    <h3>Grčka kolonizacija (4.–1. st. pr. Kr.)</h3>
+    <p>Pismom počinje povijest — i na hrvatskom tlu s pouzdanim datumima: Grci iz Sirakuze utvrđuju se
+      390. pr. Kr. na Visu, a 384. ratuju sa starosjediocima zbog Hvara. Nakon raspada sirakuškoga
+      carstva <em>Issa</em> (Vis) i <em>Pharos</em> (Stari Grad na Hvaru) osamostaljuju se kao
+      gradovi-države; Issa potom osniva <em>Korkyru Melainu</em> (Korčula) te na obali
+      <em>Tragurion</em> (Trogir), <em>Salonu</em> i <em>Epetion</em> (Stobreč).</p>
+    <p>Urbanistički je kontrast s domaćim svijetom potpun i vrlo zoran:</p>
+
+    <div class="tbl"><table>
+      <thead><tr><th>Ilirska gradina</th><th>Grčka kolonija</th></tr></thead>
+      <tbody>
+        <tr><td>Suhozid i „kiklopski” zid</td><td>Pravilno klesani kvadri s preciznim spojnicama</td></tr>
+        <tr><td>Organički tlocrt koji prati teren</td><td>Ortogonalna ulična mreža, pravokutni blokovi</td></tr>
+        <tr><td>Bez javnih građevina</td><td>Luka, trgovine, hramovi, teatar (Vis)</td></tr>
+      </tbody>
+    </table></div>
+
+    <p>Od grčke gradnje sačuvano je malo, a mnogo je neistraženo. Ostala su ipak djela vrhunske razine:
+      brončana glava božice Artemide iz Isse (4. st. pr. Kr.), <strong>reljef Kairosa</strong> iz Trogira
+      (bog „sretnoga trenutka” — kosa mu vijori sprijeda, a zatiljak je ćelav, jer se prilika ne može
+      uhvatiti nakon što prođe) i niz nadgrobnih stela.</p>
+    <p>Najvrjedniji je trag ipak u zemlji, a ne u kamenu: <strong>Starogradsko polje</strong> na Hvaru,
+      najbolje sačuvan antički grčki katastar na Sredozemlju, UNESCO-ova svjetska baština od 2008.
+      (vidi Modul 5).</p>
+  </div>
+
+  <div class="duo">
+    <figure><img class="fit" src="img/modul1/kairos.jpg" alt="Antički reljef Kairosa iz Trogira">
+      <figcaption><b>Reljef Kairosa</b>, Trogir — bog sretnoga trenutka; zatiljak je ćelav jer se
+        prilika ne hvata nakon što prođe.<span class="src">Foto: TimeTravelRome · <a href="https://commons.wikimedia.org/wiki/File:Kairos_-_Greek_God_of_Happy_Moments_-_Trogir_-_51388042695.jpg">Kairos - Greek God of Happy Moments - Trogir - 51388042695</a>, Wikimedia Commons · <a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a></span></figcaption></figure>
+    <figure><img src="img/modul1/starogradsko.jpg" alt="Starogradsko polje na Hvaru s antičkom grčkom parcelacijom">
+      <figcaption><b>Starogradsko polje</b> na Hvaru — najbolje sačuvan antički grčki katastar na
+        Sredozemlju.<span class="src">Foto: Argo Navis · <a href="https://commons.wikimedia.org/wiki/File:Stari_Grad_Plain_20250920_02.jpg">Stari Grad Plain 20250920 02</a>, Wikimedia Commons · <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a></span></figcaption></figure>
+  </div>
+
+  <div class="col">
+    <h3>Rimska urbanizacija — prvi veliki zahvat u prostoru</h3>
+    <p>Nakon pada Nezakcija 177. pr. Kr. i konačnoga sloma ilirskoga otpora u prvim desetljećima po Kr.,
+      Rim provodi ono što grčka kolonizacija nikada nije — zahvat u cijelom prostoru, a ne u pojedinim
+      enklavama.</p>
+    <p>Za vodiča su bitne četiri činjenice:</p>
+    <ol>
+      <li><strong>Gustoća gradova.</strong> Samo na obalnom području bilo je pedesetak gradova;
+        tridesetak ih je imalo rimsko građansko pravo (<em>civitas</em>).</li>
+      <li><strong>Ceste.</strong> Gusta mreža kamenom popločenih cesta s vijaduktima, mostovima i
+        postajama; mreža cesta prvoga reda takvu je gustoću ponovno dosegnula tek u 20. stoljeću.</li>
+      <li><strong>Centurijacija.</strong> Poljoprivredno zaleđe grada (<em>ager</em>) parcelirano je na
+        pravilna kvadratna polja stranice približno 710 m. Tako je isparceliran cijeli vrh Istre od
+        Limskoga kanala do Raškoga zaljeva, a centurijacijom Poreča, Zadra i Salone obuhvaćene su
+        površine koje bismo danas nazvali regijama. Mreža je i danas vidljiva iz zraka u ogradnim
+        zidovima i poljskim putovima.</li>
+      <li><strong>Tlocrtni obrasci.</strong> Većinom je primijenjena pravokutna mreža ulica
+        helenističkoga podrijetla — najbolje očuvana u Poreču i Zadru — ali u nekim je gradovima
+        zadržan ovalni tlocrt starijega naselja (Pula, Trogir).</li>
+    </ol>
+  </div>
+
+  <figure class="fig-frame">
+    <svg viewBox="0 0 640 400" role="img" xmlns="http://www.w3.org/2000/svg"
+      aria-label="Shema rimske centurijacije: mreža kvadrata stranice oko 710 metara oko grada, s glavnim osima cardo i decumanus maximus; današnje ceste i međe poklapaju se s antičkim linijama.">
+      <g fill="none" stroke="currentColor" stroke-width="1" opacity=".45">
+        <line x1="130" y1="70" x2="130" y2="334"/><line x1="218" y1="70" x2="218" y2="334"/>
+        <line x1="394" y1="70" x2="394" y2="334"/><line x1="482" y1="70" x2="482" y2="334"/>
+        <line x1="570" y1="70" x2="570" y2="334"/>
+        <line x1="130" y1="70"  x2="570" y2="70"/><line x1="130" y1="246" x2="570" y2="246"/>
+        <line x1="130" y1="334" x2="570" y2="334"/>
+      </g>
+      <rect x="306" y="158" width="88" height="88" fill="currentColor" opacity=".07"/>
+      <g fill="none" stroke="currentColor" stroke-width="2.4">
+        <line x1="120" y1="158" x2="582" y2="158"/><line x1="306" y1="60" x2="306" y2="344"/>
+      </g>
+      <rect x="34" y="176" width="72" height="62" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      <g stroke="currentColor" stroke-width=".8" opacity=".5">
+        <line x1="34" y1="197" x2="106" y2="197"/><line x1="34" y1="217" x2="106" y2="217"/>
+        <line x1="58" y1="176" x2="58" y2="238"/><line x1="82" y1="176" x2="82" y2="238"/>
+      </g>
+      <g class="em-s" stroke-width="3" fill="none" stroke-dasharray="9 6">
+        <line x1="130" y1="246" x2="570" y2="246"/><line x1="482" y1="70" x2="482" y2="246"/>
+      </g>
+      <g font-size="12">
+        <text x="70" y="167" text-anchor="middle" font-size="11">grad</text>
+        <text x="136" y="150" font-size="11.5">decumanus maximus</text>
+        <text x="312" y="80" font-size="11.5">cardo maximus</text>
+        <text x="350" y="198" text-anchor="middle" font-size="11">centuria</text>
+        <text x="350" y="214" text-anchor="middle" font-size="10.5" opacity=".7">≈ 710 × 710 m</text>
+        <text x="350" y="229" text-anchor="middle" font-size="10.5" opacity=".7">≈ 50 ha</text>
+        <text x="130" y="365" font-size="11.5" class="em-f">današnja cesta i međa — na istoj liniji</text>
+        <text x="490" y="60" font-size="11" opacity=".7">ager</text>
+      </g>
+    </svg>
+    <figcaption><b>Centurijacija: mreža koja je preživjela carstvo.</b> Poljoprivredno zaleđe grada
+      dijeli se na kvadrate stranice približno 710 m, orijentirane prema dvjema glavnim osima.
+      Isprekidano je označeno ono što se vidi danas: ceste, poljski putovi i ogradni zidovi koji
+      i dalje slijede antičke <em>limites</em>.
+      <span class="src">Shema: vlastita izrada za ovaj modul (CC BY-SA 4.0).</span></figcaption>
+  </figure>
+
+  <div class="col">
+    <div class="note method"><span class="lbl">Metodička napomena</span>
+      <p>Rimska organizacija prostora — odnos grada i njegova <em>agera</em> — bila je sustavnija od
+        bilo čega što je Europa ponovno postigla do 20. stoljeća. Kad gost pita „što su Rimljani ovdje
+        zapravo napravili”, najtočniji odgovor nije „amfiteatar”, nego <strong>„organizirali su
+        krajolik”</strong>.</p></div>
+
+    <h3>Pula</h3>
+    <p><strong>Amfiteatar</strong> (1. stoljeće, dovršen u doba cara Vespazijana) jedan je od najbolje
+      očuvanih rimskih amfiteatara i jedini u kojem su sačuvana sva četiri bočna tornja i cjelovit
+      vanjski plašt s tri kata. Posebnost su podzemni hodnici, danas izložbeni prostor s postavom o
+      antičkom maslinarstvu i vinarstvu — spoj koji izravno povezuje modul 1 i modul 7 ovoga udžbenika.</p>
+  </div>
+
+  <figure>
+    <img src="img/modul1/pula_arena.jpg" alt="Vanjski plašt pulskog amfiteatra s tri kata arkada">
+    <figcaption><b>Amfiteatar u Puli</b>, 1. st., dovršen u doba cara Vespazijana — jedini rimski
+      amfiteatar u kojem su sačuvana sva četiri bočna tornja i cjelovit vanjski plašt s tri
+      kata.<span class="src">Foto: Diego Delso · <a href="https://commons.wikimedia.org/wiki/File:Anfiteatro_de_Pula,_Croacia,_2017-04-17,_DD_49-57_HDR_PAN.jpg">Anfiteatro de Pula, Croacia, 2017-04-17, DD 49-57 HDR PAN</a>, Wikimedia Commons · <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a></span></figcaption>
+  </figure>
+
+  <div class="col">
+    <p>Pula ima izvanredno gustu antičku jezgru: <strong>Slavoluk Sergijevaca</strong> (oko 30. pr. Kr.),
+      <strong>Augustov hram</strong> na forumu (podignut između 2. pr. Kr. i 14. po Kr.), Dvojna vrata,
+      Herkulova vrata, ostatke dvaju kazališta i duge poteze gradskih zidina.</p>
+  </div>
+
+  <div class="duo">
+    <figure><img src="img/modul1/slavoluk.jpg" alt="Slavoluk Sergijevaca u Puli">
+      <figcaption><b>Slavoluk Sergijevaca</b>, oko 30. pr. Kr. — spomenik s kojega su crtali
+        Sangallo, Serlio, Michelangelo i Palladio.<span class="src">Foto: Terragio67 · <a href="https://commons.wikimedia.org/wiki/File:Arch_of_the_Sergii_(Pula)_-_Close-up.jpg">Arch of the Sergii (Pula) - Close-up</a>, Wikimedia Commons · <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a></span></figcaption></figure>
+    <figure><img src="img/modul1/augustov_hram.jpg" alt="Augustov hram na forumu u Puli">
+      <figcaption><b>Augustov hram</b> na pulskom forumu, između 2. pr. Kr. i 14. po Kr.<span class="src">Foto: Diego Delso · <a href="https://commons.wikimedia.org/wiki/File:Templo_de_Augusto_y_ayuntamiento,_Pula,_Croacia,_2017-04-17,_DD_68-70_HDR.jpg">Templo de Augusto y ayuntamiento, Pula, Croacia, 2017-04-17, DD 68-70 HDR</a>, Wikimedia Commons · <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a></span></figcaption></figure>
+  </div>
+
+  <div class="col">
+    <div class="note"><span class="lbl">Zašto je slavoluk važniji nego što izgleda</span>
+      <p>Slavoluk Sergijevaca nije samo lijepo očuvan spomenik — on je udžbenik iz kojega su učili
+        europski arhitekti: crtali su ga i studirali Sangallo, Serlio, Michelangelo i Palladio u
+        16. stoljeću, a poslije Piranesi, Cassas i Adam. Njegov motiv vinove loze uz prolaz oponašao je
+        već krajem 13. stoljeća klesar portala pulske franjevačke crkve — školski primjer kako antika
+        djeluje na kasniju umjetnost na istom mjestu.</p></div>
+
+    <h3>Salona i Dioklecijanova palača</h3>
+    <p><strong>Salona</strong> (Solin) bila je glavni grad rimske provincije Dalmacije i najveći antički
+      grad na hrvatskom tlu. Prema dimenzijama akvedukta, termi i amfiteatra procjenjuje se da je imala
+      oko 40.000 stanovnika. Nastala je spajanjem grčkoga i rimskoga naselja — otuda joj ime u množini,
+      <em>Salonae</em>.</p>
+    <p>Za povijest europske umjetnosti Salona je najvažnija zbog <strong>ranokršćanskoga sloja</strong>:
+      biskupskoga središta (<em>basilica urbana</em>) i grobišnih kompleksa <strong>Manastirine</strong>
+      i <strong>Marusinac</strong>, gdje su u 5. stoljeću nad grobovima mučenika iz 4. stoljeća —
+      sv. Dujma (<em>Domnius</em>, prvi salonitanski biskup) i sv. Staša (<em>Anastazije</em>) —
+      podignute monumentalne bazilike. Na tim se lokalitetima rješavaju pitanja važna za razvoj
+      kršćanske arhitekture uopće: podrijetlo bazilike i utjecaj kulta mučenika na oblik sakralne
+      građevine.</p>
+  </div>
+
+  <figure>
+    <img src="img/modul1/salona.jpg" alt="Ostaci grobišne bazilike Manastirine u Saloni">
+    <figcaption><b>Manastirine</b>, Salona — grobišni kompleks u kojem je nad grobom mučenika iz
+      4. stoljeća u 5. stoljeću podignuta bazilika.<span class="src">Foto: Bernard Gagnon · <a href="https://commons.wikimedia.org/wiki/File:Manastirine_(Salona)_02.jpg">Manastirine (Salona) 02</a>, Wikimedia Commons · <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a></span></figcaption>
+  </figure>
+
+  <div class="col">
+    <p><strong>Dioklecijanova palača</strong> (oko 295.–305.) u Splitu spoj je carske rezidencije i
+      vojnoga logora. Osnovni podaci koje polaznik mora znati:</p>
+    <div class="tbl"><table>
+      <thead><tr><th>Podatak</th><th>Vrijednost</th></tr></thead>
+      <tbody>
+        <tr><td>Površina</td><td>oko 38.000 m²</td></tr>
+        <tr><td>Tlocrt</td><td>pravokutnik približno 215 × 180 m</td></tr>
+        <tr><td>Obrana</td><td>zid s četverostranim kulama na uglovima i po dvije osmerostrane uz troja kopnena vrata</td></tr>
+        <tr><td>Kompozicija</td><td>dvije ukrštene ulice (<em>cardo</em> i <em>decumanus</em>); carske odaje uz more, srednja kultna zona, posada i posluga na sjeveru</td></tr>
+        <tr><td>Središnji prostori</td><td>Peristil, Vestibul (valjkasto predvorje s kupolom), Mauzolej (oktogonalni, danas katedrala sv. Duje), Mali (Jupiterov) hram (danas krstionica), dva okrugla hrama</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+
+  <figure class="fig-frame">
+    <svg viewBox="0 0 700 500" role="img" xmlns="http://www.w3.org/2000/svg"
+      aria-label="Shematski tlocrt Dioklecijanove palače: pravokutnik 215 puta 180 metara s četverostranim kulama na uglovima, osmerostranim kulama uz troja kopnena vrata, ukrštenim ulicama cardo i decumanus, Peristilom, Vestibulom, Mauzolejem i Jupiterovim hramom, s carskim odajama uz more na jugu.">
+      <defs>
+        <polygon id="oct8" points="10.2,4.2 4.2,10.2 -4.2,10.2 -10.2,4.2 -10.2,-4.2 -4.2,-10.2 4.2,-10.2 10.2,-4.2"
+          fill="none" stroke="currentColor" stroke-width="1.4"/>
+      </defs>
+      <rect x="110" y="50" width="470" height="392" fill="none" stroke="currentColor" stroke-width="2.4"/>
+      <g fill="none" stroke="currentColor" stroke-width="1.8">
+        <rect x="92" y="32" width="36" height="36"/><rect x="562" y="32" width="36" height="36"/>
+        <rect x="92" y="424" width="36" height="36"/><rect x="562" y="424" width="36" height="36"/>
+      </g>
+      <use href="#oct8" x="316" y="50"/><use href="#oct8" x="374" y="50"/>
+      <use href="#oct8" x="110" y="217"/><use href="#oct8" x="110" y="275"/>
+      <use href="#oct8" x="580" y="217"/><use href="#oct8" x="580" y="275"/>
+      <g stroke="currentColor" stroke-width="6" opacity=".12" fill="none">
+        <line x1="345" y1="50" x2="345" y2="290"/><line x1="110" y1="246" x2="580" y2="246"/>
+      </g>
+      <g stroke="currentColor" stroke-width="1" opacity=".55" fill="none" stroke-dasharray="4 4">
+        <line x1="345" y1="50" x2="345" y2="290"/><line x1="110" y1="246" x2="580" y2="246"/>
+      </g>
+      <rect x="320" y="290" width="50" height="62" fill="none" stroke="currentColor" stroke-width="1.8"/>
+      <g stroke="currentColor" stroke-width="1" opacity=".55">
+        <line x1="332" y1="290" x2="332" y2="352"/><line x1="358" y1="290" x2="358" y2="352"/>
+      </g>
+      <circle cx="345" cy="372" r="15" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      <g transform="translate(425,322)"><use href="#oct8" transform="scale(2.6)"/></g>
+      <rect x="268" y="300" width="32" height="44" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      <circle cx="238" cy="300" r="8" fill="none" stroke="currentColor" stroke-width="1.2"/>
+      <circle cx="238" cy="344" r="8" fill="none" stroke="currentColor" stroke-width="1.2"/>
+      <rect x="170" y="382" width="350" height="60" fill="currentColor" opacity=".08"/>
+      <rect x="170" y="382" width="350" height="60" fill="none" stroke="currentColor" stroke-width="1.4"/>
+      <g font-size="11.5">
+        <text x="345" y="24" text-anchor="middle">Zlatna vrata</text>
+        <text x="86" y="250" text-anchor="end">Željezna vrata</text>
+        <text x="604" y="250">Srebrna vrata</text>
+        <text x="345" y="478" text-anchor="middle">Mjedena vrata — prema moru</text>
+        <text x="352" y="104" opacity=".8"><tspan font-style="italic">cardo</tspan></text>
+        <text x="120" y="238" opacity=".8"><tspan font-style="italic">decumanus</tspan></text>
+        <text x="345" y="282" text-anchor="middle">Peristil</text>
+        <text x="322" y="376" text-anchor="end">Vestibul</text>
+        <text x="462" y="318" class="em-f">Mauzolej</text>
+        <text x="462" y="333" class="em-f" font-size="10.5">danas katedrala sv. Duje</text>
+        <text x="284" y="362" text-anchor="middle" font-size="10.5">Jupiterov hram</text>
+        <text x="284" y="376" text-anchor="middle" font-size="10.5" opacity=".7">danas krstionica</text>
+        <text x="345" y="418" text-anchor="middle">carske odaje nad supstrukcijama</text>
+        <text x="200" y="150" font-size="11" opacity=".65">posada i posluga</text>
+        <text x="470" y="150" font-size="11" opacity=".65">gospodarski trakt</text>
+        <text x="222" y="290" text-anchor="end" font-size="10.5" opacity=".7">okrugli hramovi</text>
+      </g>
+    </svg>
+    <figcaption><b>Dioklecijanova palača: rezidencija i vojni logor u istom tlocrtu.</b> Sjeverna
+      polovica je logor s posadom i poslugom, južna je carska; dijeli ih <em>decumanus</em> između
+      Željeznih i Srebrnih vrata. Kultna zona leži uz Peristil — Mauzolej istočno, Jupiterov hram sa
+      dva okrugla hrama zapadno. Oblik kule odaje namjenu: četverostrane na uglovima, osmerostrane uz
+      troja kopnena vrata; južna vrata prema moru nemaju kula.
+      <span class="src">Shema: vlastita izrada za ovaj modul (CC BY-SA 4.0).</span></figcaption>
+  </figure>
+
+  <div class="duo">
+    <figure><img src="img/modul1/peristil.jpg" alt="Protiron, predvorje carskih odaja prema Peristilu, s lukom upisanim u trokutni zabat">
+      <figcaption><b>Protiron</b> na Peristilu — na plitkom zabatu spajaju se arhitrav i obli luk: dva
+        konstruktivna načela, grčko i rimsko, na istoj građevini.<span class="src">Foto: TimeTravelRome · <a href="https://commons.wikimedia.org/wiki/File:Peristyle_of_Diocletian%27s_Palace_-_Split_-_51389330950.jpg">Peristyle of Diocletian&#x27;s Palace - Split - 51389330950</a>, Wikimedia Commons · <a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a></span></figcaption></figure>
+    <figure><img src="img/modul1/podrumi.jpg" alt="Supstrukcije, podrumi Dioklecijanove palače">
+      <figcaption><b>Supstrukcije</b> ponavljaju tlocrt razgrađenih carskih odaja iznad sebe i
+        omogućuju točnu rekonstrukciju gornjega kata.<span class="src">Foto: Ballota · <a href="https://commons.wikimedia.org/wiki/File:Diocletian%27s_palace_substructure_1.jpg">Diocletian&#x27;s palace substructure 1</a>, Wikimedia Commons · <a href="https://creativecommons.org/licenses/by-sa/3.0">CC BY-SA 3.0</a></span></figcaption></figure>
+  </div>
+
+  <div class="col">
+    <div class="note"><span class="lbl">Palača kao „enciklopedija” antike</span>
+      <p>Ivančević je naziva priručnikom antičke graditeljske baštine: na jednom su mjestu okupljeni
+        gotovo svi tlocrtni i konstruktivni oblici koje je antika poznavala — jednobrodni i trobrodni
+        uzdužni prostori, kvadratni, kružni, četverokonhni, križni i osmerokutni tlocrti, polukružne i
+        pravokutne niše, bačvasti i križnobačvasti svodovi, kupole. Izvrsno očuvane supstrukcije
+        (podrumi) ponavljaju tlocrt razgrađenih carevih odaja iznad njih, pa omogućuju točnu
+        rekonstrukciju gornjega kata.</p></div>
+
+    <div class="note method"><span class="lbl">Jedan detalj koji vrijedi cijeloga izlaganja</span>
+      <p>Na plitkom trokutnom zabatu <strong>protirona</strong> — predvorja carskih odaja prema
+        Peristilu — eklektički se spajaju vodoravna greda (arhitrav) i obli luk: dva konstruktivna
+        načela i dva simbola, grčko i rimsko graditeljstvo, na istom zabatu. Taj će se motiv — luk
+        upisan u trokutni zabat — pet stoljeća poslije ponavljati na zabatima predromaničkih oltarnih
+        pregrada diljem Dalmacije. Antika ovdje nije uzor iz knjige, nego zgrada preko puta.</p></div>
+
+    <div class="triad"><span class="lbl">Tri rečenice za goste — Dioklecijanova palača</span>
+      <dl>
+        <dt>Činjenica</dt><dd>Ovo je kasnoantička carska palača iz početka 4. stoljeća, građena kao
+          rezidencija i utvrda istodobno.</dd>
+        <dt>Usporedba</dt><dd>Za razliku od gotovo svih rimskih palača u Europi, ova nikada nije
+          napuštena — od 7. stoljeća u nju se doselilo stanovništvo razorene Salone i od tada se u njoj
+          neprekidno živi.</dd>
+        <dt>Doživljaj</dt><dd>Zgrada u kojoj je maloprije netko objesio rublje ima zid star sedamnaest
+          stoljeća; Split nije grad pored palače, nego grad u palači.</dd>
+      </dl>
+    </div>
+
+    <div class="note method"><span class="lbl">Metodička napomena</span>
+      <p>Mauzolej poganskoga cara koji je progonio kršćane postao je kršćanska katedrala posvećena
+        sv. Dujmu, salonitanskom biskupu stradalom u tim progonima. To je jedna od najsnažnijih
+        „obrata” u europskoj baštini i primjer kako se jednom rečenicom povezuju arhitektura, povijest
+        i religija.</p></div>
+
+    <h3>Ostali antički lokaliteti i nalazi</h3>
+    <p><strong>Zadar</strong> — forum s ostacima kapitolija (najveći forum na istočnoj obali Jadrana);
+      <strong>Nin</strong> (<em>Aenona</em>); <strong>Narona</strong> (Vid kod Metkovića) s Arheološkim
+      muzejom Narona, prvim muzejom <em>in situ</em> u Hrvatskoj, izgrađenim nad ostacima Augusteuma;
+      <strong>Burnum</strong> kod Kistanja (vojni logor s ostacima amfiteatra, unutar NP Krka);
+      <em>Siscia</em>, <em>Mursa</em>, <em>Andautonija</em> (Ščitarjevo); <strong>Aquae Iasae</strong>
+      (Varaždinske Toplice) — rimsko termalno kupalište, najbolje istraženo antičko nalazište
+      kontinentalne Hrvatske; ruralno naselje u uvali Verige na Brijunima.</p>
+  </div>
+
+  <div class="duo">
+    <figure><img src="img/modul1/zadar_forum.jpg" alt="Rimski forum u Zadru">
+      <figcaption><b>Zadarski forum</b> — najveći forum na istočnoj obali Jadrana.<span class="src">Foto: Matti Blume · <a href="https://commons.wikimedia.org/wiki/File:Roman_forum,_Zadar_(P1080975).jpg">Roman forum, Zadar (P1080975)</a>, Wikimedia Commons · <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a></span></figcaption></figure>
+    <figure><img class="fit" src="img/modul1/apoksiomen.jpg" alt="Hrvatski apoksiomen, brončani kip atletičara">
+      <figcaption><b>Hrvatski (lošinjski) apoksiomen</b>, 2. ili 1. st. pr. Kr., visina 192 cm —
+        atletičar koji sa sebe struže ulje, znoj i prašinu.<span class="src">Foto: Marie-Lan Nguyen · <a href="https://commons.wikimedia.org/wiki/File:Croatian_Apoxyomenos_Louvre_n02.jpg">Croatian Apoxyomenos Louvre n02</a>, Wikimedia Commons · javno vlasništvo</span></figcaption></figure>
+  </div>
+
+  <div class="col">
+    <p><strong>Hrvatski (lošinjski) Apoksiomen.</strong> Brončani kip atletičara iz 2. ili 1. st. pr. Kr.,
+      visok 192 cm, pronađen 1996. kod otočića Vele Orjule na dubini od oko 45 m, izronjen
+      27. travnja 1999., restauriran šest godina i predstavljen javnosti 2006. Od 30. travnja 2016.
+      izložen je u namjenskom Muzeju Apoksiomena u palači Kvarner u Malom Lošinju. Sačuvano je osam
+      antičkih inačica toga skulpturalnog tipa — atletičara koji sa sebe struže ulje, znoj i prašinu
+      (<em>apoxyesis</em>).</p>
+
+    <div class="note"><span class="lbl">Iz prakse vođenja</span>
+      <p>Apoksiomen je najbolji hrvatski primjer za objašnjavanje podvodne arheologije i pravnoga
+        postupanja s nalazom: nalaznik je bio turist-ronilac, nalaz je prijavljen Ministarstvu kulture,
+        izronila ga je specijalna policija sa stručnjacima, a restauracija je trajala dulje od šest
+        godina. Gost koji roni na Jadranu iz toga izlaska treba ponijeti jedno pravilo:
+        <strong>nalaz se ne dira, nego prijavljuje</strong>.</p></div>
+
+    <h3>Ranokršćanska i ranobizantska arhitektura — Eufrazijeva bazilika</h3>
+    <p>Propast Zapadnoga Rimskog Carstva nije kraj antike. Nepuna tri desetljeća poslije Justinijan, car
+      Istočnoga Rimskog Carstva, ponovno osvaja zapad i uspostavlja Ravennu kao novu zapadnu prijestolnicu
+      (535.); usput, duž istočne obale Jadrana, podiže niz monumentalnih građevina.</p>
+    <p>Najbolje je očuvan biskupski kompleks <strong>Eufrazijeve bazilike u Poreču</strong> (6. stoljeće),
+      UNESCO-ova svjetska baština od 1997. Kompleks je cjelovit, što je u Europi rijetkost:</p>
+    <ul>
+      <li>kvadratični atrij;</li>
+      <li>zapadno od njega oktogonalni baptisterij;</li>
+      <li>istočno trobrodna troapsidalna bazilika, uz nju trolisna memorijalna kapela s eliptoidnim predvorjem;</li>
+      <li>sjeverno konsignatorij (prostor obreda posvećenja), poslije biskupska palača.</li>
+    </ul>
+  </div>
+
+  <figure>
+    <img src="img/modul1/eufrazijana.jpg" alt="Mozaik u konhi glavne apside Eufrazijeve bazilike u Poreču s Bogorodicom na prijestolju">
+    <figcaption><b>Eufrazijeva bazilika</b>, Poreč, 6. st. — u konhi glavne apside, na najistaknutijem
+      mjestu, na prijestolju je Bogorodica. To je prekretnica u kršćanskoj ikonografiji: u ravenskom
+      San Vitaleu ondje je Krist.<span class="src">Foto: Shesmax · <a href="https://commons.wikimedia.org/wiki/File:Euphrasian_Basilica_Central_Apse_Mosaics.JPG">Euphrasian Basilica Central Apse Mosaics</a>, Wikimedia Commons · <a href="https://creativecommons.org/licenses/by-sa/3.0">CC BY-SA 3.0</a></span></figcaption>
+  </figure>
+
+  <div class="col">
+    <p>Dvije inovacije zbog kojih se Poreč mjeri s Ravennom:</p>
+    <ol>
+      <li><strong>Troapsidalnost.</strong> Do tada je ranokršćanska crkva mogla imati samo jedan oltar i
+        jednu apsidu (kao što je jedan Bog), pa su se za oltar nad grobom mučenika gradile posebne
+        „paralelne” crkve. Poreč uvodi tri apside — rješenje koje će od tada postati pravilom.</li>
+      <li><strong>Bogorodica u konhi glavne apside.</strong> Na najistaknutijem mjestu, gdje je u
+        ravenskom San Vitaleu Krist, ovdje je na prijestolju Bogorodica. To je prekretnica u kršćanskoj
+        ikonografiji.</li>
+    </ol>
+    <p>Mozaici spajaju strogu, simetričnu kompoziciju frontalnih likova sa životnim pojedinostima:
+      biskup Eufrazije kao donator drži model crkve, uz njega su arhiđakon Klaudije i njegov sin, likovi
+      stoje na zelenoj tratini s naturalistički oblikovanim cvijećem, a nebo je zlatno, s mnoštvom
+      šarenih oblaka. Donji su dijelovi apside obloženi raznobojnim mramorom i sedefom, lukovi arkada
+      ukrašeni štukaturama.</p>
+
+    <div class="note method"><span class="lbl">Metodička napomena</span>
+      <p>Eufrazijeva se bazilika u starijim pregledima — pa i u prvoj cjelini propisane literature —
+        omaškom datira u 4. stoljeće. Riječ je o <strong>6. stoljeću</strong>, Justinijanovu razdoblju;
+        tako stoji i u UNESCO-ovu obrazloženju upisa. Vodič navodi 6. stoljeće.</p></div>
+  </div>
+</section>
+
+<section id="s12">
+  <div class="sect-head"><span class="sect-num">1.2</span>
+    <h2>Predromanika i ranosrednjovjekovna crkvena arhitektura</h2></div>
+  <div class="col">
+    <p>Razdoblje od 9. do 11. stoljeća donosi arhitekturu koja je specifično hrvatska i u europskim
+      pregledima se navodi kao zaseban fenomen: malene crkve nepravilnih, često centralnih tlocrta,
+      zidane grubo obrađenim kamenom, s izrazito plastičnim vanjskim volumenom i skromnim unutarnjim
+      prostorom.</p>
+    <p>Sačuvano ih je ili arheološki istraženo <strong>stotinjak</strong> — razmjerno velik broj u
+      usporedbi s graditeljskom baštinom drugih europskih naroda toga doba. Ta količina nije slučajna:
+      pretpostavlja intenzivnu djelatnost velikoga broja domaćih majstora i radionica i oslonac na
+      kvalitetu dalmatinskoga kamena, čiji su kamenolomi (Brač, Trogir, Korčula) bili poznati već
+      u antici.</p>
+
+    <h3>Promjena mjerila — grad seli u palaču</h3>
+    <p>Prijelaz iz antike u srednji vijek najbolje se objašnjava na Splitu. Stanovnici razorene Salone
+      ne obnavljaju svoj grad nego se naseljavaju u Dioklecijanovu palaču — manju, ali obranjiviju.
+      To je jedna od najvažnijih razlika između antike i srednjega vijeka: <strong>promjena
+      mjerila</strong>. Antička je palača dovoljno prostrana za cijeli srednjovjekovni grad.</p>
+    <p>Isti se obrazac ponavlja drugdje: stanovnici Epidaurusa (Cavtat) sklanjaju se na otočić
+      <em>Ragusium</em>, koji će se poslije spojiti sa susjednim slavenskim naseljem i preuzeti njegovo
+      ime — Dubrovnik.</p>
+    <p>Dva su splitska primjera „skromnosti mjerila” u predromanici izravno mjerljiva na terenu:
+      prostori straže nad sjevernim i zapadnim vratima palače pretvoreni su u crkvice — u jednu je
+      smještena kamena oltarna pregrada (sv. Martin), a nad drugom je podignut skromni zvonik
+      (sv. Teodor, „Gospa od Zvonika”).</p>
+
+    <h3>Ključni spomenici</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Spomenik</th><th>Mjesto</th><th>Datacija</th><th>Obilježje</th></tr></thead>
+      <tbody>
+        <tr><td>Crkva sv. Križa</td><td>Nin</td><td>9. stoljeće</td>
+          <td>Slobodni križni tlocrt s kupolom; u turističkoj se promociji često naziva „najmanjom katedralom na svijetu” (popularni naziv, ne stručna kategorija); natpis župana Godečaja</td></tr>
+        <tr><td>Crkva sv. Donata</td><td>Zadar</td><td>poč. 9. stoljeća</td>
+          <td>Kružna, dvokatna, s ophodom; građena spolijima s rimskoga foruma; simbol grada</td></tr>
+        <tr><td>Crkva sv. Spasa</td><td>vrelo Cetine</td><td>9. stoljeće</td>
+          <td>Sačuvan zapadni zvonik-westwerk; oblim kontraforima poduprti zidovi; trikonhalno svetište; okolno starohrvatsko groblje s više od tisuću grobova</td></tr>
+        <tr><td>Crkva sv. Trojice</td><td>Split (Poljud)</td><td>9. stoljeće</td>
+          <td>Šesterolisni (heksakonhalni) tlocrt</td></tr>
+        <tr><td>Crkva sv. Nikole</td><td>Nin (Prahulje)</td><td>11.–12. st.</td>
+          <td>Trolisna crkva na prapovijesnom humku; jedan od najprepoznatljivijih hrvatskih krajobraznih motiva</td></tr>
+        <tr><td>Crkva sv. Barbare</td><td>Trogir</td><td>9.–11. st.</td>
+          <td>Trobrodna, s antičkim stupovima</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+
+  <figure class="fig-frame">
+    <svg viewBox="0 0 660 270" role="img" xmlns="http://www.w3.org/2000/svg"
+      aria-label="Usporedba triju predromaničkih tlocrta: slobodni križni tlocrt svetog Križa u Ninu, šesterolisni tlocrt svete Trojice u Splitu i kružni dvokatni tlocrt svetog Donata u Zadru s tri apside i prstenastim ophodom.">
+      <g fill="none" stroke="currentColor" stroke-width="1.8">
+        <polygon points="93,64 127,64 127,113 156,113 156,147 127,147 127,196 93,196 93,147 64,147 64,113 93,113"/>
+        <path d="M156,113 A17,17 0 0 1 156,147"/>
+      </g>
+      <circle cx="110" cy="130" r="23" fill="none" stroke="currentColor" stroke-width="1" stroke-dasharray="4 4" opacity=".7"/>
+      <g fill="none" stroke="currentColor" stroke-width="1.6">
+        <circle cx="356" cy="130" r="22"/><circle cx="343" cy="152.5" r="22"/>
+        <circle cx="317" cy="152.5" r="22"/><circle cx="304" cy="130" r="22"/>
+        <circle cx="317" cy="107.5" r="22"/><circle cx="343" cy="107.5" r="22"/>
+      </g>
+      <circle cx="330" cy="130" r="19" fill="none" stroke="currentColor" stroke-width="1" stroke-dasharray="4 4" opacity=".7"/>
+      <g fill="none" stroke="currentColor" stroke-width="1.6">
+        <circle cx="597" cy="130" r="15"/><circle cx="587" cy="94" r="15"/><circle cx="587" cy="166" r="15"/>
+      </g>
+      <g fill="none" stroke="currentColor" stroke-width="1.9">
+        <circle cx="550" cy="130" r="52"/>
+      </g>
+      <circle cx="550" cy="130" r="29" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      <circle cx="550" cy="130" r="29" fill="currentColor" opacity=".07"/>
+      <g font-size="11.5" text-anchor="middle">
+        <text x="110" y="228" class="em-f" font-size="12.5">sv. Križ, Nin</text>
+        <text x="110" y="244" opacity=".75">slobodni križni tlocrt · 9. st.</text>
+        <text x="330" y="228" class="em-f" font-size="12.5">sv. Trojica, Split</text>
+        <text x="330" y="244" opacity=".75">šesterolist (heksakonha) · 9. st.</text>
+        <text x="550" y="228" class="em-f" font-size="12.5">sv. Donat, Zadar</text>
+        <text x="550" y="244" opacity=".75">rotonda s ophodom · poč. 9. st.</text>
+        <text x="550" y="133" font-size="10">valjak</text>
+        <text x="630" y="134" font-size="10" text-anchor="start">apside</text>
+      </g>
+      <g font-size="10" opacity=".7">
+        <text x="110" y="60" text-anchor="middle">kupola nad križištem</text>
+        <text x="330" y="60" text-anchor="middle">šest konha oko središta</text>
+      </g>
+    </svg>
+    <figcaption><b>Tri rješenja centralnoga tlocrta unutar jednoga stoljeća.</b> Isprekidano je
+      označena kupola odnosno središnji prostor. Upravo ta raznolikost — a ne jedan kanonski tip —
+      razlog je zbog kojega se hrvatska predromanika u europskim pregledima navodi kao zaseban fenomen,
+      i predmet je rasprave o „slobodnim oblicima” navedene niže.
+      <span class="src">Shema: vlastita izrada za ovaj modul (CC BY-SA 4.0).</span></figcaption>
+  </figure>
+
+  <div class="trio">
+    <figure><img src="img/modul1/sv_donat.jpg" alt="Crkva svetog Donata u Zadru">
+      <figcaption><b>Sv. Donat</b>, Zadar — najveća rotonda europske predromanike.<span class="src">Foto: Bernard Gagnon · <a href="https://commons.wikimedia.org/wiki/File:Church_of_St._Donatus_in_Zadar_-_dome.jpg">Church of St. Donatus in Zadar - dome</a>, Wikimedia Commons · <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a></span></figcaption></figure>
+    <figure><img src="img/modul1/sv_kriz_nin.jpg" alt="Crkva svetog Križa u Ninu">
+      <figcaption><b>Sv. Križ</b>, Nin, 9. st. — slobodni križni tlocrt s kupolom.<span class="src">Foto: Paula Borkovic · <a href="https://commons.wikimedia.org/wiki/File:Church_of_the_Holy_Cross,_Nin.jpg">Church of the Holy Cross, Nin</a>, Wikimedia Commons · <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a></span></figcaption></figure>
+    <figure><img src="img/modul1/sv_nikola_nin.jpg" alt="Crkva svetog Nikole u Prahuljama kod Nina na prapovijesnom humku">
+      <figcaption><b>Sv. Nikola</b>, Prahulje kod Nina — trolisna crkva na prapovijesnom
+        humku.<span class="src">Foto: Paula Borkovic · <a href="https://commons.wikimedia.org/wiki/File:Church_of_Saint_Nicholas,_NIn.jpg">Church of Saint Nicholas, NIn</a>, Wikimedia Commons · <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a></span></figcaption></figure>
+  </div>
+
+  <div class="col">
+    <h3>Sv. Donat — najmonumentalnija rotonda europske predromanike</h3>
+    <p>Zadarska rotonda nije samo najsloženija nego i najveća građevina toga tipa u europskoj
+      predromanici: duga je dvadeset i tri metra, a visoka dvadeset i četiri (bez krova).</p>
+    <ul>
+      <li>Jedinstveni središnji valjak, nad kojim je nekoć bila kupola, okružen je prstenastim brodom —
+        u prizemlju nadsvođenim bačvastim svodom, na katu galerijom.</li>
+      <li>Tri oble apside dižu se na vanjskom obodu u cijeloj visini zdanja; trolist apsida povezan je s
+        prvotnom posvetom sv. Trojstvu (Donatu, zadarskom biskupu 9. stoljeća, posvećena je tek poslije).</li>
+      <li>Stupovi su antičkoga podrijetla, kao i niz spolija; crkva je zidana na pločniku rimskoga foruma,
+        na nasutim ulomcima stela i greda. Čini se da je upravo zbog tih „elastičnih” temelja izdržala
+        sve potrese, kao i bombardiranja u Drugom svjetskom ratu, kad su sve zgrade uokolo bile porušene.</li>
+    </ul>
+    <p><strong>Europski kontekst koji vodič mora znati:</strong> po tipu monumentalne središnje građevine
+      s galerijom na katu, sv. Donat odgovara carskim i kraljevskim crkvama — Justinijanovu San Vitaleu
+      u Ravenni (6. st.) i dvorskoj kapeli Karla Velikoga u Aachenu (9. st.), gdje je vladarevo mjesto
+      na galeriji nasuprot svetištu.</p>
+
+    <h3>Crkve s oblim kontraforima — vladarska skupina</h3>
+    <p>Zasebnu skupinu tvore crkve 9. stoljeća s moćnim zaobljenim kontraforima, zvonikom sred zapadnoga
+      pročelja i narteksom s galerijom. Vezane su uz donacije i posjede hrvatskih vladara, pa su i
+      znatnih dimenzija:</p>
+    <div class="tbl"><table>
+      <thead><tr><th>Građevina</th><th>Tip i veličina</th></tr></thead>
+      <tbody>
+        <tr><td>Sv. Spas na vrelu Cetine</td><td>jednobrodna, trikonhalno svetište; 21 m</td></tr>
+        <tr><td>Lopuška glavica kod Knina</td><td>jednobrodna, trikonhalno svetište</td></tr>
+        <tr><td>Sv. Cecilija u Biskupiji kod Knina</td><td>trobrodna; 33 m — daje predodžbu o monumentalnosti izgubljenih vladarskih crkava</td></tr>
+        <tr><td>Katedrala u Biogradu na moru</td><td>trobrodna</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+
+  <figure>
+    <img src="img/modul1/sv_spas.jpg" alt="Crkva svetog Spasa na vrelu Cetine sa zapadnim zvonikom westwerkom">
+    <figcaption><b>Sv. Spas na vrelu Cetine</b>, 9. st. — sačuvan zapadni zvonik-<em>westwerk</em> i
+      obli kontrafori; oko crkve starohrvatsko groblje s više od tisuću grobova.<span class="src">Foto: Argo Navis · <a href="https://commons.wikimedia.org/wiki/File:Cetina_20200531_11.jpg">Cetina 20200531 11</a>, Wikimedia Commons · <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a></span></figcaption>
+  </figure>
+
+  <div class="col">
+    <h3>Solin — vladarsko središte</h3>
+    <p>U ruševinama crkve sv. Stjepana „na Otoku” nađen je nadgrobni natpis kraljice Jelene († 976.);
+      crkva je bila trobrodna, s narteksom u funkciji mauzoleja, galerijom nad predvorjem i dvjema
+      kulama-stubištima sa strane — kao karolinške građevine. Uz nju su još dvije građevine:</p>
+    <ul>
+      <li>crkva „u Gradini” (6. st.), kvadratična tlocrta s neobičnim središnjim oktogonalnim prostorom,
+        bizantske tradicije;</li>
+      <li>crkva sv. Petra i Mojsija („<strong>Šuplja crkva</strong>”), primjer stapanja domaće
+        predromaničke tradicije s benediktinskim oblicima 11. stoljeća — zidovi raščlanjeni lezenama,
+        apside utopljene u ravno začelje. U njoj je 1076. papin legat okrunio kralja Zvonimira.</li>
+    </ul>
+
+    <h3>Pleterna ornamentika i „diktat plohe”</h3>
+    <p>Predromanički kameni namještaj (oltarne pregrade, ciboriji, pluteji, zabati) ukrašen je
+      <strong>troprutastim pleterom</strong> — geometrijskim isprepletenim vrpcama. Na tim se natpisima
+      pojavljuju imena hrvatskih vladara (Trpimir, Branimir, Držislav, Muncimir, Zvonimir), zbog čega je
+      pleter istodobno umjetnički i povijesni izvor.</p>
+  </div>
+
+  <figure>
+    <img src="img/modul1/branimir.jpg" alt="Predromanički kameni ulomak s troprutastim pleterom i natpisom">
+    <figcaption><b>Troprutasti pleter s natpisom.</b> Na predromaničkome kamenom namještaju javljaju se
+      imena hrvatskih vladara — pleter je zato istodobno umjetnički i povijesni izvor.<span class="src">Foto: Roberta F · <a href="https://commons.wikimedia.org/wiki/File:Greda_i_zabat_s_natpisom_kneza_Branimira_879.jpg">Greda i zabat s natpisom kneza Branimira 879</a>, Wikimedia Commons · <a href="https://creativecommons.org/licenses/by-sa/3.0">CC BY-SA 3.0</a></span></figcaption>
+  </figure>
+
+  <div class="col">
+    <p>Za razumijevanje je ključno da pleter nije samo ukras nego <strong>sustav</strong>:</p>
+    <ul>
+      <li>Sve su površine prekrivene ornamentom po načelu <em>horror vacui</em> — straha od prazne plohe.</li>
+      <li>Svijet je sazdan od dviju paralelnih ravnina: pozadine i motiva. Ivančević to naziva
+        „poštivanjem plohe”, odnosno „<strong>diktatom plohe</strong>”.</li>
+      <li>Ispod često grubo klesane izvedbe leži strogo geometrijski nacrt po zakonima proporcioniranja i
+        komponiranja unutar zadanoga okvira — utemeljen, kao i sama graditeljska tehnika, u antici.</li>
+      <li>Razdoblje u kojem geometrijski ornament potpuno istiskuje ljudski lik iz likovne umjetnosti
+        traje četiri stoljeća, od 7. do 10.</li>
+    </ul>
+    <p><strong>Gdje se pokazuje:</strong> Muzej hrvatskih arheoloških spomenika u Splitu (najveća zbirka),
+      Arheološki muzej Zadar, Nin, Knin, Bribirska glavica.</p>
+
+    <h3>Rasprava koju vodič treba poznavati</h3>
+    <p>Predromanički spomenici jedna su od rijetkih tema hrvatske povijesti umjetnosti oko koje traje
+      otvorena znanstvena rasprava, i to dvostruka:</p>
+    <div class="tbl"><table>
+      <thead><tr><th>Pitanje</th><th>Stajališta</th></tr></thead>
+      <tbody>
+        <tr><td>Je li u oblikovanju ranosrednjovjekovne arhitekture bitna antička tradicija ili „barbarski” udio?</td>
+            <td>Teza kontinuiteta (bitna je antička tradicija) nasuprot tezi diskontinuiteta (udio takozvane barbarske umjetnosti)</td></tr>
+        <tr><td>Kako vrednovati nepravilnost i skromne formate?</td>
+            <td>Ljubo Karaman ističe originalnost i neovisnost crkvica „slobodnih oblika”; Mladen Pejaković u svakoj nepravilnosti čita složeno značenje i savršenstvo projektantske zamisli; dio literature u njima vidi samo rustičnost izvedbe</td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="note"><span class="lbl">Kako to izložiti gostu</span>
+      <p>Nepravilnost ovih crkvica gotovo uvijek izazove pitanje „zar nisu znali bolje?”. Točan odgovor
+        nije obrana ni isprika, nego činjenica: o tome se u struci raspravlja stoljeće, i to je dio
+        zanimljivosti. Vodič smije reći „prema jednom tumačenju…, prema drugom…”. <strong>Ne smije
+        izabrati jednu stranu i predstaviti je kao utvrđenu.</strong></p></div>
+  </div>
+</section>
+
+<section id="s13">
+  <div class="sect-head"><span class="sect-num">1.3</span><h2>Romanika i gotika</h2></div>
+  <div class="col">
+    <h3>Romanika (11.–13. stoljeće)</h3>
+    <p>Romanika je u Dalmaciji vezana uz procvat komuna i uz obnovu biskupija. Obilježja: polukružni luk,
+      masivni zid, bazilikalni tlocrt, zvonik uz pročelje ili bok, arkadice pod krovnim vijencem,
+      portali s postupno uvučenim stupićima.</p>
+    <p>Dvije velike faze: <strong>ranu romaniku</strong> druge polovice 11. stoljeća širi reformirano
+      benediktinstvo (tip trobrodne bazilike sa stupovima i tri polukružne apside, od Istre do krajnjega
+      juga), a <strong>zrela romanika</strong> 12. i 13. stoljeća doba je katedrala.</p>
+
+    <h3>Stambena romanika — sloj koji se u vođenju najviše propušta</h3>
+    <p>Romanici zahvaljujemo prvu srednjovjekovnu monumentalnu izgradnju gradova na istočnom Jadranu,
+      i to s novom kvalitetom <strong>stambene</strong> arhitekture. To je za vođenje neprocjenjivo,
+      jer se pokazuje na svakoj ulici, a ne samo na katedrali.</p>
+    <div class="tbl"><table>
+      <thead><tr><th>Obilježje</th><th>Kako izgleda</th></tr></thead>
+      <tbody>
+        <tr><td>Zidanje</td><td>Sitni, grubo klesani kvadar u pravilnim redovima; glatko klesani okviri otvora</td></tr>
+        <tr><td>Otvori</td><td>Monofore i bifore srpastoga luka; vrata s lunetama</td></tr>
+        <tr><td>Podjela pročelja</td><td>Profilirani razdijelni vijenci katova, konzole, imposti čistih stereometrijskih oblika</td></tr>
+        <tr><td>Namjena po etažama</td><td>Prizemlje gospodarsko (konoba, radionica, trgovina, katkad štala); kat stambeni; kuhinja pod krovom — jer se dimnjaci nisu gradili</td></tr>
+        <tr><td>Trgovački detalj</td><td>„Dućan na koljeno” — vrata i prozor konstrukcijski spojeni istim lukom</td></tr>
+      </tbody>
+    </table></div>
+    <p>Takvih je kuća, pretežno iz 13. stoljeća, registrirano oko pedesetak u Splitu i isto toliko u
+      Trogiru, a nalaze se od Poreča i Pule preko Raba i Zadra do Dubrovnika. Monumentalna pročelja s
+      golemim biforama sačuvana su u Trogiru; složenija prostorna organizacija s dvostrukim portalima,
+      prolazima u dvorište i potkrovnim ložama u Zadru.</p>
+    <p>Od javnih i kanoničkih zgrada ističu se cjelovito sačuvana kanonička kuća u Poreču (1270.) s
+      nizom od šest mramornih bifora (svaka odgovara jednoj ćeliji) te kasnoromaničko-gotička komunalna
+      palača u Puli (1290.–1296.).</p>
+  </div>
+
+  <figure class="fig-frame">
+    <svg viewBox="0 0 660 250" role="img" xmlns="http://www.w3.org/2000/svg"
+      aria-label="Tri tipa otvora za datiranje pročelja: romanička bifora s polukružnim srpastim lukom iz 13. stoljeća, gotički šiljati luk s četverolistom iz 14. i 15. stoljeća te renesansni polukružni luk između kaneliranih pilastara iz 16. stoljeća.">
+      <g fill="none" stroke="currentColor" stroke-width="1.7">
+        <rect x="66" y="46" width="88" height="126"/>
+        <path d="M78,172 L78,104 A16,16 0 0 1 110,104 L110,172"/>
+        <path d="M110,172 L110,104 A16,16 0 0 1 142,104 L142,172"/>
+        <line x1="110" y1="104" x2="110" y2="172"/>
+        <rect x="105" y="98" width="10" height="8"/>
+      </g>
+      <g fill="none" stroke="currentColor" stroke-width="1.7">
+        <rect x="286" y="46" width="88" height="126"/>
+        <path d="M298,172 L298,116 Q330,66 362,116 L362,172"/>
+      </g>
+      <g fill="none" stroke="currentColor" stroke-width="1.3">
+        <circle cx="330" cy="103" r="7"/><circle cx="323" cy="110" r="7"/>
+        <circle cx="337" cy="110" r="7"/><circle cx="330" cy="117" r="7"/>
+      </g>
+      <g fill="none" stroke="currentColor" stroke-width="1.7">
+        <rect x="506" y="46" width="88" height="126"/>
+        <line x1="506" y1="62" x2="594" y2="62"/>
+        <rect x="514" y="104" width="14" height="68"/><rect x="572" y="104" width="14" height="68"/>
+        <path d="M528,172 L528,110 A22,22 0 0 1 572,110 L572,172"/>
+      </g>
+      <g stroke="currentColor" stroke-width=".8" opacity=".55">
+        <line x1="518" y1="112" x2="518" y2="168"/><line x1="524" y1="112" x2="524" y2="168"/>
+        <line x1="576" y1="112" x2="576" y2="168"/><line x1="582" y1="112" x2="582" y2="168"/>
+      </g>
+      <g font-size="12" text-anchor="middle">
+        <text x="110" y="200" class="em-f" font-size="12.5">13. stoljeće</text>
+        <text x="110" y="217" opacity=".8">bifora srpastoga luka</text>
+        <text x="110" y="232" opacity=".8">+ razdijelni vijenac = romanika</text>
+        <text x="330" y="200" class="em-f" font-size="12.5">14.–15. stoljeće</text>
+        <text x="330" y="217" opacity=".8">šiljati luk, četverolist</text>
+        <text x="330" y="232" opacity=".8">mrežište = gotika</text>
+        <text x="550" y="200" class="em-f" font-size="12.5">16. stoljeće</text>
+        <text x="550" y="217" opacity=".8">polukružni luk</text>
+        <text x="550" y="232" opacity=".8">kanelirani pilastri = renesansa</text>
+      </g>
+    </svg>
+    <figcaption><b>Čitanje kata: tri otvora, tri stoljeća.</b> Ovo je najbrži alat vizualne analize na
+      terenu. Kad skupina nauči razlikovati ova tri otvora, gost sam datira ulicu — i to je najuspješniji
+      mogući ishod obilaska.
+      <span class="src">Shema: vlastita izrada za ovaj modul (CC BY-SA 4.0).</span></figcaption>
+  </figure>
+
+  <div class="col">
+    <div class="note"><span class="lbl">Iz prakse vođenja</span>
+      <p>Kad skupinu vodite kroz Trogir ili Split, najkorisnije je prvo naučiti ih čitati kat: bifora
+        srpastoga luka i razdijelni vijenac znače 13. stoljeće; šiljati luk s četverolistom znači
+        14.–15.; polukružni luk s kaneliranim pilastrima znači renesansu. Nakon toga gost sam datira
+        ulicu — i to je najuspješniji mogući ishod obilaska.</p></div>
+  </div>
+
+  <div class="duo">
+    <figure><img src="img/modul1/romanicka_kuca.jpg" alt="Kasnogotička kvadrifora na Cipikovoj palači u Trogiru">
+      <figcaption><b>Vježba čitanja kata: Cipikova palača, Trogir.</b> Šiljati lukovi s četverolisnim
+        mrežištem datiraju ovaj kat u 15. stoljeće — dakle u gotiku, a ne u romaniku ispod
+        nje.<span class="src">Foto: TimeTravelRome · <a href="https://commons.wikimedia.org/wiki/File:Cipiko_Palace_-_Trogir.jpg">Cipiko Palace - Trogir</a>, Wikimedia Commons · <a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a></span></figcaption></figure>
+    <figure><img src="img/modul1/trogir_katedrala.jpg" alt="Katedrala svetog Lovre u Trogiru">
+      <figcaption><b>Katedrala sv. Lovre</b>, Trogir — začelje s trima apsidama; najmonumentalnija
+        dalmatinska romanička katedrala i jedina presvođena u sva tri
+        broda.<span class="src">Foto: VitVit · <a href="https://commons.wikimedia.org/wiki/File:Trogir_katedr%C3%A1la_sv._Vav%C5%99ince_z%C3%A1v%C4%9Br_1.jpg">Trogir katedrála sv. Vavřince závěr 1</a>, Wikimedia Commons · <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a></span></figcaption></figure>
+  </div>
+
+  <div class="col">
+    <h3>Ključni spomenici</h3>
+    <ul>
+      <li><strong>Katedrala sv. Lovre, Trogir</strong> — gradnja od kraja 12. st., dovršena 1251. Po
+        konstrukciji arkada najarhaičnija je (brodovi su odvojeni masivnim uzdužnim pilonima — zapravo
+        debelim zidom s prosječenim prolazima), ali je i najmonumentalnija dalmatinska romanička
+        katedrala, jedina presvođena u sva tri broda (srednji, doduše, tek u 15. st.). Radovanov portal
+        (1240.) obrađuje se u Modulu 2.</li>
+      <li><strong>Zvonik trogirske katedrale</strong> — „stratigrafski presjek” stilova. Građen je
+        dvjesto godina i na njemu se redom smjenjuju svi stilovi koji su obilježili graditeljstvo
+        Dalmacije: prizemno romanički prolaz oblog luka usječen u zidnu masu; ranogotički prvi kat s
+        dvjema malim šiljatolučnim biforama; kasnogotički drugi kat (projekt Mateja Gojkovića nakon
+        1420., kad su stari toranj uništili Venecijanci) s biforama koje se rastvaraju od ruba do ruba i
+        čipkastim mrežištem; renesansni završni kat (Trifun Bokanić, 1598.–1602.); napokon, u
+        17. stoljeću, četiri maniristička kipa Alessandra Vittorije na uglovima baze krovne piramide.
+        Ovo je najbolji hrvatski predmet za vježbu prepoznavanja stilova — na jednoj građevini, odozdo
+        prema gore.</li>
+      <li><strong>Katedrala sv. Anastazije (sv. Stošije), Zadar</strong> — najveća romanička bazilika u
+        Dalmaciji. Sačuvala je predromaničku kriptu ispod svetišta; u unutrašnjosti tipično romanička
+        ritmizacija potpornja smjenom stubova i stupova, s emporama (matroneumima) nad arkadama.
+        Pročelje je obogaćeno slijepim galerijama na četiri kata i rozetom — kompozicijski srodno
+        toskanskoj romanici Lucce i Pistoie. Reljefni ukras portala dokazuje kontinuitet antike: biljne
+        vitice s pticama kopirane su s goleme rimske grede ugrađene uz južnu apsidu iste katedrale.
+        Reljef lunete glavnoga portala (1324.) već je zrelogotički.</li>
+      <li><strong>Crkva sv. Krševana, Zadar</strong> (posvećena 1175.) — četiri naglašena stuba i
+        pojasnice u središnjem dijelu sugeriraju križni oblik prostora. Južna bočna fasada s tordiranim
+        polustupovima oblikovana je kao uza zid prislonjen ulični „trijem” — iluzionističko proširenje
+        glavne ulice.</li>
+      <li><strong>Zvonik sv. Marije u Zadru</strong> (1105.) — podignut u povodu dolaska
+        ugarsko-hrvatskoga kralja Kolomana, što je zabilježeno natpisom na vijencu prvoga kata. Uz
+        savršenu klesarsku tehniku, u prvom katu ima svod s dva ukrštena kamena rebra pravokutnoga
+        profila koja se oslanjaju na „kockaste” kapitele — prema dosadašnjim spoznajama prvi pouzdano
+        datirani svod toga tipa u Europi. To je najizravniji argument protiv fraze o „provincijalnom
+        zakašnjenju”.</li>
+      <li><strong>Katedrala u Rabu</strong> i romanički zvonik, jedan od najskladnijih na Jadranu.</li>
+    </ul>
+  </div>
+
+  <div class="duo">
+    <figure><img class="fit" src="img/modul1/trogir_zvonik.jpg" alt="Zvonik trogirske katedrale">
+      <figcaption><b>Zvonik trogirske katedrale</b> — dvjesto godina gradnje i četiri stila, odozdo
+        prema gore: romanika, rana i kasna gotika, renesansa.<span class="src">Foto: rene boulay · <a href="https://commons.wikimedia.org/wiki/File:Croatie_Trogir_Saint-Laurent_Campanile_-_panoramio.jpg">Croatie Trogir Saint-Laurent Campanile - panoramio</a>, Wikimedia Commons · <a href="https://creativecommons.org/licenses/by-sa/3.0">CC BY-SA 3.0</a></span></figcaption></figure>
+    <figure><img src="img/modul1/zadar_stosija.jpg" alt="Romanički portal katedrale svete Stošije u Zadru s lunetom">
+      <figcaption><b>Portal katedrale sv. Stošije</b>, Zadar — biljne vitice s pticama kopirane su s
+        rimske grede ugrađene uz južnu apsidu iste katedrale; reljef lunete (1324.) već je
+        zrelogotički.<span class="src">Foto: Bernard Gagnon · <a href="https://commons.wikimedia.org/wiki/File:Cathedral_of_St._Anastasia_in_Zadar_03.jpg">Cathedral of St. Anastasia in Zadar 03</a>, Wikimedia Commons · <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a></span></figcaption></figure>
+  </div>
+
+  <div class="col">
+    <div class="note method"><span class="lbl">Što je izgubljeno</span>
+      <p>Dvije najvažnije romaničke katedrale propale su: zagrebačka 1242. u provali Tatara (izvor kaže
+        da je pretvorena „u prah i pepeo”, <em>in cinerem versa</em>), a dubrovačka
+        predromaničko-romanička u potresu 1667. Vodič to spominje jer objašnjava zašto na tim mjestima
+        danas stoje gotička odnosno barokna katedrala.</p></div>
+  </div>
+
+  <div class="col">
+    <h3>Gotika (13.–15. stoljeće)</h3>
+    <p>Na Jadranu gotika stiže preko Venecije i miješa se s domaćom tradicijom u tzv. „cvjetnu gotiku”;
+      u kontinentalnoj Hrvatskoj javlja se srednjoeuropska gotika.</p>
+
+    <h4>Prosjački redovi kao nositelji ranogotičke arhitekture</h4>
+    <p>Kao što su ranu romaniku širili benediktinci, ranu gotiku krajem 13. i početkom 14. stoljeća šire
+      <strong>franjevci i dominikanci</strong> — od Istre do krajnjega juga Dalmacije. Njihove su crkve
+      jednobrodne dvorane drvenoga stropa s kvadratičnim, rebrasto svedenim svetištem: krajnje
+      jednostavne, određene novom namjenom i ideološkim programom propovjedničkih redova.</p>
+    <p>Najmonumentalniji cjelovito očuvani primjer je <strong>franjevačka crkva u Puli</strong>: golema
+      dvorana 12,5 × 34,5 m, otvorene krovne konstrukcije, glatkih zidova, jarko osvijetljena visokim
+      prozorima; tri šiljata trijumfalna luka na istočnom zidu djeluju kao monumentalni triptih.</p>
+
+    <div class="note"><span class="lbl">Detalj koji objašnjava cijeli tip</span>
+      <p>Propovjedaonica nije uz svetište (kako je bilo prije i kako će opet biti poslije), nego
+        postrance, na sredini južnoga zida broda — kao balkon iznad glava slušatelja i usred njih. Time
+        se žarište prostora funkcionalno premješta poprečno u odnosu na svetište, pa je „dvoranski”
+        karakter ostvaren više funkcijom nego tlocrtom. S istoga je podesta propovjednik mogao izaći i
+        na vanjsku propovjedaonicu kad se okupilo više ljudi nego što ih je moglo stati u crkvu.</p></div>
+
+    <p><strong>Urbanistička logika</strong> koju vodič može pokazati na karti: propovjednički su redovi,
+      za razliku od asketskih, gradili uz gradska vrata — na mjestima najživljega protoka ljudi, uz koje
+      im je pripadala i funkcija nadzora ulaza. Najčišći primjer je Dubrovnik: franjevci uz zapadna,
+      dominikanci uz istočna vrata.</p>
+    <p><strong>Ostali primjeri:</strong> Zadar — franjevačka i dominikanska crkva posvećene iste 1280.;
+      dva propovjednička sklopa u Splitu; dominikanska crkva u Dubrovniku (od 1301.) i crkva
+      sv. Jeronima u Rijeci (1315.) već s razvijenijom peterostranom apsidom (tip 5/8).</p>
+    <p><strong>Klaustar Male braće u Dubrovniku</strong> — djelo Mihoja Brajkova iz Bara. Lukovi su obli,
+      ali klaustar odgovara gotičkom oblikovanju: heksafore na dvojnim osmerostranim stupićima (koji
+      umnažaju vertikale i pojačavaju kontrast svjetla i sjene), izdužene proporcije otvora i okrugli
+      otvori s četverolatičnim mrežištem nad heksaforama. Na kapitelima se uz romanički fantastični
+      bestijarij (krilati zmajevi, himere, orolavovi) javljaju i gotički realistički likovi: volovske i
+      ovnovske glave, četiri psića, orao s dva orlića, jastreb koji napada zeca, žene s maramama i
+      muškarci s kapama s naušnicima.</p>
+  </div>
+
+  <div class="duo">
+    <figure><img src="img/modul1/klaustar_dubrovnik.jpg" alt="Klaustar franjevačkog samostana Male braće u Dubrovniku">
+      <figcaption><b>Klaustar Male braće</b>, Dubrovnik — obli lukovi, ali gotičko oblikovanje:
+        heksafore na dvojnim osmerostranim stupićima.<span class="src">Foto: JERRYE AND ROY KLOTZ MD · <a href="https://commons.wikimedia.org/wiki/File:CLOISTER_OF_THE_FRANCISCAN_MONASTERY_IN_DUBROVNIK,_CROATIA.jpg">CLOISTER OF THE FRANCISCAN MONASTERY IN DUBROVNIK, CROATIA</a>, Wikimedia Commons · <a href="https://creativecommons.org/licenses/by-sa/3.0">CC BY-SA 3.0</a></span></figcaption></figure>
+    <figure><img src="img/modul1/pula_franjevacka.jpg" alt="Franjevačka crkva u Puli">
+      <figcaption><b>Franjevačka crkva u Puli</b> — dvorana 12,5 × 34,5 m, otvorena krovna
+        konstrukcija, glatki zidovi.<span class="src">Foto: Tanya Dedyukhina · <a href="https://commons.wikimedia.org/wiki/File:Franciscan_Church,_Pula_-_panoramio_(34).jpg">Franciscan Church, Pula - panoramio (34)</a>, Wikimedia Commons · <a href="https://creativecommons.org/licenses/by/3.0">CC BY 3.0</a></span></figcaption></figure>
+  </div>
+
+  <div class="col">
+    <h3>Gotički urbanizam — Ston, statuti i planiranje</h3>
+    <p>Četrnaesto je stoljeće na Jadranu karakteristično nova faza u razvoju gradova, pa se gotika ovdje
+      ne čita samo na građevinama nego i na <strong>tlocrtu grada</strong>:</p>
+    <ul>
+      <li>Planski se dograđuju ili proširuju postojeća naselja (Rab, Trogir), regulira se Dubrovnik
+        (Prijeko) unutar zidina u opsegu koji je zadržao do danas, integrira se zapadno predgrađe Splita.</li>
+      <li>Gradski statuti propisuju ponašanje u prostoru. <strong>Dubrovački statut (1272.)</strong> i
+        njegove kasnije dopune uređuju širinu parcela i ulica, odnos javnih i privatnih površina,
+        stubišta i balkone — jasno pretpostavljajući javni interes privatnomu. U to se doba ulice
+        popločuju (dio troška snosi općina, dio vlasnici kuća), gradi se kanalizacija, a već 1415.
+        organizirana je služba gradskih čistača ulica.</li>
+      <li><strong>Ston i Mali Ston</strong> (od 1335.) — najmonumentalniji urbanistički zahvat gotike na
+        hrvatskom tlu. Dva planski parcelirana i utvrđena grada na najužem mjestu Pelješca povezana su
+        zidinama s kulama i tvrđavom Pozvizd („pod zvijezdama”) na vrhu brda; uz Ston su izgrađene
+        solane izvanrednoga gospodarskog značenja. Do danas očuvani građevinski fond pretežno je iz 15.
+        i 16. stoljeća, jer je većina kuća 14. stoljeća radi brzine i troška bila drvena. Ston je
+        zadržao karakter tipično planiranoga, „kolonizacijskog” grada.</li>
+    </ul>
+
+    <div class="note"><span class="lbl">Iz prakse vođenja</span>
+      <p>Dubrovački statut je najbolji hrvatski primjer da se gostu objasni što znači „upravljanje
+        gradom” prije modernoga doba — i najelegantniji uvod u današnju raspravu o upravljanju
+        posjetiteljima (Modul 5). Grad koji je 1415. imao plaćene čistače ulica danas raspravlja o broju
+        posjetitelja po satu; riječ je o istoj vrsti odluke, u razmaku od šest stoljeća.</p></div>
+  </div>
+
+  <figure>
+    <img src="img/modul1/ston.jpg" alt="Stonske zidine s kulama na Pelješcu">
+    <figcaption><b>Stonske zidine</b>, od 1335. — najmonumentalniji urbanistički zahvat gotike na
+      hrvatskom tlu: dva planski parcelirana grada povezana utvrđenim zidom.<span class="src">Foto: Carsten Steger · <a href="https://commons.wikimedia.org/wiki/File:Aerial_image_of_Ston_(view_from_the_southwest).jpg">Aerial image of Ston (view from the southwest)</a>, Wikimedia Commons · <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a></span></figcaption>
+  </figure>
+
+  <div class="col">
+    <h3>Datiranje po kulama — praktično pravilo</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Oblik kule</th><th>Razdoblje</th></tr></thead>
+      <tbody>
+        <tr><td>Okrugle kule</td><td>romanika (12.–13. st.)</td></tr>
+        <tr><td>Kvadratične prizme, visoke</td><td>gotika (14. st.)</td></tr>
+        <tr><td>Okrugle, niže i masivnije, za vatreno oružje</td><td>renesansa (16. st.), uz bastione za obranu topovima</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+
+  <figure class="fig-frame">
+    <svg viewBox="0 0 660 300" role="img" xmlns="http://www.w3.org/2000/svg"
+      aria-label="Usporedba triju tipova kula u pogledu i tlocrtu: visoka okrugla romanička kula 12. i 13. stoljeća, visoka kvadratična gotička prizma 14. stoljeća te niska masivna okrugla renesansna kula 16. stoljeća s bastionom za topove.">
+      <g fill="none" stroke="currentColor" stroke-width="1.8">
+        <path d="M84,64 L84,176"/><path d="M136,64 L136,176"/>
+        <ellipse cx="110" cy="64" rx="26" ry="8"/>
+        <path d="M84,176 A26,8 0 0 0 136,176"/>
+        <path d="M84,72 L84,58 L92,58 L92,66 M100,62 L100,54 L108,54 L108,60 M120,60 L120,54 L128,54 L128,58"/>
+      </g>
+      <circle cx="110" cy="232" r="26" fill="none" stroke="currentColor" stroke-width="1.8"/>
+      <circle cx="110" cy="232" r="16" fill="currentColor" opacity=".09"/>
+      <g fill="none" stroke="currentColor" stroke-width="1.8">
+        <rect x="304" y="44" width="52" height="132"/>
+        <path d="M304,52 L304,36 L314,36 L314,44 M324,44 L324,36 L336,36 L336,44 M346,44 L346,36 L356,36 L356,52"/>
+      </g>
+      <rect x="304" y="206" width="52" height="52" fill="none" stroke="currentColor" stroke-width="1.8"/>
+      <rect x="314" y="216" width="32" height="32" fill="currentColor" opacity=".09"/>
+      <g fill="none" stroke="currentColor" stroke-width="1.8">
+        <path d="M518,110 L518,176"/><path d="M592,110 L592,176"/>
+        <ellipse cx="555" cy="110" rx="37" ry="10"/>
+        <path d="M518,176 A37,10 0 0 0 592,176"/>
+      </g>
+      <circle cx="555" cy="228" r="30" fill="none" stroke="currentColor" stroke-width="1.8"/>
+      <path d="M525,228 L495,206 L470,232 L497,256 Z" fill="none" stroke="currentColor" stroke-width="1.6" class="em-s"/>
+      <g class="em-s" stroke-width="1.3" fill="none">
+        <line x1="500" y1="222" x2="478" y2="214"/><line x1="500" y1="240" x2="480" y2="248"/>
+      </g>
+      <g font-size="12" text-anchor="middle">
+        <text x="110" y="284" class="em-f" font-size="12.5">okrugla, visoka</text>
+        <text x="110" y="299" opacity=".8">romanika, 12.–13. st.</text>
+        <text x="330" y="284" class="em-f" font-size="12.5">kvadratična prizma</text>
+        <text x="330" y="299" opacity=".8">gotika, 14. st.</text>
+        <text x="555" y="284" class="em-f" font-size="12.5">niska i masivna + bastion</text>
+        <text x="555" y="299" opacity=".8">renesansa, 16. st.</text>
+      </g>
+      <g font-size="10" opacity=".65" text-anchor="middle">
+        <text x="110" y="196">pogled</text><text x="110" y="278">tlocrt</text>
+        <text x="330" y="196">pogled</text><text x="330" y="278">tlocrt</text>
+        <text x="555" y="196">pogled</text><text x="555" y="278">tlocrt</text>
+      </g>
+      <text x="470" y="196" font-size="10.5" class="em-f" text-anchor="middle">predziđe za topove</text>
+    </svg>
+    <figcaption><b>Kula datira utvrdu.</b> Visina pada, a masa raste kad se obrana s hladnoga oružja
+      prebaci na vatreno: visoku gotičku prizmu u 16. stoljeću opasuje nisko predziđe s terasama za
+      topove. Michelozzo je upravo tako u Dubrovniku preoblikovao postojeće gotičke kule.
+      <span class="src">Shema: vlastita izrada za ovaj modul (CC BY-SA 4.0).</span></figcaption>
+  </figure>
+
+  <div class="col">
+    <p>Gotičke prizmatične kule oblikovale su prvi prsten dubrovačkih zidina na sjevernoj i zapadnoj
+      strani, a i danas daju vertikalni naglasak istarskim gradićima — Humu, Balama, Motovunu — gdje
+      dvojnom funkcijom kule-zvonika izravno iskazuju skromne gospodarske uvjete života.</p>
+
+    <h3>Sjeverna Hrvatska</h3>
+    <ul>
+      <li><strong>Zagrebačka katedrala.</strong> Novu gradnju započinje biskup Timotej 1276.; u posljednjoj
+        četvrtini 13. stoljeća izvedeno je samo trodijelno svetište s poligonalnim apsidama i
+        križnorebrastim svodovima te sakristija. Tlocrt je srodan katedrali u Troyesu (tumači se
+        Timotejevim boravkom u Francuskoj), ali su izvedba i elevacija bliže njemačkoj gotici (Trier).
+        Brodovi se grade kroz 14. stoljeće, svodovi se dovršavaju u 15.</li>
+      <li><strong>Smjena stilova u smjeni zadataka.</strong> Kad je krajem 15. stoljeća došao red na
+        zapadne tornjeve, Osmanlije su stigli do Siska. Zato graditelji početkom 16. stoljeća prelaze na
+        nužniji posao: unutar Kaptola, oko nedovršene katedrale, zidaju drugi obrambeni zid s okruglim
+        renesansnim kulama (1513.–1521.). Reprezentativni sakralni zadatak gotike zamijenjen je
+        fortifikacijskim zadatkom renesanse — to je najbolji hrvatski primjer da se stilska promjena
+        objasni poviješću, a ne modom. U 17. stoljeću gradi se samo jedan, razmjerno mali južni toranj u
+        kasnorenesansnim oblicima; u 18. stoljeću obrambeni se zid rastvara u pročelje golemoga
+        biskupskog dvora, a unutrašnjost dobiva šezdesetak oltara.</li>
+      <li><strong>Neogotička obnova</strong> (Bollé, 1880.–1902.) dala je katedrali dva zvonika visoka
+        105 m i pocakljeno krovište. Time je izvana postala spomenik naglog prosperiteta građanske
+        klase, ali je izgubljena skladna cjelovitost sklopa koji se do tada organički razvijao. Potres iz
+        2020. ponovno ju je teško oštetio, pa se danas nalazi u dugotrajnoj obnovi — činjenicu koju
+        vodič mora znati objasniti gostima koji je zateknu u skelama.</li>
+      <li><strong>Crkva sv. Marka u Zagrebu</strong> (prijelaz 14. u 15. st.) — projektirana u duhu
+        kasnogotičkoga ideala jedinstvenoga prostora: tlocrt gubi izduženost i postaje kvadratičan,
+        visine brodova se izjednačuju, pa umjesto bazilike nastaje dvorana
+        (<em>Hallenkirche</em>). Snopasti su se stupovi saželi u jedinstvene cilindrične, kapiteli su
+        iščezli, a rebra kao grane izrastaju iz debla stupa. Južni portal s likovima Krista, Bogorodice,
+        sv. Marka i dvanaest apostola najmonumentalnije je djelo gotičke skulpture u sjevernoj Hrvatskoj
+        (oštećeni su kipovi zamijenjeni drvenim baroknima).</li>
+    </ul>
+  </div>
+
+  <figure class="fig-frame">
+    <svg viewBox="0 0 660 260" role="img" xmlns="http://www.w3.org/2000/svg"
+      aria-label="Poprečni presjeci dviju crkava: bazilika ima viši srednji brod s gornjim prozorima iznad krovova bočnih brodova, dok dvoranska crkva ima sva tri broda izjednačene visine pod jednim krovom.">
+      <g fill="none" stroke="currentColor" stroke-width="1.8">
+        <rect x="80" y="150" width="58" height="76"/><rect x="222" y="150" width="58" height="76"/>
+        <rect x="138" y="92" width="84" height="134"/>
+        <polyline points="138,92 180,58 222,92"/>
+        <polyline points="80,150 138,116"/><polyline points="280,150 222,116"/>
+        <line x1="60" y1="226" x2="300" y2="226"/>
+      </g>
+      <g fill="currentColor" opacity=".5">
+        <rect x="150" y="104" width="12" height="16"/><rect x="198" y="104" width="12" height="16"/>
+      </g>
+      <g fill="none" stroke="currentColor" stroke-width="1.8">
+        <rect x="390" y="92" width="58" height="134"/><rect x="512" y="92" width="58" height="134"/>
+        <rect x="448" y="92" width="64" height="134"/>
+        <polyline points="390,92 480,52 570,92"/>
+        <line x1="370" y1="226" x2="590" y2="226"/>
+      </g>
+      <g fill="currentColor" opacity=".5">
+        <rect x="396" y="140" width="12" height="20"/><rect x="552" y="140" width="12" height="20"/>
+      </g>
+      <g stroke="currentColor" stroke-width="1" stroke-dasharray="5 5" opacity=".8" class="em-s">
+        <line x1="60" y1="92" x2="300" y2="92"/><line x1="370" y1="92" x2="590" y2="92"/>
+      </g>
+      <g font-size="12" text-anchor="middle">
+        <text x="180" y="248" class="em-f" font-size="12.5">bazilika</text>
+        <text x="480" y="248" class="em-f" font-size="12.5">dvoranska crkva (Hallenkirche)</text>
+      </g>
+      <g font-size="10.5" opacity=".75">
+        <text x="180" y="140" text-anchor="middle">gornji prozori</text>
+        <text x="480" y="180" text-anchor="middle">svjetlo samo s boka</text>
+        <text x="66" y="86" font-size="10">visina srednjeg broda</text>
+      </g>
+    </svg>
+    <figcaption><b>Razlika koju gost vidi čim uđe.</b> U bazilici je srednji brod viši i sam se
+      osvjetljava gornjim prozorima; u dvoranskoj crkvi visine su izjednačene, svjetlo ulazi samo s
+      bokova, a prostor djeluje kao jedinstvena dvorana. Sv. Marko u Zagrebu pripada desnome tipu.
+      <span class="src">Shema: vlastita izrada za ovaj modul (CC BY-SA 4.0).</span></figcaption>
+  </figure>
+
+  <div class="duo">
+    <figure><img src="img/modul1/sv_marko.jpg" alt="Crkva svetog Marka u Zagrebu s pokrivenim krovom">
+      <figcaption><b>Sv. Marko</b>, Zagreb — kasnogotički ideal jedinstvenoga prostora;
+        južni portal je najmonumentalnije djelo gotičke skulpture na sjeveru.<span class="src">Foto: Bernard Gagnon · <a href="https://commons.wikimedia.org/wiki/File:St._Mark%27s_Church,_Zagreb_02.jpg">St. Mark&#x27;s Church, Zagreb 02</a>, Wikimedia Commons · <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a></span></figcaption></figure>
+    <figure><img src="img/modul1/zg_katedrala.jpg" alt="Zagrebačka katedrala">
+      <figcaption><b>Zagrebačka katedrala</b> — gotička jezgra, neogotičko pročelje Hermana Bolléa
+        (1880.–1902.), obnova nakon potresa 2020.<span class="src">Foto: Larisa Uhryn · <a href="https://commons.wikimedia.org/wiki/File:Zagreb_cathedral_at_sunrise.jpg">Zagreb cathedral at sunrise</a>, Wikimedia Commons · <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a></span></figcaption></figure>
+  </div>
+
+  <div class="col">
+    <ul>
+      <li><strong>Redovi kao nositelji difuzije i na sjeveru:</strong> cisterciti (Sv. Ana kod Bastaja;
+        utjecaj Sv. Magdalene u Čazmi), franjevci (Zagreb, Kloštar Ivanić, Ilok, Vočin), benediktinci
+        (opatija Bijela, 14. st.) i pavlini — velika crkva u Lepoglavi (oko 1400.), s poligonalnim
+        svetištem i zvjezdastorebrastim svodom radionice Parlerova kruga. U Vočinu je neobičan mrežasti
+        svod s „plisiranim” rebrima vladislavske češke gotike.</li>
+      <li><strong>Fortifikacije i burgovi:</strong> Trakošćan, Veliki Tabor, Ozalj, Medvedgrad,
+        Ružica-grad kod Orahovice (golemi nadsvođeni prostori, kapela veća od okolnih župnih crkava,
+        zidine ponegdje debele devet metara), Đakovo, Ilok, Klis, Nehaj. U Gorskom kotaru i Podgorju
+        ističe se trobrodna gotička crkva sv. Marije u Oštarijama, zadužbina Frankopana (1450.), a
+        njihova je i kapela zvjezdastorebrastoga svoda u krčkoj katedrali.</li>
+      <li><strong>Palače i klaustri na obali:</strong> Dubrovnik, Split, Šibenik, Zadar — gotički
+        četverolisti i balkoni; Kneževa palača u Zadru; franjevački i dominikanski klaustar u Dubrovniku.
+        Knežev dvor u Dubrovniku dobiva monumentalni volumen u 14. stoljeću; nakon požara i eksplozije
+        baruta u 15. od te faze ostaju osnovni raspored, nešto zida i svodova te figuralne konzole na
+        katu (među njima prizor s bilježnikom — rijedak srednjovjekovni prikaz uredskoga rada).</li>
+    </ul>
+  </div>
+</section>
+
+<section id="s14">
+  <div class="sect-head"><span class="sect-num">1.4</span><h2>Renesansa i Dubrovnik</h2></div>
+  <div class="col">
+    <p>Renesansa u Hrvatskoj ima dva žarišta: Dalmaciju (osobito Šibenik, Trogir, Hvar, Korčulu) i
+      Dubrovnik kao samostalnu republiku.</p>
+
+    <h3>Kada počinje i zašto to nije „zakašnjenje”</h3>
+    <p>Početak renesanse na istočnoj obali Jadrana označuje <strong>1441.</strong> godina — dolazak
+      Jurja Dalmatinca na šibensku katedralu. To je samo dvadesetak godina nakon djela koja u europskoj
+      povijesti označuju početak novoga stila: Brunelleschijeve kupole (1420.–1434.), Masacciove freske
+      sv. Trojstva (1428.) i Gentskoga oltara braće van Eyck (1432.).</p>
+    <p>Renesansa se u početku ne javlja u „čistom” obliku nego pomiješana s gotikom. Mješoviti
+      gotičko-renesansni stil nije regionalna pojava nego općeeuropska. Petnaesto stoljeće znači, nakon
+      antike, možda najveći intenzitet likovne djelatnosti na istočnoj obali i otocima.</p>
+    <div class="note"><span class="lbl">Što se sve gradilo</span>
+      <p>Podižu se nove gradske četvrti i planirani gradovi (Pag, utemeljen 1443.); obnavljaju se zidine
+        i kule (osobito Dubrovnik, Korčula, Hvar); grade crkve, samostani, klaustri i zvonici; podižu
+        vijećnice, kneževi dvori i javne lože i u zabitnim selima; sagrađene su stotine kamenih kuća i
+        palača s klesanim okvirima, balkonima, grbovima, kaminima, ugrađenim ormarima i umivaonicima;
+        sade se vrtovi s odrinama na kamenim stupovima, fontanama i ribnjacima. Sve je to podjednako
+        graditeljsko i klesarsko umijeće, jer se na istočnom Jadranu gradi gotovo isključivo kamenom —
+        za razliku od Venecije, gdje se izvorno gradilo opekom.</p></div>
+
+    <h3>Katedrala sv. Jakova u Šibeniku (1431.–1536.)</h3>
+    <p>Najvažnija hrvatska građevina prijelaza gotike u renesansu i UNESCO-ova svjetska baština od 2000.
+      Graditelji: <strong>Juraj Dalmatinac</strong> (od 1441.) i, nakon njegove smrti,
+      <strong>Nikola Firentinac</strong> (protomagister od 1475. do smrti 1505.).</p>
+    <p>Tri obilježja koja moraju ostati u pamćenju polaznika:</p>
+    <ol>
+      <li><strong>Jedinstvo građe i montažna metoda.</strong> Građena je u cijelosti od kamena, bez
+        drugih materijala, od temelja do vrha kupole — velikim kamenim pločama povezanima na utor i
+        pero. Svod krstionice sastavljen je od devet kamenih dijelova koji su s donje strane reljefno
+        obrađeni, a s gornje glatki i služe kao pod južnoga broda. UNESCO posebno ističe jedinstvenost
+        te graditeljske metode.</li>
+      <li><strong>Trolisno pročelje kao projekcija prostora.</strong> Pročelje, kako ga je dovršio Nikola
+        Firentinac, proizlazi iz oblika svodova u unutrašnjosti. Ono nije prigrađena kulisa (kao u svim
+        ostalim renesansnim primjerima), nego projekcija prostora iza sebe — i po tome je prvo i jedino
+        funkcionalno rješenje „trolisne” renesansne fasade u Europi.</li>
+      <li><strong>Friz isklesanih glava na apsidama.</strong> Muškarci, žene i djeca u prirodnoj veličini,
+        izrazitih portretnih obilježja. <em>Napomena o broju:</em> uobičajeno se navodi 71; dio
+        literature, uključujući propisanu ispitnu literaturu, navodi 72. Vodič navodi uobičajeni broj i,
+        ako ga se pita, kaže da se brojanje u izvorima razlikuje. Lica se često tumače kao galerija
+        Jurjevih suvremenika, ali identitet pojedinih osoba nije dokumentiran.</li>
+    </ol>
+  </div>
+
+  <figure class="fig-frame">
+    <svg viewBox="0 0 660 300" role="img" xmlns="http://www.w3.org/2000/svg"
+      aria-label="Usporedba dvaju trolisnih pročelja: u Šibeniku obris pročelja točno prati polukružne svodove triju brodova iza njega, dok drugdje trolisno pročelje stoji kao kulisa pred bazilikom s kosim krovovima koje ne odgovaraju obrisu.">
+      <g stroke="currentColor" stroke-width="1.4" fill="none" stroke-dasharray="5 4" opacity=".75">
+        <path d="M96,196 A30,30 0 0 1 156,196"/>
+        <path d="M156,196 A52,52 0 0 1 260,196"/>
+        <path d="M260,196 A30,30 0 0 1 320,196"/>
+        <line x1="96" y1="196" x2="96" y2="240"/><line x1="320" y1="196" x2="320" y2="240"/>
+        <line x1="80" y1="240" x2="336" y2="240"/>
+      </g>
+      <g class="em-s" stroke-width="3" fill="none">
+        <path d="M88,196 A38,38 0 0 1 164,196"/>
+        <path d="M152,196 A60,60 0 0 1 272,196"/>
+        <path d="M252,196 A38,38 0 0 1 328,196"/>
+      </g>
+      <g stroke="currentColor" stroke-width="1.4" fill="none" stroke-dasharray="5 4" opacity=".75">
+        <polyline points="424,196 424,240"/><polyline points="596,196 596,240"/>
+        <polyline points="424,196 466,166 510,196"/>
+        <polyline points="466,166 466,120 554,120 554,166"/>
+        <polyline points="466,120 510,92 554,120"/>
+        <polyline points="510,196 554,166 596,196"/>
+        <line x1="408" y1="240" x2="612" y2="240"/>
+      </g>
+      <g class="em-s" stroke-width="3" fill="none">
+        <path d="M420,200 A34,34 0 0 1 488,200"/>
+        <path d="M476,200 A54,54 0 0 1 584,200"/>
+        <path d="M532,200 A34,34 0 0 1 600,200"/>
+        <line x1="420" y1="200" x2="420" y2="240"/><line x1="600" y1="200" x2="600" y2="240"/>
+      </g>
+      <g font-size="12" text-anchor="middle">
+        <text x="208" y="272" class="em-f" font-size="12.5">Šibenik: pročelje = obris svodova</text>
+        <text x="208" y="288" opacity=".8">jedino funkcionalno trolisno pročelje u Europi</text>
+        <text x="510" y="272" class="em-f" font-size="12.5">drugdje: pročelje = kulisa</text>
+        <text x="510" y="288" opacity=".8">iza njega je obična bazilika s kosim krovovima</text>
+      </g>
+      <g font-size="10.5" opacity=".7">
+        <text x="60" y="180">presjek</text><text x="392" y="180">presjek</text>
+      </g>
+    </svg>
+    <figcaption><b>Zašto je šibensko pročelje jedinstveno.</b> Isprekidano je nacrtan presjek prostora
+      iza pročelja, punom oksidnom linijom obris pročelja. Lijevo se poklapaju — pročelje je projekcija
+      triju svodova. Desno se ne poklapaju: isti trolisni obris stoji kao kulisa pred bazilikom s kosim
+      krovovima. Taj se kulisni tip ponavlja od Osora i Svetvinčenta do Venecije.
+      <span class="src">Shema: vlastita izrada za ovaj modul (CC BY-SA 4.0).</span></figcaption>
+  </figure>
+
+  <div class="duo">
+    <figure><img src="img/modul1/sibenik_katedrala.jpg" alt="Katedrala svetog Jakova u Šibeniku">
+      <figcaption><b>Katedrala sv. Jakova</b>, Šibenik, 1431.–1536. — glavni portal i rozeta zapadnoga
+        pročelja. Cijela je građevina od kamena, bez drugih materijala, od temelja do vrha
+        kupole.<span class="src">Foto: August Dominus · <a href="https://commons.wikimedia.org/wiki/File:Katedrala_svetog_Jakova_2017.jpg">Katedrala svetog Jakova 2017</a>, Wikimedia Commons · <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a></span></figcaption></figure>
+    <figure><img src="img/modul1/sibenik_glave.jpg" alt="Friz isklesanih glava na apsidama šibenske katedrale">
+      <figcaption><b>Friz glava</b> na apsidama — profani sadržaj na začelju sakralne građevine, u
+        neposrednoj vezi s prolaznikom.<span class="src">Foto: Cholo Aleman · <a href="https://commons.wikimedia.org/wiki/File:Sibenik_Heads_1_659.jpg">Sibenik Heads 1 659</a>, Wikimedia Commons · <a href="https://creativecommons.org/licenses/by-sa/3.0">CC BY-SA 3.0</a></span></figcaption></figure>
+  </div>
+
+  <div class="col">
+    <div class="note"><span class="lbl">Zašto je friz ikonografski važan</span>
+      <p>Katedralna je skulptura tradicionalno bila grupirana oko portala, na pročelju. Ovdje je težište
+        prebačeno na apside, na začelje — i to s posve profanim sadržajem na sakralnom objektu, u
+        neposrednoj vezi s prolaznikom, bez obzira ulazi li on u crkvu. Podrijetlo takve zamisli može se
+        naći samo u profanoj arhitekturi (glave na kapitelima trijema Duždeve palače). Najbliža joj je
+        usporedba u slikarstvu <em>Bičevanje iz Urbina</em> Piera della Francesce (1444.), gdje je
+        glavni prizor potisnut u pozadinu, a u prvom su planu portreti suvremenika. Na obje je
+        „izvrnuta” perspektiva gledanja i čovjek stavljen u prvi plan.</p></div>
+
+    <p><strong>Krstionica Jurja Dalmatinca</strong> — prostor iznimne kamenoklesarske virtuoznosti i
+      ujedno ikonografska inovacija: umjesto Krštenja Kristova, koje se na tom mjestu prikazivalo od
+      5. stoljeća, na svodu je lik Boga Oca s golubicom, a umjesto Krista u Jordanu — novorođenče koje u
+      posudi krsti svećenik. Zamjena božanskoga lika ljudskim bila je moguća samo u humanističkom ozračju
+      rane renesanse.</p>
+
+    <div class="triad"><span class="lbl">Tri rečenice za goste — katedrala sv. Jakova</span>
+      <dl>
+        <dt>Činjenica</dt><dd>Gradila se više od stoljeća, od 1431. do 1536., a glavni su graditelji
+          Juraj Dalmatinac i Nikola Firentinac.</dd>
+        <dt>Usporedba</dt><dd>Građena je u cijelosti od kamena, uz jedinstvenu tehniku sklapanja kamenih
+          elemenata svoda, kupole i krova koju UNESCO posebno ističe — a njezino je trolisno pročelje
+          jedino u Europi koje doslovno ponavlja oblik svodova iza sebe.</dd>
+        <dt>Doživljaj</dt><dd>Sedamdesetak isklesanih lica muškaraca, žena i djece na apsidama pretvara
+          vanjštinu katedrale u neobičnu galeriju ljudi 15. stoljeća — i to na začelju, gdje ih dotad
+          nitko nije stavljao.</dd>
+      </dl>
+    </div>
+
+    <p><strong>Utjecaj.</strong> Trolisno se pročelje ponavlja u nizu crkava od Istre do Dubrovnika
+      (katedrala u Osoru, započeta 1460-ih; sv. Marija u Svetvinčentu, 1555.; renesansno pročelje
+      sv. Marije u Zadru), ali nigdje više kao strukturalna veza s prostorom — svugdje drugdje takva
+      pročelja kulisno prikrivaju obične bazilike. Isto vrijedi i na suprotnoj obali Jadrana
+      (San Zaccaria, Or San Michele u Veneciji).</p>
+
+    <h3>Kapela blaženoga Ivana Trogirskoga (1468.–1497.)</h3>
+    <p>Prva građevina isključivo ranorenesansnoga stila u Dalmaciji, bez tragova gotike — djelo Nikole
+      Firentinca i Andrije Alešija prema ugovoru iz 1468. Prigrađena je sa sjeverne strane trogirske
+      katedrale (gradnja 1468.–1482., kiparska oprema do 1497.).</p>
+    <div class="tbl"><table>
+      <thead><tr><th>Podatak</th><th>Vrijednost</th></tr></thead>
+      <tbody>
+        <tr><td>Tlocrt</td><td>izvana kvadratičan, iznutra pravokutnik omjera 4:3; s visinom čini 3:4:6 — odnos koji Alberti naziva „harmonijskim”</td></tr>
+        <tr><td>Uzor za format i svod</td><td>antički Mali (Jupiterov) hram Dioklecijanove palače</td></tr>
+        <tr><td>Reljefi putta-bakljonoša</td><td>21, izviruju iz „odškrinutih” vrata (antički funeralni motiv)</td></tr>
+        <tr><td>Putti-telamoni koji nose vijenac</td><td>16</td></tr>
+        <tr><td>Glavice serafina u kasetama svoda</td><td>96</td></tr>
+        <tr><td>Kipovi apostola i svetaca u nišama</td><td>11 sačuvanih (izvorno 16)</td></tr>
+      </tbody>
+    </table></div>
+    <div class="note"><span class="lbl">Zašto je to europski važno</span>
+      <p>Kapela je grobnica — ali je istodobno vrhunac humanističkoga optimizma: iz nje „gleda” oko 160
+        dječjih lica. Nema zida: stranice su razvedene sustavom niša, a reljefi nisu pričvršćeni na zid
+        nego su, dosljedno Jurjevoj montažnoj metodi, sastavni dio zida — od njih je kapela sazdana. Čak
+        je i oltar „ugrađen”, isklesan u kamenu poput reljefnoga triptiha s dva otvorena krila. Takav
+        odnos skulpture i arhitekture u oblikovanju interijera europska će umjetnost razviti tek u
+        visokoj renesansi, u sljedećem stoljeću.</p></div>
+    <p>U kapelu su umetnute i dvije skulpture Ivana Duknovića: potpisani i klasično odmjeren sv. Ivan
+      (1485.) te sv. Toma (1506.).</p>
+    <div class="note method"><span class="lbl">Metodička napomena</span>
+      <p>Nikola Firentinac došao je iz Italije, ali je u Trogiru napustio toskansku praksu miješanja
+        materijala (freske, bronca, keramika) i prihvatio Jurjeva načela jedinstva kamene građe i
+        montažne konstrukcije. Kapela je dakle organički nastavak domaće dalmatinske tradicije, iako joj
+        je autor stranac — podatak koji uredno pobija svaku jednostavnu podjelu na „naše” i „uvezeno”.</p></div>
+  </div>
+
+  <div class="col">
+    <h3>Dubrovnik</h3>
+    <p>Dubrovnik je najcjelovitiji sačuvani povijesni grad na hrvatskoj obali i UNESCO-ova svjetska
+      baština od 1979. (proširenje 1994.). Za vođenje su ključne četiri točke:</p>
+    <div class="tbl"><table>
+      <thead><tr><th>Građevina</th><th>Datacija</th><th>Napomena</th></tr></thead>
+      <tbody>
+        <tr><td>Gradske zidine</td><td>13.–17. st.</td><td>Oko 1.940 m opsega; utvrde Minčeta, Bokar, sv. Ivan, Revelin, Lovrijenac</td></tr>
+        <tr><td>Knežev dvor</td><td>15. st., više obnova</td><td>Gotičko-renesansni; sjedište kneza; danas Kulturno-povijesni muzej</td></tr>
+        <tr><td>Palača Sponza (Divona)</td><td>1516.–1522.</td><td>Spoj gotike i renesanse; carinarnica, kovnica, danas Državni arhiv</td></tr>
+        <tr><td>Stradun (Placa)</td><td>nakon 1667.</td><td>Jedinstveno pročelje nastalo nakon potresa, po propisanom obrascu — rani primjer planske obnove grada</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+
+  <div class="trio">
+    <figure><img src="img/modul1/dubrovnik_zidine.jpg" alt="Tvrđava Minčeta na dubrovačkim zidinama">
+      <figcaption><b>Minčeta</b> — gotičku kvadratičnu kulu Michelozzo opasuje niskim predziđem;
+        konačni oblik dao je Juraj Dalmatinac.<span class="src">Foto: Falk2 · <a href="https://commons.wikimedia.org/wiki/File:X03.06_Min%C4%8Deta,_Lavrijenac.jpg">X03.06 Minčeta, Lavrijenac</a>, Wikimedia Commons · <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a></span></figcaption></figure>
+    <figure><img src="img/modul1/sponza.jpg" alt="Palača Sponza u Dubrovniku">
+      <figcaption><b>Palača Sponza</b>, 1516.–1522. — spoj gotike i renesanse; danas Državni
+        arhiv.<span class="src">Foto: Marcin Konsek · <a href="https://commons.wikimedia.org/wiki/File:2011_Dubrownik,_Pa%C5%82ac_Sponza_(01).jpg">2011 Dubrownik, Pałac Sponza (01)</a>, Wikimedia Commons · <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a></span></figcaption></figure>
+    <figure><img class="fit" src="img/modul1/stradun.jpg" alt="Stradun u Dubrovniku">
+      <figcaption><b>Stradun</b> — jedinstveno pročelje po propisanom obrascu nakon potresa 1667.;
+        rani primjer planske obnove grada.<span class="src">Foto: Martin Falbisoner · <a href="https://commons.wikimedia.org/wiki/File:Stradun,_Dubrovnik_-_September_2017.jpg">Stradun, Dubrovnik - September 2017</a>, Wikimedia Commons · <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a></span></figcaption></figure>
+  </div>
+
+  <div class="col">
+    <div class="note"><span class="lbl">Knežev dvor kao problem za vizualnu analizu</span>
+      <p>Kao i u šibenskoj krstionici, u prizemlju dominira „mlađi” stil, a na katu „stariji” — samo što
+        ovdje to nije bilo simultano projektirano nego je posljedica sukcesivne gradnje. Obnovu dvora,
+        oštećenoga eksplozijom baruta (1463.), započeo je Michelozzo Michelozzi renesansnim arkadama u
+        prizemlju, a dovršili su je gotičkim biforama na katu domaći graditelji (Bogosalić, Grubačević,
+        Bogojević, Radosalić). Michelozzo je u Dubrovniku boravio 1461.–1464. i započeo obnovu zidina:
+        visoke gotičke kvadratične kule, građene za obranu hladnim oružjem, opasao je niskim predziđem —
+        bastionima s terasama za topove. Na najistaknutijem vrhu zidina projektirao je Minčetu, kojoj je
+        konačni oblik dao Juraj Dalmatinac.</p></div>
+    <p>Uz njih: franjevački samostan s klaustrom i ljekarnom iz 1317., dominikanski samostan, Onofrijeve
+      česme (1438.), Lazareti na Pločama.</p>
+
+    <h3>Dubrovački ljetnikovci — treća originalna kreacija hrvatske renesanse</h3>
+    <p>Uz šibensku katedralu i trogirsku kapelu, ljetnikovci su treći hrvatski doprinos europskoj
+      renesansnoj arhitekturi — i, za razliku od prva dva, gotovo posve nepoznat izvan struke. Na
+      području Dubrovačke Republike bilo ih je oko osamdeset; grade se tijekom 15. i, osobito,
+      16. stoljeća.</p>
+  </div>
+
+  <figure class="fig-frame">
+    <svg viewBox="0 0 660 340" role="img" xmlns="http://www.w3.org/2000/svg"
+      aria-label="Tipološki tlocrt dubrovačkoga ljetnikovca: L oblik od višega stambenog krila s velikom salom i četiri sobe te nižega prizemnog krila s orsanom i terasom prema moru, uz vrt s odrinom i ribnjakom.">
+      <rect x="0" y="286" width="660" height="54" fill="currentColor" opacity=".07"/>
+      <line x1="0" y1="286" x2="660" y2="286" stroke="currentColor" stroke-width="1" opacity=".5"/>
+      <rect x="150" y="196" width="180" height="90" fill="none" stroke="currentColor" stroke-width="1.8"/>
+      <rect x="150" y="196" width="180" height="90" fill="currentColor" opacity=".05"/>
+      <path d="M196,286 L196,258 L252,258 L252,286" fill="none" stroke="currentColor" stroke-width="1.6" class="em-s"/>
+      <g stroke="currentColor" stroke-width=".9" opacity=".45">
+        <line x1="160" y1="206" x2="320" y2="206"/><line x1="160" y1="218" x2="320" y2="218"/>
+        <line x1="160" y1="230" x2="320" y2="230"/>
+      </g>
+      <rect x="330" y="88" width="150" height="198" fill="none" stroke="currentColor" stroke-width="1.8"/>
+      <rect x="352" y="150" width="106" height="74" fill="none" stroke="currentColor" stroke-width="1.5"/>
+      <g fill="none" stroke="currentColor" stroke-width="1.2">
+        <rect x="336" y="96" width="66" height="48"/><rect x="408" y="96" width="66" height="48"/>
+        <rect x="336" y="230" width="66" height="48"/><rect x="408" y="230" width="66" height="48"/>
+      </g>
+      <rect x="500" y="88" width="130" height="198" fill="none" stroke="currentColor" stroke-width="1.2" stroke-dasharray="5 4"/>
+      <g fill="none" stroke="currentColor" stroke-width="1.2">
+        <circle cx="520" cy="110" r="7"/><circle cx="556" cy="110" r="7"/><circle cx="592" cy="110" r="7"/>
+        <circle cx="520" cy="146" r="7"/><circle cx="556" cy="146" r="7"/><circle cx="592" cy="146" r="7"/>
+        <ellipse cx="565" cy="220" rx="42" ry="26"/>
+      </g>
+      <g font-size="11.5">
+        <text x="240" y="180" text-anchor="middle" class="em-f">prizemno gospodarsko krilo</text>
+        <text x="240" y="222" text-anchor="middle" font-size="10.5">terasa nad orsanom · pavijun</text>
+        <text x="224" y="304" text-anchor="middle" font-size="10.5" class="em-f">orsan</text>
+        <text x="600" y="306" text-anchor="end" font-size="10.5" opacity=".7">more</text>
+        <text x="405" y="80" text-anchor="middle" class="em-f">stambeno krilo — kat</text>
+        <text x="405" y="192" text-anchor="middle" font-size="11">sala</text>
+        <text x="369" y="124" text-anchor="middle" font-size="10">soba</text>
+        <text x="441" y="124" text-anchor="middle" font-size="10">soba</text>
+        <text x="369" y="258" text-anchor="middle" font-size="10">soba</text>
+        <text x="441" y="258" text-anchor="middle" font-size="10">soba</text>
+        <text x="565" y="80" text-anchor="middle" opacity=".8">vrt</text>
+        <text x="565" y="176" text-anchor="middle" font-size="10" opacity=".8">odrina na kamenim stupovima</text>
+        <text x="565" y="224" text-anchor="middle" font-size="10" opacity=".8">ribnjak</text>
+      </g>
+    </svg>
+    <figcaption><b>L-tlocrt: razlika u visini krila je razlika u namjeni.</b> Više stambeno krilo nosi
+      salu s po dvije sobe sa svake strane — raspored toliko prepoznatljiv da je ušao u venecijansku
+      poslovicu. Niže prizemno krilo pokriveno je terasom, a pod njom je orsan, spremište za čamac.
+      Vrt s odrinom i ribnjakom nije dodatak nego sastavni dio zamisli.
+      <span class="src">Shema: vlastita izrada za ovaj modul (CC BY-SA 4.0).</span></figcaption>
+  </figure>
+
+  <div class="col">
+    <p>Tipična obilježja:</p>
+    <ul>
+      <li><strong>L-tlocrt</strong> s dva krila različita formata, što izravno odražava razliku funkcija:
+        viša jednokatnica s krovištem za stanovanje i prizemni dio pokriven terasom za gospodarske
+        namjene — <strong>orsan</strong> (spremište za čamac), skladišta, cisterna za kišnicu. Terasa nad
+        orsanom služi kao produženi životni prostor u razini kata, često s natkritom sjenicom
+        (<strong>pavijun</strong>).</li>
+      <li><strong>Lože</strong> na katovima ili trijemovi u prizemlju — obilježje koje ih razlikuje od
+        sjevernotalijanskih vila, a približava južnotalijanskoj ladanjskoj kulturi.</li>
+      <li><strong>Vrt</strong> s odrinama, kamenim klupama, fontanama i ribnjakom kao sastavni, a ne
+        dodatni dio zamisli.</li>
+      <li><strong>Raspored na katu:</strong> središnja velika dvorana (<em>sala</em>), sa svake strane po
+        dvije sobe. Koliko je taj raspored bio prepoznatljiv, svjedoči venecijanski stih:
+        „<em>Quattro stanze un salon, ze la casa d’un Schiavon</em>” — „četiri sobe, jedan salon — to je
+        kuća Slovina (Hrvata)”.</li>
+    </ul>
+    <p><strong>Ljetnikovac Petra Sorkočevića na Lapadu</strong> (1521.), u gruškoj luci, jest
+      najrazvedeniji i najbolje sačuvan; danas je u njemu Zavod HAZU. Uobičajeni L-tlocrt ovdje je
+      razrađen u četiri krila u dva L-sustava: dva uokviruju ribnjak i otvaraju se trijemom na perivoj,
+      druga dva patio na drugoj strani.</p>
+    <div class="note"><span class="lbl">Zašto je to europski značajno</span>
+      <p>Asimetričnost Sorkočevićeva ljetnikovca prividno je antirenesansna, jer je simetrija formalno
+        načelo renesansne arhitekture. Ali odstupanje je posljedica projektiranja prema potrebi
+        korisnika — riječ je o <strong>funkcionalnoj asimetriji</strong>, oblikovanju iznutra prema van,
+        dinamičkoj umjesto formalnoj ravnoteži. Takvo rješenje nema odjeka u europskoj arhitekturi sve do
+        modernoga doba. Datum gradnje pritom se poklapa s trenutkom klasične renesanse u Italiji.</p></div>
+    <p><strong>Ostali:</strong> Skočibuhini na Šipanu (1560.–1580.), pjesnički ljetnikovci na Hvaru
+      (Lucić, Hektorović) i Visu (Gazarović), prigradski Pucićev i Betondićev kraj Dubrovnika.</p>
+  </div>
+
+  <figure>
+    <img src="img/modul1/sorkocevic.jpg" alt="Prigradski ljetnikovac Pucić kraj Dubrovnika s vrtom i kamenim stupovima odrine">
+    <figcaption><b>Ljetnikovac Pucić</b> kraj Dubrovnika — vrt s odrinom na kamenim stupovima nije
+      dodatak nego sastavni dio zamisli. Najrazvedeniji je i najbolje sačuvan primjer tipa
+      ljetnikovac Petra Sorkočevića na Lapadu (1521.), danas Zavod HAZU.<span class="src">Foto: Sopina Ana · <a href="https://commons.wikimedia.org/wiki/File:Ljetnikovac_Puci%C4%87_-_Kosor_Dubrovnik_RST-1726_1.jpg">Ljetnikovac Pucić - Kosor Dubrovnik RST-1726 1</a>, Wikimedia Commons · <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a></span></figcaption>
+  </figure>
+
+  <div class="col">
+    <h3>Renesansa sjeverne Hrvatske — fortifikacija umjesto palače</h3>
+    <p>Specifičnost hrvatske baštine 16. stoljeća prema europskoj jest <strong>podjela zadataka po
+      regijama</strong>. Povijesna je nužnost umjesto univerzalnosti nametnula podvojenost: profana i
+      sakralna arhitektura razvijaju se u Dalmaciji, a fortifikacijska u sjevernoj Hrvatskoj. Zemlja je
+      svedena na trećinu nekadašnjega teritorija i u trajnom je ratu stotinu godina — od Krbave 1493. do
+      Siska 1593. (vidi K1, modul 3).</p>
+    <div class="tbl"><table>
+      <thead><tr><th>Građevina</th><th>Podaci</th></tr></thead>
+      <tbody>
+        <tr><td>Karlovac (1579.) — renesansni „idealni grad”</td>
+          <td>Pravilan šesterokut s trokutnim bastionima koji tvore šestokraku zvijezdu; utemeljio ga nadvojvoda Karlo na posjedu Zrinskih; gradio Matija Gambon. Stajao je 845.000 forinti, a financirali su ga gotovo svi europski vladari. Za razliku od radijalne Palmanove (petnaestak godina mlađe), unutar šesterokuta je pravokutni raster ulica s pravokutnim trgom u sredini. Šančevi su 1886. pretvoreni u perivoje, ali je „zvijezda” zadržana do danas</td></tr>
+        <tr><td>Veliki Tabor</td>
+          <td>Originalni ovalni oblik s pet velikih polukružnih kula; građen za obitelj Ratkaj početkom 16. st.; dvorište rastvoreno polukružnim arkadama s toskanskim stupovima na dva kata</td></tr>
+        <tr><td>Kaptolska tvrđa u Zagrebu (1513.–1521.)</td>
+          <td>Visoki zid s pet okruglih kula oko nedovršene katedrale — renesansa koja se u Zagrebu izražava fortifikacijom</td></tr>
+        <tr><td>Sedam Kaštela</td>
+          <td>Utvrđena sela između Splita i Trogira, građena tijekom 15. i 16. st.; nazvana po kaštelima feudalaca</td></tr>
+        <tr><td>Michele Sanmicheli</td>
+          <td>Kopnena vrata u Zadru (1543.) i tvrđava sv. Nikole pred Šibenikom (1547.)</td></tr>
+      </tbody>
+    </table></div>
+    <p>Uz njih: Čakovec, Trakošćan, obnova Medvedgrada (J. Arkonati, 1574.) i Nehaj-grad kraj Senja (1558.).</p>
+  </div>
+
+  <div class="duo">
+    <figure><img src="img/modul1/karlovac.jpg" alt="Zvijezda, renesansni šesterokutni tlocrt Karlovca iz zraka">
+      <figcaption><b>Karlovac</b>, 1579. — šesterokut s trokutnim bastionima; unutar zvijezde
+        pravokutni raster ulica s trgom u sredini.<span class="src">Foto: Bukovacka · <a href="https://commons.wikimedia.org/wiki/File:Karlova%C4%8Dka_zvijezda-_Izvor-_Digitalni_Tisak.jpg">Karlovačka zvijezda- Izvor- Digitalni Tisak</a>, Wikimedia Commons · <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a></span></figcaption></figure>
+    <figure><img src="img/modul1/sv_nikola_sibenik.jpg" alt="Tvrđava svetog Nikole pred Šibenikom">
+      <figcaption><b>Tvrđava sv. Nikole</b>, Šibenik, 1547. — Michele Sanmicheli; dio UNESCO-ova upisa
+        venecijanskih obrambenih sustava (2017.).<span class="src">Foto: Hegor · <a href="https://commons.wikimedia.org/wiki/File:Saint-Nicholas_Fortress_in_%C5%A0ibenik4.JPG">Saint-Nicholas Fortress in Šibenik4</a>, Wikimedia Commons · <a href="https://creativecommons.org/licenses/by-sa/3.0">CC BY-SA 3.0</a></span></figcaption></figure>
+  </div>
+
+  <div class="col">
+    <h3>Ostali renesansni spomenici</h3>
+    <p><strong>Hvar</strong> — Arsenal s kazalištem iz 1612., jednim od najstarijih komunalnih kazališnih
+      prostora u Europi; <strong>Korčula</strong>; <strong>Šibenik</strong> — tvrđava sv. Nikole na ulazu
+      u kanal sv. Ante, dio UNESCO-ova upisa „Venecijanski obrambeni sustavi 16. i 17. stoljeća” (2017.),
+      zajedno sa zadarskim sustavom obrane s kopnenim vratima.</p>
+  </div>
+</section>
+
+<section id="s15">
+  <div class="sect-head"><span class="sect-num">1.5</span><h2>Barok i rokoko (17.–18. stoljeće)</h2></div>
+  <div class="col">
+    <h3>Promjena težišta — jedna rečenica koja objašnjava cijelo razdoblje</h3>
+    <p>Najvažnija promjena baroknih stoljeća nije stilska nego <strong>zemljopisna</strong>: dok na obali
+      postupno nastupa regresija, na sjeveru — nakon stravičnoga uništavanja u 16. stoljeću — počinje
+      obnova. Karlovački mir 1699. označuje novu granicu, a sjever se gospodarski, kulturno i umjetnički
+      oporavlja sve jačim intenzitetom.</p>
+    <p>Politička podjela određuje i umjetničke tokove: uski obalni pojas (osim Dubrovačke Republike) drži
+      Venecija, pa ondje dominiraju mletački utjecaji; kontinentalna Hrvatska u habsburškom je okviru, pa
+      ondje dominira srednjoeuropska umjetnost.</p>
+    <div class="note"><span class="lbl">Posljedica za imena</span>
+      <p>U 17. stoljeću u sjevernoj Hrvatskoj gotovo nema domaćih imena među projektantima, kiparima,
+        slikarima, štukaterima i rezbarima — to su najčešće Talijani i Austrijanci, uz Slovence.
+        Autohtone vrijednosti toga doba zato nisu pojedinačna djela nego <strong>cjeline</strong>: urbani
+        ambijenti, trgovi, ulični prospekti, dvorci s perivojima, crkve s cinktorima.</p></div>
+    <div class="note method"><span class="lbl">Metodička napomena</span>
+      <p>Po totalnoj intervenciji u prostoru barok je, unatoč formalnim suprotnostima, najsrodniji
+        rimskoj antici: nastoji prožeti cijeli čovjekov okoliš jedinstvenim duhom — od perivoja iza
+        dvorca, preko slikovito vođenih cesta, kapelica i pilova u pejzažu i drvoreda, do srebrnoga
+        posuđa na stolu. To je najbolji okvir za barokni dio programa: <strong>ne obilazimo zgrade, nego
+        uređeni svijet</strong>.</p></div>
+
+    <h4>Podatak koji vrijedi zapamtiti: veličine gradova u baroku</h4>
+    <div class="tbl"><table>
+      <thead><tr><th>Grad</th><th>Stanovnika (18. st.)</th></tr></thead>
+      <tbody>
+        <tr><td>Dubrovnik</td><td>oko 20.000</td></tr>
+        <tr><td>Split</td><td>oko 12.000</td></tr>
+        <tr><td>Zagreb</td><td>oko 7.000</td></tr>
+        <tr><td>Varaždin</td><td>oko 5.000</td></tr>
+      </tbody>
+    </table></div>
+    <p>Odnos je, dakle, tri do četiri puta u korist juga — suprotno današnjoj slici. To je najbrži način
+      da se gostu objasni zašto Dubrovnik ima baroknu katedralu, a Zagreb je barok dočekao kao gradić.</p>
+
+    <h3>Isusovci i ranobarokna arhitektura</h3>
+    <p>Kao što su ranu romaniku širili benediktinci, a ranu gotiku prosjački redovi, ranobarokni tip crkve
+      šire <strong>isusovci</strong>, prema matičnoj rimskoj crkvi <em>Il Gesù</em>: monumentalni
+      jednobrodni prostor s kupolom pred svetištem, bačvasti svod sa susvodnicama, dva niza bočnih kapela
+      orijentiranih prema brodu, unutrašnjost raščlanjena pilastrima i snažnim vijencem, bogata
+      štuko-dekoracija i iluzionističke freske.</p>
+    <p>Uz crkvu redovito ide i <strong>kolegij</strong> — učilište namijenjeno plemstvu, iz kojega se
+      razvija visoko školstvo. Najznačajniji su projekti početkom 17. stoljeća u Zagrebu i Rijeci, a
+      krajem stoljeća u Dubrovniku.</p>
+    <p><strong>Crkva sv. Katarine u Zagrebu</strong> projektirana je u duhu srednjoeuropskoga ranog
+      baroka (H. Alberthal) i najmonumentalniji je spomenik isusovačke arhitekture u sjevernoj Hrvatskoj:</p>
+    <ul>
+      <li>štuko-dekoracija stropa A. Quadrija (1721.);</li>
+      <li>freskirani proboji G. Quaglia koji otvaraju pogled u nebeske visine;</li>
+      <li>monumentalna iluzionistička freska A. Jelovšeka (1762.) iza glavnog oltara, s dubokom
+        perspektivom naslikane arhitekture;</li>
+      <li>raskošni mramorni oltar u svakoj od šest kapela, među njima osobito kvalitetan oltar
+        Francesca Robbe;</li>
+      <li>jezuitski kolegij (1641.) uz crkvu, još kasnorenesansan.</li>
+    </ul>
+  </div>
+
+  <figure>
+    <img class="fit" src="img/modul1/sv_katarina.jpg" alt="Unutrašnjost crkve svete Katarine u Zagrebu sa štuko-dekoracijom">
+    <figcaption><b>Sv. Katarina</b>, Zagreb — najmonumentalniji spomenik isusovačke arhitekture u
+      sjevernoj Hrvatskoj; štukature A. Quadrija (1721.) i iluzionistička freska A. Jelovšeka
+      (1762.).<span class="src">Foto: Nxr-at · <a href="https://commons.wikimedia.org/wiki/File:Interior_Church_of_St_Catherine_in_Zagreb_05.jpg">Interior Church of St Catherine in Zagreb 05</a>, Wikimedia Commons · <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a></span></figcaption>
+  </figure>
+
+  <div class="col">
+    <h3>Barokizacija — regionalna pojava sjeverne Hrvatske</h3>
+    <p>Specifičan postupak 17. stoljeća: jednobrodnoj gotičkoj crkvi s poligonalnim svetištem prigrađuje
+      se po jedna kapela sa sjeverne i južne strane broda. Time se povećava obujam, dobivaju dva nova
+      oltara, a — osobito kad su kapele polukružne — novi tlocrt odgovara temeljnim načelima baroknoga
+      oblikovanja: križni raspored umjesto uzdužne usmjerenosti naglašava centripetalni karakter prostora.</p>
+  </div>
+
+  <figure class="fig-frame">
+    <svg viewBox="0 0 660 240" role="img" xmlns="http://www.w3.org/2000/svg"
+      aria-label="Shema barokizacije: gotičkoj jednobrodnoj crkvi s poligonalnim svetištem u 17. stoljeću prigrađuju se dvije polukružne bočne kapele, čime uzdužni tlocrt postaje križni.">
+      <g fill="none" stroke="currentColor" stroke-width="1.8">
+        <rect x="70" y="86" width="140" height="68"/>
+        <polygon points="210,86 246,102 246,138 210,154"/>
+      </g>
+      <g fill="none" stroke="currentColor" stroke-width="1.8">
+        <rect x="404" y="86" width="140" height="68"/>
+        <polygon points="544,86 580,102 580,138 544,154"/>
+      </g>
+      <g fill="none" stroke="currentColor" stroke-width="2" class="em-s">
+        <path d="M444,86 A30,30 0 0 1 504,86"/>
+        <path d="M444,154 A30,30 0 0 0 504,154"/>
+      </g>
+      <g stroke="currentColor" stroke-width="1.6" fill="none">
+        <line x1="288" y1="120" x2="352" y2="120"/>
+        <polygon points="352,120 342,115 342,125" fill="currentColor" stroke="none"/>
+      </g>
+      <g font-size="11.5" text-anchor="middle">
+        <text x="158" y="184" class="em-f" font-size="12.5">gotička jednobrodna crkva</text>
+        <text x="158" y="200" opacity=".8">uzdužna usmjerenost</text>
+        <text x="492" y="184" class="em-f" font-size="12.5">nakon barokizacije</text>
+        <text x="492" y="200" opacity=".8">križni raspored, centripetalni prostor</text>
+        <text x="320" y="110" font-size="10.5" opacity=".8">17. st.</text>
+        <text x="474" y="48" font-size="10.5" class="em-f">nove kapele</text>
+      </g>
+      <text x="228" y="76" font-size="10" text-anchor="middle" opacity=".7">poligonalno svetište</text>
+    </svg>
+    <figcaption><b>Barokizacija u dva poteza.</b> Dodaju se samo dvije kapele — ali tlocrt prelazi iz
+      uzdužnoga u križni, prostor iz usmjerenoga u centripetalni, a crkva dobiva dva nova oltara.
+      Zato tolike „barokne” crkve sjeverne Hrvatske iznutra imaju gotičko svetište sa zvjezdastim svodom.
+      <span class="src">Shema: vlastita izrada za ovaj modul (CC BY-SA 4.0).</span></figcaption>
+  </figure>
+
+  <div class="col">
+    <p><strong>Primjeri:</strong> Taborsko, Zajezda, Remetinec, Pozorje; Lepoglava je u 17. stoljeću
+      asimetrično proširena dvjema kapelama, a zatim joj je produžena lađa.</p>
+    <div class="note"><span class="lbl">Iz prakse vođenja</span>
+      <p>Barokizacija je razlog zbog kojega tolike „barokne” crkve sjeverne Hrvatske iznutra imaju
+        gotičko svetište sa zvjezdastim svodom. To nije nedosljednost nego čitljiv slijed: gost koji
+        nauči podignuti pogled prema svetištu vidjet će ispod baroknoga sloja stariju crkvu.</p></div>
+
+    <h3>Barokni Dubrovnik — obnova nakon 1667.</h3>
+    <p>Katastrofalni potres 1667. potaknuo je u posljednjoj četvrtini stoljeća iznimno živu graditeljsku
+      djelatnost u već potpuno izgrađenom renesansnom gradu. Ta obnova znači urbanistički preobražaj, i
+      po dometu još jednom, posljednji put, postavlja Dubrovnik na vrh hrvatske spomeničke baštine. Za
+      razliku od renesanse, koju ostvaruju domaći majstori, u baroknoj je obnovi udio talijanskih
+      graditelja velik.</p>
+    <div class="tbl"><table>
+      <thead><tr><th>Građevina</th><th>Autor i datacija</th></tr></thead>
+      <tbody>
+        <tr><td>Nova katedrala</td><td>Podignuta na podnožju romaničke; trobrodna, s upisanim transeptom i visokom kupolom nad križištem</td></tr>
+        <tr><td>Isusovačka crkva</td><td>Ignazio Pozzo, 1699.–1725.; graditelj i slikar isusovačkih crkava u Rimu (S. Ignazio), Beču i Bellunu. Zaobljena apsida u kojoj se arhitektura i oltar stapaju u jedno, s iluzionističkom freskom iznad — primjer baroknoga cjelovitog umjetničkog djela</td></tr>
+        <tr><td>Crkva sv. Vlaha</td><td>M. Gropelli, 1706.–1715.; na spoju Place i prostora Pred dvorom; raščlanjeno pročelje povezuje se s trgom stubištem i povišenom terasom nalik pozornici</td></tr>
+        <tr><td>Skalinada isusovačkoga kompleksa</td><td>P. Passalacqua, projekt 1735., po uzoru na rimsku <em>Scalu di Spagna</em> (1726.); konveksno-konkavni obrisi, ograde i odmorišta — najmonumentalniji barokni urbanistički zahvat na istočnoj jadranskoj obali</td></tr>
+      </tbody>
+    </table></div>
+    <p>Time je u prvoj četvrtini 18. stoljeća dovršena preobrazba jugoistočne jezgre Dubrovnika, koja je
+      dobila barokni karakter zadržan do danas.</p>
+  </div>
+
+  <div class="duo">
+    <figure><img class="fit" src="img/modul1/sv_vlaho.jpg" alt="Crkva svetog Vlaha u Dubrovniku">
+      <figcaption><b>Crkva sv. Vlaha</b>, Dubrovnik, 1706.–1715. — M. Gropelli; pročelje se stubištem i
+        povišenom terasom povezuje s trgom nalik pozornici.<span class="src">Foto: Martin Falbisoner · <a href="https://commons.wikimedia.org/wiki/File:Saint_Blaise%27s_Church,_Dubrovnik_-_September_2017.jpg">Saint Blaise&#x27;s Church, Dubrovnik - September 2017</a>, Wikimedia Commons · <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a></span></figcaption></figure>
+    <figure><img src="img/modul1/isus_skalinada.jpg" alt="Isusovačka crkva svetog Ignacija u Dubrovniku iznad grada">
+      <figcaption><b>Isusovačka crkva sv. Ignacija</b>, Dubrovnik, 1699.–1725., Ignazio Pozzo. Do nje
+        vodi skalinada P. Passalacque (projekt 1735.) po uzoru na rimsku <em>Scalu di
+        Spagna</em>.<span class="src">Foto: Bernard Gagnon · <a href="https://commons.wikimedia.org/wiki/File:Saint_Ignatius_Church_(Dubrovnik)_02.jpg">Saint Ignatius Church (Dubrovnik) 02</a>, Wikimedia Commons · <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a></span></figcaption></figure>
+  </div>
+
+  <div class="col">
+    <h3>Barokni gradovi sjevera</h3>
+    <ul>
+      <li><strong>Varaždin</strong> — najcjelovitije barokno gradsko središte u Hrvatskoj; Stari grad
+        (utvrda s renesansnom jezgrom), palače Patačić, Sermage, Drašković, isusovačka crkva, gradska
+        vijećnica. Od 1767. do 1776. u Varaždinu je zasjedalo Hrvatsko kraljevsko vijeće, pa je grad u
+        tom razdoblju bio političko-upravno središte Hrvatske; nakon razornog požara 1776. vijeće seli u
+        Zagreb.</li>
+      <li><strong>Osijek — Tvrđa</strong> — monumentalna tvrđava po projektu vojnoga inženjera
+        Maksimilijana de Goseaua (1712.–1721.), jedan od najbolje očuvanih baroknih vojnih kompleksa u
+        Europi; ujednačena vojna arhitektura 18. stoljeća oko glavnoga trga. Postrance od Tvrđe razvijaju
+        se Gornji grad, Donji grad i Retfala budućega jedinstvenog Osijeka.</li>
+      <li><strong>Bjelovar</strong> (utemeljen 1756.) — najbolje sačuvan primjer vojno planiranoga grada:
+        ortogonalni sustav ulica, kvadratični blokovi i središnji trg koji zauzima površinu četiriju
+        inzula. Odmah je podignuto pedesetak vojnih zgrada, ali se u dvadesetak godina razvio u
+        građanski, obrtničko-trgovački organizam.</li>
+      <li><strong>Požega</strong> (urbana cjelovitost trga), Đakovo, Vukovar (dvorac Eltz), Ilok (dvorac
+        Odescalchi), Karlovac (barokna dogradnja unutar zvjezdastoga tlocrta), Nova Gradiška.</li>
+      <li><strong>Zagreb — Gornji grad:</strong> crkva sv. Katarine, Jezuitski trg, barokne palače; crkva
+        sv. Franje Ksaverskog (1752.) u koju isusovci uvode veliku kupolu s lanternom, uz valovito
+        pročelje i pristupnu skalinadu sa skulpturama kalvarije i drvoredom.</li>
+    </ul>
+  </div>
+
+  <div class="duo">
+    <figure><img src="img/modul1/osijek_tvrdja.jpg" alt="Glavni trg osječke Tvrđe s kužnim pilom">
+      <figcaption><b>Tvrđa</b>, Osijek, 1712.–1721. — Trg sv. Trojstva s ujednačenom vojnom arhitekturom
+        18. stoljeća; jedan od najbolje očuvanih baroknih vojnih kompleksa u
+        Europi.<span class="src">Foto: Ciocolli · <a href="https://commons.wikimedia.org/wiki/File:Osijek,_Trg_sv._Trojstva_u_Tvr%C4%91i.jpg">Osijek, Trg sv. Trojstva u Tvrđi</a>, Wikimedia Commons · <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a></span></figcaption></figure>
+    <figure><img src="img/modul1/varazdin.jpg" alt="Barokna jezgra Varaždina">
+      <figcaption><b>Varaždin</b> — najcjelovitije barokno gradsko središte u Hrvatskoj; 1767.–1776.
+        političko-upravno središte zemlje.<span class="src">Foto: Ptrnc7965 · <a href="https://commons.wikimedia.org/wiki/File:Vara%C5%BEdin_Center_Croatia_2025.jpg">Varaždin Center Croatia 2025</a>, Wikimedia Commons · <a href="http://creativecommons.org/publicdomain/zero/1.0/deed.en">CC0</a></span></figcaption></figure>
+  </div>
+
+  <div class="col">
+    <div class="note"><span class="lbl">Pil — barokni javni spomenik</span>
+      <p>Tipična barokna intervencija u gradskom prostoru jest <strong>pil</strong>: stup sa
+        slobodnostojećom skulpturom na vrhu. Najmonumentalniji su „kužni pilovi”, podignuti u znak
+        zahvalnosti nakon haranja kuge — u Osijeku (1730., proširen 1784.) i Slavonskoj Požegi (1749.,
+        rad S. Graničija); oba su složene grupne kompozicije sa Sv. Trojstvom na vrhu i četiri zaštitnika
+        protiv kuge oko podnožja. Mnogi su pilovi uništeni ili uklonjeni, ali ih nalazimo i u Prelogu,
+        Zagrebu i drugdje.</p></div>
+    <div class="note method"><span class="lbl">Dva zvonika na glavnom trgu</span>
+      <p>Nakon edikta o vjerskoj toleranciji Josipa II. (1781.) u krajiškim se gradovima uz katoličke
+        redovito podižu i pravoslavne crkve, pa dvije dominante zvonika na glavnom trgu postaju
+        prepoznatljivo obilježje: Bjelovar (sv. Terezija 1763., pravoslavna Sv. Duha 1792.), Karlovac
+        (Sv. Nikola, arh. Štiler, 1786.), Vinkovci, Petrinja. Za vodiča je to izravna, na terenu vidljiva
+        posljedica jedne zakonske odluke — i poveznica s modulom 3 kolegija K1.</p></div>
+
+    <h3>Sakralni barok, cinktori i hodočasničke crkve</h3>
+    <p><strong>Cinktor</strong> je ozidani prostor oko hodočasničke crkve, iznutra raščlanjen arkadama,
+      namijenjen okupljanju mnoštva. To je jedan od najprepoznatljivijih oblika hrvatskoga baroka.</p>
+    <ul>
+      <li><strong>Crkva sv. Marije Jeruzalemske na Trškom Vrhu</strong> kod Krapine (1750.), djelo
+        domaćega graditelja Josipa Javornika — po cjelovitosti, pokrenutosti i slikovitosti možda
+        najsavršeniji barokni sakralni sklop u Hrvatskoj. Tlocrt crkve živo je razveden konkavnim i
+        konveksnim obrisom; okrugle kule s metalnim kapama u obliku lukovica na četirima uglovima
+        oktogonalnoga dvorišta izvana sugeriraju utvrdu, a iznutra se cinktor rastvara arkadama
+        segmentnih lukova s oslikanim trijemom.</li>
+      <li><strong>Crkva sv. Marije Snježne, Belec</strong> — vrhunac hrvatskoga baroknog interijera:
+        cjelovito iluzionistički oslikana unutrašnjost s raskošnim oltarima, pjevalištem i
+        propovjedaonicom. Golemi glavni oltar, preplavljen skulpturama, potpuno negira apsidu i nameće se
+        kao prostorno tijelo, dok postrani oltari popunjavaju uglove i, rastući do svoda, unutar
+        pravokutnoga broda oblikuju ovalni pokrenuti prostor.</li>
+      <li><strong>Crkva sv. Jurja na Bregu u Lopatincu</strong> (1756.), s cinktorom, ugaonim kulama i
+        portalom s volutnim zabatom (1779.); cinktore imaju i proštenjarske crkve u Belcu, Mariji
+        Gorskoj, Vinagori, Mariji Bistrici, Ludbregu i Kominu.</li>
+      <li><strong>Crkva sv. Marije Magdalene u Selima kraj Siska</strong> (1765.) — derivat bečkoga
+        rokokoa i maksimum razvedenosti: u tlocrtu uzdužna elipsa s poprečno postavljenim predvorjem među
+        tornjevima; konveksnost središnjega dijela kontrapunktira konkavitetu vitkih tornjeva.</li>
+      <li><strong>Marija Bistrica</strong> — nacionalno svetište; <strong>Lepoglava</strong> (pavlinski
+        samostan i crkva, središte pavlinske kulture i školstva).</li>
+      <li><strong>Barokni oltari i orgulje</strong> — bogata drvorezbarska tradicija sjeverne Hrvatske.</li>
+    </ul>
+    <p><strong>Intenzitet gradnje.</strong> U 18. stoljeću u sjevernoj se Hrvatskoj gradi po pedesetak
+      novih crkava u jednom desetljeću. Taj podatak sam po sebi objašnjava zašto je barok ondje dominantan
+      stil urbane i ruralne slike.</p>
+  </div>
+
+  <div class="duo">
+    <figure><img class="fit" src="img/modul1/trski_vrh.jpg" alt="Oslikana unutrašnjost crkve svete Marije Jeruzalemske na Trškom Vrhu">
+      <figcaption><b>Trški Vrh</b> kod Krapine, 1750. — cjelovito oslikana unutrašnjost. Izvana sklop
+        djeluje kao utvrda: cinktor s okruglim ugaonim kulama i lukovičastim kapama zatvara
+        oktogonalno dvorište.<span class="src">Foto: Noel.guillet · <a href="https://commons.wikimedia.org/wiki/File:Krapina,_%C3%A9glise_de_Tr%C5%A1ki_Vrh,_14_mai_2023,_vue_d%27ensemble.jpg">Krapina, église de Trški Vrh, 14 mai 2023, vue d&#x27;ensemble</a>, Wikimedia Commons · <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a></span></figcaption></figure>
+    <figure><img src="img/modul1/belec.jpg" alt="Crkva svete Marije Snježne u Belcu, vanjski pogled">
+      <figcaption><b>Sv. Marija Snježna, Belec</b> — izvana skromna seoska crkva. Unutrašnjost je
+        vrhunac hrvatskoga baroknog interijera: oltari rastu do svoda i unutar pravokutnoga broda
+        oblikuju ovalni prostor.<span class="src">Foto: Rosier-HR · <a href="https://commons.wikimedia.org/wiki/File:Church_of_Our_Lady_of_Snows_in_Belec,_Croatia_-_exterior.jpg">Church of Our Lady of Snows in Belec, Croatia - exterior</a>, Wikimedia Commons · <a href="https://creativecommons.org/licenses/by-sa/3.0">CC BY-SA 3.0</a></span></figcaption></figure>
+  </div>
+
+  <div class="col">
+    <h3>Drvene seoske crkve — posebno poglavlje</h3>
+    <p>Sačuvano ih je četrdesetak, a po izvorima se zna da su nekoć bile znatno brojnije i da su bitno
+      obilježavale ambijente šumovitih sjevernih krajeva. Pokrivene su šindrom, koja je na lukovicama
+      zvonika nekoć bila i crveno obojena. Izrazitije baroknoga karaktera je njihova unutrašnjost:
+      polikromirani drveni oltari, oslikani tabulati i zidovi — Velika Mlaka, Lijeva Štefanki,
+      Goljak-Bencetić.</p>
+    <div class="note"><span class="lbl">Iz prakse vođenja</span>
+      <p>Drvene crkve najosjetljiviji su dio hrvatske barokne baštine i najrjeđe se nalaze na turističkim
+        rutama. Za goste zainteresirane za tradicijsko graditeljstvo (Modul 6) one su spona između
+        „velike” umjetnosti i pučke kulture — ali zahtijevaju najavu, dogovoreni pristup i posebnu pažnju
+        prema mikroklimi; velike skupine u malom drvenom prostoru izravno ubrzavaju propadanje.</p></div>
+  </div>
+
+  <figure>
+    <img src="img/modul1/velika_mlaka.jpg" alt="Drvena kapela svete Barbare u Velikoj Mlaki">
+    <figcaption><b>Velika Mlaka</b> — drvena crkva pokrivena šindrom; unutrašnjost s polikromiranim
+      oltarima i oslikanim tabulatima izrazitije je baroknoga karaktera od
+      vanjštine.<span class="src">Foto: Slavko Stepanić · <a href="https://commons.wikimedia.org/wiki/File:Velika_mlaka_sv_barbara.jpg">Velika mlaka sv barbara</a>, Wikimedia Commons · <a href="https://creativecommons.org/licenses/by-sa/3.0">CC BY-SA 3.0</a></span></figcaption>
+  </figure>
+
+  <div class="col">
+    <h3>Dvorac s perivojem — specifična tema baroka</h3>
+    <p>Sačuvano je tridesetak dvoraca hrvatskoga plemstva. Razvojni slijed koji polaznik treba znati:</p>
+    <div class="tbl"><table>
+      <thead><tr><th>Tip</th><th>Primjeri</th></tr></thead>
+      <tbody>
+        <tr><td>Jednokrilni, s tipično baroknim monumentalnim krovištem izjednačenim s visinom zgrade</td>
+            <td>Gornja Bedekovčina (1750.) — prototip niza zagorskih dvoraca druge polovice 18. st.</td></tr>
+        <tr><td>Trokrilni otvoreni (U-tlocrt) u parku, po uzoru na Versailles</td>
+            <td>Zajezda (poslije 1740.) — najraniji trokrilni; Vojković u Donjem Oroslavlju, Lužnica, Brezovica</td></tr>
+        <tr><td>Zreli trokrilni s ovalnom dvoranom</td>
+            <td>Oršić u Gornjoj Bistri (1773.) — jezgra naglašena ovalnom dvoranom koja volumenski istupa iz pročelja i zadire u krovište; pristupna aleja grabova; utjecaj bečkoga rokokoa. Janković u Daruvaru — razigrano pročelje, lomljeno krovište, dvokrako reprezentativno stubište</td></tr>
+        <tr><td>Gradski dvorac</td>
+            <td>Eltz u Vukovaru — okrenut sporednom stranom prema ulici, glavnim pročeljem prema parku i Dunavu</td></tr>
+        <tr><td>Najveće barokno zdanje</td>
+            <td>Odescalchi u Iloku (1793.), dvokatni, s vanjskim stubištem i tri etaže arkada prema dvorištu</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+
+  <figure>
+    <img src="img/modul1/dvorac_eltz.jpg" alt="Dvorac Eltz u Vukovaru">
+    <figcaption><b>Dvorac Eltz</b>, Vukovar — gradski dvorac okrenut sporednom stranom prema ulici, a
+      glavnim pročeljem prema parku i Dunavu.<span class="src">Foto: Pudelek · <a href="https://commons.wikimedia.org/wiki/File:Manor_Eltz,_Vukovar,_Croatia.jpg">Manor Eltz, Vukovar, Croatia</a>, Wikimedia Commons · <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a></span></figcaption>
+  </figure>
+</section>
+
+<section id="s16">
+  <div class="sect-head"><span class="sect-num">1.6</span><h2>Historicizam, secesija i moderna</h2></div>
+  <div class="col">
+    <h3>Okvir 19. stoljeća</h3>
+    <p>Devetnaesto se stoljeće u Hrvatskoj može omeđiti od pada Venecije (1797.) do raspada
+      Austro-Ugarske (1918.). Dvije okolnosti oblikuju arhitekturu:</p>
+    <ol>
+      <li><strong>Premještanje težišta na sjever.</strong> Ukidanje Dubrovačke Republike 1808. simbolički
+        dokida duhovno vodstvo jadranskoga kruga; žarište političkoga, znanstvenog i umjetničkog života
+        seli u Zagreb, koji se do početka 19. stoljeća povećao više od osam puta.</li>
+      <li><strong>Spora evolucija umjesto industrijske revolucije.</strong> U Hrvatskoj nema pritiska
+        industrijske izgradnje ni naglog porasta prometa, pa su gradovi mogli mirno probirati iskustva
+        europskoga urbanizma, a da ne budu pritisnuti prometnim kaosom, divljom izgradnjom i zagađenjem.
+        Gospodarska nerazvijenost ovdje je, iznimno, bila prednost — teza koju vodič može iznijeti kao
+        jednu od najzanimljivijih u cijelom modulu.</li>
+    </ol>
+    <p><strong>Regionalna središta:</strong> Rijeka (prva željeznica do mora 1873.), Pula (glavna luka
+      austrijske ratne mornarice), Zadar (administrativno središte Dalmacije), uz njih Split, Šibenik,
+      Sisak, Varaždin, Osijek, Vinkovci, Slavonski Brod.</p>
+
+    <h3>Zeleni grad — rušenje utvrda i nastanak perivoja</h3>
+    <p>Zajednička pojava na sjeveru i jugu: ruše se srednjovjekovna i renesansna gradska vrata, zidine i
+      kule te barokne tvrđave. Poticaj nije toliko širenje grada koliko „zdravstveni” (higijenski)
+      razlozi — dokidanje vlage, pripuštanje sunca. Šančevi postaju travnjaci, bastioni perivoji s
+      pješačkim stazama i klupama: tako su preuređeni bastionski obruči Zadra, Šibenika, Splita,
+      Karlovca, Osijeka i Varaždina.</p>
+    <p><strong>Maksimir</strong> je najveći pejzažni pothvat u Hrvatskoj. Biskupska šuma Jurjaves
+      pretvorena je u golem javni park: započet u klasicističkom duhu za biskupa Maksimilijana Vrhovca
+      (otuda ime) kao francuski park s velikom alejom 1812., razvijen je i dovršen u duhu romantizma kao
+      slobodni engleski perivoj (projekt P. Riedla) — s brežuljcima, slikovitim skupinama drveća,
+      jezerima, zavojitim stazama, ali s klasicističkom vrtnom arhitekturom (ljetnikovac, vidikovac,
+      paviljoni arhitekta F. Schüchta). Otvoren 1843., <strong>prvi je javni perivoj u jugoistočnoj
+      Europi</strong>.</p>
+    <p>Podno Kaptola biskupski su ribnjaci isušeni i pretvoreni u engleski park po projektu bečkoga
+      arhitekta L. Klingspögla (1830.).</p>
+
+    <h3>Historicizam (druga polovica 19. stoljeća)</h3>
+    <p>Nakon potresa 1880. Zagreb se gradi kao moderan srednjoeuropski grad. Ključne osobe:</p>
+    <ul>
+      <li><strong>Herman Bollé</strong> — obnova zagrebačke katedrale (1880.–1902.), groblje
+        <strong>Mirogoj</strong> (od 1876.) s pola kilometra dugim neorenesansnim arkadama i dvadeset
+        kupola — urbanistička „kruna grada” i jedan od najvećih projekata europskoga historicizma uopće;
+        Muzej za umjetnost i obrt u stilu njemačke renesanse (1891.); zgrada Odjela za bogoštovlje i
+        nastavu (Opatička 10, 1895.) — vidi Modul 2.</li>
+      <li><strong>Milan Lenuci</strong> — urbanist; „Lenucijeva potkova” (1865.–1887.), niz trgova i
+        perivoja u obliku slova U koji povezuje HNK, Botanički vrt i Zrinjevac.</li>
+      <li><strong>Ferdinand Fellner i Hermann Helmer</strong> — Hrvatsko narodno kazalište u Zagrebu
+        (1895.), neobarokna zgrada iz najpoznatijega europskog kazališnog ureda toga doba.</li>
+      <li><strong>Fridrich Schmidt</strong> — palača HAZU (1884.) u stilu toskanske renesanse, s
+        troetažnim atrijem natkritim staklenim krovom.</li>
+      <li><strong>Josip Vancaš</strong> — Oktogon (1899.–1901.), golem stambeno-poslovni blok koji
+        obuhvaća tri ulice, s dijagonalno probijenim trgovačkim prolazom i bankama u središnjem
+        oktogonalnom prostoru pod staklenom kupolom — simbol prijelaza na kapitalističku privredu.</li>
+      <li>Uz njih: Umjetnički paviljon (1898.), čija je metalna montažna konstrukcija sa staklenim krovom
+        prenesena s hrvatskoga paviljona Milenijske izložbe u Budimpešti; željeznički kolodvor
+        (F. Pfaff, 1892.); Sveučilišna knjižnica (R. Lubinsky, 1913.).</li>
+      <li><strong>Domaći graditelji</strong> koji su izveli najveći dio Donjega grada od 1860. do 1900.:
+        Janko Jambrišak i obitelj Grahor (sa po stotinjak projekata, najčešće neorenesansnih) te Franjo
+        Klein, čija neorenesansna dvokatnica iz 1867. konveksnim pročeljem oblikuje urbanistički važan
+        spoj Gornjega i Donjega grada.</li>
+    </ul>
+  </div>
+
+  <figure class="fig-frame">
+    <svg viewBox="0 0 660 360" role="img" xmlns="http://www.w3.org/2000/svg"
+      aria-label="Shema Lenucijeve potkove u Zagrebu: sedam zelenih trgova u obliku slova U, tri u istočnome kraku, Botanički vrt na dnu i tri u zapadnome kraku, sa zgradom javne namjene na svakom trgu i željezničkom prugom s južne strane.">
+      <g stroke="currentColor" stroke-width=".7" opacity=".18">
+        <line x1="60" y1="46" x2="620" y2="46"/><line x1="60" y1="116" x2="620" y2="116"/>
+        <line x1="60" y1="186" x2="620" y2="186"/><line x1="60" y1="256" x2="620" y2="256"/>
+        <line x1="130" y1="30" x2="130" y2="300"/><line x1="240" y1="30" x2="240" y2="300"/>
+        <line x1="350" y1="30" x2="350" y2="300"/><line x1="460" y1="30" x2="460" y2="300"/>
+        <line x1="550" y1="30" x2="550" y2="300"/>
+      </g>
+      <g fill="currentColor" opacity=".13">
+        <rect x="96" y="52" width="68" height="52"/><rect x="96" y="126" width="68" height="52"/>
+        <rect x="96" y="200" width="68" height="52"/>
+        <rect x="180" y="264" width="300" height="42"/>
+        <rect x="496" y="52" width="68" height="52"/><rect x="496" y="126" width="68" height="52"/>
+        <rect x="496" y="200" width="68" height="52"/>
+      </g>
+      <g fill="none" stroke="currentColor" stroke-width="1.4">
+        <rect x="96" y="52" width="68" height="52"/><rect x="96" y="126" width="68" height="52"/>
+        <rect x="96" y="200" width="68" height="52"/>
+        <rect x="180" y="264" width="300" height="42"/>
+        <rect x="496" y="52" width="68" height="52"/><rect x="496" y="126" width="68" height="52"/>
+        <rect x="496" y="200" width="68" height="52"/>
+      </g>
+      <g fill="none" stroke="currentColor" stroke-width="3.4" class="em-s" stroke-linejoin="round">
+        <polyline points="130,52 130,264 530,264 530,52"/>
+      </g>
+      <g fill="currentColor">
+        <rect x="122" y="70" width="16" height="16"/><rect x="122" y="144" width="16" height="16"/>
+        <rect x="122" y="218" width="16" height="16"/>
+        <rect x="522" y="70" width="16" height="16"/><rect x="522" y="144" width="16" height="16"/>
+        <rect x="522" y="218" width="16" height="16"/>
+      </g>
+      <line x1="60" y1="330" x2="620" y2="330" stroke="currentColor" stroke-width="2.2"/>
+      <g stroke="currentColor" stroke-width="1.2">
+        <line x1="80" y1="324" x2="80" y2="336"/><line x1="200" y1="324" x2="200" y2="336"/>
+        <line x1="320" y1="324" x2="320" y2="336"/><line x1="440" y1="324" x2="440" y2="336"/>
+        <line x1="560" y1="324" x2="560" y2="336"/>
+      </g>
+      <g font-size="11">
+        <text x="88" y="44" text-anchor="middle">Trg Republike Hrvatske</text>
+        <text x="88" y="120" text-anchor="middle">Mažuranićev trg</text>
+        <text x="88" y="194" text-anchor="middle">Marulićev trg</text>
+        <text x="572" y="44" text-anchor="middle">Zrinjevac</text>
+        <text x="572" y="120" text-anchor="middle">Strossmayerov trg</text>
+        <text x="572" y="194" text-anchor="middle">Tomislavov trg</text>
+        <text x="330" y="258" text-anchor="middle">Botanički vrt</text>
+        <text x="330" y="290" text-anchor="middle" font-size="10.5" opacity=".8">odvaja prugu od stambene zone</text>
+        <text x="620" y="324" text-anchor="end" font-size="10.5" opacity=".8">željeznička pruga</text>
+        <text x="330" y="352" text-anchor="middle" font-size="10.5" opacity=".7">■ = zgrada javne namjene usred trga (HNK, knjižnica, HAZU, Umjetnički paviljon…)</text>
+      </g>
+    </svg>
+    <figcaption><b>Lenucijeva potkova nije nastala od srušenih utvrda.</b> U Lucci i na bečkom Ringu
+      zeleni je pojas nastao prenamjenom suvišnih fortifikacija; u Zagrebu je Donji grad obrubljen zelenim
+      pojasom <em>svjesnom odlukom i racionalnim planiranjem</em>. Usred svakoga trga stoji po jedna
+      zgrada javne namjene, a Botanički vrt s južne strane ujedno odvaja željezničku prugu od stambene
+      zone.
+      <span class="src">Shema: vlastita izrada za ovaj modul (CC BY-SA 4.0).</span></figcaption>
+  </figure>
+
+  <div class="duo">
+    <figure><img src="img/modul1/mirogoj.jpg" alt="Arkade groblja Mirogoj u Zagrebu">
+      <figcaption><b>Mirogoj</b>, od 1876., Herman Bollé — pola kilometra neorenesansnih arkada i
+        dvadeset kupola; jedan od najvećih projekata europskoga historicizma.<span class="src">Foto: Admiral Norton · <a href="https://commons.wikimedia.org/wiki/File:Mirogoj_arkade_jug.jpg">Mirogoj arkade jug</a>, Wikimedia Commons · <a href="https://creativecommons.org/licenses/by-sa/3.0">CC BY-SA 3.0</a></span></figcaption></figure>
+    <figure><img src="img/modul1/hnk.jpg" alt="Zgrada Hrvatskoga narodnog kazališta u Zagrebu">
+      <figcaption><b>HNK u Zagrebu</b>, 1895., Fellner i Helmer — neobarokna zgrada iz najpoznatijega
+        europskog kazališnog ureda toga doba.<span class="src">Foto: Bernard Gagnon · <a href="https://commons.wikimedia.org/wiki/File:Croatian_National_Theater,_Zagreb_01.jpg">Croatian National Theater, Zagreb 01</a>, Wikimedia Commons · <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a></span></figcaption></figure>
+  </div>
+
+  <div class="col">
+    <div class="note"><span class="lbl">Zašto je Lenucijeva potkova europski relevantna</span>
+      <p>U nizu europskih gradova zeleni je pojas nastao prenamjenom suvišnih utvrda (Lucca, bečki Ring).
+        U Zagrebu nije: Donji je grad zelenim pojasom obrubljen svjesnom odlukom i racionalnim
+        planiranjem, a ne praktičnom nuždom. Usred svakoga trga smještena je po jedna zgrada javne
+        namjene, a Botanički vrt s južne strane ujedno odvaja željezničku prugu od stambene zone. To je
+        najkorisniji interpretacijski alat za vođenje po Donjem gradu.</p></div>
+
+    <p><strong>Tri historicistička sakralna spomenika</strong> koja su trajno obilježila svoje gradove:
+      neogotička katedrala u Osijeku (građena opekom, od 1849.), neoromanička đakovačka katedrala
+      (K. Roesner, F. Schmidt, 1866.–1882.) s freskama prema kartonima Overbecka i nazarenaca A. i
+      L. Seitza, te neogotička pregradnja zagrebačke katedrale.</p>
+    <p><strong>Osijek — Europska avenija</strong> i <strong>Rijeka</strong> primjeri su
+      historicističko-secesijskih gradskih poteza izvan Zagreba.</p>
+    <p><strong>Prigradska vila</strong> druga je karakteristična pojava, osobito na obroncima Sljemena
+      (Jambrišak, vila Okrugljak, 1875.): kasnoromantičarski primjenjuje pučku ornamentiku i tradicionalnu
+      drvenu građu unutar historicističkih okvira, ali u rasporedu unutrašnjosti napušta reprezentativnost
+      u korist građanske udobnosti — balkoni, lože, erkeri, prostori povezani prema funkciji.</p>
+
+    <h3>Klasicizam i bidermajer — prva polovica stoljeća</h3>
+    <p>Arhitekturu Zagreba između 1815. i 1840. obilježava <strong>Bartol Felbinger</strong>: adaptacije
+      starijih zgrada, prizemlja za trgovine, stambene zgrade, gradska vijećnica u Samoboru; pripisuje mu
+      se i otmjeni paladijevski dvorac Januševac s okruglom dvoranom i kupolom (atribucija nije dokazana).
+      Njegova je arhitektura skromna, a vrijednost joj je u skladu proporcija i suzdržanosti dekoracije.
+      Felbingerova vlastita kuća na današnjem Jelačićevu trgu (1828.), jedna od prvih dvokatnica,
+      obilježava trenutak u kojem se dotadašnje sajmište (Harmica) počinje pretvarati u glavni trg grada —
+      koji je administrativno ujedinjen tek 1851.</p>
+    <p>Klasicističku trokrilnu palaču Karla Draškovića otkupili su iliri (1834.); po velikoj dvorani u
+      kojoj su se održavali plesovi i okupljale kulturne ustanove prozvana je „Dvorana” i odigrala je
+      značajnu ulogu u hrvatskom narodnom preporodu.</p>
+
+    <h3>Secesija (oko 1900.–1914.)</h3>
+    <p>Bečka secesija u tragu Otta Wagnera širi se nizom zgrada koje projektira <strong>Vjekoslav
+      Bastl</strong>:</p>
+    <ul>
+      <li>Etnografski muzej (1901.) s velikom kupolom i Valdecovim skulpturama, te uz njega
+        Trgovinsko-obrtna komora;</li>
+      <li>dvije uglovnice na Jelačićevu trgu — jedna s golemom maketom boce ugrađenom u ugao (reklama,
+        1905.), druga s monumentalnim Meštrovićevim reljefima od glazirane keramike;</li>
+      <li><strong>kuća Kalina</strong> (1903.) — najdosljedniji primjer secesijske težnje za potpunom
+        vizualnom obnovom gradske kuće: obložena glaziranom opekom s biljnom dekoracijom, s originalnim
+        metalnim balkonima s umetnutim staklenim pločama.</li>
+    </ul>
+    <p>Uz Bastla djeluju Aladár Baranyai, Ignjat Fischer (sanatorij u Klaićevoj, 1908., izvanredno
+      volumenski razveden), Podhorski, Sunko. Sveučilišna knjižnica (Lubinsky, 1913.) izduženim procijepima
+      prozora i golemom bakrenom kupolom stvara sponu između secesijske i ekspresionističke arhitekture.</p>
+    <p>Uz to: Vila Frangeš u Zagrebu, secesijske kuće u Osijeku i Rijeci, dizajn interijera i primijenjena
+      umjetnost (Modul 4).</p>
+  </div>
+
+  <div class="duo">
+    <figure><img src="img/modul1/kuca_kalina.jpg" alt="Secesijska kuća Kalina u Zagrebu">
+      <figcaption><b>Kuća Kalina</b>, 1903., Vjekoslav Bastl — glazirana opeka s biljnom dekoracijom i
+        metalni balkoni s umetnutim staklenim pločama.<span class="src">Foto: Fred Romero from Paris, France · <a href="https://commons.wikimedia.org/wiki/File:Zagreb_-_Ku%C4%87a_Kallina_(5).jpg">Zagreb - Kuća Kallina (5)</a>, Wikimedia Commons · <a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a></span></figcaption></figure>
+    <figure><img src="img/modul1/dakovo.jpg" alt="Đakovačka katedrala">
+      <figcaption><b>Đakovačka katedrala</b>, 1866.–1882. — neoromanička; freske prema kartonima
+        Overbecka i nazarenaca.<span class="src">Foto: Modzzak · <a href="https://commons.wikimedia.org/wiki/File:Cathedral_Dakovo,_Croatia.JPG">Cathedral Dakovo, Croatia</a>, Wikimedia Commons · <a href="https://creativecommons.org/licenses/by-sa/3.0">CC BY-SA 3.0</a></span></figcaption></figure>
+  </div>
+
+  <div class="col">
+    <h3>Viktor Kovačić i program moderne</h3>
+    <p>Program uključivanja hrvatske arhitekture u napredne europske tokove objavio je već 1900. Viktor
+      Kovačić člankom „Moderna arhitektura” u časopisu „Život”. Istupajući protiv historicizma, postavlja
+      zahtjev da arhitektura bude „individualna i suvremena”, ali — za razliku od prenaglašenoga
+      subjektivizma u književnom pokretu — i praktična i udobna. Poziva se na Otta Wagnera, čiji je bečki
+      đak, i na englesku obnovu obiteljske kuće.</p>
+    <p>Kovačićev je doprinos i etički i opsegom: podigao je metodu arhitektonskoga projektiranja na
+      intelektualnu razinu, a odgovornost arhitekta na visoku etičku (javnost rada), te je proširio
+      pozornost struke od uređenja interijera do urbanizma i zaštite baštine — projekti regulacije
+      Kaptola, Dolca i Jezuitskoga trga.</p>
+    <p>Njegovi se projekti odlikuju purističkom odmjerenošću i reduciranim znakovima povijesne arhitekture
+      prerađenima u novu cjelinu: toskanske asocijacije s ložom u potkrovlju u kući Frank (1910.),
+      venetobizantski volumeni u središnjoj kupolnoj crkvi sv. Blaža (1913.), neoklasicistička kupola i
+      snažan kontrast volumena i šupljine u Burzi (1924.).</p>
+
+    <h3>Moderna i suvremena arhitektura</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Autor</th><th>Djelo</th><th>Napomena</th></tr></thead>
+      <tbody>
+        <tr><td>Viktor Kovačić</td><td>crkva sv. Blaža, Zagreb (1913.)</td><td>Utemeljitelj moderne hrvatske arhitekture; armiranobetonska kupola</td></tr>
+        <tr><td>Ivan Meštrović</td><td>Dom likovnih umjetnosti („Meštrovićev paviljon”), Zagreb (1938.)</td><td>Kružna građevina; danas Dom HDLU</td></tr>
+        <tr><td>Drago Ibler</td><td>Zagrebačka škola arhitekture; „Drveni neboder” (1958.)</td><td>Utemeljitelj moderne arhitektonske pedagogije; član skupine Zemlja</td></tr>
+        <tr><td>„Zagrebačka škola” između dvaju ratova</td><td>Stjepan Planić, Mladen Kauzlarić, Zvonimir Strižić, Ernest Weissmann</td><td>Značajan hrvatski prilog europskoj modernoj arhitekturi tridesetih godina; sinteza funkcionalističkih i organičkih strujanja, još uvijek nedovoljno predstavljena u inozemstvu</td></tr>
+        <tr><td>Vjenceslav Richter</td><td>Jugoslavenski paviljon EXPO Bruxelles (1958.)</td><td>Također suosnivač skupine EXAT 51</td></tr>
+        <tr><td>Vladimir Turina, Boris Magaš</td><td>sportske i turističke građevine</td><td>Stadion Poljud u Splitu (Magaš, 1979.)</td></tr>
+        <tr><td>Nikola Bašić</td><td>Morske orgulje i Pozdrav suncu, Zadar (2005., 2008.)</td><td>Arhitektura kao instrument i kao svjetlosna instalacija; jedan od najuspješnijih suvremenih hrvatskih zahvata u javnom prostoru</td></tr>
+        <tr><td>Igor Franić</td><td>Muzej suvremene umjetnosti, Zagreb (2009.)</td><td>Najveća poslijeratna muzejska zgrada u Hrvatskoj</td></tr>
+        <tr><td>3LHD, Studio Up, Njirić+</td><td>suvremena praksa</td><td>Međunarodno nagrađivani hrvatski uredi (npr. Sportska dvorana Bale, Gimnazija u Koprivnici)</td></tr>
+      </tbody>
+    </table></div>
+    <p>Posebna je pojava <strong>jadranska turistička arhitektura 1960-ih i 1970-ih</strong> — hotelska
+      naselja u Poreču, Rovinju, Dubrovniku (hotel Libertas), Malinskoj i Bolu. Riječ je o vrijednom sloju
+      moderne arhitekture koji je danas predmet stručne revalorizacije, a gostima je često zanimljiviji
+      nego što bi vodič očekivao.</p>
+  </div>
+
+  <div class="trio">
+    <figure><img src="img/modul1/sv_blaz.jpg" alt="Crkva svetog Blaža u Zagrebu, snimka iz vremena gradnje">
+      <figcaption><b>Sv. Blaž</b>, Zagreb, 1910.–1913., Viktor Kovačić — snimka iz vremena gradnje.
+        Armiranobetonska kupola i venetobizantski volumeni; početak moderne hrvatske
+        arhitekture.<span class="src">Foto: Unknown author Unknown author · <a href="https://commons.wikimedia.org/wiki/File:Viktor_Kova%C4%8Di%C4%87-_Crkva_sv._Bla%C5%BEa,_Prilaz_gjure_De%C5%BEeli%C4%87a-_Primorska_ulica,_Zagreb_1910._-_1913.jpg">Viktor Kovačić- Crkva sv. Blaža, Prilaz gjure Deželića- Primorska ulica, Zagreb 1910. - 1913</a>, Wikimedia Commons · javno vlasništvo</span></figcaption></figure>
+    <figure><img src="img/modul1/mestrovic_paviljon.jpg" alt="Meštrovićev paviljon u Zagrebu">
+      <figcaption><b>Dom likovnih umjetnosti</b>, 1938., Ivan Meštrović — danas Dom
+        HDLU.<span class="src">Foto: Branko Radovanović · <a href="https://commons.wikimedia.org/wiki/File:Me%C5%A1trovi%C4%87_Pavilion_20180428_5523.jpg">Meštrović Pavilion 20180428 5523</a>, Wikimedia Commons · <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a></span></figcaption></figure>
+    <figure><img src="img/modul1/morske_orgulje.jpg" alt="Morske orgulje u Zadru">
+      <figcaption><b>Morske orgulje</b>, Zadar, 2005., Nikola Bašić — arhitektura kao
+        instrument.<span class="src">Foto: Andrej Šalov · <a href="https://commons.wikimedia.org/wiki/File:Sea_organ_Zadar_3.JPG">Sea organ Zadar 3</a>, Wikimedia Commons · <a href="https://creativecommons.org/licenses/by-sa/3.0">CC BY-SA 3.0</a></span></figcaption></figure>
+  </div>
+</section>
+
+<section id="s17">
+  <div class="sect-head"><span class="sect-num">1.7</span>
+    <h2>Vođenje u sakralnim i muzejskim prostorima</h2></div>
+  <div class="col">
+    <div class="tbl"><table>
+      <thead><tr><th>Pravilo</th><th>Obrazloženje</th></tr></thead>
+      <tbody>
+        <tr><td>Provjeriti raspored bogoslužja i ne ulaziti tijekom mise ili obreda</td><td>Crkva je prvenstveno liturgijski prostor</td></tr>
+        <tr><td>Primjereno odijevanje skupine (pokrivena ramena i koljena)</td><td>Uvjet ulaska u većini katedrala i samostana</td></tr>
+        <tr><td>Govoriti tiho; koristiti šaptače gdje ih ustanova propisuje</td><td>Zaštita drugih posjetitelja i vjernika</td></tr>
+        <tr><td>Poštovati zabranu fotografiranja i uporabe bljeskalice</td><td>Zaštita slikanih slojeva i autorskih prava</td></tr>
+        <tr><td>Ne dodirivati eksponate, kamenu plastiku ni oltarnu opremu</td><td>Masnoće s kože ubrzavaju propadanje</td></tr>
+        <tr><td>Poštovati najveći dopušteni broj osoba u skupini i najavu posjeta</td><td>Većina katedrala i muzeja ima propisan kapacitet</td></tr>
+        <tr><td>Uskladiti se s kustosom / vodičem ustanove ondje gdje je propisan</td><td>Neke ustanove dopuštaju samo vlastito vodstvo</td></tr>
+        <tr><td>U malim drvenim i oslikanim prostorima ograničiti veličinu skupine i trajanje boravka</td><td>Vlaga i temperatura koje unosi skupina izravno ubrzavaju propadanje polikromije i šindre</td></tr>
+        <tr><td>Kod gradilišta i obnove objasniti zahvat umjesto isprike</td><td>Obnova nakon potresa 2020. dio je priče, a ne smetnja</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+</section>
+
+<section id="prilozi">
+  <div class="sect-head"><span class="sect-num">V</span><h2>Vizualni prilozi i izvori ilustracija</h2></div>
+  <div class="col">
+    <h3>Predviđeni vizualni prilozi za LMS</h3>
+    <p>Prilozi označeni <b>✓</b> izrađeni su i ugrađeni u ovaj dokument kao sheme; ostali se izrađuju
+      prema navedenom izvoru.</p>
+    <div class="tbl"><table>
+      <thead><tr><th>Oznaka</th><th>Prilog</th><th>Izvor</th><th>Stanje</th></tr></thead>
+      <tbody>
+        <tr><td>V1.1</td><td>Stilska vremenska crta hrvatske arhitekture (1.–21. st.)</td><td>vlastita izrada prema Institutu za povijest umjetnosti</td><td>u izradi</td></tr>
+        <tr><td>V1.2</td><td>Tlocrtna usporedba: sv. Donat, sv. Križ, sv. Trojica</td><td>vlastita izrada</td><td>✓ ugrađeno (1.2)</td></tr>
+        <tr><td>V1.3</td><td>Shema Dioklecijanove palače s današnjim ulicama</td><td>vlastita izrada / Geoportal kulturnih dobara</td><td>✓ ugrađeno (1.1)</td></tr>
+        <tr><td>V1.4</td><td>Analitički crtež Radovanova portala</td><td>Muzej grada Trogira</td><td>Modul 2</td></tr>
+        <tr><td>V1.5</td><td>Konstrukcijska shema svoda šibenske katedrale</td><td>vlastita izrada / Ministarstvo kulture i medija</td><td>✓ ugrađeno kao usporedba pročelja (1.4)</td></tr>
+        <tr><td>V1.6</td><td>Karta „Lenucijeve potkove”</td><td>vlastita izrada / Grad Zagreb</td><td>✓ ugrađeno (1.6)</td></tr>
+        <tr><td>V1.7</td><td>Galerija: barokni Varaždin i Tvrđa</td><td>Gradski muzej Varaždin, Muzej Slavonije</td><td>✓ fotografije ugrađene (1.5)</td></tr>
+        <tr><td>V1.8</td><td>Karta UNESCO-ovih kulturnih dobara</td><td>UNESCO</td><td>Modul 5</td></tr>
+        <tr><td>V1.9</td><td>Zračni snimak s tragovima rimske centurijacije</td><td>vlastita izrada / Geoportal DGU</td><td>✓ shema ugrađena (1.1)</td></tr>
+        <tr><td>V1.10</td><td>Fotogalerija „zvonik trogirske katedrale odozdo prema gore”</td><td>Muzej grada Trogira</td><td>✓ fotografija + shema otvora (1.3)</td></tr>
+        <tr><td>V1.11</td><td>Tipološka shema dubrovačkoga ljetnikovca</td><td>vlastita izrada / Zavod HAZU u Dubrovniku</td><td>✓ ugrađeno (1.4)</td></tr>
+        <tr><td>V1.12</td><td>Usporedna shema: okrugla / kvadratična / bastionska kula</td><td>vlastita izrada</td><td>✓ ugrađeno (1.3)</td></tr>
+        <tr><td>V1.13</td><td>Karta drvenih seoskih crkava sjeverne Hrvatske</td><td>Ministarstvo kulture i medija</td><td>u izradi</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>Autorska prava i uvjeti korištenja</h3>
+    <p>Sve fotografije u ovom dokumentu preuzete su s <strong>Wikimedia Commonsa</strong> i objavljene
+      su pod slobodnim licencijama (CC0, CC BY, CC BY-SA, GFDL) ili su u javnom vlasništvu. Ispod svake
+      slike naveden je autor, naslov datoteke s poveznicom na izvornu stranicu i licencija — što je uvjet
+      koji te licencije postavljaju za daljnje korištenje.</p>
+    <p><strong>Ako se ovaj materijal dalje distribuira ili prerađuje</strong>, navodi ispod slika moraju
+      ostati uz slike. Kod licencija tipa <em>share-alike</em> (CC BY-SA, GFDL) prerada se objavljuje pod
+      istom licencijom. Slike u javnom vlasništvu nemaju pravnu obvezu navođenja, ali je autor naveden
+      radi akademske urednosti.</p>
+    <p><strong>Sheme i crteži</strong> (tlocrt Dioklecijanove palače, usporedba predromaničkih tlocrta,
+      centurijacija, tipovi otvora, tipovi kula, bazilika naspram dvoranske crkve, trolisno pročelje,
+      L-tlocrt ljetnikovca, barokizacija, Lenucijeva potkova) izvorni su rad izrađen za ovaj modul i
+      objavljuju se pod licencijom <strong>CC BY-SA 4.0</strong>.</p>
+    <div class="note method"><span class="lbl">Napomena za predavača</span>
+      <p>Fotografije su odabrane tako da prikazuju upravo ono što tvrdi opis ispod njih — ne samo
+        „lijep kadar” istoga spomenika. Ako se neka slika zamjenjuje, mora se zamijeniti i navod izvora
+        ispod nje; popis svih datoteka s poveznicama nalazi se u
+        <code>docs/img/modul1/IZVORI.md</code>.</p></div>
+
+    <h3>Popis upotrijebljenih fotografija</h3>
+    <ol class="credits">
+      <li><b>Marie-Lan Nguyen</b> — <a href="https://commons.wikimedia.org/wiki/File:Croatian_Apoxyomenos_Louvre_n02.jpg">Croatian Apoxyomenos Louvre n02</a> · javno vlasništvo</li>
+      <li><b>Diego Delso</b> — <a href="https://commons.wikimedia.org/wiki/File:Templo_de_Augusto_y_ayuntamiento,_Pula,_Croacia,_2017-04-17,_DD_68-70_HDR.jpg">Templo de Augusto y ayuntamiento, Pula, Croacia, 2017-04-17, DD 68-70 HDR</a> · <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a></li>
+      <li><b>Rosier-HR</b> — <a href="https://commons.wikimedia.org/wiki/File:Church_of_Our_Lady_of_Snows_in_Belec,_Croatia_-_exterior.jpg">Church of Our Lady of Snows in Belec, Croatia - exterior</a> · <a href="https://creativecommons.org/licenses/by-sa/3.0">CC BY-SA 3.0</a></li>
+      <li><b>Roberta F</b> — <a href="https://commons.wikimedia.org/wiki/File:Greda_i_zabat_s_natpisom_kneza_Branimira_879.jpg">Greda i zabat s natpisom kneza Branimira 879</a> · <a href="https://creativecommons.org/licenses/by-sa/3.0">CC BY-SA 3.0</a></li>
+      <li><b>Modzzak</b> — <a href="https://commons.wikimedia.org/wiki/File:Cathedral_Dakovo,_Croatia.JPG">Cathedral Dakovo, Croatia</a> · <a href="https://creativecommons.org/licenses/by-sa/3.0">CC BY-SA 3.0</a></li>
+      <li><b>Falk2</b> — <a href="https://commons.wikimedia.org/wiki/File:X03.06_Min%C4%8Deta,_Lavrijenac.jpg">X03.06 Minčeta, Lavrijenac</a> · <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a></li>
+      <li><b>Pudelek</b> — <a href="https://commons.wikimedia.org/wiki/File:Manor_Eltz,_Vukovar,_Croatia.jpg">Manor Eltz, Vukovar, Croatia</a> · <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a></li>
+      <li><b>Shesmax</b> — <a href="https://commons.wikimedia.org/wiki/File:Euphrasian_Basilica_Central_Apse_Mosaics.JPG">Euphrasian Basilica Central Apse Mosaics</a> · <a href="https://creativecommons.org/licenses/by-sa/3.0">CC BY-SA 3.0</a></li>
+      <li><b>Bernard Gagnon</b> — <a href="https://commons.wikimedia.org/wiki/File:Croatian_National_Theater,_Zagreb_01.jpg">Croatian National Theater, Zagreb 01</a> · <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a></li>
+      <li><b>Bernard Gagnon</b> — <a href="https://commons.wikimedia.org/wiki/File:Saint_Ignatius_Church_(Dubrovnik)_02.jpg">Saint Ignatius Church (Dubrovnik) 02</a> · <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a></li>
+      <li><b>TimeTravelRome</b> — <a href="https://commons.wikimedia.org/wiki/File:Kairos_-_Greek_God_of_Happy_Moments_-_Trogir_-_51388042695.jpg">Kairos - Greek God of Happy Moments - Trogir - 51388042695</a> · <a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a></li>
+      <li><b>Bukovacka</b> — <a href="https://commons.wikimedia.org/wiki/File:Karlova%C4%8Dka_zvijezda-_Izvor-_Digitalni_Tisak.jpg">Karlovačka zvijezda- Izvor- Digitalni Tisak</a> · <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a></li>
+      <li><b>nikola_pu</b> — <a href="https://commons.wikimedia.org/wiki/File:Ka%C5%BEuni_2013_-_panoramio.jpg">Kažuni 2013 - panoramio</a> · <a href="https://creativecommons.org/licenses/by-sa/3.0">CC BY-SA 3.0</a></li>
+      <li><b>JERRYE AND ROY KLOTZ MD</b> — <a href="https://commons.wikimedia.org/wiki/File:CLOISTER_OF_THE_FRANCISCAN_MONASTERY_IN_DUBROVNIK,_CROATIA.jpg">CLOISTER OF THE FRANCISCAN MONASTERY IN DUBROVNIK, CROATIA</a> · <a href="https://creativecommons.org/licenses/by-sa/3.0">CC BY-SA 3.0</a></li>
+      <li><b>Fred Romero from Paris, France</b> — <a href="https://commons.wikimedia.org/wiki/File:Zagreb_-_Ku%C4%87a_Kallina_(5).jpg">Zagreb - Kuća Kallina (5)</a> · <a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a></li>
+      <li><b>Branko Radovanović</b> — <a href="https://commons.wikimedia.org/wiki/File:Me%C5%A1trovi%C4%87_Pavilion_20180428_5523.jpg">Meštrović Pavilion 20180428 5523</a> · <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a></li>
+      <li><b>Admiral Norton</b> — <a href="https://commons.wikimedia.org/wiki/File:Mirogoj_arkade_jug.jpg">Mirogoj arkade jug</a> · <a href="https://creativecommons.org/licenses/by-sa/3.0">CC BY-SA 3.0</a></li>
+      <li><b>Orlovic</b> — <a href="https://commons.wikimedia.org/wiki/File:Monkodonja_(10).JPG">Monkodonja (10)</a> · <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a></li>
+      <li><b>Andrej Šalov</b> — <a href="https://commons.wikimedia.org/wiki/File:Sea_organ_Zadar_3.JPG">Sea organ Zadar 3</a> · <a href="https://creativecommons.org/licenses/by-sa/3.0">CC BY-SA 3.0</a></li>
+      <li><b>Ciocolli</b> — <a href="https://commons.wikimedia.org/wiki/File:Osijek,_Trg_sv._Trojstva_u_Tvr%C4%91i.jpg">Osijek, Trg sv. Trojstva u Tvrđi</a> · <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a></li>
+      <li><b>TimeTravelRome</b> — <a href="https://commons.wikimedia.org/wiki/File:Peristyle_of_Diocletian%27s_Palace_-_Split_-_51389330950.jpg">Peristyle of Diocletian&#x27;s Palace - Split - 51389330950</a> · <a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a></li>
+      <li><b>Ballota</b> — <a href="https://commons.wikimedia.org/wiki/File:Diocletian%27s_palace_substructure_1.jpg">Diocletian&#x27;s palace substructure 1</a> · <a href="https://creativecommons.org/licenses/by-sa/3.0">CC BY-SA 3.0</a></li>
+      <li><b>Diego Delso</b> — <a href="https://commons.wikimedia.org/wiki/File:Anfiteatro_de_Pula,_Croacia,_2017-04-17,_DD_49-57_HDR_PAN.jpg">Anfiteatro de Pula, Croacia, 2017-04-17, DD 49-57 HDR PAN</a> · <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a></li>
+      <li><b>Tanya Dedyukhina</b> — <a href="https://commons.wikimedia.org/wiki/File:Franciscan_Church,_Pula_-_panoramio_(34).jpg">Franciscan Church, Pula - panoramio (34)</a> · <a href="https://creativecommons.org/licenses/by/3.0">CC BY 3.0</a></li>
+      <li><b>TimeTravelRome</b> — <a href="https://commons.wikimedia.org/wiki/File:Cipiko_Palace_-_Trogir.jpg">Cipiko Palace - Trogir</a> · <a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a></li>
+      <li><b>Bernard Gagnon</b> — <a href="https://commons.wikimedia.org/wiki/File:Manastirine_(Salona)_02.jpg">Manastirine (Salona) 02</a> · <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a></li>
+      <li><b>Cholo Aleman</b> — <a href="https://commons.wikimedia.org/wiki/File:Sibenik_Heads_1_659.jpg">Sibenik Heads 1 659</a> · <a href="https://creativecommons.org/licenses/by-sa/3.0">CC BY-SA 3.0</a></li>
+      <li><b>August Dominus</b> — <a href="https://commons.wikimedia.org/wiki/File:Katedrala_svetog_Jakova_2017.jpg">Katedrala svetog Jakova 2017</a> · <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a></li>
+      <li><b>Terragio67</b> — <a href="https://commons.wikimedia.org/wiki/File:Arch_of_the_Sergii_(Pula)_-_Close-up.jpg">Arch of the Sergii (Pula) - Close-up</a> · <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a></li>
+      <li><b>Sopina Ana</b> — <a href="https://commons.wikimedia.org/wiki/File:Ljetnikovac_Puci%C4%87_-_Kosor_Dubrovnik_RST-1726_1.jpg">Ljetnikovac Pucić - Kosor Dubrovnik RST-1726 1</a> · <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a></li>
+      <li><b>Marcin Konsek</b> — <a href="https://commons.wikimedia.org/wiki/File:2011_Dubrownik,_Pa%C5%82ac_Sponza_(01).jpg">2011 Dubrownik, Pałac Sponza (01)</a> · <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a></li>
+      <li><b>Argo Navis</b> — <a href="https://commons.wikimedia.org/wiki/File:Stari_Grad_Plain_20250920_02.jpg">Stari Grad Plain 20250920 02</a> · <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a></li>
+      <li><b>Carsten Steger</b> — <a href="https://commons.wikimedia.org/wiki/File:Aerial_image_of_Ston_(view_from_the_southwest).jpg">Aerial image of Ston (view from the southwest)</a> · <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a></li>
+      <li><b>Martin Falbisoner</b> — <a href="https://commons.wikimedia.org/wiki/File:Stradun,_Dubrovnik_-_September_2017.jpg">Stradun, Dubrovnik - September 2017</a> · <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a></li>
+      <li><b>Unknown author Unknown author</b> — <a href="https://commons.wikimedia.org/wiki/File:Viktor_Kova%C4%8Di%C4%87-_Crkva_sv._Bla%C5%BEa,_Prilaz_gjure_De%C5%BEeli%C4%87a-_Primorska_ulica,_Zagreb_1910._-_1913.jpg">Viktor Kovačić- Crkva sv. Blaža, Prilaz gjure Deželića- Primorska ulica, Zagreb 1910. - 1913</a> · javno vlasništvo</li>
+      <li><b>Bernard Gagnon</b> — <a href="https://commons.wikimedia.org/wiki/File:Church_of_St._Donatus_in_Zadar_-_dome.jpg">Church of St. Donatus in Zadar - dome</a> · <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a></li>
+      <li><b>Nxr-at</b> — <a href="https://commons.wikimedia.org/wiki/File:Interior_Church_of_St_Catherine_in_Zagreb_05.jpg">Interior Church of St Catherine in Zagreb 05</a> · <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a></li>
+      <li><b>Paula Borkovic</b> — <a href="https://commons.wikimedia.org/wiki/File:Church_of_the_Holy_Cross,_Nin.jpg">Church of the Holy Cross, Nin</a> · <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a></li>
+      <li><b>Bernard Gagnon</b> — <a href="https://commons.wikimedia.org/wiki/File:St._Mark%27s_Church,_Zagreb_02.jpg">St. Mark&#x27;s Church, Zagreb 02</a> · <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a></li>
+      <li><b>Paula Borkovic</b> — <a href="https://commons.wikimedia.org/wiki/File:Church_of_Saint_Nicholas,_NIn.jpg">Church of Saint Nicholas, NIn</a> · <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a></li>
+      <li><b>Hegor</b> — <a href="https://commons.wikimedia.org/wiki/File:Saint-Nicholas_Fortress_in_%C5%A0ibenik4.JPG">Saint-Nicholas Fortress in Šibenik4</a> · <a href="https://creativecommons.org/licenses/by-sa/3.0">CC BY-SA 3.0</a></li>
+      <li><b>Argo Navis</b> — <a href="https://commons.wikimedia.org/wiki/File:Cetina_20200531_11.jpg">Cetina 20200531 11</a> · <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a></li>
+      <li><b>Martin Falbisoner</b> — <a href="https://commons.wikimedia.org/wiki/File:Saint_Blaise%27s_Church,_Dubrovnik_-_September_2017.jpg">Saint Blaise&#x27;s Church, Dubrovnik - September 2017</a> · <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a></li>
+      <li><b>VitVit</b> — <a href="https://commons.wikimedia.org/wiki/File:Trogir_katedr%C3%A1la_sv._Vav%C5%99ince_z%C3%A1v%C4%9Br_1.jpg">Trogir katedrála sv. Vavřince závěr 1</a> · <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a></li>
+      <li><b>rene boulay</b> — <a href="https://commons.wikimedia.org/wiki/File:Croatie_Trogir_Saint-Laurent_Campanile_-_panoramio.jpg">Croatie Trogir Saint-Laurent Campanile - panoramio</a> · <a href="https://creativecommons.org/licenses/by-sa/3.0">CC BY-SA 3.0</a></li>
+      <li><b>Noel.guillet</b> — <a href="https://commons.wikimedia.org/wiki/File:Krapina,_%C3%A9glise_de_Tr%C5%A1ki_Vrh,_14_mai_2023,_vue_d%27ensemble.jpg">Krapina, église de Trški Vrh, 14 mai 2023, vue d&#x27;ensemble</a> · <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a></li>
+      <li><b>Ptrnc7965</b> — <a href="https://commons.wikimedia.org/wiki/File:Vara%C5%BEdin_Center_Croatia_2025.jpg">Varaždin Center Croatia 2025</a> · <a href="http://creativecommons.org/publicdomain/zero/1.0/deed.en">CC0</a></li>
+      <li><b>Slavko Stepanić</b> — <a href="https://commons.wikimedia.org/wiki/File:Velika_mlaka_sv_barbara.jpg">Velika mlaka sv barbara</a> · <a href="https://creativecommons.org/licenses/by-sa/3.0">CC BY-SA 3.0</a></li>
+      <li><b>Matti Blume</b> — <a href="https://commons.wikimedia.org/wiki/File:Roman_forum,_Zadar_(P1080975).jpg">Roman forum, Zadar (P1080975)</a> · <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a></li>
+      <li><b>Bernard Gagnon</b> — <a href="https://commons.wikimedia.org/wiki/File:Cathedral_of_St._Anastasia_in_Zadar_03.jpg">Cathedral of St. Anastasia in Zadar 03</a> · <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a></li>
+      <li><b>Larisa Uhryn</b> — <a href="https://commons.wikimedia.org/wiki/File:Zagreb_cathedral_at_sunrise.jpg">Zagreb cathedral at sunrise</a> · <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a></li>
+    </ol>
+  </div>
+</section>
+
+</div>
