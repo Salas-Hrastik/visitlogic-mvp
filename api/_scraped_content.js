@@ -1,5 +1,5 @@
 // AUTO-GENERATED — ne editiraj ručno!
-// Zadnje skrapanje: 2026-08-22 06:47 UTC
+// Zadnje skrapanje: 2026-08-31 06:10 UTC
 // Izvor: tz.valpovo.hr, valpovo.hr
 // GitHub Actions job: scrape-valpovo (dnevno u 6:00 UTC)
 //
@@ -9,14 +9,22 @@
 
 export const scrapedContent = {
   "meta": {
-    "zadnje_azuriranje": "2026-08-22T06:47:53.203Z",
+    "zadnje_azuriranje": "2026-08-31T06:10:56.342Z",
     "izvori": [
       "https://tz.valpovo.hr",
       "https://valpovo.hr"
     ],
-    "broj_dogadanja": 29
+    "broj_dogadanja": 28
   },
   "novosti_tz": [
+    {
+      "naslov": "KUD „Šokadija“ Ladimirevci obilježava 50 godina djelovanja",
+      "datum": "kol 24, 2026",
+      "datum_iso": "2026-08-24",
+      "kratki_opis": "Kulturno-umjetničko društvo „Šokadija“ Ladimirevci ove će godine svečano obilježiti 50. obljetnicu djelovanja bogatim četverodnevnim programom koji će se održavati od 3. do 6. rujna ...",
+      "link": "https://tz.valpovo.hr/2026/08/24/kud-sokadija-ladimirevci-obiljezava-50-godina-djelovanja/",
+      "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/08/784981965_1070577245361169_3275599581815036770_n.jpg"
+    },
     {
       "naslov": "MANIFESTACIJA “TRADICIJA U POKRETU”",
       "datum": "kol 21, 2026",
@@ -88,17 +96,15 @@ export const scrapedContent = {
       "kratki_opis": "Asocijacija Eurochestries, sa sjedištem u Francuskoj, osnovana je 1989. godine. Okuplja mladež klasične provenijencije iz cijeloga svijeta te organizira festivale, kongrese i kampove s ...",
       "link": "https://tz.valpovo.hr/2026/07/16/eurochestries-u-valpovu/",
       "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/07/euroochestries-valpovo.jpg"
-    },
-    {
-      "naslov": "6. ROCK’A’RAJ FEST – „UNDER THE GINKO EDITION“ STIŽE U VALPOVO!",
-      "datum": "srp 11, 2026",
-      "datum_iso": "2026-07-11",
-      "kratki_opis": "Ovog ljeta Rock’a’raj okreće novu stranicu i donosi nešto drugačije izdanje! Šesto izdanje valpovačkog rock festivala održat će se 18. srpnja 2026. godine od 19 sati, ...",
-      "link": "https://tz.valpovo.hr/2026/07/11/6-rockaraj-fest-under-the-ginko-edition-stize-u-valpovo/",
-      "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/07/rokaraj-2026-fb-neww.jpg"
     }
   ],
   "novosti_grad": [
+    {
+      "naslov": "Završen ciklus ljetnih radionica za djecu „Bajkovita knjižnica“",
+      "datum": "25. 08. 2026.",
+      "kratki_opis": "",
+      "link": "https://valpovo.hr/2026/08/25/zavrsen-ciklus-ljetnih-radionica-za-djecu-bajkovita-knjiznica/"
+    },
     {
       "naslov": "„Bajkovita knjižnica” u Gradskoj knjižnici i čitaonici Valpovo: priče, mašta i kreativne ruke",
       "datum": "18. 08. 2026.",
@@ -110,18 +116,6 @@ export const scrapedContent = {
       "datum": "14. 08. 2026.",
       "kratki_opis": "",
       "link": "https://valpovo.hr/2026/08/14/predstavnici-grada-valpova-gostovali-na-22-eko-etno-gackoj-u-otoccu/"
-    },
-    {
-      "naslov": "Odluka o raspodjeli financijskih sredstava za sufinanciranje programa i projekata udruga koje doprinose razvoju sporta G",
-      "datum": "23. 07. 2026.",
-      "kratki_opis": "Izvršni odbor Zajednice športskih udruga Grada Valpova donio je odluku o raspodjeli financijskih sredstava za sufinanciranje programa i projekata sportskih udruga za 2026. godinu, a cjelovita odluka n",
-      "link": "https://valpovo.hr/2026/07/23/odluka-o-raspodjeli-financijskih-sredstava-za-sufinanciranje-programa-i-projekata-udruga-koje-doprinose-razvoju-sporta-grada-valpova-za-2026-godinu/"
-    },
-    {
-      "naslov": "MEĐUNARODNA GLAZBENA VEČER EUROCHESTRIES CROATIA 2026 ODRŽANA U VALPOVU",
-      "datum": "20. 07. 2026.",
-      "kratki_opis": "",
-      "link": "https://valpovo.hr/2026/07/20/medunarodna-glazbena-vecer-eurochestries-croatia-2026-odrzana-u-valpovu/"
     }
   ],
   "manifestacije_aktualne": [
@@ -222,34 +216,23 @@ export const scrapedContent = {
       "naziv": "MATIJAFEST – FESTIVAL ZNANJA I IGRE 2026.",
       "datum_od": "2026-05-15",
       "datum_do": "2026-05-16",
-      "datum_tekst": "15. - 16. 05. 2026.",
-      "vrijeme": "9:00",
+      "datum_tekst": "15. i 16. svibnja",
+      "vrijeme": "",
       "opis": "Peti Matijafest održat će se 15. i 16. svibnja u Edukacijsko-interpretacijskom centru Matije Petra Katančića (stara škola, Trg kralja Tomislava 14) u organizaciji Ustanove za kulturne djelatnosti Ante Evetović Miroljub i Turističke zajednice Grada Valpova. Ovo",
       "link": "https://valpovo.hr/events/matijafest-festival-znanja-i-igre-2026/",
       "izvor": "valpovo.hr",
-      "IMAGE_URL": "https://valpovo.hr/wp-content/uploads/2026/05/matijafest-plakat-2026.jpg"
-    },
-    {
-      "naziv": "Dani otvorenih vrata EU projekata 2026.",
-      "datum_od": "2026-05-15",
-      "datum_do": "2026-05-15",
-      "datum_tekst": "15. 05. 2026.",
-      "vrijeme": "10:00",
-      "opis": "Grad Valpovo uključuje se u obilježavanje „Dana otvorenih vrata EU projekata“, koji se ove godine održavaju u razdoblju od 8. do 24. svibnja 2026. godine diljem Republike Hrvatske. Cilj ovog nacionalnog događanja jest približiti javnosti projekte financirane s",
-      "link": "https://valpovo.hr/events/dani-otvorenih-vrata-eu-projekata-2026/",
-      "izvor": "valpovo.hr",
-      "IMAGE_URL": "https://valpovo.hr/wp-content/uploads/2026/03/dani-otvorenih-vrata-eu-projekata-valpovo-2026.jpg"
+      "IMAGE_URL": ""
     },
     {
       "naziv": "MEĐUNARODNI DAN MUZEJA U MUZEJU VALPOVŠTINE 18. SVIBNJA 2026. GODINE",
       "datum_od": "2026-05-18",
       "datum_do": "2026-05-18",
-      "datum_tekst": "18. 05. 2026.",
-      "vrijeme": "19:00",
+      "datum_tekst": "18. SVIBNJA 2026",
+      "vrijeme": "",
       "opis": "Kao i dosadašnjih godina Muzej Valpovštine će se i 2026. godine uključiti u obilježavanje Međunarodnog dana muzeja koji se ove godine odvija pod krilaticom „Muzeji ujedinjuju podijeljeni svijet“. Muzej je ovu manifestaciju odlučio iskoristiti kao priliku da sv",
       "link": "https://valpovo.hr/events/medunarodni-dan-muzeja-u-muzeju-valpovstine-18-svibnja-2026-godine/",
       "izvor": "valpovo.hr",
-      "IMAGE_URL": "https://valpovo.hr/wp-content/uploads/2026/05/324234324.jpg"
+      "IMAGE_URL": ""
     },
     {
       "naziv": "Grad Valpovo i Savjet mladih Grada Valpova organiziraju obilježavanje Svjetskog dana multiple skleroze",
@@ -266,57 +249,57 @@ export const scrapedContent = {
       "naziv": "HIT KOMEDIJA „ SUSJEDI “",
       "datum_od": "2026-05-20",
       "datum_do": "2026-05-20",
-      "datum_tekst": "20. 05. 2026.",
-      "vrijeme": "20:00",
+      "datum_tekst": "20.5.2026",
+      "vrijeme": "",
       "opis": "Ustanova za kulturne djelatnosti „Ante Evetović Miroljub“ Valpovo i TEATAR KEREKESH Vam donose HIT KOMEDIJU: „ SUSJEDI “ Vrijeme: Srijeda, 20.5.2026. u 20:00 sati Mjesto: Centar kulture „Matija Petar Katančić“ Valpovo Pretprodaja ulaznica: Edukacijsko-interpre",
       "link": "https://valpovo.hr/events/hit-komedija-susjedi/",
       "izvor": "valpovo.hr",
-      "IMAGE_URL": "https://valpovo.hr/wp-content/uploads/2026/05/SUSJEDI-plakat.jpg"
+      "IMAGE_URL": ""
     },
     {
       "naziv": "Sajam antikviteta u Agroparku",
       "datum_od": "2026-05-23",
       "datum_do": "2026-05-23",
-      "datum_tekst": "23. 05. 2026.",
-      "vrijeme": "9:00",
+      "datum_tekst": "23. svibnja 2026",
+      "vrijeme": "",
       "opis": "Valpovački poduzetnički centar tradicionalno organizira još jedan Sajam antikviteta. Sajam će se održati u subotu, 23. svibnja 2026. od 09:00 sati na tržnici Agropark. Osim antikviteta i unikatnih starina, na sajmu će se moći pronaći i domaći proizvodi naših l",
       "link": "https://valpovo.hr/events/sajam-antikviteta-u-agroparku-4/",
       "izvor": "valpovo.hr",
-      "IMAGE_URL": "https://valpovo.hr/wp-content/uploads/2026/05/sajam-antikviteta-plakat-svibanj-2026-valpovo-agropark.jpg",
+      "IMAGE_URL": "",
       "link_alt": "https://valpovo.hr/events/sajam-antikviteta-u-agroparku-3/"
     },
     {
       "naziv": "ČOBANIJADA U HARKANOVCIMA 2026.",
       "datum_od": "2026-05-23",
       "datum_do": "2026-05-23",
-      "datum_tekst": "23. 05. 2026.",
-      "vrijeme": "16:00",
+      "datum_tekst": "23. svibnja 2026",
+      "vrijeme": "",
       "opis": "Harkanovci će u subotu, 23. svibnja 2026. godine, biti domaćin jedne od najveselijih i najmirisnijih manifestacija ovoga kraja – Čobanijade u Harkanovcima, koja će okupiti natjecateljske ekipe, posjetitelje i ljubitelje slavonske gastronomije. Manifestaciju za",
       "link": "https://valpovo.hr/events/cobanijada-u-harkanovcima-2026/",
       "izvor": "valpovo.hr",
-      "IMAGE_URL": "https://valpovo.hr/wp-content/uploads/2026/04/Plakat-Harkanovci.jpg"
+      "IMAGE_URL": ""
     },
     {
       "naziv": "Predstavljanje zbirke poezije „Bela kod Barbe” Josipa Štajmahera",
       "datum_od": "2026-05-26",
       "datum_do": "2026-05-26",
-      "datum_tekst": "26. 05. 2026.",
-      "vrijeme": "19:00",
+      "datum_tekst": "26. svibnja 2026",
+      "vrijeme": "",
       "opis": "Gradska knjižnica i čitaonica Valpovo organizira predstavljanje zbirke poezije „Bela kod Barbe“ autora Josip Štajmaher, koje će se održati u utorak, 26. svibnja 2026. godine s početkom u 19 sati u Memorijalnom centru Matije Petra Katančića u Valpovu. Nova zbir",
       "link": "https://valpovo.hr/events/predstavljanje-zbirke-poezije-bela-kod-barbe-josipa-stajmahera/",
       "izvor": "valpovo.hr",
-      "IMAGE_URL": "https://valpovo.hr/wp-content/uploads/2026/05/bela-kod-barbe-josip-stajmaher.jpg"
+      "IMAGE_URL": ""
     },
     {
       "naziv": "Zagrebački komorni orkestar u Valpovu koncertom „Glazba nas spaja“",
       "datum_od": "2026-05-29",
       "datum_do": "2026-05-29",
-      "datum_tekst": "29. 05. 2026.",
-      "vrijeme": "19:30",
+      "datum_tekst": "29. svibnja 2026",
+      "vrijeme": "",
       "opis": "Ustanova za kulturne djelatnosti „Ante Evetović Miroljub“ Valpovo poziva ljubitelje klasične glazbe na koncert Zagrebačkog komornog orkestra pod nazivom „Glazba nas spaja“, koji će se održati u petak, 29. svibnja 2026. godine s početkom u 19:30 sati u Župnoj c",
       "link": "https://valpovo.hr/events/zagrebacki-komorni-orkestar-u-valpovu-koncertom-glazba-nas-spaja/",
       "izvor": "valpovo.hr",
-      "IMAGE_URL": "https://valpovo.hr/wp-content/uploads/2026/05/plakat-zagrebacki-komorni-orkestar-2026.jpg"
+      "IMAGE_URL": ""
     },
     {
       "naziv": "Predstavljanje Udruge „Zeleni brijeg“ u Valpovu",
@@ -350,17 +333,6 @@ export const scrapedContent = {
       "link": "https://valpovo.hr/events/smotra-amaterskog-kulturnog-stvaralastva-58-ljeto-valpovacko-22-28-6-2026/",
       "izvor": "valpovo.hr",
       "IMAGE_URL": "https://valpovo.hr/wp-content/uploads/2026/06/58-ljeto-valpovacko-2026-fb-baner-cover.jpg"
-    },
-    {
-      "naziv": "58. LJETO VALPOVAČKO – PROMOCIJA 31. VALPOVAČKOG GODIŠNJAKA",
-      "datum_od": "2026-06-24",
-      "datum_do": "2026-06-24",
-      "datum_tekst": "24. lipnja",
-      "vrijeme": "",
-      "opis": "Trećeg dana 58. Ljeta valpovačkog, u srijedu 24. lipnja u Centru kulture “M. P. Katančić” održano je predstavljanje 31. broja Valpovačkog godišnjaka. Na početku predstavljanja o trideset i prvom broju govorio je predsjednik Ogranka Matice hrvatske u Valpovu Jo",
-      "link": "https://tz.valpovo.hr/2026/06/26/58-ljeto-valpovacko-promocija-31-valpovackog-godisnjaka/",
-      "izvor": "tz.valpovo.hr",
-      "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/06/730049372_1030765166128150_3771087998024962225_n58-ljeto-valpovacki-promocija-valpovackog-godisnjaka-valpovacki-godisnjak-2026.jpg"
     },
     {
       "naziv": "DJEČJA SMOTRA FOLKLORA OKUPILA GOTOVO 200 NAJMLAĐIH ČUVARA BAŠTINE",
@@ -504,7 +476,7 @@ export const scrapedContent = {
       "datum_od": "2026-08-24",
       "datum_do": "2026-08-24",
       "datum_tekst": "24. 08. 2026.",
-      "vrijeme": "16:30 - 18:30",
+      "vrijeme": "8:00 - 18:00",
       "opis": "Gradska knjižnica i čitaonica Valpovo u kolovozu nastavlja s programom „Bajkovita knjižnica“, ciklusom kreativnih radionica i pričaonica namijenjenih djeci predškolske i mlađe školske dobi. Radionice će se održavati svakog ponedjeljka u kolovozu – 3., 10., 17.",
       "link": "https://valpovo.hr/events/bajkovita-knjiznica-ljetne-radionice-pricaonice-za-djecu-u-gradskoj-knjiznici-i-citaonici-valpovo/",
       "izvor": "valpovo.hr",
@@ -521,6 +493,18 @@ export const scrapedContent = {
       "izvor": "valpovo.hr",
       "IMAGE_URL": "https://valpovo.hr/wp-content/uploads/2026/08/fisijada-2026-nard-baner.jpg",
       "link_alt": "https://tz.valpovo.hr/2026/08/07/31-fisijada-u-nardu/"
+    },
+    {
+      "naziv": "KUD „Šokadija“ Ladimirevci obilježava 50 godina djelovanja",
+      "datum_od": "2026-09-03",
+      "datum_do": "2026-09-06",
+      "datum_tekst": "03. - 06. 09. 2026.",
+      "vrijeme": "",
+      "opis": "Kulturno-umjetničko društvo „Šokadija“ Ladimirevci ove će godine svečano obilježiti 50. obljetnicu djelovanja bogatim četverodnevnim programom koji će se održavati od 3. do 6. rujna 2026. godine. Jubilej pola stoljeća rada, očuvanja tradicije, pjesme, plesa i ",
+      "link": "https://valpovo.hr/events/kud-sokadija-ladimirevci-obiljezava-50-godina-djelovanja/",
+      "izvor": "valpovo.hr",
+      "IMAGE_URL": "https://valpovo.hr/wp-content/uploads/2026/08/784981965_1070577245361169_3275599581815036770_n.jpg",
+      "link_alt": "https://tz.valpovo.hr/2026/08/24/kud-sokadija-ladimirevci-obiljezava-50-godina-djelovanja/"
     },
     {
       "naziv": "MANIFESTACIJA “TRADICIJA U POKRETU”",
