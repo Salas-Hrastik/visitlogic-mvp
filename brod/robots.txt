@@ -1,0 +1,3 @@
+# Prototip s demo podacima — ne smije se indeksirati.
+User-agent: *
+Disallow: /

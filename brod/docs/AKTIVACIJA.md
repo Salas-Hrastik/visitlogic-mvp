@@ -1,8 +1,11 @@
 # Prototip TZ Slavonski Brod — od prototipa do sjedišta na serveru TZ-a
 
-Dokument opisuje (1) što je isporučeno u ovom repozitoriju, (2) kako prototip
+Dokument opisuje (1) što je isporučeno u ovom projektu, (2) kako prototip
 odmah pokazati naručitelju i (3) što konkretno treba za **aktivaciju na serveru
 Turističke zajednice grada Slavonskog Broda**.
+
+Postavljanje samog projekta — lokalno pokretanje, objava na Vercelu, izdvajanje
+u samostalan repozitorij — opisano je u [`../README.md`](../README.md).
 
 ---
 
@@ -10,18 +13,19 @@ Turističke zajednice grada Slavonskog Broda**.
 
 | Putanja | Što je |
 |---------|--------|
-| `brod/index.html` | Prototip web sjedišta — jedna samostalna datoteka (~2.900 linija, 188 KB) |
-| `brod/PROCITAJME.txt` | Izvorna uputa autora prototipa |
-| `robots.txt` | Zabranjuje indeksiranje `/brod/` i `/api/` |
-| `vercel.json` | Ruta `/brod` + `no-cache` i `X-Robots-Tag: noindex` |
+| `index.html` | Prototip web sjedišta — jedna samostalna datoteka (~2.900 linija, 188 KB) |
+| `vercel.json` | `noindex`, `no-cache` i osnovna sigurnosna zaglavlja |
+| `robots.txt` | `Disallow: /` — cijeli projekt izvan tražilica |
+| `scripts/izdvoji-repozitorij.sh` | Izdvajanje u samostalan repozitorij, s poviješću |
+| `PROCITAJME.txt` | Izvorna uputa autora prototipa |
 
 ### Jedina promjena na samom prototipu
 
 U izvornoj datoteci `<title>`, Google Fonts `<link>`-ovi i cijeli `<style>` blok
 nalazili su se **iza** `<body>`, a `</head>` je bio zatvoren odmah nakon `<meta>`
 oznaka. Preglednici to toleriraju, ali stil se primjenjuje kasno (vidljiv bljesak
-nestilizirane stranice) i validator javlja grešku. U `brod/index.html` ti su
-blokovi vraćeni u `<head>`.
+nestilizirane stranice) i validator javlja grešku. U `index.html` ti su blokovi
+vraćeni u `<head>`.
 
 **Sadržaj je inače bajt-za-bajt identičan izvorniku** — provjereno `diff`-om.
 Render je testiran u headless Chromiumu: nema JS grešaka, svi ekrani se crtaju.
@@ -30,21 +34,19 @@ Render je testiran u headless Chromiumu: nema JS grešaka, svi ekrani se crtaju.
 
 ## 2. Kako prototip odmah pokazati naručitelju
 
-Repozitorij se već objavljuje preko Vercela, pa je prototip nakon `push`-a
-dostupan na:
+Prototip je zaseban projekt s vlastitim URL-om — postavljanje je u
+[`../README.md`](../README.md), a rezultat je npr.:
 
 ```
-https://<naziv-vercel-projekta>.vercel.app/brod
+https://tz-slavonski-brod-prototip.vercel.app
 ```
 
 To je dovoljno za sastanak s TZ-om: nema instalacije, radi na mobitelu, a
-`noindex` + `robots.txt` sprječavaju da se pojavi u Googleu.
+`noindex` + `robots.txt` sprječavaju da se pojavi u Googleu. Za prezentaciju
+užem krugu uključite **Deployment Protection → Password Protection**.
 
-> **Napomena o odvajanju.** `/brod` trenutno živi unutar Valpovo projekta. Za
-> ozbiljnu prezentaciju naručitelju bolje je zaseban Vercel projekt (isti
-> repozitorij, `Root Directory` = `brod`) ili zaseban repozitorij — da se
-> prototip za Slavonski Brod ne poslužuje s domene TZ-a Valpovo. Recite mi ako
-> to želite i pripremit ću odvojenu konfiguraciju.
+Projekt je namjerno odvojen od valpovskog: prototip za Slavonski Brod ne
+poslužuje se s domene TZ-a Valpovo.
 
 ### Prezentacijski savjet
 
@@ -91,7 +93,7 @@ Ako TZ ima klasični hosting, prototip je jedna datoteka i ide izravno:
 ```
 public_html/
 └── prototip/
-    ├── index.html      ← preimenovan brod/index.html
+    ├── index.html      ← index.html iz ovog projekta
     └── .htaccess
 ```
 
@@ -197,10 +199,10 @@ Prototip prepoznaje sedam tema (vikend, hrana, 2 sata, parking, vlak/bicikl,
 tvrđava, smještaj) i na sve ostalo pošteno kaže da nema odgovor te upućuje na
 Centar za posjetitelje. To je dobra demonstracija ponašanja, ali nije AI.
 
-**Za pravu verziju već postoji provjeren obrazac u ovom repozitoriju** — turistički
-informator za Valpovo:
+**Za pravu verziju već postoji provjeren obrazac** — turistički informator za
+Valpovo, u repozitoriju `visitlogic-mvp` iz kojeg je ovaj projekt izdvojen:
 
-| Sloj | Datoteka u ovom repozitoriju | Uloga |
+| Sloj | Datoteka u valpovskom repozitoriju | Uloga |
 |------|------------------------------|-------|
 | Baza znanja | `api/_database.js` | Ručno održavan, provjeren sadržaj |
 | Automatski sadržaj | `scripts/scrape-valpovo.js` → `api/_scraped_content.js` | Dnevno dohvaćanje događanja s gradskih stranica |
@@ -253,7 +255,7 @@ Dvije stvari koje treba unaprijed dogovoriti s TZ-om:
 
 Recite koje od ovoga treba i nastavljam:
 
-1. Odvojiti prototip u zaseban Vercel projekt / repozitorij
+1. ~~Odvojiti prototip u zaseban projekt~~ — napravljeno, vidi `../README.md`
 2. Zamijeniti Google Fonts vlastito posluženim fontovima
 3. Napisati nacrt Izjave o pristupačnosti i Izjave o privatnosti
 4. Spojiti obrazac upita na stvarno slanje e-pošte
