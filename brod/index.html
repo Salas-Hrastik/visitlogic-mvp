@@ -624,6 +624,34 @@ main{display:block;padding-bottom:56px}
 .tabs button[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--brick)}
 .tabs button:hover{color:var(--ink)}
 
+/* ===================== HITNE OBAVIJESTI I NOVOSTI ===================== */
+.alert{display:flex;gap:12px;align-items:flex-start;padding:12px 16px;
+  background:var(--warn-tint);border-bottom:3px solid var(--warn)}
+.alert.crit{background:var(--err-tint);border-bottom-color:var(--err)}
+.alert-ico{flex:none;margin-top:1px;color:var(--err)}
+.alert-b{flex:1;min-width:0}
+.alert-b strong{display:block;font-family:var(--f-display);font-size:16px;font-weight:700;color:var(--ink)}
+.alert-b p{margin:4px 0 0;font-size:15px;color:var(--ink-2);max-width:70ch}
+.alert-meta{margin-top:6px;font-size:14px;color:var(--ink-3);
+  display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.alert-meta button{background:none;border:0;padding:0;font:inherit;font-weight:600;
+  color:var(--brand);cursor:pointer;text-decoration:underline;min-height:auto}
+.alert-x{flex:none;background:none;border:0;cursor:pointer;color:var(--ink-2);
+  width:34px;height:34px;border-radius:var(--radius);font-size:20px;line-height:1}
+.alert-x:hover{background:rgba(0,0,0,.07);color:var(--ink)}
+
+.news-list{display:grid;gap:14px;margin-top:20px}
+.news-item{border:1px solid var(--line);border-left:4px solid var(--brand);
+  border-radius:var(--radius-lg);background:var(--paper);padding:16px 18px}
+.news-item.t-obavijest{border-left-color:var(--warn)}
+.news-item.t-natjecaj{border-left-color:var(--brick)}
+.news-item.t-projekt{border-left-color:var(--ok)}
+.news-item .nmeta{font-size:14px;color:var(--ink-3);text-transform:uppercase;
+  letter-spacing:.04em;font-weight:600}
+.news-item h3{margin:6px 0 0;font-family:var(--f-display);font-size:19px;line-height:1.3}
+.news-item p{margin:8px 0 0;color:var(--ink-2);font-size:15px;line-height:1.6;max-width:72ch}
+.news-item .nread{margin-top:12px}
+
 .sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
   clip:rect(0 0 0 0);white-space:nowrap;border:0}
 </style>
@@ -650,6 +678,9 @@ main{display:block;padding-bottom:56px}
 
 <div class="stage" id="stage" data-vw="desktop">
 <div class="frame">
+
+  <!-- ============ TRAKA HITNIH OBAVIJESTI (W11) ============ -->
+  <div id="alertBar" hidden></div>
 
   <!-- ============ ZAGLAVLJE ============ -->
   <header class="site-head">
@@ -1073,6 +1104,16 @@ var ATTRACTIONS = [
            'Archäologie, Ethnographie und Stadtgeschichte von prähistorischen Pfahlbauten bis ins 20. Jahrhundert.'),
     hours:'Uto–pet 09:00–17:00 · sub 09:00–13:00', themes:['vojna-povijest'] },
 
+  { id:'a-kuca-ibm', motif:'interior', cat:'kultura', minutes:45, price:3, kids:true, a11y:'djelomično', demoPrice:true,
+    name:L('Kuća Brlićevih','The Brlić House','Haus der Familie Brlić'),
+    lead:L('Memorijalna kuća Ivane Brlić-Mažuranić, na trgu koji nosi njezino ime.',
+           'The memorial house of Ivana Brlić-Mažuranić, on the square that bears her name.',
+           'Das Gedenkhaus von Ivana Brlić-Mažuranić, am Platz, der ihren Namen trägt.'),
+    body:L('<p>Kuća obitelji Brlić stoji na glavnom gradskom trgu. U njoj je Ivana Brlić-Mažuranić provela najveći dio života i u brodskim godinama napisala djela po kojima je danas poznata izvan Hrvatske — <em>Čudnovate zgode šegrta Hlapića</em> i <em>Priče iz davnine</em>.</p><p>Postav je memorijalni: obiteljski prostori, rukopisi i predmeti iz vremena u kojem su te knjige nastale. Uz razgledavanje idu digitalni vodič i mobilna aplikacija, a stručno vodstvo uključeno je u cijenu ulaznice.</p>',
+           '<p>The Brlić family house stands on the main city square. Ivana Brlić-Mažuranić spent most of her life here, and it was during her Brod years that she wrote the works that made her known beyond Croatia — <em>The Brave Adventures of Lapitch</em> and <em>Tales of Long Ago</em>.</p><p>The display is memorial: family rooms, manuscripts and objects from the years those books were written. A digital guide and a mobile app accompany the visit, and a guided tour is included in the ticket.</p>',
+           '<p>Das Haus der Familie Brlić steht am Hauptplatz der Stadt. Ivana Brlić-Mažuranić verbrachte hier den größten Teil ihres Lebens und schrieb in ihren Broder Jahren jene Werke, die sie über Kroatien hinaus bekannt machten — <em>Die wunderbaren Abenteuer des Schusterjungen Hlapić</em> und <em>Aus Urväterzeiten</em>.</p><p>Die Ausstellung ist eine Gedenkausstellung: Familienräume, Handschriften und Gegenstände aus der Entstehungszeit dieser Bücher. Ein digitaler Führer und eine mobile App begleiten den Besuch, eine Führung ist im Eintritt enthalten.</p>'),
+    hours:'Pon, sri, pet i sub 10:00–14:00 · uto i čet 18:00–20:00 · nedjeljom zatvoreno', themes:['ivana-brlic-mazuranic'] },
+
   { id:'a-galerija', motif:'interior', cat:'kultura', minutes:45, price:2, kids:false, a11y:'da', demoPrice:true,
     name:L('Galerija umjetnina grada Slavonskog Broda','Slavonski Brod City Art Gallery','Städtische Kunstgalerie Slavonski Brod'),
     lead:L('Zbirka slavonskih slikara 20. stoljeća i promjenjivi program izložbi.',
@@ -1280,10 +1321,11 @@ var ITINS = [
            'The square, the house, the museum display and the tales that went from here into the world.',
            'Der Platz, das Haus, die Museumsausstellung und die Märchen, die von hier in die Welt gingen.'),
     steps:[
-      {t:'10:00', ref:'a-korzo', kind:'see', minutes:40},
-      {t:'10:45', ref:'a-muzej', kind:'see', minutes:70},
-      {t:'12:00', ref:'a-galerija', kind:'see', minutes:45},
-      {t:'12:50', ref:'r-tambura', kind:'eat', minutes:40}
+      {t:'10:00', ref:'a-korzo', kind:'see', minutes:30},
+      {t:'10:35', ref:'a-kuca-ibm', kind:'see', minutes:45},
+      {t:'11:25', ref:'a-muzej', kind:'see', minutes:60},
+      {t:'12:30', ref:'a-galerija', kind:'see', minutes:45},
+      {t:'13:20', ref:'r-tambura', kind:'eat', minutes:40}
     ] }
 ];
 
@@ -1324,6 +1366,41 @@ var FAQS = [
 ];
 
 /* pozicije na shematskoj karti (0–100 postotak) */
+var NEWS = [
+  { id:'n-poloj', tip:'obavijest', datum:plus(-1), hitno:true, objaviDo:plus(6),
+    name:L('Šetnica na Poloju zatvorena zbog vodostaja Save',
+           'Poloj riverside path closed due to Sava water level',
+           'Uferweg in Poloj wegen Save-Pegel gesperrt'),
+    lead:L('Zbog visokog vodostaja šetnica uz Savu na Poloju zatvorena je do daljnjega. Savski nasip i biciklistička ruta ostaju prohodni.',
+           'Because of the high water level the riverside path at Poloj is closed until further notice. The embankment and the cycling route remain open.',
+           'Wegen Hochwassers ist der Uferweg in Poloj bis auf Weiteres gesperrt. Damm und Radroute bleiben begehbar.'),
+    body:L('<p>Vodostaj Save prešao je razinu na kojoj se šetnica redovito zatvara. Zatvoren je dio od kupališta do skretanja na nasip; obilazak je označen.</p><p>Savski nasip i biciklistička ruta nisu zahvaćeni. Stanje se provjerava svakodnevno, a obavijest se uklanja čim se šetnica otvori.</p>') },
+  { id:'n-kolo', tip:'priopcenje', datum:plus(-8),
+    name:L('Objavljen program Brodskog kola','Brodsko kolo programme published','Programm des Brodsko kolo veröffentlicht'),
+    lead:L('Program folklornog festivala objavljen je u cijelosti, s rasporedom po pozornicama i satnicom nastupa.',
+           'The full programme of the folklore festival is out, with stage schedules and performance times.',
+           'Das vollständige Programm des Folklorefestivals ist da, mit Bühnenplan und Auftrittszeiten.'),
+    body:L('<p>Program obuhvaća nastupe na tri pozornice, povorku kroz centar i sajam rukotvorina u Tvrđavi.</p><p>Ulaz na sve programe je slobodan. Satnica se u slučaju kiše pomiče, a izmjene se objavljuju ovdje i u kalendaru događanja.</p>') },
+  { id:'n-natjecaj', tip:'natjecaj', datum:plus(-17),
+    name:L('Natječaj za suvenir grada','Call for the city souvenir','Ausschreibung für das Stadtsouvenir'),
+    lead:L('Turistička zajednica raspisuje natječaj za autorski suvenir Slavonskog Broda. Prijave su otvorene do kraja mjeseca.',
+           'The tourist board invites entries for an original Slavonski Brod souvenir. Entries close at the end of the month.',
+           'Der Tourismusverband schreibt ein originelles Souvenir aus. Einsendeschluss ist Monatsende.'),
+    body:L('<p>Traži se predmet koji se može izraditi u maloj seriji i koji se veže uz prepoznatljive motive destinacije — Tvrđavu, Savu, šlingeraj ili tamburu.</p><p>Prijava sadrži skicu, opis materijala i okvirnu cijenu izrade.</p>') },
+  { id:'n-nasip', tip:'projekt', datum:plus(-34),
+    name:L('Nova signalizacija na savskom nasipu','New wayfinding on the Sava embankment','Neue Beschilderung auf dem Save-Damm'),
+    lead:L('Na nasipu je postavljena nova signalizacija s udaljenostima i oznakama ulaza na rutu.',
+           'New signage with distances and route entry points has been installed on the embankment.',
+           'Auf dem Damm wurde eine neue Beschilderung mit Entfernungen und Einstiegspunkten angebracht.'),
+    body:L('<p>Postavljeno je četrnaest oznaka na ulazima i račvanjima, s udaljenostima do centra, Poloja i Bjeliša.</p><p>Oznake su usklađene s kartom na sjedištu, pa se ruta može pratiti i bez mobitela.</p>') },
+  { id:'n-radno', tip:'obavijest', datum:plus(-45),
+    name:L('Ljetno radno vrijeme Centra za posjetitelje','Summer hours at the visitor centre','Sommeröffnungszeiten des Besucherzentrums'),
+    lead:L('Centar za posjetitelje na Trgu pobjede radi dulje tijekom ljetnih mjeseci, uključujući subote.',
+           'The visitor centre on Trg pobjede keeps longer hours through the summer, Saturdays included.',
+           'Das Besucherzentrum am Trg pobjede hat im Sommer länger geöffnet, auch samstags.'),
+    body:L('<p>Radno vrijeme vrijedi do kraja rujna. Izvan njega informacije su dostupne telefonom i preko informatora na sjedištu.</p>') }
+];
+
 var MAPPOS = {
   'a-tvrdjava':[19,52], 'a-korzo':[45,44], 'a-samostan':[52,38], 'a-muzej':[41,36],
   'a-galerija':[49,33], 'a-poloj':[80,64], 'a-nasip':[63,60], 'a-vinogorje':[36,10],
@@ -1337,7 +1414,7 @@ var MAPPOS = {
 window.__PROTO = { EVENTS:EVENTS, ATTRACTIONS:ATTRACTIONS, STAYS:STAYS, EATS:EATS,
   ITINS:ITINS, STORIES:STORIES, FAQS:FAQS, MAPPOS:MAPPOS, art:art, heroArt:heroArt,
   fmtDate:fmtDate, fmtRange:fmtRange, shortWhen:shortWhen, daysUntil:daysUntil,
-  weekendRange:weekendRange, plus:plus, iso:iso, TODAY:TODAY };
+  weekendRange:weekendRange, plus:plus, iso:iso, TODAY:TODAY, NEWS:NEWS };
 })();
 </script>
 <script>
@@ -1345,7 +1422,7 @@ window.__PROTO = { EVENTS:EVENTS, ATTRACTIONS:ATTRACTIONS, STAYS:STAYS, EATS:EAT
 "use strict";
 var P = window.__PROTO;
 var EVENTS=P.EVENTS, ATTR=P.ATTRACTIONS, STAYS=P.STAYS, EATS=P.EATS,
-    ITINS=P.ITINS, STORIES=P.STORIES, FAQS=P.FAQS, MAPPOS=P.MAPPOS, art=P.art;
+    ITINS=P.ITINS, STORIES=P.STORIES, FAQS=P.FAQS, MAPPOS=P.MAPPOS, art=P.art, NEWS=P.NEWS;
 
 /* ============================================================
    4. RJEČNIK SUČELJA (HR / EN / DE)
@@ -1359,6 +1436,19 @@ var D = {
   nav_plan:['Planiraj','Plan your trip','Reise planen'],
   nav_discover:['Otkrij Brod','About Brod','Brod entdecken'],
   brand_sub:['Turistička zajednica','Tourist Board','Tourismusverband'],
+  news_title:['Novosti i priopćenja','News and announcements','Nachrichten und Mitteilungen'],
+  news_read:['Pročitaj','Read','Lesen'],
+  news_none:['Nema objava u ovoj kategoriji.','No entries in this category.','Keine Einträge in dieser Kategorie.'],
+  nt_sve:['Sve','All','Alle'],
+  nt_obavijest:['Obavijesti','Notices','Hinweise'],
+  nt_priopcenje:['Priopćenja','Announcements','Mitteilungen'],
+  nt_natjecaj:['Natječaji','Calls','Ausschreibungen'],
+  nt_projekt:['Projekti','Projects','Projekte'],
+  alert_label:['Hitna obavijest','Urgent notice','Dringender Hinweis'],
+  alert_details:['Detalji','Details','Details'],
+  alert_updated:['Ažurirano','Updated','Aktualisiert'],
+  alert_close:['Zatvori obavijest','Dismiss notice','Hinweis schließen'],
+  f_news:['Novosti','News','Nachrichten'],
   myplan:['Moj plan','My plan','Mein Plan'],
   ask:['Pitaj Brod','Ask Brod','Brod fragen'],
   search_ph:['Pretražite događanja, smještaj, atrakcije…','Search events, places to stay, attractions…','Veranstaltungen, Unterkünfte, Sehenswürdigkeiten suchen…'],
@@ -1505,7 +1595,8 @@ var S = {
   st:{kind:[], amen:[], maxprice:0, maxkm:0},
   ea:{kind:[], cuisine:[], diet:[], terrace:false},
   stayDates:null,
-  filtersOpen:false
+  filtersOpen:false,
+  newsTab:'sve'
 };
 try{ var raw=localStorage.getItem('brod.plan'); if(raw) S.plan=new Set(JSON.parse(raw)); }catch(e){}
 function persist(){ try{ localStorage.setItem('brod.plan', JSON.stringify(Array.from(S.plan))); }catch(e){} }
@@ -1546,6 +1637,7 @@ var SCREENS = [
   ['stayitem:s-bastion','Detalj smještaja','W6'], ['plan','Itinereri','W7'],
   ['itin:i-2sata','Detalj itinerera','W8'], ['map','Interaktivna karta','W9'],
   ['search:tvrđava','Pretraga i rezultati','W10'],
+  ['news','Novosti i priopćenja','W11'],
   ['dozivi','Doživi / atrakcije','—'], ['attraction:a-tvrdjava','Detalj atrakcije','—'],
   ['ask','Pitaj Brod (AI)','W12'], ['myplan','Moj plan','—'],
   ['discover','Otkrij Brod','—'], ['contact','Kontakt','W12']
@@ -1907,8 +1999,8 @@ function screenDozivi(){
   return '<div class="wrap">'+crumbs([[S.lang==='hr'?'Početna':'Home','home'],[t('nav_dozivi'),null]])
    + '<h1 style="font-size:clamp(26px,4vw,38px);margin-top:10px">'+esc(t('dozivi_title'))+'</h1>'
    + '<p style="max-width:62ch;color:var(--ink-2);margin-top:10px">'
-   + esc(S.lang==='hr'?'Osam mjesta koja čine razliku između prolaska kroz Brod i posjeta Brodu.'
-        :'Eight places that make the difference between passing through Brod and visiting it.')+'</p>'
+   + esc(S.lang==='hr'?'Devet mjesta koja čine razliku između prolaska kroz Brod i posjeta Brodu.'
+        :'Nine places that make the difference between passing through Brod and visiting it.')+'</p>'
    + '<div class="grid g3" style="margin-top:22px">'+ATTR.map(attrCard).join('')+'</div>'
    + '<section class="sec">'+secHead(S.lang==='hr'?'Karta':'Map',t('map_title'),'map',S.lang==='hr'?'Otvori kartu':'Open map')
    + '<p style="color:var(--ink-2);max-width:60ch">'+esc(S.lang==='hr'
@@ -2006,7 +2098,7 @@ window.__CORE = {S:S,t:t,tx:tx,nm:nm,esc:esc,fbTag:fbTag,eur:eur,ALL:ALL,kindOf:
 var P=window.__PROTO, C=window.__CORE, A=window.__SCREENS_A;
 var S=C.S, t=C.t, tx=C.tx, esc=C.esc, fbTag=C.fbTag, eur=C.eur, ALL=C.ALL, art=P.art;
 var EVENTS=P.EVENTS, ATTR=P.ATTRACTIONS, STAYS=P.STAYS, EATS=P.EATS, ITINS=P.ITINS,
-    FAQS=P.FAQS, MAPPOS=P.MAPPOS;
+    FAQS=P.FAQS, MAPPOS=P.MAPPOS, NEWS=P.NEWS;
 
 function checkedLine(days){
   var d=new Date(P.TODAY); d.setDate(d.getDate()-(days||14));
@@ -2466,6 +2558,47 @@ function screenAsk(){
 }
 
 /* ---------------- PRETRAGA ---------------- */
+var NEWSTABS=[['sve','nt_sve'],['obavijest','nt_obavijest'],['priopcenje','nt_priopcenje'],
+               ['natjecaj','nt_natjecaj'],['projekt','nt_projekt']];
+
+function newsAktivne(){
+  var danas=P.iso(P.TODAY);
+  return NEWS.filter(function(n){ return !n.objaviDo || n.objaviDo>=danas; });
+}
+function newsHitna(){
+  var l=newsAktivne().filter(function(n){ return n.hitno; });
+  return l.length ? l[0] : null;
+}
+function newsFiltrirane(){
+  return NEWS.filter(function(n){ return S.newsTab==='sve' || n.tip===S.newsTab; })
+             .sort(function(a,b){ return a.datum<b.datum ? 1 : -1; });
+}
+function newsItem(n){
+  var nm=tx(n.name), ld=tx(n.lead);
+  return '<article class="news-item t-'+n.tip+'">'
+   + '<div class="nmeta">'+esc(P.fmtDate(n.datum,S.lang))+' · '+esc(t('nt_'+n.tip).replace(/i$/,''))+'</div>'
+   + '<h3>'+esc(nm.t)+'</h3>'+fbTag(nm)
+   + '<p>'+esc(ld.t)+'</p>'
+   + '<div class="nread"><button class="btn btn-secondary btn-sm" data-news="'+n.id+'">'
+   + esc(t('news_read'))+' →</button></div></article>';
+}
+function screenNews(){
+  var lst=newsFiltrirane();
+  return '<div class="wrap">'
+   + C.crumbs([[S.lang==='hr'?'Početna':'Home','home'],[t('news_title'),null]])
+   + '<div style="display:flex;gap:10px;align-items:baseline;flex-wrap:wrap;margin-top:10px">'
+   + '<h1 style="font-size:clamp(26px,4vw,38px)">'+esc(t('news_title'))+'</h1>'+C.wref('W11')+'</div>'
+   + '<div class="tabs" role="tablist">'
+   + NEWSTABS.map(function(r){
+       return '<button role="tab" aria-selected="'+(S.newsTab===r[0])+'" data-newstab="'+r[0]+'">'
+            + esc(t(r[1]))+'</button>'; }).join('')
+   + '</div>'
+   + (lst.length
+      ? '<div class="news-list">'+lst.map(newsItem).join('')+'</div>'
+      : '<div class="empty" style="margin-top:20px"><h3>'+esc(t('news_none'))+'</h3></div>')
+   + '</div>';
+}
+
 function searchAll(qRaw){
   var q=norm(qRaw).trim(); if(q.length<2) return [];
   var pool=[].concat(P.EVENTS,ATTR,STAYS,EATS,ITINS);
@@ -2494,6 +2627,7 @@ function screenSearch(){
 window.__SCREENS_B = { screenEvent:screenEvent, screenAttraction:screenAttraction,
   screenStayItem:screenStayItem, screenItin:screenItin, screenMap:screenMap,
   screenAsk:screenAsk, screenSearch:screenSearch, searchAll:searchAll,
+  screenNews:screenNews, newsHitna:newsHitna, newsAktivne:newsAktivne,
   chatLog:chatLog, answer:answer, mapLayerState:mapLayerState,
   setMapSel:function(v){ mapSel=v; }, norm:norm };
 })();
@@ -2532,6 +2666,8 @@ function buildChrome(){
 
   document.getElementById('planCount').textContent = S.plan.size;
 
+  buildAlert();
+
   document.getElementById('footGrid').innerHTML =
     '<div><h3>'+esc(t('brand_sub'))+'</h3><address>'
     + 'Turistička zajednica područja<br>„Slavonski Brod–Posavina"<br>'
@@ -2543,7 +2679,8 @@ function buildChrome(){
     + '<li><a href="#" data-go="plan">'+esc(t('nav_plan'))+'</a></li>'
     + '<li><a href="#" data-go="events">'+esc(t('nav_events'))+'</a></li>'
     + '<li><a href="#" data-go="discover">'+esc(t('faq'))+'</a></li>'
-    + '<li><a href="#" data-go="ask">'+esc(t('ask'))+'</a></li></ul></div>'
+    + '<li><a href="#" data-go="ask">'+esc(t('ask'))+'</a></li>'
+    + '<li><a href="#" data-go="news">'+esc(t('f_news'))+'</a></li></ul></div>'
     + '<div><h3>'+esc(t('f_trade'))+'</h3><ul>'
     + ['Za članove','Za medije','MICE','Partneri','Dokumenti'].map(function(x,i){
         var en=['For members','For media','MICE','Partners','Documents'][i];
@@ -2568,6 +2705,26 @@ function buildChrome(){
     + '<span style="width:100%;margin-top:8px;color:var(--ink-3)">'+esc(S.lang==='hr'
       ? 'Prototip. Toponimi, ustanove i manifestacije su stvarni; termini su primjeri, a smještaj, ugostiteljstvo i cijene demo podaci.'
       : 'Prototype. Place names, institutions and festivals are real; dates are examples, and accommodation, restaurants and prices are demo data.')+'</span>';
+}
+
+function alertOdbacena(id){
+  try{ return localStorage.getItem('brod.alert.'+id)==='1'; }catch(e){ return false; }
+}
+function buildAlert(){
+  var el=document.getElementById('alertBar');
+  var n=B.newsHitna();
+  if(!n || alertOdbacena(n.id)){ el.innerHTML=''; el.hidden=true; return; }
+  var nm=tx(n.name), ld=tx(n.lead);
+  el.hidden=false;
+  el.innerHTML='<div class="alert crit" role="alert">'
+   + '<svg class="alert-ico" viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">'
+   + '<path d="M10 2.5 18.5 17.5H1.5Z"/><path d="M10 8v4"/><path d="M10 15h.01"/></svg>'
+   + '<div class="alert-b">'
+   + '<strong>'+esc(t('alert_label'))+' · '+esc(nm.t)+'</strong>'
+   + '<p>'+esc(ld.t)+'</p>'
+   + '<div class="alert-meta"><span>'+esc(t('alert_updated'))+': '+esc(P.fmtDate(n.datum,S.lang))+'</span>'
+   + '<button data-news="'+n.id+'">'+esc(t('alert_details'))+' →</button></div></div>'
+   + '<button class="alert-x" data-alertx="'+n.id+'" aria-label="'+esc(t('alert_close'))+'">×</button></div>';
 }
 
 function buildJump(){
@@ -2596,6 +2753,7 @@ window.render = function(){
     case 'map': html=B.screenMap(); break;
     case 'ask': html=B.screenAsk(); break;
     case 'search': html=B.screenSearch(); break;
+    case 'news': html=B.screenNews(); break;
     default: html=A.screenHome();
   }
   m.innerHTML=html;
@@ -2656,6 +2814,33 @@ var PROTO_TEXT_EN = {
 
 document.addEventListener('click', function(ev){
   var el;
+
+  if((el=ev.target.closest('[data-alertx]'))){
+    ev.preventDefault();
+    try{ localStorage.setItem('brod.alert.'+el.getAttribute('data-alertx'),'1'); }catch(e){}
+    buildAlert();
+    return;
+  }
+
+  if((el=ev.target.closest('[data-news]'))){
+    ev.preventDefault();
+    var id=el.getAttribute('data-news');
+    var n=B.newsAktivne().concat(P.NEWS).filter(function(x){ return x.id===id; })[0];
+    if(n){
+      var nb=tx(n.body), nd=P.fmtDate(n.datum,S.lang);
+      showModal(tx(n.name).t,
+        '<p style="font-size:14px;color:var(--ink-3);text-transform:uppercase;letter-spacing:.04em;font-weight:600">'
+        + esc(nd)+' · '+esc(t('nt_'+n.tip).replace(/i$/,''))+'</p>'+nb.t);
+    }
+    return;
+  }
+
+  if((el=ev.target.closest('[data-newstab]'))){
+    ev.preventDefault();
+    S.newsTab=el.getAttribute('data-newstab');
+    render();
+    return;
+  }
 
   if((el=ev.target.closest('[data-proto]'))){
     ev.preventDefault();

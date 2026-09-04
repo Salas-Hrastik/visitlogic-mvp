@@ -126,4 +126,29 @@ heksadecimalna vrijednost izravno u komponenti.
 | **O4** | Veličine teksta ispod 14 px — spustiti ljestvicu u Strategiji ili podići 24 pravila u kodu | 10.2.2 |
 | **O5** | Maksimalna širina sadržaja: 1240 px u kodu, 1360 px u Strategiji | 10.2.1 |
 | **O6** | Prelazak s `px` na `rem` — traži WCAG 1.4.4, dira cijeli stilski blok | 11.3 |
-| **O7** | W11 — traka za hitne obavijesti i popis novosti; jedina maketa koja ne postoji | 10.3 |
+
+---
+
+## O7 — W11: novosti i hitne obavijesti
+
+**Datum:** 4. rujna 2026. · **Poglavlje:** 10.3 · **Smjer: mijenja se kod**
+
+Jedina od dvanaest žičanih maketa koju prototip nije prikazivao. Izvedena je u
+cijelosti, prema anotaciji uz W11.
+
+**Traka hitnih obavijesti** stoji na vrhu svih ekrana, ima `role="alert"`,
+prikazuje vrijeme ažuriranja, vodi na cijeli tekst i može se odbaciti; odbacivanje
+se pamti po objavi, pa se ista obavijest ne vraća.
+
+**Rok trajanja je ugrađen, ne preporučen.** Anotacija traži da traka bude
+uređivačka komponenta s rokom trajanja — *„inače ostaje mjesecima i gubi
+značenje."* Polje `objaviDo` zato nije neobavezno: traka se sama prestaje
+prikazivati kad rok istekne, bez ičije intervencije.
+
+**Ekran novosti** ima filtre Sve / Obavijesti / Priopćenja / Natječaji / Projekti
+i kartice s datumom, vrstom i sažetkom; cijeli tekst otvara se u modalu. Sve na
+HR, EN i DE, s poveznicom u podnožju.
+
+Uz W11 je ispravljena i jedina stvarna greška u sadržaju — **Kuća Brlićevih**
+dodana je kao atrakcija sa stvarnim radnim vremenom i uvrštena u itinerer
+„Tragovima Ivane Brlić-Mažuranić", koji ju je u uvodu obećavao, a nije je imao.

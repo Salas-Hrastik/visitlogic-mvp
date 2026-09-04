@@ -154,13 +154,19 @@ nije implementiran.
 
 ## 3. Odstupanja — opseg
 
-### 3.1 Nedostaje W11 — Novosti, priopćenja i hitne obavijesti
+### 3.1 W11 — Novosti, priopćenja i hitne obavijesti — ✅ riješeno (O7)
 
-Prototip **nema nijedno spominjanje** novosti, priopćenja ni hitnih obavijesti.
-Od dvanaest žičanih maketa to je jedina potpuno neprikazana.
+Bila je to jedina od dvanaest žičanih maketa koju prototip nije prikazivao.
+Sada je izvedena u cijelosti:
 
-Za TZ je traka za hitne obavijesti operativno važna — zatvorena cesta, otkazana
-manifestacija, poplavno upozorenje uz Savu.
+- **Traka hitnih obavijesti** na vrhu svih ekrana, `role="alert"`, s vremenom
+  ažuriranja, poveznicom na detalje i gumbom za odbacivanje. Odbacivanje se pamti.
+- **Rok trajanja.** Anotacija uz W11 traži da traka bude uređivačka komponenta s
+  rokom trajanja — *„inače ostaje mjesecima i gubi značenje."* Polje `objaviDo`
+  je obavezno i traka se sama prestaje prikazivati kad rok istekne.
+- **Ekran novosti** s filtrima Sve / Obavijesti / Priopćenja / Natječaji /
+  Projekti, karticama s datumom i vrstom te otvaranjem cijelog teksta.
+- Poveznica u podnožju; sve troje na HR, EN i DE.
 
 ### 3.2 W10 — Pretraga postoji, ali nije predstavljena — ✅ riješeno
 
@@ -204,10 +210,13 @@ informator ugrađen u sjedište i povezan sa sadržajem preko izvora i radnji.
 3. ✅ Odluka o fontovima — oba se zadržavaju, budžet u Strategiji se podiže (O1)
 4. ✅ Nazivlje tokena — zadržava se kod, ispravlja se Strategija (O3)
 
+5. ✅ W11 — traka hitnih obavijesti i ekran novosti (O7)
+6. ✅ Kuća Brlićevih dodana i uvrštena u itinerer
+
 **Otvoreno** — vidi tablicu na kraju [`ODLUKE.md`](ODLUKE.md):
-5. `--maxw`: 1240 px u kodu naspram 1360 px u Strategiji (O5)
-6. Veličine ispod 14 px (O4)
-7. W11 — traka za hitne obavijesti i popis novosti (O7)
+7. `--maxw`: 1240 px u kodu naspram 1360 px u Strategiji (O5)
+8. Veličine ispod 14 px (O4)
+9. Prelazak s `px` na `rem` (O6)
 
 **Za produkciju:**
 8. Prijeći na `rem`
@@ -224,7 +233,7 @@ Odvojeno od Strategije, demo podaci prototipa uspoređeni su s dokumentom
 
 | Kategorija | U prototipu | Stvarnih |
 |---|---|---|
-| Atrakcije | 8 | 5 |
+| Atrakcije | 9 | 6 |
 | Događanja | 17 | 2 od 5 ključnih manifestacija |
 | Smještaj | 8 | 0 |
 | Ugostiteljstvo | 6 | 0 |
@@ -239,15 +248,22 @@ posla. Tri podatka o stvarnim objektima ipak treba provjeriti na izvoru:
 - **Muzej Brodskog Posavlja** — 3 € naspram ~4 €.
 - **Franjevački samostan** — 08:00–19:00 naspram „otvoreno 24 sata".
 
-**Jedna stvarna greška u sadržaju:** itinerer „Tragovima Ivane Brlić-Mažuranić" u
-uvodu obećava *„Trg, kuća, muzejski postav"*, ali su mu četiri točke Korzo →
-Muzej Brodskog Posavlja → Galerija → Slastičarna Tambura (izmišljeni objekt).
-**Kuća Brlićevih** — njezina stvarna memorijalna kuća, ocjena 4,8 — ne spominje
-se u prototipu nijednom. Itinerer obećava kuću koje nema.
+**Jedna stvarna greška u sadržaju — ✅ ispravljena.** Itinerer „Tragovima Ivane
+Brlić-Mažuranić" u uvodu je obećavao *„Trg, kuća, muzejski postav"*, a četiri su
+mu točke bile Korzo → Muzej → Galerija → Slastičarna Tambura (izmišljeni objekt).
+**Kuća Brlićevih** — njezina stvarna memorijalna kuća, ocjena 4,8 — nije se
+spominjala nijednom. Itinerer je obećavao kuću koje nema.
 
-To je i propuštena prilika: Pogl. 4.2 predviđa
-`/otkrij-brod/ivana-brlic-mazuranic` kao **tematsku okosnicu identiteta**
-destinacije, a upravo joj nedostaje središnji objekt.
+Kuća je dodana kao atrakcija sa **stvarnim radnim vremenom** iz baze (pon, sri,
+pet i sub 10–14, uto i čet 18–20, nedjeljom zatvoreno) i uvrštena u itinerer kao
+druga postaja, odmah nakon Korza — na istom je trgu. Redoslijed je sada Korzo →
+Kuća Brlićevih → Muzej → Galerija → Tambura, sa satnicom preračunatom unutar
+zadanih 240 minuta. Cijena ulaznice nije poznata iz baze, pa nosi oznaku demo
+podatka.
+
+Time je popunjena i praznina koju je Pogl. 4.2 otvorilo:
+`/otkrij-brod/ivana-brlic-mazuranic` predviđen je kao **tematska okosnica
+identiteta** destinacije, a nedostajao joj je središnji objekt.
 
 Nedostaju i druge jake stvarne atrakcije: Muzej tambure, Galerija Ružić,
 Kazalište Ivane Brlić-Mažuranić, Gradski park (2.035 ocjena), Šuma Striborova,
