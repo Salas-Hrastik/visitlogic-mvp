@@ -5,7 +5,7 @@ const R = {
   // Pogl. 4.3.1 — primarna navigacija, doslovno prema tablici
   nav_dozivi:   { hr: "Doživi",          en: "Things to do",   de: "Erleben" },
   nav_dogadanja:{ hr: "Događanja",       en: "Events",         de: "Veranstaltungen" },
-  nav_stay:     { hr: "Prenoći i jedi",  en: "Stay & Eat",     de: "Übernachten & Essen" },
+  nav_stay:     { hr: "Prenoći i objeduj", en: "Stay & Eat",   de: "Übernachten & Essen" },
   nav_planiraj: { hr: "Planiraj",        en: "Plan your trip", de: "Reise planen" },
   nav_otkrij:   { hr: "Otkrij Brod",     en: "About Brod",     de: "Brod entdecken" },
 
@@ -20,7 +20,7 @@ const R = {
   pretraga:     { hr: "Pretraga",        en: "Search",         de: "Suche" },
   itinereri:    { hr: "Itinereri",       en: "Itineraries",    de: "Reiserouten" },
   smjestaj:     { hr: "Smještaj",        en: "Accommodation",  de: "Unterkunft" },
-  gdje_jesti:   { hr: "Gdje jesti",      en: "Where to eat",   de: "Wo essen" },
+  gdje_jesti:   { hr: "Gdje objedovati", en: "Where to eat",   de: "Wo essen" },
   ocjena:       { hr: "Ocjena",          en: "Rating",         de: "Bewertung" },
   ocjena_izvor: { hr: "ocjena s Google Mapsa", en: "ratings from Google Maps", de: "Bewertungen von Google Maps" },
   pogodnosti:   { hr: "Pogodnosti",      en: "Amenities",      de: "Ausstattung" },

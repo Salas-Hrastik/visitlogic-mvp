@@ -12,6 +12,7 @@ import {
 import { Pretraga, type Zapis } from "@/components/Pretraga";
 import { Filtri, type Faceta, type Stavka } from "@/components/Filtri";
 import { Informator } from "@/components/Informator";
+import { Galerija } from "@/components/Galerija";
 import { Zaglavlje } from "@/components/Zaglavlje";
 import { Podnozje } from "@/components/Podnozje";
 import { TrakaObavijesti } from "@/components/TrakaObavijesti";
@@ -37,7 +38,7 @@ export async function generateStaticParams(): Promise<Params[]> {
     const rute: Ruta[] = [
       { vrsta: "naslovnica" }, { vrsta: "atrakcije" }, { vrsta: "dogadanja" },
       { vrsta: "novosti" }, { vrsta: "itinereri" }, { vrsta: "pitaj" },
-      { vrsta: "kontakt" }, { vrsta: "pretraga" },
+      { vrsta: "kontakt" }, { vrsta: "pretraga" }, { vrsta: "otkrij" },
       { vrsta: "smjestajPopis" }, { vrsta: "gdjeJesti" },
       ...smj.map((x): Ruta => ({ vrsta: "smjestaj", slug: slugZa(x, jezik) })),
       ...ugo.map((x): Ruta => ({ vrsta: "ugostitelj", slug: slugZa(x, jezik) })),
@@ -169,6 +170,7 @@ async function Sadrzaj({ ruta, jezik }: { ruta: Ruta; jezik: Jezik }) {
           <p style={{ marginTop: "var(--s4)", fontSize: "1.125rem", color: "var(--ink-2)", maxWidth: "62ch" }}>
             <Polje p={tekst(a.uvodniOpis, jezik)} jezik={jezik} />
           </p>
+          {a.medij && <Galerija medij={a.medij} jezik={jezik} />}
           {opis && <Blok p={opis} jezik={jezik} />}
           <dl className="cinjenice">
             <dt>{t("adresa", jezik)}</dt><dd>{a.adresa}</dd>
@@ -479,6 +481,7 @@ async function Sadrzaj({ ruta, jezik }: { ruta: Ruta; jezik: Jezik }) {
       );
     }
 
+    case "otkrij":    return <UPripremi naslov={t("nav_otkrij", jezik)} jezik={jezik} />;
     case "itinereri": return <UPripremi naslov={t("itinereri", jezik)} jezik={jezik} />;
     case "pitaj":
       return (

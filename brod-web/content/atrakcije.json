@@ -155,7 +155,93 @@
     "teme": [
       "ivana-brlic-mazuranic"
     ],
-    "zadnjaProvjera": "2026-09-04"
+    "zadnjaProvjera": "2026-09-04",
+    "medij": [
+      {
+        "datoteka": "/slike/kuca-brlicevih/kuca-brlicevih-1.jpg",
+        "sirina": 1024,
+        "visina": 768,
+        "alt": {
+          "hr": "Pročelje Kuće Brlićevih na Trgu Ivane Brlić-Mažuranić",
+          "en": "The facade of the Brlić House on Ivana Brlić-Mažuranić Square",
+          "de": "Die Fassade des Hauses Brlić am Ivana-Brlić-Mažuranić-Platz"
+        },
+        "autor": "Turistička zajednica grada Slavonskog Broda — potvrditi",
+        "licenca": "nepotvrdeno",
+        "izvor": "https://tzgsb.hr/index.php?page=kuca_brlicevih",
+        "preuzeto": "2026-09-04"
+      },
+      {
+        "datoteka": "/slike/kuca-brlicevih/kuca-brlicevih-2.jpg",
+        "sirina": 1024,
+        "visina": 692,
+        "alt": {
+          "hr": "Unutrašnjost memorijalnog postava Kuće Brlićevih",
+          "en": "Interior of the memorial display in the Brlić House",
+          "de": "Innenraum der Gedenkausstellung im Haus Brlić"
+        },
+        "autor": "Turistička zajednica grada Slavonskog Broda — potvrditi",
+        "licenca": "nepotvrdeno",
+        "izvor": "https://tzgsb.hr/index.php?page=kuca_brlicevih",
+        "preuzeto": "2026-09-04"
+      },
+      {
+        "datoteka": "/slike/kuca-brlicevih/kuca-brlicevih-3.jpg",
+        "sirina": 1024,
+        "visina": 559,
+        "alt": {
+          "hr": "Soba s obiteljskim namještajem u Kući Brlićevih",
+          "en": "A room with family furniture in the Brlić House",
+          "de": "Ein Raum mit Familienmobiliar im Haus Brlić"
+        },
+        "autor": "Turistička zajednica grada Slavonskog Broda — potvrditi",
+        "licenca": "nepotvrdeno",
+        "izvor": "https://tzgsb.hr/index.php?page=kuca_brlicevih",
+        "preuzeto": "2026-09-04"
+      },
+      {
+        "datoteka": "/slike/kuca-brlicevih/kuca-brlicevih-4.jpg",
+        "sirina": 950,
+        "visina": 768,
+        "alt": {
+          "hr": "Izložena građa iz ostavštine obitelji Brlić",
+          "en": "Material on display from the Brlić family estate",
+          "de": "Ausgestellte Objekte aus dem Nachlass der Familie Brlić"
+        },
+        "autor": "Turistička zajednica grada Slavonskog Broda — potvrditi",
+        "licenca": "nepotvrdeno",
+        "izvor": "https://tzgsb.hr/index.php?page=kuca_brlicevih",
+        "preuzeto": "2026-09-04"
+      },
+      {
+        "datoteka": "/slike/kuca-brlicevih/kuca-brlicevih-5.jpg",
+        "sirina": 1024,
+        "visina": 701,
+        "alt": {
+          "hr": "Radni prostor Ivane Brlić-Mažuranić u obiteljskoj kući",
+          "en": "Ivana Brlić-Mažuranić's writing space in the family house",
+          "de": "Der Arbeitsplatz von Ivana Brlić-Mažuranić im Familienhaus"
+        },
+        "autor": "Turistička zajednica grada Slavonskog Broda — potvrditi",
+        "licenca": "nepotvrdeno",
+        "izvor": "https://tzgsb.hr/index.php?page=kuca_brlicevih",
+        "preuzeto": "2026-09-04"
+      },
+      {
+        "datoteka": "/slike/kuca-brlicevih/kuca-brlicevih-6.jpg",
+        "sirina": 1024,
+        "visina": 626,
+        "alt": {
+          "hr": "Detalj postava posvećenog djelima Ivane Brlić-Mažuranić",
+          "en": "A detail of the display devoted to the works of Ivana Brlić-Mažuranić",
+          "de": "Detail der Ausstellung zum Werk von Ivana Brlić-Mažuranić"
+        },
+        "autor": "Turistička zajednica grada Slavonskog Broda — potvrditi",
+        "licenca": "nepotvrdeno",
+        "izvor": "https://tzgsb.hr/index.php?page=kuca_brlicevih",
+        "preuzeto": "2026-09-04"
+      }
+    ]
   },
   {
     "id": "a-muzej-bp",

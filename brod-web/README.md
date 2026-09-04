@@ -119,6 +119,16 @@ u tekstu.
 preduvjetom za puštanje u rad), vanjska ocjena pristupačnosti, sigurnosne
 kopije — popisano je u [`../brod/docs/PRIJE-OBJAVE.md`](../brod/docs/PRIJE-OBJAVE.md).
 
+## Fotografije
+
+Model slijedi E13: `alt`, `autor` i `licenca` su **obavezna polja** — uz E13
+piše da se bez alt teksta ne može objaviti, pa to nosi tip, ne uputa uredniku.
+
+Preuzeto je šest fotografija Kuće Brlićevih s `tzgsb.hr`. To je **sve što je
+ondje upotrebljivo**: od 74 fotografije na postojećem sjedištu, 62 su sličice
+širine 170 px. Licenca im je upisana kao `nepotvrdeno`, pa galerija prikazuje
+vidljivu napomenu o pravima. Za ostale entitete TZ mora isporučiti izvornike.
+
 ## Što još nije
 
 Itinereri stoje kao poštena „u pripremi" stranica — postoje u rutiranju, nemaju

@@ -28,8 +28,7 @@ export function Zaglavlje({ jezik, putanjaSad }: { jezik: Jezik; putanjaSad: str
           <Link href={putanja({ vrsta: "dogadanja" }, jezik)}>{t("nav_dogadanja", jezik)}</Link>
           <Link href={putanja({ vrsta: "smjestajPopis" }, jezik)}>{t("nav_stay", jezik)}</Link>
           <Link href={putanja({ vrsta: "itinereri" }, jezik)}>{t("nav_planiraj", jezik)}</Link>
-          <Link href={putanja({ vrsta: "novosti" }, jezik)}>{t("novosti", jezik)}</Link>
-          <Link href={putanja({ vrsta: "pretraga" }, jezik)}>{t("pretraga", jezik)}</Link>
+          <Link href={putanja({ vrsta: "otkrij" }, jezik)}>{t("nav_otkrij", jezik)}</Link>
         </nav>
 
         {/*

@@ -181,6 +181,73 @@ pretraživanja koda. Popis je u [`PRIJE-OBJAVE.md`](PRIJE-OBJAVE.md).
 
 ---
 
+## O11 — „Objeduj" umjesto „jedi"
+
+**Datum:** 4. rujna 2026. · **Poglavlje:** 4.2, 4.3.1 · **Smjer: mijenja se Strategija**
+
+Naručitelj traži da se u hrvatskom nazivlju umjesto „jedi" koristi „objeduj".
+
+**Provedeno u kodu:**
+
+| Bilo | Sada |
+|---|---|
+| Prenoći i jedi | **Prenoći i objeduj** |
+| Gdje jesti | **Gdje objedovati** |
+| `/prenoci-i-jedi/` | `/prenoci-i-objeduj/` |
+| `/prenoci-i-jedi/gdje-jesti` | `/prenoci-i-objeduj/gdje-objedovati` |
+
+Engleski i njemački ostaju nepromijenjeni — traženo je hrvatsko nazivlje.
+
+Promijenjen je i **segment URL-a**, ne samo natpis. Da je ostao `gdje-jesti`
+ispod natpisa „Gdje objedovati", nastala bi razlika koju bi netko kasnije
+morao objašnjavati. Sjedište još nije objavljeno, pa nema starih poveznica
+koje bi trebalo preusmjeriti; kad bude, svaka takva promjena traži 301.
+
+**U Strategiji treba ispraviti Pogl. 4.2 (sitemap) i tablicu u Pogl. 4.3.1.**
+
+### Uz to: navigacija vraćena na pet stavki
+
+Pogl. 4.3.1 propisuje točno pet, a u kodu ih je bilo šest — uz to krivih:
+„Novosti i priopćenja" i „Pretraga" bile su u navigaciji, a **„Otkrij Brod"
+je nedostajao**. Sada je: Doživi · Događanja · Prenoći i objeduj · Planiraj ·
+Otkrij Brod. Novosti i pretraga su u podnožju, gdje su i bile.
+
+`/otkrij-brod` zasad je stranica u pripremi, kao i itinereri.
+
+---
+
+## O12 — Fotografije s postojećeg sjedišta
+
+**Datum:** 4. rujna 2026. · **Poglavlje:** 3.1.3, 5.1 (E13) · **Smjer: dopunjuje se kod**
+
+Naručitelj je odobrio korištenje fotografija s `tzgsb.hr`.
+
+**Nalaz: od 74 fotografije na tom sjedištu, upotrebljivih je šest.**
+
+| Širina | Broj |
+|---|---|
+| 1000 px i više | 5 |
+| 600–999 px | 1 |
+| 300–599 px | 0 |
+| 170–299 px | **62** |
+| ispod 170 px | 6 |
+
+Svih šest upotrebljivih prikazuje **Kuću Brlićevih**. Ostalo su sličice od
+170 px, koje na kartici od 400 px — pogotovo na zaslonu dvostruke gustoće —
+izgledaju mutno. Postojeće sjedište ih koristi u toj veličini jer ih tako i
+prikazuje.
+
+**Zaključak: zaliha fotografija ne postoji.** Za ostale entitete TZ mora
+isporučiti izvornike. To potvrđuje procjenu iz Pogl. 3.1.3 da fotografije
+traže vlastitu trijažu, a ne preuzimanje sa starog sjedišta.
+
+**Prava:** E13 traži autora i licencu kao obavezna polja. Upisani su kao
+`nepotvrdeno`, uz izvor i datum preuzimanja. Galerija zbog toga prikazuje
+**vidljivu napomenu** da prava nisu potvrđena — fotografija bez utvrđenih
+prava ne smije tiho proći u produkciju samo zato što izgleda dobro.
+
+---
+
 ## Otvoreno
 
 | | Pitanje | Poglavlje |

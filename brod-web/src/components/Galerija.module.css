@@ -1,0 +1,5 @@
+.galerija { margin: var(--s6) 0 0; }
+.glavna { width: 100%; height: auto; border-radius: var(--radius-lg); }
+.ostale { display: grid; grid-template-columns: repeat(auto-fill, minmax(8rem, 1fr)); gap: var(--s2); margin-top: var(--s2); }
+.ostale img { width: 100%; height: auto; border-radius: var(--radius); }
+.prava { margin-top: var(--s3); font-size: .875rem; color: var(--warn); background: var(--warn-tint); padding: var(--s2) var(--s3); border-radius: var(--radius); }

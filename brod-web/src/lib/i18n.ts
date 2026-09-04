@@ -16,10 +16,11 @@ const SEG = {
   dogadanja:  { hr: "dogadanja",      en: "events",         de: "veranstaltungen" },
   planiraj:   { hr: "planiraj",       en: "plan",           de: "reise-planen" },
   itinereri:  { hr: "itinereri",      en: "itineraries",    de: "reiserouten" },
-  prenoci:    { hr: "prenoci-i-jedi",  en: "stay-and-eat",   de: "uebernachten-und-essen" },
+  prenoci:    { hr: "prenoci-i-objeduj", en: "stay-and-eat", de: "uebernachten-und-essen" },
   smjestaj:   { hr: "smjestaj",        en: "accommodation",  de: "unterkunft" },
-  gdjeJesti:  { hr: "gdje-jesti",      en: "where-to-eat",   de: "wo-essen" },
+  gdjeJesti:  { hr: "gdje-objedovati", en: "where-to-eat",   de: "wo-essen" },
   novosti:    { hr: "novosti",        en: "news",           de: "nachrichten" },
+  otkrij:     { hr: "otkrij-brod",    en: "about-brod",     de: "brod-entdecken" },
   pitaj:      { hr: "pitaj-brod",     en: "ask-brod",       de: "brod-fragen" },
   kontakt:    { hr: "kontakt",        en: "contact",        de: "kontakt" },
   pretraga:   { hr: "pretraga",       en: "search",         de: "suche" },
@@ -53,6 +54,7 @@ export type Ruta =
   | { vrsta: "ugostitelj"; slug: string }
   | { vrsta: "novosti" }
   | { vrsta: "novost"; slug: string }
+  | { vrsta: "otkrij" }
   | { vrsta: "pitaj" }
   | { vrsta: "kontakt" }
   | { vrsta: "pretraga" }
@@ -100,6 +102,7 @@ export function razrijesi(segmenti: string[], j: Jezik): Ruta | null {
     if (s.length === 2) return { vrsta: "novost", slug: s[1] };
     return null;
   }
+  if (s.length === 1 && je("otkrij")) return { vrsta: "otkrij" };
   if (s.length === 1 && je("pitaj")) return { vrsta: "pitaj" };
   if (s.length === 1 && je("kontakt")) return { vrsta: "kontakt" };
   if (s.length === 1 && je("pretraga")) return { vrsta: "pretraga" };
@@ -125,6 +128,7 @@ export function putanja(r: Ruta, j: Jezik): string {
     case "ugostitelj": return p(SEG.prenoci[j], SEG.gdjeJesti[j], r.slug);
     case "novosti":    return p(SEG.novosti[j]);
     case "novost":     return p(SEG.novosti[j], r.slug);
+    case "otkrij":     return p(SEG.otkrij[j]);
     case "pitaj":      return p(SEG.pitaj[j]);
     case "kontakt":    return p(SEG.kontakt[j]);
     case "pretraga":   return p(SEG.pretraga[j]);

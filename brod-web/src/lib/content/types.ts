@@ -46,6 +46,8 @@ export type Cijene = {
 /** Zajednička jezgra svih objavljivih entiteta. */
 export type Entitet = {
   id: string;
+  /** Prva slika je ujedno OG slika (Pogl. 5.1, E2/E3). */
+  medij?: Slika[];
   slug: Lokalizirano;
   naziv: Lokalizirano;
   uvodniOpis: Lokalizirano;
@@ -133,6 +135,28 @@ export type PravniDokument = Entitet & {
    * pravnu težinu koju nacrt nema. Dok je `true`, stranica sama to kaže.
    */
   nacrt: boolean;
+};
+
+/**
+ * Pogl. 5.1, E13 — Medijski resurs.
+ *
+ * `alt` je obavezan jer dokument uz E13 kaže doslovno: „obavezno — bez toga se
+ * ne može objaviti". Zato ga nosi tip, a ne uputa uredniku.
+ *
+ * `autor` i `licenca` su obavezni iz istog razloga zbog kojeg su i u Strategiji:
+ * fotografija bez utvrđenih prava je pravni rizik koji se otkrije prekasno.
+ */
+export type Slika = {
+  datoteka: string;
+  sirina: number;
+  visina: number;
+  /** Obavezno. Prazan niz znači dekorativnu sliku i traži role="presentation". */
+  alt: Lokalizirano;
+  autor: string;
+  licenca: "vlasnistvo-tz" | "ustupljeno-ograniceno" | "cc-by" | "kupljeno" | "nepotvrdeno";
+  /** Odakle je preuzeta i kada — da se podrijetlo ne izgubi. */
+  izvor?: string;
+  preuzeto?: string;
 };
 
 export type BiloKojiEntitet = Atrakcija | Dogadaj | Novost | Itinerer | Smjestaj | Ugostitelj | PravniDokument;
