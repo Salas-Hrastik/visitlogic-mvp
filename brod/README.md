@@ -20,6 +20,7 @@ stranica.
 | `vercel.json` | Zaglavlja: `noindex`, `no-cache`, osnovna sigurnosna zaglavlja |
 | `robots.txt` | `Disallow: /` — cijeli projekt izvan tražilica |
 | `docs/AKTIVACIJA.md` | Put od prototipa do sjedišta na serveru TZ-a |
+| `docs/USKLADENOST-SA-STRATEGIJOM.md` | Provjera prototipa prema Strategiji (v1.0, 31. 8. 2026.) |
 | `scripts/izdvoji-repozitorij.sh` | Izdvajanje mape u samostalan repozitorij |
 | `PROCITAJME.txt` | Izvorna uputa autora prototipa |
 
