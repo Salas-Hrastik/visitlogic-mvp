@@ -146,6 +146,9 @@ export type PravniDokument = Entitet & {
  * `autor` i `licenca` su obavezni iz istog razloga zbog kojeg su i u Strategiji:
  * fotografija bez utvrđenih prava je pravni rizik koji se otkrije prekasno.
  */
+export type Licenca =
+  | "vlasnistvo-tz" | "ustupljeno-ograniceno" | "cc-by" | "kupljeno" | "nepotvrdeno";
+
 export type Slika = {
   datoteka: string;
   sirina: number;
@@ -153,11 +156,36 @@ export type Slika = {
   /** Obavezno. Prazan niz znači dekorativnu sliku i traži role="presentation". */
   alt: Lokalizirano;
   autor: string;
-  licenca: "vlasnistvo-tz" | "ustupljeno-ograniceno" | "cc-by" | "kupljeno" | "nepotvrdeno";
-  /** Odakle je preuzeta i kada — da se podrijetlo ne izgubi. */
+  licenca: Licenca;
+  /**
+   * Pogl. 5.3.2, točka 2: licencija je neograničena vremenski ILI ima jasan
+   * datum isteka. Rečenica koja slijedi je jednoznačna — „Fotografija bez ovog
+   * polja NE SMIJE biti objavljena" — pa `objavljiva()` to i provodi.
+   * `null` znači izričito neograničeno; `undefined` znači da nije utvrđeno.
+   */
+  licencaVrijediDo?: string | null;
+  /** Pogl. 5.3.2, točka 3: kredit autora vidljiv u galeriji, ne samo u metapodacima. */
+  atribucija?: string;
+  /** Pogl. 5.3.2, točka 6: preuzeti sadržaj uvijek nosi izvor. */
   izvor?: string;
   preuzeto?: string;
 };
+
+/**
+ * Smije li slika u javnu objavu.
+ *
+ * Namjerno je funkcija, a ne komentar: pravilo iz 5.3.2 lako je zaobići
+ * zaboravom, a posljedica je objavljena tuđa fotografija bez licencije.
+ */
+export function slikaObjavljiva(x: Slika): boolean {
+  if (x.licenca === "nepotvrdeno") return false;
+  if (x.licencaVrijediDo === undefined) return false;
+  if (x.licencaVrijediDo === null) return true;
+  return x.licencaVrijediDo >= new Date().toISOString().slice(0, 10);
+}
+
+/** Pogl. 5.3.3: automatska provjera pri uvozu traži sliku od najmanje 1200 px. */
+export const NAJMANJA_SIRINA = 1200;
 
 export type BiloKojiEntitet = Atrakcija | Dogadaj | Novost | Itinerer | Smjestaj | Ugostitelj | PravniDokument;
 

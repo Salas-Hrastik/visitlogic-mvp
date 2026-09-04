@@ -126,8 +126,27 @@ piše da se bez alt teksta ne može objaviti, pa to nosi tip, ne uputa uredniku.
 
 Preuzeto je šest fotografija Kuće Brlićevih s `tzgsb.hr`. To je **sve što je
 ondje upotrebljivo**: od 74 fotografije na postojećem sjedištu, 62 su sličice
-širine 170 px. Licenca im je upisana kao `nepotvrdeno`, pa galerija prikazuje
-vidljivu napomenu o pravima. Za ostale entitete TZ mora isporučiti izvornike.
+širine 170 px.
+
+**Te fotografije trenutno nisu objavljene.** Pogl. 5.3.2, točka 2 kaže doslovno:
+*„Fotografija bez ovog polja ne smije biti objavljena."* Licenca im je
+`nepotvrdeno`, pa ih `slikaObjavljiva()` zadržava, a stranica prikazuje koliko
+ih čeka potvrdu. Filtriranje je prvo što `Galerija` radi — pravilo se ne
+oslanja na to da će urednik pripaziti.
+
+**Kad TZ potvrdi da su njihove**, objavljuju se izmjenom dva polja u
+`content/atrakcije.json`:
+
+```json
+"licenca": "vlasnistvo-tz",
+"licencaVrijediDo": null
+```
+
+Uz to, provjera iz Pogl. 5.3.3 pokazuje da su te fotografije 1024 i 950 px —
+**ispod praga od 1200 px** koji Strategija traži pri uvozu.
+
+Popis zahtjeva po objektima, s nacrtom poruke, u
+[`../brod/docs/ZAHTJEV-ZA-FOTOGRAFIJE.md`](../brod/docs/ZAHTJEV-ZA-FOTOGRAFIJE.md).
 
 ## Što još nije
 

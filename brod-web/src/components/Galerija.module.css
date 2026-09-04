@@ -2,4 +2,10 @@
 .glavna { width: 100%; height: auto; border-radius: var(--radius-lg); }
 .ostale { display: grid; grid-template-columns: repeat(auto-fill, minmax(8rem, 1fr)); gap: var(--s2); margin-top: var(--s2); }
 .ostale img { width: 100%; height: auto; border-radius: var(--radius); }
-.prava { margin-top: var(--s3); font-size: .875rem; color: var(--warn); background: var(--warn-tint); padding: var(--s2) var(--s3); border-radius: var(--radius); }
+.kredit { margin-top: var(--s2); font-size: .875rem; color: var(--ink-3); }
+.zadrzanoUz { color: var(--warn); }
+.zadrzano {
+  margin-top: var(--s6); padding: var(--s3) var(--s4); font-size: .875rem;
+  background: var(--warn-tint); border-inline-start: 4px solid var(--warn);
+  border-radius: var(--radius); color: var(--ink-2);
+}

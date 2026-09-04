@@ -248,6 +248,44 @@ prava ne smije tiho proći u produkciju samo zato što izgleda dobro.
 
 ---
 
+## O13 — Licencija fotografije se provodi kodom
+
+**Datum:** 4. rujna 2026. · **Poglavlje:** 5.3.2, 5.3.3 · **Smjer: dopunjuje se kod**
+
+Postavljeno je pitanje mogu li se koristiti izvornici s web sjedišta objekata i
+fotografije s Google Mapsa.
+
+**Odgovor je u samoj Strategiji.** Pogl. 5.3.2, točka 2: *„Fotografija bez ovog
+polja **ne smije** biti objavljena."* Uz to se traži pisana suglasnost (t. 1) i
+vidljiv kredit autora (t. 3).
+
+**Odlučeno: pravilo se provodi kodom, ne disciplinom.**
+
+- `slikaObjavljiva()` propušta samo sliku s utvrđenom licencijom koja nije
+  istekla. `Galerija` filtrira prije ičega drugog.
+- Zadržane fotografije se ne prešućuju — stranica kaže koliko ih čeka potvrdu,
+  da se vidi da posao postoji.
+- Kredit autora prikazuje se u galeriji, kako t. 3 i traži.
+
+**Posljedica:** šest fotografija Kuće Brlićevih trenutno **nije objavljeno**,
+jer im je licencija `nepotvrdeno`. Objavljuju se izmjenom dva polja čim TZ
+potvrdi da su njihove.
+
+**Google Maps:** te fotografije pripadaju onome tko ih je postavio, a Googleova
+licencija ne prenosi se na treće strane; uvjeti zabranjuju preuzimanje. Zakonita
+je varijanta Places API („Place Photos") — prikaz uživo uz atribuciju, bez
+pohrane — ali se plaća po prikazu i po Pogl. 14.2 traži privolu. Za objekte koji
+ionako moraju dati suglasnost zbog opisa i cijena, izravno traženje je
+jednostavnije.
+
+**Drugi nalaz:** provjera iz 5.3.3 pokazuje da su i te fotografije 1024 i 950 px,
+dakle **ispod praga od 1200 px** koji Strategija traži pri uvozu. Prag treba
+navesti u zahtjevu prema objektima.
+
+Popis zahtjeva po objektima: [`ZAHTJEV-ZA-FOTOGRAFIJE.md`](ZAHTJEV-ZA-FOTOGRAFIJE.md).
+
+---
+
 ## Otvoreno
 
 | | Pitanje | Poglavlje |
