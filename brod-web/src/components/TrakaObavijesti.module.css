@@ -1,0 +1,7 @@
+.alert { background: var(--err-tint); border-bottom: 3px solid var(--err); }
+.in { display: flex; gap: var(--s3); align-items: flex-start; padding-block: var(--s3); }
+.ico { flex: none; margin-top: .15rem; color: var(--err); }
+.body { flex: 1; min-width: 0; }
+.body strong { display: block; font-family: var(--f-display); font-weight: 700; }
+.body p { margin-top: var(--s1); color: var(--ink-2); max-width: 70ch; }
+.meta { font-size: .875rem; color: var(--ink-3); display: flex; gap: var(--s3); flex-wrap: wrap; }

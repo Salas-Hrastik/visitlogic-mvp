@@ -1,0 +1,16 @@
+.head { border-bottom: 1px solid var(--line); background: var(--paper); }
+.in { display: flex; align-items: center; gap: var(--s6); padding-block: var(--s3); flex-wrap: wrap; }
+.brand { display: flex; align-items: center; gap: var(--s3); text-decoration: none; color: var(--ink); }
+.mark { width: 2rem; height: 2rem; border-radius: var(--radius); background: var(--brand); flex: none; }
+.brandTxt { font-family: var(--f-display); font-weight: 700; font-size: 1.125rem; line-height: 1.15; }
+.brandTxt small { display: block; font-family: var(--f-body); font-weight: 400; font-size: .875rem; color: var(--ink-2); }
+.nav { display: flex; gap: var(--s4); flex-wrap: wrap; margin-inline-start: auto; }
+.nav a { color: var(--ink); text-decoration: none; font-weight: 600; padding-block: var(--s2); }
+.nav a:hover { color: var(--brand); text-decoration: underline; }
+.jezici ul { display: flex; gap: var(--s1); list-style: none; margin: 0; padding: 0; }
+.jezici a {
+  display: block; padding: var(--s1) var(--s2); font-size: .875rem; font-weight: 600;
+  color: var(--ink-2); text-decoration: none; border-radius: var(--radius);
+}
+.jezici a:hover { background: var(--paper-2); color: var(--ink); }
+.aktivan { background: var(--brand-tint); color: var(--brand) !important; }

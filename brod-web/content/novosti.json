@@ -1,0 +1,54 @@
+[
+  {
+    "id": "n-poloj", "vrsta": "novost", "status": "objavljeno", "tip": "obavijest",
+    "datum": "2026-09-03", "hitno": true, "objaviDo": "2026-09-12",
+    "slug": { "hr": "setnica-na-poloju-zatvorena" },
+    "naziv": {
+      "hr": "Šetnica na Poloju zatvorena zbog vodostaja Save",
+      "en": "Poloj riverside path closed due to Sava water level",
+      "de": "Uferweg in Poloj wegen Save-Pegel gesperrt"
+    },
+    "uvodniOpis": {
+      "hr": "Zbog visokog vodostaja šetnica uz Savu na Poloju zatvorena je do daljnjega. Savski nasip i biciklistička ruta ostaju prohodni.",
+      "en": "Because of the high water level the riverside path at Poloj is closed until further notice. The embankment and cycling route remain open.",
+      "de": "Wegen Hochwassers ist der Uferweg in Poloj bis auf Weiteres gesperrt. Damm und Radroute bleiben begehbar."
+    },
+    "opis": { "hr": "<p>Vodostaj Save prešao je razinu na kojoj se šetnica redovito zatvara. Zatvoren je dio od kupališta do skretanja na nasip; obilazak je označen.</p><p>Stanje se provjerava svakodnevno, a obavijest se uklanja čim se šetnica otvori.</p>" }
+  },
+  {
+    "id": "n-kolo", "vrsta": "novost", "status": "objavljeno", "tip": "priopcenje",
+    "datum": "2026-08-27",
+    "slug": { "hr": "objavljen-program-brodskog-kola" },
+    "naziv": { "hr": "Objavljen program Brodskog kola", "en": "Brodsko kolo programme published", "de": "Programm des Brodsko kolo veröffentlicht" },
+    "uvodniOpis": {
+      "hr": "Program folklornog festivala objavljen je u cijelosti, s rasporedom po pozornicama i satnicom nastupa.",
+      "en": "The full programme of the folklore festival is out, with stage schedules and performance times.",
+      "de": "Das vollständige Programm des Folklorefestivals ist da, mit Bühnenplan und Auftrittszeiten."
+    },
+    "opis": { "hr": "<p>Program obuhvaća nastupe na tri pozornice, povorku kroz centar i sajam rukotvorina u Tvrđavi. Ulaz na sve programe je slobodan.</p>" }
+  },
+  {
+    "id": "n-natjecaj", "vrsta": "novost", "status": "objavljeno", "tip": "natjecaj",
+    "datum": "2026-08-18",
+    "slug": { "hr": "natjecaj-za-suvenir-grada" },
+    "naziv": { "hr": "Natječaj za suvenir grada", "en": "Call for the city souvenir", "de": "Ausschreibung für das Stadtsouvenir" },
+    "uvodniOpis": {
+      "hr": "Turistička zajednica raspisuje natječaj za autorski suvenir Slavonskog Broda. Prijave su otvorene do kraja mjeseca.",
+      "en": "The tourist board invites entries for an original Slavonski Brod souvenir. Entries close at the end of the month.",
+      "de": "Der Tourismusverband schreibt ein originelles Souvenir aus. Einsendeschluss ist Monatsende."
+    },
+    "opis": { "hr": "<p>Traži se predmet koji se može izraditi u maloj seriji i koji se veže uz prepoznatljive motive destinacije — Tvrđavu, Savu, šlingeraj ili tamburu.</p>" }
+  },
+  {
+    "id": "n-nasip", "vrsta": "novost", "status": "objavljeno", "tip": "projekt",
+    "datum": "2026-08-01",
+    "slug": { "hr": "nova-signalizacija-na-savskom-nasipu" },
+    "naziv": { "hr": "Nova signalizacija na savskom nasipu", "en": "New wayfinding on the Sava embankment", "de": "Neue Beschilderung auf dem Save-Damm" },
+    "uvodniOpis": {
+      "hr": "Na nasipu je postavljena nova signalizacija s udaljenostima i oznakama ulaza na rutu.",
+      "en": "New signage with distances and route entry points has been installed on the embankment.",
+      "de": "Neue Beschilderung mit Entfernungen und Einstiegspunkten wurde am Damm angebracht."
+    },
+    "opis": { "hr": "<p>Postavljeno je četrnaest oznaka na ulazima i račvanjima, s udaljenostima do centra, Poloja i Bjeliša.</p>" }
+  }
+]

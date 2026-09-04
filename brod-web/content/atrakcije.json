@@ -1,0 +1,108 @@
+[
+  {
+    "id": "a-tvrdjava", "vrsta": "atrakcija", "status": "objavljeno", "kategorija": "povijest",
+    "slug": { "hr": "tvrdava-brod", "en": "brod-fortress", "de": "festung-brod" },
+    "naziv": { "hr": "Tvrđava Brod", "en": "Brod Fortress", "de": "Festung Brod" },
+    "uvodniOpis": {
+      "hr": "Najveća barokna vojna utvrda u Hrvatskoj, građena u 18. stoljeću uz sam zavoj Save.",
+      "en": "Croatia's largest Baroque military fortress, built in the 18th century on the bend of the Sava.",
+      "de": "Kroatiens größte barocke Militärfestung, im 18. Jahrhundert an der Save-Biegung erbaut."
+    },
+    "opis": {
+      "hr": "<p>Tvrđava je građena od 1715. kao dio vojne granice prema Osmanskom Carstvu. Zvjezdasti tlocrt s bastionima projektiran je da topovska vatra pokriva svaki prilaz.</p><p>Danas je Tvrđava gradski prostor, koncertna pozornica i muzejski kompleks. Zimi u njoj radi klizalište. Obnova je u tijeku.</p>"
+    },
+    "adresa": "Vukovarska ul. 1, 35000 Slavonski Brod",
+    "geo": { "lat": 45.1603, "lng": 18.0106 },
+    "radnoVrijeme": { "hr": "Otvoreno 0–24, svaki dan", "en": "Open 24 hours, daily", "de": "Rund um die Uhr geöffnet" },
+    "cijene": { "besplatno": true },
+    "trajanjePosjeta": { "min": 60, "max": 120 },
+    "pristupacnost": { "oznake": ["kolica"], "napomena": { "hr": "Dio kazamata nije pristupačan invalidskim kolicima." } },
+    "prikladnoZaDjecu": true,
+    "teme": ["vojna-povijest", "uz-savu"],
+    "provjereno": "2026-09-04"
+  },
+  {
+    "id": "a-korzo", "vrsta": "atrakcija", "status": "objavljeno", "kategorija": "kultura",
+    "slug": { "hr": "korzo-trg-ivane-brlic-mazuranic", "en": "korzo-main-square", "de": "korzo-hauptplatz" },
+    "naziv": { "hr": "Korzo — Trg Ivane Brlić-Mažuranić", "en": "Korzo — Ivana Brlić-Mažuranić Square", "de": "Korzo — Ivana-Brlić-Mažuranić-Platz" },
+    "uvodniOpis": {
+      "hr": "Srce grada i jedna od najljepših pješačkih zona u Hrvatskoj.",
+      "en": "The heart of the city and one of Croatia's finest pedestrian zones.",
+      "de": "Das Herz der Stadt und eine der schönsten Fußgängerzonen Kroatiens."
+    },
+    "adresa": "Trg Ivane Brlić Mažuranić, 35000 Slavonski Brod",
+    "geo": { "lat": 45.1608, "lng": 18.0155 },
+    "radnoVrijeme": { "hr": "Uvijek otvoreno", "en": "Always open", "de": "Immer geöffnet" },
+    "cijene": { "besplatno": true },
+    "trajanjePosjeta": { "min": 20, "max": 45 },
+    "pristupacnost": { "oznake": ["kolica"] },
+    "prikladnoZaDjecu": true,
+    "teme": ["gradsko-srce"],
+    "provjereno": "2026-09-04"
+  },
+  {
+    "id": "a-kuca-brlicevih", "vrsta": "atrakcija", "status": "objavljeno", "kategorija": "kultura",
+    "slug": { "hr": "kuca-brlicevih", "en": "the-brlic-house", "de": "haus-der-familie-brlic" },
+    "naziv": { "hr": "Kuća Brlićevih", "en": "The Brlić House", "de": "Haus der Familie Brlić" },
+    "uvodniOpis": {
+      "hr": "Memorijalna kuća Ivane Brlić-Mažuranić, na trgu koji nosi njezino ime.",
+      "en": "The memorial house of Ivana Brlić-Mažuranić, on the square that bears her name.",
+      "de": "Das Gedenkhaus von Ivana Brlić-Mažuranić, am Platz, der ihren Namen trägt."
+    },
+    "opis": {
+      "hr": "<p>U ovoj je kući Ivana Brlić-Mažuranić provela najveći dio života i u brodskim godinama napisala <em>Čudnovate zgode šegrta Hlapića</em> i <em>Priče iz davnine</em>.</p><p>Postav je memorijalni. Uz razgledavanje idu digitalni vodič i mobilna aplikacija, a stručno vodstvo uključeno je u cijenu ulaznice.</p>"
+    },
+    "adresa": "Trg Ivane Brlić Mažuranić, 35000 Slavonski Brod",
+    "geo": { "lat": 45.1606, "lng": 18.0151 },
+    "radnoVrijeme": {
+      "hr": "Pon, sri, pet i sub 10:00–14:00 · uto i čet 18:00–20:00 · nedjeljom zatvoreno",
+      "en": "Mon, Wed, Fri, Sat 10:00–14:00 · Tue, Thu 18:00–20:00 · closed Sunday",
+      "de": "Mo, Mi, Fr, Sa 10:00–14:00 · Di, Do 18:00–20:00 · sonntags geschlossen"
+    },
+    "cijene": { "besplatno": false, "odrasli": 3, "demo": true },
+    "trajanjePosjeta": { "min": 30, "max": 60 },
+    "pristupacnost": { "oznake": [] },
+    "prikladnoZaDjecu": true,
+    "kontakt": { "tel": "+385 35 256 084", "web": "https://gugsb.hr" },
+    "teme": ["ivana-brlic-mazuranic"],
+    "provjereno": "2026-09-04"
+  },
+  {
+    "id": "a-muzej-bp", "vrsta": "atrakcija", "status": "objavljeno", "kategorija": "kultura",
+    "slug": { "hr": "muzej-brodskog-posavlja", "en": "museum-of-brod-posavina", "de": "museum-der-brod-posavina" },
+    "naziv": { "hr": "Muzej Brodskog Posavlja", "en": "Museum of Brod Posavina", "de": "Museum der Brod-Posavina" },
+    "uvodniOpis": {
+      "hr": "Povijest Posavine, mamutska lubanja i povremene tematske izložbe.",
+      "en": "The history of Posavina, a mammoth skull and rotating themed exhibitions.",
+      "de": "Die Geschichte der Posavina, ein Mammutschädel und wechselnde Themenausstellungen."
+    },
+    "adresa": "Ul. Ante Starčevića 40, 35000 Slavonski Brod",
+    "geo": { "lat": 45.1614, "lng": 18.0122 },
+    "cijene": { "besplatno": false, "odrasli": 4 },
+    "trajanjePosjeta": { "min": 45, "max": 90 },
+    "pristupacnost": { "oznake": ["kolica", "wc"] },
+    "prikladnoZaDjecu": true,
+    "kontakt": { "tel": "+385 35 447 415", "web": "https://muzejbp.hr" },
+    "teme": ["gradska-povijest"],
+    "provjereno": "2026-09-04"
+  },
+  {
+    "id": "a-franjevacki", "vrsta": "atrakcija", "status": "objavljeno", "kategorija": "vjerski-objekt",
+    "slug": { "hr": "franjevacki-samostan", "en": "franciscan-monastery", "de": "franziskanerkloster" },
+    "naziv": { "hr": "Franjevački samostan Presvetog Trojstva", "en": "Franciscan Monastery of the Holy Trinity", "de": "Franziskanerkloster der Heiligen Dreifaltigkeit" },
+    "uvodniOpis": {
+      "hr": "Barokni samostanski sklop, jedno od najvrjednijih sakralnih mjesta u gradu.",
+      "en": "A Baroque monastery complex, among the city's most valuable sacral sites.",
+      "de": "Barocke Klosteranlage, einer der wertvollsten Sakralbauten der Stadt."
+    },
+    "adresa": "Trg Svetog Trojstva 1, 35000 Slavonski Brod",
+    "geo": { "lat": 45.1596, "lng": 18.0178 },
+    "cijene": { "besplatno": true },
+    "trajanjePosjeta": { "min": 20, "max": 45 },
+    "pristupacnost": { "oznake": ["kolica"] },
+    "prikladnoZaDjecu": false,
+    "kontakt": { "tel": "+385 35 297 170", "web": "https://franjevacki-samostan.hr" },
+    "teme": ["sakralna-bastina"],
+    "provjereno": "2026-09-04"
+  }
+]

@@ -1,0 +1,35 @@
+.mrvice { margin-block: var(--s6) var(--s4); font-size: .875rem; }
+.mrvice ol { list-style: none; display: flex; gap: var(--s2); flex-wrap: wrap; margin: 0; padding: 0; color: var(--ink-2); }
+.mrvice li + li::before { content: "›"; margin-inline-end: var(--s2); color: var(--ink-3); }
+
+.kartica { border: 1px solid var(--line); border-radius: var(--radius-lg); padding: var(--s4) var(--s6); background: var(--paper); }
+.kartica h3 { margin-top: var(--s1); }
+.kartica h3 a { text-decoration: none; color: var(--ink); }
+.kartica h3 a:hover { color: var(--brand); text-decoration: underline; }
+.uvod { color: var(--ink-2); margin-top: var(--s2); max-width: 72ch; }
+.meta { display: flex; gap: var(--s4); flex-wrap: wrap; margin-top: var(--s3); font-size: .875rem; color: var(--ink-3); }
+.oznaka { font-size: .875rem; font-weight: 600; text-transform: uppercase; letter-spacing: .04em; color: var(--ink-3); }
+
+.st_nadolazi { border-inline-start: 4px solid var(--ok); }
+.st_u-tijeku { border-inline-start: 4px solid var(--brick); }
+.st_proslo { border-inline-start: 4px solid var(--line-strong); opacity: .8; }
+
+.tip_obavijest { border-inline-start: 4px solid var(--warn); }
+.tip_natjecaj { border-inline-start: 4px solid var(--brick); }
+.tip_projekt { border-inline-start: 4px solid var(--ok); }
+.tip_priopcenje { border-inline-start: 4px solid var(--brand); }
+
+.neprevedeno {
+  display: inline-block; margin-inline-start: var(--s2); padding: 0 var(--s2);
+  font-size: .875rem; font-weight: 600; color: var(--warn);
+  background: var(--warn-tint); border-radius: var(--radius);
+}
+.azurnost { margin-top: var(--s6); font-size: .875rem; color: var(--ink-3); }
+
+.blok { margin-top: var(--s6); max-width: 70ch; }
+.blok p + div > :first-child { margin-top: var(--s2); }
+.neprevedenoBlok {
+  display: inline-block; padding: var(--s1) var(--s2); margin-bottom: var(--s2);
+  font-size: .875rem; font-weight: 600; color: var(--warn);
+  background: var(--warn-tint); border-radius: var(--radius);
+}

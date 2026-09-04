@@ -1,0 +1,73 @@
+[
+  {
+    "id": "d-brodsko-kolo-2027", "vrsta": "dogadaj", "status": "objavljeno", "tip": "tradicija",
+    "slug": { "hr": "brodsko-kolo-2027" },
+    "naziv": { "hr": "Brodsko kolo 2027", "en": "Brodsko kolo 2027", "de": "Brodsko kolo 2027" },
+    "uvodniOpis": {
+      "hr": "Najveća gradska folklorna manifestacija — povorka, tri pozornice i sajam rukotvorina.",
+      "en": "The city's largest folklore festival — a parade, three stages and a crafts fair.",
+      "de": "Das größte Folklorefest der Stadt — Umzug, drei Bühnen und Handwerksmarkt."
+    },
+    "pocetak": "2027-06-11", "kraj": "2027-06-14", "cjelodnevni": true,
+    "serija": "brodsko-kolo",
+    "lokacija": { "naziv": "Centar grada", "geo": { "lat": 45.1608, "lng": 18.0155 } },
+    "cijena": { "besplatno": true },
+    "publika": ["obitelji", "djeca", "parovi", "skupine"]
+  },
+  {
+    "id": "d-vinofest-2026", "vrsta": "dogadaj", "status": "objavljeno", "tip": "gastro",
+    "slug": { "hr": "brodski-vinofest-2026" },
+    "naziv": { "hr": "Brodski vinofest 2026", "en": "Brod Wine Festival 2026", "de": "Broder Weinfest 2026" },
+    "uvodniOpis": {
+      "hr": "Vina Brodskog vinogorja i okolnih podruma, uz kušanja i domaću kuhinju.",
+      "en": "Wines of the Brod wine region and nearby cellars, with tastings and local cooking.",
+      "de": "Weine der Broder Weinregion und umliegender Keller, mit Verkostungen und lokaler Küche."
+    },
+    "pocetak": "2026-10-03", "kraj": "2026-10-04", "cjelodnevni": true,
+    "lokacija": { "naziv": "Gradski park", "geo": { "lat": 45.1590, "lng": 18.0140 } },
+    "cijena": { "besplatno": false, "od": 8, "napomena": { "hr": "Cijena uključuje čašu i tri kušanja." } },
+    "publika": ["parovi", "skupine"]
+  },
+  {
+    "id": "d-advent-2026", "vrsta": "dogadaj", "status": "objavljeno", "tip": "obiteljsko",
+    "slug": { "hr": "advent-u-brodu-2026" },
+    "naziv": { "hr": "Advent u Brodu 2026", "en": "Advent in Brod 2026", "de": "Advent in Brod 2026" },
+    "uvodniOpis": {
+      "hr": "Klizalište u Tvrđavi, program u parku i adventske kućice kroz cijeli prosinac.",
+      "en": "An ice rink in the Fortress, a park programme and Advent huts throughout December.",
+      "de": "Eisbahn in der Festung, Programm im Park und Adventhütten den ganzen Dezember."
+    },
+    "pocetak": "2026-12-01", "kraj": "2026-12-31", "cjelodnevni": true,
+    "lokacija": { "naziv": "Tvrđava i Gradski park", "geo": { "lat": 45.1603, "lng": 18.0106 } },
+    "cijena": { "besplatno": true },
+    "publika": ["obitelji", "djeca"]
+  },
+  {
+    "id": "d-moto-2026", "vrsta": "dogadaj", "status": "objavljeno", "tip": "sajam",
+    "slug": { "hr": "moto-festival-2026" },
+    "naziv": { "hr": "Moto festival 2026", "en": "Moto Festival 2026", "de": "Moto-Festival 2026" },
+    "uvodniOpis": {
+      "hr": "Okupljanje motociklista u Tvrđavi i parku, s koncertima i defileom kroz grad.",
+      "en": "A motorcycle gathering in the Fortress and park, with concerts and a ride through town.",
+      "de": "Motorradtreffen in Festung und Park, mit Konzerten und Korso durch die Stadt."
+    },
+    "pocetak": "2026-07-17", "kraj": "2026-07-19", "cjelodnevni": true,
+    "lokacija": { "naziv": "Tvrđava i Gradski park", "geo": { "lat": 45.1603, "lng": 18.0106 } },
+    "cijena": { "besplatno": true },
+    "publika": ["skupine", "parovi"]
+  },
+  {
+    "id": "d-sava-beach-2026", "vrsta": "dogadaj", "status": "objavljeno", "tip": "koncert",
+    "slug": { "hr": "sava-beach-party-2026" },
+    "naziv": { "hr": "Sava Beach Party 2026", "en": "Sava Beach Party 2026", "de": "Sava Beach Party 2026" },
+    "uvodniOpis": {
+      "hr": "Ljetni riječni festival u Slavonskom Kobašu, tridesetak kilometara nizvodno.",
+      "en": "A summer river festival in Slavonski Kobaš, some thirty kilometres downstream.",
+      "de": "Sommerliches Flussfestival in Slavonski Kobaš, rund dreißig Kilometer flussabwärts."
+    },
+    "pocetak": "2026-08-08", "kraj": "2026-08-08", "cjelodnevni": false,
+    "lokacija": { "naziv": "Slavonski Kobaš", "geo": { "lat": 45.1030, "lng": 17.7480 } },
+    "cijena": { "besplatno": false, "od": 15 },
+    "publika": ["parovi", "skupine"]
+  }
+]

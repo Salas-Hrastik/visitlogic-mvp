@@ -119,6 +119,23 @@ heksadecimalna vrijednost izravno u komponenti.
 
 ---
 
+## O8 — Next.js 16 umjesto 15
+
+**Datum:** 4. rujna 2026. · **Poglavlje:** 13.2 · **Smjer: mijenja se Strategija**
+
+Pogl. 13.2 imenuje „Next.js 15 (App Router)". U međuvremenu je 16 stabilan, pa
+bi kretanje na 15 značilo početak na prethodnom majoru i migraciju za nekoliko
+mjeseci.
+
+**Odlučeno: Next.js 16.** U Pogl. 13.2 zamijeniti „Next.js 15 (App Router) ili
+Nuxt 4" s „Next.js 16 (App Router) ili Nuxt 4".
+
+Uz to: Next 16 je konvenciju `middleware.ts` proglasio zastarjelom u korist
+`proxy.ts`. Projekt od početka koristi novu konvenciju, pa nema upozorenja u
+buildu ni migracije kasnije.
+
+---
+
 ## Otvoreno
 
 | | Pitanje | Poglavlje |
