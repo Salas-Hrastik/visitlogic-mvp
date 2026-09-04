@@ -1,0 +1,48 @@
+.layout { display: grid; gap: var(--s6); margin-top: var(--s6); }
+@media (min-width: 60rem) { .layout { grid-template-columns: 16rem 1fr; align-items: start; } }
+
+.mobToggle {
+  padding: var(--s3) var(--s4); font: inherit; font-weight: 600; min-height: 2.875rem;
+  border: 1px solid var(--line-strong); border-radius: var(--radius); background: var(--paper);
+  color: var(--ink); cursor: pointer;
+}
+@media (min-width: 60rem) { .mobToggle { display: none; } }
+
+.panel { display: none; }
+.panelOtvoren { display: block; }
+@media (min-width: 60rem) { .panel { display: block; } .primijeni { display: none; } }
+
+.grupa { border: 0; border-top: 1px solid var(--line); margin: 0; padding: var(--s4) 0 var(--s2); }
+.grupa legend { font-weight: 700; font-family: var(--f-display); padding: 0; }
+
+.opcija { display: flex; align-items: center; gap: var(--s2); padding: var(--s2) 0; cursor: pointer; }
+.opcija input { width: 1.125rem; height: 1.125rem; accent-color: var(--brand); }
+.opcija span:nth-of-type(1) { flex: 1; }
+.prazna { color: var(--ink-3); cursor: not-allowed; }
+.broj { font-size: .875rem; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+
+.primijeni {
+  width: 100%; margin-top: var(--s4); padding: var(--s3); font: inherit; font-weight: 600;
+  min-height: 2.875rem; background: var(--brand); color: var(--brand-fg);
+  border: 0; border-radius: var(--radius); cursor: pointer;
+}
+
+.cipovi { display: flex; gap: var(--s2); flex-wrap: wrap; margin-bottom: var(--s3); }
+.cip {
+  display: inline-flex; align-items: center; gap: var(--s2); padding: var(--s2) var(--s3);
+  font: inherit; font-size: .875rem; font-weight: 600; min-height: 2.25rem;
+  background: var(--brand-tint); color: var(--brand); border: 0;
+  border-radius: 999px; cursor: pointer;
+}
+.cip:hover { background: var(--brand); color: var(--brand-fg); }
+.ocisti {
+  padding: var(--s2) var(--s3); font: inherit; font-size: .875rem; font-weight: 600;
+  min-height: 2.25rem; background: none; border: 0; color: var(--ink-2);
+  text-decoration: underline; cursor: pointer;
+}
+
+.brojac { font-weight: 600; color: var(--ink-2); margin-bottom: var(--s4); }
+.prazno { border: 1px solid var(--line); border-radius: var(--radius-lg); padding: var(--s8); text-align: center; }
+.prazno h2 { font-size: 1.25rem; }
+.prazno p { margin-top: var(--s3); }
+.veza { background: none; border: 0; padding: 0; font: inherit; font-weight: 600; color: var(--brand); text-decoration: underline; cursor: pointer; }

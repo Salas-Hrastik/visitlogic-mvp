@@ -52,6 +52,11 @@ traci mora ostati `/dogadanja`.
 - Naslovnica, atrakcije, događanja, smještaj, gdje jesti, novosti — svi s detaljima
 - Pretraga (W10) — indeks se gradi u buildu, filtriranje je u pregledniku,
   neosjetljivo na dijakritiku („tvrdava" nalazi Tvrđavu)
+- Filtri na katalozima događanja, smještaja i ugostiteljstva (Pogl. 4.4.2):
+  čipovi, brojači uz svaku opciju, opcije s nula pogodaka onemogućene,
+  stanje u URL-u, `aria-live` najava. Prazno stanje imenuje najrestriktivniji
+  filtar (4.4.3)
+- Hrvatska množina s tri oblika (Pogl. 7.5) — „1 rezultat", „2 rezultata"
 - Traka hitnih obavijesti (W11) s rokom trajanja koji provodi kod
 - hreflang i canonical, apsolutni, samo za jezike u kojima prijevod postoji (7.3)
 - Jezični fallback s vidljivom oznakom i `lang="hr"` na posuđenom tekstu (7.4)
@@ -65,12 +70,20 @@ predlošku, ali je za malu TZ najvažnije polje u cijelom modelu"* — jer sprje
 najgori scenarij, gosta pred zatvorenim vratima. Zato je u tipu obavezno, a ne
 neobavezno, i svaka stranica s praktičnim podacima nosi javnu oznaku ažurnosti.
 
+## Filtri: zašto je stanje lokalno, a URL posljedica
+
+Na statički predrenderiranoj stranici `useSearchParams()` se nakon
+`router.replace` ne osvježi pouzdano. Kontrolirana kvačica zato ostaje
+neoznačena i filtar se naprosto ne da uključiti — što se i dogodilo u prvoj
+verziji. Izvor istine je sada lokalno stanje, a URL njegova posljedica;
+`useEffect` sluša samo vanjske promjene URL-a (dubinska poveznica, natrag).
+
 ## Što još nije
 
 Itinereri i „Pitaj Brod" stoje kao poštene „u pripremi" stranice — postoje u
-rutiranju, nemaju sadržaj. Nema karte, obrasca upita, filtara na katalozima ni
-CMS-a. Rezervacije su Varijanta A iz Pogl. 8 (upit), pa detalj smještaja vodi
-na kontakt umjesto na booking.
+rutiranju, nemaju sadržaj. Nema karte ni obrasca upita, ni CMS-a. Rezervacije
+su Varijanta A iz Pogl. 8 (upit), pa detalj smještaja vodi na kontakt umjesto
+na booking.
 
 ## Sadržaj
 

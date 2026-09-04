@@ -10,6 +10,7 @@ import {
   sveAtrakcije, svaDogadanja, sveNovosti, savSmjestaj, sviUgostitelji, statusDogadaja,
 } from "@/lib/content/source";
 import { Pretraga, type Zapis } from "@/components/Pretraga";
+import { Filtri, type Faceta, type Stavka } from "@/components/Filtri";
 import { Zaglavlje } from "@/components/Zaglavlje";
 import { Podnozje } from "@/components/Podnozje";
 import { TrakaObavijesti } from "@/components/TrakaObavijesti";
@@ -181,13 +182,35 @@ async function Sadrzaj({ ruta, jezik }: { ruta: Ruta; jezik: Jezik }) {
 
     case "dogadanja": {
       const dog = await svaDogadanja();
+      const cjenovni = (d: (typeof dog)[number]) =>
+        d.cijena.besplatno ? "free" : (d.cijena.od ?? 0) <= 10 ? "do10" : (d.cijena.od ?? 0) <= 25 ? "d10_25" : "od25";
+      const facete: Faceta[] = [
+        { kljuc: "kada", naziv: t("f_kada", jezik), opcije: [
+          { v: "nadolazi", oznaka: t("kada_nadolazi", jezik) },
+          { v: "u-tijeku", oznaka: t("kada_tijek", jezik) },
+          { v: "proslo", oznaka: t("kada_proslo", jezik) },
+        ] },
+        { kljuc: "tip", naziv: t("f_tip", jezik), opcije:
+          [...new Set(dog.map((d) => d.tip))].map((v) => ({ v, oznaka: v })) },
+        { kljuc: "cijena", naziv: t("f_cijena", jezik), opcije: [
+          { v: "free", oznaka: t("cijena_free", jezik) },
+          { v: "do10", oznaka: t("cijena_do10", jezik) },
+          { v: "d10_25", oznaka: t("cijena_10_25", jezik) },
+          { v: "od25", oznaka: t("cijena_25p", jezik) },
+        ] },
+        { kljuc: "publika", naziv: t("f_publika", jezik), opcije:
+          [...new Set(dog.flatMap((d) => d.publika))].map((v) => ({ v, oznaka: v })) },
+      ];
+      const stavke: Stavka[] = dog.map((d) => ({
+        id: d.id,
+        facete: { kada: [statusDogadaja(d)], tip: [d.tip], cijena: [cjenovni(d)], publika: d.publika },
+        prikaz: <KarticaDogadaja d={d} jezik={jezik} />,
+      }));
       return (
         <div className="wrap">
           <Mrvice jezik={jezik} staza={[[t("nav_dogadanja", jezik), null]]} />
           <h1>{t("nav_dogadanja", jezik)}</h1>
-          <div className="mreza" style={{ marginTop: "var(--s8)" }}>
-            {dog.map((d) => <KarticaDogadaja key={d.id} d={d} jezik={jezik} />)}
-          </div>
+          <Filtri facete={facete} stavke={stavke} jezik={jezik} />
         </div>
       );
     }
@@ -287,9 +310,20 @@ async function Sadrzaj({ ruta, jezik }: { ruta: Ruta; jezik: Jezik }) {
           <p style={{ marginTop: "var(--s3)" }}>
             <Link href={putanja({ vrsta: "gdjeJesti" }, jezik)}>{t("gdje_jesti", jezik)} →</Link>
           </p>
-          <div className="mreza" style={{ marginTop: "var(--s8)" }}>
-            {smj.map((x) => <KarticaSmjestaja key={x.id} x={x} jezik={jezik} />)}
-          </div>
+          <Filtri
+            jezik={jezik}
+            facete={[
+              { kljuc: "vrsta", naziv: t("f_vrsta", jezik), opcije:
+                [...new Set(smj.map((x) => x.tip))].map((v) => ({ v, oznaka: v })) },
+              { kljuc: "pogodnost", naziv: t("f_pogodnosti", jezik), opcije:
+                [...new Set(smj.flatMap((x) => x.pogodnosti))].map((v) => ({ v, oznaka: v })) },
+            ]}
+            stavke={smj.map((x): Stavka => ({
+              id: x.id,
+              facete: { vrsta: [x.tip], pogodnost: x.pogodnosti },
+              prikaz: <KarticaSmjestaja x={x} jezik={jezik} />,
+            }))}
+          />
         </div>
       );
     }
@@ -303,9 +337,22 @@ async function Sadrzaj({ ruta, jezik }: { ruta: Ruta; jezik: Jezik }) {
           <p style={{ marginTop: "var(--s3)" }}>
             <Link href={putanja({ vrsta: "smjestajPopis" }, jezik)}>{t("smjestaj", jezik)} →</Link>
           </p>
-          <div className="mreza" style={{ marginTop: "var(--s8)" }}>
-            {ugo.map((x) => <KarticaUgostitelja key={x.id} x={x} jezik={jezik} />)}
-          </div>
+          <Filtri
+            jezik={jezik}
+            facete={[
+              { kljuc: "vrsta", naziv: t("f_vrsta", jezik), opcije:
+                [...new Set(ugo.map((x) => x.tip))].map((v) => ({ v, oznaka: v })) },
+              { kljuc: "kuhinja", naziv: t("f_kuhinja", jezik), opcije:
+                [...new Set(ugo.flatMap((x) => x.kuhinja))].map((v) => ({ v, oznaka: v })) },
+              { kljuc: "prehrana", naziv: t("f_dijeta", jezik), opcije:
+                [...new Set(ugo.flatMap((x) => x.dijetetskeOpcije))].map((v) => ({ v, oznaka: v })) },
+            ]}
+            stavke={ugo.map((x): Stavka => ({
+              id: x.id,
+              facete: { vrsta: [x.tip], kuhinja: x.kuhinja, prehrana: x.dijetetskeOpcije },
+              prikaz: <KarticaUgostitelja x={x} jezik={jezik} />,
+            }))}
+          />
         </div>
       );
     }
