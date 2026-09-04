@@ -136,6 +136,33 @@ buildu ni migracije kasnije.
 
 ---
 
+## O9 — Bez vektorske baze za informator
+
+**Datum:** 4. rujna 2026. · **Poglavlje:** 9.3 · **Smjer: mijenja se Strategija**
+
+Pogl. 9.3 predviđa indeksiranje, embeddinge i vektorsku bazu između izvora
+znanja i modela.
+
+**Odlučeno: cijela baza znanja ide u zahtjev, bez vektorske baze.** Za dvadesetak
+entiteta to je **točnije** — model vidi sve i ne može promašiti zapis koji
+dohvaćanje po sličnosti ne bi vratilo — i jeftinije, jer nema embeddinga ni
+druge infrastrukture. Baza je stabilan prefiks pa se kešira, što nosi glavninu
+uštede.
+
+Vektorska baza postaje potrebna tek kad znanje preraste kontekst. Prag treba
+zapisati u Strategiju: **kad baza znanja prijeđe otprilike 100.000 znakova**,
+vraća se dohvaćanje po sličnosti. Do tada je to infrastruktura bez svrhe.
+
+### Dopuna za Pogl. 9.3
+
+> **Faza 1 (do ~100.000 znakova baze znanja):** cijeli strukturirani izvoz
+> prosljeđuje se modelu u sustavskoj uputi, uz keširanje prefiksa. Bez
+> indeksiranja i bez vektorske baze.
+> **Faza 2 (iznad tog praga):** uvodi se chunking, embeddinzi i vektorska baza
+> kako je opisano u izvornom dijagramu.
+
+---
+
 ## Otvoreno
 
 | | Pitanje | Poglavlje |

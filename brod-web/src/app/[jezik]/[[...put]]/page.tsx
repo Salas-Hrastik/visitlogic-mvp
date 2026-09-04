@@ -11,6 +11,7 @@ import {
 } from "@/lib/content/source";
 import { Pretraga, type Zapis } from "@/components/Pretraga";
 import { Filtri, type Faceta, type Stavka } from "@/components/Filtri";
+import { Informator } from "@/components/Informator";
 import { Zaglavlje } from "@/components/Zaglavlje";
 import { Podnozje } from "@/components/Podnozje";
 import { TrakaObavijesti } from "@/components/TrakaObavijesti";
@@ -447,6 +448,18 @@ async function Sadrzaj({ ruta, jezik }: { ruta: Ruta; jezik: Jezik }) {
     }
 
     case "itinereri": return <UPripremi naslov={t("itinereri", jezik)} jezik={jezik} />;
-    case "pitaj":     return <UPripremi naslov={t("pitaj", jezik)} jezik={jezik} />;
+    case "pitaj":
+      return (
+        <div className="wrap">
+          <Mrvice jezik={jezik} staza={[[t("pitaj", jezik), null]]} />
+          <h1>{t("pitaj", jezik)}</h1>
+          <p style={{ marginTop: "var(--s4)", fontSize: "1.125rem", color: "var(--ink-2)", maxWidth: "60ch" }}>
+            {jezik === "hr" ? "Pitajte o događanjima, atrakcijama, smještaju i praktičnim informacijama. Informator odgovara iz sadržaja ovog sjedišta."
+              : jezik === "en" ? "Ask about events, attractions, places to stay and practical information. The assistant answers from this site's content."
+              : "Fragen Sie zu Veranstaltungen, Sehenswürdigkeiten, Unterkünften und praktischen Informationen. Der Assistent antwortet aus den Inhalten dieser Seite."}
+          </p>
+          <Informator jezik={jezik} />
+        </div>
+      );
   }
 }

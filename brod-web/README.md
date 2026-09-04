@@ -57,6 +57,7 @@ traci mora ostati `/dogadanja`.
   stanje u URL-u, `aria-live` najava. Prazno stanje imenuje najrestriktivniji
   filtar (4.4.3)
 - Hrvatska množina s tri oblika (Pogl. 7.5) — „1 rezultat", „2 rezultata"
+- **„Pitaj Brod"** (Pogl. 9) — informator koji odgovara iz sadržaja sjedišta
 - Traka hitnih obavijesti (W11) s rokom trajanja koji provodi kod
 - hreflang i canonical, apsolutni, samo za jezike u kojima prijevod postoji (7.3)
 - Jezični fallback s vidljivom oznakom i `lang="hr"` na posuđenom tekstu (7.4)
@@ -78,10 +79,38 @@ neoznačena i filtar se naprosto ne da uključiti — što se i dogodilo u prvoj
 verziji. Izvor istine je sada lokalno stanje, a URL njegova posljedica;
 `useEffect` sluša samo vanjske promjene URL-a (dubinska poveznica, natrag).
 
+## „Pitaj Brod" (Pogl. 9)
+
+Baza znanja gradi se iz **strukturiranog izvoza entiteta**, ne iz HTML-a
+stranica (9.3), pa se informator i sjedište ne mogu raziću. Sustavska uputa je
+prenesena iz 9.4 gotovo doslovno.
+
+Tri stvari su namjerno izvedene kao kod, ne kao uputa modelu:
+
+- **Hitne situacije** (9.4) — na ključne riječi (nesreća, hitna, policija, i
+  njihove engleske i njemačke inačice) vraća se 112 i ostali brojevi, a model se
+  **uopće ne poziva**. Jedini prihvatljiv odgovor ovdje je onaj koji ne može
+  biti izmišljen. Provjera ide kroz sva tri jezika, jer se u panici piše na
+  materinjem, ne na jeziku sučelja.
+- **Ne znam** (9.4) — model vraća sentinel, poslužitelj ga zamjenjuje propisanim
+  tekstom i **zapisuje pitanje u red za uredništvo** (9.6). Dokument taj red
+  zove najkonkretnijim mehanizmom kontinuiranog poboljšanja koji sjedište može
+  imati, pa postoji od prvog dana. Zapis je anonimiziran (9.7).
+- **Predaja čovjeku** (9.5) — nakon dva uzastopna „ne znam" sučelje samo nudi
+  Centar za posjetitelje. Telefon i radno vrijeme vidljivi su uvijek.
+
+Uz to: oznaka „ovo je automatski asistent" pri svakom otvaranju (obveza iz EU
+akta o umjetnoj inteligenciji), privola prije prve poruke — bez nje razgovor
+nije moguć, ograničenje po IP-u i duljini ulaza, sanitizacija.
+
+**Za rad treba `ANTHROPIC_API_KEY`.** Bez njega ruta uredno vraća 503 i sučelje
+kaže da informator nije postavljen — ne puca. Sve ostalo, uključujući hitne
+situacije, radi i bez ključa.
+
 ## Što još nije
 
-Itinereri i „Pitaj Brod" stoje kao poštene „u pripremi" stranice — postoje u
-rutiranju, nemaju sadržaj. Nema karte ni obrasca upita, ni CMS-a. Rezervacije
+Itinereri stoje kao poštena „u pripremi" stranica — postoje u rutiranju, nemaju
+sadržaj. Nema karte ni obrasca upita, ni CMS-a. Rezervacije
 su Varijanta A iz Pogl. 8 (upit), pa detalj smještaja vodi na kontakt umjesto
 na booking.
 

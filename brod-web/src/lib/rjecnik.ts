@@ -54,6 +54,31 @@ const R = {
   cijena_do10:  { hr: "do 10 €",          en: "up to €10",      de: "bis 10 €" },
   cijena_10_25: { hr: "10–25 €",          en: "€10–25",         de: "10–25 €" },
   cijena_25p:   { hr: "25 € i više",      en: "€25 and up",     de: "ab 25 €" },
+
+  inf_automatski: {
+    hr: "Ovo je automatski asistent. Odgovara iz sadržaja ovog sjedišta i može pogriješiti.",
+    en: "This is an automated assistant. It answers from this site's content and can be wrong.",
+    de: "Dies ist ein automatischer Assistent. Er antwortet aus den Inhalten dieser Seite und kann irren." },
+  inf_privola: {
+    hr: "Vaše pitanje šalje se pružatelju jezičnog modela radi sastavljanja odgovora. Ne unosite osobne podatke. Zapisi se anonimiziraju.",
+    en: "Your question is sent to a language-model provider to compose an answer. Please do not enter personal data. Logs are anonymised.",
+    de: "Ihre Frage wird zur Antworterstellung an einen Sprachmodellanbieter gesendet. Bitte geben Sie keine personenbezogenen Daten ein. Protokolle werden anonymisiert." },
+  inf_prihvacam: { hr: "Razumijem, pokreni razgovor", en: "I understand, start the chat", de: "Verstanden, Chat starten" },
+  inf_primjeri:  { hr: "Možete pitati, primjerice:", en: "You could ask, for example:", de: "Sie könnten zum Beispiel fragen:" },
+  inf_placeholder:{ hr: "Postavite pitanje…",      en: "Ask a question…",   de: "Stellen Sie eine Frage…" },
+  inf_posalji:   { hr: "Pošalji",          en: "Send",           de: "Senden" },
+  inf_ceka:      { hr: "Informator razmišlja…", en: "The assistant is thinking…", de: "Der Assistent überlegt…" },
+  inf_centar:    { hr: "Centar za posjetitelje", en: "Visitor centre", de: "Besucherzentrum" },
+  inf_predaja: {
+    hr: "Čini se da vam ne mogu pomoći. Pošaljite pitanje Centru za posjetitelje — odgovaramo u jednom radnom danu.",
+    en: "It seems I cannot help. Send your question to the visitor centre — we reply within one working day.",
+    de: "Ich kann offenbar nicht helfen. Senden Sie Ihre Frage an das Besucherzentrum — Antwort innerhalb eines Werktags." },
+  inf_previse:   { hr: "Previše pitanja u kratkom roku. Pričekajte minutu.", en: "Too many questions too quickly. Please wait a minute.", de: "Zu viele Fragen in kurzer Zeit. Bitte warten Sie eine Minute." },
+  inf_nepostavljen: {
+    hr: "Informator još nije postavljen na ovom poslužitelju. Centar za posjetitelje: +385 35 447 721.",
+    en: "The assistant is not configured on this server yet. Visitor centre: +385 35 447 721.",
+    de: "Der Assistent ist auf diesem Server noch nicht eingerichtet. Besucherzentrum: +385 35 447 721." },
+  inf_greska:    { hr: "Došlo je do greške. Pokušajte ponovno.", en: "Something went wrong. Please try again.", de: "Etwas ist schiefgelaufen. Bitte erneut versuchen." },
   pocetna:      { hr: "Početna",         en: "Home",           de: "Startseite" },
 
   hitno:        { hr: "Hitna obavijest", en: "Urgent notice",  de: "Dringender Hinweis" },

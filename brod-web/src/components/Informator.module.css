@@ -1,0 +1,38 @@
+.okvir { margin-top: var(--s6); max-width: 48rem; }
+.oznaka {
+  padding: var(--s2) var(--s3); font-size: .875rem; font-weight: 600;
+  background: var(--brand-tint); color: var(--brand); border-radius: var(--radius);
+}
+.privola { margin-top: var(--s4); padding: var(--s6); border: 1px solid var(--line); border-radius: var(--radius-lg); }
+.privola p { color: var(--ink-2); max-width: 60ch; }
+.gumb {
+  display: inline-block; margin-top: var(--s4); padding: var(--s3) var(--s6);
+  font: inherit; font-weight: 600; min-height: 2.875rem; cursor: pointer;
+  background: var(--brand); color: var(--brand-fg); border: 0;
+  border-radius: var(--radius); text-decoration: none;
+}
+.razgovor { margin-top: var(--s4); display: grid; gap: var(--s4); }
+.primjeri p { color: var(--ink-2); }
+.primjeri ul { list-style: none; margin: var(--s3) 0 0; padding: 0; display: grid; gap: var(--s2); }
+.primjeri button {
+  font: inherit; text-align: start; padding: var(--s3) var(--s4); width: 100%; min-height: 2.875rem;
+  background: var(--paper-2); border: 1px solid var(--line); border-radius: var(--radius);
+  color: var(--ink); cursor: pointer;
+}
+.primjeri button:hover { border-color: var(--brand); color: var(--brand); }
+.gost { justify-self: end; max-width: 85%; padding: var(--s3) var(--s4); background: var(--brand); color: var(--brand-fg); border-radius: var(--radius-lg); }
+.odgovor { max-width: 90%; padding: var(--s3) var(--s4); background: var(--paper-2); border-radius: var(--radius-lg); }
+.odgovor p + p { margin-top: var(--s2); }
+.ceka { color: var(--ink-3); }
+.predaja { margin-top: var(--s4); padding: var(--s4); background: var(--warn-tint); border-radius: var(--radius-lg); }
+.unos { margin-top: var(--s4); display: flex; gap: var(--s2); }
+.unos input {
+  flex: 1; padding: var(--s3) var(--s4); font: inherit; min-height: 2.875rem;
+  border: 1px solid var(--line-strong); border-radius: var(--radius); background: var(--paper); color: var(--ink);
+}
+.unos button {
+  padding: var(--s3) var(--s6); font: inherit; font-weight: 600; min-height: 2.875rem;
+  background: var(--brand); color: var(--brand-fg); border: 0; border-radius: var(--radius); cursor: pointer;
+}
+.unos button:disabled { background: var(--line-strong); cursor: not-allowed; }
+.centar { margin-top: var(--s6); font-size: .875rem; color: var(--ink-2); }
