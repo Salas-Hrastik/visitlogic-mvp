@@ -48,19 +48,29 @@ traci mora ostati `/dogadanja`.
 
 ## Što je izvedeno
 
-- Rutiranje na tri jezika s lokaliziranim segmentima; **68 statičkih stranica**
-- Naslovnica, atrakcije (+ detalj), događanja (+ detalj), novosti (+ detalj), kontakt
+- Rutiranje na tri jezika s lokaliziranim segmentima; **110 statičkih stranica**
+- Naslovnica, atrakcije, događanja, smještaj, gdje jesti, novosti — svi s detaljima
+- Pretraga (W10) — indeks se gradi u buildu, filtriranje je u pregledniku,
+  neosjetljivo na dijakritiku („tvrdava" nalazi Tvrđavu)
 - Traka hitnih obavijesti (W11) s rokom trajanja koji provodi kod
 - hreflang i canonical, apsolutni, samo za jezike u kojima prijevod postoji (7.3)
 - Jezični fallback s vidljivom oznakom i `lang="hr"` na posuđenom tekstu (7.4)
 - `Event` schema.org na detalju događaja (6.2)
 - Dizajn tokeni iz 10.2.3, samoposluženi fontovi, `rem` jedinice, fokus prsten
 
+## `zadnjaProvjera` je obavezno polje
+
+Pogl. 5.1 uz E3 kaže da to polje *„ne postoji ni u jednom standardnom CMS
+predlošku, ali je za malu TZ najvažnije polje u cijelom modelu"* — jer sprječava
+najgori scenarij, gosta pred zatvorenim vratima. Zato je u tipu obavezno, a ne
+neobavezno, i svaka stranica s praktičnim podacima nosi javnu oznaku ažurnosti.
+
 ## Što još nije
 
-Itinereri, „Pitaj Brod" i pretraga stoje kao poštene „u pripremi" stranice —
-postoje u sitemapu i rutiranju, ali nemaju sadržaj. Nema smještaja ni
-ugostiteljstva, karte, obrasca upita ni CMS-a.
+Itinereri i „Pitaj Brod" stoje kao poštene „u pripremi" stranice — postoje u
+rutiranju, nemaju sadržaj. Nema karte, obrasca upita, filtara na katalozima ni
+CMS-a. Rezervacije su Varijanta A iz Pogl. 8 (upit), pa detalj smještaja vodi
+na kontakt umjesto na booking.
 
 ## Sadržaj
 

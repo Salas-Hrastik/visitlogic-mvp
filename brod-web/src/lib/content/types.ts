@@ -51,8 +51,14 @@ export type Entitet = {
   uvodniOpis: Lokalizirano;
   opis?: Lokalizirano;
   status: Status;
-  /** Pogl. 6.4: vidljiva oznaka ažurnosti na svakoj stranici s praktičnim podacima. */
-  provjereno?: string;
+  /**
+   * Pogl. 5.1, E14 — i izričita napomena uz E3:
+   * "ovo polje ne postoji ni u jednom standardnom CMS predlošku, ali je za malu
+   * TZ NAJVAŽNIJE POLJE U CIJELOM MODELU". Sprječava najgori scenarij — gosta
+   * pred zatvorenim vratima — i nosi javnu oznaku ažurnosti (E-E-A-T, Pogl. 6.6).
+   * Zato je obavezno, ne neobavezno.
+   */
+  zadnjaProvjera: string;
 };
 
 export type KategorijaAtrakcije =
@@ -114,4 +120,51 @@ export type Itinerer = Entitet & {
   postaje: Array<{ vrijeme: string; ref: string; minuta: number; kind: "see" | "eat" | "move" }>;
 };
 
-export type BiloKojiEntitet = Atrakcija | Dogadaj | Novost | Itinerer;
+export type BiloKojiEntitet = Atrakcija | Dogadaj | Novost | Itinerer | Smjestaj | Ugostitelj;
+
+/** Pogl. 5.1 E5. */
+export type VrstaSmjestaja =
+  | "hotel" | "hostel" | "apartman" | "kuca-za-odmor" | "soba" | "kamp" | "seosko-domacinstvo";
+
+export type Pogodnost =
+  | "parking" | "wifi" | "dorucak" | "klima" | "bazen" | "kucni-ljubimci"
+  | "bike-friendly" | "ev-punjac" | "pristupacno" | "kuhinja" | "praonica";
+
+export type Ocjena = { prosjek: number; broj: number; izvor: "google" | "booking" | "vlastita" };
+
+export type Smjestaj = Entitet & {
+  vrsta: "smjestaj";
+  tip: VrstaSmjestaja;
+  kategorija?: 1 | 2 | 3 | 4 | 5;
+  adresa: string;
+  geo: Geo;
+  pogodnosti: Pogodnost[];
+  pristupacnost: Pristupacnost;
+  kontakt: Kontakt;
+  /** Pogl. 8: upit / vanjski / integrirani. MVP je "upit" (Varijanta A). */
+  bookingMod: "upit" | "vanjski" | "integrirani";
+  bookingUrl?: string;
+  ocjena?: Ocjena;
+  clanTZ?: boolean;
+};
+
+export type Kuhinja =
+  | "slavonska" | "internacionalna" | "talijanska" | "azijska" | "rostilj" | "riblja" | "fusion";
+
+export type Dijeta = "vegetarijansko" | "vegansko" | "bez-glutena" | "halal";
+
+export type Ugostitelj = Entitet & {
+  vrsta: "ugostitelj";
+  tip: "restoran" | "pizzeria" | "bistro" | "kavana" | "vinarija";
+  adresa: string;
+  geo: Geo;
+  kuhinja: Kuhinja[];
+  /** €, €€, €€€ */
+  cjenovniRang: 1 | 2 | 3;
+  radnoVrijeme: Lokalizirano;
+  dijetetskeOpcije: Dijeta[];
+  kontakt: Kontakt;
+  rezervacijaStola?: { moguca: boolean; tel?: string; url?: string };
+  ocjena?: Ocjena;
+  preporuka?: Lokalizirano;
+};

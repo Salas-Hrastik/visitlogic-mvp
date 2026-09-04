@@ -1,0 +1,266 @@
+[
+  {
+    "id": "u-papos",
+    "vrsta": "ugostitelj",
+    "status": "objavljeno",
+    "tip": "restoran",
+    "slug": {
+      "hr": "papos"
+    },
+    "naziv": {
+      "hr": "Restaurant & Pizzeria Papo's"
+    },
+    "uvodniOpis": {
+      "hr": "Rump steak i miješana plata; vikendom se preporučuje rezervacija.",
+      "en": "Rump steak and the mixed platter; a booking is advised at weekends.",
+      "de": "Rumpsteak und gemischte Platte; am Wochenende wird reserviert."
+    },
+    "adresa": "Ul. Ante Starčevića 19, 35000 Slavonski Brod",
+    "geo": {
+      "lat": 45.1616,
+      "lng": 18.0135
+    },
+    "kuhinja": [
+      "rostilj",
+      "internacionalna"
+    ],
+    "cjenovniRang": 2,
+    "radnoVrijeme": {
+      "hr": "Pon–čet 9–23 · pet–sub 10–24 · ned 11:30–23",
+      "en": "Mon–Thu 9–23 · Fri–Sat 10–24 · Sun 11:30–23",
+      "de": "Mo–Do 9–23 · Fr–Sa 10–24 · So 11:30–23"
+    },
+    "dijetetskeOpcije": [
+      "vegetarijansko"
+    ],
+    "kontakt": {
+      "tel": "+385 99 750 9861"
+    },
+    "rezervacijaStola": {
+      "moguca": true,
+      "tel": "+385 99 750 9861"
+    },
+    "ocjena": {
+      "prosjek": 4.8,
+      "broj": 830,
+      "izvor": "google"
+    },
+    "zadnjaProvjera": "2026-09-04"
+  },
+  {
+    "id": "u-gurman",
+    "vrsta": "ugostitelj",
+    "status": "objavljeno",
+    "tip": "restoran",
+    "slug": {
+      "hr": "gurman"
+    },
+    "naziv": {
+      "hr": "Restoran Gurman"
+    },
+    "uvodniOpis": {
+      "hr": "Slavonska kuhinja i velik izbor. Ponedjeljkom zatvoreno.",
+      "en": "Slavonian cooking and a wide choice. Closed on Mondays.",
+      "de": "Slawonische Küche und große Auswahl. Montags geschlossen."
+    },
+    "adresa": "Ul. Matije Mesića 47, 35000 Slavonski Brod",
+    "geo": {
+      "lat": 45.1668,
+      "lng": 18.0206
+    },
+    "kuhinja": [
+      "slavonska"
+    ],
+    "cjenovniRang": 2,
+    "radnoVrijeme": {
+      "hr": "Uto–pet 10–23 · sub–ned 12–23 · ponedjeljkom zatvoreno",
+      "en": "Tue–Fri 10–23 · Sat–Sun 12–23 · closed Monday",
+      "de": "Di–Fr 10–23 · Sa–So 12–23 · montags geschlossen"
+    },
+    "dijetetskeOpcije": [
+      "vegetarijansko"
+    ],
+    "kontakt": {
+      "tel": "+385 35 427 841"
+    },
+    "rezervacijaStola": {
+      "moguca": true,
+      "tel": "+385 35 427 841"
+    },
+    "ocjena": {
+      "prosjek": 4.7,
+      "broj": 1123,
+      "izvor": "google"
+    },
+    "zadnjaProvjera": "2026-09-04"
+  },
+  {
+    "id": "u-jelen",
+    "vrsta": "ugostitelj",
+    "status": "objavljeno",
+    "tip": "restoran",
+    "slug": {
+      "hr": "jelen"
+    },
+    "naziv": {
+      "hr": "Restoran Jelen"
+    },
+    "uvodniOpis": {
+      "hr": "Obiteljski restoran tri minute od autoceste, lokalna i internacionalna kuhinja.",
+      "en": "A family restaurant three minutes from the motorway, local and international cooking.",
+      "de": "Familienrestaurant drei Minuten von der Autobahn, lokale und internationale Küche."
+    },
+    "adresa": "Ul. Marijana Lanosovića bb, 35000 Slavonski Brod",
+    "geo": {
+      "lat": 45.1745,
+      "lng": 18.0089
+    },
+    "kuhinja": [
+      "slavonska",
+      "internacionalna"
+    ],
+    "cjenovniRang": 2,
+    "radnoVrijeme": {
+      "hr": "Svaki dan 8–23",
+      "en": "Daily 8–23",
+      "de": "Täglich 8–23"
+    },
+    "dijetetskeOpcije": [
+      "vegetarijansko"
+    ],
+    "kontakt": {
+      "tel": "+385 35 444 488"
+    },
+    "ocjena": {
+      "prosjek": 4.7,
+      "broj": 1021,
+      "izvor": "google"
+    },
+    "zadnjaProvjera": "2026-09-04"
+  },
+  {
+    "id": "u-astor",
+    "vrsta": "ugostitelj",
+    "status": "objavljeno",
+    "tip": "bistro",
+    "slug": {
+      "hr": "astor"
+    },
+    "naziv": {
+      "hr": "Astor"
+    },
+    "uvodniOpis": {
+      "hr": "Fusion kuhinja pripremana pred gostom — domaće tortilje, kofte, humus.",
+      "en": "Fusion cooking prepared in front of you — house tortillas, kofte, hummus.",
+      "de": "Fusionsküche vor den Augen des Gastes — hausgemachte Tortillas, Kofte, Hummus."
+    },
+    "adresa": "Ul. Ante Starčevića 10, 35000 Slavonski Brod",
+    "geo": {
+      "lat": 45.1613,
+      "lng": 18.0139
+    },
+    "kuhinja": [
+      "fusion"
+    ],
+    "cjenovniRang": 2,
+    "radnoVrijeme": {
+      "hr": "Uto–sub 9–22 · ned 17–22 · ponedjeljkom zatvoreno",
+      "en": "Tue–Sat 9–22 · Sun 17–22 · closed Monday",
+      "de": "Di–Sa 9–22 · So 17–22 · montags geschlossen"
+    },
+    "dijetetskeOpcije": [
+      "vegetarijansko",
+      "vegansko"
+    ],
+    "kontakt": {},
+    "ocjena": {
+      "prosjek": 4.9,
+      "broj": 93,
+      "izvor": "google"
+    },
+    "zadnjaProvjera": "2026-09-04"
+  },
+  {
+    "id": "u-bamboo",
+    "vrsta": "ugostitelj",
+    "status": "objavljeno",
+    "tip": "restoran",
+    "slug": {
+      "hr": "bamboo-garden"
+    },
+    "naziv": {
+      "hr": "Bamboo Garden"
+    },
+    "uvodniOpis": {
+      "hr": "Azijska kuhinja — katsu zdjele i bao pecivo, svježe pripremljeno.",
+      "en": "Asian cooking — katsu bowls and bao buns, freshly made.",
+      "de": "Asiatische Küche — Katsu-Bowls und Bao-Buns, frisch zubereitet."
+    },
+    "adresa": "Ul. Nikole Zrinskog 2, 35000 Slavonski Brod",
+    "geo": {
+      "lat": 45.1629,
+      "lng": 18.0148
+    },
+    "kuhinja": [
+      "azijska"
+    ],
+    "cjenovniRang": 2,
+    "radnoVrijeme": {
+      "hr": "Uto–sub 14–22 · ned 17–22 · ponedjeljkom zatvoreno",
+      "en": "Tue–Sat 14–22 · Sun 17–22 · closed Monday",
+      "de": "Di–Sa 14–22 · So 17–22 · montags geschlossen"
+    },
+    "dijetetskeOpcije": [
+      "vegetarijansko",
+      "vegansko"
+    ],
+    "kontakt": {},
+    "ocjena": {
+      "prosjek": 5.0,
+      "broj": 53,
+      "izvor": "google"
+    },
+    "zadnjaProvjera": "2026-09-04"
+  },
+  {
+    "id": "u-vesuvio",
+    "vrsta": "ugostitelj",
+    "status": "objavljeno",
+    "tip": "pizzeria",
+    "slug": {
+      "hr": "vesuvio"
+    },
+    "naziv": {
+      "hr": "Pizza & Cocktail Bar Vesuvio"
+    },
+    "uvodniOpis": {
+      "hr": "Tanka pizza i kokteli, sastojci iz Italije.",
+      "en": "Thin-crust pizza and cocktails, ingredients from Italy.",
+      "de": "Dünne Pizza und Cocktails, Zutaten aus Italien."
+    },
+    "adresa": "Ul. Ante Starčevića, 35000 Slavonski Brod",
+    "geo": {
+      "lat": 45.1618,
+      "lng": 18.0132
+    },
+    "kuhinja": [
+      "talijanska"
+    ],
+    "cjenovniRang": 2,
+    "radnoVrijeme": {
+      "hr": "Pon–čet 10–23 · pet–sub 10–2 · ned 12–23",
+      "en": "Mon–Thu 10–23 · Fri–Sat 10–2 · Sun 12–23",
+      "de": "Mo–Do 10–23 · Fr–Sa 10–2 · So 12–23"
+    },
+    "dijetetskeOpcije": [
+      "vegetarijansko"
+    ],
+    "kontakt": {},
+    "ocjena": {
+      "prosjek": 4.7,
+      "broj": 148,
+      "izvor": "google"
+    },
+    "zadnjaProvjera": "2026-09-04"
+  }
+]

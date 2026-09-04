@@ -24,6 +24,8 @@ export function Podnozje({ jezik }: { jezik: Jezik }) {
             <ul>
               <li><Link href={putanja({ vrsta: "atrakcije" }, jezik)}>{t("nav_dozivi", jezik)}</Link></li>
               <li><Link href={putanja({ vrsta: "dogadanja" }, jezik)}>{t("nav_dogadanja", jezik)}</Link></li>
+              <li><Link href={putanja({ vrsta: "smjestajPopis" }, jezik)}>{t("smjestaj", jezik)}</Link></li>
+              <li><Link href={putanja({ vrsta: "gdjeJesti" }, jezik)}>{t("gdje_jesti", jezik)}</Link></li>
               <li><Link href={putanja({ vrsta: "itinereri" }, jezik)}>{t("itinereri", jezik)}</Link></li>
               <li><Link href={putanja({ vrsta: "novosti" }, jezik)}>{t("novosti", jezik)}</Link></li>
             </ul>

@@ -6,20 +6,25 @@ import { putanja, razrijesi, slugZa, tekst, type Ruta } from "@/lib/i18n";
 import { t } from "@/lib/rjecnik";
 import {
   atrakcijaPoSlugu, dogadajPoSlugu, novostPoSlugu,
-  sveAtrakcije, svaDogadanja, sveNovosti, statusDogadaja,
+  smjestajPoSlugu, ugostiteljPoSlugu,
+  sveAtrakcije, svaDogadanja, sveNovosti, savSmjestaj, sviUgostitelji, statusDogadaja,
 } from "@/lib/content/source";
+import { Pretraga, type Zapis } from "@/components/Pretraga";
 import { Zaglavlje } from "@/components/Zaglavlje";
 import { Podnozje } from "@/components/Podnozje";
 import { TrakaObavijesti } from "@/components/TrakaObavijesti";
 import {
-  Azurnost, Blok, KarticaAtrakcije, KarticaDogadaja, KarticaNovosti, Mrvice, Polje, UPripremi,
+  Azurnost, Blok, KarticaAtrakcije, KarticaDogadaja, KarticaNovosti,
+  KarticaSmjestaja, KarticaUgostitelja, Mrvice, Polje, UPripremi,
 } from "@/components/stranice";
 
 type Params = { jezik: string; put?: string[] };
 
 /** Sve stranice u sva tri jezika grade se unaprijed (Pogl. 13.2: SSG). */
 export async function generateStaticParams(): Promise<Params[]> {
-  const [atr, dog, nov] = await Promise.all([sveAtrakcije(), svaDogadanja(), sveNovosti()]);
+  const [atr, dog, nov, smj, ugo] = await Promise.all([
+    sveAtrakcije(), svaDogadanja(), sveNovosti(), savSmjestaj(), sviUgostitelji(),
+  ]);
   const out: Params[] = [];
   for (const jezik of JEZICI) {
     const seg = (r: Ruta) => {
@@ -31,6 +36,9 @@ export async function generateStaticParams(): Promise<Params[]> {
       { vrsta: "naslovnica" }, { vrsta: "atrakcije" }, { vrsta: "dogadanja" },
       { vrsta: "novosti" }, { vrsta: "itinereri" }, { vrsta: "pitaj" },
       { vrsta: "kontakt" }, { vrsta: "pretraga" },
+      { vrsta: "smjestajPopis" }, { vrsta: "gdjeJesti" },
+      ...smj.map((x): Ruta => ({ vrsta: "smjestaj", slug: slugZa(x, jezik) })),
+      ...ugo.map((x): Ruta => ({ vrsta: "ugostitelj", slug: slugZa(x, jezik) })),
       ...atr.map((a): Ruta => ({ vrsta: "atrakcija", slug: slugZa(a, jezik) })),
       ...dog.map((d): Ruta => {
         const [g, m] = d.pocetak.split("-");
@@ -67,6 +75,12 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
   } else if (ruta.vrsta === "dogadaj") {
     const d = await dogadajPoSlugu(ruta.slug);
     if (d) { naslov = tekst(d.naziv, jezik).v; prevedenNa = JEZICI.filter((j) => !!d.naziv[j]); }
+  } else if (ruta.vrsta === "smjestaj") {
+    const x = await smjestajPoSlugu(ruta.slug);
+    if (x) { naslov = tekst(x.naziv, jezik).v; prevedenNa = JEZICI.filter((j) => !!x.naziv[j]); }
+  } else if (ruta.vrsta === "ugostitelj") {
+    const x = await ugostiteljPoSlugu(ruta.slug);
+    if (x) { naslov = tekst(x.naziv, jezik).v; prevedenNa = JEZICI.filter((j) => !!x.naziv[j]); }
   } else if (ruta.vrsta === "novost") {
     const n = await novostPoSlugu(ruta.slug);
     if (n) { naslov = tekst(n.naziv, jezik).v; prevedenNa = JEZICI.filter((j) => !!n.naziv[j]); }
@@ -160,7 +174,7 @@ async function Sadrzaj({ ruta, jezik }: { ruta: Ruta; jezik: Jezik }) {
             </dd>
             <dt>{t("trajanje", jezik)}</dt><dd>{a.trajanjePosjeta.min}–{a.trajanjePosjeta.max} min</dd>
           </dl>
-          <Azurnost datum={a.provjereno} jezik={jezik} />
+          <Azurnost datum={a.zadnjaProvjera} jezik={jezik} />
         </div>
       );
     }
@@ -264,8 +278,128 @@ async function Sadrzaj({ ruta, jezik }: { ruta: Ruta; jezik: Jezik }) {
         </div>
       );
 
+    case "smjestajPopis": {
+      const smj = await savSmjestaj();
+      return (
+        <div className="wrap">
+          <Mrvice jezik={jezik} staza={[[t("nav_stay", jezik), null], [t("smjestaj", jezik), null]]} />
+          <h1>{t("smjestaj", jezik)}</h1>
+          <p style={{ marginTop: "var(--s3)" }}>
+            <Link href={putanja({ vrsta: "gdjeJesti" }, jezik)}>{t("gdje_jesti", jezik)} →</Link>
+          </p>
+          <div className="mreza" style={{ marginTop: "var(--s8)" }}>
+            {smj.map((x) => <KarticaSmjestaja key={x.id} x={x} jezik={jezik} />)}
+          </div>
+        </div>
+      );
+    }
+
+    case "gdjeJesti": {
+      const ugo = await sviUgostitelji();
+      return (
+        <div className="wrap">
+          <Mrvice jezik={jezik} staza={[[t("nav_stay", jezik), null], [t("gdje_jesti", jezik), null]]} />
+          <h1>{t("gdje_jesti", jezik)}</h1>
+          <p style={{ marginTop: "var(--s3)" }}>
+            <Link href={putanja({ vrsta: "smjestajPopis" }, jezik)}>{t("smjestaj", jezik)} →</Link>
+          </p>
+          <div className="mreza" style={{ marginTop: "var(--s8)" }}>
+            {ugo.map((x) => <KarticaUgostitelja key={x.id} x={x} jezik={jezik} />)}
+          </div>
+        </div>
+      );
+    }
+
+    case "smjestaj": {
+      const x = await smjestajPoSlugu(ruta.slug);
+      if (!x) notFound();
+      const naziv = tekst(x.naziv, jezik);
+      return (
+        <div className="wrap">
+          <Mrvice jezik={jezik} staza={[
+            [t("smjestaj", jezik), putanja({ vrsta: "smjestajPopis" }, jezik)], [naziv.v, null],
+          ]} />
+          <h1><Polje p={naziv} jezik={jezik} /></h1>
+          <p style={{ marginTop: "var(--s4)", fontSize: "1.125rem", color: "var(--ink-2)", maxWidth: "62ch" }}>
+            <Polje p={tekst(x.uvodniOpis, jezik)} jezik={jezik} />
+          </p>
+          <dl className="cinjenice">
+            <dt>{t("adresa", jezik)}</dt><dd>{x.adresa}</dd>
+            <dt>{t("pogodnosti", jezik)}</dt><dd>{x.pogodnosti.join(" · ")}</dd>
+            {x.ocjena && <><dt>{t("ocjena", jezik)}</dt>
+              <dd>{x.ocjena.prosjek} / 5 — {x.ocjena.broj} {t("ocjena_izvor", jezik)}</dd></>}
+            {x.kontakt.tel && <><dt>Telefon</dt><dd><a href={`tel:${x.kontakt.tel.replace(/\s/g, "")}`}>{x.kontakt.tel}</a></dd></>}
+            {x.kontakt.web && <><dt>Web</dt><dd><a href={x.kontakt.web} rel="noopener noreferrer">{x.kontakt.web}</a></dd></>}
+          </dl>
+          {/* Pogl. 8: MVP je Varijanta A — upit, ne rezervacija. */}
+          <p style={{ marginTop: "var(--s6)" }}>
+            <Link href={putanja({ vrsta: "kontakt" }, jezik)}>{t("posalji_upit", jezik)} →</Link>
+          </p>
+          <Azurnost datum={x.zadnjaProvjera} jezik={jezik} />
+        </div>
+      );
+    }
+
+    case "ugostitelj": {
+      const x = await ugostiteljPoSlugu(ruta.slug);
+      if (!x) notFound();
+      const naziv = tekst(x.naziv, jezik);
+      return (
+        <div className="wrap">
+          <Mrvice jezik={jezik} staza={[
+            [t("gdje_jesti", jezik), putanja({ vrsta: "gdjeJesti" }, jezik)], [naziv.v, null],
+          ]} />
+          <h1><Polje p={naziv} jezik={jezik} /></h1>
+          <p style={{ marginTop: "var(--s4)", fontSize: "1.125rem", color: "var(--ink-2)", maxWidth: "62ch" }}>
+            <Polje p={tekst(x.uvodniOpis, jezik)} jezik={jezik} />
+          </p>
+          <dl className="cinjenice">
+            <dt>{t("adresa", jezik)}</dt><dd>{x.adresa}</dd>
+            <dt>{t("kuhinja", jezik)}</dt><dd>{x.kuhinja.join(" · ")}</dd>
+            <dt>{t("radno_vrijeme", jezik)}</dt><dd>{tekst(x.radnoVrijeme, jezik).v}</dd>
+            <dt>{t("cijena", jezik)}</dt><dd>{"€".repeat(x.cjenovniRang)}</dd>
+            {x.ocjena && <><dt>{t("ocjena", jezik)}</dt>
+              <dd>{x.ocjena.prosjek} / 5 — {x.ocjena.broj} {t("ocjena_izvor", jezik)}</dd></>}
+            {x.rezervacijaStola?.moguca && x.rezervacijaStola.tel && (
+              <><dt>{t("rezervacija", jezik)}</dt>
+                <dd><a href={`tel:${x.rezervacijaStola.tel.replace(/\s/g, "")}`}>{x.rezervacijaStola.tel}</a></dd></>
+            )}
+          </dl>
+          <Azurnost datum={x.zadnjaProvjera} jezik={jezik} />
+        </div>
+      );
+    }
+
+    case "pretraga": {
+      const [atr, dog, nov, smj, ugo] = await Promise.all([
+        sveAtrakcije(), svaDogadanja(), sveNovosti(), savSmjestaj(), sviUgostitelji(),
+      ]);
+      const zapisi: Zapis[] = [
+        ...atr.map((x): Zapis => ({ naslov: tekst(x.naziv, jezik).v, uvod: tekst(x.uvodniOpis, jezik).v,
+          url: putanja({ vrsta: "atrakcija", slug: slugZa(x, jezik) }, jezik), skupina: t("nav_dozivi", jezik) })),
+        ...dog.map((x): Zapis => {
+          const [g, m] = x.pocetak.split("-");
+          return { naslov: tekst(x.naziv, jezik).v, uvod: tekst(x.uvodniOpis, jezik).v,
+            url: putanja({ vrsta: "dogadaj", godina: g, mjesec: m, slug: slugZa(x, jezik) }, jezik),
+            skupina: t("nav_dogadanja", jezik) };
+        }),
+        ...smj.map((x): Zapis => ({ naslov: tekst(x.naziv, jezik).v, uvod: tekst(x.uvodniOpis, jezik).v,
+          url: putanja({ vrsta: "smjestaj", slug: slugZa(x, jezik) }, jezik), skupina: t("smjestaj", jezik) })),
+        ...ugo.map((x): Zapis => ({ naslov: tekst(x.naziv, jezik).v, uvod: tekst(x.uvodniOpis, jezik).v,
+          url: putanja({ vrsta: "ugostitelj", slug: slugZa(x, jezik) }, jezik), skupina: t("gdje_jesti", jezik) })),
+        ...nov.map((x): Zapis => ({ naslov: tekst(x.naziv, jezik).v, uvod: tekst(x.uvodniOpis, jezik).v,
+          url: putanja({ vrsta: "novost", slug: slugZa(x, jezik) }, jezik), skupina: t("novosti", jezik) })),
+      ];
+      return (
+        <div className="wrap">
+          <Mrvice jezik={jezik} staza={[[t("pretraga", jezik), null]]} />
+          <h1>{t("pretraga", jezik)}</h1>
+          <Pretraga zapisi={zapisi} jezik={jezik} />
+        </div>
+      );
+    }
+
     case "itinereri": return <UPripremi naslov={t("itinereri", jezik)} jezik={jezik} />;
     case "pitaj":     return <UPripremi naslov={t("pitaj", jezik)} jezik={jezik} />;
-    case "pretraga":  return <UPripremi naslov={t("pretraga", jezik)} jezik={jezik} />;
   }
 }

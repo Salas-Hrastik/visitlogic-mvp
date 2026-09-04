@@ -16,6 +16,9 @@ const SEG = {
   dogadanja:  { hr: "dogadanja",      en: "events",         de: "veranstaltungen" },
   planiraj:   { hr: "planiraj",       en: "plan",           de: "reise-planen" },
   itinereri:  { hr: "itinereri",      en: "itineraries",    de: "reiserouten" },
+  prenoci:    { hr: "prenoci-i-jedi",  en: "stay-and-eat",   de: "uebernachten-und-essen" },
+  smjestaj:   { hr: "smjestaj",        en: "accommodation",  de: "unterkunft" },
+  gdjeJesti:  { hr: "gdje-jesti",      en: "where-to-eat",   de: "wo-essen" },
   novosti:    { hr: "novosti",        en: "news",           de: "nachrichten" },
   pitaj:      { hr: "pitaj-brod",     en: "ask-brod",       de: "brod-fragen" },
   kontakt:    { hr: "kontakt",        en: "contact",        de: "kontakt" },
@@ -33,6 +36,10 @@ export type Ruta =
   | { vrsta: "dogadaj"; godina: string; mjesec: string; slug: string }
   | { vrsta: "itinereri" }
   | { vrsta: "itinerer"; slug: string }
+  | { vrsta: "smjestajPopis" }
+  | { vrsta: "smjestaj"; slug: string }
+  | { vrsta: "gdjeJesti" }
+  | { vrsta: "ugostitelj"; slug: string }
   | { vrsta: "novosti" }
   | { vrsta: "novost"; slug: string }
   | { vrsta: "pitaj" }
@@ -69,6 +76,13 @@ export function razrijesi(segmenti: string[], j: Jezik): Ruta | null {
     if (s.length === 3 && je("itinereri", 1)) return { vrsta: "itinerer", slug: s[2] };
     return null;
   }
+  if (je("prenoci")) {
+    if (s.length === 2 && je("smjestaj", 1)) return { vrsta: "smjestajPopis" };
+    if (s.length === 3 && je("smjestaj", 1)) return { vrsta: "smjestaj", slug: s[2] };
+    if (s.length === 2 && je("gdjeJesti", 1)) return { vrsta: "gdjeJesti" };
+    if (s.length === 3 && je("gdjeJesti", 1)) return { vrsta: "ugostitelj", slug: s[2] };
+    return null;
+  }
   if (je("novosti")) {
     if (s.length === 1) return { vrsta: "novosti" };
     if (s.length === 2) return { vrsta: "novost", slug: s[1] };
@@ -91,6 +105,10 @@ export function putanja(r: Ruta, j: Jezik): string {
     case "dogadaj":    return p(SEG.dogadanja[j], r.godina, r.mjesec, r.slug);
     case "itinereri":  return p(SEG.planiraj[j], SEG.itinereri[j]);
     case "itinerer":   return p(SEG.planiraj[j], SEG.itinereri[j], r.slug);
+    case "smjestajPopis": return p(SEG.prenoci[j], SEG.smjestaj[j]);
+    case "smjestaj":   return p(SEG.prenoci[j], SEG.smjestaj[j], r.slug);
+    case "gdjeJesti":  return p(SEG.prenoci[j], SEG.gdjeJesti[j]);
+    case "ugostitelj": return p(SEG.prenoci[j], SEG.gdjeJesti[j], r.slug);
     case "novosti":    return p(SEG.novosti[j]);
     case "novost":     return p(SEG.novosti[j], r.slug);
     case "pitaj":      return p(SEG.pitaj[j]);

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import type { Atrakcija, Dogadaj, Jezik, Novost } from "@/lib/content/types";
+import type { Atrakcija, Dogadaj, Jezik, Novost, Smjestaj, Ugostitelj } from "@/lib/content/types";
 import { putanja, slugZa, tekst } from "@/lib/i18n";
 import { t } from "@/lib/rjecnik";
 import { statusDogadaja } from "@/lib/content/source";
@@ -106,6 +106,44 @@ export function KarticaNovosti({ n, jezik }: { n: Novost; jezik: Jezik }) {
         </Link>
       </h3>
       <p className={s.uvod}><Polje p={uvod} jezik={jezik} /></p>
+    </article>
+  );
+}
+
+export function KarticaSmjestaja({ x, jezik }: { x: Smjestaj; jezik: Jezik }) {
+  const naziv = tekst(x.naziv, jezik);
+  return (
+    <article className={s.kartica}>
+      <p className={s.oznaka}>{x.tip}{x.kategorija ? ` · ${"★".repeat(x.kategorija)}` : ""}</p>
+      <h3>
+        <Link href={putanja({ vrsta: "smjestaj", slug: slugZa(x, jezik) }, jezik)}>
+          <Polje p={naziv} jezik={jezik} />
+        </Link>
+      </h3>
+      <p className={s.uvod}><Polje p={tekst(x.uvodniOpis, jezik)} jezik={jezik} /></p>
+      <p className={s.meta}>
+        {x.ocjena && <span>★ {x.ocjena.prosjek} ({x.ocjena.broj})</span>}
+        <span>{x.pogodnosti.slice(0, 3).join(" · ")}</span>
+      </p>
+    </article>
+  );
+}
+
+export function KarticaUgostitelja({ x, jezik }: { x: Ugostitelj; jezik: Jezik }) {
+  const naziv = tekst(x.naziv, jezik);
+  return (
+    <article className={s.kartica}>
+      <p className={s.oznaka}>{x.tip} · {"€".repeat(x.cjenovniRang)}</p>
+      <h3>
+        <Link href={putanja({ vrsta: "ugostitelj", slug: slugZa(x, jezik) }, jezik)}>
+          <Polje p={naziv} jezik={jezik} />
+        </Link>
+      </h3>
+      <p className={s.uvod}><Polje p={tekst(x.uvodniOpis, jezik)} jezik={jezik} /></p>
+      <p className={s.meta}>
+        {x.ocjena && <span>★ {x.ocjena.prosjek} ({x.ocjena.broj})</span>}
+        <span>{x.kuhinja.join(" · ")}</span>
+      </p>
     </article>
   );
 }

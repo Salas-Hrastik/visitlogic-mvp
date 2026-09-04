@@ -1,0 +1,246 @@
+[
+  {
+    "id": "s-savus",
+    "vrsta": "smjestaj",
+    "status": "objavljeno",
+    "tip": "hotel",
+    "kategorija": 4,
+    "slug": {
+      "hr": "hotel-savus"
+    },
+    "naziv": {
+      "hr": "Hotel Savus"
+    },
+    "uvodniOpis": {
+      "hr": "Središnja lokacija na Korzu, najveći hotel u gradu.",
+      "en": "A central location on the Korzo, the city's largest hotel.",
+      "de": "Zentrale Lage am Korzo, das größte Hotel der Stadt."
+    },
+    "adresa": "Ul. Ante Starčevića 2a, 35000 Slavonski Brod",
+    "geo": {
+      "lat": 45.1611,
+      "lng": 18.0142
+    },
+    "pogodnosti": [
+      "parking",
+      "wifi",
+      "dorucak",
+      "klima"
+    ],
+    "pristupacnost": {
+      "oznake": [
+        "kolica"
+      ]
+    },
+    "kontakt": {
+      "tel": "+385 35 405 888",
+      "web": "https://savus-hotel.com"
+    },
+    "bookingMod": "upit",
+    "ocjena": {
+      "prosjek": 4.6,
+      "broj": 539,
+      "izvor": "google"
+    },
+    "zadnjaProvjera": "2026-09-04"
+  },
+  {
+    "id": "s-mali-pariz",
+    "vrsta": "smjestaj",
+    "status": "objavljeno",
+    "tip": "hostel",
+    "slug": {
+      "hr": "hostel-mali-pariz"
+    },
+    "naziv": {
+      "hr": "Hostel Mali Pariz"
+    },
+    "uvodniOpis": {
+      "hr": "Najbolje ocijenjen smještaj u gradu. Besplatan parking i doručak, dobro rješenje za bicikliste.",
+      "en": "The best-rated place to stay in town. Free parking and breakfast, a good fit for cyclists.",
+      "de": "Die bestbewertete Unterkunft der Stadt. Kostenlose Parkplätze und Frühstück, gut für Radfahrer."
+    },
+    "adresa": "Ul. Eugena Kumičića 32, 35000 Slavonski Brod",
+    "geo": {
+      "lat": 45.1639,
+      "lng": 18.0197
+    },
+    "pogodnosti": [
+      "parking",
+      "wifi",
+      "dorucak",
+      "bike-friendly",
+      "kuhinja"
+    ],
+    "pristupacnost": {
+      "oznake": []
+    },
+    "kontakt": {
+      "tel": "+385 35 470 009",
+      "web": "https://hostelmalipariz.hr"
+    },
+    "bookingMod": "upit",
+    "ocjena": {
+      "prosjek": 4.8,
+      "broj": 381,
+      "izvor": "google"
+    },
+    "zadnjaProvjera": "2026-09-04"
+  },
+  {
+    "id": "s-central",
+    "vrsta": "smjestaj",
+    "status": "objavljeno",
+    "tip": "hotel",
+    "slug": {
+      "hr": "hotel-central"
+    },
+    "naziv": {
+      "hr": "Hotel Central & Smart Hostel"
+    },
+    "uvodniOpis": {
+      "hr": "Središnja lokacija, parking na licu mjesta, doručak u cijeni. Recepcija radi 0–24.",
+      "en": "Central location, on-site parking, breakfast included. Reception open around the clock.",
+      "de": "Zentrale Lage, Parkplatz vor Ort, Frühstück inklusive. Rezeption rund um die Uhr."
+    },
+    "adresa": "Ul. Petra Krešimira IV 45, 35000 Slavonski Brod",
+    "geo": {
+      "lat": 45.1625,
+      "lng": 18.0166
+    },
+    "pogodnosti": [
+      "parking",
+      "wifi",
+      "dorucak",
+      "klima"
+    ],
+    "pristupacnost": {
+      "oznake": [
+        "kolica"
+      ]
+    },
+    "kontakt": {},
+    "bookingMod": "upit",
+    "ocjena": {
+      "prosjek": 4.4,
+      "broj": 349,
+      "izvor": "google"
+    },
+    "zadnjaProvjera": "2026-09-04"
+  },
+  {
+    "id": "s-art",
+    "vrsta": "smjestaj",
+    "status": "objavljeno",
+    "tip": "hotel",
+    "slug": {
+      "hr": "art-hotel"
+    },
+    "naziv": {
+      "hr": "Art Hotel"
+    },
+    "uvodniOpis": {
+      "hr": "Panoramski restoran na vrhu zgrade s pogledom na grad.",
+      "en": "A panoramic rooftop restaurant with a view over the city.",
+      "de": "Panorama-Restaurant im Dachgeschoss mit Blick über die Stadt."
+    },
+    "adresa": "Ul. Nikole Zrinskog 44, 35000 Slavonski Brod",
+    "geo": {
+      "lat": 45.1652,
+      "lng": 18.0125
+    },
+    "pogodnosti": [
+      "parking",
+      "wifi",
+      "klima"
+    ],
+    "pristupacnost": {
+      "oznake": []
+    },
+    "kontakt": {},
+    "bookingMod": "upit",
+    "ocjena": {
+      "prosjek": 4.3,
+      "broj": 535,
+      "izvor": "google"
+    },
+    "zadnjaProvjera": "2026-09-04"
+  },
+  {
+    "id": "s-villa-lucia",
+    "vrsta": "smjestaj",
+    "status": "objavljeno",
+    "tip": "apartman",
+    "slug": {
+      "hr": "villa-lucia"
+    },
+    "naziv": {
+      "hr": "Villa Lucia"
+    },
+    "uvodniOpis": {
+      "hr": "Obiteljski prijem, besplatan parking i tiha lokacija.",
+      "en": "A family welcome, free parking and a quiet location.",
+      "de": "Familiärer Empfang, kostenlose Parkplätze und ruhige Lage."
+    },
+    "adresa": "Ul. Jurja Dobrile 25a, 35000 Slavonski Brod",
+    "geo": {
+      "lat": 45.1698,
+      "lng": 18.0221
+    },
+    "pogodnosti": [
+      "parking",
+      "wifi",
+      "kuhinja",
+      "klima"
+    ],
+    "pristupacnost": {
+      "oznake": []
+    },
+    "kontakt": {},
+    "bookingMod": "upit",
+    "ocjena": {
+      "prosjek": 4.7,
+      "broj": 133,
+      "izvor": "google"
+    },
+    "zadnjaProvjera": "2026-09-04"
+  },
+  {
+    "id": "s-garten",
+    "vrsta": "smjestaj",
+    "status": "objavljeno",
+    "tip": "hotel",
+    "slug": {
+      "hr": "hotel-garten"
+    },
+    "naziv": {
+      "hr": "Hotel Garten"
+    },
+    "uvodniOpis": {
+      "hr": "Etno stil i restoran uz autocestu A3 — rješenje za tranzitne putnike.",
+      "en": "Folk styling and a restaurant by the A3 motorway — a stop for travellers in transit.",
+      "de": "Ethno-Stil und Restaurant an der Autobahn A3 — für Durchreisende."
+    },
+    "adresa": "Vinogradska cesta 69, 35000 Slavonski Brod",
+    "geo": {
+      "lat": 45.1802,
+      "lng": 17.9958
+    },
+    "pogodnosti": [
+      "parking",
+      "wifi",
+      "klima"
+    ],
+    "pristupacnost": {
+      "oznake": []
+    },
+    "kontakt": {},
+    "bookingMod": "upit",
+    "ocjena": {
+      "prosjek": 3.9,
+      "broj": 439,
+      "izvor": "google"
+    },
+    "zadnjaProvjera": "2026-09-04"
+  }
+]

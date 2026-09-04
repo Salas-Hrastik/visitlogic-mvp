@@ -26,9 +26,10 @@ export function Zaglavlje({ jezik, putanjaSad }: { jezik: Jezik; putanjaSad: str
         <nav className={s.nav} aria-label={t("glavna_nav", jezik)}>
           <Link href={putanja({ vrsta: "atrakcije" }, jezik)}>{t("nav_dozivi", jezik)}</Link>
           <Link href={putanja({ vrsta: "dogadanja" }, jezik)}>{t("nav_dogadanja", jezik)}</Link>
+          <Link href={putanja({ vrsta: "smjestajPopis" }, jezik)}>{t("nav_stay", jezik)}</Link>
           <Link href={putanja({ vrsta: "itinereri" }, jezik)}>{t("nav_planiraj", jezik)}</Link>
           <Link href={putanja({ vrsta: "novosti" }, jezik)}>{t("novosti", jezik)}</Link>
-          <Link href={putanja({ vrsta: "kontakt" }, jezik)}>{t("kontakt", jezik)}</Link>
+          <Link href={putanja({ vrsta: "pretraga" }, jezik)}>{t("pretraga", jezik)}</Link>
         </nav>
 
         {/*

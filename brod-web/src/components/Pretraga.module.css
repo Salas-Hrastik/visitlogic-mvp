@@ -1,0 +1,15 @@
+.polje { display: block; margin-top: var(--s6); }
+.polje input {
+  width: 100%; padding: var(--s3) var(--s4); font: inherit; font-size: 1.125rem;
+  border: 1px solid var(--line-strong); border-radius: var(--radius-lg);
+  background: var(--paper); color: var(--ink);
+}
+.broj { margin-top: var(--s2); font-size: .875rem; color: var(--ink-3); min-height: 1.5rem; }
+.prazno { margin-top: var(--s4); color: var(--ink-2); }
+.lista { list-style: none; margin: var(--s4) 0 0; padding: 0; display: grid; gap: var(--s4); }
+.lista li { border-top: 1px solid var(--line); padding-top: var(--s4); }
+.lista h3 { margin-top: var(--s1); font-size: 1.125rem; }
+.lista h3 a { text-decoration: none; color: var(--ink); }
+.lista h3 a:hover { color: var(--brand); text-decoration: underline; }
+.skupina { font-size: .875rem; font-weight: 600; text-transform: uppercase; letter-spacing: .04em; color: var(--ink-3); }
+.uvod { color: var(--ink-2); margin-top: var(--s2); max-width: 72ch; }
