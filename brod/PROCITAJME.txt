@@ -1,0 +1,27 @@
+PROTOTIP WEB SJEDIŠTA — TZ GRADA SLAVONSKOG BRODA
+==================================================
+
+KAKO OTVORITI
+1. Raspakirajte ovu ZIP datoteku.
+2. Dvaput kliknite na "Prototip-TZ-Slavonski-Brod.html".
+3. Otvara se u vašem pregledniku (Chrome, Edge, Safari, Firefox).
+
+Nije potrebna instalacija, internetska veza ni korisnički račun.
+Uz internetsku vezu stranica koristi predviđene fontove; bez veze
+izgleda jednako, ali u sistemskim fontovima.
+
+ŠTO ISPROBATI
+- Gornja crna traka: prekidač "Mobitel / Desktop", tamna tema,
+  izbornik za skok na bilo koji od 14 ekrana i gumb "Što je ovo?".
+- Kalendar događanja: filtri po datumu, tipu, cijeni i publici.
+- Brodsko kolo -> "Pogledaj smještaj": datumi se prenose u katalog.
+- Obrazac upita: probajte odlazak prije dolaska (validacija).
+- Promjena jezika na English ili Deutsch.
+- "Pitaj Brod": zadnje predloženo pitanje pokazuje što se događa
+  kad informator nema odgovor.
+
+VAŽNO
+Ovo je prototip, ne web sjedište. Nema baze, CMS-a, slanja e-pošte
+ni plaćanja — ništa se nikamo ne šalje. Nazivi mjesta, ustanova i
+manifestacija su stvarni; termini su primjeri, a smještajni i
+ugostiteljski objekti te cijene demo podaci.

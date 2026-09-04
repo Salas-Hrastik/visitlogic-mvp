@@ -10,6 +10,10 @@
         {
             "source": "/voice",
             "destination": "/voice.html"
+        },
+        {
+            "source": "/brod",
+            "destination": "/brod/index.html"
         }
     ],
     "headers": [
@@ -23,6 +27,19 @@
             "source": "/voice",
             "headers": [
                 { "key": "Cache-Control", "value": "no-cache, no-store, must-revalidate" }
+            ]
+        },
+        {
+            "source": "/brod",
+            "headers": [
+                { "key": "Cache-Control", "value": "no-cache, no-store, must-revalidate" },
+                { "key": "X-Robots-Tag", "value": "noindex, nofollow" }
+            ]
+        },
+        {
+            "source": "/brod/(.*)",
+            "headers": [
+                { "key": "X-Robots-Tag", "value": "noindex, nofollow" }
             ]
         }
     ]

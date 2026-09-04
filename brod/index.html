@@ -1,0 +1,2906 @@
+<!doctype html>
+<html lang="hr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta name="description" content="Interaktivni prototip web sjedišta Turističke zajednice grada Slavonskog Broda. Nije službeno sjedište TZ-a.">
+<title>Prototip Brod na Savi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap">
+
+<style>
+/* ============================================================
+   BROD NA SAVI — prototip web sjedišta TZ Slavonski Brod
+   Dizajn sustav prema Poglavlju 10.2 strateškog dokumenta
+   ============================================================ */
+
+:root{
+  /* --- neutrali s blagim teal odmakom, ne čisti sivi --- */
+  --ink:#101B1D;
+  --ink-2:#43555A;
+  --ink-3:#6B7D81;
+  --paper:#FFFFFF;
+  --paper-2:#F1F5F5;
+  --paper-3:#E4EBEB;
+  --line:#CFDBDC;
+  --line-strong:#A9BCBE;
+
+  /* --- brend: duboka savska --- */
+  --brand:#0F4C5C;
+  --brand-2:#0A3642;
+  --brand-tint:#DCEAEC;
+  --brand-fg:#FFFFFF;
+
+  /* --- akcent: opeka Tvrđave --- */
+  --brick:#B5451B;
+  --brick-2:#8E3614;
+  --brick-tint:#F7E3DA;
+  --brick-fg:#FFFFFF;
+
+  /* --- semantika --- */
+  --ok:#1F7A45; --ok-tint:#DCEFE3;
+  --warn:#8A5800; --warn-tint:#F7EBD2;
+  --err:#B3261E; --err-tint:#F8DEDC;
+  --focus:#0A66C2;
+
+  /* --- toolbar prototipa --- */
+  --bar:#08282F;
+  --bar-ink:#CFE4E8;
+  --bar-line:#1B4650;
+
+  --radius:5px;
+  --radius-lg:8px;
+  --shadow:0 1px 2px rgba(16,27,29,.05), 0 8px 24px -12px rgba(16,27,29,.18);
+  --maxw:1240px;
+
+  --f-display:"Archivo", "Segoe UI", system-ui, sans-serif;
+  --f-body:"Public Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
+
+  color-scheme:light;
+}
+
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ink:#E8EFEF; --ink-2:#A2B5B8; --ink-3:#7E9296;
+    --paper:#0B1618; --paper-2:#122326; --paper-3:#1A3034;
+    --line:#274043; --line-strong:#3C5C60;
+    --brand:#5FB3C6; --brand-2:#8CCFDE; --brand-tint:#10333B; --brand-fg:#04191E;
+    --brick:#E87B52; --brick-2:#F0997A; --brick-tint:#3A1D12; --brick-fg:#24120A;
+    --ok:#5CC98A; --ok-tint:#123326;
+    --warn:#DCA83A; --warn-tint:#332512;
+    --err:#F08A82; --err-tint:#3A1614;
+    --focus:#7FB6F0;
+    --bar:#04161A; --bar-ink:#B9D3D8; --bar-line:#153238;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -12px rgba(0,0,0,.6);
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --ink:#E8EFEF; --ink-2:#A2B5B8; --ink-3:#7E9296;
+  --paper:#0B1618; --paper-2:#122326; --paper-3:#1A3034;
+  --line:#274043; --line-strong:#3C5C60;
+  --brand:#5FB3C6; --brand-2:#8CCFDE; --brand-tint:#10333B; --brand-fg:#04191E;
+  --brick:#E87B52; --brick-2:#F0997A; --brick-tint:#3A1D12; --brick-fg:#24120A;
+  --ok:#5CC98A; --ok-tint:#123326;
+  --warn:#DCA83A; --warn-tint:#332512;
+  --err:#F08A82; --err-tint:#3A1614;
+  --focus:#7FB6F0;
+  --bar:#04161A; --bar-ink:#B9D3D8; --bar-line:#153238;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -12px rgba(0,0,0,.6);
+  color-scheme:dark;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--f-body);
+  font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+img,svg{max-width:100%}
+h1,h2,h3,h4{font-family:var(--f-display);margin:0;line-height:1.18;text-wrap:balance;
+  letter-spacing:-.011em;font-weight:700}
+p{margin:0}
+a{color:inherit}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--focus);outline-offset:2px;border-radius:2px}
+@media (prefers-reduced-motion: reduce){*{animation-duration:.01ms !important;transition-duration:.01ms !important}}
+
+.skip{position:absolute;left:-9999px;top:0;z-index:200;background:var(--brick);
+  color:var(--brick-fg);padding:12px 18px;font-weight:600}
+.skip:focus{left:8px;top:8px}
+
+/* ===================== TOOLBAR PROTOTIPA ===================== */
+.bar{position:sticky;top:0;z-index:60;background:var(--bar);color:var(--bar-ink);
+  border-bottom:1px solid var(--bar-line)}
+.bar-in{max-width:var(--maxw);margin:0 auto;padding:7px 16px;display:flex;
+  align-items:center;gap:10px;flex-wrap:wrap}
+.tag{font-family:var(--f-display);font-size:10.5px;font-weight:800;letter-spacing:.13em;
+  text-transform:uppercase;background:var(--brick);color:#fff;padding:4px 8px;white-space:nowrap}
+.bar-note{font-size:12.5px;color:var(--bar-ink);opacity:.85;min-width:0;flex:1 1 190px}
+.bar-tools{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.bar-btn{background:transparent;border:1px solid var(--bar-line);color:var(--bar-ink);
+  padding:6px 10px;font-size:12.5px;border-radius:var(--radius);cursor:pointer;
+  min-height:32px;display:inline-flex;align-items:center;gap:6px}
+.bar-btn:hover{background:#0e343d;border-color:#2a5f6a}
+.bar-btn[aria-pressed="true"]{background:var(--bar-ink);color:var(--bar);border-color:var(--bar-ink);font-weight:600}
+.bar-sel{background:#0e343d;border:1px solid var(--bar-line);color:var(--bar-ink);
+  padding:6px 8px;font-size:12.5px;border-radius:var(--radius);min-height:32px}
+
+/* ===================== OKVIR PRIKAZA ===================== */
+.stage{padding:0}
+.stage[data-vw="mobile"]{background:var(--paper-2);padding:22px 12px 40px}
+.frame{background:var(--paper)}
+.stage[data-vw="mobile"] .frame{max-width:400px;margin:0 auto;border:1px solid var(--line-strong);
+  border-radius:22px;overflow:hidden;box-shadow:var(--shadow)}
+
+/* ===================== ZAGLAVLJE SJEDIŠTA ===================== */
+.site-head{position:sticky;top:var(--barh,47px);z-index:40;background:var(--paper);
+  border-bottom:1px solid var(--line)}
+@media (max-width:900px){.site-head{position:static}}
+.stage[data-vw="mobile"] .site-head{position:static}
+.head-in{max-width:var(--maxw);margin:0 auto;padding:10px 16px;display:flex;
+  align-items:center;gap:14px}
+.brand{display:flex;align-items:center;gap:9px;text-decoration:none;flex:0 0 auto}
+.brand-mark{width:30px;height:30px;flex:0 0 auto}
+.brand-txt{font-family:var(--f-display);font-weight:800;font-size:15px;line-height:1.05;
+  letter-spacing:-.02em}
+.brand-txt small{display:block;font-weight:500;font-size:9.5px;letter-spacing:.15em;
+  text-transform:uppercase;color:var(--ink-3);margin-top:2px}
+.nav{display:flex;gap:2px;margin-left:auto}
+.nav a{position:relative;text-decoration:none;font-size:14.5px;font-weight:500;
+  padding:10px 11px;border-radius:var(--radius);white-space:nowrap;min-height:44px;
+  display:inline-flex;align-items:center}
+.nav a:hover{background:var(--paper-2)}
+.nav a[aria-current="page"]{font-weight:700}
+.nav a[aria-current="page"]::after{content:"";position:absolute;left:11px;right:11px;bottom:4px;
+  height:2px;background:var(--brick)}
+.util{display:flex;gap:4px;align-items:center;margin-left:6px}
+.icon-btn{background:transparent;border:1px solid transparent;padding:0 10px;height:40px;
+  min-width:44px;border-radius:var(--radius);cursor:pointer;display:inline-flex;
+  align-items:center;justify-content:center;gap:7px;font-size:13.5px;font-weight:500}
+.icon-btn:hover{background:var(--paper-2);border-color:var(--line)}
+.count-dot{background:var(--brick);color:var(--brick-fg);font-size:11px;font-weight:700;
+  min-width:18px;height:18px;border-radius:9px;display:inline-flex;align-items:center;
+  justify-content:center;padding:0 5px;font-variant-numeric:tabular-nums}
+.burger{display:none}
+
+.stage[data-vw="mobile"] .nav{display:none}
+.stage[data-vw="mobile"] .burger{display:inline-flex}
+@media (max-width:900px){
+  .nav{display:none}
+  .burger{display:inline-flex}
+}
+/* kompaktno zaglavlje na uskim širinama */
+.head-in{min-width:0}
+.brand{min-width:0}
+.stage[data-vw="mobile"] .head-in{gap:8px;padding:10px 12px}
+.stage[data-vw="mobile"] #planLabel{display:none}
+.stage[data-vw="mobile"] .util select{max-width:74px;padding:6px 4px;font-size:12px}
+.stage[data-vw="mobile"] .brand-txt{font-size:14px}
+.stage[data-vw="mobile"] .icon-btn{padding:0 7px;min-width:40px}
+@media (max-width:560px){
+  #planLabel{display:none}
+  #langSel{display:none}
+  .brand-txt small{display:none}
+  .brand-txt{font-size:14px}
+  .head-in{gap:6px;padding:10px 12px}
+  .icon-btn{padding:0 6px;min-width:40px}
+}
+.stage[data-vw="mobile"] #langSel{display:none}
+.stage[data-vw="mobile"] .brand-txt small{display:none}
+.langrow{display:flex;gap:6px;padding:10px 8px 4px;border-top:1px solid var(--line);margin-top:6px}
+.langrow button{flex:1;min-height:44px;border:1px solid var(--line-strong);background:var(--paper);
+  border-radius:var(--radius);font-weight:600;cursor:pointer;font-size:14px}
+.langrow button[aria-pressed="true"]{background:var(--brand);color:var(--brand-fg);border-color:var(--brand)}
+
+.mobnav{display:none;border-top:1px solid var(--line);background:var(--paper-2);padding:8px}
+.mobnav.open{display:block}
+.mobnav a{display:block;text-decoration:none;padding:12px 14px;font-weight:600;
+  border-radius:var(--radius);min-height:44px}
+.mobnav a:hover{background:var(--paper-3)}
+
+/* ===================== LAYOUT ===================== */
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 16px}
+.stage[data-vw="mobile"] .wrap{padding:0 14px}
+main{display:block;padding-bottom:56px}
+.screen{display:none}
+.screen.on{display:block}
+.stack{display:flex;flex-direction:column;gap:14px}
+
+.sec{margin-top:40px}
+.sec-head{display:flex;align-items:baseline;gap:12px;margin-bottom:14px;flex-wrap:wrap}
+.eyebrow{font-family:var(--f-display);font-size:11px;font-weight:700;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--ink-3)}
+.sec-head h2{font-size:21px;flex:0 0 auto}
+.sec-rule{flex:1 1 40px;height:1px;background:var(--line);min-width:20px}
+.sec-head .more{margin-left:auto;font-size:14px;font-weight:600;color:var(--brand);
+  text-decoration:none;white-space:nowrap;padding:6px 0}
+.sec-head .more:hover{text-decoration:underline}
+
+.wref{display:inline-flex;align-items:center;gap:6px;font-family:var(--f-display);
+  font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--ink-3);border:1px dashed var(--line-strong);padding:3px 7px;border-radius:3px}
+
+/* ===================== HERO ===================== */
+.hero{position:relative;margin-top:0;background:var(--brand-2);color:#fff;overflow:hidden}
+.hero-art{position:absolute;inset:0}
+.hero-art svg{width:100%;height:100%;display:block}
+.hero-in{position:relative;max-width:var(--maxw);margin:0 auto;padding:64px 16px 30px}
+.stage[data-vw="mobile"] .hero-in{padding:38px 14px 22px}
+.hero h1{font-size:clamp(34px,6.2vw,62px);letter-spacing:-.028em;color:#fff;max-width:15ch}
+.hero .lede{margin-top:12px;font-size:clamp(16px,2.2vw,20px);color:#CFE4E8;max-width:34ch}
+.hero .eyebrow{color:#8FBDC6}
+.searchbox{margin-top:24px;display:flex;gap:8px;max-width:560px;flex-wrap:wrap}
+.searchbox input{flex:1 1 200px;min-height:48px;padding:12px 14px;font-size:15px;
+  border:1px solid rgba(255,255,255,.28);background:rgba(255,255,255,.1);color:#fff;
+  border-radius:var(--radius)}
+.searchbox input::placeholder{color:#A9C9D0}
+.searchbox input:focus-visible{outline:3px solid #fff;outline-offset:2px}
+
+/* bastion — zasječeni kut, motiv tlocrta tvrđave */
+.bastion{clip-path:polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 0 100%)}
+
+/* ===================== BRZI ULAZI ===================== */
+.quick{display:grid;gap:10px;grid-template-columns:repeat(4,1fr);margin-top:-26px;
+  position:relative;z-index:2}
+.quick a{background:var(--paper);border:1px solid var(--line);text-decoration:none;
+  padding:14px;display:flex;flex-direction:column;gap:5px;box-shadow:var(--shadow);
+  min-height:88px;justify-content:flex-end}
+.quick a:hover{border-color:var(--brick);transform:translateY(-2px)}
+.quick a{transition:transform .16s ease, border-color .16s ease}
+.quick .qk{font-family:var(--f-display);font-size:15.5px;font-weight:700;letter-spacing:-.01em}
+.quick .qs{font-size:12.5px;color:var(--ink-3)}
+@media (max-width:760px){.quick{grid-template-columns:repeat(2,1fr);margin-top:-18px}}
+.stage[data-vw="mobile"] .quick{grid-template-columns:repeat(2,1fr);margin-top:-18px}
+
+/* ===================== KARTICE ===================== */
+.grid{display:grid;gap:16px}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g4{grid-template-columns:repeat(4,1fr)}
+.g2{grid-template-columns:repeat(2,1fr)}
+@media (max-width:1000px){.g4{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:640px){.g4,.g3,.g2{grid-template-columns:1fr}}
+.stage[data-vw="mobile"] .g4,
+.stage[data-vw="mobile"] .g3,
+.stage[data-vw="mobile"] .g2{grid-template-columns:1fr}
+
+.card{background:var(--paper);border:1px solid var(--line);display:flex;
+  flex-direction:column;position:relative;overflow:hidden}
+.card:hover{border-color:var(--line-strong)}
+.card-media{position:relative;aspect-ratio:16/9;background:var(--paper-2);overflow:hidden}
+.card-media svg{width:100%;height:100%;display:block}
+.card-body{padding:13px 14px 15px;display:flex;flex-direction:column;gap:7px;flex:1}
+.card-when{font-family:var(--f-display);font-size:12px;font-weight:700;letter-spacing:.07em;
+  text-transform:uppercase;color:var(--brand);font-variant-numeric:tabular-nums}
+.card h3{font-size:17.5px}
+.card h3 a{text-decoration:none}
+.card h3 a::after{content:"";position:absolute;inset:0}
+.card .lead{font-size:14px;color:var(--ink-2);display:-webkit-box;-webkit-line-clamp:2;
+  -webkit-box-orient:vertical;overflow:hidden}
+.meta{display:flex;flex-wrap:wrap;gap:5px 12px;font-size:12.5px;color:var(--ink-3);margin-top:auto}
+.meta b{font-weight:600;color:var(--ink-2);font-variant-numeric:tabular-nums}
+
+.badges{position:absolute;left:10px;top:10px;display:flex;gap:6px;flex-wrap:wrap;z-index:2}
+.badge{font-family:var(--f-display);font-size:10.5px;font-weight:700;letter-spacing:.09em;
+  text-transform:uppercase;padding:4px 7px;background:var(--paper);border:1px solid var(--line)}
+.badge.free{background:var(--ok-tint);color:var(--ok);border-color:transparent}
+.badge.demo{background:var(--warn-tint);color:var(--warn);border-color:transparent}
+.badge.hot{background:var(--brick);color:var(--brick-fg);border-color:transparent}
+.badge.off{background:var(--err-tint);color:var(--err);border-color:transparent}
+
+.save{position:absolute;right:8px;top:8px;z-index:3;width:40px;height:40px;border-radius:50%;
+  background:var(--paper);border:1px solid var(--line);cursor:pointer;display:flex;
+  align-items:center;justify-content:center}
+.save:hover{border-color:var(--brick)}
+.save[aria-pressed="true"]{background:var(--brick);border-color:var(--brick);color:var(--brick-fg)}
+.save svg{width:18px;height:18px;display:block}
+
+/* ===================== GUMBI ===================== */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;
+  padding:11px 17px;font-size:15px;font-weight:600;border-radius:var(--radius);cursor:pointer;
+  border:1px solid transparent;text-decoration:none;transition:background .14s ease}
+.btn-primary{background:var(--brick);color:var(--brick-fg)}
+.btn-primary:hover{background:var(--brick-2)}
+.btn-secondary{background:var(--paper);color:var(--ink);border-color:var(--line-strong)}
+.btn-secondary:hover{background:var(--paper-2)}
+.btn-ghost{background:transparent;color:var(--brand);padding:11px 8px}
+.btn-ghost:hover{background:var(--brand-tint)}
+.btn[disabled]{opacity:.45;cursor:not-allowed}
+.btn-sm{min-height:38px;padding:8px 13px;font-size:14px}
+.btn-block{width:100%}
+
+/* ===================== FILTRI ===================== */
+.layout{display:grid;grid-template-columns:250px 1fr;gap:26px;align-items:start;margin-top:22px}
+@media (max-width:900px){.layout{grid-template-columns:1fr}}
+.stage[data-vw="mobile"] .layout{grid-template-columns:1fr}
+
+.filters{border:1px solid var(--line);background:var(--paper-2);padding:4px 14px 14px;
+  position:sticky;top:120px}
+@media (max-width:900px){.filters{position:static;display:none}.filters.open{display:block}}
+.stage[data-vw="mobile"] .filters{position:static;display:none}
+.stage[data-vw="mobile"] .filters.open{display:block}
+.filters fieldset{border:0;padding:0;margin:16px 0 0}
+.filters legend{font-family:var(--f-display);font-size:11px;font-weight:700;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--ink-3);padding:0;margin-bottom:7px}
+.opt{display:flex;align-items:center;gap:9px;padding:7px 4px;min-height:36px;cursor:pointer;
+  font-size:14px;border-radius:3px}
+.opt:hover{background:var(--paper-3)}
+.opt input{width:20px;height:20px;accent-color:var(--brick);flex:0 0 auto;margin:0}
+.opt .n{margin-left:auto;font-size:12px;color:var(--ink-3);font-variant-numeric:tabular-nums}
+.opt.zero{opacity:.42}
+.opt.zero:hover{background:transparent}
+
+.filter-toggle{display:none}
+@media (max-width:900px){.filter-toggle{display:inline-flex}}
+.stage[data-vw="mobile"] .filter-toggle{display:inline-flex}
+
+.datebar{display:flex;gap:7px;overflow-x:auto;padding-bottom:4px;margin-top:6px;
+  scrollbar-width:thin}
+.pill{border:1px solid var(--line-strong);background:var(--paper);padding:9px 14px;
+  border-radius:999px;font-size:14px;font-weight:500;cursor:pointer;white-space:nowrap;min-height:42px}
+.pill:hover{background:var(--paper-2)}
+.pill[aria-pressed="true"]{background:var(--brand);color:var(--brand-fg);border-color:var(--brand);font-weight:600}
+
+.resbar{display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding:12px 0;
+  border-bottom:1px solid var(--line);margin-bottom:16px}
+.rescount{font-family:var(--f-display);font-weight:700;font-size:16px;font-variant-numeric:tabular-nums}
+.chips{display:flex;gap:7px;flex-wrap:wrap}
+.chip{display:inline-flex;align-items:center;gap:7px;background:var(--brand-tint);
+  color:var(--brand);border:1px solid transparent;padding:5px 6px 5px 11px;border-radius:999px;
+  font-size:13px;font-weight:600}
+.chip button{background:transparent;border:0;cursor:pointer;width:22px;height:22px;
+  border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:15px;
+  line-height:1;color:inherit}
+.chip button:hover{background:rgba(0,0,0,.09)}
+.clear{background:transparent;border:0;color:var(--ink-2);font-size:13.5px;cursor:pointer;
+  text-decoration:underline;padding:6px}
+
+.empty{border:1px dashed var(--line-strong);padding:26px 20px;text-align:left;background:var(--paper-2)}
+.empty h3{font-size:18px;margin-bottom:8px}
+.empty p{color:var(--ink-2);font-size:14.5px;max-width:52ch}
+.empty .acts{display:flex;gap:9px;flex-wrap:wrap;margin-top:14px}
+
+/* ===================== DETALJ ===================== */
+.detail{display:grid;grid-template-columns:1fr 330px;gap:30px;align-items:start;margin-top:22px}
+@media (max-width:960px){.detail{grid-template-columns:1fr}}
+.stage[data-vw="mobile"] .detail{grid-template-columns:1fr}
+.crumbs{font-size:13px;color:var(--ink-3);padding:14px 0 0;display:flex;gap:7px;flex-wrap:wrap}
+.crumbs a{color:var(--ink-2);display:inline-flex;align-items:center;min-height:26px}
+.detail-hero{aspect-ratio:21/9;background:var(--paper-2);overflow:hidden;margin-top:12px}
+.detail-hero svg{width:100%;height:100%;display:block}
+.detail h1{font-size:clamp(27px,4.2vw,40px);letter-spacing:-.025em;margin-top:14px}
+.detail .lede{font-size:17.5px;color:var(--ink-2);margin-top:12px;max-width:62ch}
+.prose{margin-top:20px;max-width:66ch}
+.prose h2{font-size:20px;margin:26px 0 9px}
+.prose p{margin-bottom:11px;color:var(--ink-2)}
+.prose ul{margin:0 0 12px;padding-left:20px;color:var(--ink-2)}
+.prose li{margin-bottom:5px}
+.prose strong{color:var(--ink)}
+
+.side{position:sticky;top:120px;display:flex;flex-direction:column;gap:14px}
+@media (max-width:960px){.side{position:static}}
+.stage[data-vw="mobile"] .side{position:static}
+.panel{border:1px solid var(--line);background:var(--paper-2);padding:16px}
+.panel h3{font-size:15px;margin-bottom:11px}
+.facts{display:flex;flex-direction:column;gap:9px;margin-bottom:14px}
+.fact{display:flex;gap:11px;font-size:14.5px;align-items:flex-start}
+.fact .k{color:var(--ink-3);flex:0 0 78px;font-size:13px}
+.fact .v{font-weight:600;font-variant-numeric:tabular-nums}
+.panel .acts{display:flex;flex-direction:column;gap:8px}
+.linkrow{display:flex;justify-content:space-between;align-items:center;gap:10px;
+  padding:11px 0;border-top:1px solid var(--line);text-decoration:none;font-size:14.5px;
+  font-weight:600;min-height:44px}
+.linkrow:hover{color:var(--brick)}
+.linkrow .sub{font-weight:400;color:var(--ink-3);font-size:13px}
+
+.checked{font-size:12.5px;color:var(--ink-3);margin-top:22px;padding-top:12px;
+  border-top:1px solid var(--line);display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+
+.notice{border-left:3px solid var(--brick);background:var(--brick-tint);padding:12px 14px;
+  font-size:14px;color:var(--ink)}
+.notice.warn{border-color:var(--warn);background:var(--warn-tint)}
+.notice.info{border-color:var(--brand);background:var(--brand-tint)}
+
+/* tablica pristupačnosti / pogodnosti */
+.tickets{display:flex;flex-direction:column;gap:6px;font-size:14.5px;margin-top:8px}
+.tick{display:flex;gap:9px;align-items:baseline;color:var(--ink-2)}
+.tick .y{color:var(--ok);font-weight:700}
+.tick .n{color:var(--err);font-weight:700}
+
+.amen{display:flex;flex-wrap:wrap;gap:7px;margin-top:10px}
+.amen span{border:1px solid var(--line);padding:5px 10px;font-size:13px;border-radius:999px;
+  color:var(--ink-2);background:var(--paper)}
+
+/* ===================== VREMENSKA CRTA ITINERERA ===================== */
+.tl{margin-top:20px;border-left:2px solid var(--line);padding-left:0;list-style:none}
+.tl li{position:relative;padding:0 0 22px 24px;margin-left:-1px}
+.tl li::before{content:"";position:absolute;left:-8px;top:5px;width:14px;height:14px;
+  border-radius:50%;background:var(--paper);border:3px solid var(--brand)}
+.tl li.stop-eat::before{border-color:var(--brick)}
+.tl .t{font-family:var(--f-display);font-size:12.5px;font-weight:700;color:var(--ink-3);
+  letter-spacing:.06em;font-variant-numeric:tabular-nums}
+.tl h3{font-size:17px;margin:2px 0 4px}
+.tl .d{font-size:14px;color:var(--ink-2)}
+.tl .walk{font-size:12.5px;color:var(--ink-3);margin-top:8px;font-style:italic}
+
+/* ===================== KARTA ===================== */
+.maplayout{display:grid;grid-template-columns:230px 1fr;gap:18px;margin-top:20px;align-items:start}
+@media (max-width:860px){.maplayout{grid-template-columns:1fr}}
+.stage[data-vw="mobile"] .maplayout{grid-template-columns:1fr}
+.mapbox{position:relative;border:1px solid var(--line);background:var(--paper-2);overflow:hidden}
+.mapbox svg{display:block;width:100%;height:auto}
+.pin{cursor:pointer}
+.pin circle{transition:r .15s ease}
+.pin:hover circle.hit{r:15}
+.mappop{border:1px solid var(--line-strong);background:var(--paper);padding:14px;
+  margin-top:12px;display:flex;gap:14px;align-items:flex-start;box-shadow:var(--shadow)}
+.mappop .mm{width:74px;height:56px;flex:0 0 auto;overflow:hidden;background:var(--paper-2)}
+.maplist{margin-top:14px;border-top:1px solid var(--line);padding-top:12px}
+.maplist h3{font-size:14px;margin-bottom:8px}
+.maplist ol{margin:0;padding-left:20px;font-size:13.5px;color:var(--ink-2);
+  display:flex;flex-direction:column;gap:4px}
+
+/* ===================== PRETRAGA ===================== */
+.overlay{position:fixed;inset:0;z-index:120;background:rgba(8,24,28,.55);
+  display:none;padding:64px 16px}
+.overlay.open{display:block}
+.searchpanel{max-width:640px;margin:0 auto;background:var(--paper);border:1px solid var(--line-strong);
+  box-shadow:var(--shadow)}
+.searchpanel .row{display:flex;gap:8px;padding:12px;border-bottom:1px solid var(--line)}
+.searchpanel input{flex:1;min-height:46px;padding:11px 13px;font-size:16px;
+  border:1px solid var(--line-strong);background:var(--paper);color:var(--ink);border-radius:var(--radius)}
+.sugg{max-height:52vh;overflow:auto;padding:6px}
+.sugg .gh{font-family:var(--f-display);font-size:10.5px;font-weight:700;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--ink-3);padding:12px 12px 5px}
+.sugg a{display:flex;gap:11px;align-items:center;padding:10px 12px;text-decoration:none;
+  border-radius:var(--radius);min-height:44px}
+.sugg a:hover,.sugg a:focus-visible{background:var(--paper-2)}
+.sugg .sname{font-weight:600;font-size:14.5px}
+.sugg .smeta{margin-left:auto;font-size:12.5px;color:var(--ink-3);white-space:nowrap}
+
+/* ===================== AI INFORMATOR ===================== */
+.fab{position:fixed;right:18px;bottom:18px;z-index:70;background:var(--brand);
+  color:var(--brand-fg);border:0;border-radius:999px;padding:13px 19px;font-size:15px;
+  font-weight:600;cursor:pointer;box-shadow:var(--shadow);display:inline-flex;gap:9px;
+  align-items:center;min-height:52px}
+.fab:hover{background:var(--brand-2);color:var(--brand-fg)}
+.stage[data-vw="mobile"] .fab{position:absolute}
+
+.chat{border:1px solid var(--line);background:var(--paper);display:flex;flex-direction:column;
+  max-width:640px}
+.chat-head{padding:13px 15px;border-bottom:1px solid var(--line);background:var(--paper-2)}
+.chat-head .disc{font-size:12.5px;color:var(--ink-2);margin-top:5px}
+.chat-log{padding:15px;display:flex;flex-direction:column;gap:14px;min-height:260px}
+.msg{max-width:88%;font-size:14.5px}
+.msg.me{align-self:flex-end;background:var(--brand);color:var(--brand-fg);padding:10px 13px;
+  border-radius:12px 12px 3px 12px}
+.msg.ai{align-self:flex-start}
+.msg.ai .who{font-family:var(--f-display);font-size:10.5px;font-weight:700;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--ink-3);margin-bottom:6px}
+.msg.ai .bubble{background:var(--paper-2);border:1px solid var(--line);padding:12px 14px;
+  border-radius:12px 12px 12px 3px}
+.msg.ai ul{margin:8px 0 0;padding-left:19px;color:var(--ink-2)}
+.src{font-size:12.5px;color:var(--ink-3);margin-top:10px;padding-top:9px;border-top:1px solid var(--line)}
+.src a{color:var(--brand);font-weight:600}
+.qacts{display:flex;gap:7px;flex-wrap:wrap;margin-top:11px}
+.rate{display:flex;gap:8px;align-items:center;margin-top:11px;font-size:12.5px;color:var(--ink-3)}
+.rate button{border:1px solid var(--line);background:var(--paper);border-radius:var(--radius);
+  min-width:40px;min-height:36px;cursor:pointer}
+.rate button:hover{border-color:var(--brand)}
+.chat-sugg{display:flex;gap:8px;flex-wrap:wrap;padding:0 15px 14px}
+.chat-sugg button{border:1px solid var(--line-strong);background:var(--paper);padding:9px 13px;
+  border-radius:999px;font-size:13.5px;cursor:pointer;text-align:left;min-height:40px}
+.chat-sugg button:hover{border-color:var(--brand);background:var(--brand-tint)}
+.chat-in{display:flex;gap:8px;padding:12px 15px;border-top:1px solid var(--line);background:var(--paper-2)}
+.chat-in input{flex:1;min-height:44px;padding:10px 12px;font-size:15px;border:1px solid var(--line-strong);
+  background:var(--paper);color:var(--ink);border-radius:var(--radius)}
+
+/* ===================== OBRAZAC ===================== */
+.form{display:flex;flex-direction:column;gap:13px;max-width:520px}
+.frow{display:flex;gap:12px;flex-wrap:wrap}
+.field{display:flex;flex-direction:column;gap:5px;flex:1 1 150px}
+.field label{font-size:13.5px;font-weight:600}
+.field input,.field textarea,.field select{min-height:44px;padding:10px 12px;font-size:15px;
+  border:1px solid var(--line-strong);background:var(--paper);color:var(--ink);border-radius:var(--radius);
+  font-family:inherit}
+.field textarea{min-height:88px;resize:vertical}
+.field .hint{font-size:12.5px;color:var(--ink-3)}
+.check{display:flex;gap:10px;align-items:flex-start;font-size:14px;padding:4px 0}
+.check input{width:24px;height:24px;accent-color:var(--brick);margin-top:0;flex:0 0 auto}
+.err-msg{color:var(--err);font-size:13px;font-weight:600}
+
+/* ===================== PODNOŽJE ===================== */
+.foot{border-top:1px solid var(--line);background:var(--paper-2);margin-top:56px;padding:34px 0 26px}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.3fr;gap:26px}
+@media (max-width:860px){.foot-grid{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.foot-grid{grid-template-columns:1fr}}
+.stage[data-vw="mobile"] .foot-grid{grid-template-columns:1fr}
+.foot h3{font-family:var(--f-display);font-size:11px;font-weight:700;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--ink-3);margin-bottom:11px}
+.foot ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:2px}
+.foot a{text-decoration:none;font-size:14px;color:var(--ink-2);display:inline-flex;align-items:center;padding:6px 0;min-height:30px}
+.foot a:hover{color:var(--brick)}
+.foot address{font-style:normal;font-size:14px;color:var(--ink-2);line-height:1.75}
+.social{display:flex;gap:7px;flex-wrap:wrap;margin-top:11px}
+.social a{width:40px;height:40px;border:1px solid var(--line-strong);display:inline-flex;
+  align-items:center;justify-content:center;font-family:var(--f-display);font-size:12px;
+  font-weight:700;border-radius:var(--radius);background:var(--paper)}
+.social a:hover{border-color:var(--brick);color:var(--brick)}
+.nl{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
+.nl input{flex:1 1 150px;min-height:44px;padding:10px 12px;border:1px solid var(--line-strong);
+  background:var(--paper);color:var(--ink);border-radius:var(--radius);font-size:15px}
+.foot-bot{border-top:1px solid var(--line);margin-top:26px;padding-top:16px;font-size:13px;
+  color:var(--ink-3);display:flex;gap:8px 18px;flex-wrap:wrap}
+
+/* ===================== MODAL ===================== */
+.modal{position:fixed;inset:0;z-index:140;background:rgba(8,24,28,.6);display:none;
+  padding:24px 16px;overflow:auto}
+.modal.open{display:block}
+.modal-in{max-width:640px;margin:40px auto;background:var(--paper);border:1px solid var(--line-strong);
+  box-shadow:var(--shadow);padding:26px}
+.modal-in h2{font-size:22px;margin-bottom:12px}
+.modal-in p,.modal-in li{font-size:14.5px;color:var(--ink-2)}
+.modal-in p{margin-bottom:11px}
+.modal-in ul{padding-left:20px;margin-bottom:14px;display:flex;flex-direction:column;gap:5px}
+.modal-close{position:absolute;right:0;top:0}
+.modal-head{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;margin-bottom:8px}
+
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);z-index:160;
+  background:var(--brand-2);color:#fff;padding:13px 18px;border-radius:var(--radius);
+  font-size:14.5px;box-shadow:var(--shadow);max-width:min(460px,92vw);display:none}
+.toast.on{display:block}
+
+.notrans{display:inline-flex;align-items:center;gap:6px;background:var(--warn-tint);
+  color:var(--warn);font-size:12px;font-weight:700;padding:3px 8px;border-radius:3px;
+  letter-spacing:.03em}
+
+.tabs{display:flex;gap:4px;border-bottom:1px solid var(--line);margin-top:18px}
+.tabs button{background:transparent;border:0;border-bottom:3px solid transparent;
+  padding:12px 14px;font-size:15px;font-weight:600;cursor:pointer;color:var(--ink-2);min-height:46px}
+.tabs button[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--brick)}
+.tabs button:hover{color:var(--ink)}
+
+.sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
+  clip:rect(0 0 0 0);white-space:nowrap;border:0}
+</style>
+</head>
+<body>
+
+<a class="skip" href="#main">Preskoči na sadržaj</a>
+
+<!-- ============ TOOLBAR PROTOTIPA ============ -->
+<div class="bar">
+  <div class="bar-in">
+    <span class="tag">Prototip</span>
+    <span class="bar-note" id="barNote">Interaktivni prototip · nije službeno sjedište TZ-a · demo podaci</span>
+    <div class="bar-tools">
+      <label class="sr" for="jump">Ekran</label>
+      <select class="bar-sel" id="jump"></select>
+      <button class="bar-btn" id="vwDesk" aria-pressed="true">Desktop</button>
+      <button class="bar-btn" id="vwMob" aria-pressed="false">Mobitel</button>
+      <button class="bar-btn" id="themeBtn">Tama</button>
+      <button class="bar-btn" id="aboutBtn">Što je ovo?</button>
+    </div>
+  </div>
+</div>
+
+<div class="stage" id="stage" data-vw="desktop">
+<div class="frame">
+
+  <!-- ============ ZAGLAVLJE ============ -->
+  <header class="site-head">
+    <div class="head-in">
+      <a class="brand" href="#/home" data-nav>
+        <span class="brand-mark" id="brandMark"></span>
+        <span class="brand-txt">Brod na Savi<small id="brandSub">Turistička zajednica</small></span>
+      </a>
+      <nav class="nav" id="mainNav" aria-label="Glavna navigacija"></nav>
+      <div class="util">
+        <button class="icon-btn" id="searchBtn" aria-label="Pretraži">
+          <svg viewBox="0 0 20 20" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="8.5" cy="8.5" r="5.5"/><path d="M12.5 12.5 18 18"/></svg>
+        </button>
+        <label class="sr" for="langSel">Jezik</label>
+        <select class="bar-sel" id="langSel" style="background:var(--paper);color:var(--ink);border-color:var(--line-strong)">
+          <option value="hr">Hrvatski</option><option value="en">English</option><option value="de">Deutsch</option>
+        </select>
+        <button class="icon-btn" id="planBtn">
+          <svg viewBox="0 0 20 20" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><path d="M10 17s-6.5-4-6.5-8.2A3.6 3.6 0 0 1 10 6.2a3.6 3.6 0 0 1 6.5 2.6C16.5 13 10 17 10 17Z"/></svg>
+          <span id="planLabel">Moj plan</span> <span class="count-dot" id="planCount">0</span>
+        </button>
+        <button class="icon-btn burger" id="burger" aria-expanded="false" aria-label="Izbornik">
+          <svg viewBox="0 0 20 20" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 6h14M3 10h14M3 14h14"/></svg>
+        </button>
+      </div>
+    </div>
+    <nav class="mobnav" id="mobNav" aria-label="Mobilna navigacija"></nav>
+  </header>
+
+  <main id="main"></main>
+
+  <!-- ============ PODNOŽJE ============ -->
+  <footer class="foot"><div class="wrap"><div class="foot-grid" id="footGrid"></div>
+    <div class="foot-bot" id="footBot"></div></div></footer>
+
+  <button class="fab" id="fab">
+    <svg viewBox="0 0 20 20" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><path d="M17 11.5A4.5 4.5 0 0 1 12.5 16H7l-4 3v-3.6A4.5 4.5 0 0 1 3 11.5v-4A4.5 4.5 0 0 1 7.5 3h5A4.5 4.5 0 0 1 17 7.5Z"/></svg>
+    <span id="fabLabel">Pitaj Brod</span>
+  </button>
+
+</div>
+</div>
+
+<!-- ============ PRETRAGA ============ -->
+<div class="overlay" id="searchOverlay" role="dialog" aria-modal="true" aria-label="Pretraga">
+  <div class="searchpanel">
+    <div class="row">
+      <label class="sr" for="q">Pretraži</label>
+      <input id="q" type="search" autocomplete="off" placeholder="Pretražite događanja, smještaj, atrakcije…">
+      <button class="btn btn-secondary btn-sm" id="searchClose">Zatvori</button>
+    </div>
+    <div class="sugg" id="sugg"></div>
+  </div>
+</div>
+
+<!-- ============ MODAL ============ -->
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal-in">
+    <div class="modal-head">
+      <h2 id="modalTitle"></h2>
+      <button class="btn btn-secondary btn-sm" id="modalClose">Zatvori</button>
+    </div>
+    <div id="modalBody"></div>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script>
+(function(){
+"use strict";
+
+/* ============================================================
+   1. VIZUALNI MOTIVI
+   Sve slike su generirane iz motiva destinacije (tlocrt tvrđave,
+   savski meandri, šlingeraj, posavska ravnica). U produkciji ih
+   zamjenjuju fotografije iz Poglavlja 3.1.3.
+   ============================================================ */
+var MOTIF = {
+  fortress: function(){ return ''
+    + '<defs><linearGradient id="gF" x1="0" y1="0" x2="0" y2="1">'
+    + '<stop offset="0" stop-color="#0F4C5C"/><stop offset="1" stop-color="#0A3642"/></linearGradient></defs>'
+    + '<rect width="320" height="180" fill="url(#gF)"/>'
+    + '<g fill="none" stroke="#4E93A3" stroke-width="1.1" opacity=".85">'
+    + '<path d="M160 34 L206 56 L214 104 L196 140 L160 152 L124 140 L106 104 L114 56 Z"/>'
+    + '<path d="M160 20 L226 50 L238 106 L212 152 L160 168 L108 152 L82 106 L94 50 Z"/></g>'
+    + '<g fill="#B5451B" opacity=".92">'
+    + '<path d="M160 20 L182 30 L160 40 L138 30 Z"/><path d="M226 50 L238 72 L216 68 L220 54 Z"/>'
+    + '<path d="M94 50 L82 72 L104 68 L100 54 Z"/><path d="M160 168 L138 158 L160 148 L182 158 Z"/></g>'
+    + '<g fill="#7FB6C4" opacity=".55">'
+    + '<rect x="150" y="78" width="20" height="34"/><rect x="128" y="88" width="12" height="24"/>'
+    + '<rect x="180" y="88" width="12" height="24"/></g>'
+    + '<path d="M0 158 Q80 150 160 158 T320 156 L320 180 L0 180 Z" fill="#08282F" opacity=".8"/>'; },
+
+  river: function(){ return ''
+    + '<rect width="320" height="180" fill="#DCEAEC"/>'
+    + '<g fill="none" stroke="#0F4C5C" opacity=".55">'
+    + '<path d="M-10 46 Q60 20 130 46 T280 46 T340 30" stroke-width="7"/>'
+    + '<path d="M-10 74 Q60 48 130 74 T280 74 T340 58" stroke-width="11" opacity=".75"/>'
+    + '<path d="M-10 106 Q60 80 130 106 T280 106 T340 90" stroke-width="15" opacity=".55"/>'
+    + '<path d="M-10 142 Q60 116 130 142 T280 142 T340 126" stroke-width="19" opacity=".35"/></g>'
+    + '<circle cx="252" cy="34" r="17" fill="#B5451B" opacity=".85"/>'; },
+
+  folk: function(){ var s='<rect width="320" height="180" fill="#F7E3DA"/><g>';
+    for(var y=0;y<6;y++){ for(var x=0;x<11;x++){
+      var cx=x*32+16, cy=y*32+14, r=(x+y)%3===0?11:7;
+      var c=(x+y)%2===0?'#B5451B':'#0F4C5C';
+      s+='<path d="M'+cx+' '+(cy-r)+' L'+(cx+r)+' '+cy+' L'+cx+' '+(cy+r)+' L'+(cx-r)+' '+cy+' Z" fill="'+c+'" opacity="'+((x+y)%3===0?'.9':'.4')+'"/>';
+    }} return s+'</g>'; },
+
+  plain: function(){ return ''
+    + '<rect width="320" height="180" fill="#E8EEDF"/>'
+    + '<circle cx="238" cy="52" r="24" fill="#D9812C" opacity=".85"/>'
+    + '<g>'
+    + '<rect y="86" width="320" height="16" fill="#B8C79A"/><rect y="102" width="320" height="12" fill="#9FB37E"/>'
+    + '<rect y="114" width="320" height="20" fill="#86A063" opacity=".9"/><rect y="134" width="320" height="18" fill="#6D8A4E"/>'
+    + '<rect y="152" width="320" height="28" fill="#55703B"/></g>'
+    + '<g stroke="#0F4C5C" stroke-width="2" opacity=".5"><path d="M18 86 L18 66"/><path d="M40 86 L40 72"/></g>'; },
+
+  arch: function(){ var s='<rect width="320" height="180" fill="#EEF1EC"/>'
+    + '<rect y="128" width="320" height="52" fill="#D8DED6"/><g>';
+    for(var i=0;i<6;i++){ var x=i*54+10;
+      s+='<path d="M'+x+' 128 L'+x+' 76 A22 22 0 0 1 '+(x+44)+' 76 L'+(x+44)+' 128 Z" fill="#0F4C5C" opacity="'+(i%2?'.16':'.26')+'"/>';
+      s+='<path d="M'+x+' 128 L'+x+' 76 A22 22 0 0 1 '+(x+44)+' 76 L'+(x+44)+' 128" fill="none" stroke="#0F4C5C" stroke-width="1.6" opacity=".7"/>'; }
+    return s+'</g><rect y="56" width="320" height="6" fill="#B5451B" opacity=".7"/>'; },
+
+  bike: function(){ return ''
+    + '<rect width="320" height="180" fill="#DDEAE4"/>'
+    + '<path d="M-10 150 Q70 150 110 118 T210 84 T330 62" fill="none" stroke="#55703B" stroke-width="26" opacity=".28"/>'
+    + '<path d="M-10 150 Q70 150 110 118 T210 84 T330 62" fill="none" stroke="#0F4C5C" stroke-width="2.4" stroke-dasharray="9 9"/>'
+    + '<g fill="#B5451B"><circle cx="82" cy="140" r="6"/><circle cx="164" cy="100" r="6"/><circle cx="258" cy="72" r="6"/></g>'
+    + '<g fill="none" stroke="#0F4C5C" stroke-width="2.6" opacity=".8">'
+    + '<circle cx="42" cy="52" r="15"/><circle cx="86" cy="52" r="15"/><path d="M42 52 L60 32 L78 52 M64 52 L86 52"/></g>'; },
+
+  market: function(){ var s='<rect width="320" height="180" fill="#F2EEE4"/><g>';
+    for(var i=0;i<5;i++){ var x=i*66+2;
+      s+='<path d="M'+x+' 60 L'+(x+62)+' 60 L'+(x+62)+' 88 L'+x+' 88 Z" fill="'+(i%2?'#B5451B':'#0F4C5C')+'" opacity=".8"/>';
+      s+='<rect x="'+(x+4)+'" y="88" width="54" height="52" fill="#CFC6B4"/>';
+      s+='<rect x="'+(x+4)+'" y="140" width="54" height="8" fill="#8C8474"/>'; }
+    return s+'</g><rect y="148" width="320" height="32" fill="#8C8474" opacity=".35"/>'; },
+
+  night: function(){ return ''
+    + '<rect width="320" height="180" fill="#08282F"/>'
+    + '<g fill="#CFE4E8" opacity=".8"><circle cx="40" cy="30" r="1.6"/><circle cx="96" cy="20" r="1.2"/>'
+    + '<circle cx="150" cy="36" r="1.5"/><circle cx="212" cy="24" r="1.1"/><circle cx="268" cy="40" r="1.6"/>'
+    + '<circle cx="292" cy="18" r="1.2"/><circle cx="68" cy="52" r="1"/></g>'
+    + '<circle cx="256" cy="46" r="15" fill="#E8EFEF" opacity=".85"/>'
+    + '<path d="M0 120 L44 120 L52 96 L92 96 L100 118 L150 118 L158 88 L204 88 L212 118 L268 118 L276 104 L320 104 L320 180 L0 180 Z" fill="#0F4C5C"/>'
+    + '<g fill="#E8A33C" opacity=".9"><rect x="62" y="106" width="6" height="8"/><rect x="170" y="100" width="6" height="8"/>'
+    + '<rect x="186" y="100" width="6" height="8"/><rect x="286" y="114" width="6" height="8"/></g>'
+    + '<path d="M0 152 Q80 144 160 152 T320 148 L320 180 L0 180 Z" fill="#04161A" opacity=".85"/>'; },
+
+  interior: function(){ return ''
+    + '<rect width="320" height="180" fill="#EFEAE2"/>'
+    + '<rect x="0" y="120" width="320" height="60" fill="#C9B79C" opacity=".6"/>'
+    + '<rect x="26" y="66" width="128" height="58" fill="#0F4C5C" opacity=".18"/>'
+    + '<rect x="26" y="60" width="128" height="8" fill="#0F4C5C" opacity=".45"/>'
+    + '<rect x="34" y="72" width="52" height="44" fill="#FFFFFF" opacity=".7"/>'
+    + '<rect x="94" y="72" width="52" height="44" fill="#FFFFFF" opacity=".7"/>'
+    + '<rect x="196" y="44" width="96" height="80" fill="#B5451B" opacity=".22"/>'
+    + '<rect x="196" y="44" width="96" height="80" fill="none" stroke="#B5451B" stroke-width="2" opacity=".7"/>'
+    + '<path d="M196 124 L244 76 L292 124 Z" fill="#B5451B" opacity=".35"/>'; }
+};
+var _artN=0;
+function art(kind){
+  var f = MOTIF[kind] || MOTIF.river;
+  var uid = 'mo'+(++_artN);
+  var inner = f().split('gF').join(uid+'g');
+  return '<svg width="100%" height="100%" preserveAspectRatio="none" role="img" aria-hidden="true" '
+    + 'focusable="false" style="display:block">'
+    + '<defs><pattern id="'+uid+'" width="320" height="180" patternUnits="userSpaceOnUse">'+inner+'</pattern></defs>'
+    + '<rect width="100%" height="100%" fill="url(#'+uid+')"/></svg>';
+}
+function heroArt(){
+  return '<svg viewBox="0 0 1200 520" preserveAspectRatio="xMidYMid slice" role="img" aria-hidden="true" '
+   + 'focusable="false" style="display:block;width:100%;height:100%">'
+   + '<rect width="1200" height="520" fill="#0A3642"/>'
+   + '<g transform="translate(880,250)">'
+   + '<g fill="none" stroke="#2C6E7E" stroke-width="1.6" opacity=".9">'
+   + '<path d="M0 -230 L200 -115 L228 115 L0 230 L-228 115 L-200 -115 Z"/>'
+   + '<path d="M0 -178 L155 -89 L176 89 L0 178 L-176 89 L-155 -89 Z"/>'
+   + '<path d="M0 -126 L110 -63 L125 63 L0 126 L-125 63 L-110 -63 Z"/></g>'
+   + '<g fill="none" stroke="#1B5262" stroke-width="1"><path d="M0 -230 V230"/><path d="M-200 -115 L228 115"/>'
+   + '<path d="M200 -115 L-228 115"/></g>'
+   + '<g fill="#B5451B" opacity=".75">'
+   + '<path d="M0 -230 L20 -219 L0 -208 L-20 -219 Z"/><path d="M200 -115 L220 -104 L200 -93 L180 -104 Z"/>'
+   + '<path d="M-200 -115 L-180 -104 L-200 -93 L-220 -104 Z"/><path d="M0 230 L20 219 L0 208 L-20 219 Z"/>'
+   + '<path d="M228 115 L248 126 L228 137 L208 126 Z"/><path d="M-228 115 L-208 126 L-228 137 L-248 126 Z"/></g>'
+   + '<g fill="#3E8598" opacity=".5"><rect x="-26" y="-46" width="24" height="92"/>'
+   + '<rect x="14" y="-30" width="16" height="60"/><rect x="-62" y="-30" width="16" height="60"/></g></g>'
+   + '<g opacity=".55" fill="none" stroke="#2C6E7E">'
+   + '<path d="M-20 452 Q180 428 380 452 T780 452 T1220 436" stroke-width="9"/>'
+   + '<path d="M-20 484 Q180 460 380 484 T780 484 T1220 468" stroke-width="13" opacity=".7"/></g>'
+   + '<path d="M-20 500 Q180 476 380 500 T780 500 T1220 484 L1220 520 L-20 520 Z" fill="#08282F" opacity=".85"/>'
+   + '</svg>';
+}
+
+/* ============================================================
+   2. DATUMI
+   Veliki festivali koriste stvarne mjesece i prikazuju sljedeće
+   izdanje; manja događanja generirana su relativno na današnji dan
+   kako bi filtri "danas / ovaj vikend / 7 dana" uvijek radili.
+   ============================================================ */
+var TODAY = new Date(); TODAY.setHours(0,0,0,0);
+function iso(d){ return d.toISOString().slice(0,10); }
+function plus(n){ var d=new Date(TODAY); d.setDate(d.getDate()+n); return iso(d); }
+function nextOn(m,day){
+  var y=TODAY.getFullYear(), c=new Date(y,m-1,day);
+  if(c < TODAY) c=new Date(y+1,m-1,day);
+  return iso(c);
+}
+function addDays(isoStr,n){ var d=new Date(isoStr+'T00:00:00'); d.setDate(d.getDate()+n); return iso(d); }
+
+var MON = {
+  hr:['siječnja','veljače','ožujka','travnja','svibnja','lipnja','srpnja','kolovoza','rujna','listopada','studenoga','prosinca'],
+  en:['January','February','March','April','May','June','July','August','September','October','November','December'],
+  de:['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember']
+};
+var DOW = {
+  hr:['ned','pon','uto','sri','čet','pet','sub'],
+  en:['Sun','Mon','Tue','Wed','Thu','Fri','Sat'],
+  de:['So','Mo','Di','Mi','Do','Fr','Sa']
+};
+function fmtDate(isoStr,lang){
+  var d=new Date(isoStr+'T00:00:00'), m=MON[lang][d.getMonth()];
+  if(lang==='en') return d.getDate()+' '+m+' '+d.getFullYear();
+  return d.getDate()+'. '+m+' '+d.getFullYear()+'.';
+}
+function fmtRange(a,b,lang){
+  if(a===b) return fmtDate(a,lang);
+  var da=new Date(a+'T00:00:00'), db=new Date(b+'T00:00:00');
+  if(da.getMonth()===db.getMonth()&&da.getFullYear()===db.getFullYear()){
+    if(lang==='en') return da.getDate()+'–'+db.getDate()+' '+MON.en[db.getMonth()]+' '+db.getFullYear();
+    return da.getDate()+'.–'+db.getDate()+'. '+MON[lang][db.getMonth()]+' '+db.getFullYear()+'.';
+  }
+  return fmtDate(a,lang)+' – '+fmtDate(b,lang);
+}
+function shortWhen(a,b,lang){
+  var da=new Date(a+'T00:00:00'), db=new Date(b+'T00:00:00');
+  var ma=MON[lang][da.getMonth()].toUpperCase(), mb=MON[lang][db.getMonth()].toUpperCase();
+  if(a===b) return DOW[lang][da.getDay()].toUpperCase()+' '+da.getDate()+'. '+ma;
+  if(da.getMonth()===db.getMonth())
+    return DOW[lang][da.getDay()].toUpperCase()+' '+da.getDate()+'.–'+db.getDate()+'. '+ma;
+  return da.getDate()+'. '+ma+' – '+db.getDate()+'. '+mb;
+}
+function daysUntil(isoStr){ return Math.round((new Date(isoStr+'T00:00:00')-TODAY)/86400000); }
+function wk(n){ var w=weekendRange(); return addDays(w[0], n||0); }
+function weekendRange(){
+  var dow=TODAY.getDay(), toFri=(5-dow+7)%7;
+  var fri=new Date(TODAY); fri.setDate(fri.getDate()+toFri);
+  var sun=new Date(fri); sun.setDate(sun.getDate()+2);
+  return [iso(fri),iso(sun)];
+}
+
+/* ============================================================
+   3. SADRŽAJ
+   Toponimi, ustanove i manifestacije su stvarni. Termini su
+   primjeri. Smještaj, ugostiteljstvo i cijene su demo podaci.
+   ============================================================ */
+function L(hr,en,de){ return {hr:hr, en:en||null, de:de||null}; }
+
+var EVENTS = [
+  { id:'e-setnja', motif:'arch', type:'kultura', price:0, audience:['obitelji','odrasli'], a11y:true,
+    from:plus(1), to:plus(1), time:'10:00–11:30', place:'Tvrđava Brod', demo:true,
+    name:L('Vođena šetnja Tvrđavom','Guided walk through the Fortress','Führung durch die Festung'),
+    lead:L('Sat i pol kroz bastione, kazamate i povijest najveće barokne utvrde u Hrvatskoj.',
+           'Ninety minutes through bastions, casemates and the history of Croatia’s largest Baroque fortress.',
+           'Neunzig Minuten durch Bastionen, Kasematten und die Geschichte der größten Barockfestung Kroatiens.'),
+    body:L('<p>Šetnja kreće s glavnog ulaza u Tvrđavu i vodi kroz sjeverni bastion, unutarnje dvorište i obnovljene kazamate. Vodič objašnjava zašto je utvrda građena baš na ovom zavoju Save i kako je funkcionirala kao vojni grad za tri tisuće ljudi.</p><p>Grupa je ograničena na 25 osoba. Obucite ravnu obuću — dio staza je neravan.</p>') },
+
+  { id:'e-tambura', motif:'night', type:'koncert', price:12, audience:['odrasli','obitelji'], a11y:true,
+    from:wk(1), to:wk(1), time:'20:00', place:'Tvrđava Brod', demo:true,
+    name:L('Večer tambure u Tvrđavi','Tamburitza evening at the Fortress','Tamburizza-Abend in der Festung'),
+    lead:L('Tri sastava, dvorište Tvrđave i program koji traje do ponoći.',
+           'Three ensembles, the fortress courtyard and a programme running until midnight.',
+           'Drei Ensembles, der Festungshof und ein Programm bis Mitternacht.'),
+    body:L('<p>Ljetni ciklus koncerata u dvorištu Tvrđave. Sjedeća mjesta su numerirana, a dio dvorišta ostaje za stajanje.</p>') },
+
+  { id:'e-sajam', motif:'market', type:'gastro', price:0, audience:['obitelji','lokalni'], a11y:true,
+    from:wk(2), to:wk(2), time:'08:00–13:00', place:'Korzo', demo:true,
+    name:L('Sajam domaćih proizvoda','Local producers’ market','Markt regionaler Erzeuger'),
+    lead:L('Kulen, sir, med, rakija i sezonsko povrće s posavskih gospodarstava.',
+           'Kulen sausage, cheese, honey, rakija and seasonal vegetables from Posavina farms.',
+           'Kulen, Käse, Honig, Rakija und saisonales Gemüse von Höfen aus der Posavina.') },
+
+  { id:'e-razglednice', motif:'interior', type:'izlozba', price:3, audience:['odrasli'], a11y:true,
+    from:plus(5), to:plus(33), time:'09:00–19:00', place:'Muzej Brodskog Posavlja', demo:true,
+    name:L('Brod u razglednicama 1900.–1940.','Brod in postcards, 1900–1940','Brod auf Postkarten 1900–1940'),
+    lead:L('Stotinu razglednica pokazuje grad prije regulacije Save i prije dva rata.',
+           'A hundred postcards show the town before the Sava was regulated and before two wars.',
+           'Hundert Postkarten zeigen die Stadt vor der Save-Regulierung und vor zwei Kriegen.') },
+
+  { id:'e-kino', motif:'river', type:'obiteljsko', price:0, audience:['obitelji','djeca'], a11y:false,
+    from:wk(0), to:wk(0), time:'21:00', place:'Poloj', demo:true,
+    name:L('Kino na otvorenom: Poloj','Open-air cinema at Poloj','Freiluftkino am Poloj'),
+    lead:L('Platno na savskoj plaži, ponesite deku. Po kiši se otkazuje.',
+           'A screen on the Sava beach — bring a blanket. Cancelled if it rains.',
+           'Eine Leinwand am Save-Strand — Decke mitbringen. Bei Regen abgesagt.') },
+
+  { id:'e-biciklijada', motif:'bike', type:'sport', price:5, audience:['obitelji','odrasli'], a11y:false,
+    from:plus(12), to:plus(12), time:'09:00', place:'Savski nasip', demo:true,
+    name:L('Biciklijada Savskim nasipom','Sava embankment bike ride','Radtour auf dem Save-Damm'),
+    lead:L('Trideset kilometara po ravnom nasipu, uz dvije stanice s vodom i okrjepom.',
+           'Thirty flat kilometres along the embankment, with two water and refreshment stops.',
+           'Dreißig flache Kilometer entlang des Damms, mit zwei Wasser- und Rastpunkten.') },
+
+  { id:'e-predstava', motif:'folk', type:'kazaliste', price:7, audience:['djeca','obitelji'], a11y:true,
+    from:plus(16), to:plus(16), time:'17:00', place:'Kazalište Slavonski Brod', demo:true,
+    name:L('Čudnovate zgode šegrta Hlapića','The Brave Adventures of Lapitch','Die seltsamen Abenteuer des Lehrlings Hlapić'),
+    lead:L('Predstava po najpoznatijoj knjizi Ivane Brlić-Mažuranić, za djecu od 4 godine.',
+           'A play after Ivana Brlić-Mažuranić’s best-known book, for children aged 4 and up.',
+           'Ein Stück nach dem bekanntesten Buch von Ivana Brlić-Mažuranić, für Kinder ab 4 Jahren.') },
+
+  { id:'e-kusanje', motif:'plain', type:'gastro', price:18, audience:['odrasli'], a11y:false,
+    from:plus(21), to:plus(21), time:'18:00', place:'Brodsko Vinogorje', demo:true,
+    name:L('Kušanje vina Brodskog Vinogorja','Brodsko Vinogorje wine tasting','Weinprobe im Brodsko Vinogorje'),
+    lead:L('Šest vina i domaći pladanj na brežuljcima iznad grada.',
+           'Six wines and a local platter on the hills above the town.',
+           'Sechs Weine und eine regionale Platte auf den Hügeln über der Stadt.') },
+
+  { id:'e-nocmuzeja', motif:'night', type:'izlozba', price:0, audience:['obitelji','odrasli'], a11y:true,
+    from:plus(27), to:plus(27), time:'18:00–01:00', place:'Tvrđava Brod', demo:true,
+    name:L('Noć muzeja u Tvrđavi','Museum Night at the Fortress','Museumsnacht in der Festung'),
+    lead:L('Svi programi besplatni, kazamate otvorene do jedan ujutro.',
+           'All programmes free, the casemates open until one in the morning.',
+           'Alle Programme kostenlos, die Kasematten bis ein Uhr nachts geöffnet.') },
+
+  /* --- velike manifestacije, stvarni mjeseci, primjeri termina --- */
+  { id:'e-vinkovo', motif:'folk', type:'tradicija', price:0, audience:['lokalni','obitelji'], a11y:true,
+    from:nextOn(1,22), to:nextOn(1,22), time:'11:00', place:'Brodsko Vinogorje', example:true,
+    name:L('Vinkovo','Vincent’s Day (Vinkovo)','Vinzenztag (Vinkovo)'),
+    lead:L('Obred rezidbe prve loze, blagoslov vinograda i kuhano vino usred siječnja.',
+           'The first vine is pruned, the vineyards are blessed and mulled wine is poured, in mid-January.',
+           'Der erste Rebschnitt, die Segnung der Weinberge und Glühwein — mitten im Januar.') },
+
+  { id:'e-ibm', motif:'arch', type:'tradicija', price:0, audience:['djeca','obitelji'], a11y:true,
+    from:nextOn(4,18), to:addDays(nextOn(4,18),2), time:'—', place:'više lokacija', example:true, featured:true,
+    name:L('Dani Ivane Brlić-Mažuranić','Ivana Brlić-Mažuranić Days','Ivana-Brlić-Mažuranić-Tage'),
+    lead:L('Tri dana čitanja, predstava i radionica u gradu u kojem je napisala Priče iz davnine.',
+           'Three days of readings, plays and workshops in the town where she wrote Croatian Tales of Long Ago.',
+           'Drei Tage Lesungen, Aufführungen und Workshops in der Stadt, in der sie die Märchen aus Urväterzeiten schrieb.') },
+
+  { id:'e-rally', motif:'plain', type:'sport', price:0, audience:['odrasli'], a11y:false,
+    from:nextOn(5,16), to:addDays(nextOn(5,16),1), time:'—', place:'okolica Slavonskog Broda', example:true,
+    name:L('Auto rally Slavonski Brod','Slavonski Brod Rally','Rallye Slavonski Brod'),
+    lead:L('Brzinski ispiti na cestama Brodskog Vinogorja i Dilj gore.',
+           'Special stages on the roads of Brodsko Vinogorje and Dilj hill.',
+           'Sonderprüfungen auf den Straßen des Brodsko Vinogorje und des Dilj-Bergs.') },
+
+  { id:'e-kolo', motif:'folk', type:'tradicija', price:0, audience:['obitelji','djeca','lokalni','odrasli'], a11y:true,
+    from:nextOn(6,11), to:addDays(nextOn(6,11),2), time:'10:00–23:00', place:'Trg Ivane Brlić-Mažuranić i Tvrđava',
+    example:true, featured:true, flagship:true,
+    name:L('Brodsko kolo','Brodsko kolo folklore festival','Folklorefestival Brodsko kolo'),
+    lead:L('Najstarija smotra folklora u Slavoniji: tri dana pjesme, plesa i tradicijskih zanata u srcu Broda.',
+           'Slavonia’s oldest folklore festival: three days of song, dance and traditional crafts in the heart of Brod.',
+           'Das älteste Folklorefestival Slawoniens: drei Tage Gesang, Tanz und traditionelles Handwerk im Herzen von Brod.'),
+    body:L('<p>Brodsko kolo okuplja folklorne skupine iz cijele Slavonije i iz hrvatskih zajednica u susjednim zemljama. Program se odvija na Trgu Ivane Brlić-Mažuranić i u dvorištu Tvrđave.</p><p>Velika povorka u subotu poslijepodne prolazi Korzom i najposjećeniji je dio programa — dođite ranije ako želite mjesto uz rub.</p><p>Uz smotru radi i sajam tradicijskih zanata: šlingeraj, lončarstvo, izrada tambura i licitarskih srca.</p>'),
+    program:[
+      {d:0, t:'10:00–23:00', h:L('Otvorenje i večer tambure','Opening and tamburitza evening','Eröffnung und Tamburizza-Abend')},
+      {d:1, t:'09:00–23:00', h:L('Velika povorka i smotra','Grand parade and showcase','Großer Umzug und Schau')},
+      {d:2, t:'10:00–20:00', h:L('Zanatski sajam i završnica','Craft fair and finale','Handwerksmarkt und Finale')}
+    ],
+    faq:['f-kolo-djeca','f-kolo-kisa','f-kolo-psi'] },
+
+  { id:'e-glazbeno', motif:'night', type:'koncert', price:0, audience:['odrasli','obitelji'], a11y:true,
+    from:nextOn(7,3), to:addDays(nextOn(7,3),22), time:'21:00', place:'Tvrđava Brod', example:true,
+    name:L('Brodsko glazbeno ljeto','Brod Music Summer','Broder Musiksommer'),
+    lead:L('Tri tjedna koncerata u dvorištu Tvrđave — klasika, jazz i tambura.',
+           'Three weeks of concerts in the fortress courtyard — classical, jazz and tamburitza.',
+           'Drei Wochen Konzerte im Festungshof — Klassik, Jazz und Tamburizza.') },
+
+  { id:'e-rock', motif:'night', type:'koncert', price:25, audience:['odrasli'], a11y:false,
+    from:nextOn(8,14), to:addDays(nextOn(8,14),1), time:'19:00', place:'Poloj', example:true,
+    name:L('Rock maraton','Rock Marathon','Rock-Marathon'),
+    lead:L('Dva dana i deset bendova na savskoj obali.',
+           'Two days and ten bands on the bank of the Sava.',
+           'Zwei Tage und zehn Bands am Ufer der Save.') },
+
+  { id:'e-svila', motif:'folk', type:'sajam', price:0, audience:['obitelji','lokalni'], a11y:true,
+    from:nextOn(9,12), to:addDays(nextOn(9,12),1), time:'09:00–20:00', place:'Korzo', example:true, featured:true,
+    name:L('Svila šuška, šlingeraj se širi','Silk Rustles: the Slavonian embroidery fair','Seide raschelt: Slawonische Stickerei'),
+    lead:L('Smotra slavonskog veza i zlatoveza — radionice, izložba i sajam rukotvorina.',
+           'A showcase of Slavonian embroidery and goldwork — workshops, exhibition and craft fair.',
+           'Eine Schau slawonischer Stickerei und Goldstickerei — Workshops, Ausstellung und Handwerksmarkt.') },
+
+  { id:'e-advent', motif:'night', type:'tradicija', price:0, audience:['obitelji','djeca','lokalni'], a11y:true,
+    from:nextOn(12,1), to:addDays(nextOn(12,1),23), time:'—', place:'Korzo i Trg', example:true,
+    name:L('Advent u Brodu','Advent in Brod','Advent in Brod'),
+    lead:L('Klizalište, kućice na Korzu i program svaki vikend do Badnjaka.',
+           'An ice rink, chalets on the Korzo and a programme every weekend until Christmas Eve.',
+           'Eislaufbahn, Hütten am Korzo und jedes Wochenende Programm bis Heiligabend.') }
+];
+
+var ATTRACTIONS = [
+  { id:'a-tvrdjava', motif:'fortress', cat:'povijest', minutes:90, price:4, kids:true, a11y:'djelomično', demoPrice:true,
+    name:L('Tvrđava Brod','Brod Fortress','Festung Brod'),
+    lead:L('Najveća barokna vojna utvrda u Hrvatskoj, građena u 18. stoljeću uz sam zavoj Save.',
+           'Croatia’s largest Baroque military fortress, built in the 18th century right on the bend of the Sava.',
+           'Kroatiens größte barocke Militärfestung, im 18. Jahrhundert direkt an der Save-Biegung erbaut.'),
+    body:L('<p>Tvrđava je građena od 1715. kao dio vojne granice prema Osmanskom Carstvu. Zvjezdasti tlocrt s bastionima projektiran je da topovska vatra pokriva svaki prilaz, a unutar zidina živjelo je do tri tisuće ljudi — vojnika, obrtnika i njihovih obitelji.</p><p>Danas je Tvrđava gradski park, koncertna pozornica i muzejski prostor. Obnovljene kazamate otvorene su za razgledavanje, a s bastiona se vidi cijeli tok Save prema Bosanskom Brodu.</p>'),
+    hours:'Uto–ned 09:00–20:00 · ponedjeljkom zatvoreno', themes:['vojna-povijest','uz-savu'] },
+
+  { id:'a-korzo', motif:'arch', cat:'kultura', minutes:30, price:0, kids:true, a11y:'da',
+    name:L('Korzo i Trg Ivane Brlić-Mažuranić','The Korzo and Ivana Brlić-Mažuranić Square','Korzo und Ivana-Brlić-Mažuranić-Platz'),
+    lead:L('Glavna gradska šetnica i trg pod kestenima — mjesto gdje se Brod okuplja.',
+           'The main promenade and the chestnut-shaded square where Brod gathers.',
+           'Die Hauptpromenade und der von Kastanien beschattete Platz, wo sich Brod trifft.'),
+    body:L('<p>Korzo povezuje Tvrđavu s trgom i savskom obalom. Uz njega su secesijske i historicističke fasade s prijelaza stoljeća, kavane s terasama i sjedište Turističke zajednice.</p>'),
+    hours:'Uvijek otvoreno', themes:['secesija'] },
+
+  { id:'a-samostan', motif:'arch', cat:'sakralno', minutes:30, price:0, kids:false, a11y:'da',
+    name:L('Franjevački samostan i crkva Presvetog Trojstva','Franciscan monastery and Church of the Holy Trinity','Franziskanerkloster und Dreifaltigkeitskirche'),
+    lead:L('Barokni kompleks iz 18. stoljeća s klaustrom i knjižnicom od nekoliko tisuća svezaka.',
+           'An 18th-century Baroque complex with a cloister and a library of several thousand volumes.',
+           'Ein barocker Komplex aus dem 18. Jahrhundert mit Kreuzgang und einer Bibliothek mit mehreren tausend Bänden.'),
+    hours:'Svakodnevno 08:00–19:00', themes:['sakralna-bastina'] },
+
+  { id:'a-muzej', motif:'interior', cat:'kultura', minutes:60, price:3, kids:true, a11y:'da', demoPrice:true,
+    name:L('Muzej Brodskog Posavlja','Museum of Brod Posavina','Museum der Broder Posavina'),
+    lead:L('Arheologija, etnografija i povijest grada od prapovijesnih sojenica do 20. stoljeća.',
+           'Archaeology, ethnography and town history from prehistoric pile dwellings to the 20th century.',
+           'Archäologie, Ethnographie und Stadtgeschichte von prähistorischen Pfahlbauten bis ins 20. Jahrhundert.'),
+    hours:'Uto–pet 09:00–17:00 · sub 09:00–13:00', themes:['vojna-povijest'] },
+
+  { id:'a-galerija', motif:'interior', cat:'kultura', minutes:45, price:2, kids:false, a11y:'da', demoPrice:true,
+    name:L('Galerija umjetnina grada Slavonskog Broda','Slavonski Brod City Art Gallery','Städtische Kunstgalerie Slavonski Brod'),
+    lead:L('Zbirka slavonskih slikara 20. stoljeća i promjenjivi program izložbi.',
+           'A collection of 20th-century Slavonian painters and a changing exhibition programme.',
+           'Eine Sammlung slawonischer Maler des 20. Jahrhunderts und wechselnde Ausstellungen.'),
+    hours:'Uto–sub 10:00–18:00', themes:[] },
+
+  { id:'a-poloj', motif:'river', cat:'priroda', minutes:120, price:0, kids:true, a11y:'djelomično',
+    name:L('Poloj — savsko kupalište','Poloj — the Sava beach','Poloj — Strand an der Save'),
+    lead:L('Pješčana obala Save nizvodno od centra, gradsko kupalište i mjesto ljetnih koncerata.',
+           'The sandy Sava bank downstream from the centre — the town beach and a summer concert site.',
+           'Das sandige Save-Ufer flussabwärts vom Zentrum — Stadtstrand und Ort für Sommerkonzerte.'),
+    body:L('<p>Poloj je nekoliko stotina metara pješčane obale s tuševima, ugostiteljskim objektima i pozornicom. Vodostaj Save se mijenja tijekom godine — prije dolaska provjerite je li plaža otvorena.</p>'),
+    hours:'Sezonski, lipanj–rujan', themes:['uz-savu'] },
+
+  { id:'a-nasip', motif:'bike', cat:'aktivnost', minutes:180, price:0, kids:true, a11y:'da',
+    name:L('Savski nasip','The Sava embankment','Der Save-Damm'),
+    lead:L('Ravna asfaltirana staza uz rijeku — dio buduće Savske biciklističke rute (EuroVelo 18).',
+           'A flat asphalt path along the river — part of the future Sava Cycle Route (EuroVelo 18).',
+           'Ein flacher Asphaltweg am Fluss — Teil der künftigen Save-Radroute (EuroVelo 18).'),
+    body:L('<p>Nasip je najkorišteniji rekreacijski prostor u gradu: staza je ravna, bez prometa i pogodna i za djecu. Prema istoku vodi do Poloja i dalje prema Klakaru, prema zapadu do Tvrđave i Ruščice.</p>'),
+    hours:'Uvijek otvoreno', themes:['uz-savu'] },
+
+  { id:'a-vinogorje', motif:'plain', cat:'priroda', minutes:180, price:0, kids:false, a11y:'ne',
+    name:L('Brodsko Vinogorje','Brodsko Vinogorje','Brodsko Vinogorje'),
+    lead:L('Brežuljci s vinogradima i kletima desetak kilometara sjeverno od grada.',
+           'Vine-covered hills and cellars some ten kilometres north of the town.',
+           'Weinberge und Kellerhäuser rund zehn Kilometer nördlich der Stadt.'),
+    hours:'Kušaonice uz najavu', themes:['slavonska-trpeza'] }
+];
+
+var STAYS = [
+  { id:'s-bastion', motif:'interior', kind:'hotel', stars:3, beds:84, units:42, maxPer:4, from:65, km:0.4,
+    amen:['parking','wifi','dorucak','klima','bike','pristupacno','lift'], booking:'upit', reply:4, demo:true,
+    name:L('Hotel Bastion','Hotel Bastion','Hotel Bastion'),
+    lead:L('Hotel s tri zvjezdice u središtu grada, 400 m od Korza i šest minuta pješice od Tvrđave.',
+           'A three-star hotel in the centre, 400 m from the Korzo and a six-minute walk from the Fortress.'),
+    a11y:{step:true, lift:true, door:90, rooms:2, loop:false} },
+
+  { id:'s-tvrdjava', motif:'interior', kind:'hotel', stars:4, beds:120, units:58, maxPer:3, from:95, km:0.7,
+    amen:['parking','wifi','dorucak','klima','pristupacno','lift','ev','bazen'], booking:'integrirani', reply:1, demo:true,
+    name:L('Hotel Tvrđava','Hotel Tvrđava','Hotel Tvrđava'),
+    lead:L('Četiri zvjezdice uz sam ulaz u Tvrđavu, s bazenom i konferencijskom dvoranom za 120 osoba.',
+           'Four stars by the fortress gate, with a pool and a conference hall for 120.'),
+    a11y:{step:true, lift:true, door:95, rooms:4, loop:true} },
+
+  { id:'s-poloj', motif:'river', kind:'apartman', beds:4, units:3, maxPer:4, from:48, km:1.2,
+    amen:['parking','wifi','bike','ljubimci','kuhinja'], booking:'vanjski', demo:true,
+    name:L('Apartmani Poloj','Poloj Apartments','Apartments Poloj'),
+    lead:L('Tri apartmana stotinjak metara od savske plaže, s natkrivenim mjestom za bicikle.',
+           'Three apartments a hundred metres from the Sava beach, with covered bike storage.'),
+    a11y:{step:false, lift:false, door:80, rooms:0, loop:false} },
+
+  { id:'s-vinogorje', motif:'plain', kind:'kuca', beds:8, units:1, maxPer:8, from:120, km:6,
+    amen:['parking','wifi','ljubimci','kuhinja','bazen','praonica'], booking:'upit', reply:9, demo:true,
+    name:L('Kuća za odmor Vinogorje','Vinogorje Holiday House','Ferienhaus Vinogorje'),
+    lead:L('Cijela kuća s bazenom i pogledom na vinograde, za osam osoba.',
+           'A whole house with a pool and a view over the vineyards, sleeping eight.'),
+    a11y:{step:false, lift:false, door:85, rooms:0, loop:false} },
+
+  { id:'s-korzo', motif:'arch', kind:'hostel', beds:46, units:12, maxPer:6, from:22, km:0.2,
+    amen:['wifi','bike','kuhinja','praonica'], booking:'vanjski', demo:true,
+    name:L('Hostel Korzo','Hostel Korzo','Hostel Korzo'),
+    lead:L('Kreveti u sobama za 4 i 6 osoba, u zgradi na samom Korzu.',
+           'Beds in four- and six-bed rooms, in a building right on the Korzo.'),
+    a11y:{step:false, lift:false, door:78, rooms:0, loop:false} },
+
+  { id:'s-save', motif:'river', kind:'sobe', beds:10, units:5, maxPer:2, from:38, km:0.9,
+    amen:['parking','wifi','klima'], booking:'upit', reply:12, demo:true,
+    name:L('Sobe kod Save','Rooms by the Sava','Zimmer an der Save'),
+    lead:L('Pet dvokrevetnih soba u obiteljskoj kući, deset minuta pješice od centra.',
+           'Five double rooms in a family house, a ten-minute walk from the centre.'),
+    a11y:{step:false, lift:false, door:80, rooms:0, loop:false} },
+
+  { id:'s-kamp', motif:'bike', kind:'kamp', beds:60, units:24, maxPer:6, from:18, km:2.5,
+    amen:['bike','ljubimci','ev','praonica','wifi'], booking:'upit', reply:6, demo:true,
+    name:L('Kamp Sava','Camp Sava','Campingplatz Sava'),
+    lead:L('Parcele uz nasip, servis za bicikle i punjač za električna vozila.',
+           'Pitches by the embankment, a bike workshop and an EV charger.'),
+    a11y:{step:true, lift:false, door:0, rooms:0, loop:false} },
+
+  { id:'s-podcrkavlje', motif:'plain', kind:'seosko', beds:14, units:6, maxPer:4, from:55, km:9,
+    amen:['parking','wifi','dorucak','ljubimci','bike'], booking:'upit', reply:3, demo:true,
+    name:L('Seosko domaćinstvo Podcrkavlje','Podcrkavlje Farm Stay','Bauernhof Podcrkavlje'),
+    lead:L('Doručak od vlastitih proizvoda, konji i devet kilometara do grada.',
+           'Breakfast from the farm’s own produce, horses, and nine kilometres to town.'),
+    a11y:{step:true, lift:false, door:82, rooms:1, loop:false} }
+];
+
+var EATS = [
+  { id:'r-sokadija', motif:'market', kind:'restoran', cuisine:'slavonska', pricelevel:2, terrace:true,
+    diet:['vege'], groups:60, a11y:true, open:'11:00–23:00', demo:true,
+    name:L('Konoba Šokadija','Konoba Šokadija','Konoba Šokadija'),
+    lead:L('Kulen, čobanac i fiš paprikaš u kući s ratarskim alatom na zidovima.',
+           'Kulen, čobanac stew and fish paprikash in a house hung with old farm tools.') },
+  { id:'r-marina', motif:'river', kind:'restoran', cuisine:'riblja', pricelevel:3, terrace:true,
+    diet:[], groups:40, a11y:true, open:'12:00–23:00', demo:true,
+    name:L('Restoran Marina','Restaurant Marina','Restaurant Marina'),
+    lead:L('Riba iz Save i Dunava, terasa nad samom obalom.',
+           'Fish from the Sava and the Danube, with a terrace over the bank.') },
+  { id:'r-korzo', motif:'arch', kind:'pizzeria', cuisine:'medunarodna', pricelevel:1, terrace:true,
+    diet:['vege','vegan','bezglutena'], groups:30, a11y:true, open:'10:00–24:00', demo:true,
+    name:L('Pizzeria Korzo','Pizzeria Korzo','Pizzeria Korzo'),
+    lead:L('Pizza iz krušne peći i tjestenina, s vegetarijanskim i bezglutenskim izborom.',
+           'Wood-fired pizza and pasta, with vegetarian and gluten-free options.') },
+  { id:'r-tambura', motif:'folk', kind:'slasticarna', cuisine:'slasticarna', pricelevel:1, terrace:false,
+    diet:['vege'], groups:12, a11y:false, open:'08:00–21:00', demo:true,
+    name:L('Slastičarna Tambura','Tambura Patisserie','Konditorei Tambura'),
+    lead:L('Orehnjača, makovnjača i sladoled — mjesto na koje Brod vodi goste poslije šetnje.',
+           'Walnut and poppy-seed rolls and ice cream — where Brod takes its visitors after a walk.') },
+  { id:'r-bastion', motif:'interior', kind:'kavana', cuisine:'kavana', pricelevel:1, terrace:true,
+    diet:['vege','vegan'], groups:20, a11y:true, open:'07:00–23:00', demo:true,
+    name:L('Kavana Bastion','Café Bastion','Café Bastion'),
+    lead:L('Kava, doručak i terasa okrenuta prema zidinama Tvrđave.',
+           'Coffee, breakfast and a terrace facing the fortress walls.') },
+  { id:'r-vinarija', motif:'plain', kind:'restoran', cuisine:'slavonska', pricelevel:2, terrace:true,
+    diet:['vege'], groups:80, a11y:false, open:'12:00–22:00', demo:true,
+    name:L('Vinarija Vinogorje','Vinogorje Winery','Weingut Vinogorje'),
+    lead:L('Kušaonica s domaćim pladnjem, uz najavu i za veće grupe.',
+           'A tasting room with a local platter, by arrangement and for larger groups.') }
+];
+
+var ITINS = [
+  { id:'i-2sata', motif:'fortress', dur:'2h', mins:120, mode:'pjesice', km:2.1, cost:'0–8 €',
+    audience:['tranzit','parovi'],
+    name:L('Brod u dva sata','Brod in two hours','Brod in zwei Stunden'),
+    lead:L('Za putnike koji staju s autoceste: Tvrđava, Korzo i jedan tanjur slavonske hrane, bez žurbe.',
+           'For travellers stopping off the motorway: the Fortress, the Korzo and one plate of Slavonian food, without rushing.',
+           'Für Reisende mit Autobahnpause: Festung, Korzo und ein Teller slawonischer Küche — ganz ohne Eile.'),
+    steps:[
+      {t:'0:00', ref:null, kind:'park', minutes:5,
+        n:L('Parking uz Tvrđavu','Park by the Fortress','Parken an der Festung'),
+        d:L('120 mjesta, prva pola sata besplatno. Nedjeljom besplatno cijeli dan.','120 spaces, first 30 minutes free. Free all day on Sundays.'), walk:5},
+      {t:'0:05', ref:'a-tvrdjava', kind:'see', minutes:45, walk:8},
+      {t:'0:58', ref:'a-korzo', kind:'see', minutes:20, walk:4},
+      {t:'1:22', ref:'r-sokadija', kind:'eat', minutes:30, walk:5},
+      {t:'1:57', ref:null, kind:'park', minutes:0,
+        n:L('Povratak na parking','Back to the car park','Zurück zum Parkplatz'), d:L('Do izlaza na A3 osam minuta vožnje.','Eight minutes’ drive to the A3 junction.')}
+    ],
+    warn:L('Tvrđava je ponedjeljkom zatvorena — tada zamijenite prvu postaju šetnjom nasipom.',
+           'The Fortress is closed on Mondays — swap the first stop for a walk on the embankment.') },
+
+  { id:'i-djeca', motif:'river', dur:'pola dana', mins:270, mode:'pjesice', km:3.4, cost:'10–25 €',
+    audience:['obitelji','djeca'],
+    name:L('Pola dana s djecom','Half a day with children','Ein halber Tag mit Kindern'),
+    lead:L('Tvrđava, sladoled na Korzu i popodne na savskoj obali — sve pješice i bez ulaznica osim jedne.',
+           'The Fortress, ice cream on the Korzo and an afternoon by the Sava — all on foot and with just one ticket.',
+           'Festung, Eis am Korzo und ein Nachmittag an der Save — alles zu Fuß und mit nur einem Ticket.'),
+    steps:[
+      {t:'09:30', ref:'a-tvrdjava', kind:'see', minutes:60, walk:9},
+      {t:'10:40', ref:'r-tambura', kind:'eat', minutes:30, walk:6},
+      {t:'11:15', ref:'a-korzo', kind:'see', minutes:30, walk:14},
+      {t:'12:00', ref:'r-korzo', kind:'eat', minutes:60, walk:18},
+      {t:'13:20', ref:'a-poloj', kind:'see', minutes:120}
+    ] },
+
+  { id:'i-bicikl', motif:'bike', dur:'1 dan', mins:420, mode:'bicikl', km:32, cost:'15–30 €',
+    audience:['cikloturisti','parovi'],
+    name:L('Savskim nasipom do Poloja i natrag','Along the Sava embankment to Poloj and back','Auf dem Save-Damm zum Poloj und zurück'),
+    lead:L('Trideset dva kilometra po ravnom, bez prometa i s dovoljno sjene — ruta koja radi i po vrućini.',
+           'Thirty-two flat, traffic-free kilometres with enough shade — a route that works even in the heat.',
+           'Zweiunddreißig flache, verkehrsfreie Kilometer mit genug Schatten — eine Route, die auch bei Hitze funktioniert.'),
+    steps:[
+      {t:'09:00', ref:'a-nasip', kind:'ride', minutes:60, walk:0},
+      {t:'10:00', ref:'a-poloj', kind:'see', minutes:90},
+      {t:'11:30', ref:'r-marina', kind:'eat', minutes:70},
+      {t:'13:00', ref:'a-tvrdjava', kind:'see', minutes:60},
+      {t:'14:30', ref:'a-vinogorje', kind:'ride', minutes:120}
+    ],
+    gpx:true },
+
+  { id:'i-vikend', motif:'folk', dur:'2 dana', mins:1440, mode:'pjesice', km:9, cost:'120–190 €',
+    audience:['parovi','obitelji'],
+    name:L('Vikend: povijest i trpeza','A weekend of history and the table','Wochenende: Geschichte und Tafel'),
+    lead:L('Dva dana s jednim noćenjem: utvrda i muzej u subotu, vinogorje i kasni ručak u nedjelju.',
+           'Two days with one night: fortress and museum on Saturday, vineyards and a late lunch on Sunday.',
+           'Zwei Tage mit einer Übernachtung: Festung und Museum am Samstag, Weinberge und spätes Mittagessen am Sonntag.'),
+    steps:[
+      {t:'Sub 10:00', ref:'a-tvrdjava', kind:'see', minutes:90},
+      {t:'Sub 12:00', ref:'a-muzej', kind:'see', minutes:60},
+      {t:'Sub 19:00', ref:'r-sokadija', kind:'eat', minutes:90},
+      {t:'Ned 10:00', ref:'a-vinogorje', kind:'see', minutes:150},
+      {t:'Ned 14:00', ref:'r-vinarija', kind:'eat', minutes:120}
+    ] },
+
+  { id:'i-bezauta', motif:'arch', dur:'3 sata', mins:180, mode:'pjesice', km:2.8, cost:'0–12 €',
+    audience:['tranzit','poslovni'],
+    name:L('Bez auta: iz vlaka u grad','No car: from the train into town','Ohne Auto: vom Zug in die Stadt'),
+    lead:L('Kolodvor je petnaest minuta pješice od Korza — dovoljno za tri sata između dva vlaka.',
+           'The station is a fifteen-minute walk from the Korzo — enough for three hours between trains.',
+           'Der Bahnhof liegt fünfzehn Gehminuten vom Korzo — genug für drei Stunden zwischen zwei Zügen.'),
+    steps:[
+      {t:'0:00', ref:null, kind:'park', minutes:15,
+        n:L('Željeznički kolodvor','Railway station','Bahnhof'),
+        d:L('Ormarići za prtljagu rade u radno vrijeme blagajne.','Luggage lockers are available during ticket-office hours.'), walk:15},
+      {t:'0:15', ref:'a-korzo', kind:'see', minutes:30, walk:6},
+      {t:'0:51', ref:'r-bastion', kind:'eat', minutes:40, walk:5},
+      {t:'1:36', ref:'a-tvrdjava', kind:'see', minutes:60, walk:15}
+    ] },
+
+  { id:'i-ibm', motif:'interior', dur:'pola dana', mins:240, mode:'pjesice', km:2.2, cost:'5–15 €',
+    audience:['obitelji','djeca','parovi'],
+    name:L('Tragovima Ivane Brlić-Mažuranić','In the footsteps of Ivana Brlić-Mažuranić','Auf den Spuren von Ivana Brlić-Mažuranić'),
+    lead:L('Trg, kuća, muzejski postav i priče koje su odavde otišle u cijeli svijet.',
+           'The square, the house, the museum display and the tales that went from here into the world.',
+           'Der Platz, das Haus, die Museumsausstellung und die Märchen, die von hier in die Welt gingen.'),
+    steps:[
+      {t:'10:00', ref:'a-korzo', kind:'see', minutes:40},
+      {t:'10:45', ref:'a-muzej', kind:'see', minutes:70},
+      {t:'12:00', ref:'a-galerija', kind:'see', minutes:45},
+      {t:'12:50', ref:'r-tambura', kind:'eat', minutes:40}
+    ] }
+];
+
+var STORIES = [
+  { id:'p-zasto', motif:'fortress',
+    name:L('Zašto je Brod uopće imao tvrđavu','Why Brod needed a fortress at all','Warum Brod überhaupt eine Festung hatte'),
+    lead:L('Sava nije bila samo rijeka nego granica dvaju carstava — i zvjezdasti tlocrt je odgovor na to.',
+           'The Sava was not just a river but the border of two empires — and the star-shaped plan is the answer to that.',
+           'Die Save war nicht nur ein Fluss, sondern die Grenze zweier Reiche — der sternförmige Grundriss ist die Antwort darauf.') },
+  { id:'p-slingeraj', motif:'folk',
+    name:L('Šlingeraj: čipka koja se broji, ne crta','Šlingeraj: lace that is counted, not drawn','Šlingeraj: Spitze, die gezählt und nicht gezeichnet wird'),
+    lead:L('Slavonski vez nastaje brojenjem niti, a ne po predlošku — zato svaki komad ima svoj ritam.',
+           'Slavonian embroidery is made by counting threads rather than following a pattern — which is why every piece has its own rhythm.') },
+  { id:'p-sava', motif:'river',
+    name:L('Život uz rijeku koja se diže','Life beside a river that rises','Leben an einem Fluss, der steigt'),
+    lead:L('Vodostaj Save određuje kada se otvara plaža, kada se zatvara šetnica i kako grad planira ljeto.',
+           'The Sava’s water level decides when the beach opens, when the promenade closes and how the town plans its summer.') }
+];
+
+var FAQS = [
+  { id:'f-kolo-djeca', q:L('Ima li Brodsko kolo programa za djecu?','Is there a programme for children at Brodsko kolo?','Gibt es beim Brodsko kolo ein Kinderprogramm?'),
+    a:L('Da. Dječje folklorne skupine nastupaju subotom prijepodne, a na zanatskom sajmu radi radionica licitara i šlingeraja za djecu od 5 godina.',
+        'Yes. Children’s folklore groups perform on Saturday morning, and the craft fair runs gingerbread and embroidery workshops for children aged 5 and up.') },
+  { id:'f-kolo-kisa', q:L('Što ako pada kiša?','What if it rains?','Was ist bei Regen?'),
+    a:L('Program se seli u dvoranu Tvrđave. Velika povorka se u pravilu ne otkazuje, ali se može skratiti.',
+        'The programme moves into the fortress hall. The grand parade is not usually cancelled, though it may be shortened.') },
+  { id:'f-kolo-psi', q:L('Mogu li dovesti psa?','Can I bring a dog?','Kann ich einen Hund mitbringen?'),
+    a:L('Na otvorenim dijelovima programa da, na povodcu. U dvoranu Tvrđave psi ne mogu, osim pasa vodiča.',
+        'On the open-air parts of the programme, yes, on a lead. Dogs are not allowed in the fortress hall, except guide dogs.') },
+  { id:'f-parking', q:L('Gdje parkirati u centru?','Where can I park in the centre?','Wo kann man im Zentrum parken?'),
+    a:L('Najveće parkiralište je uz Tvrđavu, 120 mjesta. Prva pola sata je besplatno, zatim 0,80 € po satu. Nedjeljom je besplatno cijeli dan.',
+        'The largest car park is by the Fortress, with 120 spaces. The first 30 minutes are free, then €0.80 per hour. It is free all day on Sundays.') },
+  { id:'f-vlak', q:L('Koliko je kolodvor udaljen od centra?','How far is the station from the centre?','Wie weit ist der Bahnhof vom Zentrum?'),
+    a:L('Oko 1,2 km, petnaest minuta pješice ravnim putem do Korza.','About 1.2 km — a fifteen-minute walk on level ground to the Korzo.') },
+  { id:'f-bike', q:L('Mogu li ponijeti bicikl u vlaku?','Can I take a bike on the train?','Kann ich ein Fahrrad im Zug mitnehmen?'),
+    a:L('Na većini linija da, uz doplatu i ograničen broj mjesta. Prije puta provjerite kod prijevoznika.',
+        'On most services yes, for a supplement and with a limited number of spaces. Check with the operator before travelling.') }
+];
+
+/* pozicije na shematskoj karti (0–100 postotak) */
+var MAPPOS = {
+  'a-tvrdjava':[19,52], 'a-korzo':[45,44], 'a-samostan':[52,38], 'a-muzej':[41,36],
+  'a-galerija':[49,33], 'a-poloj':[80,64], 'a-nasip':[63,60], 'a-vinogorje':[36,10],
+  's-bastion':[44,40], 's-tvrdjava':[26,46], 's-poloj':[74,58], 's-korzo':[47,42],
+  's-save':[57,50], 's-kamp':[68,66], 's-vinogorje':[33,14], 's-podcrkavlje':[22,8],
+  'r-sokadija':[43,47], 'r-marina':[59,57], 'r-korzo':[47,45], 'r-tambura':[45,41],
+  'r-bastion':[27,49], 'r-vinarija':[35,12],
+  'p-parking':[21,50], 'p-parking2':[46,48], 'p-wc':[44,50], 'p-wc2':[78,62],
+  'p-kolodvor':[52,24]
+};
+window.__PROTO = { EVENTS:EVENTS, ATTRACTIONS:ATTRACTIONS, STAYS:STAYS, EATS:EATS,
+  ITINS:ITINS, STORIES:STORIES, FAQS:FAQS, MAPPOS:MAPPOS, art:art, heroArt:heroArt,
+  fmtDate:fmtDate, fmtRange:fmtRange, shortWhen:shortWhen, daysUntil:daysUntil,
+  weekendRange:weekendRange, plus:plus, iso:iso, TODAY:TODAY };
+})();
+</script>
+<script>
+(function(){
+"use strict";
+var P = window.__PROTO;
+var EVENTS=P.EVENTS, ATTR=P.ATTRACTIONS, STAYS=P.STAYS, EATS=P.EATS,
+    ITINS=P.ITINS, STORIES=P.STORIES, FAQS=P.FAQS, MAPPOS=P.MAPPOS, art=P.art;
+
+/* ============================================================
+   4. RJEČNIK SUČELJA (HR / EN / DE)
+   Demonstrira Poglavlje 7: sve sučelje je prevedeno, a sadržaj
+   entiteta koji nema prijevod pada natrag na HR uz vidljivu oznaku.
+   ============================================================ */
+var D = {
+  nav_dozivi:['Doživi','Things to do','Erleben'],
+  nav_events:['Događanja','Events','Veranstaltungen'],
+  nav_stay:['Prenoći i jedi','Stay & Eat','Übernachten & Essen'],
+  nav_plan:['Planiraj','Plan your trip','Reise planen'],
+  nav_discover:['Otkrij Brod','About Brod','Brod entdecken'],
+  brand_sub:['Turistička zajednica','Tourist Board','Tourismusverband'],
+  myplan:['Moj plan','My plan','Mein Plan'],
+  ask:['Pitaj Brod','Ask Brod','Brod fragen'],
+  search_ph:['Pretražite događanja, smještaj, atrakcije…','Search events, places to stay, attractions…','Veranstaltungen, Unterkünfte, Sehenswürdigkeiten suchen…'],
+  hero_title:['Brod na Savi','Brod on the Sava','Brod an der Save'],
+  hero_lede:['Barokna tvrđava, ravna biciklistička staza uz rijeku i grad koji stane u jedno poslijepodne — ili u cijeli vikend.',
+             'A Baroque fortress, a flat cycle path along the river and a town that fits into one afternoon — or a whole weekend.',
+             'Eine Barockfestung, ein flacher Radweg am Fluss und eine Stadt, die in einen Nachmittag passt — oder in ein ganzes Wochenende.'],
+  hero_eyebrow:['Slavonski Brod · Hrvatska','Slavonski Brod · Croatia','Slavonski Brod · Kroatien'],
+  q_weekend:['Ovaj vikend','This weekend','Dieses Wochenende'],
+  q_weekend_s:['Što je u programu','What’s on','Was läuft'],
+  q_2h:['Imam 2 sata','I have 2 hours','Ich habe 2 Stunden'],
+  q_2h_s:['Plan za stanku s puta','A plan for a stop-off','Ein Plan für den Zwischenstopp'],
+  q_bike:['Biciklom','By bike','Mit dem Rad'],
+  q_bike_s:['Savski nasip i rute','The embankment and routes','Der Damm und die Routen'],
+  q_kids:['S djecom','With children','Mit Kindern'],
+  q_kids_s:['Provjereno za obitelji','Family-tested','Für Familien erprobt'],
+  sec_whatson:['Što se događa','What’s on','Was ist los'],
+  sec_first:['Za vaš prvi posjet','For your first visit','Für Ihren ersten Besuch'],
+  sec_howlong:['Koliko vremena imate?','How much time do you have?','Wie viel Zeit haben Sie?'],
+  sec_stay:['Gdje prespavati','Where to stay','Wo übernachten'],
+  sec_stories:['Priče iz Broda','Stories from Brod','Geschichten aus Brod'],
+  all:['Sve','All','Alle'],
+  seeall:['Sve','See all','Alle ansehen'],
+  more:['Saznaj više','Read more','Mehr erfahren'],
+  save:['Spremi u plan','Save to plan','Zum Plan hinzufügen'],
+  saved:['Spremljeno','Saved','Gespeichert'],
+  book:['Rezerviraj','Book now','Jetzt buchen'],
+  enquire:['Pošalji upit','Send enquiry','Anfrage senden'],
+  addcal:['Dodaj u kalendar','Add to calendar','Zum Kalender hinzufügen'],
+  share:['Podijeli','Share','Teilen'],
+  gpx:['Preuzmi GPX','Download GPX','GPX herunterladen'],
+  showmap:['Prikaži na karti','Show on map','Auf der Karte zeigen'],
+  filters:['Filtri','Filters','Filter'],
+  clear:['Očisti sve','Clear all','Alle löschen'],
+  results:['rezultata','results','Ergebnisse'],
+  result1:['rezultat','result','Ergebnis'],
+  sort:['Sortiraj','Sort','Sortieren'],
+  f_today:['Danas','Today','Heute'],
+  f_weekend:['Ovaj vikend','This weekend','Dieses Wochenende'],
+  f_7:['Sljedećih 7 dana','Next 7 days','Nächste 7 Tage'],
+  f_30:['Sljedećih 30 dana','Next 30 days','Nächste 30 Tage'],
+  f_type:['Tip','Type','Art'],
+  f_price:['Cijena','Price','Preis'],
+  f_audience:['Publika','Audience','Publikum'],
+  f_a11y:['Pristupačnost','Accessibility','Barrierefreiheit'],
+  f_kind:['Vrsta','Category','Kategorie'],
+  f_amen:['Pogodnosti','Amenities','Ausstattung'],
+  f_dist:['Udaljenost od centra','Distance from centre','Entfernung vom Zentrum'],
+  f_maxprice:['Najviše po noći','Max per night','Höchstpreis pro Nacht'],
+  f_cuisine:['Kuhinja','Cuisine','Küche'],
+  f_diet:['Prehrana','Dietary','Ernährung'],
+  free:['Besplatno','Free','Kostenlos'],
+  a11y_yes:['Pristupačno','Accessible','Barrierefrei'],
+  events_title:['Događanja u Slavonskom Brodu','Events in Slavonski Brod','Veranstaltungen in Slavonski Brod'],
+  events_lede:['Sve manifestacije, koncerti, sajmovi i izložbe na jednom mjestu. Zadano je prikazano sljedećih 30 dana.',
+               'All festivals, concerts, fairs and exhibitions in one place. The next 30 days are shown by default.',
+               'Alle Feste, Konzerte, Märkte und Ausstellungen an einem Ort. Standardmäßig die nächsten 30 Tage.'],
+  ics_sub:['Pretplati se na kalendar','Subscribe to calendar','Kalender abonnieren'],
+  stay_title:['Prenoći i jedi','Stay & Eat','Übernachten & Essen'],
+  tab_stay:['Smještaj','Places to stay','Unterkünfte'],
+  tab_eat:['Gdje jesti','Where to eat','Wo essen'],
+  plan_title:['Koliko vremena imate?','How much time do you have?','Wie viel Zeit haben Sie?'],
+  plan_lede:['Gotovi planovi za svaki raspoloživi termin — svaka postaja vodi na svoju stranicu s radnim vremenom i cijenom.',
+             'Ready-made plans for any amount of time — each stop links to its own page with opening hours and price.',
+             'Fertige Pläne für jede verfügbare Zeit — jede Station führt zu ihrer Seite mit Öffnungszeiten und Preis.'],
+  dozivi_title:['Doživi Slavonski Brod','Things to do in Slavonski Brod','Slavonski Brod erleben'],
+  discover_title:['Otkrij Brod','About Brod','Brod entdecken'],
+  map_title:['Karta destinacije','Destination map','Karte der Destination'],
+  map_layers:['Slojevi','Layers','Ebenen'],
+  myplan_title:['Moj plan','My plan','Mein Plan'],
+  myplan_empty:['Vaš plan je još prazan.','Your plan is still empty.','Ihr Plan ist noch leer.'],
+  myplan_empty_d:['Spremite događanje, atrakciju ili smještaj gumbom sa srcem i ovdje ćete ih vidjeti na jednom mjestu.',
+                  'Save an event, attraction or place to stay with the heart button and you will see them all here.',
+                  'Speichern Sie eine Veranstaltung, Sehenswürdigkeit oder Unterkunft mit der Herz-Schaltfläche — hier erscheinen sie gesammelt.'],
+  noresults:['Nema rezultata za odabrane filtre.','No results for the selected filters.','Keine Ergebnisse für die gewählten Filter.'],
+  noresults_d:['Uklonite jedan filtar ili proširite razdoblje.','Remove a filter or widen the date range.','Entfernen Sie einen Filter oder erweitern Sie den Zeitraum.'],
+  nosearch:['Nismo našli ništa za','We found nothing for','Wir haben nichts gefunden für'],
+  popular:['Popularno','Popular','Beliebt'],
+  ask_cta:['Pitajte našeg informatora','Ask our assistant','Fragen Sie unseren Assistenten'],
+  where_sleep:['Gdje spavati','Where to stay','Wo übernachten'],
+  where_eat:['Gdje jesti u blizini','Where to eat nearby','Essen in der Nähe'],
+  nearby:['U blizini','Nearby','In der Nähe'],
+  similar:['Slična događanja','Similar events','Ähnliche Veranstaltungen'],
+  faq:['Često pitano','Frequently asked','Häufige Fragen'],
+  program:['Program','Programme','Programm'],
+  practical:['Praktično','Practical','Praktisches'],
+  atglance:['Ukratko','At a glance','Kurz gefasst'],
+  checked:['Podaci provjereni','Data checked','Daten geprüft'],
+  report:['Uočili ste netočnost? Javite nam.','Spotted a mistake? Tell us.','Fehler entdeckt? Sagen Sie es uns.'],
+  duration:['Trajanje posjeta','Visit takes','Besuchsdauer'],
+  hours:['Radno vrijeme','Opening hours','Öffnungszeiten'],
+  price:['Cijena','Price','Preis'],
+  from:['od','from','ab'],
+  night:['noć','night','Nacht'],
+  person:['osoba','people','Personen'],
+  capacity:['Kapacitet','Capacity','Kapazität'],
+  distance:['Od centra','From centre','Vom Zentrum'],
+  reply:['Odgovara u','Replies in','Antwortet in'],
+  units:['Smještajne jedinice','Room types','Zimmertypen'],
+  amenities:['Pogodnosti','Amenities','Ausstattung'],
+  a11y_head:['Pristupačnost objekta','Accessibility','Barrierefreiheit'],
+  notrans:['Nije prevedeno','Not translated','Nicht übersetzt'],
+  demo:['Demo podatak','Demo data','Demodaten'],
+  example:['Primjer termina','Example date','Beispieltermin'],
+  enq_title:['Zahtjev za rezervaciju','Booking request','Buchungsanfrage'],
+  enq_in:['Dolazak','Check-in','Anreise'],
+  enq_out:['Odlazak','Check-out','Abreise'],
+  enq_ad:['Odrasli','Adults','Erwachsene'],
+  enq_ch:['Djeca','Children','Kinder'],
+  enq_name:['Ime i prezime','Full name','Name'],
+  enq_mail:['E-pošta','Email','E-Mail'],
+  enq_msg:['Poruka','Message','Nachricht'],
+  enq_consent:['Suglasan/na sam s obradom podataka radi odgovora na upit.','I agree to my data being processed in order to answer this enquiry.','Ich stimme der Verarbeitung meiner Daten zur Beantwortung dieser Anfrage zu.'],
+  enq_nl:['Želim primati newsletter o događanjima.','I would like the events newsletter.','Ich möchte den Veranstaltungs-Newsletter erhalten.'],
+  enq_send:['Pošalji upit','Send enquiry','Anfrage senden'],
+  enq_ok:['Vaš upit je zaprimljen','Your enquiry has been received','Ihre Anfrage ist eingegangen'],
+  nl_title:['Ostanite u kontaktu','Stay in touch','In Kontakt bleiben'],
+  nl_lede:['Što se događa ovaj tjedan u Brodu? Jedna e-poruka tjedno, bez spama.','What’s on in Brod this week? One email a week, no spam.','Was ist diese Woche in Brod los? Eine E-Mail pro Woche, kein Spam.'],
+  nl_btn:['Prijavi se','Subscribe','Abonnieren'],
+  f_visitors:['Za posjetitelje','For visitors','Für Besucher'],
+  f_trade:['Za struku','For the trade','Für Fachbesucher'],
+  f_contact:['Kontakt','Contact','Kontakt'],
+  chat_disc:['Automatski asistent Turističke zajednice. Razgovor se pohranjuje anonimizirano.','Automated assistant of the Tourist Board. Conversations are stored anonymised.','Automatischer Assistent des Tourismusverbands. Gespräche werden anonymisiert gespeichert.'],
+  chat_hello:['Dobar dan! Pitajte me o Slavonskom Brodu — programu, smještaju, dolasku ili radnom vremenu.','Hello. Ask me about Slavonski Brod — events, places to stay, getting here or opening hours.','Guten Tag! Fragen Sie mich zu Slavonski Brod — Programm, Unterkunft, Anreise oder Öffnungszeiten.'],
+  chat_ph:['Napišite pitanje…','Type a question…','Frage eingeben…'],
+  chat_useful:['Je li ovaj odgovor bio koristan?','Was this answer useful?','War diese Antwort hilfreich?'],
+  chat_sources:['Izvori','Sources','Quellen'],
+  chat_send:['Pošalji','Send','Senden'],
+  back:['Natrag','Back','Zurück'],
+  close:['Zatvori','Close','Schließen']
+};
+var LANGS=['hr','en','de'], LI={hr:0,en:1,de:2};
+
+/* ============================================================
+   5. STANJE
+   ============================================================ */
+var S = {
+  lang:'hr',
+  screen:'home',
+  param:null,
+  tab:'stay',
+  plan:new Set(),
+  ev:{date:'30', type:[], price:[], aud:[], a11y:false},
+  st:{kind:[], amen:[], maxprice:0, maxkm:0},
+  ea:{kind:[], cuisine:[], diet:[], terrace:false},
+  stayDates:null,
+  filtersOpen:false
+};
+try{ var raw=localStorage.getItem('brod.plan'); if(raw) S.plan=new Set(JSON.parse(raw)); }catch(e){}
+function persist(){ try{ localStorage.setItem('brod.plan', JSON.stringify(Array.from(S.plan))); }catch(e){} }
+
+function t(k){ var r=D[k]; return r ? (r[LI[S.lang]]||r[0]) : k; }
+function tx(o){
+  if(!o) return {t:'', fb:false};
+  var v=o[S.lang];
+  if(v) return {t:v, fb:false};
+  return {t:o.hr||'', fb:S.lang!=='hr'};
+}
+function nm(e){ return tx(e.name).t; }
+function esc(s){ return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
+function fbTag(x){ return x.fb ? ' <span class="notrans">'+t('notrans')+'</span>' : ''; }
+function eur(n){ return S.lang==='en' ? '€'+n.toFixed(0) : n.toFixed(0)+' €'; }
+
+var ALL = {};
+[].concat(EVENTS,ATTR,STAYS,EATS,ITINS,STORIES).forEach(function(x){ ALL[x.id]=x; });
+function kindOf(id){
+  if(id[0]==='e'&&id[1]==='-') return 'event';
+  if(id[0]==='a') return 'attraction';
+  if(id[0]==='s') return 'stay';
+  if(id[0]==='r') return 'eat';
+  if(id[0]==='i') return 'itin';
+  return 'story';
+}
+
+/* ============================================================
+   6. NAVIGACIJA
+   ============================================================ */
+var NAV = [
+  {id:'dozivi', k:'nav_dozivi'}, {id:'events', k:'nav_events'},
+  {id:'stay', k:'nav_stay'}, {id:'plan', k:'nav_plan'}, {id:'discover', k:'nav_discover'}
+];
+var SCREENS = [
+  ['home','Naslovnica','W1 / W2'], ['events','Kalendar događanja','W3'],
+  ['event:e-kolo','Detalj događaja','W4'], ['stay','Katalog smještaja','W5'],
+  ['stayitem:s-bastion','Detalj smještaja','W6'], ['plan','Itinereri','W7'],
+  ['itin:i-2sata','Detalj itinerera','W8'], ['map','Interaktivna karta','W9'],
+  ['dozivi','Doživi / atrakcije','—'], ['attraction:a-tvrdjava','Detalj atrakcije','—'],
+  ['ask','Pitaj Brod (AI)','W12'], ['myplan','Moj plan','—'],
+  ['discover','Otkrij Brod','—'], ['contact','Kontakt','W12']
+];
+
+function go(screen,param){
+  S.screen=screen; S.param=param||null; S.filtersOpen=false;
+  document.getElementById('mobNav').classList.remove('open');
+  document.getElementById('burger').setAttribute('aria-expanded','false');
+  render();
+  var st=document.getElementById('stage');
+  window.scrollTo({top:0, behavior:'auto'});
+  if(st) st.scrollTop=0;
+  var j=document.getElementById('jump');
+  var key = param ? screen+':'+param : screen;
+  for(var i=0;i<j.options.length;i++) if(j.options[i].value===key) j.selectedIndex=i;
+}
+document.addEventListener('click', function(ev){
+  var a=ev.target.closest('[data-go]');
+  if(a){ ev.preventDefault(); go(a.getAttribute('data-go'), a.getAttribute('data-param')); }
+});
+
+/* ============================================================
+   7. FILTRIRANJE
+   ============================================================ */
+function evInWindow(e){
+  var d=S.ev.date;
+  if(d==='all') return true;
+  var du=P.daysUntil(e.to);
+  if(du<0) return false;
+  if(d==='today') return P.daysUntil(e.from)<=0 && du>=0;
+  if(d==='weekend'){ var w=P.weekendRange(); return e.from<=w[1] && e.to>=w[0]; }
+  return P.daysUntil(e.from) <= parseInt(d,10);
+}
+function priceBucket(p){ return p===0?'free' : p<=10?'10' : p<=25?'25' : '25p'; }
+function evMatch(e,skip){
+  if(!evInWindow(e)) return false;
+  if(skip!=='type' && S.ev.type.length && S.ev.type.indexOf(e.type)<0) return false;
+  if(skip!=='price' && S.ev.price.length && S.ev.price.indexOf(priceBucket(e.price))<0) return false;
+  if(skip!=='aud' && S.ev.aud.length && !S.ev.aud.some(function(a){return e.audience.indexOf(a)>=0;})) return false;
+  if(skip!=='a11y' && S.ev.a11y && !e.a11y) return false;
+  return true;
+}
+function evList(){ return EVENTS.filter(function(e){return evMatch(e,null);})
+  .sort(function(a,b){ return a.from<b.from?-1:a.from>b.from?1:0; }); }
+
+function stMatch(s,skip){
+  if(skip!=='kind' && S.st.kind.length && S.st.kind.indexOf(s.kind)<0) return false;
+  if(skip!=='amen' && S.st.amen.length && !S.st.amen.every(function(a){return s.amen.indexOf(a)>=0;})) return false;
+  if(skip!=='maxprice' && S.st.maxprice && s.from>S.st.maxprice) return false;
+  if(skip!=='maxkm' && S.st.maxkm && s.km>S.st.maxkm) return false;
+  return true;
+}
+function stList(){ return STAYS.filter(function(s){return stMatch(s,null);})
+  .sort(function(a,b){return a.from-b.from;}); }
+
+function eaMatch(r,skip){
+  if(skip!=='kind' && S.ea.kind.length && S.ea.kind.indexOf(r.kind)<0) return false;
+  if(skip!=='cuisine' && S.ea.cuisine.length && S.ea.cuisine.indexOf(r.cuisine)<0) return false;
+  if(skip!=='diet' && S.ea.diet.length && !S.ea.diet.every(function(d){return r.diet.indexOf(d)>=0;})) return false;
+  if(skip!=='terrace' && S.ea.terrace && !r.terrace) return false;
+  return true;
+}
+function eaList(){ return EATS.filter(function(r){return eaMatch(r,null);}); }
+
+function countIf(arr,fn){ var n=0; arr.forEach(function(x){ if(fn(x)) n++; }); return n; }
+
+/* ============================================================
+   8. GRAĐEVNI BLOKOVI
+   ============================================================ */
+function saveBtn(id){
+  var on=S.plan.has(id);
+  return '<button class="save" data-save="'+id+'" aria-pressed="'+on+'" aria-label="'+esc(t('save'))+'">'
+    + '<svg viewBox="0 0 20 20" fill="'+(on?'currentColor':'none')+'" stroke="currentColor" stroke-width="1.9" aria-hidden="true">'
+    + '<path d="M10 17s-6.5-4-6.5-8.2A3.6 3.6 0 0 1 10 6.2a3.6 3.6 0 0 1 6.5 2.6C16.5 13 10 17 10 17Z"/></svg></button>';
+}
+function badges(list){
+  if(!list.length) return '';
+  return '<div class="badges">'+list.map(function(b){return '<span class="badge '+(b[1]||'')+'">'+esc(b[0])+'</span>';}).join('')+'</div>';
+}
+function eventCard(e){
+  var n=tx(e.name), l=tx(e.lead), b=[];
+  if(e.price===0) b.push([t('free'),'free']);
+  if(e.flagship) b.push([S.lang==='hr'?'Izdvojeno':'Featured','hot']);
+  return '<article class="card">'
+   + '<div class="card-media">'+art(e.motif)+badges(b)+saveBtn(e.id)+'</div>'
+   + '<div class="card-body"><span class="card-when">'+esc(P.shortWhen(e.from,e.to,S.lang))+'</span>'
+   + '<h3><a href="#" data-go="event" data-param="'+e.id+'">'+esc(n.t)+'</a></h3>'
+   + '<p class="lead">'+esc(l.t)+'</p>'+fbTag(l)
+   + '<div class="meta"><span>'+esc(e.place)+'</span>'
+   + '<span>'+(e.price===0?esc(t('free')):'<b>'+eur(e.price)+'</b>')+'</span>'
+   + (e.a11y?'<span>'+esc(t('a11y_yes'))+'</span>':'')+'</div></div></article>';
+}
+function attrCard(a){
+  var n=tx(a.name), l=tx(a.lead), b=[];
+  if(a.price===0) b.push([t('free'),'free']);
+  return '<article class="card">'
+   + '<div class="card-media">'+art(a.motif)+badges(b)+saveBtn(a.id)+'</div>'
+   + '<div class="card-body"><h3><a href="#" data-go="attraction" data-param="'+a.id+'">'+esc(n.t)+'</a></h3>'
+   + '<p class="lead">'+esc(l.t)+'</p>'+fbTag(l)
+   + '<div class="meta"><span><b>'+a.minutes+'</b> min</span>'
+   + '<span>'+(a.price===0?esc(t('free')):'<b>'+eur(a.price)+'</b>')+'</span>'
+   + '<span>'+esc(t('f_a11y'))+': '+esc(a.a11y)+'</span></div></div></article>';
+}
+function stayCard(s){
+  var n=tx(s.name), l=tx(s.lead);
+  var cta = s.booking==='vanjski'
+    ? '<a class="btn btn-secondary btn-sm" href="#" data-go="stayitem" data-param="'+s.id+'">'+esc(t('book'))+' ↗</a>'
+    : '<a class="btn btn-primary btn-sm" href="#" data-go="stayitem" data-param="'+s.id+'">'+esc(t('enquire'))+'</a>';
+  return '<article class="card">'
+   + '<div class="card-media">'+art(s.motif)+badges([[t('demo'),'demo']])+saveBtn(s.id)+'</div>'
+   + '<div class="card-body"><h3><a href="#" data-go="stayitem" data-param="'+s.id+'">'+esc(n.t)
+   + (s.stars?' '+'★'.repeat(s.stars):'')+'</a></h3>'
+   + '<p class="lead">'+esc(l.t)+'</p>'+fbTag(l)
+   + '<div class="meta"><span><b>'+esc(t('from'))+' '+eur(s.from)+'</b> / '+esc(t('night'))+'</span>'
+   + '<span>'+String(s.km).replace('.',',')+' km</span>'
+   + '<span>'+s.maxPer+' '+esc(t('person'))+'</span></div>'
+   + '<div style="margin-top:4px">'+cta+'</div></div></article>';
+}
+function eatCard(r){
+  var n=tx(r.name), l=tx(r.lead);
+  return '<article class="card">'
+   + '<div class="card-media">'+art(r.motif)+badges([[t('demo'),'demo']])+saveBtn(r.id)+'</div>'
+   + '<div class="card-body"><h3><a href="#" data-go="stayitem" data-param="'+r.id+'">'+esc(n.t)+'</a></h3>'
+   + '<p class="lead">'+esc(l.t)+'</p>'+fbTag(l)
+   + '<div class="meta"><span>'+'€'.repeat(r.pricelevel)+'</span><span>'+esc(r.open)+'</span>'
+   + (r.terrace?'<span>'+(S.lang==='hr'?'terasa':'terrace')+'</span>':'')+'</div></div></article>';
+}
+function itinCard(i){
+  var n=tx(i.name), l=tx(i.lead);
+  return '<article class="card bastion">'
+   + '<div class="card-media">'+art(i.motif)+saveBtn(i.id)+'</div>'
+   + '<div class="card-body"><span class="card-when">'+esc(i.dur)+' · '+(i.mode==='bicikl'?(S.lang==='hr'?'biciklom':'by bike'):(S.lang==='hr'?'pješice':'on foot'))+'</span>'
+   + '<h3><a href="#" data-go="itin" data-param="'+i.id+'">'+esc(n.t)+'</a></h3>'
+   + '<p class="lead">'+esc(l.t)+'</p>'+fbTag(l)
+   + '<div class="meta"><span><b>'+i.steps.length+'</b> '+(S.lang==='hr'?'postaja':'stops')+'</span>'
+   + '<span>'+String(i.km).replace('.',',')+' km</span><span>'+esc(i.cost)+'</span></div></div></article>';
+}
+function storyCard(p){
+  var n=tx(p.name), l=tx(p.lead);
+  return '<article class="card"><div class="card-media">'+art(p.motif)+'</div>'
+   + '<div class="card-body"><h3><a href="#" data-go="discover">'+esc(n.t)+'</a></h3>'
+   + '<p class="lead">'+esc(l.t)+'</p>'+fbTag(l)+'</div></article>';
+}
+function cardOf(x){
+  var k=kindOf(x.id);
+  return k==='event'?eventCard(x):k==='attraction'?attrCard(x):k==='stay'?stayCard(x)
+       :k==='eat'?eatCard(x):k==='itin'?itinCard(x):storyCard(x);
+}
+function secHead(label,title,moreScreen,moreLabel){
+  return '<div class="sec-head"><span class="eyebrow">'+esc(label)+'</span>'
+   + '<h2>'+esc(title)+'</h2><span class="sec-rule"></span>'
+   + (moreScreen?'<a class="more" href="#" data-go="'+moreScreen+'">'+esc(moreLabel||t('seeall'))+' →</a>':'')+'</div>';
+}
+function wref(code){ return code==='—'?'':'<span class="wref">Žična maketa '+esc(code)+'</span>'; }
+function crumbs(parts){
+  return '<nav class="crumbs" aria-label="Putanja">'+parts.map(function(p,i){
+    var sep = i? '<span aria-hidden="true">›</span> ':'';
+    return sep + (p[1] ? '<a href="#" data-go="'+p[1]+'">'+esc(p[0])+'</a>' : '<span>'+esc(p[0])+'</span>');
+  }).join(' ')+'</nav>';
+}
+
+/* ============================================================
+   9. EKRANI
+   ============================================================ */
+function screenHome(){
+  var soon=evList().slice(0,4);
+  if(!soon.length) soon=EVENTS.slice(0,4);
+  var firstVisit=[ALL['a-tvrdjava'],ALL['a-korzo'],ALL['a-poloj'],ALL['a-muzej']];
+  var stays=[ALL['s-bastion'],ALL['s-poloj'],ALL['s-korzo']];
+  var q=[
+    ['events','q_weekend','q_weekend_s',null],
+    ['itin','q_2h','q_2h_s','i-2sata'],
+    ['itin','q_bike','q_bike_s','i-bicikl'],
+    ['plan','q_kids','q_kids_s',null]
+  ];
+  return '<section class="hero"><div class="hero-art">'+P.heroArt()+'</div>'
+   + '<div class="hero-in"><span class="eyebrow">'+esc(t('hero_eyebrow'))+'</span>'
+   + '<h1>'+esc(t('hero_title'))+'</h1><p class="lede">'+esc(t('hero_lede'))+'</p>'
+   + '<div class="searchbox"><label class="sr" for="heroQ">'+esc(t('search_ph'))+'</label>'
+   + '<input id="heroQ" type="search" placeholder="'+esc(t('search_ph'))+'">'
+   + '<button class="btn btn-primary" id="heroGo">'+esc(S.lang==='hr'?'Traži':(S.lang==='de'?'Suchen':'Search'))+'</button></div>'
+   + '</div></section>'
+   + '<div class="wrap"><div class="quick">'
+   + q.map(function(x){ return '<a class="bastion" href="#" data-go="'+x[0]+'"'+(x[3]?' data-param="'+x[3]+'"':'')+'>'
+      + '<span class="qk">'+esc(t(x[1]))+'</span><span class="qs">'+esc(t(x[2]))+'</span></a>'; }).join('')
+   + '</div>'
+   + '<section class="sec">'+secHead(S.lang==='hr'?'Kalendar':(S.lang==='de'?'Kalender':'Calendar'),t('sec_whatson'),'events')
+   + '<div class="grid g4">'+soon.map(eventCard).join('')+'</div></section>'
+   + '<section class="sec">'+secHead(S.lang==='hr'?'Atrakcije':'Attractions',t('sec_first'),'dozivi')
+   + '<div class="grid g4">'+firstVisit.map(attrCard).join('')+'</div></section>'
+   + '<section class="sec">'+secHead(S.lang==='hr'?'Itinereri':'Itineraries',t('sec_howlong'),'plan')
+   + '<div class="grid g3">'+[ALL['i-2sata'],ALL['i-djeca'],ALL['i-bicikl']].map(itinCard).join('')+'</div></section>'
+   + '<section class="sec">'+secHead(S.lang==='hr'?'Smještaj':'Accommodation',t('sec_stay'),'stay')
+   + '<div class="grid g3">'+stays.map(stayCard).join('')+'</div></section>'
+   + '<section class="sec">'+secHead(S.lang==='hr'?'Vodiči':'Guides',t('sec_stories'),'discover')
+   + '<div class="grid g3">'+STORIES.map(storyCard).join('')+'</div></section>'
+   + '</div>';
+}
+function wrefText(c){ return c; }
+
+function optRow(group,val,label,count,checked){
+  return '<label class="opt'+(count===0?' zero':'')+'">'
+   + '<input type="checkbox" data-f="'+group+'" value="'+esc(val)+'"'+(checked?' checked':'')+(count===0&&!checked?' disabled':'')+'>'
+   + '<span>'+esc(label)+'</span><span class="n">'+count+'</span></label>';
+}
+function chipsFor(items,onClear){
+  if(!items.length) return '';
+  return '<div class="chips">'+items.map(function(c){
+    return '<span class="chip">'+esc(c[0])+'<button data-chip="'+esc(c[1])+'" aria-label="'+esc(t('clear'))+': '+esc(c[0])+'">×</button></span>';
+  }).join('')+'</div><button class="clear" data-clearall="'+onClear+'">'+esc(t('clear'))+'</button>';
+}
+
+var EVTYPES=[['koncert','Koncert','Concert','Konzert'],['tradicija','Tradicija i folklor','Tradition & folklore','Tradition & Folklore'],
+  ['izlozba','Izložba','Exhibition','Ausstellung'],['sport','Sport','Sport','Sport'],['gastro','Gastro','Food & drink','Kulinarik'],
+  ['sajam','Sajam','Fair','Markt'],['kazaliste','Kazalište','Theatre','Theater'],['obiteljsko','Obiteljsko','Family','Familie'],
+  ['kultura','Kultura','Culture','Kultur']];
+var EVPRICE=[['free','Besplatno','Free','Kostenlos'],['10','do 10 €','up to €10','bis 10 €'],
+  ['25','10–25 €','€10–25','10–25 €'],['25p','25 € i više','€25+','ab 25 €']];
+var EVAUD=[['obitelji','Obitelji','Families','Familien'],['djeca','Djeca','Children','Kinder'],
+  ['odrasli','Odrasli','Adults','Erwachsene'],['lokalni','Lokalni','Locals','Einheimische']];
+function lab(row){ return row[1+LI[S.lang]]||row[1]; }
+
+function screenEvents(){
+  var list=evList();
+  var dateOpts=[['today','f_today'],['weekend','f_weekend'],['7','f_7'],['30','f_30'],['all','all']];
+  var chips=[];
+  S.ev.type.forEach(function(v){ var r=EVTYPES.filter(function(x){return x[0]===v;})[0]; chips.push([lab(r),'type:'+v]); });
+  S.ev.price.forEach(function(v){ var r=EVPRICE.filter(function(x){return x[0]===v;})[0]; chips.push([lab(r),'price:'+v]); });
+  S.ev.aud.forEach(function(v){ var r=EVAUD.filter(function(x){return x[0]===v;})[0]; chips.push([lab(r),'aud:'+v]); });
+  if(S.ev.a11y) chips.push([t('a11y_yes'),'a11y:1']);
+
+  var filters='<div class="filters'+(S.filtersOpen?' open':'')+'" id="filterPanel">'
+   + '<fieldset><legend>'+esc(t('f_type'))+'</legend>'
+   + EVTYPES.map(function(r){ return optRow('type',r[0],lab(r),
+       countIf(EVENTS,function(e){return e.type===r[0]&&evMatch(e,'type');}), S.ev.type.indexOf(r[0])>=0); }).join('')
+   + '</fieldset><fieldset><legend>'+esc(t('f_price'))+'</legend>'
+   + EVPRICE.map(function(r){ return optRow('price',r[0],lab(r),
+       countIf(EVENTS,function(e){return priceBucket(e.price)===r[0]&&evMatch(e,'price');}), S.ev.price.indexOf(r[0])>=0); }).join('')
+   + '</fieldset><fieldset><legend>'+esc(t('f_audience'))+'</legend>'
+   + EVAUD.map(function(r){ return optRow('aud',r[0],lab(r),
+       countIf(EVENTS,function(e){return e.audience.indexOf(r[0])>=0&&evMatch(e,'aud');}), S.ev.aud.indexOf(r[0])>=0); }).join('')
+   + '</fieldset><fieldset><legend>'+esc(t('f_a11y'))+'</legend>'
+   + optRow('a11y','1',t('a11y_yes'), countIf(EVENTS,function(e){return e.a11y&&evMatch(e,'a11y');}), S.ev.a11y)
+   + '</fieldset></div>';
+
+  var body = list.length
+    ? '<div class="grid g3">'+list.map(eventCard).join('')+'</div>'
+    : '<div class="empty"><h3>'+esc(t('noresults'))+'</h3><p>'+esc(t('noresults_d'))+'</p>'
+      + '<div class="acts"><button class="btn btn-secondary btn-sm" data-clearall="ev">'+esc(t('clear'))+'</button>'
+      + '<button class="btn btn-secondary btn-sm" data-go="ask">'+esc(t('ask_cta'))+'</button></div></div>';
+
+  return '<div class="wrap">'+crumbs([[S.lang==='hr'?'Početna':'Home','home'],[t('nav_events'),null]])
+   + '<div style="display:flex;gap:12px;align-items:baseline;flex-wrap:wrap;margin-top:10px">'
+   + '<h1 style="font-size:clamp(26px,4vw,38px)">'+esc(t('events_title'))+'</h1>'+wref('W3')+'</div>'
+   + '<p style="max-width:62ch;color:var(--ink-2);margin-top:10px">'+esc(t('events_lede'))+'</p>'
+   + '<div class="datebar" role="group" aria-label="'+esc(S.lang==='hr'?'Razdoblje':'Date range')+'">'
+   + dateOpts.map(function(d){ return '<button class="pill" data-date="'+d[0]+'" aria-pressed="'+(S.ev.date===d[0])+'">'+esc(t(d[1]))+'</button>'; }).join('')
+   + '<button class="pill" data-proto="ics">'+esc(t('ics_sub'))+'</button></div>'
+   + '<div class="layout">'+filters+'<div>'
+   + '<div class="resbar"><button class="btn btn-secondary btn-sm filter-toggle" data-togglefilters>'+esc(t('filters'))
+   + (chips.length?' ('+chips.length+')':'')+'</button>'
+   + '<span class="rescount" aria-live="polite">'+list.length+' '+esc(list.length===1?t('result1'):t('results'))+'</span>'
+   + chipsFor(chips,'ev')+'</div>'+body+'</div></div></div>';
+}
+
+var STKIND=[['hotel','Hotel','Hotel','Hotel'],['apartman','Apartman','Apartment','Apartment'],
+  ['kuca','Kuća za odmor','Holiday house','Ferienhaus'],['hostel','Hostel','Hostel','Hostel'],
+  ['sobe','Sobe','Rooms','Zimmer'],['kamp','Kamp','Campsite','Campingplatz'],
+  ['seosko','Seosko domaćinstvo','Farm stay','Bauernhof']];
+var STAMEN=[['parking','Parking','Parking','Parkplatz'],['wifi','Wi-Fi','Wi-Fi','WLAN'],
+  ['dorucak','Doručak','Breakfast','Frühstück'],['klima','Klima','Air conditioning','Klimaanlage'],
+  ['bike','Prilagođeno biciklistima','Bike friendly','Fahrradfreundlich'],
+  ['ljubimci','Kućni ljubimci','Pets allowed','Haustiere'],['pristupacno','Pristupačno','Step-free access','Barrierefrei'],
+  ['ev','Punjač za EV','EV charger','E-Ladestation'],['bazen','Bazen','Pool','Pool'],['kuhinja','Kuhinja','Kitchen','Küche']];
+var EAKIND=[['restoran','Restoran','Restaurant','Restaurant'],['pizzeria','Pizzeria','Pizzeria','Pizzeria'],
+  ['kavana','Kavana','Café','Café'],['slasticarna','Slastičarna','Patisserie','Konditorei']];
+var EACUIS=[['slavonska','Slavonska','Slavonian','Slawonisch'],['riblja','Riblja','Fish','Fisch'],
+  ['medunarodna','Međunarodna','International','International'],['kavana','Kava i doručak','Coffee & breakfast','Kaffee & Frühstück'],
+  ['slasticarna','Slastice','Sweets','Süßes']];
+var EADIET=[['vege','Vegetarijansko','Vegetarian','Vegetarisch'],['vegan','Vegansko','Vegan','Vegan'],
+  ['bezglutena','Bez glutena','Gluten free','Glutenfrei']];
+
+function screenStay(){
+  var isStay = S.tab==='stay';
+  var list = isStay ? stList() : eaList();
+  var chips=[];
+  if(isStay){
+    S.st.kind.forEach(function(v){ chips.push([lab(STKIND.filter(function(x){return x[0]===v;})[0]),'stkind:'+v]); });
+    S.st.amen.forEach(function(v){ chips.push([lab(STAMEN.filter(function(x){return x[0]===v;})[0]),'stamen:'+v]); });
+    if(S.st.maxprice) chips.push([t('f_maxprice')+' '+eur(S.st.maxprice),'stprice:0']);
+    if(S.st.maxkm) chips.push(['≤ '+S.st.maxkm+' km','stkm:0']);
+  } else {
+    S.ea.kind.forEach(function(v){ chips.push([lab(EAKIND.filter(function(x){return x[0]===v;})[0]),'eakind:'+v]); });
+    S.ea.cuisine.forEach(function(v){ chips.push([lab(EACUIS.filter(function(x){return x[0]===v;})[0]),'eacuis:'+v]); });
+    S.ea.diet.forEach(function(v){ chips.push([lab(EADIET.filter(function(x){return x[0]===v;})[0]),'eadiet:'+v]); });
+    if(S.ea.terrace) chips.push([S.lang==='hr'?'Terasa':'Terrace','eaterr:1']);
+  }
+
+  var filters = isStay
+   ? '<div class="filters'+(S.filtersOpen?' open':'')+'">'
+     + '<fieldset><legend>'+esc(t('f_kind'))+'</legend>'
+     + STKIND.map(function(r){ return optRow('stkind',r[0],lab(r),
+         countIf(STAYS,function(s){return s.kind===r[0]&&stMatch(s,'kind');}), S.st.kind.indexOf(r[0])>=0); }).join('')
+     + '</fieldset><fieldset><legend>'+esc(t('f_amen'))+'</legend>'
+     + STAMEN.map(function(r){ return optRow('stamen',r[0],lab(r),
+         countIf(STAYS,function(s){return s.amen.indexOf(r[0])>=0&&stMatch(s,'amen');}), S.st.amen.indexOf(r[0])>=0); }).join('')
+     + '</fieldset><fieldset><legend>'+esc(t('f_maxprice'))+'</legend>'
+     + '<label class="sr" for="pmax">'+esc(t('f_maxprice'))+'</label>'
+     + '<select id="pmax" data-f="stprice" style="width:100%;min-height:44px;padding:9px;border:1px solid var(--line-strong);background:var(--paper);color:var(--ink);border-radius:5px">'
+     + [0,30,50,80,120].map(function(v){ return '<option value="'+v+'"'+(S.st.maxprice===v?' selected':'')+'>'+(v?eur(v):t('all'))+'</option>'; }).join('')
+     + '</select></fieldset><fieldset><legend>'+esc(t('f_dist'))+'</legend>'
+     + '<label class="sr" for="kmax">'+esc(t('f_dist'))+'</label>'
+     + '<select id="kmax" data-f="stkm" style="width:100%;min-height:44px;padding:9px;border:1px solid var(--line-strong);background:var(--paper);color:var(--ink);border-radius:5px">'
+     + [0,1,3,10].map(function(v){ return '<option value="'+v+'"'+(S.st.maxkm===v?' selected':'')+'>'+(v?('≤ '+v+' km'):t('all'))+'</option>'; }).join('')
+     + '</select></fieldset></div>'
+   : '<div class="filters'+(S.filtersOpen?' open':'')+'">'
+     + '<fieldset><legend>'+esc(t('f_kind'))+'</legend>'
+     + EAKIND.map(function(r){ return optRow('eakind',r[0],lab(r),
+         countIf(EATS,function(x){return x.kind===r[0]&&eaMatch(x,'kind');}), S.ea.kind.indexOf(r[0])>=0); }).join('')
+     + '</fieldset><fieldset><legend>'+esc(t('f_cuisine'))+'</legend>'
+     + EACUIS.map(function(r){ return optRow('eacuis',r[0],lab(r),
+         countIf(EATS,function(x){return x.cuisine===r[0]&&eaMatch(x,'cuisine');}), S.ea.cuisine.indexOf(r[0])>=0); }).join('')
+     + '</fieldset><fieldset><legend>'+esc(t('f_diet'))+'</legend>'
+     + EADIET.map(function(r){ return optRow('eadiet',r[0],lab(r),
+         countIf(EATS,function(x){return x.diet.indexOf(r[0])>=0&&eaMatch(x,'diet');}), S.ea.diet.indexOf(r[0])>=0); }).join('')
+     + '</fieldset><fieldset><legend>'+(S.lang==='hr'?'Ostalo':'Other')+'</legend>'
+     + optRow('eaterr','1',S.lang==='hr'?'Terasa':'Terrace',
+         countIf(EATS,function(x){return x.terrace&&eaMatch(x,'terrace');}), S.ea.terrace)
+     + '</fieldset></div>';
+
+  var body = list.length
+    ? '<div class="grid g3">'+list.map(isStay?stayCard:eatCard).join('')+'</div>'
+    : '<div class="empty"><h3>'+esc(t('noresults'))+'</h3><p>'+esc(t('noresults_d'))+'</p>'
+      + '<div class="acts"><button class="btn btn-secondary btn-sm" data-clearall="'+(isStay?'st':'ea')+'">'+esc(t('clear'))+'</button></div></div>';
+
+  var dateNote = (isStay && S.stayDates)
+    ? '<div class="notice info" style="margin-top:14px">'+esc(S.lang==='hr'?'Traži se smještaj za termin':'Looking for a stay on')+' <strong>'
+      + esc(P.fmtRange(S.stayDates[0],S.stayDates[1],S.lang))+'</strong> — '
+      + esc(S.lang==='hr'?'u prototipu se datumi prenose, u produkciji se provjerava stvarna dostupnost.'
+                         :'in the prototype the dates are carried over; in production real availability is checked.')
+      + ' <button class="clear" data-cleardates>'+esc(S.lang==='hr'?'ukloni':'remove')+'</button></div>' : '';
+
+  return '<div class="wrap">'+crumbs([[S.lang==='hr'?'Početna':'Home','home'],[t('nav_stay'),null]])
+   + '<div style="display:flex;gap:12px;align-items:baseline;flex-wrap:wrap;margin-top:10px">'
+   + '<h1 style="font-size:clamp(26px,4vw,38px)">'+esc(t('stay_title'))+'</h1>'+wref('W5')+'</div>'
+   + dateNote
+   + '<div class="tabs" role="tablist">'
+   + '<button role="tab" aria-selected="'+isStay+'" data-tab="stay">'+esc(t('tab_stay'))+'</button>'
+   + '<button role="tab" aria-selected="'+(!isStay)+'" data-tab="eat">'+esc(t('tab_eat'))+'</button></div>'
+   + '<div class="layout">'+filters+'<div>'
+   + '<div class="resbar"><button class="btn btn-secondary btn-sm filter-toggle" data-togglefilters>'+esc(t('filters'))
+   + (chips.length?' ('+chips.length+')':'')+'</button>'
+   + '<span class="rescount" aria-live="polite">'+list.length+' '+esc(list.length===1?t('result1'):t('results'))+'</span>'
+   + chipsFor(chips,isStay?'st':'ea')+'</div>'+body+'</div></div></div>';
+}
+
+function screenDozivi(){
+  return '<div class="wrap">'+crumbs([[S.lang==='hr'?'Početna':'Home','home'],[t('nav_dozivi'),null]])
+   + '<h1 style="font-size:clamp(26px,4vw,38px);margin-top:10px">'+esc(t('dozivi_title'))+'</h1>'
+   + '<p style="max-width:62ch;color:var(--ink-2);margin-top:10px">'
+   + esc(S.lang==='hr'?'Osam mjesta koja čine razliku između prolaska kroz Brod i posjeta Brodu.'
+        :'Eight places that make the difference between passing through Brod and visiting it.')+'</p>'
+   + '<div class="grid g3" style="margin-top:22px">'+ATTR.map(attrCard).join('')+'</div>'
+   + '<section class="sec">'+secHead(S.lang==='hr'?'Karta':'Map',t('map_title'),'map',S.lang==='hr'?'Otvori kartu':'Open map')
+   + '<p style="color:var(--ink-2);max-width:60ch">'+esc(S.lang==='hr'
+       ?'Sve atrakcije, smještaj i ugostiteljski objekti na jednoj karti, sa slojevima za bicikl, parking i sanitarne čvorove.'
+       :'All attractions, stays and places to eat on one map, with layers for cycling, parking and toilets.')+'</p></section>'
+   + '</div>';
+}
+
+function screenDiscover(){
+  return '<div class="wrap">'+crumbs([[S.lang==='hr'?'Početna':'Home','home'],[t('nav_discover'),null]])
+   + '<h1 style="font-size:clamp(26px,4vw,38px);margin-top:10px">'+esc(t('discover_title'))+'</h1>'
+   + '<div class="prose" style="max-width:66ch">'
+   + '<p>'+esc(S.lang==='hr'
+      ? 'Slavonski Brod leži na sjevernoj obali Save, na mjestu gdje se rijeka najdulje drži jednog smjera. Ta geografija objašnjava gotovo sve: zašto je ovdje bio prijelaz, zašto je Habsburška Monarhija podigla najveću baroknu utvrdu u zemlji i zašto je grad danas najlakše shvatiti s bastiona, gledajući vodu.'
+      : 'Slavonski Brod sits on the northern bank of the Sava, where the river keeps one direction longest. That geography explains almost everything: why there was a crossing here, why the Habsburg Monarchy built the country’s largest Baroque fortress, and why the town is still easiest to understand from a bastion, looking at the water.')+'</p>'
+   + '<p>'+esc(S.lang==='hr'
+      ? 'Iz Broda je Ivana Brlić-Mažuranić napisala Priče iz davnine i Čudnovate zgode šegrta Hlapića — knjige koje su prevedene na desetke jezika i koje su i danas najpoznatije što je grad dao svijetu.'
+      : 'It was from Brod that Ivana Brlić-Mažuranić wrote Croatian Tales of Long Ago and The Brave Adventures of Lapitch — books translated into dozens of languages and still the best-known thing the town has given the world.')+'</p></div>'
+   + '<section class="sec">'+secHead(S.lang==='hr'?'Vodiči':'Guides',t('sec_stories'))
+   + '<div class="grid g3">'+STORIES.map(storyCard).join('')+'</div></section>'
+   + '<section class="sec">'+secHead('FAQ',t('faq'))
+   + '<div style="max-width:70ch">'+FAQS.map(function(f){
+       var q=tx(f.q), a=tx(f.a);
+       return '<details style="border-bottom:1px solid var(--line);padding:14px 0">'
+        + '<summary style="cursor:pointer;font-weight:600;font-size:16px;min-height:32px">'+esc(q.t)+'</summary>'
+        + '<p style="margin-top:9px;color:var(--ink-2)">'+esc(a.t)+'</p>'+fbTag(a)+'</details>'; }).join('')
+   + '</div></section></div>';
+}
+
+function screenPlan(){
+  return '<div class="wrap">'+crumbs([[S.lang==='hr'?'Početna':'Home','home'],[t('nav_plan'),null]])
+   + '<div style="display:flex;gap:12px;align-items:baseline;flex-wrap:wrap;margin-top:10px">'
+   + '<h1 style="font-size:clamp(26px,4vw,38px)">'+esc(t('plan_title'))+'</h1>'+wref('W7')+'</div>'
+   + '<p style="max-width:64ch;color:var(--ink-2);margin-top:10px">'+esc(t('plan_lede'))+'</p>'
+   + '<div class="grid g3" style="margin-top:22px">'+ITINS.map(itinCard).join('')+'</div>'
+   + '<div class="notice info" style="margin-top:26px">'+esc(S.lang==='hr'
+      ? 'U Fazi 2 dolazi generator: posjetitelj slaže vlastiti itinerer od spremljenih stavki, sprema ga i dijeli poveznicom.'
+      : 'Phase 2 adds a generator: visitors build their own itinerary from saved items, save it and share it by link.')+'</div>'
+   + '</div>';
+}
+
+function screenMyPlan(){
+  var items=Array.from(S.plan).map(function(id){return ALL[id];}).filter(Boolean);
+  var body = items.length
+    ? '<div class="grid g3" style="margin-top:20px">'+items.map(cardOf).join('')+'</div>'
+    : '<div class="empty" style="margin-top:20px"><h3>'+esc(t('myplan_empty'))+'</h3><p>'+esc(t('myplan_empty_d'))+'</p>'
+      + '<div class="acts"><button class="btn btn-primary btn-sm" data-go="plan">'+esc(S.lang==='hr'?'Pogledajte gotove itinerere':'See ready-made itineraries')+'</button>'
+      + '<button class="btn btn-secondary btn-sm" data-go="events">'+esc(t('q_weekend'))+'</button></div></div>';
+  return '<div class="wrap">'+crumbs([[S.lang==='hr'?'Početna':'Home','home'],[t('myplan_title'),null]])
+   + '<h1 style="font-size:clamp(26px,4vw,38px);margin-top:10px">'+esc(t('myplan_title'))+'</h1>'
+   + '<p style="color:var(--ink-2);margin-top:8px">'+esc(S.lang==='hr'
+      ? 'Spremljeno je '+items.length+' stavki. U prototipu se plan čuva u pregledniku; u produkciji se veže uz račun i dijeli poveznicom.'
+      : items.length+' items saved. In the prototype the plan lives in your browser; in production it is tied to an account and shareable.')+'</p>'
+   + body+'</div>';
+}
+
+function screenContact(){
+  return '<div class="wrap">'+crumbs([[S.lang==='hr'?'Početna':'Home','home'],[t('f_contact'),null]])
+   + '<h1 style="font-size:clamp(26px,4vw,38px);margin-top:10px">'+esc(t('f_contact'))+'</h1>'
+   + '<div class="detail"><div><div class="prose">'
+   + '<h2>'+esc(S.lang==='hr'?'Centar za posjetitelje':'Visitor centre')+'</h2>'
+   + '<p>Trg pobjede 28, 35000 Slavonski Brod<br>+385 35 447 721<br>info@tzgsb.hr</p>'
+   + '<p><strong>'+esc(S.lang==='hr'?'Radno vrijeme':'Opening hours')+':</strong> '+esc(S.lang==='hr'?'pon–pet 8–16, sub 9–13':'Mon–Fri 8–16, Sat 9–13')+'</p>'
+   + '<h2>'+esc(S.lang==='hr'?'Pišite nam':'Write to us')+'</h2></div>'
+   + '<form class="form" data-form="contact"><div class="frow">'
+   + '<div class="field"><label for="cn">'+esc(t('enq_name'))+' *</label><input id="cn" required></div>'
+   + '<div class="field"><label for="ce">'+esc(t('enq_mail'))+' *</label><input id="ce" type="email" required></div></div>'
+   + '<div class="field"><label for="cm">'+esc(t('enq_msg'))+' *</label><textarea id="cm" required></textarea></div>'
+   + '<label class="check"><input type="checkbox" required id="cc"><span>'+esc(t('enq_consent'))+'</span></label>'
+   + '<div><button class="btn btn-primary" type="submit">'+esc(S.lang==='hr'?'Pošalji':'Send')+'</button></div>'
+   + '<p class="hint" style="font-size:13px;color:var(--ink-3)">'+esc(S.lang==='hr'?'Odgovaramo u jednom radnom danu.':'We reply within one working day.')+'</p>'
+   + '</form></div>'
+   + '<aside class="side"><div class="panel"><h3>'+esc(t('ask'))+'</h3>'
+   + '<p style="font-size:14px;color:var(--ink-2);margin-bottom:12px">'+esc(S.lang==='hr'
+      ? 'Naš informator odgovara 24/7 na hrvatskom, engleskom i njemačkom.'
+      : 'Our assistant answers 24/7 in Croatian, English and German.')+'</p>'
+   + '<button class="btn btn-primary btn-block" data-go="ask">'+esc(t('ask'))+' →</button></div>'
+   + '<div class="panel"><h3>'+esc(S.lang==='hr'?'Društvene mreže':'Social media')+'</h3>'
+   + '<div class="social">'+['FB','IG','YT','TT','LI'].map(function(s){return '<a href="#" data-proto="social" aria-label="'+s+'">'+s+'</a>';}).join('')+'</div></div>'
+   + '</aside></div></div>';
+}
+window.__SCREENS_A = {screenHome:screenHome, screenEvents:screenEvents, screenStay:screenStay,
+  screenDozivi:screenDozivi, screenDiscover:screenDiscover, screenPlan:screenPlan,
+  screenMyPlan:screenMyPlan, screenContact:screenContact};
+window.__CORE = {S:S,t:t,tx:tx,nm:nm,esc:esc,fbTag:fbTag,eur:eur,ALL:ALL,kindOf:kindOf,
+  saveBtn:saveBtn,badges:badges,eventCard:eventCard,attrCard:attrCard,stayCard:stayCard,
+  eatCard:eatCard,itinCard:itinCard,storyCard:storyCard,cardOf:cardOf,secHead:secHead,
+  wref:wref,crumbs:crumbs,go:go,evList:evList,stList:stList,eaList:eaList,persist:persist,
+  NAV:NAV,SCREENS:SCREENS,D:D,LI:LI,STAMEN:STAMEN,lab:lab,render:null};
+})();
+</script>
+<script>
+(function(){
+"use strict";
+var P=window.__PROTO, C=window.__CORE, A=window.__SCREENS_A;
+var S=C.S, t=C.t, tx=C.tx, esc=C.esc, fbTag=C.fbTag, eur=C.eur, ALL=C.ALL, art=P.art;
+var EVENTS=P.EVENTS, ATTR=P.ATTRACTIONS, STAYS=P.STAYS, EATS=P.EATS, ITINS=P.ITINS,
+    FAQS=P.FAQS, MAPPOS=P.MAPPOS;
+
+function checkedLine(days){
+  var d=new Date(P.TODAY); d.setDate(d.getDate()-(days||14));
+  return '<div class="checked"><span>'+esc(t('checked'))+': <strong>'+esc(P.fmtDate(P.iso(d),S.lang))+'</strong></span>'
+   + '<button class="clear" data-proto="report">'+esc(t('report'))+'</button></div>';
+}
+function factRow(k,v){ return '<div class="fact"><span class="k">'+esc(k)+'</span><span class="v">'+v+'</span></div>'; }
+
+/* ---------------- DETALJ DOGAĐAJA (W4) ---------------- */
+function screenEvent(id){
+  var e=ALL[id]; if(!e) return '<div class="wrap"><p>—</p></div>';
+  var n=tx(e.name), l=tx(e.lead), b=tx(e.body);
+  var badges=[];
+  if(e.price===0) badges.push([t('free'),'free']);
+  badges.push([S.lang==='hr'?'Potvrđeno':'Confirmed','']);
+  if(e.example) badges.push([t('example'),'demo']);
+
+  var glance=[];
+  glance.push(P.fmtRange(e.from,e.to,S.lang)+(e.time&&e.time!=='—'?', '+e.time:''));
+  glance.push(e.place);
+  glance.push(e.price===0?t('free'):(t('price')+': '+eur(e.price)));
+  if(e.a11y) glance.push(t('a11y_yes'));
+
+  var prog='';
+  if(e.program){
+    prog='<h2>'+esc(t('program'))+'</h2><div class="tickets">'+e.program.map(function(p){
+      var day=new Date(e.from+'T00:00:00'); day.setDate(day.getDate()+p.d);
+      return '<div class="tick"><span class="y" style="color:var(--brand)">'+esc(P.fmtDate(P.iso(day),S.lang))+'</span>'
+       + '<span>'+esc(p.t)+' · '+esc(tx(p.h).t)+'</span></div>'; }).join('')+'</div>';
+  }
+  var faqs='';
+  if(e.faq){
+    faqs='<h2>'+esc(t('faq'))+'</h2>'+e.faq.map(function(fid){
+      var f=FAQS.filter(function(x){return x.id===fid;})[0]; if(!f) return '';
+      var q=tx(f.q), a=tx(f.a);
+      return '<details style="border-bottom:1px solid var(--line);padding:11px 0">'
+       + '<summary style="cursor:pointer;font-weight:600;min-height:30px">'+esc(q.t)+'</summary>'
+       + '<p style="margin-top:8px">'+esc(a.t)+'</p>'+fbTag(a)+'</details>'; }).join('');
+  }
+  var others=P.EVENTS.filter(function(x){return x.id!==e.id && x.type===e.type;}).slice(0,3);
+  var nearEat=EATS.slice(0,3);
+
+  return '<div class="wrap">'
+   + C.crumbs([[S.lang==='hr'?'Početna':'Home','home'],[t('nav_events'),'events'],[n.t,null]])
+   + '<div class="detail-hero">'+art(e.motif)+'</div>'
+   + '<div class="detail"><div>'
+   + '<div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:14px;align-items:center">'
+   + badges.map(function(x){return '<span class="badge '+(x[1]||'')+'" style="position:static">'+esc(x[0])+'</span>';}).join('')
+   + C.wref('W4')+'</div>'
+   + '<h1>'+esc(n.t)+'</h1>'
+   + '<p class="lede">'+esc(l.t)+'</p>'+fbTag(l)
+   + '<div class="prose"><h2>'+esc(t('atglance'))+'</h2><ul>'
+   + glance.map(function(g){return '<li>'+esc(g)+'</li>';}).join('')+'</ul>'
+   + (b.t?b.t+fbTag(b):'')+prog+faqs
+   + '<h2>'+esc(t('practical'))+'</h2>'
+   + '<p>'+esc(S.lang==='hr'
+      ? 'Najbliže parkiralište je uz Tvrđavu, 120 mjesta, prva pola sata besplatno. Od željezničkog kolodvora do mjesta događanja petnaest je minuta pješice ravnim putem.'
+      : 'The nearest car park is by the Fortress, 120 spaces, first 30 minutes free. From the railway station it is a fifteen-minute level walk to the venue.')+'</p>'
+   + '</div>'+checkedLine(20)
+   + '</div><aside class="side">'
+   + '<div class="panel"><div class="facts">'
+   + factRow(S.lang==='hr'?'Kada':'When', esc(P.fmtRange(e.from,e.to,S.lang)))
+   + (e.time&&e.time!=='—'?factRow(S.lang==='hr'?'Vrijeme':'Time', esc(e.time)):'')
+   + factRow(S.lang==='hr'?'Gdje':'Where', esc(e.place))
+   + factRow(t('price'), e.price===0?esc(t('free')):eur(e.price))
+   + '</div><div class="acts">'
+   + '<button class="btn btn-primary" data-proto="ics">'+esc(t('addcal'))+'</button>'
+   + '<button class="btn btn-secondary" data-save="'+e.id+'">'+esc(S.plan.has(e.id)?t('saved'):t('save'))+'</button>'
+   + '<button class="btn btn-secondary" data-proto="share">'+esc(t('share'))+'</button>'
+   + '</div></div>'
+   + '<div class="panel"><h3>'+esc(t('where_sleep'))+'</h3>'
+   + '<p style="font-size:13.5px;color:var(--ink-2);margin-bottom:10px">'+esc(P.fmtRange(e.from,e.to,S.lang))+'</p>'
+   + '<button class="btn btn-primary btn-block" data-staydates="'+e.from+'|'+e.to+'">'
+   + esc(S.lang==='hr'?'Pogledaj smještaj':'See places to stay')+' ('+STAYS.length+') →</button>'
+   + '<a class="linkrow" href="#" data-go="stay">'+esc(t('where_eat'))+' <span class="sub">'+EATS.length+'</span></a>'
+   + '<a class="linkrow" href="#" data-go="map">'+esc(t('showmap'))+'</a></div>'
+   + '</aside></div>'
+   + (others.length?'<section class="sec">'+C.secHead(S.lang==='hr'?'Još':'More',t('similar'),'events')
+      + '<div class="grid g3">'+others.map(C.eventCard).join('')+'</div></section>':'')
+   + '<section class="sec">'+C.secHead(S.lang==='hr'?'Blizu':'Close by',t('where_eat'),'stay')
+   + '<div class="grid g3">'+nearEat.map(C.eatCard).join('')+'</div></section>'
+   + '</div>';
+}
+
+/* ---------------- DETALJ ATRAKCIJE ---------------- */
+function screenAttraction(id){
+  var a=ALL[id]; if(!a) return '';
+  var n=tx(a.name), l=tx(a.lead), b=tx(a.body);
+  var nearby=ATTR.filter(function(x){return x.id!==a.id;}).slice(0,3);
+  return '<div class="wrap">'
+   + C.crumbs([[S.lang==='hr'?'Početna':'Home','home'],[t('nav_dozivi'),'dozivi'],[n.t,null]])
+   + '<div class="detail-hero">'+art(a.motif)+'</div>'
+   + '<div class="detail"><div><h1>'+esc(n.t)+'</h1>'
+   + '<p class="lede">'+esc(l.t)+'</p>'+fbTag(l)
+   + '<div class="prose">'+(b.t?b.t+fbTag(b):'')
+   + '<h2>'+esc(t('practical'))+'</h2><ul>'
+   + '<li>'+esc(t('duration'))+': <strong>'+a.minutes+' min</strong></li>'
+   + '<li>'+esc(t('hours'))+': '+esc(a.hours)+'</li>'
+   + '<li>'+esc(t('price'))+': '+(a.price===0?esc(t('free')):eur(a.price))+(a.demoPrice?' <em>('+esc(t('demo'))+')</em>':'')+'</li>'
+   + '<li>'+esc(t('f_a11y'))+': '+esc(a.a11y)+'</li></ul></div>'+checkedLine(9)+'</div>'
+   + '<aside class="side"><div class="panel"><div class="facts">'
+   + factRow(t('duration'), a.minutes+' min')
+   + factRow(t('price'), a.price===0?esc(t('free')):eur(a.price))
+   + factRow(t('hours'), esc(a.hours))
+   + factRow(t('f_a11y'), esc(a.a11y))
+   + '</div><div class="acts">'
+   + '<button class="btn btn-primary" data-save="'+a.id+'">'+esc(S.plan.has(a.id)?t('saved'):t('save'))+'</button>'
+   + '<button class="btn btn-secondary" data-go="map">'+esc(t('showmap'))+'</button></div></div></aside></div>'
+   + '<section class="sec">'+C.secHead(S.lang==='hr'?'U blizini':'Nearby',t('nearby'),'dozivi')
+   + '<div class="grid g3">'+nearby.map(C.attrCard).join('')+'</div></section></div>';
+}
+
+/* ---------------- DETALJ SMJEŠTAJA / UGOSTITELJA (W6) ---------------- */
+var AMENLAB={};
+C.STAMEN.forEach(function(r){ AMENLAB[r[0]]=r; });
+
+function screenStayItem(id){
+  var s=ALL[id]; if(!s) return '';
+  if(C.kindOf(id)==='eat') return eatDetail(s);
+  var n=tx(s.name), l=tx(s.lead);
+  var cta = s.booking==='vanjski'
+    ? '<button class="btn btn-primary btn-block" data-proto="outbound">'+esc(t('book'))+' ↗</button>'
+    : '<a class="btn btn-primary btn-block" href="#enq">'+esc(t('enquire'))+'</a>';
+  var a=s.a11y;
+  var yn=function(ok,label){ return '<div class="tick"><span class="'+(ok?'y':'n')+'">'+(ok?'✓':'✗')+'</span><span>'+esc(label)+'</span></div>'; };
+
+  return '<div class="wrap">'
+   + C.crumbs([[S.lang==='hr'?'Početna':'Home','home'],[t('nav_stay'),'stay'],[n.t,null]])
+   + '<div class="detail-hero">'+art(s.motif)+'</div>'
+   + '<div class="detail"><div>'
+   + '<div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:14px;align-items:center">'
+   + '<span class="badge demo" style="position:static">'+esc(t('demo'))+'</span>'+C.wref('W6')+'</div>'
+   + '<h1>'+esc(n.t)+(s.stars?' <span style="color:var(--brick)">'+'★'.repeat(s.stars)+'</span>':'')+'</h1>'
+   + '<p class="lede">'+esc(l.t)+'</p>'+fbTag(l)
+   + '<div class="prose"><h2>'+esc(t('atglance'))+'</h2><ul>'
+   + '<li>'+s.units+' '+esc(S.lang==='hr'?'jedinica':'units')+', '+s.beds+' '+esc(S.lang==='hr'?'ležajeva':'beds')+'</li>'
+   + '<li>'+esc(t('distance'))+': '+String(s.km).replace('.',',')+' km</li>'
+   + '<li>'+esc(t('price'))+': '+esc(t('from'))+' '+eur(s.from)+' / '+esc(t('night'))+'</li>'
+   + (s.amen.indexOf('bike')>=0?'<li>'+esc(S.lang==='hr'?'Prilagođeno biciklistima: zaključana garaža, alat, rani doručak':'Bike friendly: locked storage, tools, early breakfast')+'</li>':'')
+   + '</ul><h2>'+esc(t('amenities'))+'</h2></div>'
+   + '<div class="amen">'+s.amen.map(function(k){ var r=AMENLAB[k]; return '<span>'+esc(r?C.lab(r):k)+'</span>'; }).join('')+'</div>'
+   + '<div class="prose"><h2>'+esc(t('a11y_head'))+'</h2></div><div class="tickets">'
+   + yn(a.step, S.lang==='hr'?'Prilaz bez stepenica':'Step-free access')
+   + yn(a.lift, S.lang==='hr'?'Lift':'Lift')
+   + yn(a.rooms>0, (S.lang==='hr'?'Prilagođene sobe: ':'Accessible rooms: ')+a.rooms)
+   + yn(a.loop, S.lang==='hr'?'Indukcijska petlja na recepciji':'Hearing loop at reception')
+   + '</div>'
+   + '<p style="font-size:13.5px;color:var(--ink-3);margin-top:10px;max-width:58ch">'+esc(S.lang==='hr'
+      ? 'Navodimo i ono čega nema. Gost koji unaprijed zna da lifta nema neće doći i otkriti to na recepciji.'
+      : 'We list what is missing too. A guest who knows in advance will not discover it at the reception desk.')+'</p>'
+   + '<div class="prose"><h2>'+esc(S.lang==='hr'?'Uvjeti':'Terms')+'</h2><ul>'
+   + '<li>'+esc(S.lang==='hr'?'Prijava od 14:00, odjava do 10:00':'Check-in from 14:00, check-out by 10:00')+'</li>'
+   + '<li>'+esc(S.lang==='hr'?'Otkazivanje: besplatno do 24 sata prije dolaska':'Cancellation: free up to 24 hours before arrival')+'</li>'
+   + '<li>'+esc(S.lang==='hr'?'Boravišna pristojba 1,50 € po osobi i noćenju, plaća se na licu mjesta':'Tourist tax €1.50 per person per night, paid on site')+'</li></ul></div>'
+   + (s.booking!=='vanjski' ? enquiryForm(s) : '')
+   + checkedLine(16)+'</div>'
+   + '<aside class="side"><div class="panel"><div class="facts">'
+   + factRow(t('price'), '<strong>'+esc(t('from'))+' '+eur(s.from)+'</strong> / '+esc(t('night')))
+   + factRow(t('capacity'), s.maxPer+' '+esc(t('person')))
+   + factRow(t('distance'), String(s.km).replace('.',',')+' km')
+   + (s.reply?factRow(t('reply'), '~'+s.reply+' h'):'')
+   + '</div><div class="acts">'+cta
+   + '<button class="btn btn-secondary" data-save="'+s.id+'">'+esc(S.plan.has(s.id)?t('saved'):t('save'))+'</button></div>'
+   + '<p style="font-size:12.5px;color:var(--ink-3);margin-top:12px">'+esc(
+       s.booking==='vanjski' ? (S.lang==='hr'?'Rezervacija se dovršava na stranici objekta. Prototip prati klik kao konverziju.'
+                                             :'Booking is completed on the property’s own site. The prototype tracks the click as a conversion.')
+     : s.booking==='integrirani' ? (S.lang==='hr'?'Objekt je u Fazi 2 predviđen za integriranu rezervaciju s plaćanjem.'
+                                                 :'In Phase 2 this property is planned for integrated booking with payment.')
+     : (S.lang==='hr'?'Upit ide objektu i u nadzornu ploču TZ-a. Ako izostane odgovor u 48 h, TZ preuzima.'
+                     :'The enquiry goes to the property and to the tourist board dashboard. If there is no reply in 48 h, the board steps in.'))+'</p>'
+   + '</div></aside></div></div>';
+}
+
+function eatDetail(r){
+  var n=tx(r.name), l=tx(r.lead);
+  return '<div class="wrap">'
+   + C.crumbs([[S.lang==='hr'?'Početna':'Home','home'],[t('nav_stay'),'stay'],[n.t,null]])
+   + '<div class="detail-hero">'+art(r.motif)+'</div>'
+   + '<div class="detail"><div>'
+   + '<div style="margin-top:14px"><span class="badge demo" style="position:static">'+esc(t('demo'))+'</span></div>'
+   + '<h1>'+esc(n.t)+'</h1><p class="lede">'+esc(l.t)+'</p>'+fbTag(l)
+   + '<div class="prose"><h2>'+esc(t('practical'))+'</h2><ul>'
+   + '<li>'+esc(t('hours'))+': '+esc(r.open)+'</li>'
+   + '<li>'+esc(t('price'))+': '+'€'.repeat(r.pricelevel)+'</li>'
+   + '<li>'+esc(S.lang==='hr'?'Kapacitet za grupe':'Group capacity')+': '+r.groups+'</li>'
+   + '<li>'+esc(t('f_diet'))+': '+(r.diet.length?esc(r.diet.join(', ')):esc(S.lang==='hr'?'nije navedeno':'not specified'))+'</li>'
+   + '<li>'+esc(t('f_a11y'))+': '+esc(r.a11y?t('a11y_yes'):(S.lang==='hr'?'nije pristupačno':'not accessible'))+'</li></ul></div>'
+   + checkedLine(11)+'</div>'
+   + '<aside class="side"><div class="panel"><div class="acts">'
+   + '<button class="btn btn-primary" data-proto="table">'+esc(S.lang==='hr'?'Rezerviraj stol':'Reserve a table')+'</button>'
+   + '<button class="btn btn-secondary" data-save="'+r.id+'">'+esc(S.plan.has(r.id)?t('saved'):t('save'))+'</button>'
+   + '<button class="btn btn-secondary" data-go="map">'+esc(t('showmap'))+'</button>'
+   + '</div></div></aside></div></div>';
+}
+
+function enquiryForm(s){
+  var d1 = S.stayDates ? S.stayDates[0] : P.plus(7);
+  var d2 = S.stayDates ? S.stayDates[1] : P.plus(9);
+  return '<div id="enq" class="prose"><h2>'+esc(t('enq_title'))+'</h2></div>'
+   + '<form class="form" data-form="enq" data-stay="'+s.id+'">'
+   + '<div class="frow">'
+   + '<div class="field"><label for="ei">'+esc(t('enq_in'))+' *</label><input id="ei" type="date" value="'+d1+'" required></div>'
+   + '<div class="field"><label for="eo">'+esc(t('enq_out'))+' *</label><input id="eo" type="date" value="'+d2+'" required></div></div>'
+   + '<div class="frow">'
+   + '<div class="field"><label for="ea">'+esc(t('enq_ad'))+' *</label><input id="ea" type="number" min="1" max="12" value="2" required></div>'
+   + '<div class="field"><label for="ec">'+esc(t('enq_ch'))+'</label><input id="ec" type="number" min="0" max="8" value="0"></div></div>'
+   + '<div class="frow">'
+   + '<div class="field"><label for="en">'+esc(t('enq_name'))+' *</label><input id="en" required></div>'
+   + '<div class="field"><label for="em">'+esc(t('enq_mail'))+' *</label><input id="em" type="email" required></div></div>'
+   + '<div class="field"><label for="eg">'+esc(t('enq_msg'))+'</label><textarea id="eg"></textarea></div>'
+   + '<label class="check"><input type="checkbox" id="ek" required><span>'+esc(t('enq_consent'))+' *</span></label>'
+   + '<label class="check"><input type="checkbox" id="el"><span>'+esc(t('enq_nl'))+'</span></label>'
+   + '<div class="err-msg" id="enqErr" hidden></div>'
+   + '<div><button class="btn btn-primary" type="submit">'+esc(t('enq_send'))+'</button></div>'
+   + '<p style="font-size:13px;color:var(--ink-3)">'+esc(S.lang==='hr'
+      ? 'Objekt obično odgovara u ~'+(s.reply||6)+' h. Podaci se ne šalju nikamo — ovo je prototip.'
+      : 'The property usually replies in about '+(s.reply||6)+' h. Nothing is sent anywhere — this is a prototype.')+'</p>'
+   + '</form>';
+}
+
+/* ---------------- DETALJ ITINERERA (W8) ---------------- */
+function screenItin(id){
+  var i=ALL[id]; if(!i) return '';
+  var n=tx(i.name), l=tx(i.lead);
+  var steps=i.steps.map(function(st){
+    var target = st.ref ? ALL[st.ref] : null;
+    var title = target ? tx(target.name).t : tx(st.n).t;
+    var desc  = target ? tx(target.lead).t : (st.d?tx(st.d).t:'');
+    var cls = st.kind==='eat' ? ' class="stop-eat"' : '';
+    var link = target ? ' <a href="#" data-go="'+(C.kindOf(st.ref)==='eat'?'stayitem':'attraction')+'" data-param="'+st.ref+'" style="font-size:13.5px;font-weight:600;color:var(--brand)">'+esc(S.lang==='hr'?'detalji':'details')+' →</a>' : '';
+    return '<li'+cls+'><span class="t">'+esc(st.t)+(st.minutes?' · '+st.minutes+' min':'')+'</span>'
+     + '<h3>'+esc(title)+'</h3><p class="d">'+esc(desc)+link+'</p>'
+     + (st.walk?'<p class="walk">'+esc((S.lang==='hr'?'pješice ':'walk ')+st.walk+' min')+'</p>':'')+'</li>';
+  }).join('');
+
+  return '<div class="wrap">'
+   + C.crumbs([[S.lang==='hr'?'Početna':'Home','home'],[t('nav_plan'),'plan'],[n.t,null]])
+   + '<div style="display:flex;gap:12px;align-items:baseline;flex-wrap:wrap;margin-top:12px">'
+   + '<h1 style="font-size:clamp(26px,4vw,38px)">'+esc(n.t)+'</h1>'+C.wref('W8')+'</div>'
+   + '<p class="lede" style="max-width:62ch">'+esc(l.t)+'</p>'+fbTag(l)
+   + '<div style="display:flex;gap:18px;flex-wrap:wrap;margin-top:14px;font-size:14.5px;color:var(--ink-2)">'
+   + '<span><strong>'+esc(i.dur)+'</strong></span><span>'+String(i.km).replace('.',',')+' km</span>'
+   + '<span>'+esc(i.cost)+'</span><span>'+esc(i.mode==='bicikl'?(S.lang==='hr'?'biciklom':'by bike'):(S.lang==='hr'?'pješice':'on foot'))+'</span></div>'
+   + '<div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:14px">'
+   + '<button class="btn btn-primary btn-sm" data-save="'+i.id+'">'+esc(S.plan.has(i.id)?t('saved'):t('save'))+'</button>'
+   + '<button class="btn btn-secondary btn-sm" data-proto="share">'+esc(t('share'))+'</button>'
+   + (i.gpx?'<button class="btn btn-secondary btn-sm" data-proto="gpx">'+esc(t('gpx'))+'</button>':'')
+   + '<button class="btn btn-secondary btn-sm" data-proto="pdf">'+esc(S.lang==='hr'?'Preuzmi PDF':'Download PDF')+'</button></div>'
+   + '<div class="detail"><div><ol class="tl">'+steps+'</ol></div>'
+   + '<aside class="side">'
+   + '<div class="panel" style="padding:0"><div style="aspect-ratio:4/3;overflow:hidden">'+art(i.motif)+'</div>'
+   + '<div style="padding:14px"><button class="btn btn-secondary btn-block btn-sm" data-go="map">'+esc(t('showmap'))+'</button></div></div>'
+   + (i.warn?'<div class="notice warn">'+esc(tx(i.warn).t)+'</div>':'')
+   + '<div class="panel"><h3>'+esc(S.lang==='hr'?'Imate više vremena?':'Got more time?')+'</h3>'
+   + ITINS.filter(function(x){return x.id!==i.id;}).slice(0,3).map(function(x){
+       return '<a class="linkrow" href="#" data-go="itin" data-param="'+x.id+'">'+esc(tx(x.name).t)+' <span class="sub">'+esc(x.dur)+'</span></a>'; }).join('')
+   + '</div></aside></div></div>';
+}
+
+/* ---------------- KARTA (W9) ---------------- */
+var LAYERS=[
+  {id:'attr', hr:'Atrakcije', en:'Attractions', de:'Sehenswürdigkeiten', color:'var(--brand)', on:true,
+   items:function(){return ATTR;}},
+  {id:'stay', hr:'Smještaj', en:'Places to stay', de:'Unterkünfte', color:'var(--brick)', on:true,
+   items:function(){return STAYS;}},
+  {id:'eat', hr:'Gdje jesti', en:'Where to eat', de:'Wo essen', color:'#8A5800', on:false,
+   items:function(){return EATS;}},
+  {id:'park', hr:'Parking i WC', en:'Parking & toilets', de:'Parken & WC', color:'#43555A', on:false, items:function(){
+     return [{id:'p-parking',name:{hr:'Parkiralište Tvrđava (120 mjesta)'},lead:{hr:'0,80 €/h, prva pola sata besplatno.'}},
+             {id:'p-parking2',name:{hr:'Parkiralište Korzo'},lead:{hr:'Ograničeno vrijeme, 2 h.'}},
+             {id:'p-wc',name:{hr:'Javni WC — Korzo'},lead:{hr:'Pristupačno.'}},
+             {id:'p-wc2',name:{hr:'Javni WC — Poloj'},lead:{hr:'Sezonski.'}},
+             {id:'p-kolodvor',name:{hr:'Željeznički kolodvor'},lead:{hr:'1,2 km do Korza, 15 min pješice.'}}];}}
+];
+var mapLayerState={attr:true, stay:true, eat:false, park:false};
+var mapSel=null;
+
+function screenMap(){
+  var pins='';
+  LAYERS.forEach(function(L){
+    if(!mapLayerState[L.id]) return;
+    L.items().forEach(function(it){
+      var pos=MAPPOS[it.id]; if(!pos) return;
+      var x=pos[0], y=pos[1]/100*62;
+      pins+='<g class="pin" data-pin="'+it.id+'" data-layer="'+L.id+'" tabindex="0" role="button" '
+        + 'aria-label="'+esc((it.name.hr||''))+'">'
+        + '<circle class="hit" cx="'+x+'" cy="'+y+'" r="2.6" fill="transparent"/>'
+        + '<circle cx="'+x+'" cy="'+y+'" r="1.5" fill="'+L.color+'" stroke="var(--paper)" stroke-width=".5"/></g>';
+    });
+  });
+  var sel = mapSel ? (ALL[mapSel] || flatFind(mapSel)) : null;
+  var pop = sel ? '<div class="mappop"><div class="mm">'+(sel.motif?art(sel.motif):art('arch'))+'</div>'
+      + '<div><strong style="font-size:15px">'+esc(tx(sel.name).t)+'</strong>'
+      + '<p style="font-size:13.5px;color:var(--ink-2);margin-top:4px">'+esc(sel.lead?tx(sel.lead).t:'')+'</p>'
+      + (ALL[mapSel]?'<div style="margin-top:9px"><a class="btn btn-secondary btn-sm" href="#" data-go="'
+          +(C.kindOf(mapSel)==='attraction'?'attraction':(C.kindOf(mapSel)==='stay'||C.kindOf(mapSel)==='eat'?'stayitem':'home'))
+          +'" data-param="'+mapSel+'">'+esc(S.lang==='hr'?'Otvori stranicu':'Open page')+' →</a></div>':'')
+      + '</div></div>' : '';
+
+  var list='<div class="maplist"><h3>'+esc(S.lang==='hr'?'Iste točke kao tekstualni popis':'The same points as a text list')+'</h3><ol>'
+   + LAYERS.filter(function(L){return mapLayerState[L.id];}).map(function(L){
+       return L.items().filter(function(it){return MAPPOS[it.id];}).map(function(it){
+         return '<li>'+esc(tx(it.name).t)+'</li>'; }).join(''); }).join('')
+   + '</ol><p style="font-size:12.5px;color:var(--ink-3);margin-top:8px">'+esc(S.lang==='hr'
+      ? 'Tekstualni popis je obavezna alternativa karti (WCAG 2.2, Poglavlje 11.3).'
+      : 'A text list is the required alternative to the map (WCAG 2.2, chapter 11.3).')+'</p></div>';
+
+  return '<div class="wrap">'
+   + C.crumbs([[S.lang==='hr'?'Početna':'Home','home'],[t('map_title'),null]])
+   + '<div style="display:flex;gap:12px;align-items:baseline;flex-wrap:wrap;margin-top:10px">'
+   + '<h1 style="font-size:clamp(26px,4vw,38px)">'+esc(t('map_title'))+'</h1>'+C.wref('W9')+'</div>'
+   + '<div class="maplayout"><div class="filters" style="display:block">'
+   + '<fieldset><legend>'+esc(t('map_layers'))+'</legend>'
+   + LAYERS.map(function(L){
+       return '<label class="opt"><input type="checkbox" data-layer="'+L.id+'"'+(mapLayerState[L.id]?' checked':'')+'>'
+        + '<span style="display:inline-flex;align-items:center;gap:8px">'
+        + '<span style="width:10px;height:10px;border-radius:50%;background:'+L.color+';display:inline-block"></span>'
+        + esc(L[S.lang]||L.hr)+'</span>'
+        + '<span class="n">'+L.items().filter(function(it){return MAPPOS[it.id];}).length+'</span></label>'; }).join('')
+   + '</fieldset>'+list+'</div>'
+   + '<div><div class="mapbox">'
+   + '<svg viewBox="0 0 100 62" role="img" aria-label="'+esc(S.lang==='hr'?'Shematska karta Slavonskog Broda':'Schematic map of Slavonski Brod')+'">'
+   + '<rect width="100" height="62" fill="var(--paper-2)"/>'
+   + '<path d="M0 4 H100 V26 H0 Z" fill="var(--paper-3)" opacity=".55"/>'
+   + '<g stroke="var(--line-strong)" stroke-width=".5" fill="none">'
+   + '<path d="M0 30 H100"/><path d="M0 22 H100"/><path d="M30 0 V52"/><path d="M52 0 V52"/><path d="M72 4 V50"/></g>'
+   + '<path d="M-2 44 Q20 40 40 45 T78 47 T102 43 L102 62 L-2 62 Z" fill="var(--brand)" opacity=".22"/>'
+   + '<path d="M-2 44 Q20 40 40 45 T78 47 T102 43" stroke="var(--brand)" stroke-width="1" fill="none" opacity=".7"/>'
+   + '<g font-family="Archivo, Segoe UI, sans-serif" paint-order="stroke" stroke="var(--paper-2)" stroke-width="1.1" stroke-linejoin="round">'
+   + '<text x="86" y="55" font-size="2.8" fill="var(--brand)" opacity=".95">Sava</text>'
+   + '<path d="M19 28 L25 31 L26 36 L22 39 L16 38 L13 34 L14 30 Z" fill="var(--brand)" opacity=".3" stroke="var(--brand)" stroke-width=".4"/>'
+   + '<text x="11" y="26" font-size="2.5" fill="var(--ink-2)">Tvrđava</text>'
+   + '<text x="38" y="20" font-size="2.5" fill="var(--ink-2)">Centar</text>'
+   + '<text x="80" y="31" font-size="2.5" fill="var(--ink-2)">Poloj</text>'
+   + '<text x="44" y="7" font-size="2.5" fill="var(--ink-2)">Vinogorje</text></g>'
+   + pins+'</svg></div>'+pop
+   + '<p style="font-size:12.5px;color:var(--ink-3);margin-top:10px">'+esc(S.lang==='hr'
+      ? 'Shematski prikaz za prototip. U produkciji: MapLibre s OpenStreetMap podlogom, klasteriranje i sinkronizacija s popisom rezultata.'
+      : 'A schematic view for the prototype. In production: MapLibre with an OpenStreetMap base, clustering and sync with the results list.')+'</p>'
+   + '</div></div></div>';
+}
+function flatFind(id){
+  var r=null;
+  LAYERS.forEach(function(L){ L.items().forEach(function(it){ if(it.id===id) r=it; }); });
+  return r;
+}
+
+/* ---------------- PITAJ BROD (W12) ---------------- */
+var chatLog=[];
+function norm(s){
+  return String(s).toLowerCase().replace(/\u0111/g,'d').normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+}
+function answer(qRaw){
+  var q=norm(qRaw);
+  var has=function(){ for(var i=0;i<arguments.length;i++){ if(q.indexOf(arguments[i])>=0) return true; } return false; };
+
+  if(has('vikend','weekend','wochenende')){
+    var w=P.weekendRange();
+    var list=P.EVENTS.filter(function(e){return e.from<=w[1]&&e.to>=w[0];});
+    if(!list.length) list=C.evList().slice(0,3);
+    return { html:(S.lang==='hr'?'Ovaj vikend ('+P.fmtRange(w[0],w[1],S.lang)+') u Brodu je ovo:'
+                   :'This weekend ('+P.fmtRange(w[0],w[1],S.lang)+') in Brod:')
+      + '<ul>'+list.map(function(e){ return '<li><strong>'+esc(tx(e.name).t)+'</strong> — '
+         + esc(P.fmtRange(e.from,e.to,S.lang))+', '+esc(e.place)+', '
+         + (e.price===0?esc(t('free')):eur(e.price))+'</li>'; }).join('')+'</ul>',
+      sources:[[t('nav_events'),'events',null]],
+      actions:[[t('nav_events'),'events',null],[t('where_sleep'),'stay',null],[t('map_title'),'map',null]],
+      answered:true };
+  }
+  if(has('jesti','hran','restoran','eat','food','essen','slavonsk')){
+    var e2=EATS.filter(function(r){return r.cuisine==='slavonska';});
+    return { html:(S.lang==='hr'?'Za slavonsku kuhinju u prototipu su navedena dva mjesta:'
+                   :'For Slavonian cooking the prototype lists two places:')
+      + '<ul>'+e2.map(function(r){ return '<li><strong>'+esc(tx(r.name).t)+'</strong> — '+esc(tx(r.lead).t)+' ('+'€'.repeat(r.pricelevel)+', '+esc(r.open)+')</li>'; }).join('')+'</ul>'
+      + (S.lang==='hr'?'<p style="margin-top:8px">Radna vremena i cijene su demo podaci — u produkciji dolaze iz CMS-a s datumom zadnje provjere.</p>':''),
+      sources:[[t('tab_eat'),'stay',null]],
+      actions:[[t('tab_eat'),'stay',null]], answered:true };
+  }
+  if(has('2 sata','dva sata','two hours','2 hours','stunden','kratko','tranzit')){
+    var it=ALL['i-2sata'];
+    return { html:(S.lang==='hr'?'Postoji gotov plan za točno taj slučaj:':'There is a ready-made plan for exactly that:')
+      + '<ul><li><strong>'+esc(tx(it.name).t)+'</strong> — '+esc(tx(it.lead).t)+'</li></ul>',
+      sources:[[tx(it.name).t,'itin','i-2sata']],
+      actions:[[S.lang==='hr'?'Otvori plan':'Open the plan','itin','i-2sata'],[t('map_title'),'map',null]], answered:true };
+  }
+  if(has('parkir','parking','parken')){
+    var f=FAQS.filter(function(x){return x.id==='f-parking';})[0];
+    return { html:'<p>'+esc(tx(f.a).t)+'</p>', sources:[['FAQ','discover',null]],
+      actions:[[t('map_title'),'map',null]], answered:true };
+  }
+  if(has('vlak','kolodvor','train','station','bahnhof','bicikl','bike','rad ')){
+    var f2=FAQS.filter(function(x){return x.id==='f-vlak';})[0];
+    return { html:'<p>'+esc(tx(f2.a).t)+'</p><p style="margin-top:8px">'+esc(tx(FAQS.filter(function(x){return x.id==='f-bike';})[0].a).t)+'</p>',
+      sources:[['FAQ','discover',null]], actions:[[S.lang==='hr'?'Plan bez auta':'No-car plan','itin','i-bezauta']], answered:true };
+  }
+  if(has('tvrdav','fortress','festung')){
+    var a=ALL['a-tvrdjava'];
+    return { html:'<p>'+esc(tx(a.lead).t)+'</p><p style="margin-top:8px"><strong>'+esc(t('hours'))+':</strong> '+esc(a.hours)
+      + ' · <strong>'+esc(t('price'))+':</strong> '+eur(a.price)+' · <strong>'+esc(t('duration'))+':</strong> '+a.minutes+' min</p>',
+      sources:[[tx(a.name).t,'attraction','a-tvrdjava']],
+      actions:[[S.lang==='hr'?'Otvori stranicu':'Open page','attraction','a-tvrdjava'],[t('map_title'),'map',null]], answered:true };
+  }
+  if(has('spava','smjest','hotel','stay','sleep','ubernacht','übernacht')){
+    return { html:(S.lang==='hr'?'U katalogu je '+STAYS.length+' objekata — od kampa uz nasip do hotela u centru. Možete filtrirati po vrsti, cijeni, udaljenosti i pogodnostima (parking, bicikli, pristupačnost).'
+                   :'The catalogue lists '+STAYS.length+' properties — from a campsite by the embankment to a hotel in the centre. You can filter by type, price, distance and amenities.'),
+      sources:[[t('tab_stay'),'stay',null]], actions:[[t('tab_stay'),'stay',null]], answered:true };
+  }
+  return { html:(S.lang==='hr'
+      ? '<p>Na to nemam pouzdan odgovor. Centar za posjetitelje: <strong>+385 35 447 721</strong>, info@tzgsb.hr — rado će vam pomoći.</p><p style="margin-top:8px;font-size:13px;color:var(--ink-3)">Vaše pitanje je zabilježeno u red za uredništvo. Tako informator sam generira popis sadržaja koji na sjedištu nedostaje (Poglavlje 9.6).</p>'
+      : '<p>I do not have a reliable answer to that. The visitor centre: <strong>+385 35 447 721</strong>, info@tzgsb.hr — they will be glad to help.</p><p style="margin-top:8px;font-size:13px;color:var(--ink-3)">Your question has been logged for the editorial queue — this is how the assistant generates the list of missing content (chapter 9.6).</p>'),
+    sources:[], actions:[[t('f_contact'),'contact',null]], answered:false };
+}
+var CHAT_SUGG=[
+  ['Što se događa ovaj vikend?','What’s on this weekend?','Was ist dieses Wochenende los?'],
+  ['Gdje mogu jesti slavonsku hranu?','Where can I eat Slavonian food?','Wo kann ich slawonisch essen?'],
+  ['Imam 2 sata — što vidjeti?','I have 2 hours — what should I see?','Ich habe 2 Stunden — was soll ich sehen?'],
+  ['Gdje parkirati u centru?','Where can I park in the centre?','Wo parke ich im Zentrum?'],
+  ['Ima li bazen s toboganima?','Is there a water park?','Gibt es ein Erlebnisbad?']
+];
+function screenAsk(){
+  var log = chatLog.map(function(m){
+    if(m.me) return '<div class="msg me">'+esc(m.text)+'</div>';
+    return '<div class="msg ai"><span class="who">'+esc(t('ask'))+'</span><div class="bubble">'+m.html
+     + (m.sources && m.sources.length ? '<div class="src">'+esc(t('chat_sources'))+': '
+        + m.sources.map(function(s){return '<a href="#" data-go="'+s[1]+'"'+(s[2]?' data-param="'+s[2]+'"':'')+'>'+esc(s[0])+'</a>';}).join(', ')
+        + ' · '+esc(t('checked'))+' '+esc(P.fmtDate(P.iso(P.TODAY),S.lang))+'</div>' : '')
+     + (m.actions && m.actions.length ? '<div class="qacts">'
+        + m.actions.map(function(a){return '<button class="btn btn-secondary btn-sm" data-go="'+a[1]+'"'+(a[2]?' data-param="'+a[2]+'"':'')+'>'+esc(a[0])+'</button>';}).join('')
+        + '</div>' : '')
+     + '<div class="rate"><span>'+esc(t('chat_useful'))+'</span>'
+     + '<button data-rate="up" aria-label="Da">👍</button><button data-rate="down" aria-label="Ne">👎</button></div>'
+     + '</div></div>';
+  }).join('');
+
+  return '<div class="wrap">'
+   + C.crumbs([[S.lang==='hr'?'Početna':'Home','home'],[t('ask'),null]])
+   + '<div style="display:flex;gap:12px;align-items:baseline;flex-wrap:wrap;margin-top:10px">'
+   + '<h1 style="font-size:clamp(26px,4vw,38px)">'+esc(t('ask'))+'</h1>'+C.wref('W12')+'</div>'
+   + '<p style="max-width:62ch;color:var(--ink-2);margin-top:10px">'+esc(S.lang==='hr'
+      ? 'Postojeći AI informator TZ-a ovdje je ugrađen u samo sjedište: crpi znanje iz istog sadržaja koji vidite na stranicama, citira izvor i nudi sljedeći korak. Odgovori u prototipu su skriptirani.'
+      : 'The tourist board’s existing AI assistant is embedded in the site itself: it draws on the same content you see on the pages, cites its source and offers a next step. Answers in this prototype are scripted.')+'</p>'
+   + '<div class="chat" style="margin-top:20px">'
+   + '<div class="chat-head"><strong>'+esc(t('ask'))+'</strong><p class="disc">'+esc(t('chat_disc'))+'</p></div>'
+   + '<div class="chat-log" role="log" aria-live="polite">'
+   + (chatLog.length?log:'<div class="msg ai"><span class="who">'+esc(t('ask'))+'</span><div class="bubble">'+esc(t('chat_hello'))+'</div></div>')
+   + '</div>'
+   + '<div class="chat-sugg">'+CHAT_SUGG.map(function(s){
+       var txt=s[C.LI[S.lang]]||s[0];
+       return '<button data-askq="'+esc(txt)+'">'+esc(txt)+'</button>'; }).join('')+'</div>'
+   + '<form class="chat-in" data-form="chat"><label class="sr" for="chatq">'+esc(t('chat_ph'))+'</label>'
+   + '<input id="chatq" placeholder="'+esc(t('chat_ph'))+'" autocomplete="off">'
+   + '<button class="btn btn-primary" type="submit">'+esc(t('chat_send'))+'</button></form></div>'
+   + '<div class="notice info" style="margin-top:18px;max-width:640px">'+esc(S.lang==='hr'
+      ? 'Isprobajte i pitanje na koje informator nema odgovor (posljednji prijedlog) — prototip pokazuje propisano ponašanje: bez izmišljanja, s prelaskom na ljudsku podršku i zapisom pitanja za uredništvo.'
+      : 'Try the question the assistant cannot answer (the last suggestion) — the prototype shows the required behaviour: no invention, a handover to human support and the question logged for the editors.')+'</div>'
+   + '</div>';
+}
+
+/* ---------------- PRETRAGA ---------------- */
+function searchAll(qRaw){
+  var q=norm(qRaw).trim(); if(q.length<2) return [];
+  var pool=[].concat(P.EVENTS,ATTR,STAYS,EATS,ITINS);
+  return pool.map(function(x){
+    var hay=norm([tx(x.name).t, tx(x.lead).t, x.place||'', x.kind||'', x.cat||''].join(' '));
+    var i=hay.indexOf(q);
+    return i<0?null:{x:x, score:i};
+  }).filter(Boolean).sort(function(a,b){return a.score-b.score;}).map(function(r){return r.x;});
+}
+function screenSearch(){
+  var q=S.param||'';
+  var res=searchAll(q);
+  return '<div class="wrap">'+C.crumbs([[S.lang==='hr'?'Početna':'Home','home'],[S.lang==='hr'?'Pretraga':'Search',null]])
+   + '<h1 style="font-size:clamp(24px,3.6vw,34px);margin-top:10px">'+esc(S.lang==='hr'?'Rezultati za':'Results for')+' „'+esc(q)+'"</h1>'
+   + '<p style="color:var(--ink-2);margin-top:8px">'+res.length+' '+esc(res.length===1?t('result1'):t('results'))+'</p>'
+   + (res.length ? '<div class="grid g3" style="margin-top:20px">'+res.map(C.cardOf).join('')+'</div>'
+     : '<div class="empty" style="margin-top:20px"><h3>'+esc(t('nosearch'))+' „'+esc(q)+'"</h3>'
+       + '<p>'+esc(S.lang==='hr'?'Provjerite pravopis ili pokušajte općenitiji pojam. Svaka pretraga bez rezultata bilježi se i postaje uredničkim zadatkom.'
+                :'Check the spelling or try a broader term. Every search without results is logged and becomes an editorial task.')+'</p>'
+       + '<div class="acts"><button class="btn btn-secondary btn-sm" data-go="events">'+esc(t('nav_events'))+'</button>'
+       + '<button class="btn btn-secondary btn-sm" data-go="stay">'+esc(t('nav_stay'))+'</button>'
+       + '<button class="btn btn-primary btn-sm" data-go="ask">'+esc(t('ask_cta'))+'</button></div></div>')
+   + '</div>';
+}
+
+window.__SCREENS_B = { screenEvent:screenEvent, screenAttraction:screenAttraction,
+  screenStayItem:screenStayItem, screenItin:screenItin, screenMap:screenMap,
+  screenAsk:screenAsk, screenSearch:screenSearch, searchAll:searchAll,
+  chatLog:chatLog, answer:answer, mapLayerState:mapLayerState,
+  setMapSel:function(v){ mapSel=v; }, norm:norm };
+})();
+</script>
+<script>
+(function(){
+"use strict";
+var P=window.__PROTO, C=window.__CORE, A=window.__SCREENS_A, B=window.__SCREENS_B;
+var S=C.S, t=C.t, tx=C.tx, esc=C.esc, ALL=C.ALL;
+
+/* ============================================================
+   10. SASTAVLJANJE STRANICE
+   ============================================================ */
+function buildChrome(){
+  document.getElementById('brandMark').innerHTML =
+    '<svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 2 L27 8 L29 20 L23 29 L16 31 L9 29 L3 20 L5 8 Z" fill="var(--brand)"/>'
+    + '<path d="M16 2 L21 5 L16 8 L11 5 Z" fill="var(--brick)"/>'
+    + '<path d="M6 22 Q16 19 26 22" stroke="var(--paper)" stroke-width="1.8" fill="none" opacity=".9"/>'
+    + '<rect x="13" y="12" width="6" height="8" fill="var(--paper)" opacity=".85"/></svg>';
+  document.getElementById('brandSub').textContent = t('brand_sub');
+  document.getElementById('planLabel').textContent = t('myplan');
+  document.getElementById('fabLabel').textContent = t('ask');
+
+  var navHtml = C.NAV.map(function(n){
+    return '<a href="#" data-go="'+n.id+'"'+(S.screen===n.id?' aria-current="page"':'')+'>'+esc(t(n.k))+'</a>';
+  }).join('');
+  document.getElementById('mainNav').innerHTML = navHtml;
+  document.getElementById('mobNav').innerHTML = navHtml
+    + '<a href="#" data-go="map">'+esc(t('map_title'))+'</a>'
+    + '<a href="#" data-go="ask">'+esc(t('ask'))+'</a>'
+    + '<a href="#" data-go="contact">'+esc(t('f_contact'))+'</a>'
+    + '<div class="langrow" role="group" aria-label="Jezik / Language">'
+    + [['hr','Hrvatski'],['en','English'],['de','Deutsch']].map(function(l){
+        return '<button data-lang="'+l[0]+'" aria-pressed="'+(S.lang===l[0])+'">'+l[1]+'</button>'; }).join('')
+    + '</div>';
+
+  document.getElementById('planCount').textContent = S.plan.size;
+
+  document.getElementById('footGrid').innerHTML =
+    '<div><h3>'+esc(t('brand_sub'))+'</h3><address>'
+    + 'Turistička zajednica područja<br>„Slavonski Brod–Posavina"<br>'
+    + 'Trg pobjede 28, 35000 Slavonski Brod<br>+385 35 447 721<br>info@tzgsb.hr</address>'
+    + '<div class="social">'+['FB','IG','YT','TT','LI'].map(function(s){
+        return '<a href="#" data-proto="social" aria-label="'+s+'">'+s+'</a>'; }).join('')+'</div></div>'
+    + '<div><h3>'+esc(t('f_visitors'))+'</h3><ul>'
+    + '<li><a href="#" data-go="map">'+esc(t('map_title'))+'</a></li>'
+    + '<li><a href="#" data-go="plan">'+esc(t('nav_plan'))+'</a></li>'
+    + '<li><a href="#" data-go="events">'+esc(t('nav_events'))+'</a></li>'
+    + '<li><a href="#" data-go="discover">'+esc(t('faq'))+'</a></li>'
+    + '<li><a href="#" data-go="ask">'+esc(t('ask'))+'</a></li></ul></div>'
+    + '<div><h3>'+esc(t('f_trade'))+'</h3><ul>'
+    + ['Za članove','Za medije','MICE','Partneri','Dokumenti'].map(function(x,i){
+        var en=['For members','For media','MICE','Partners','Documents'][i];
+        var de=['Für Mitglieder','Für Medien','MICE','Partner','Dokumente'][i];
+        return '<li><a href="#" data-proto="stub">'+esc(S.lang==='hr'?x:(S.lang==='de'?de:en))+'</a></li>'; }).join('')
+    + '</ul></div>'
+    + '<div><h3>'+esc(t('nl_title'))+'</h3>'
+    + '<p style="font-size:14px;color:var(--ink-2)">'+esc(t('nl_lede'))+'</p>'
+    + '<form class="nl" data-form="nl"><label class="sr" for="nlmail">'+esc(t('enq_mail'))+'</label>'
+    + '<input id="nlmail" type="email" placeholder="'+esc(t('enq_mail'))+'" required>'
+    + '<button class="btn btn-primary" type="submit">'+esc(t('nl_btn'))+'</button></form>'
+    + '<label class="check" style="margin-top:8px"><input type="checkbox" id="nlok"><span style="font-size:13px">'
+    + esc(t('enq_consent'))+'</span></label></div>';
+
+  document.getElementById('footBot').innerHTML =
+    ['© 2026 TZ područja „Slavonski Brod–Posavina"',
+     S.lang==='hr'?'Uvjeti korištenja':'Terms of use',
+     S.lang==='hr'?'Politika privatnosti':'Privacy policy',
+     S.lang==='hr'?'Kolačići':'Cookies',
+     S.lang==='hr'?'Izjava o pristupačnosti':'Accessibility statement']
+    .map(function(x,i){ return i? '<a href="#" data-proto="stub" style="color:var(--ink-3)">'+esc(x)+'</a>' : '<span>'+esc(x)+'</span>'; }).join('')
+    + '<span style="width:100%;margin-top:8px;color:var(--ink-3)">'+esc(S.lang==='hr'
+      ? 'Prototip. Toponimi, ustanove i manifestacije su stvarni; termini su primjeri, a smještaj, ugostiteljstvo i cijene demo podaci.'
+      : 'Prototype. Place names, institutions and festivals are real; dates are examples, and accommodation, restaurants and prices are demo data.')+'</span>';
+}
+
+function buildJump(){
+  var j=document.getElementById('jump');
+  j.innerHTML = C.SCREENS.map(function(s){
+    return '<option value="'+s[0]+'">'+esc(s[1])+(s[2]!=='—'?' · '+s[2]:'')+'</option>';
+  }).join('');
+}
+
+window.render = function(){
+  buildChrome();
+  var m=document.getElementById('main'), html='';
+  switch(S.screen){
+    case 'home': html=A.screenHome(); break;
+    case 'events': html=A.screenEvents(); break;
+    case 'stay': html=A.screenStay(); break;
+    case 'dozivi': html=A.screenDozivi(); break;
+    case 'discover': html=A.screenDiscover(); break;
+    case 'plan': html=A.screenPlan(); break;
+    case 'myplan': html=A.screenMyPlan(); break;
+    case 'contact': html=A.screenContact(); break;
+    case 'event': html=B.screenEvent(S.param); break;
+    case 'attraction': html=B.screenAttraction(S.param); break;
+    case 'stayitem': html=B.screenStayItem(S.param); break;
+    case 'itin': html=B.screenItin(S.param); break;
+    case 'map': html=B.screenMap(); break;
+    case 'ask': html=B.screenAsk(); break;
+    case 'search': html=B.screenSearch(); break;
+    default: html=A.screenHome();
+  }
+  m.innerHTML=html;
+  var note=document.getElementById('barNote');
+  var cur=C.SCREENS.filter(function(s){ return s[0]===S.screen || s[0].indexOf(S.screen+':')===0; })[0];
+  note.textContent = (S.lang==='hr'?'Interaktivni prototip · ':'Interactive prototype · ')
+    + (cur? cur[1]+(cur[2]!=='—'?' ('+cur[2]+')':'') : S.screen)
+    + (S.lang==='hr'?' · demo podaci':' · demo data');
+};
+
+/* ============================================================
+   11. INTERAKCIJE
+   ============================================================ */
+function toast(msg){
+  var el=document.getElementById('toast');
+  el.textContent=msg; el.classList.add('on');
+  clearTimeout(el._tm); el._tm=setTimeout(function(){ el.classList.remove('on'); }, 3200);
+}
+var lastFocus=null;
+function showModal(title,body){
+  lastFocus=document.activeElement;
+  document.getElementById('modalTitle').textContent=title;
+  document.getElementById('modalBody').innerHTML=body;
+  var m=document.getElementById('modal');
+  m.classList.add('open');
+  document.getElementById('modalClose').focus();
+}
+function closeModal(){
+  document.getElementById('modal').classList.remove('open');
+  if(lastFocus && lastFocus.focus) lastFocus.focus();
+}
+document.getElementById('modalClose').addEventListener('click', closeModal);
+document.getElementById('modal').addEventListener('click', function(e){ if(e.target===this) closeModal(); });
+document.getElementById('modalClose').textContent = t('close');
+
+var PROTO_TEXT = {
+  ics:['Preuzimanje .ics datoteke','U produkciji ovaj gumb preuzima datoteku kalendara (iCalendar) s točnim terminom, lokacijom i poveznicom na stranicu događaja. Isti feed dostupan je i kao pretplata na cijeli filtrirani kalendar — Poglavlje 6.5.'],
+  gpx:['Preuzimanje GPX datoteke','U produkciji se preuzima GPX trase s profilom visine, spreman za navigaciju. Uz njega ide i offline karta u PWA načinu — Poglavlje 5.1, entitet Ruta.'],
+  pdf:['Ispis i PDF','Itinerer se u produkciji ispisuje ili preuzima kao PDF s kartom i kontaktima svake postaje.'],
+  share:['Dijeljenje','Na mobitelu se otvara sustavski izbornik dijeljenja (Web Share API), na desktopu se poveznica kopira. Svaka stranica ima namjensku sliku 1200×630 za društvene mreže — Poglavlje 10.4.2.'],
+  outbound:['Rezervacija kod objekta','Objekt ima vlastiti booking sustav. Klik se u produkciji bilježi kao konverzija (outbound_booking_click) i, gdje je moguće, nosi partnerski parametar — Poglavlje 8.2, varijanta B.'],
+  table:['Rezervacija stola','U produkciji vodi na telefon ili sustav objekta. U MVP-u je to poveznica, u Fazi 2 obrazac.'],
+  report:['Prijava netočnosti','Otvara kratak obrazac koji uredniku šalje URL stranice i opis. To je najjeftiniji mehanizam kontrole kvalitete i ujedno E-E-A-T signal — Poglavlje 6.6.'],
+  social:['Društvene mreže','Poveznice na profile TZ-a. Skripte društvenih mreža se namjerno ne ugrađuju u stranicu — one su glavni razlog lošeg LCP-a i pravni rizik. Poglavlje 10.4.2.'],
+  stub:['Nije u opsegu prototipa','Ova stranica postoji u strukturnoj mapi (Poglavlje 4.2), ali nije izrađena u prototipu. Prototip pokriva 14 ekrana koji nose korisničke zadatke i konverziju.']
+};
+var PROTO_TEXT_EN = {
+  ics:['Downloading the .ics file','In production this button downloads a calendar file with the exact date, venue and a link back to the event page. The same feed is available as a subscription to the whole filtered calendar — chapter 6.5.'],
+  gpx:['Downloading the GPX file','In production a GPX track with an elevation profile is downloaded, ready for navigation, together with an offline map in PWA mode.'],
+  pdf:['Print and PDF','In production the itinerary can be printed or downloaded as a PDF with a map and contact details for every stop.'],
+  share:['Sharing','On mobile the system share sheet opens (Web Share API); on desktop the link is copied. Every page has a dedicated 1200×630 social image — chapter 10.4.2.'],
+  outbound:['Booking with the property','This property has its own booking system. In production the click is logged as a conversion (outbound_booking_click) — chapter 8.2, variant B.'],
+  table:['Table reservation','In production this leads to the property’s phone or booking system.'],
+  report:['Report an error','Opens a short form that sends the page URL and a description to the editor — the cheapest quality-control mechanism there is, and an E-E-A-T signal.'],
+  social:['Social media','Links to the tourist board profiles. Social network scripts are deliberately not embedded — they are the main cause of poor LCP and a legal risk.'],
+  stub:['Not part of the prototype','This page exists in the sitemap (chapter 4.2) but was not built here. The prototype covers the 14 screens that carry user tasks and conversion.']
+};
+
+document.addEventListener('click', function(ev){
+  var el;
+
+  if((el=ev.target.closest('[data-proto]'))){
+    ev.preventDefault();
+    var k=el.getAttribute('data-proto');
+    var tbl = S.lang==='hr' ? PROTO_TEXT : PROTO_TEXT_EN;
+    var e2 = tbl[k] || PROTO_TEXT.stub;
+    showModal(e2[0], '<p>'+esc(e2[1])+'</p>'
+      + '<p style="font-size:13px;color:var(--ink-3)">'+esc(S.lang==='hr'
+         ? 'Prototip namjerno ne izvodi ovu radnju — cilj je provjeriti tok i razumijevanje, ne implementaciju.'
+         : 'The prototype deliberately does not perform this action — the point is to test the flow, not the implementation.')+'</p>');
+    return;
+  }
+
+  if((el=ev.target.closest('[data-save]'))){
+    ev.preventDefault();
+    var id=el.getAttribute('data-save');
+    if(S.plan.has(id)){ S.plan.delete(id); toast(S.lang==='hr'?'Uklonjeno iz plana':'Removed from plan'); }
+    else { S.plan.add(id); toast(S.lang==='hr'?'Spremljeno u plan':'Saved to your plan'); }
+    C.persist(); render();
+    return;
+  }
+
+  if((el=ev.target.closest('[data-staydates]'))){
+    ev.preventDefault();
+    S.stayDates = el.getAttribute('data-staydates').split('|');
+    S.tab='stay';
+    C.go('stay');
+    return;
+  }
+  if(ev.target.closest('[data-cleardates]')){ ev.preventDefault(); S.stayDates=null; render(); return; }
+
+  if((el=ev.target.closest('[data-date]'))){
+    S.ev.date=el.getAttribute('data-date'); render(); return;
+  }
+  if((el=ev.target.closest('[data-tab]'))){
+    S.tab=el.getAttribute('data-tab'); S.filtersOpen=false; render(); return;
+  }
+  if(ev.target.closest('[data-togglefilters]')){ S.filtersOpen=!S.filtersOpen; render(); return; }
+
+  if((el=ev.target.closest('[data-chip]'))){
+    var parts=el.getAttribute('data-chip').split(':'), g=parts[0], v=parts[1];
+    var rm=function(arr,val){ var i=arr.indexOf(val); if(i>=0) arr.splice(i,1); };
+    if(g==='type') rm(S.ev.type,v); else if(g==='price') rm(S.ev.price,v);
+    else if(g==='aud') rm(S.ev.aud,v); else if(g==='a11y') S.ev.a11y=false;
+    else if(g==='stkind') rm(S.st.kind,v); else if(g==='stamen') rm(S.st.amen,v);
+    else if(g==='stprice') S.st.maxprice=0; else if(g==='stkm') S.st.maxkm=0;
+    else if(g==='eakind') rm(S.ea.kind,v); else if(g==='eacuis') rm(S.ea.cuisine,v);
+    else if(g==='eadiet') rm(S.ea.diet,v); else if(g==='eaterr') S.ea.terrace=false;
+    render(); return;
+  }
+  if((el=ev.target.closest('[data-clearall]'))){
+    var w=el.getAttribute('data-clearall');
+    if(w==='ev'){ S.ev={date:'30',type:[],price:[],aud:[],a11y:false}; }
+    if(w==='st'){ S.st={kind:[],amen:[],maxprice:0,maxkm:0}; }
+    if(w==='ea'){ S.ea={kind:[],cuisine:[],diet:[],terrace:false}; }
+    render(); return;
+  }
+
+  if((el=ev.target.closest('[data-askq]'))){
+    ev.preventDefault(); ask(el.getAttribute('data-askq')); return;
+  }
+  if((el=ev.target.closest('[data-rate]'))){
+    ev.preventDefault();
+    toast(S.lang==='hr'
+      ? 'Hvala. Ocjena ulazi u CSAT metriku informatora (cilj ≥ 4,2/5).'
+      : 'Thank you. The rating feeds the assistant’s CSAT metric (target ≥ 4.2/5).');
+    return;
+  }
+
+  if((el=ev.target.closest('[data-lang]'))){
+    ev.preventDefault();
+    S.lang=el.getAttribute('data-lang');
+    document.documentElement.setAttribute('lang', S.lang);
+    var sel=document.getElementById('langSel'); if(sel) sel.value=S.lang;
+    render(); return;
+  }
+  if((el=ev.target.closest('[data-pin]'))){
+    B.setMapSel(el.getAttribute('data-pin')); render(); return;
+  }
+});
+
+document.addEventListener('keydown', function(e){
+  if(e.key==='Escape'){
+    if(document.getElementById('modal').classList.contains('open')) closeModal();
+    if(document.getElementById('searchOverlay').classList.contains('open')) closeSearch();
+  }
+  var p=e.target.closest && e.target.closest('[data-pin]');
+  if(p && (e.key==='Enter'||e.key===' ')){ e.preventDefault(); B.setMapSel(p.getAttribute('data-pin')); render(); }
+});
+
+document.addEventListener('change', function(ev){
+  var el=ev.target;
+  if(el.matches('[data-f]')){
+    var g=el.getAttribute('data-f'), v=el.value;
+    var tog=function(arr,val){ var i=arr.indexOf(val); if(i>=0) arr.splice(i,1); else arr.push(val); };
+    if(g==='type') tog(S.ev.type,v);
+    else if(g==='price') tog(S.ev.price,v);
+    else if(g==='aud') tog(S.ev.aud,v);
+    else if(g==='a11y') S.ev.a11y=el.checked;
+    else if(g==='stkind') tog(S.st.kind,v);
+    else if(g==='stamen') tog(S.st.amen,v);
+    else if(g==='stprice') S.st.maxprice=parseInt(v,10)||0;
+    else if(g==='stkm') S.st.maxkm=parseInt(v,10)||0;
+    else if(g==='eakind') tog(S.ea.kind,v);
+    else if(g==='eacuis') tog(S.ea.cuisine,v);
+    else if(g==='eadiet') tog(S.ea.diet,v);
+    else if(g==='eaterr') S.ea.terrace=el.checked;
+    S.filtersOpen=true;
+    render();
+    return;
+  }
+  if(el.matches('[data-layer]')){
+    B.mapLayerState[el.getAttribute('data-layer')]=el.checked;
+    render(); return;
+  }
+});
+
+document.addEventListener('submit', function(ev){
+  var f=ev.target.closest('[data-form]');
+  if(!f) return;
+  ev.preventDefault();
+  var kind=f.getAttribute('data-form');
+
+  if(kind==='chat'){
+    var inp=f.querySelector('#chatq');
+    if(inp.value.trim()){ ask(inp.value.trim()); inp.value=''; }
+    return;
+  }
+  if(kind==='nl'){
+    var ok=document.getElementById('nlok');
+    if(ok && !ok.checked){ toast(S.lang==='hr'?'Potrebna je privola za obradu podataka.':'Consent is required.'); return; }
+    toast(S.lang==='hr'
+      ? 'U produkciji sada slijedi e-pošta za potvrdu prijave (dvostruka privola).'
+      : 'In production a double opt-in confirmation email would now be sent.');
+    f.reset(); return;
+  }
+  if(kind==='contact'){
+    toast(S.lang==='hr'?'Poruka bi bila poslana. Odgovor u jednom radnom danu.':'The message would be sent. Reply within one working day.');
+    f.reset(); return;
+  }
+  if(kind==='enq'){
+    var stayId=f.getAttribute('data-stay'), s=ALL[stayId];
+    var i1=f.querySelector('#ei').value, i2=f.querySelector('#eo').value;
+    var ad=parseInt(f.querySelector('#ea').value,10)||0;
+    var ch=parseInt(f.querySelector('#ec').value,10)||0;
+    var errEl=f.querySelector('#enqErr'), err='';
+    var today=P.iso(P.TODAY);
+    if(!i1||!i2) err = S.lang==='hr'?'Unesite datume dolaska i odlaska.':'Enter check-in and check-out dates.';
+    else if(i1<today) err = S.lang==='hr'?'Datum dolaska ne može biti u prošlosti.':'The check-in date cannot be in the past.';
+    else if(i2<=i1) err = S.lang==='hr'?'Datum odlaska mora biti nakon datuma dolaska.':'Check-out must be after check-in.';
+    else if((ad+ch) > s.maxPer) err = (S.lang==='hr'
+        ? 'Objekt prima najviše '+s.maxPer+' osoba po jedinici. Pogledajte veće objekte.'
+        : 'This property takes at most '+s.maxPer+' people per unit. Try a larger property.');
+    if(err){ errEl.textContent=err; errEl.hidden=false; errEl.scrollIntoView({block:'center'}); return; }
+    errEl.hidden=true;
+    var ref='SB-'+new Date().getFullYear()+'-'+String(Math.floor(Math.random()*9000)+1000);
+    showModal(t('enq_ok'),
+      '<p><strong>'+esc(S.lang==='hr'?'Referenca':'Reference')+': '+ref+'</strong></p>'
+      + '<p>'+esc(S.lang==='hr'
+         ? 'Upit bi bio poslan objektu „'+tx(s.name).t+'" i istovremeno zabilježen u nadzornoj ploči TZ-a. Objekt obično odgovara u ~'+(s.reply||6)+' h.'
+         : 'The enquiry would be sent to “'+tx(s.name).t+'” and logged in the tourist board dashboard at the same time. The property usually replies in about '+(s.reply||6)+' h.')+'</p>'
+      + '<ul><li>'+esc(S.lang==='hr'?'Termin':'Dates')+': '+esc(P.fmtRange(i1,i2,S.lang))+'</li>'
+      + '<li>'+esc(S.lang==='hr'?'Gosti':'Guests')+': '+ad+' '+esc(t('enq_ad')).toLowerCase()+(ch?', '+ch+' '+esc(t('enq_ch')).toLowerCase():'')+'</li></ul>'
+      + '<p style="font-size:13px;color:var(--ink-3)">'+esc(S.lang==='hr'
+         ? 'Nakon 48 sati bez odgovora sustav šalje podsjetnik objektu i upozorenje TZ-u; nakon 7 dana gost dobiva anketu. Poglavlje 8.6.'
+         : 'After 48 hours without a reply the system reminds the property and alerts the board; after 7 days the guest receives a short survey. Chapter 8.6.')+'</p>');
+    return;
+  }
+});
+
+function ask(q){
+  B.chatLog.push({me:true, text:q});
+  var a=B.answer(q);
+  B.chatLog.push({me:false, html:a.html, sources:a.sources, actions:a.actions});
+  if(S.screen!=='ask') C.go('ask'); else render();
+  var log=document.querySelector('.chat-log');
+  if(log) log.scrollTop=log.scrollHeight;
+}
+
+/* ---- pretraga ---- */
+function openSearch(){
+  document.getElementById('searchOverlay').classList.add('open');
+  var i=document.getElementById('q'); i.value=''; i.focus(); renderSugg('');
+}
+function closeSearch(){ document.getElementById('searchOverlay').classList.remove('open'); }
+function renderSugg(q){
+  var box=document.getElementById('sugg');
+  if(q.trim().length<2){
+    var pop=['Tvrđava','Brodsko kolo','Smještaj','Bicikl','Parking'];
+    box.innerHTML='<div class="gh">'+esc(t('popular'))+'</div>'
+      + pop.map(function(p){ return '<a href="#" data-sq="'+esc(p)+'"><span class="sname">'+esc(p)+'</span></a>'; }).join('');
+    return;
+  }
+  var res=B.searchAll(q);
+  if(!res.length){
+    box.innerHTML='<div style="padding:18px 12px"><p style="font-weight:600">'+esc(t('nosearch'))+' „'+esc(q)+'"</p>'
+      + '<p style="font-size:13.5px;color:var(--ink-2);margin-top:6px">'+esc(S.lang==='hr'
+         ? 'Pretraga bez rezultata bilježi se i postaje uredničkim zadatkom (Poglavlje 12.3).'
+         : 'A search with no results is logged and becomes an editorial task (chapter 12.3).')+'</p>'
+      + '<button class="btn btn-primary btn-sm" style="margin-top:12px" data-go="ask" data-closesearch>'+esc(t('ask_cta'))+'</button></div>';
+    return;
+  }
+  var groups={event:[],attraction:[],stay:[],eat:[],itin:[]};
+  res.forEach(function(x){ var k=C.kindOf(x.id); if(groups[k]) groups[k].push(x); });
+  var GH={event:t('nav_events'), attraction:t('nav_dozivi'), stay:t('tab_stay'), eat:t('tab_eat'), itin:t('nav_plan')};
+  var out='';
+  Object.keys(groups).forEach(function(k){
+    if(!groups[k].length) return;
+    out+='<div class="gh">'+esc(GH[k])+'</div>'
+      + groups[k].slice(0,3).map(function(x){
+          var scr = k==='event'?'event':k==='attraction'?'attraction':k==='itin'?'itin':'stayitem';
+          var meta = k==='event' ? P.shortWhen(x.from,x.to,S.lang)
+                   : k==='stay' ? (t('from')+' '+C.eur(x.from))
+                   : k==='itin' ? x.dur : '';
+          return '<a href="#" data-go="'+scr+'" data-param="'+x.id+'" data-closesearch>'
+            + '<span class="sname">'+esc(tx(x.name).t)+'</span><span class="smeta">'+esc(meta)+'</span></a>'; }).join('');
+  });
+  out+='<div style="padding:10px 12px"><a href="#" data-searchall="'+esc(q)+'" style="font-weight:600;color:var(--brand)">'
+    + esc(S.lang==='hr'?'Prikaži sve rezultate':'Show all results')+' ('+res.length+') →</a></div>';
+  box.innerHTML=out;
+}
+document.getElementById('searchBtn').addEventListener('click', openSearch);
+document.getElementById('searchClose').addEventListener('click', closeSearch);
+document.getElementById('searchClose').textContent = t('close');
+document.getElementById('q').addEventListener('input', function(){ renderSugg(this.value); });
+document.getElementById('searchOverlay').addEventListener('click', function(e){ if(e.target===this) closeSearch(); });
+document.addEventListener('click', function(e){
+  var a=e.target.closest('[data-sq]');
+  if(a){ e.preventDefault(); document.getElementById('q').value=a.getAttribute('data-sq'); renderSugg(a.getAttribute('data-sq')); return; }
+  var b=e.target.closest('[data-searchall]');
+  if(b){ e.preventDefault(); closeSearch(); C.go('search', b.getAttribute('data-searchall')); return; }
+  if(e.target.closest('[data-closesearch]')) closeSearch();
+});
+
+/* ---- toolbar ---- */
+document.getElementById('jump').addEventListener('change', function(){
+  var v=this.value.split(':');
+  C.go(v[0], v[1]||null);
+});
+function setVw(mode){
+  var st=document.getElementById('stage');
+  st.setAttribute('data-vw', mode);
+  document.getElementById('vwMob').setAttribute('aria-pressed', mode==='mobile');
+  document.getElementById('vwDesk').setAttribute('aria-pressed', mode==='desktop');
+}
+document.getElementById('vwMob').addEventListener('click', function(){ setVw('mobile'); });
+document.getElementById('vwDesk').addEventListener('click', function(){ setVw('desktop'); });
+
+document.getElementById('themeBtn').addEventListener('click', function(){
+  var cur=document.documentElement.getAttribute('data-theme');
+  var dark = cur ? cur==='dark'
+    : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+  document.documentElement.setAttribute('data-theme', dark?'light':'dark');
+  this.textContent = dark ? (S.lang==='hr'?'Tama':'Dark') : (S.lang==='hr'?'Svjetlo':'Light');
+});
+
+document.getElementById('langSel').addEventListener('change', function(){
+  S.lang=this.value;
+  document.documentElement.setAttribute('lang', S.lang);
+  render();
+});
+
+document.getElementById('burger').addEventListener('click', function(){
+  var n=document.getElementById('mobNav'), open=n.classList.toggle('open');
+  this.setAttribute('aria-expanded', open);
+});
+document.getElementById('planBtn').addEventListener('click', function(){ C.go('myplan'); });
+document.getElementById('fab').addEventListener('click', function(){ C.go('ask'); });
+
+document.getElementById('aboutBtn').addEventListener('click', function(){
+  showModal(S.lang==='hr'?'O ovom prototipu':'About this prototype',
+    (S.lang==='hr'
+    ? '<p>Ovo je <strong>interaktivni prototip</strong> novog web sjedišta Turističke zajednice grada Slavonskog Broda, izrađen prema strateškom dokumentu (žične makete W1–W12, dizajn sustav iz Poglavlja 10.2).</p>'
+      + '<p><strong>Što je stvarno:</strong> toponimi, ustanove, manifestacije i njihovi mjeseci, geografija destinacije, sva logika filtriranja, jezična strategija i tokovi konverzije.</p>'
+      + '<p><strong>Što je demo:</strong> smještajni i ugostiteljski objekti (izmišljena imena), cijene, radna vremena i termini pojedinačnih događanja. Slike su generirani motivi, ne fotografije.</p>'
+      + '<p><strong>Čemu služi:</strong></p><ul>'
+      + '<li>odobrenju u Turističkom vijeću — nešto što se klika, a ne 101 stranica teksta;</li>'
+      + '<li>korisničkom testiranju prije razvoja (osam zadataka iz Poglavlja 17.2);</li>'
+      + '<li>prilogu natječajnoj dokumentaciji — ponuditelji vide što se traži.</li></ul>'
+      + '<p><strong>Ograničenja:</strong> ovo nije web sjedište. Nema CMS-a, nema slanja e-pošte, nema plaćanja, nema vlastite domene. Prototip provjerava tok i razumijevanje, ne implementaciju.</p>'
+      + '<p style="font-size:13px;color:var(--ink-3)">Isprobajte: filtre u kalendaru, „Gdje spavati" na stranici Brodskog kola, obrazac upita s pogrešnim datumom, promjenu jezika na engleski ili njemački (oznaka „nije prevedeno"), zadnje pitanje u Pitaj Brod, i prekidač Mobitel/Desktop.</p>'
+    : '<p>This is an <strong>interactive prototype</strong> of the new website for the Slavonski Brod Tourist Board, built from the strategy document (wireframes W1–W12, design system from chapter 10.2).</p>'
+      + '<p><strong>What is real:</strong> place names, institutions, festivals and their months, the geography, all filtering logic, the language strategy and the conversion flows.</p>'
+      + '<p><strong>What is demo:</strong> accommodation and restaurants (invented names), prices, opening hours and individual event dates. Images are generated motifs, not photographs.</p>'
+      + '<p><strong>Limitations:</strong> this is not a website. No CMS, no email, no payments, no domain. The prototype tests the flow, not the implementation.</p>'));
+});
+
+/* ---- početno stanje ---- */
+function sizeBar(){
+  var b=document.querySelector('.bar');
+  if(b) document.documentElement.style.setProperty('--barh', b.offsetHeight+'px');
+}
+window.addEventListener('resize', sizeBar);
+
+buildJump();
+render();
+sizeBar();
+
+document.addEventListener('click', function(e){
+  var g=e.target.closest('#heroGo');
+  if(g){ e.preventDefault(); var v=document.getElementById('heroQ').value.trim();
+    if(v.length>1) C.go('search', v); else openSearch(); }
+});
+document.addEventListener('keydown', function(e){
+  if(e.key==='Enter' && e.target && e.target.id==='heroQ'){
+    e.preventDefault(); var v=e.target.value.trim();
+    if(v.length>1) C.go('search', v); else openSearch();
+  }
+});
+})();
+</script>
+
+</body>
+</html>
