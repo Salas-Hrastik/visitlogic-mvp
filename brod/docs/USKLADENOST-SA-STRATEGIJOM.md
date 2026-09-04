@@ -70,7 +70,7 @@ Osam od trinaest tokena preuzeto je točno, uključujući sve nositelje identite
 
 ## 2. Odstupanja — dizajn sustav
 
-### 2.1 Tipografija — najveće odstupanje (Pogl. 10.2.2)
+### 2.1 Tipografija — najveće odstupanje (Pogl. 10.2.2) — ✅ riješeno (O1)
 
 Strategija traži: *„sustavski font stack kao osnova (nula mrežnih zahtjeva) +
 **najviše jedan** varijabilni font za naslove… Ukupan budžet fontova: **≤ 60 KB**."*
@@ -82,13 +82,15 @@ teksta — pa tijelo teksta nije u sustavskom fontu.
 |---|---|---|
 | Broj web fontova | najviše 1 | 2 |
 | Tijelo teksta | sustavski stack | Public Sans (mrežni zahtjev) |
-| Budžet | ≤ 60 KB | 148 KB ukupno, ~113 KB po učitavanju |
+| Budžet | ≤ 60 KB | 136,1 KB ukupno, 110,2 KB po tipičnom učitavanju |
 
-**Da bi se uklopilo u budžet:** izbaciti Public Sans, tijelo teksta vratiti na
-sustavski stack, zadržati samo Archivo za naslove → 67 KB. Za punih ≤ 60 KB
-potrebno je i suziti podskup znakova na stvarno korištene.
+**Riješeno u korist koda:** oba fonta se zadržavaju, a budžet u Pogl. 10.2.2
+podiže se na ≤ 120 KB po tipičnom učitavanju. Obrazloženje i gotov tekst za
+zamjenu u [`ODLUKE.md`](ODLUKE.md), odluka O1.
 
-Ovo mijenja izgled tijela teksta, pa je odluka dizajnerska, ne tehnička.
+Odbačena alternativa bila je izbaciti Public Sans i vratiti tijelo teksta na
+sustavski stack (66,0 KB), što bi uštedjelo 44 KB uz vidljivu promjenu karaktera
+teksta.
 
 ### 2.2 Veličine teksta (Pogl. 10.2.2)
 
@@ -99,9 +101,9 @@ metapodaci); za tijelo teksta izrijekom piše *„Minimalna veličina tijela tek
 Prototip ima **24 pravila ispod te granice**: 13 px (15 pravila), 12 px (5),
 11 px (4). Za njih u ljestvici nema osnove.
 
-### 2.3 Neutralni tokeni i tokeni upozorenja (Pogl. 10.2.3)
+### 2.3 Neutralni tokeni i tokeni upozorenja (Pogl. 10.2.3) — ✅ riješeno (O2)
 
-Pet tokena odstupa od propisanih vrijednosti:
+Pet tokena odstupalo je od propisanih vrijednosti:
 
 | Token | Prototip | Strategija |
 |---|---|---|
@@ -117,8 +119,12 @@ nego to što postoje **dvije verzije palete**: kad se za pola godine bude traži
 zašto je neki rub svjetliji nego drugdje, nitko neće znati koja je vrijednost
 mjerodavna. Treba odabrati jednu i uskladiti oba dokumenta.
 
-**Uz to se razlikuje i nazivlje tokena.** Strategija propisuje `--c-primary`,
-`--c-accent`, `--c-text`; prototip koristi `--brand`, `--brick`, `--ink`.
+**Riješeno u korist Strategije:** svih pet vrijednosti usklađeno je u kodu,
+uz preračunate kontraste (odluka O2). Tamna tema nije dirana.
+
+**Nazivlje tokena** riješeno je obratno — Strategija propisuje `--c-primary`,
+`--c-accent`, `--c-text`, a zadržava se nazivlje iz koda (`--brand`, `--brick`,
+`--ink`), koje je opisnije. Gotova zamjenska tablica je u odluci O3.
 
 ### 2.4 Hardkodirane boje (Pogl. 10.2.3)
 
@@ -156,10 +162,10 @@ Od dvanaest žičanih maketa to je jedina potpuno neprikazana.
 Za TZ je traka za hitne obavijesti operativno važna — zatvorena cesta, otkazana
 manifestacija, poplavno upozorenje uz Savu.
 
-### 3.2 W10 — Pretraga postoji, ali nije predstavljena
+### 3.2 W10 — Pretraga postoji, ali nije predstavljena — ✅ riješeno
 
-Funkcija pretrage je implementirana i radi, ali ekran nije uvršten u izbornik
-ekrana, pa se pri prezentaciji lako previdi.
+Funkcija pretrage bila je implementirana, ali ekran nije bio u izborniku ekrana.
+Sada jest, s upitom „tvrđava" da se odmah vidi popunjen.
 
 ### 3.3 Sitemap (Pogl. 4.2)
 
@@ -192,16 +198,16 @@ informator ugrađen u sjedište i povezan sa sadržajem preko izvora i radnji.
 
 ## 5. Redoslijed popravaka
 
-**Prije prezentacije TZ-u** — jeftino, a vidljivo:
-1. Uskladiti pet neutralnih tokena i token upozorenja s Pogl. 10.2.3
-2. `--maxw` na 1360 px
-3. Uvrstiti ekran pretrage (W10) u izbornik ekrana
+**Napravljeno:**
+1. ✅ Pet neutralnih tokena i token upozorenja usklađeno (O2)
+2. ✅ Ekran pretrage (W10) uvršten u izbornik
+3. ✅ Odluka o fontovima — oba se zadržavaju, budžet u Strategiji se podiže (O1)
+4. ✅ Nazivlje tokena — zadržava se kod, ispravlja se Strategija (O3)
 
-**Prije nego kod naraste** — dok su izmjene još jeftine:
-4. Odluka o fontovima: jedan web font i sustavski stack, ili izmjena Pogl. 10.2.2
-5. Uskladiti nazivlje tokena između koda i Strategije
-6. Podići veličine ispod 14 px na ljestvicu
-7. Dodati W11 — traku za hitne obavijesti i popis novosti
+**Otvoreno** — vidi tablicu na kraju [`ODLUKE.md`](ODLUKE.md):
+5. `--maxw`: 1240 px u kodu naspram 1360 px u Strategiji (O5)
+6. Veličine ispod 14 px (O4)
+7. W11 — traka za hitne obavijesti i popis novosti (O7)
 
 **Za produkciju:**
 8. Prijeći na `rem`

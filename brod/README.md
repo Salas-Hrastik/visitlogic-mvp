@@ -21,6 +21,7 @@ stranica.
 | `robots.txt` | `Disallow: /` — cijeli projekt izvan tražilica |
 | `docs/AKTIVACIJA.md` | Put od prototipa do sjedišta na serveru TZ-a |
 | `docs/USKLADENOST-SA-STRATEGIJOM.md` | Provjera prototipa prema Strategiji (v1.0, 31. 8. 2026.) |
+| `docs/ODLUKE.md` | Dnevnik odluka — koje odstupanje ide u kod, koje u Strategiju |
 | `scripts/izdvoji-repozitorij.sh` | Izdvajanje mape u samostalan repozitorij |
 | `PROCITAJME.txt` | Izvorna uputa autora prototipa |
 
