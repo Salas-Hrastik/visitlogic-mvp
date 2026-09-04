@@ -107,6 +107,18 @@ nije moguć, ograničenje po IP-u i duljini ulaza, sanitizacija.
 kaže da informator nije postavljen — ne puca. Sve ostalo, uključujući hitne
 situacije, radi i bez ključa.
 
+## Pravne stranice su nacrti
+
+Politika privatnosti, izjava o pristupačnosti, kolačići i uvjeti korištenja
+postoje na sva tri jezika, ali su **nacrti**. Status nacrta je polje u modelu
+(`nacrt: boolean`), ne komentar — dok je `true`, stranica sama iznad teksta
+kaže da nije prošla pravnu provjeru. Mjesta koja TZ mora dopuniti podebljana su
+u tekstu.
+
+Što ostaje izvan koda — DPA s pružateljem AI usluge (Pogl. 9.7 ga zove
+preduvjetom za puštanje u rad), vanjska ocjena pristupačnosti, sigurnosne
+kopije — popisano je u [`../brod/docs/PRIJE-OBJAVE.md`](../brod/docs/PRIJE-OBJAVE.md).
+
 ## Što još nije
 
 Itinereri stoje kao poštena „u pripremi" stranica — postoje u rutiranju, nemaju

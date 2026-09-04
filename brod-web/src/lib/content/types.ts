@@ -120,7 +120,22 @@ export type Itinerer = Entitet & {
   postaje: Array<{ vrijeme: string; ref: string; minuta: number; kind: "see" | "eat" | "move" }>;
 };
 
-export type BiloKojiEntitet = Atrakcija | Dogadaj | Novost | Itinerer | Smjestaj | Ugostitelj;
+/**
+ * Pravno-utilitarne stranice (Pogl. 4.2). Za tijelo javnog sektora nisu
+ * neobavezne: Izjava o pristupačnosti proizlazi iz NN 17/19, politika
+ * privatnosti iz GDPR-a.
+ */
+export type PravniDokument = Entitet & {
+  vrsta: "pravno";
+  /**
+   * Nacrt za pravnu provjeru. Nije komentar u kodu nego polje, jer se
+   * napomena u komentaru previdi, a stranica objavljena kao gotova nosi
+   * pravnu težinu koju nacrt nema. Dok je `true`, stranica sama to kaže.
+   */
+  nacrt: boolean;
+};
+
+export type BiloKojiEntitet = Atrakcija | Dogadaj | Novost | Itinerer | Smjestaj | Ugostitelj | PravniDokument;
 
 /** Pogl. 5.1 E5. */
 export type VrstaSmjestaja =

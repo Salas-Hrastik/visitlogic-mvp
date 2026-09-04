@@ -39,6 +39,12 @@ export function Podnozje({ jezik }: { jezik: Jezik }) {
             </ul>
           </div>
         </div>
+        <ul className={s.pravno}>
+          <li><Link href={putanja({ vrsta: "pravno", slug: "politika-privatnosti" }, jezik)}>{t("f_privatnost", jezik)}</Link></li>
+          <li><Link href={putanja({ vrsta: "pravno", slug: "izjava-o-pristupacnosti" }, jezik)}>{t("f_pristupacnost", jezik)}</Link></li>
+          <li><Link href={putanja({ vrsta: "pravno", slug: "kolacici" }, jezik)}>{t("f_kolacici", jezik)}</Link></li>
+          <li><Link href={putanja({ vrsta: "pravno", slug: "uvjeti-koristenja" }, jezik)}>{t("f_uvjeti", jezik)}</Link></li>
+        </ul>
         <p className={s.bot}>
           © {new Date().getFullYear()} Turistička zajednica grada Slavonskog Broda
         </p>

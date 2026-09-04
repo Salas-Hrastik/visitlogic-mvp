@@ -102,6 +102,16 @@ const R = {
   proslo:       { hr: "Prošlo",          en: "Past",           de: "Vergangen" },
   u_tijeku:     { hr: "U tijeku",        en: "On now",         de: "Läuft" },
   nadolazi:     { hr: "Nadolazi",        en: "Upcoming",       de: "Bevorstehend" },
+
+  nacrt:        { hr: "Nacrt.",           en: "Draft.",         de: "Entwurf." },
+  nacrt_opis: {
+    hr: "Ovaj tekst nije prošao pravnu provjeru i nije obvezujuć. Mjesta koja TZ mora dopuniti označena su podebljano.",
+    en: "This text has not passed legal review and is not binding. Places the tourist board must complete are marked in bold.",
+    de: "Dieser Text wurde nicht rechtlich geprüft und ist nicht verbindlich. Vom Tourismusverband zu ergänzende Stellen sind fett markiert." },
+  f_privatnost:   { hr: "Politika privatnosti",     en: "Privacy policy",         de: "Datenschutz" },
+  f_pristupacnost:{ hr: "Izjava o pristupačnosti",  en: "Accessibility statement", de: "Barrierefreiheit" },
+  f_kolacici:     { hr: "Kolačići",                 en: "Cookies",                de: "Cookies" },
+  f_uvjeti:       { hr: "Uvjeti korištenja",        en: "Terms of use",           de: "Nutzungsbedingungen" },
 } as const satisfies Record<string, Unos>;
 
 export type Kljuc = keyof typeof R;

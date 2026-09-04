@@ -1,9 +1,10 @@
-import type { Atrakcija, Dogadaj, Novost, Smjestaj, Status, Ugostitelj } from "./types";
+import type { Atrakcija, Dogadaj, Novost, PravniDokument, Smjestaj, Status, Ugostitelj } from "./types";
 import atrakcijeJson from "../../../content/atrakcije.json";
 import dogadanjaJson from "../../../content/dogadanja.json";
 import novostiJson from "../../../content/novosti.json";
 import smjestajJson from "../../../content/smjestaj.json";
 import ugostiteljiJson from "../../../content/ugostitelji.json";
+import pravnoJson from "../../../content/pravno.json";
 
 /**
  * IZVOR SADRŽAJA — jedina točka dodira s pohranom.
@@ -24,6 +25,7 @@ const dogadanja = objavljeno(dogadanjaJson as unknown as Dogadaj[]);
 const novosti = objavljeno(novostiJson as unknown as Novost[]);
 const smjestaj = objavljeno(smjestajJson as unknown as Smjestaj[]);
 const ugostitelji = objavljeno(ugostiteljiJson as unknown as Ugostitelj[]);
+const pravno = objavljeno(pravnoJson as unknown as PravniDokument[]);
 
 export async function sveAtrakcije(): Promise<Atrakcija[]> {
   return atrakcije;
@@ -52,6 +54,14 @@ export async function smjestajPoSlugu(slug: string): Promise<Smjestaj | null> {
 
 export async function ugostiteljPoSlugu(slug: string): Promise<Ugostitelj | null> {
   return ugostitelji.find((x) => Object.values(x.slug).includes(slug)) ?? null;
+}
+
+export async function sviPravniDokumenti(): Promise<PravniDokument[]> {
+  return pravno;
+}
+
+export async function pravniDokumentPoSlugu(slug: string): Promise<PravniDokument | null> {
+  return pravno.find((x) => Object.values(x.slug).includes(slug)) ?? null;
 }
 
 export async function atrakcijaPoSlugu(slug: string): Promise<Atrakcija | null> {

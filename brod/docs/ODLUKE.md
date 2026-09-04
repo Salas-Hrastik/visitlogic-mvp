@@ -163,6 +163,24 @@ vraća se dohvaćanje po sličnosti. Do tada je to infrastruktura bez svrhe.
 
 ---
 
+## O10 — Pravni tekstovi kao nacrti s poljem, ne s napomenom
+
+**Datum:** 4. rujna 2026. · **Poglavlje:** 9.7, 11.1 · **Smjer: dopunjuje se kod**
+
+Politika privatnosti, izjava o pristupačnosti, kolačići i uvjeti korištenja
+napisani su kao **nacrti**, jer ih mora pregledati pravnik.
+
+**Odlučeno: status nacrta je polje u modelu (`nacrt: boolean`), ne komentar.**
+Komentar u kodu se previdi, a stranica koja izgleda kao objavljena politika
+privatnosti čita se kao obveza. Dok je polje `true`, stranica sama, iznad
+teksta, kaže da nije prošla pravnu provjeru. Objava kao gotovog dokumenta traži
+svjesnu izmjenu podatka, ne zaborav.
+
+Mjesta koja TZ mora dopuniti podebljana su unutar teksta, pa se vide bez
+pretraživanja koda. Popis je u [`PRIJE-OBJAVE.md`](PRIJE-OBJAVE.md).
+
+---
+
 ## Otvoreno
 
 | | Pitanje | Poglavlje |

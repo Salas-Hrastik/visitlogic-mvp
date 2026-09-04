@@ -25,6 +25,17 @@ const SEG = {
   pretraga:   { hr: "pretraga",       en: "search",         de: "suche" },
 } as const satisfies Record<string, Record<Jezik, string>>;
 
+/**
+ * Slugovi pravnih stranica su podaci, ne rute — pa ih razrješavanje mora
+ * poznavati. Popis se drži ovdje da `razrijesi()` ostane sinkron.
+ */
+export const PRAVNI_SLUGOVI = new Set([
+  "politika-privatnosti", "privacy-policy", "datenschutz",
+  "izjava-o-pristupacnosti", "accessibility-statement", "erklaerung-zur-barrierefreiheit",
+  "kolacici", "cookies",
+  "uvjeti-koristenja", "terms-of-use", "nutzungsbedingungen",
+]);
+
 export type SegKljuc = keyof typeof SEG;
 export const segment = (k: SegKljuc, j: Jezik) => SEG[k][j];
 
@@ -44,7 +55,8 @@ export type Ruta =
   | { vrsta: "novost"; slug: string }
   | { vrsta: "pitaj" }
   | { vrsta: "kontakt" }
-  | { vrsta: "pretraga" };
+  | { vrsta: "pretraga" }
+  | { vrsta: "pravno"; slug: string };
 
 /** Je li prvi segment prefiks jezika. HR nema prefiks (Pogl. 7.2). */
 export function odvojiJezik(segmenti: string[]): { jezik: Jezik; ostatak: string[] } {
@@ -91,6 +103,8 @@ export function razrijesi(segmenti: string[], j: Jezik): Ruta | null {
   if (s.length === 1 && je("pitaj")) return { vrsta: "pitaj" };
   if (s.length === 1 && je("kontakt")) return { vrsta: "kontakt" };
   if (s.length === 1 && je("pretraga")) return { vrsta: "pretraga" };
+  // Pravne stranice žive na korijenu, kako ih Pogl. 4.2 i smješta.
+  if (s.length === 1 && PRAVNI_SLUGOVI.has(s[0])) return { vrsta: "pravno", slug: s[0] };
   return null;
 }
 
@@ -114,6 +128,7 @@ export function putanja(r: Ruta, j: Jezik): string {
     case "pitaj":      return p(SEG.pitaj[j]);
     case "kontakt":    return p(SEG.kontakt[j]);
     case "pretraga":   return p(SEG.pretraga[j]);
+    case "pravno":     return p(r.slug);
   }
 }
 

@@ -6,3 +6,4 @@
 .foot a { color: var(--paper); }
 .foot address { font-style: normal; line-height: 1.8; }
 .bot { margin-top: var(--s8); padding-top: var(--s4); border-top: 1px solid rgba(255,255,255,.2); font-size: .875rem; opacity: .85; }
+.pravno { display: flex; gap: var(--s4); flex-wrap: wrap; list-style: none; margin: var(--s8) 0 0; padding: 0; font-size: .875rem; }

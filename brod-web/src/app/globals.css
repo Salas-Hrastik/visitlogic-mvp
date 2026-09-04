@@ -152,3 +152,11 @@ a:hover { color: var(--brand-2); }
   .cinjenice dt { border-bottom: 1px solid var(--line); padding-block: var(--s3); }
   .cinjenice dd { padding-block: var(--s3); }
 }
+
+/* Nacrt pravnog teksta — vidljiv prije sadržaja, ne u podnožju. */
+.nacrt {
+  margin-top: var(--s4); padding: var(--s3) var(--s4);
+  background: var(--warn-tint); border-inline-start: 4px solid var(--warn);
+  border-radius: var(--radius); color: var(--ink);
+}
+.nacrt strong { color: var(--warn); }

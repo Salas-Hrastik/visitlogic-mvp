@@ -6,7 +6,7 @@ import { putanja, razrijesi, slugZa, tekst, type Ruta } from "@/lib/i18n";
 import { t } from "@/lib/rjecnik";
 import {
   atrakcijaPoSlugu, dogadajPoSlugu, novostPoSlugu,
-  smjestajPoSlugu, ugostiteljPoSlugu,
+  smjestajPoSlugu, ugostiteljPoSlugu, pravniDokumentPoSlugu, sviPravniDokumenti,
   sveAtrakcije, svaDogadanja, sveNovosti, savSmjestaj, sviUgostitelji, statusDogadaja,
 } from "@/lib/content/source";
 import { Pretraga, type Zapis } from "@/components/Pretraga";
@@ -24,8 +24,8 @@ type Params = { jezik: string; put?: string[] };
 
 /** Sve stranice u sva tri jezika grade se unaprijed (Pogl. 13.2: SSG). */
 export async function generateStaticParams(): Promise<Params[]> {
-  const [atr, dog, nov, smj, ugo] = await Promise.all([
-    sveAtrakcije(), svaDogadanja(), sveNovosti(), savSmjestaj(), sviUgostitelji(),
+  const [atr, dog, nov, smj, ugo, prav] = await Promise.all([
+    sveAtrakcije(), svaDogadanja(), sveNovosti(), savSmjestaj(), sviUgostitelji(), sviPravniDokumenti(),
   ]);
   const out: Params[] = [];
   for (const jezik of JEZICI) {
@@ -41,6 +41,7 @@ export async function generateStaticParams(): Promise<Params[]> {
       { vrsta: "smjestajPopis" }, { vrsta: "gdjeJesti" },
       ...smj.map((x): Ruta => ({ vrsta: "smjestaj", slug: slugZa(x, jezik) })),
       ...ugo.map((x): Ruta => ({ vrsta: "ugostitelj", slug: slugZa(x, jezik) })),
+      ...prav.map((x): Ruta => ({ vrsta: "pravno", slug: slugZa(x, jezik) })),
       ...atr.map((a): Ruta => ({ vrsta: "atrakcija", slug: slugZa(a, jezik) })),
       ...dog.map((d): Ruta => {
         const [g, m] = d.pocetak.split("-");
@@ -82,6 +83,9 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
     if (x) { naslov = tekst(x.naziv, jezik).v; prevedenNa = JEZICI.filter((j) => !!x.naziv[j]); }
   } else if (ruta.vrsta === "ugostitelj") {
     const x = await ugostiteljPoSlugu(ruta.slug);
+    if (x) { naslov = tekst(x.naziv, jezik).v; prevedenNa = JEZICI.filter((j) => !!x.naziv[j]); }
+  } else if (ruta.vrsta === "pravno") {
+    const x = await pravniDokumentPoSlugu(ruta.slug);
     if (x) { naslov = tekst(x.naziv, jezik).v; prevedenNa = JEZICI.filter((j) => !!x.naziv[j]); }
   } else if (ruta.vrsta === "novost") {
     const n = await novostPoSlugu(ruta.slug);
@@ -443,6 +447,34 @@ async function Sadrzaj({ ruta, jezik }: { ruta: Ruta; jezik: Jezik }) {
           <Mrvice jezik={jezik} staza={[[t("pretraga", jezik), null]]} />
           <h1>{t("pretraga", jezik)}</h1>
           <Pretraga zapisi={zapisi} jezik={jezik} />
+        </div>
+      );
+    }
+
+    case "pravno": {
+      const x = await pravniDokumentPoSlugu(ruta.slug);
+      if (!x) notFound();
+      const naziv = tekst(x.naziv, jezik);
+      const opis = x.opis ? tekst(x.opis, jezik) : null;
+      return (
+        <div className="wrap" style={{ maxWidth: "52rem" }}>
+          <Mrvice jezik={jezik} staza={[[naziv.v, null]]} />
+          <h1><Polje p={naziv} jezik={jezik} /></h1>
+          {/*
+            Nacrt se najavljuje prije teksta, ne u podnožju. Stranica koja
+            izgleda kao objavljena politika privatnosti čita se kao obveza,
+            pa mora sama reći da to još nije.
+          */}
+          {x.nacrt && (
+            <p className="nacrt" role="note">
+              <strong>{t("nacrt", jezik)}</strong> {t("nacrt_opis", jezik)}
+            </p>
+          )}
+          <p style={{ marginTop: "var(--s4)", fontSize: "1.125rem", color: "var(--ink-2)" }}>
+            <Polje p={tekst(x.uvodniOpis, jezik)} jezik={jezik} />
+          </p>
+          {opis && <Blok p={opis} jezik={jezik} />}
+          <Azurnost datum={x.zadnjaProvjera} jezik={jezik} />
         </div>
       );
     }

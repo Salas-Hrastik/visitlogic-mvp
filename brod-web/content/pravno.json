@@ -1,0 +1,102 @@
+[
+  {
+    "id": "p-privatnost",
+    "vrsta": "pravno",
+    "status": "objavljeno",
+    "nacrt": true,
+    "slug": {
+      "hr": "politika-privatnosti",
+      "en": "privacy-policy",
+      "de": "datenschutz"
+    },
+    "naziv": {
+      "hr": "Politika privatnosti",
+      "en": "Privacy policy",
+      "de": "Datenschutzerklärung"
+    },
+    "uvodniOpis": {
+      "hr": "Koje podatke prikupljamo, zašto, koliko ih čuvamo i koja su vaša prava.",
+      "en": "What data we collect, why, how long we keep it and what your rights are.",
+      "de": "Welche Daten wir erheben, warum, wie lange wir sie speichern und welche Rechte Sie haben."
+    },
+    "opis": {
+      "hr": "<h2>Voditelj obrade</h2>\n<p>Turistička zajednica područja „Slavonski Brod–Posavina”, Trg pobjede 28, 35000 Slavonski Brod,\ninfo@tzgsb.hr, +385 35 447 721.</p>\n<p><strong>Podatke koje TZ mora dopuniti:</strong> OIB, ime službenika za zaštitu podataka i njegov kontakt.</p>\n\n<h2>Što prikupljamo i zašto</h2>\n<h3>Obrazac upita</h3>\n<p>Ime, e-pošta i tekst poruke, radi odgovaranja na upit. Pravna osnova je vaš pristanak i poduzimanje\nradnji na vaš zahtjev prije sklapanja ugovora. Podaci se čuvaju najviše dvije godine od zadnje poruke.</p>\n\n<h3>Turistički informator „Pitaj Brod”</h3>\n<p>Tekst vašeg pitanja šalje se pružatelju jezičnog modela radi sastavljanja odgovora. <strong>Ne unosite\nosobne podatke u razgovor.</strong> Iz zapisa se automatski uklanjaju adrese e-pošte, brojevi telefona i\nOIB. Anonimizirani zapisi čuvaju se 12 mjeseci radi poboljšanja usluge; zapisi u kojima ste sami ostavili\nkontakt čuvaju se 30 dana.</p>\n<p>Razgovori se ne koriste za treniranje modela pružatelja.</p>\n\n<h3>Tehnički zapisi poslužitelja</h3>\n<p>IP adresa i vrijeme pristupa, radi sigurnosti i sprječavanja zloupotrebe. Čuvaju se najviše 30 dana.</p>\n\n<h2>Što NE radimo</h2>\n<ul>\n<li>Ne koristimo kolačiće za praćenje ni oglašavanje.</li>\n<li>Ne učitavamo fontove ni skripte s vanjskih poslužitelja, pa vaša IP adresa ne odlazi trećim stranama\npri običnom pregledavanju.</li>\n<li>Ne prodajemo niti ustupamo podatke trećima u marketinške svrhe.</li>\n</ul>\n\n<h2>Pohrana u vašem pregledniku</h2>\n<p>Sjedište koristi lokalnu pohranu preglednika za pamćenje vaših postavki (jezik, spremljeni sadržaj).\nTi podaci ostaju na vašem uređaju i ne šalju se nama.</p>\n\n<h2>Vaša prava</h2>\n<p>Imate pravo na pristup, ispravak, brisanje, ograničenje obrade, prenosivost i prigovor. Zahtjev šaljete\nna info@tzgsb.hr. Pritužbu možete podnijeti Agenciji za zaštitu osobnih podataka (AZOP), Selska cesta 136,\n10000 Zagreb, azop@azop.hr.</p>"
+    },
+    "zadnjaProvjera": "2026-09-04"
+  },
+  {
+    "id": "p-pristupacnost",
+    "vrsta": "pravno",
+    "status": "objavljeno",
+    "nacrt": true,
+    "slug": {
+      "hr": "izjava-o-pristupacnosti",
+      "en": "accessibility-statement",
+      "de": "erklaerung-zur-barrierefreiheit"
+    },
+    "naziv": {
+      "hr": "Izjava o pristupačnosti",
+      "en": "Accessibility statement",
+      "de": "Erklärung zur Barrierefreiheit"
+    },
+    "uvodniOpis": {
+      "hr": "Koliko je ovo sjedište pristupačno, što još nije i kome se obratiti.",
+      "en": "How accessible this site is, what is not yet, and whom to contact.",
+      "de": "Wie barrierefrei diese Seite ist, was noch nicht, und an wen Sie sich wenden."
+    },
+    "opis": {
+      "hr": "<p>Turistička zajednica područja „Slavonski Brod–Posavina” obvezuje se učiniti ovo mrežno sjedište\npristupačnim u skladu sa <strong>Zakonom o pristupačnosti mrežnih stranica i programskih rješenja za\npokretne uređaje tijela javnog sektora (NN 17/19)</strong>, kojim se u hrvatsko zakonodavstvo prenosi\nDirektiva (EU) 2016/2102.</p>\n\n<h2>Status usklađenosti</h2>\n<p>Ovo sjedište <strong>djelomično je usklađeno</strong> sa zahtjevima norme EN 301 549 i smjernicama\nWCAG 2.2 razine AA.</p>\n<p><strong>Ovaj status TZ mora potvrditi vanjskom ocjenom prije objave.</strong> Dosad je provedena samo\ninterna provjera tijekom izrade.</p>\n\n<h2>Što je ugrađeno</h2>\n<ul>\n<li>Semantički HTML: <code>nav</code>, <code>main</code>, <code>article</code>, <code>time</code>,\nhijerarhija naslova bez preskakanja.</li>\n<li>Poveznica za preskakanje na sadržaj, vidljiv fokus prsten od 3 px, ciljevi dodira najmanje 44 px.</li>\n<li>Relativne jedinice, pa zumiranje do 200 % i korisnikova postavka veće osnovne veličine fonta rade.</li>\n<li>Poštuju se <code>prefers-reduced-motion</code> i <code>prefers-color-scheme</code>.</li>\n<li>Kontrasti teksta provjereni prema WCAG AA za svaku boju u paleti.</li>\n<li>Filtri najavljuju broj rezultata kroz <code>aria-live</code>.</li>\n<li>Boja nikad nije jedini nositelj informacije.</li>\n<li><strong>Nema „alata za pristupačnost” (overlaya)</strong> — takvi dodaci ometaju čitače ekrana koje\nkorisnici već imaju. Pristupačnost je ugrađena u sam kod.</li>\n</ul>\n\n<h2>Nepristupačan sadržaj</h2>\n<ul>\n<li><code>prefers-contrast</code> još nije podržan.</li>\n<li>Interaktivna karta i obrazac upita još nisu izrađeni, pa nisu ni ocijenjeni.</li>\n<li>Dio sadržaja nije preveden na engleski i njemački; takav se prikazuje na hrvatskom uz vidljivu oznaku\ni ispravan <code>lang</code> atribut.</li>\n</ul>\n\n<h2>Priprema izjave</h2>\n<p>Izjava je pripremljena <strong>samoocjenom</strong> tijekom izrade sjedišta.\n<strong>TZ mora upisati datum objave, datum zadnje revizije i podatke o vanjskoj ocjeni ako je provedena.</strong></p>\n\n<h2>Povratne informacije i kontakt</h2>\n<p>Ako naiđete na sadržaj koji vam nije pristupačan, javite se na info@tzgsb.hr ili +385 35 447 721.\nOdgovaramo u roku od 15 dana. <strong>TZ mora imenovati službenika za pristupačnost.</strong></p>\n\n<h2>Postupak praćenja provedbe</h2>\n<p>Ako niste zadovoljni odgovorom, pritužbu možete podnijeti <strong>Povjereniku za informiranje</strong>,\nJurišićeva 19, 10000 Zagreb, pristupacnost@pristupinfo.hr.</p>"
+    },
+    "zadnjaProvjera": "2026-09-04"
+  },
+  {
+    "id": "p-kolacici",
+    "vrsta": "pravno",
+    "status": "objavljeno",
+    "nacrt": true,
+    "slug": {
+      "hr": "kolacici",
+      "en": "cookies",
+      "de": "cookies"
+    },
+    "naziv": {
+      "hr": "Kolačići",
+      "en": "Cookies",
+      "de": "Cookies"
+    },
+    "uvodniOpis": {
+      "hr": "Ovo sjedište ne koristi kolačiće za praćenje.",
+      "en": "This site does not use tracking cookies.",
+      "de": "Diese Seite verwendet keine Tracking-Cookies."
+    },
+    "opis": {
+      "hr": "<h2>Trenutno stanje</h2>\n<p><strong>Ovo sjedište ne postavlja nijedan kolačić za analitiku, oglašavanje ni praćenje.</strong>\nZato nema ni skočnog prozora za privolu — ne bi imao čemu služiti.</p>\n\n<h2>Lokalna pohrana preglednika</h2>\n<p>Za pamćenje vaših postavki koristi se lokalna pohrana preglednika. To je tehnički nužno za rad\nsučelja, ostaje na vašem uređaju i ne šalje se nama. Možete je obrisati kroz postavke preglednika.</p>\n\n<h2>Kad se to promijeni</h2>\n<p>Uvedemo li analitiku ili ugrađeni sadržaj treće strane (karta, video), prije toga se postavlja\nsustav za privolu s ravnopravnim gumbima <em>Prihvati sve</em> i <em>Odbij sve</em> — odbijanje neće\nbiti teže od prihvaćanja. Karte i video tada se neće učitavati bez vaše privole, nego uz gumb\n„Prikaži (učitava se s vanjskog izvora)”.</p>"
+    },
+    "zadnjaProvjera": "2026-09-04"
+  },
+  {
+    "id": "p-uvjeti",
+    "vrsta": "pravno",
+    "status": "objavljeno",
+    "nacrt": true,
+    "slug": {
+      "hr": "uvjeti-koristenja",
+      "en": "terms-of-use",
+      "de": "nutzungsbedingungen"
+    },
+    "naziv": {
+      "hr": "Uvjeti korištenja",
+      "en": "Terms of use",
+      "de": "Nutzungsbedingungen"
+    },
+    "uvodniOpis": {
+      "hr": "Što ovo sjedište jest, a što nije, i dokle seže naša odgovornost.",
+      "en": "What this site is and is not, and the limits of our responsibility.",
+      "de": "Was diese Seite ist und was nicht, und die Grenzen unserer Verantwortung."
+    },
+    "opis": {
+      "hr": "<h2>Svrha sjedišta</h2>\n<p>Sjedište je informativne naravi. Objavljujemo podatke o destinaciji, događanjima, smještaju i\nugostiteljstvu radi planiranja posjeta.</p>\n\n<h2>Točnost podataka</h2>\n<p>Podatke provjeravamo i uz svaki objekt objavljujemo <strong>datum zadnje provjere</strong>. Radna\nvremena i cijene ipak se mijenjaju bez najave — <strong>prije dolaska provjerite kod samog objekta</strong>.\nCijene označene kao nepotvrđene nisu potvrđene na izvoru.</p>\n\n<h2>Smještaj i ugostiteljstvo</h2>\n<p>TZ nije posrednik u rezervaciji i ne sklapa ugovor o smještaju. Upit poslan preko sjedišta prosljeđuje\nse objektu; ugovorni odnos nastaje između vas i objekta.</p>\n\n<h2>Turistički informator</h2>\n<p>„Pitaj Brod” je automatski asistent. Odgovara iz sadržaja ovog sjedišta i <strong>može pogriješiti</strong>.\nNjegovi odgovori nisu službena informacija TZ-a. Za obvezujuću informaciju obratite se Centru za\nposjetitelje.</p>\n\n<h2>Poveznice na druga sjedišta</h2>\n<p>Ne odgovaramo za sadržaj vanjskih sjedišta na koja upućujemo.</p>\n\n<h2>Autorska prava</h2>\n<p>Tekstovi i fotografije zaštićeni su autorskim pravom. Preuzimanje je dopušteno uz navođenje izvora\ni poveznicu.</p>"
+    },
+    "zadnjaProvjera": "2026-09-04"
+  }
+]
