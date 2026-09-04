@@ -13,6 +13,13 @@ vjerodostojnost demo podataka obrađena je odvojeno, u poglavlju 6.
 (tipografski budžet, jedinice, opseg sitemapa).** Nijedno odstupanje nije
 koncepcijsko — sva su provedbena i popravljiva.
 
+**O smjeru usklađivanja.** Sjedište razvijamo sami, pa Strategija nije
+specifikacija predana nekom drugom nego vlastiti radni dokument. Zato svako
+odstupanje ima dva ispravna ishoda: promijeniti kod ili promijeniti Strategiju.
+Za svako odstupanje niže navedeno je koje rješenje ima jači razlog, ali odluka
+je u oba slučaja naša. Ono što nije prihvatljivo jest da razlika ostane
+nezabilježena — tada za pola godine nitko ne zna koja je vrijednost mjerodavna.
+
 ---
 
 ## 1. Što se poklapa
@@ -105,9 +112,10 @@ Pet tokena odstupa od propisanih vrijednosti:
 | Rub | `#CFDBDC` | `#D5DBDC` |
 
 Sve su razlike male i **nijedna ne pada ispod traženog kontrasta** — prototipov
-`#8A5800` je čak tamniji, dakle kontrastniji od propisanog. Ali Strategija ide u
-natječajnu dokumentaciju, pa vrijednosti moraju biti identične da izvođač ne bi
-naslijedio dvije verzije palete.
+`#8A5800` je čak tamniji, dakle kontrastniji od propisanog. Problem nije kontrast
+nego to što postoje **dvije verzije palete**: kad se za pola godine bude tražilo
+zašto je neki rub svjetliji nego drugdje, nitko neće znati koja je vrijednost
+mjerodavna. Treba odabrati jednu i uskladiti oba dokumenta.
 
 **Uz to se razlikuje i nazivlje tokena.** Strategija propisuje `--c-primary`,
 `--c-accent`, `--c-text`; prototip koristi `--brand`, `--brick`, `--ink`.
@@ -189,9 +197,9 @@ informator ugrađen u sjedište i povezan sa sadržajem preko izvora i radnji.
 2. `--maxw` na 1360 px
 3. Uvrstiti ekran pretrage (W10) u izbornik ekrana
 
-**Prije natječajne dokumentacije** — inače izvođač nasljeđuje nejasnoće:
+**Prije nego kod naraste** — dok su izmjene još jeftine:
 4. Odluka o fontovima: jedan web font i sustavski stack, ili izmjena Pogl. 10.2.2
-5. Preimenovati tokene u nazivlje iz Strategije (`--c-primary` itd.)
+5. Uskladiti nazivlje tokena između koda i Strategije
 6. Podići veličine ispod 14 px na ljestvicu
 7. Dodati W11 — traku za hitne obavijesti i popis novosti
 

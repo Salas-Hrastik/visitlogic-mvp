@@ -144,7 +144,7 @@ Ovdje se odlučuje između dva pristupa:
 | Sigurnost | Traži redovito ažuriranje | Gotovo bez napadne površine |
 | Brzina | Ovisi o temi i dodacima | Vrlo brzo |
 | Cijena održavanja | Niža ulazna, viša trajna | Viša ulazna, niža trajna |
-| Rizik | Napušteni dodaci, ranjivosti | Ovisnost o izvođaču |
+| Rizik | Napušteni dodaci, ranjivosti | Sve ovisi o nama |
 
 Za TZ bez stalnog IT-a **WordPress s dobro postavljenom temom obično je
 realnija odluka** — jer ga mogu održavati i bez vas. Dizajn i logika iz ovog
@@ -234,7 +234,7 @@ Dvije stvari koje treba unaprijed dogovoriti s TZ-om:
 - [ ] Objašnjeno što traka „Prototip" znači i da su podaci demo
 - [ ] Pripremljena razlika prototip / sjedište (poglavlje 3)
 
-**Prije potpisa posla**
+**Prije nego krene izrada**
 - [ ] Odgovori na četiri pitanja iz poglavlja 4
 - [ ] Odluka WordPress ili headless
 - [ ] Dogovoreno **tko u TZ-u održava sadržaj** i koliko sati mjesečno
@@ -264,4 +264,4 @@ Recite koje od ovoga treba i nastavljam:
 4. Spojiti obrazac upita na stvarno slanje e-pošte
 5. Zamijeniti „Pitaj Brod" pravim informatorom po uzoru na Valpovo
 6. Izvući sadržaj iz JavaScripta u `JSON` — prvi korak prema CMS-u
-7. Pripremiti ponudu s opsegom i procjenom sati za TZ
+7. Razraditi plan izrade po fazama, s procjenom vremena
