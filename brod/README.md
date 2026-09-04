@@ -16,6 +16,7 @@ stranica.
 | Putanja | Što je |
 |---------|--------|
 | `index.html` | Cijeli prototip — 14 ekrana, HR/EN/DE, ~2.900 linija |
+| `fonts/` | Archivo i Public Sans (woff2) + licence SIL OFL 1.1 |
 | `vercel.json` | Zaglavlja: `noindex`, `no-cache`, osnovna sigurnosna zaglavlja |
 | `robots.txt` | `Disallow: /` — cijeli projekt izvan tražilica |
 | `docs/AKTIVACIJA.md` | Put od prototipa do sjedišta na serveru TZ-a |
@@ -34,8 +35,8 @@ python3 -m http.server 8080      # pa http://localhost:8080
 npx --yes serve . -l 8080
 ```
 
-Uz internetsku vezu koriste se predviđeni fontovi (Archivo, Public Sans); bez
-veze izgled je jednak, ali u sistemskim fontovima.
+Prototip ne šalje **nijedan** vanjski zahtjev — fontovi se poslužuju iz mape
+`fonts/`, pa izgleda jednako i bez internetske veze.
 
 ## Što isprobati
 

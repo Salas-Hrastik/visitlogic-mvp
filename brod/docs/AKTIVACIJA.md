@@ -13,7 +13,8 @@ u samostalan repozitorij — opisano je u [`../README.md`](../README.md).
 
 | Putanja | Što je |
 |---------|--------|
-| `index.html` | Prototip web sjedišta — jedna samostalna datoteka (~2.900 linija, 188 KB) |
+| `index.html` | Prototip web sjedišta — jedna samostalna datoteka (~2.900 linija) |
+| `fonts/` | Archivo i Public Sans, posluženi lokalno (6 × woff2, 148 KB) + OFL licence |
 | `vercel.json` | `noindex`, `no-cache` i osnovna sigurnosna zaglavlja |
 | `robots.txt` | `Disallow: /` — cijeli projekt izvan tražilica |
 | `scripts/izdvoji-repozitorij.sh` | Izdvajanje u samostalan repozitorij, s poviješću |
@@ -171,11 +172,13 @@ tema to izgubi.
 
 ### Zaštita podataka
 
-- **Google Fonts se učitava s Googleovog CDN-a.** Time se IP adresa posjetitelja
-  šalje Googleu bez privole. Njemački sud (LG München I, 3 O 17493/20) presudio
-  je da je to povreda GDPR-a, a AZOP-ova praksa ide u istom smjeru. **Rješenje:**
-  skinuti Archivo i Public Sans i posluživati ih s vlastitog servera
-  (`@font-face`). Trajanje: pola sata. Napravit ću ako želite.
+- ~~**Google Fonts se učitava s Googleovog CDN-a.**~~ **Riješeno.** Fontovi se
+  sada poslužuju iz mape `fonts/`, pa IP adresa posjetitelja više ne odlazi
+  Googleu. Prototip nema **nijedan** vanjski zahtjev — provjerivo s
+  `grep -c "https\?://" index.html`, što vraća `0`. Time otpada i najčešći
+  GDPR prigovor na javna sjedišta (usp. LG München I, 3 O 17493/20).
+  Isto pravilo vrijedi i u produkciji: ne dodavati vanjske skripte (analitika,
+  karte, widgeti) bez pravne osnove i spomena u izjavi o privatnosti.
 - Obrazac upita traži ime, e-poštu i telefon → treba **izjava o privatnosti**,
   pravna osnova obrade i rok čuvanja.
 - Prototip koristi `localStorage` („Moj plan"). To je funkcionalna pohrana i ne
@@ -256,7 +259,7 @@ Dvije stvari koje treba unaprijed dogovoriti s TZ-om:
 Recite koje od ovoga treba i nastavljam:
 
 1. ~~Odvojiti prototip u zaseban projekt~~ — napravljeno, vidi `../README.md`
-2. Zamijeniti Google Fonts vlastito posluženim fontovima
+2. ~~Zamijeniti Google Fonts vlastito posluženim fontovima~~ — napravljeno
 3. Napisati nacrt Izjave o pristupačnosti i Izjave o privatnosti
 4. Spojiti obrazac upita na stvarno slanje e-pošte
 5. Zamijeniti „Pitaj Brod" pravim informatorom po uzoru na Valpovo

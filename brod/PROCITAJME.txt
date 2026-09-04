@@ -7,8 +7,8 @@ KAKO OTVORITI
 3. Otvara se u vašem pregledniku (Chrome, Edge, Safari, Firefox).
 
 Nije potrebna instalacija, internetska veza ni korisnički račun.
-Uz internetsku vezu stranica koristi predviđene fontove; bez veze
-izgleda jednako, ali u sistemskim fontovima.
+Stranica ne šalje nijedan vanjski zahtjev - fontovi se poslužuju
+iz mape fonts/, pa izgled je jednak i bez internetske veze.
 
 ŠTO ISPROBATI
 - Gornja crna traka: prekidač "Mobitel / Desktop", tamna tema,
