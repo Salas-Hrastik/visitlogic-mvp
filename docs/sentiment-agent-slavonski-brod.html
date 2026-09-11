@@ -1,0 +1,827 @@
+<title>Sentiment Radar Slavonski Brod</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --paper:#F2F5F4; --surface:#FFFFFF; --surface-2:#E8EDEB; --surface-3:#DFE6E3;
+  --ink:#131A1F; --ink-2:#41505A; --ink-3:#6C7C85;
+  --rule:#D5DEDA; --rule-strong:#B9C6C1;
+  --accent:#1F4E6B; --accent-soft:#E2EBF1; --ochre:#B0782F; --ochre-soft:#F4E9D6;
+  --pos:#2C7A4B; --warn:#A87512; --neg:#9E3524; --neu:#6C7C85;
+  --pos-soft:#E1F0E6; --warn-soft:#F7EDD6; --neg-soft:#F7E3DF; --neu-soft:#E8EDEB;
+  --shadow:0 1px 2px rgba(19,26,31,.06), 0 8px 24px -16px rgba(19,26,31,.28);
+  --serif:"Newsreader", Georgia, "Times New Roman", serif;
+  --sans:"Public Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --mono:"IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#0E1418; --surface:#151D22; --surface-2:#1C262B; --surface-3:#243036;
+    --ink:#E6EDEA; --ink-2:#AEBEC4; --ink-3:#84959D;
+    --rule:#293539; --rule-strong:#3A4A50;
+    --accent:#7DB2D2; --accent-soft:#1B2C38; --ochre:#D5A45F; --ochre-soft:#2C2418;
+    --pos:#62B685; --warn:#D4A63E; --neg:#E07E6C;
+    --pos-soft:#16261D; --warn-soft:#272016; --neg-soft:#2A1B18; --neu-soft:#1C262B;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 10px 28px -18px rgba(0,0,0,.8);
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0E1418; --surface:#151D22; --surface-2:#1C262B; --surface-3:#243036;
+  --ink:#E6EDEA; --ink-2:#AEBEC4; --ink-3:#84959D;
+  --rule:#293539; --rule-strong:#3A4A50;
+  --accent:#7DB2D2; --accent-soft:#1B2C38; --ochre:#D5A45F; --ochre-soft:#2C2418;
+  --pos:#62B685; --warn:#D4A63E; --neg:#E07E6C;
+  --pos-soft:#16261D; --warn-soft:#272016; --neg-soft:#2A1B18; --neu-soft:#1C262B;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 10px 28px -18px rgba(0,0,0,.8);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth; scroll-padding-top:24px}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto} *{animation:none!important; transition:none!important}}
+body{
+  margin:0; background:var(--paper); color:var(--ink);
+  font-family:var(--sans); font-size:16px; line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:1240px; margin:0 auto; padding-inline:20px; padding-block:0 72px}
+
+/* ---------- masthead ---------- */
+.masthead{border-bottom:2px solid var(--ink); padding-block:40px 22px; margin-bottom:32px}
+.eyebrow{font-family:var(--mono); font-size:11.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--ochre); margin:0 0 14px}
+h1{font-family:var(--serif); font-weight:500; font-size:clamp(2.1rem,5.6vw,3.4rem); line-height:1.08; letter-spacing:-.015em; margin:0 0 14px; text-wrap:balance}
+h1 .sub{display:block; font-style:italic; font-weight:400; font-size:.46em; color:var(--ink-2); letter-spacing:0; margin-top:12px; line-height:1.4}
+.masthead-meta{display:flex; flex-wrap:wrap; gap:6px 28px; font-family:var(--mono); font-size:12px; color:var(--ink-3); margin-top:22px}
+.masthead-meta b{color:var(--ink-2); font-weight:500}
+
+/* ---------- layout ---------- */
+.cols{display:grid; grid-template-columns:1fr; gap:40px}
+@media (min-width:1000px){ .cols{grid-template-columns:212px minmax(0,1fr); gap:56px} }
+nav.toc{align-self:start}
+@media (min-width:1000px){ nav.toc{position:sticky; top:24px; max-height:calc(100vh - 48px); overflow:auto} }
+nav.toc h2{font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-3); margin:0 0 12px; font-weight:500}
+nav.toc ol{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:1px}
+nav.toc a{display:grid; grid-template-columns:22px 1fr; gap:8px; align-items:baseline; padding:5px 8px; border-radius:3px; text-decoration:none; color:var(--ink-2); font-size:13.5px; line-height:1.35; border-left:2px solid transparent}
+nav.toc a .n{font-family:var(--mono); font-size:11px; color:var(--ink-3)}
+nav.toc a:hover{background:var(--surface-2); color:var(--ink)}
+nav.toc a.on{border-left-color:var(--ochre); background:var(--surface-2); color:var(--ink); font-weight:600}
+nav.toc a.on .n{color:var(--ochre)}
+nav.toc a:focus-visible, .wrap a:focus-visible{outline:2px solid var(--accent); outline-offset:2px}
+
+main{min-width:0}
+section{scroll-margin-top:24px; margin-bottom:52px}
+.sec-head{display:flex; gap:14px; align-items:baseline; border-top:1px solid var(--rule-strong); padding-top:14px; margin-bottom:18px}
+.sec-head .num{font-family:var(--mono); font-size:12px; color:var(--ochre); letter-spacing:.08em; padding-top:6px}
+h2.sec{font-family:var(--serif); font-weight:500; font-size:clamp(1.5rem,3.4vw,2.05rem); line-height:1.18; letter-spacing:-.012em; margin:0; text-wrap:balance}
+h3{font-family:var(--sans); font-weight:700; font-size:1rem; letter-spacing:.005em; margin:30px 0 10px; color:var(--ink)}
+h4{font-family:var(--mono); font-weight:500; font-size:11.5px; letter-spacing:.12em; text-transform:uppercase; color:var(--ink-3); margin:22px 0 8px}
+p{margin:0 0 14px; max-width:70ch}
+main ul, main ol{margin:0 0 14px; padding-left:20px; max-width:70ch}
+main li{margin-bottom:5px}
+.lead{font-family:var(--serif); font-size:1.16rem; line-height:1.58; color:var(--ink-2); max-width:64ch}
+strong{font-weight:600}
+code{font-family:var(--mono); font-size:.88em; background:var(--surface-2); padding:1px 5px; border-radius:3px; color:var(--ink)}
+a{color:var(--accent)}
+
+/* ---------- components ---------- */
+.panel{background:var(--surface); border:1px solid var(--rule); border-radius:4px; padding:20px 22px; margin:18px 0}
+.panel > :last-child{margin-bottom:0}
+.panel.flag{border-left:3px solid var(--ochre); background:var(--ochre-soft); border-color:var(--rule)}
+.panel.flag h4{color:var(--ochre)}
+.panel.formula{background:var(--surface-2); border-color:var(--rule)}
+pre{font-family:var(--mono); font-size:12.5px; line-height:1.7; margin:0; overflow-x:auto; color:var(--ink)}
+pre b{color:var(--accent); font-weight:500}
+
+.grid{display:grid; gap:14px; grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr)); margin:18px 0}
+.tile{background:var(--surface); border:1px solid var(--rule); border-radius:4px; padding:16px 18px}
+.tile .k{font-family:var(--mono); font-size:10.5px; letter-spacing:.12em; text-transform:uppercase; color:var(--ink-3); margin:0 0 6px}
+.tile .v{font-family:var(--serif); font-size:1.5rem; line-height:1.2; margin:0 0 6px; font-variant-numeric:tabular-nums}
+.tile p{font-size:13.5px; color:var(--ink-2); margin:0; line-height:1.5}
+
+.tw{overflow-x:auto; margin:18px 0; border:1px solid var(--rule); border-radius:4px; background:var(--surface)}
+table{border-collapse:collapse; width:100%; font-size:13.5px; min-width:640px}
+th,td{text-align:left; padding:10px 14px; border-bottom:1px solid var(--rule); vertical-align:top; line-height:1.45}
+thead th{font-family:var(--mono); font-size:10.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-3); font-weight:500; background:var(--surface-2); border-bottom:1px solid var(--rule-strong); position:sticky; top:0}
+tbody tr:last-child td{border-bottom:none}
+td.num, th.num{font-family:var(--mono); font-variant-numeric:tabular-nums; white-space:nowrap}
+tbody th{font-weight:600; font-size:13.5px}
+caption{caption-side:bottom; text-align:left; padding:10px 14px; font-size:12.5px; color:var(--ink-3); border-top:1px solid var(--rule)}
+
+.chip{display:inline-flex; align-items:center; gap:5px; font-family:var(--mono); font-size:10.5px; letter-spacing:.06em; padding:2px 7px; border-radius:3px; white-space:nowrap; border:1px solid transparent}
+.chip.ok{background:var(--pos-soft); color:var(--pos); border-color:var(--pos)}
+.chip.cond{background:var(--warn-soft); color:var(--warn); border-color:var(--warn)}
+.chip.no{background:var(--neg-soft); color:var(--neg); border-color:var(--neg)}
+.chip.neu{background:var(--neu-soft); color:var(--ink-2); border-color:var(--rule-strong)}
+
+.legend{display:flex; flex-wrap:wrap; gap:10px 20px; margin:14px 0 0; padding:0; list-style:none; font-size:13px; color:var(--ink-2)}
+.legend li{display:flex; gap:7px; align-items:center}
+
+.pipeline{display:flex; flex-wrap:wrap; gap:8px; margin:18px 0; padding:0; list-style:none; counter-reset:st}
+.pipeline li{flex:1 1 150px; background:var(--surface); border:1px solid var(--rule); border-top:2px solid var(--accent); border-radius:3px; padding:11px 13px; font-size:13px; line-height:1.4; position:relative}
+.pipeline li .st{font-family:var(--mono); font-size:10px; color:var(--ink-3); display:block; margin-bottom:4px; letter-spacing:.1em}
+.pipeline li b{display:block; font-size:13.5px; margin-bottom:3px}
+.pipeline li span.t{color:var(--ink-3); font-size:12px}
+
+dl.spec{margin:14px 0; display:grid; grid-template-columns:1fr; gap:0}
+@media(min-width:640px){ dl.spec{grid-template-columns:190px 1fr} }
+dl.spec dt{font-family:var(--mono); font-size:11.5px; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-3); padding:9px 0 2px; border-top:1px solid var(--rule)}
+dl.spec dd{margin:0; padding:9px 0; font-size:14px; border-top:1px solid var(--rule)}
+@media(max-width:639px){ dl.spec dd{border-top:none; padding-top:0} }
+
+/* mock dashboard */
+.mock{border:1px solid var(--rule-strong); border-radius:5px; background:var(--surface); overflow:hidden; margin:16px 0}
+.mock-bar{display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap; background:var(--surface-2); border-bottom:1px solid var(--rule); padding:8px 14px; font-family:var(--mono); font-size:10.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-3)}
+.mock-body{padding:16px}
+.mock-row{display:grid; gap:10px; grid-template-columns:repeat(auto-fit,minmax(min(100%,120px),1fr))}
+.gauge{border:1px solid var(--rule); border-radius:3px; padding:10px 12px; background:var(--paper)}
+.gauge .lab{font-size:11px; color:var(--ink-3); display:block; margin-bottom:4px; line-height:1.3}
+.gauge .val{font-family:var(--serif); font-size:1.45rem; font-variant-numeric:tabular-nums; line-height:1}
+.gauge .d{font-family:var(--mono); font-size:11px; margin-left:6px}
+.d.up{color:var(--pos)} .d.down{color:var(--neg)} .d.flat{color:var(--ink-3)}
+.bar{height:5px; border-radius:3px; background:var(--surface-3); margin-top:8px; overflow:hidden}
+.bar i{display:block; height:100%; background:var(--accent)}
+.hm{display:grid; grid-template-columns:repeat(6,minmax(0,1fr)); gap:3px; margin-top:6px; font-family:var(--mono); font-size:10.5px}
+.hm div{padding:7px 4px; text-align:center; border-radius:2px; color:var(--ink); background:var(--surface-3)}
+.hm .h{background:transparent; color:var(--ink-3); padding:2px; letter-spacing:.04em}
+.note{font-size:12.5px; color:var(--ink-3); font-style:italic; max-width:70ch}
+footer{border-top:1px solid var(--rule-strong); margin-top:56px; padding-top:18px; font-size:13px; color:var(--ink-3)}
+footer p{max-width:70ch}
+</style>
+
+<div class="wrap">
+<header class="masthead">
+  <p class="eyebrow">Funkcionalna i tehnička specifikacija &middot; v1.0</p>
+  <h1>Sentiment Radar Slavonski Brod
+    <span class="sub">Automatizirani tjedni agent za praćenje općeg i turističkog sentimenta &mdash; za Turističku zajednicu grada Slavonskog Broda</span>
+  </h1>
+  <div class="masthead-meta">
+    <span><b>Naručitelj:</b> TZ grada Slavonskog Broda</span>
+    <span><b>Ritam:</b> tjedno, ponedjeljkom 06:00 CET/CEST</span>
+    <span><b>Isporuka:</b> HTML izvještaj + PPTX prezentacija</span>
+    <span><b>Dokument:</b> 11 poglavlja</span>
+  </div>
+</header>
+
+<div class="cols">
+<nav class="toc" aria-label="Sadržaj dokumenta">
+  <h2>Sadržaj</h2>
+  <ol>
+    <li><a href="#s0"><span class="n">00</span><span>Metodologija i pretpostavke</span></a></li>
+    <li><a href="#s1"><span class="n">01</span><span>Sažetak rješenja</span></a></li>
+    <li><a href="#s2"><span class="n">02</span><span>Izvori podataka</span></a></li>
+    <li><a href="#s3"><span class="n">03</span><span>Analitički model i taksonomija</span></a></li>
+    <li><a href="#s4"><span class="n">04</span><span>Bodovanje i pokazatelji</span></a></li>
+    <li><a href="#s5"><span class="n">05</span><span>Arhitektura i tijek podataka</span></a></li>
+    <li><a href="#s6"><span class="n">06</span><span>HTML dashboard</span></a></li>
+    <li><a href="#s7"><span class="n">07</span><span>PowerPoint prezentacija</span></a></li>
+    <li><a href="#s8"><span class="n">08</span><span>Model preporuka</span></a></li>
+    <li><a href="#s9"><span class="n">09</span><span>Privatnost i usklađenost</span></a></li>
+    <li><a href="#s10"><span class="n">10</span><span>Fazni plan implementacije</span></a></li>
+    <li><a href="#s11"><span class="n">11</span><span>Rizici i kontrola kvalitete</span></a></li>
+  </ol>
+</nav>
+
+<main>
+<section id="s0">
+  <div class="sec-head"><span class="num">00</span><h2 class="sec">Metodologija i ključne pretpostavke</h2></div>
+  <p class="lead">Agent ne mjeri „što ljudi misle o Slavonskom Brodu“. Mjeri <em>što je javno objavljeno</em> o Slavonskom Brodu u definiranom tjednu, na izvorima kojima je pristup besplatan i dopušten. Razlika je bitna i mora biti vidljiva u svakom izvještaju.</p>
+
+  <h4>Metodološki okvir u šest koraka</h4>
+  <ol>
+    <li><strong>Definiran okvir uzorkovanja.</strong> Registar izvora je eksplicitan i verzioniran; svaki nalaz je sljediv do izvora, datuma i poveznice.</li>
+    <li><strong>Relevantnost prije sentimenta.</strong> Objava prvo mora proći geo-filtar (odnosi li se doista na grad Slavonski Brod), pa tek onda ulazi u analizu.</li>
+    <li><strong>Aspektni sentiment, ne dokumentni.</strong> Jedna recenzija može hvaliti hranu i kuditi parking. Jedinica analize je <em>(objava × aspekt)</em>, ne objava.</li>
+    <li><strong>Odvojene ljestvice.</strong> Brojčane ocjene (zvjezdice) i sentiment pisanog teksta računaju se zasebno pa se tek onda kombiniraju s poznatim ponderom — nikad se ne miješaju u jedan neprozirni prosjek.</li>
+    <li><strong>Pouzdanost je dio rezultata.</strong> Svaki pokazatelj nosi veličinu uzorka, broj različitih izvora, interval pouzdanosti i oznaku pouzdanosti. Ispod praga se ne objavljuje ocjena, nego oznaka „nedovoljno podataka“.</li>
+    <li><strong>Ljudska provjera je ugrađena, ne naknadna.</strong> Tjedni stratificirani uzorak ide na ručnu provjeru; ispravci se vraćaju u model kao zlatni skup.</li>
+  </ol>
+
+  <h4>Pretpostavke koje treba potvrditi prije izgradnje</h4>
+  <div class="tw"><table>
+    <caption>Sve pretpostavke potvrđuju se mjerenjem u Fazi 0 (4 tjedna baseline-a). Ako se ne potvrde, mijenja se dizajn, ne interpretacija.</caption>
+    <thead><tr><th>Pretpostavka</th><th>Zašto je važna</th><th>Kako se provjerava</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Tjedni volumen je nizak</strong> — red veličine desetaka, ne tisuća stavki</td><td>Određuje veličinu prozora agregacije i to hoće li tjedni indeks po kategoriji uopće biti statistički smislen</td><td>Baseline brojanje po izvoru i kategoriji kroz 4 tjedna</td></tr>
+      <tr><td><strong>Recenzije su dominantno na hrvatskom</strong>, uz engleski, njemački i bosanski/srpski</td><td>Određuje izbor modela i potrebu za strojnim prijevodom</td><td>Distribucija jezika na baseline uzorku</td></tr>
+      <tr><td><strong>TZ ima pristup vlastitom eVisitor računu</strong></td><td>Jedini pouzdan kontekst za volumen dolazaka i noćenja</td><td>Potvrda s TZ-om; ručni ili poluautomatski izvoz</td></tr>
+      <tr><td><strong>Lokalni portali izlažu RSS ili WordPress REST</strong></td><td>Razlika između jednostavnog i skupog prikupljanja</td><td>Provjera <code>/feed</code>, <code>/wp-json/wp/v2/posts</code> i <code>robots.txt</code> po domeni</td></tr>
+      <tr><td><strong>Sezonalnost je izražena</strong> (Brodsko kolo, ljetni događaji, tranzit)</td><td>Bez korekcije, tjedna usporedba lažno signalizira „pad“ izvan sezone</td><td>Povijesna usporedba tek nakon 12 mjeseci rada; do tada eksplicitno ograničenje</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="panel flag">
+    <h4>Što ovaj dokument namjerno ne radi</h4>
+    <p>Ne navodi nijedan konkretan rezultat analize, ocjenu ili postotak za Slavonski Brod — takvi brojevi nastaju tek pokretanjem agenta. Svi brojevi u primjerima prikaza označeni su kao ilustrativni. Također ne predlaže nijedan postupak koji zaobilazi prijavu, paywall, tehničku zaštitu ili zabranu automatiziranog pristupa.</p>
+  </div>
+</section>
+
+<section id="s1">
+  <div class="sec-head"><span class="num">01</span><h2 class="sec">Sažetak predloženog rješenja</h2></div>
+  <p>Agent je tjedni paketni proces (<em>batch</em>), a ne servis koji radi neprekidno. Pokreće se rasporedom, prolazi kroz trinaest idempotentnih koraka i završava s dvije datoteke i jednom e-poštom. Nema korisničkog sučelja koje netko mora otvoriti da bi sustav radio — sučelje postoji samo za provjeru i ispravke.</p>
+
+  <div class="grid">
+    <div class="tile"><p class="k">Ritam</p><p class="v">ponedjeljak 06:00</p><p>Analizirano razdoblje: prethodni pon–ned. Trajanje obrade: ciljano ispod 30 minuta.</p></div>
+    <div class="tile"><p class="k">Sloj analize</p><p class="v">5 slojeva</p><p>Opći gradski sentiment, turističko iskustvo, gastronomija, smještaj, ostali elementi destinacije.</p></div>
+    <div class="tile"><p class="k">Indeksi</p><p class="v">2 + 8</p><p>Dva glavna indeksa (opći i turistički) te osam kategorijskih, svi na ljestvici 0–100.</p></div>
+    <div class="tile"><p class="k">Isporuka</p><p class="v">HTML + PPTX</p><p>Samostalni HTML izvještaj i prezentacija od 11 slajdova, oboje kao privitak e-pošte i na internom portalu.</p></div>
+  </div>
+
+  <h3>Kako izgleda jedan tjedni ciklus</h3>
+  <ol class="pipeline">
+    <li><span class="st">KORAK 01–03</span><b>Prikupljanje</b><span class="t">Registar izvora → sirovi zapisi → dedupikacija</span></li>
+    <li><span class="st">KORAK 04–05</span><b>Filtriranje</b><span class="t">Geo-relevantnost, jezik, prijevod, spam i botovi</span></li>
+    <li><span class="st">KORAK 06–08</span><b>Analiza</b><span class="t">Aspekti, sentiment, teme, povezivanje s objektima</span></li>
+    <li><span class="st">KORAK 09–11</span><b>Agregacija</b><span class="t">Indeksi, anomalije, nacrti preporuka</span></li>
+    <li><span class="st">KORAK 12–13</span><b>Isporuka</b><span class="t">HTML, PPTX, e-pošta, portal, zapis izvođenja</span></li>
+  </ol>
+
+  <h3>Sedam projektnih odluka koje oblikuju sve ostalo</h3>
+  <ul>
+    <li><strong>Besplatno i otvoreno gdje god je moguće.</strong> Cijela jezgra vrti se na GitHub Actions cron rasporedu, Pythonu i otvorenim modelima; plaćene komponente su opcionalne i jasno označene.</li>
+    <li><strong>Izvori su podatak, ne kôd.</strong> Novi izvor dodaje se YAML manifestom i (po potrebi) jednim adapterom — bez diranja pipeline-a.</li>
+    <li><strong>Sirovi sadržaj se ne pohranjuje ondje gdje uvjeti korištenja to zabranjuju.</strong> Za takve izvore pohranjuju se samo poveznica, datum, ocjena, izvedeni rezultati i hash teksta.</li>
+    <li><strong>Pseudonimizacija na ulazu.</strong> Identitet autora nikad ne ulazi u bazu u čitljivom obliku.</li>
+    <li><strong>Prag objave.</strong> Kategorijski indeks s manje od 15 jedinica analize prikazuje se kao „indikativno“, s manje od 5 kao „nedovoljno podataka“.</li>
+    <li><strong>Pomični prozori uz tjedni presjek.</strong> Za male kategorije objavljuje se i četverotjedni pomični prosjek, jer tjedni signal sam po sebi šumi.</li>
+    <li><strong>Svaka preporuka ima dokaz.</strong> Preporuka bez povezanog nalaza i pokazatelja ne ulazi u izvještaj.</li>
+  </ul>
+
+  <h3>Sloj isporuke u odnosu na postojeću infrastrukturu</h3>
+  <p>Ovaj repozitorij već ima dokazan obrazac: GitHub Actions cron, Node 20 dohvat s <code>fetch</code> uz <code>cheerio</code> i Playwright rezervom, te commit rezultata natrag u repozitorij (<code>scripts/scrape-valpovo.js</code>, <code>.github/workflows/scrape-valpovo.yml</code>). Taj obrazac preporučuje se zadržati za <em>sloj prikupljanja</em>, a analitičku jezgru dodati u Pythonu kao zaseban workflow. Time TZ dobiva funkcionalan sustav bez novog poslužitelja.</p>
+</section>
+
+<section id="s2">
+  <div class="sec-head"><span class="num">02</span><h2 class="sec">Popis i procjena izvora podataka</h2></div>
+  <p>Ocjena statusa odnosi se isključivo na <strong>besplatan i uvjetima dopušten automatizirani pristup</strong>. Izvor može biti vrijedan, a svejedno označen kao nedostupan — u tom slučaju je uz njega naveden dopušteni zamjenski izvor.</p>
+  <ul class="legend">
+    <li><span class="chip ok">✓ DOSTUPNO</span> besplatno i dopušteno za automatizaciju</li>
+    <li><span class="chip cond">! UVJETNO</span> besplatno uz kvotu, odobrenje ili pravnu provjeru</li>
+    <li><span class="chip no">✕ NEDOSTUPNO</span> plaćeno ili zabranjeno &mdash; koristi se alternativa</li>
+  </ul>
+
+  <h3>A. Mediji, portali i vijesti</h3>
+  <div class="tw"><table>
+    <thead><tr><th>Izvor</th><th>Vrsta podataka</th><th>Način pristupa</th><th>Ograničenja i uvjeti</th><th>Kvaliteta</th><th>Status</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">Lokalni portali<br><span class="note">SBplus, Brodportal, Posavska Hrvatska, Slavonski.hr i sl.</span></th><td>Vijesti o gradu, najave i izvještaji s događanja, komunalne teme</td><td>RSS (<code>/feed</code>) ili WordPress REST (<code>/wp-json/wp/v2/posts</code>); HTML dohvat samo ako feed ne postoji</td><td>Popis feedova i <code>robots.txt</code> provjeriti po domeni prije uključivanja; ograničiti na 1 zahtjev / 2 s; pohraniti sažetak i poveznicu, ne cijeli članak (autorsko pravo)</td><td>Visoka za teme, niska za sentiment posjetitelja &mdash; novinarski ton nije glas turista</td><td><span class="chip ok">✓</span></td></tr>
+      <tr><th scope="row">GDELT 2.0 DOC API</th><td>Globalni indeks medijskih objava s tonom i temama, uključuje hrvatske portale</td><td>Službeni javni API, bez ključa</td><td>Bez naplate; preporučeno ograničenje učestalosti; pokrivenost malih lokalnih portala je djelomična</td><td>Srednja &mdash; odlična za trend i anomalije, slabija za precizno lokalno pokrivanje</td><td><span class="chip ok">✓</span></td></tr>
+      <tr><th scope="row">Google News RSS</th><td>Naslovi i poveznice po upitu (npr. „Slavonski Brod“)</td><td>Javni RSS izlaz tražilice vijesti</td><td>Nije službeni API i nije pokriven ugovorom o razini usluge; koristiti samo naslov, datum i poveznicu; ne zaobilaziti paywall izvornih portala</td><td>Srednja &mdash; dobar sloj za otkrivanje, loš za dubinsku analizu</td><td><span class="chip cond">!</span></td></tr>
+      <tr><th scope="row">Nacionalni mediji (RSS)</th><td>Objave nacionalnog dosega koje spominju grad</td><td>Javni RSS feedovi</td><td>Često samo naslov i uvod; puni tekst iza paywalla se ne dohvaća</td><td>Visoka za mjerenje dosega i reputacijskog rizika</td><td><span class="chip ok">✓</span></td></tr>
+      <tr><th scope="row">Wikimedia Pageviews API</th><td>Dnevni broj pregleda članaka o gradu i znamenitostima</td><td>Službeni besplatni REST API</td><td>Bez ključa, uz razumnu učestalost; agregirani podaci</td><td>Visoka kao neizravni pokazatelj interesa, ne sentimenta</td><td><span class="chip ok">✓</span></td></tr>
+      <tr><th scope="row">Media Cloud</th><td>Arhiva medijskih objava i pretraga</td><td>API uz registraciju</td><td>Besplatno za istraživačku upotrebu; kvote i uvjeti ovise o računu</td><td>Srednja do visoka; pokrivenost hrvatskih izvora treba provjeriti</td><td><span class="chip cond">!</span></td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>B. Društvene mreže, forumi i javne objave</h3>
+  <div class="tw"><table>
+    <thead><tr><th>Izvor</th><th>Vrsta podataka</th><th>Način pristupa</th><th>Ograničenja i uvjeti</th><th>Kvaliteta</th><th>Status</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">YouTube Data API v3</th><td>Videozapisi o gradu, opisi, javni komentari</td><td>Službeni API, besplatna dnevna kvota jedinica</td><td>Kvota se troši po operaciji; komentari mogu biti isključeni; potrebna pseudonimizacija autora</td><td>Srednja &mdash; vrijedno za doživljaj događanja i vlogove posjetitelja</td><td><span class="chip ok">✓</span></td></tr>
+      <tr><th scope="row">Reddit API</th><td>Objave i rasprave (npr. zajednice o Hrvatskoj i Slavoniji)</td><td>Službeni API uz OAuth aplikaciju</td><td>Besplatni sloj namijenjen nekomercijalnoj upotrebi uz ograničenje zahtjeva u minuti; komercijalna upotreba traži poseban ugovor &mdash; obavezna pravna provjera statusa TZ-a</td><td>Srednja &mdash; rijetko, ali iskreno; dobar izvor za „neispolirani“ dojam</td><td><span class="chip cond">!</span></td></tr>
+      <tr><th scope="row">Bluesky (AT Protocol)</th><td>Javne objave i pretraga</td><td>Otvoreni javni API</td><td>Bez naplate; hrvatski volumen je nizak</td><td>Niska do srednja zbog volumena, visoka po dopuštenosti</td><td><span class="chip ok">✓</span></td></tr>
+      <tr><th scope="row">Mastodon (javne vremenske crte)</th><td>Javne objave po ključnim riječima</td><td>Javni API instanci</td><td>Bez naplate; poštovati pravila pojedine instance; vrlo nizak hrvatski volumen</td><td>Niska zbog volumena</td><td><span class="chip ok">✓</span></td></tr>
+      <tr><th scope="row">Facebook i Instagram &mdash; <em>vlastiti</em> kanali TZ-a</th><td>Doseg, reakcije, komentari na objavama TZ-a i Grada</td><td>Meta Graph API za stranice i poslovne račune kojima TZ upravlja</td><td>Zahtijeva pristanak vlasnika stranice; dopušteno jer je riječ o vlastitim podacima</td><td>Visoka &mdash; jedini pouzdan i dopušten uvid u reakcije na Meta platformama</td><td><span class="chip ok">✓</span></td></tr>
+      <tr><th scope="row">Facebook i Instagram &mdash; <em>tuđe</em> javne objave</th><td>Spominjanja grada izvan vlastitih kanala</td><td>Nema dopuštenog besplatnog puta nakon gašenja CrowdTanglea; Meta Content Library dostupna je samo odobrenim istraživačima</td><td>Struganje je protivno uvjetima korištenja &mdash; ne predlaže se ni u kojem obliku</td><td>&mdash;</td><td><span class="chip no">✕</span></td></tr>
+      <tr><th scope="row">X / Twitter</th><td>Kratke javne objave</td><td>API s plaćenim razinama; besplatna razina nema upotrebljiv opseg čitanja</td><td>Struganje protivno uvjetima</td><td>&mdash;</td><td><span class="chip no">✕</span></td></tr>
+      <tr><th scope="row">TikTok</th><td>Videozapisi i komentari</td><td>Research API namijenjen odobrenim akademskim ustanovama</td><td>TZ u pravilu ne ispunjava uvjete; alternativa je praćenje vlastitog računa</td><td>&mdash;</td><td><span class="chip no">✕</span></td></tr>
+      <tr><th scope="row">Javni forumi i blogovi</th><td>Duže rasprave o životu u gradu i putovanjima</td><td>Javni HTML uz obavezno poštovanje <code>robots.txt</code> i uvjeta foruma</td><td>Po forumu provjeriti dopuštenost automatiziranog dohvata; ne prikupljati sadržaj iza prijave</td><td>Srednja &mdash; bogat kontekst, ali visok udio šuma</td><td><span class="chip cond">!</span></td></tr>
+    </tbody>
+    <caption>Nadomjestak za nedostupne mreže: pojačati težinu recenzijskih platformi, YouTube komentara i vlastitih kanala, te uvesti first-party anketu (QR kod u turističkom uredu, objektima i na događanjima) koja je ujedno pravno najčišći izvor.</caption>
+  </table></div>
+
+  <h3>C. Recenzije i ocjene</h3>
+  <div class="tw"><table>
+    <thead><tr><th>Izvor</th><th>Vrsta podataka</th><th>Način pristupa</th><th>Ograničenja i uvjeti</th><th>Kvaliteta</th><th>Status</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">Google Places API (New)</th><td>Prosječna ocjena, broj ocjena i ograničen broj najnovijih recenzija po objektu</td><td>Službeni Google API s ključem</td><td>Mjesečni besplatni opseg po vrsti poziva, iznad toga naplata; <strong>Place Details vraća samo malen broj recenzija po objektu</strong>; ograničenja pohrane i obavezna atribucija; struganje Google Mapsa je zabranjeno</td><td>Visoka za ocjene i trend broja ocjena, <em>ograničena</em> za tekstualnu analizu zbog malog broja vraćenih recenzija</td><td><span class="chip cond">!</span></td></tr>
+      <tr><th scope="row">Tripadvisor Content API</th><td>Ocjena objekta, rang i kratki isječci recenzija</td><td>Službeni API uz odobrenje računa; besplatni mjesečni opseg poziva</td><td>Obavezna atribucija i poveznica natrag; ograničena pohrana i prikaz; struganje zabranjeno</td><td>Srednja &mdash; korisno za međunarodne posjetitelje, plitko po dubini teksta</td><td><span class="chip cond">!</span></td></tr>
+      <tr><th scope="row">Booking.com</th><td>Ocjene i recenzije smještaja</td><td>Demand API dostupan samo partnerima; nema javnog besplatnog pristupa</td><td>Struganje protivno uvjetima korištenja</td><td>&mdash;</td><td><span class="chip no">✕</span></td></tr>
+      <tr><th scope="row">Airbnb</th><td>Recenzije smještaja</td><td>Nema javnog API-ja</td><td>Struganje protivno uvjetima korištenja</td><td>&mdash;</td><td><span class="chip no">✕</span></td></tr>
+      <tr><th scope="row">Google Business Profile API</th><td>Pune recenzije i odgovori &mdash; ali samo za objekte kojima podnositelj upravlja</td><td>Službeni API uz vlasničku potvrdu</td><td>Dopušteno za profile TZ-a, turističkog ureda, muzeja i objekata koji se dobrovoljno uključe</td><td>Vrlo visoka za uključene objekte</td><td><span class="chip ok">✓</span></td></tr>
+      <tr><th scope="row">First-party anketa posjetitelja</th><td>Ocjene po dimenzijama, motiv dolaska, namjera povratka, slobodni komentar</td><td>Vlastiti obrazac (npr. otvoreni alat za ankete) s QR kodom</td><td>Potreban jasan pristanak i informacija o obradi; podaci su u vlasništvu TZ-a</td><td>Najviša &mdash; jedini izvor koji pokriva pitanja koja platforme ne postavljaju</td><td><span class="chip ok">✓</span></td></tr>
+    </tbody>
+    <caption>Zbog ograničenja recenzijskih platformi, model bodovanja odvaja <em>brojčane ocjene</em> (koje su široko dostupne i stabilne) od <em>tekstualnog sentimenta</em> (koji je uzorkovan i plići). Plan dopunjavanja: uključivanje ugostitelja i smještajnih objekata da sami podijele pristup svojim Business Profile recenzijama.</caption>
+  </table></div>
+
+  <h3>D. Službeni izvori, događanja i kontekst</h3>
+  <div class="tw"><table>
+    <thead><tr><th>Izvor</th><th>Vrsta podataka</th><th>Način pristupa</th><th>Ograničenja i uvjeti</th><th>Kvaliteta</th><th>Status</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">Stranice TZ-a i Grada Slavonskog Broda</th><td>Najave, kalendar događanja, priopćenja, komunalne obavijesti</td><td>RSS ili WordPress REST, isti obrazac koji ovaj repozitorij već koristi</td><td>Vlastiti i javni sadržaj; bez posebnih ograničenja</td><td>Vrlo visoka &mdash; referentni kalendar za povezivanje događanja i sentimenta</td><td><span class="chip ok">✓</span></td></tr>
+      <tr><th scope="row">Ustanove u kulturi i organizatori</th><td>Repertoar kazališta, muzejske izložbe, festivali i sportski termini</td><td>Javne stranice i javni kalendari</td><td>Strukturiranost varira; dio podataka samo u HTML-u ili plakatima</td><td>Srednja do visoka</td><td><span class="chip cond">!</span></td></tr>
+      <tr><th scope="row">eVisitor</th><td>Dolasci i noćenja po vrsti smještaja i tržištu</td><td>Nije javni API; TZ ima pristup podacima za svoje područje</td><td>Izvoz u dogovoru s TZ-om; podaci se koriste agregirano</td><td>Vrlo visoka &mdash; jedini pouzdan pokazatelj stvarnog volumena posjeta</td><td><span class="chip ok">✓</span></td></tr>
+      <tr><th scope="row">Državna statistika i otvoreni podaci</th><td>Turistički promet, demografija, gospodarski pokazatelji</td><td>Javne objave i portal otvorenih podataka</td><td>Kašnjenje u objavi; mjesečna ili godišnja granulacija</td><td>Visoka za kontekst, neupotrebljiva za tjedni signal</td><td><span class="chip ok">✓</span></td></tr>
+      <tr><th scope="row">OpenStreetMap / Overpass API</th><td>Registar objekata (ugostiteljstvo, smještaj, atrakcije) za povezivanje spominjanja s objektom</td><td>Besplatni javni API</td><td>Obavezna atribucija prema licenci ODbL; poštovati ograničenja učestalosti</td><td>Visoka kao kostur registra objekata</td><td><span class="chip ok">✓</span></td></tr>
+      <tr><th scope="row">Meteorološki podaci (npr. Open-Meteo)</th><td>Dnevne vremenske prilike za razdoblje analize</td><td>Besplatni API za nekomercijalnu upotrebu</td><td>Provjeriti uvjete za vrstu upotrebe</td><td>Visoka &mdash; ključna kontrolna varijabla: loše vrijeme objašnjava dio pada sentimenta o događanjima</td><td><span class="chip ok">✓</span></td></tr>
+      <tr><th scope="row">Google Trends</th><td>Relativni interes za pretraživanje pojmova</td><td>Nema službenog API-ja; nesluž. biblioteke su nestabilne i ograničene</td><td>Koristiti samo kao pomoćni signal uz jasnu ogradu, ili ručni tjedni izvoz</td><td>Niska pouzdanost automatizacije</td><td><span class="chip cond">!</span></td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="panel flag">
+    <h4>Realno očekivanje o pokrivenosti</h4>
+    <p>Za grad veličine Slavonskog Broda ukupan tjedni volumen javnih objava relevantnih za turizam bit će malen. Zato je sustav namjerno projektiran kao <strong>sustav ranog upozoravanja i praćenja trenda</strong>, a ne kao reprezentativno istraživanje javnog mnijenja. Svaki izvještaj to mora izrijekom navesti u poglavlju o metodologiji.</p>
+  </div>
+</section>
+<section id="s3">
+  <div class="sec-head"><span class="num">03</span><h2 class="sec">Analitički model i taksonomija tema</h2></div>
+  <p>Jedinica analize je <strong>aspektno spominjanje</strong>: par <em>(objava, aspekt)</em> s vlastitom polaritetnom ocjenom i pouzdanošću. Jedna recenzija restorana tipično proizvede tri do pet takvih spominjanja.</p>
+
+  <h3>3.1 Filtar relevantnosti — prije svake analize</h3>
+  <p>Naziv „Brod“ je višeznačan, pa se pogrešna klasifikacija događa prije nego što sentiment uopće dođe na red. Filtar radi u tri prolaza:</p>
+  <div class="tw"><table>
+    <thead><tr><th>Prolaz</th><th>Postupak</th><th>Ishod</th></tr></thead>
+    <tbody>
+      <tr><td class="num">1. Pravila</td><td>Rječnik pozitivnih okidača (Slavonski Brod, Brod na Savi, Tvrđava Brod, Brodsko kolo, Marsonia, Poloj, Korzo, Brodsko-posavska…) i negativnih (Bosanski Brod, Brod na Kupi, Slavonski Šamac, plovilo kao „brod“, Brod u BiH)</td><td>Jasno relevantno / jasno nerelevantno / dvojbeno</td></tr>
+      <tr><td class="num">2. Geo-veza</td><td>Podudaranje s registrom objekata (OSM + vlastiti registar TZ-a) po nazivu, adresi i koordinatama u krugu grada</td><td>Objava vezana uz konkretan objekt dobiva najviši stupanj sigurnosti</td></tr>
+      <tr><td class="num">3. Klasifikator</td><td>Za dvojbene slučajeve, model klasifikacije na temelju konteksta rečenice; ispod praga sigurnosti ide u ljudsku provjeru</td><td>Relevantno s ocjenom sigurnosti 0–1</td></tr>
+    </tbody>
+    <caption>Objave s ocjenom relevantnosti ispod 0,60 ne ulaze u indekse, ali se čuvaju i prikazuju u redu za provjeru — upravo tu se najbrže uči.</caption>
+  </table></div>
+
+  <h3>3.2 Taksonomija: 9 kategorija prve razine</h3>
+  <p>Prva razina je stabilna i nosi indekse. Druga razina je proširiva i služi za dijagnostiku i toplinsku mapu. Treća razina (konkretan objekt ili događaj) nastaje povezivanjem s registrom.</p>
+  <div class="tw"><table>
+    <thead><tr><th>Kategorija (L1)</th><th>Podteme (L2)</th><th>Tipični izvori</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">G &middot; Gastronomija</th><td>kvaliteta hrane; ponuda pića; autentičnost slavonske kuhinje; ljubaznost osoblja; brzina usluge; cijena i vrijednost; čistoća i ambijent; rješavanje prigovora; vegetarijanska i dijetalna ponuda; radno vrijeme</td><td>Recenzijske platforme, društvene mreže, anketa</td></tr>
+      <tr><th scope="row">S &middot; Smještaj</th><td>čistoća; udobnost i buka; lokacija; prijava i odjava; ljubaznost domaćina; sadržaji (wi-fi, parking, doručak, klima); cijena i vrijednost; ponavljajući kvarovi; točnost oglasa</td><td>Recenzijske platforme, anketa, vlastiti kanali</td></tr>
+      <tr><th scope="row">A &middot; Atrakcije i baština</th><td>Tvrđava Brod; šetnica uz Savu; spomenička baština; muzejski i galerijski sadržaji; interpretacija i vodstva; radno vrijeme i ulaznice; ponuda na stranim jezicima; suveniri</td><td>Recenzije, mediji, YouTube, anketa</td></tr>
+      <tr><th scope="row">D &middot; Događanja</th><td>program i izvođači; organizacija; gužve i redovi; ozvučenje i tehnika; cijene na događanju; sanitarni čvorovi; sigurnost; informiranost o programu; sadržaj za djecu</td><td>Mediji, društvene mreže, vlastiti kanali</td></tr>
+      <tr><th scope="row">K &middot; Komunalno i javni prostor</th><td>čistoća ulica; zelene površine; javni WC; rasvjeta; odvoz otpada; održavanje pločnika; javne fontane i klupe</td><td>Lokalni mediji, forumi, društvene mreže</td></tr>
+      <tr><th scope="row">P &middot; Promet i parking</th><td>dostupnost parkinga; naplata i zone; gužve i regulacija; biciklističke staze; javni gradski prijevoz; dolazak autobusom i vlakom; tranzit i granični prijelaz</td><td>Lokalni mediji, forumi, recenzije</td></tr>
+      <tr><th scope="row">B &middot; Sigurnost</th><td>percepcija sigurnosti danju i noću; incidenti; prometna sigurnost; sigurnost na događanjima; rasvjeta i nadzor</td><td>Mediji (crna kronika), forumi, recenzije</td></tr>
+      <tr><th scope="row">I &middot; Informacije i pristupačnost</th><td>turistička signalizacija; turistički ured; web i jezične verzije; pristupačnost osobama s invaliditetom; ponuda za obitelji s djecom; ponuda za mlade; ponuda za starije; ljubimci; plaćanje karticom</td><td>Recenzije, anketa, društvene mreže</td></tr>
+      <tr><th scope="row">O &middot; Opći gradski sentiment</th><td>gospodarstvo i radna mjesta; demografija i iseljavanje; gradska uprava i projekti; infrastrukturni zahvati; zdravstvo i obrazovanje; imidž i reputacija grada</td><td>Mediji, forumi, društvene mreže</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>3.3 Sloj 2 — sentiment turističkog iskustva</h3>
+  <p>Objava ulazi u turistički sloj samo ako je klasificirana kao <em>iskustvo posjetitelja</em> (autor opisuje posjet, boravak ili uslugu koju je koristio), a ne kao novinarski ili administrativni tekst. Za takve objave dodatno se izvlači:</p>
+  <dl class="spec">
+    <dt>Tip posjetitelja</dt><dd>Obitelj, par, samostalni putnik, grupa, poslovni posjetitelj, tranzit — samo kada je eksplicitno navedeno ili jasno impliciran. Inače „nepoznato“; nagađanje je zabranjeno.</dd>
+    <dt>Motiv dolaska</dt><dd>Tranzit i usputno zaustavljanje, kulturni izlet, događanje ili festival, sport, posjet rodbini i prijateljima, poslovni razlog, priroda i rijeka Sava.</dd>
+    <dt>Faza putovanja</dt><dd>Prije dolaska (informiranje, rezervacija), dolazak i orijentacija, boravak, odlazak, nakon posjeta (preporuka). Omogućuje kartu pozitivnih i negativnih trenutaka.</dd>
+    <dt>Namjera povratka</dt><dd>Izraz namjere ponovnog dolaska ili preporuke drugima: potvrdna, niječna, uvjetna, neizražena.</dd>
+    <dt>Neispunjeno očekivanje</dt><dd>Eksplicitni jaz između očekivanog i doživljenog — najvrjedniji ulaz u preporuke jer izravno pokazuje što nedostaje.</dd>
+  </dl>
+
+  <h3>3.4 Obrada i kvaliteta podataka</h3>
+  <div class="tw"><table>
+    <thead><tr><th>Postupak</th><th>Kako</th><th>Kontrola</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">Prepoznavanje jezika</th><td>Statistički identifikator jezika na razini objave; poseban oprez kod kratkih tekstova i kod razlikovanja hrvatskog od bosanskog i srpskog</td><td>Ispod 30 znakova ili ispod praga sigurnosti → oznaka „jezik nesiguran“ i snižena težina</td></tr>
+      <tr><th scope="row">Strojni prijevod</th><td>Prevodi se samo ono što model sentimenta ne pokriva izravno; hrvatski, bosanski i srpski obrađuju se izvorno, bez prijevoda</td><td>Prijevod se pohranjuje uz izvornik; rezultat nosi oznaku „preko prijevoda“ i faktor pouzdanosti 0,9</td></tr>
+      <tr><th scope="row">Dedupikacija</th><td>Tri razine: identičan URL i hash teksta; gotovo identičan tekst (SimHash / MinHash); semantička sličnost ugrađivanja iznad 0,92 uz isti objekt i blizak datum</td><td>Zadržava se najraniji zapis; ostali se vezuju kao duplikati radi mjerenja dosega</td></tr>
+      <tr><th scope="row">Stare recenzije prikazane iznova</th><td>Ključ jedinstvenosti je <em>(izvor, objekt, hash autora, datum objave recenzije)</em>, nikad datum dohvata. Recenzija se broji u tjedan svoje objave, ne u tjedan kad ju je API vratio</td><td>Tjedni izvještaj izrijekom razdvaja „nove u ovom tjednu“ od „prvi put viđene, ali starije“</td></tr>
+      <tr><th scope="row">Spam, botovi i promocija</th><td>Heuristike: ponavljanje istog teksta na više objekata, ekstremne ocjene bez teksta, gust splet poveznica, novi računi s naglom aktivnošću, promotivni obrasci</td><td>Označeno kao sumnjivo → isključeno iz indeksa, zadržano u evidenciji; udio isključenog prikazuje se u izvještaju</td></tr>
+      <tr><th scope="row">Ironija i mješoviti sentiment</th><td>Detektor suprotnosti (pohvala + negacija, tipični hrvatski ironijski obrasci, npr. „baš super…“ uz negativni kontekst), rečenična segmentacija za mješovite slučajeve</td><td>Označeno kao „mješovito“ ili „ironija moguća“ uz faktor pouzdanosti 0,6; prioritet u uzorku za ljudsku provjeru</td></tr>
+      <tr><th scope="row">Dokazna osnova</th><td>Za svako spominjanje pohranjuju se: poveznica, datum objave, izvor, kategorija, podtema, polaritet, pouzdanost i sažetak od najviše 25 riječi</td><td>Bez potpune dokazne osnove nalaz se ne može pojaviti u izvještaju</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section id="s4">
+  <div class="sec-head"><span class="num">04</span><h2 class="sec">Model bodovanja i pokazatelji</h2></div>
+  <p>Cilj je prozirnost: svaka ocjena u izvještaju mora se moći ručno reproducirati iz pohranjenih spominjanja. Nema skrivenih koeficijenata.</p>
+
+  <h3>4.1 Težina pojedinog spominjanja</h3>
+  <div class="panel formula"><pre>
+<b>w_i</b> = c_i · f_i · q_i · r_i · a_i
+
+ c_i  pouzdanost modela         0,0–1,0   (× 0,9 ako je preko prijevoda, × 0,6 ako je označena ironija)
+ f_i  svježina                  0,5^(starost_u_danima / 21)   — poluvrijeme 21 dan, samo za pomične prosjeke
+ q_i  kvaliteta izvora          0,4–1,0   (vidi tablicu niže)
+ r_i  doseg                     min(2,0 ; 1 + log10(1 + doseg_i / medijan_dosega))
+ a_i  autentičnost              1,0 uobičajeno; 0,0 za označen spam ili bot
+</pre></div>
+  <div class="tw"><table>
+    <thead><tr><th>Razred izvora</th><th>q_i</th><th>Obrazloženje</th></tr></thead>
+    <tbody>
+      <tr><td>First-party anketa, vlastiti Business Profile</td><td class="num">1,00</td><td>Provjeren identitet konteksta, poznata metodologija</td></tr>
+      <tr><td>Recenzije na velikim platformama</td><td class="num">0,90</td><td>Vezane uz stvarni posjet, ali podložne manipulaciji</td></tr>
+      <tr><td>Lokalni i nacionalni mediji</td><td class="num">0,80</td><td>Uredničku odgovornost ima izdavač, ali to je glas medija, ne posjetitelja</td></tr>
+      <tr><td>Komentari na videozapisima, javne objave</td><td class="num">0,65</td><td>Autentično, ali neujednačeno i teško provjerljivo</td></tr>
+      <tr><td>Forumi i blogovi</td><td class="num">0,55</td><td>Visok kontekst, nizak nadzor</td></tr>
+      <tr><td>Agregatori (indeks vijesti)</td><td class="num">0,40</td><td>Najčešće samo naslov; sklon ponavljanju istog sadržaja</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>4.2 Dvije odvojene ljestvice, pa spoj</h3>
+  <div class="panel formula"><pre>
+<b>Tekstualni sentiment</b> (uvijek dostupan)
+  S_k  = Σ(w_i · p_i) / Σ(w_i)              p_i ∈ [-1, +1], winsoriziran na 5. i 95. percentil
+  TS_k = 50 · (S_k + 1)                      → 0–100
+
+<b>Brojčane ocjene</b> (samo gdje postoje: gastronomija, smještaj, atrakcije)
+  R_k  = (n_k · prosjek_k + m · μ_k) / (n_k + m)      m = 20, μ_k = povijesni prosjek kategorije
+  RS_k = 100 · (R_k − min) / (max − min)              ljestvica 1–5 ili 1–10, normalizirana
+
+<b>Kategorijski indeks</b>
+  INDEX_k = α_k · RS_k + (1 − α_k) · TS_k
+  α = 0,50  gastronomija, smještaj        (ocjene su brojne i stabilne)
+  α = 0,35  atrakcije                     (manje ocjena)
+  α = 0,00  komunalno, promet, sigurnost, informacije, opći sentiment  (nema ocjena)
+</pre></div>
+  <p><em>Bayesovo stezanje</em> s pretpostavljenim brojem <code>m = 20</code> znači: objekt s tri recenzije ne može sam odskočiti na vrh ili dno ljestvice — njegov prosjek se povlači prema povijesnom prosjeku kategorije dok ne skupi dovoljno ocjena. Vrijednost <code>m</code> kalibrira se nakon prvog tromjesečja prema stvarnoj disperziji.</p>
+
+  <h3>4.3 Zaštite od iskrivljenja malim brojem ekstrema</h3>
+  <ul>
+    <li><strong>Winsorizacija</strong> polariteta na 5. i 95. percentil unutar kategorije i tjedna.</li>
+    <li><strong>Kvota po autoru:</strong> najviše jedno spominjanje po autoru, objektu i kategoriji u tjednu.</li>
+    <li><strong>Kvota po objektu:</strong> jedan objekt ne smije nositi više od 25 % ukupne težine kategorije; višak se proporcionalno smanjuje.</li>
+    <li><strong>Kvota po izvoru:</strong> jedan izvor ne smije nositi više od 40 % ukupne težine kategorije.</li>
+    <li><strong>Pragovi objave:</strong> <code>n ≥ 15</code> → puna ocjena; <code>5 ≤ n &lt; 15</code> → oznaka „indikativno“ i ocjena u zagradi; <code>n &lt; 5</code> → „nedovoljno podataka“, bez broja.</li>
+    <li><strong>Interval pouzdanosti:</strong> 90 % interval procijenjen bootstrapom (1000 ponavljanja). Ako se intervali dvaju tjedana preklapaju, promjena se <em>ne</em> opisuje kao trend.</li>
+  </ul>
+
+  <h3>4.4 Glavni indeksi</h3>
+  <div class="panel formula"><pre>
+<b>TSI — Turistički sentiment</b> (samo objave klasificirane kao iskustvo posjetitelja)
+  TSI = 0,20·G + 0,20·S + 0,18·A + 0,12·D + 0,10·P + 0,08·K + 0,07·I + 0,05·B
+
+<b>OSG — Opći sentiment grada</b> (sve relevantne javne objave, uključujući neturističke)
+  OSG = 0,40·O + 0,20·K + 0,15·P + 0,10·B + 0,15·(D+A)/2
+
+Kategorija bez dovoljno podataka izbacuje se iz zbroja, a preostali ponderi
+se <b>renormaliziraju na 1,00</b>. Izvještaj tada navodi koje su kategorije izostavljene.
+</pre></div>
+
+  <h3>4.5 Usporedbe, trend i anomalije</h3>
+  <div class="tw"><table>
+    <thead><tr><th>Pokazatelj</th><th>Definicija</th><th>Prikaz u izvještaju</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">Δ tjedan</th><td>INDEX(T) − INDEX(T−1)</td><td>Bodovi uz strelicu i riječ (raste / pada / bez promjene) — nikad samo boja</td></tr>
+      <tr><th scope="row">Δ 4 tjedna</th><td>INDEX(T) − prosjek(T−1…T−4), uz primijenjenu svježinu</td><td>Glavni signal za male kategorije</td></tr>
+      <tr><th scope="row">Δ povijesno</th><td>Odstupanje od istog tjedna prethodne godine ili od cjelokupnog dostupnog prosjeka</td><td>Dostupno tek nakon 12 mjeseci; do tada eksplicitno „nije dostupno“</td></tr>
+      <tr><th scope="row">Udio negativnih</th><td>Težinski udio spominjanja s p_i &lt; −0,2, s Wilsonovim intervalom</td><td>Osjetljiviji rani signal od prosjeka</td></tr>
+      <tr><th scope="row">Anomalija razine</th><td>Robustna z-vrijednost prema medijanu i MAD-u na 8 tjedana; okidač |z| &gt; 2,5</td><td>Automatsko upozorenje</td></tr>
+      <tr><th scope="row">Anomalija volumena</th><td>Volumen &gt; 3 × medijan zadnjih 8 tjedana ili Poissonov test p &lt; 0,01</td><td>Upozorenje „nagli porast spominjanja“</td></tr>
+      <tr><th scope="row">Skok negativnosti</th><td>Porast udjela negativnih za više od 15 postotnih bodova uz n ≥ 10</td><td>Krizni signal, najviši prioritet</td></tr>
+      <tr><th scope="row">Ocjena pouzdanosti</th><td>Funkcija veličine uzorka, broja različitih izvora i širine intervala → visoka / srednja / niska</td><td>Oznaka uz svaki indeks</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="panel flag">
+    <h4>Pravilo tumačenja</h4>
+    <p>Promjena indeksa manja od 3 boda, ili promjena unutar preklapajućih intervala pouzdanosti, opisuje se kao <strong>stabilno</strong>. Agent ne smije proizvesti rečenicu o trendu koju podaci ne podnose — to je češći način gubitka povjerenja u ovakav sustav od bilo koje tehničke pogreške.</p>
+  </div>
+</section>
+<section id="s5">
+  <div class="sec-head"><span class="num">05</span><h2 class="sec">Tehnička arhitektura i tijek podataka</h2></div>
+  <p>Načelo: <strong>trinaest koraka, svaki idempotentan i ponovljiv</strong>. Svaki korak čita iz baze, piše u bazu i bilježi se u evidenciju izvođenja. Ako korak 07 padne, ponavlja se samo on — ne cijeli tjedan.</p>
+
+  <h3>5.1 Koraci obrade</h3>
+  <div class="tw"><table>
+    <thead><tr><th>#</th><th>Korak</th><th>Ulaz → izlaz</th><th>Ponašanje pri pogrešci</th></tr></thead>
+    <tbody>
+      <tr><td class="num">01</td><td>Prikupljanje</td><td>Registar izvora → <code>raw_item</code></td><td>Izvor koji padne ne ruši izvođenje; bilježi se kao „izvor nedostupan“ i ulazi u upozorenje</td></tr>
+      <tr><td class="num">02</td><td>Normalizacija</td><td><code>raw_item</code> → <code>item</code> (jedinstvena shema)</td><td>Neparsabilan zapis ide u karantenu s razlogom</td></tr>
+      <tr><td class="num">03</td><td>Dedupikacija</td><td><code>item</code> → <code>item.duplicate_of</code></td><td>Kod dvojbe zadržava se zapis, ne briše</td></tr>
+      <tr><td class="num">04</td><td>Relevantnost</td><td><code>item</code> → <code>relevance_score</code></td><td>Ispod praga → red za provjeru</td></tr>
+      <tr><td class="num">05</td><td>Jezik i prijevod</td><td><code>item</code> → <code>lang</code>, <code>text_en</code></td><td>Bez prijevoda → obrada izvornim višejezičnim modelom uz nižu težinu</td></tr>
+      <tr><td class="num">06</td><td>Aspektna segmentacija</td><td><code>item</code> → <code>mention</code> (objava × aspekt)</td><td>Ako nijedan aspekt nije prepoznat → kategorija „nesvrstano“</td></tr>
+      <tr><td class="num">07</td><td>Sentiment</td><td><code>mention</code> → <code>polarity</code>, <code>confidence</code></td><td>Ponavljanje koraka; kod trajnog pada koristi se pričuvni model</td></tr>
+      <tr><td class="num">08</td><td>Povezivanje s objektom</td><td><code>mention</code> → <code>poi_id</code></td><td>Nepovezano ostaje na razini kategorije</td></tr>
+      <tr><td class="num">09</td><td>Agregacija</td><td><code>mention</code> → <code>index_weekly</code></td><td>Poštuje pragove objave</td></tr>
+      <tr><td class="num">10</td><td>Anomalije</td><td><code>index_weekly</code> → <code>alert</code></td><td>&mdash;</td></tr>
+      <tr><td class="num">11</td><td>Nacrti preporuka</td><td><code>alert</code> + <code>mention</code> → <code>recommendation</code></td><td>Uvijek prolazi kroz ljudsku potvrdu prije slanja</td></tr>
+      <tr><td class="num">12</td><td>Izrada izvještaja</td><td>Predložak → HTML + PPTX</td><td>Pad izrade PPTX-a ne blokira slanje HTML-a</td></tr>
+      <tr><td class="num">13</td><td>Isporuka</td><td>E-pošta + interni portal</td><td>Neuspjelo slanje ponavlja se tri puta, pa se eskalira administratoru</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>5.2 Tehnološki izbori</h3>
+  <div class="tw"><table>
+    <thead><tr><th>Komponenta</th><th>Preporuka</th><th>Alternativa</th><th>Napomena</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">Raspoređivač</th><td>GitHub Actions <code>schedule</code> (cron), isti obrazac kao postojeći workflow u ovom repozitoriju</td><td>Prefect (besplatni sloj), n8n, systemd timer na VPS-u</td><td>Nula troška i nula održavanja poslužitelja; ograničenje su minute izvođenja na privatnim repozitorijima</td></tr>
+      <tr><th scope="row">Prikupljanje</th><td>Node 20 adapteri (<code>fetch</code> + <code>cheerio</code>, Playwright samo iznimno) — nastavak postojećeg koda</td><td>Python + <code>httpx</code> + <code>selectolax</code>; Scrapy za veći opseg</td><td>Playwright samo kada stranica bez JS-a ne daje sadržaj; nikad za zaobilaženje zaštite</td></tr>
+      <tr><th scope="row">Registar izvora</th><td>YAML manifest po izvoru (<code>sources/*.yaml</code>) + tipizirani adapteri: <code>rss</code>, <code>wp_rest</code>, <code>json_api</code>, <code>html</code></td><td>JSON shema u bazi s uređivanjem kroz sučelje</td><td>Ključ proširivosti: novi portal = nova datoteka, bez izmjene pipeline-a</td></tr>
+      <tr><th scope="row">Baza</th><td>PostgreSQL (npr. besplatni upravljani sloj) s <code>pgvector</code> za semantičku dedupikaciju</td><td>SQLite ili DuckDB uz datoteku u repozitoriju — dovoljno za očekivani volumen</td><td>Pri niskom volumenu DuckDB je legitiman izbor i pojednostavljuje sve</td></tr>
+      <tr><th scope="row">Sirovi zapisi</th><td>Komprimirani JSONL po izvođenju, u objektnoj pohrani s besplatnim slojem</td><td>Zapis u repozitorij (obrazac koji projekt već koristi)</td><td>Retencija 90 dana; za izvore s ograničenjem pohrane čuva se samo hash i metapodaci</td></tr>
+      <tr><th scope="row">Prepoznavanje jezika</th><td>Kompaktni statistički identifikator jezika (npr. fastText model za identifikaciju jezika)</td><td><code>lingua-py</code> za kratke tekstove, CLD3</td><td>Razlikovanje hr/bs/sr je nesigurno — tretirati ih kao jednu jezičnu skupinu za obradu</td></tr>
+      <tr><th scope="row">Prijevod</th><td>Otvoreni prijevodni modeli lokalno (obitelj Opus-MT ili NLLB), bez slanja podataka trećoj strani</td><td>Samostalno postavljen LibreTranslate</td><td>Prevodi se samo ono što je nužno; izvornik se uvijek čuva</td></tr>
+      <tr><th scope="row">Sentiment (hr/bs/sr)</th><td>Model iz obitelji BERTić za južnoslavenske jezike, fino podešen na javno dostupnom hrvatskom skupu za sentiment + vlastiti zlatni skup</td><td>Višejezični XLM-R sentiment model; leksički pristup samo kao pričuva</td><td>Točan naziv kontrolne točke modela potvrditi pri implementaciji; obavezna evaluacija na vlastitom skupu prije produkcije</td></tr>
+      <tr><th scope="row">Aspektna analiza</th><td>Veliki jezični model s ograničenim izlazom u JSON shemu, pokrenut lokalno (npr. preko Ollame)</td><td>Pravila + ključne riječi po podtemi; plaćeni API model ako TZ odobri trošak</td><td>Lokalno pokretanje rješava i trošak i privatnost; sporije, ali volumen je malen</td></tr>
+      <tr><th scope="row">Teme i grupiranje</th><td>BERTopic nad višejezičnim ugradbenim vektorima</td><td>Grupiranje ključnih riječi, LDA</td><td>Pri malom volumenu grupiranje se radi na četverotjednom prozoru, ne tjedno</td></tr>
+      <tr><th scope="row">Dedupikacija</th><td>SimHash i MinHash (<code>datasketch</code>) + kosinusna sličnost ugradbenih vektora</td><td>Samo hash teksta za MVP</td><td>Prag sličnosti 0,92 kalibrirati na stvarnim podacima</td></tr>
+      <tr><th scope="row">Agregacija</th><td>pandas ili DuckDB SQL, s formulama u jednom modulu</td><td>Čisti SQL pogledi u bazi</td><td>Formule moraju biti na jednom mjestu i pokrivene testovima</td></tr>
+      <tr><th scope="row">HTML izvještaj</th><td>Jinja2 predložak + Apache ECharts ugrađen u datoteku (jedna samostalna datoteka)</td><td>Plotly s ugrađenim prikazom; Chart.js</td><td>Samostalna datoteka radi i kao privitak e-pošte, bez interneta</td></tr>
+      <tr><th scope="row">PPTX</th><td><code>python-pptx</code> uz korporativni predložak TZ-a (<code>.potx</code>)</td><td>Marp ili reveal.js → izvoz; LibreOffice u konzolnom načinu za pretvorbu</td><td><code>python-pptx</code> daje stvarno uredive slajdove, ne slike</td></tr>
+      <tr><th scope="row">Isporuka</th><td>SMTP iz workflowa; objava na internom portalu (GitHub Pages ili postojeći Vercel projekt) uz zaštitu pristupa</td><td>Besplatni sloj servisa za slanje e-pošte</td><td>Privitci: HTML + PPTX; u tijelu poruke pet najvažnijih uvida</td></tr>
+      <tr><th scope="row">Ljudska provjera</th><td>Streamlit aplikacija: red za provjeru, ispravak oznake, potvrda preporuka</td><td>FastAPI + HTMX; u krajnjoj nuždi tablica u proračunskoj tablici</td><td>Svaki ispravak sprema se kao zlatna oznaka s autorom i vremenom</td></tr>
+      <tr><th scope="row">Nadzor</th><td>Tablica <code>run_log</code> + vanjski „dead man's switch“ servis + e-pošta administratoru</td><td>Sentry (besplatni sloj) za iznimke</td><td>Nedostatak izvještaja u ponedjeljak mora proizvesti obavijest, a ne tišinu</td></tr>
+      <tr><th scope="row">Tajne</th><td>GitHub Actions Secrets</td><td>Upravitelj tajni odabranog pružatelja</td><td>Nijedan ključ ne smije završiti u repozitoriju ni u izvještaju</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>5.3 Model podataka</h3>
+  <div class="panel formula"><pre>
+<b>source</b>        id, naziv, tip(rss|wp_rest|json_api|html|survey), url, razred_kvalitete q,
+              aktivan, robots_provjeren_dana, uvjeti_biljeska, dopusta_pohranu_teksta(bool)
+
+<b>raw_item</b>      id, source_id, run_id, dohvat_ts, payload(jsonb), payload_hash
+
+<b>item</b>          id, raw_item_id, source_id, url, objavljeno_ts, naslov, tekst?, tekst_hash,
+              autor_pseudonim, jezik, jezik_sigurnost, prijevod_en?, doseg?, ocjena?, ocjena_ljestvica?,
+              relevantnost, duplicate_of, spam_flag, is_visitor_experience, karantena_razlog?
+
+<b>poi</b>           id, naziv, tip(restoran|smjestaj|atrakcija|dogadanje|javni_prostor),
+              osm_id?, lat, lon, aliasi[]
+
+<b>mention</b>       id, item_id, poi_id?, kategorija_l1, podtema_l2, polaritet(-1..1), pouzdanost,
+              mjesovito(bool), ironija_flag, citat_sazetak(≤25 rijeci), tezina_w, gold_label?
+
+<b>event</b>         id, naziv, datum_od, datum_do, tip, izvor_url        → vezanje sentimenta na događanje
+
+<b>index_weekly</b>  tjedan_iso, kljuc(TSI|OSG|G|S|A|D|K|P|B|I), vrijednost, n, broj_izvora,
+              ci_lo, ci_hi, pouzdanost(vis|sred|nis), delta_1t, delta_4t, delta_yoy?
+
+<b>alert</b>         id, tjedan_iso, tip(razina|volumen|negativnost|izvor_nedostupan), kategorija,
+              ozbiljnost(hitno|visoko|srednje), obrazlozenje, dokazi[](mention_id)
+
+<b>recommendation</b> id, tjedan_iso, nalaz_id, horizont(hitno|takticko|strateski), prioritet,
+              opis, dokaz, aktivnost, ucinak, slozenost, nositelj, rok, kpi, status_potvrde
+
+<b>run_log</b>       run_id, korak, pocetak, kraj, status, broj_zapisa, poruka_greske?
+
+<b>gold_sample</b>   mention_id, tjedan_iso, ljudska_oznaka, model_oznaka, ocjenjivac, ts
+</pre></div>
+
+  <h3>5.4 Dodavanje novog izvora bez izmjene sustava</h3>
+  <div class="panel formula"><pre>
+# sources/sbplus.yaml  — primjer manifesta
+id: portal_primjer
+naziv: "Lokalni portal (primjer)"
+tip: rss
+url: "https://primjer.hr/feed/"
+razred_kvalitete: 0.80
+dopusta_pohranu_teksta: false     # čuvamo sažetak i poveznicu, ne cijeli članak
+robots_provjeren: 2026-09-11
+ogranicenje: { zahtjeva_u_minuti: 30 }
+mapiranje:
+  objavljeno_ts: pubDate
+  naslov: title
+  tekst: description
+  url: link
+filtri:
+  mora_sadrzavati: ["Slavonski Brod", "Brod", "Brodsko-posavsk"]
+</pre></div>
+  <p>Uključivanje izvora znači: (1) dodati manifest, (2) pokrenuti provjeru u testnom načinu, (3) ručno ocijeniti uzorak od 30 zapisa, (4) postaviti <code>aktivan: true</code>. Tek tada izvor utječe na indekse — i to od sljedećeg tjedna, kako promjena okvira uzorkovanja ne bi izgledala kao promjena sentimenta. Ta činjenica bilježi se u izvještaju kao <em>promjena metodologije</em>.</p>
+</section>
+
+<section id="s6">
+  <div class="sec-head"><span class="num">06</span><h2 class="sec">Prijedlog HTML dashboarda</h2></div>
+  <p>Jedna samostalna HTML datoteka, bez vanjskih ovisnosti, čitljiva na mobitelu i u pregledniku e-pošte. Redoslijed sekcija slijedi način na koji se izvještaj zaista čita: prvo zaključak, zatim brojke, pa dokazi, pa zadaci.</p>
+
+  <div class="tw"><table>
+    <thead><tr><th>#</th><th>Sekcija</th><th>Sadržaj</th><th>Prikaz</th></tr></thead>
+    <tbody>
+      <tr><td class="num">1</td><td>Izvršni sažetak</td><td>5–7 uvida, svaki jedna rečenica + pokazatelj + poveznica na dokaz</td><td>Numerirana lista s oznakom smjera (▲ ▼ ■) i riječju, ne samo bojom</td></tr>
+      <tr><td class="num">2</td><td>Indeksi</td><td>TSI i OSG + osam kategorijskih, s n, brojem izvora i ocjenom pouzdanosti</td><td>Red pločica; ispod svake tanka traka s intervalom pouzdanosti</td></tr>
+      <tr><td class="num">3</td><td>Promjene</td><td>Δ tjedan, Δ 4 tjedna, Δ povijesno (kad postane dostupno)</td><td>Tablica s tabularnim brojkama i tekstualnom oznakom stanja</td></tr>
+      <tr><td class="num">4</td><td>Trendovi</td><td>Krivulje indeksa kroz 12 tjedana, s osjenčanim pojasom pouzdanosti</td><td>Linijski grafikoni, naglašena zadnja točka, os s imenovanim vrijednostima</td></tr>
+      <tr><td class="num">5</td><td>Toplinska mapa</td><td>Kategorije × tjedni, s brojem u svakoj ćeliji</td><td>Divergentna paleta <em>uz obavezan broj u ćeliji</em> — nikad samo boja</td></tr>
+      <tr><td class="num">6</td><td>Teme</td><td>Top 5 pozitivnih i top 5 negativnih tema, s volumenom i promjenom</td><td>Dva stupca, vodoravne trake</td></tr>
+      <tr><td class="num">7</td><td>Citati</td><td>Anonimizirani citat ili parafraza (≤25 riječi), datum, izvor, poveznica ako je dopuštena</td><td>Kartice s oznakom polariteta u riječi i simbolu</td></tr>
+      <tr><td class="num">8</td><td>Rizici i upozorenja</td><td>Nova upozorenja s ozbiljnošću, dokazima i preporučenim rokom reakcije</td><td>Popis s bočnom trakom ozbiljnosti + tekstualna oznaka</td></tr>
+      <tr><td class="num">9</td><td>Događanja</td><td>Događanja u tjednu, volumen spominjanja i sentiment prije/tijekom/poslije, uz vremensku prognozu kao kontrolu</td><td>Vremenska crta s oznakama</td></tr>
+      <tr><td class="num">10</td><td>Preporuke</td><td>Tri odvojena bloka: hitno, taktički (7–30 dana), strateški (3–12 mjeseci)</td><td>Tablica s prioritetom, nositeljem, rokom i KPI-jem</td></tr>
+      <tr><td class="num">11</td><td>Metodologija</td><td>Izvori, veličine uzorka, isključeno kao spam, promjene metodologije, ograničenja</td><td>Sklopivi odjeljak, uvijek prisutan, nikad skriven</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>Shema rasporeda</h3>
+  <div class="mock" role="img" aria-label="Shematski prikaz rasporeda dashboarda s pločicama indeksa i toplinskom mapom; sve vrijednosti su ilustrativne">
+    <div class="mock-bar"><span>Tjedni izvještaj &middot; tjedan 00/0000</span><span>ILUSTRATIVNI PRIKAZ RASPOREDA</span></div>
+    <div class="mock-body">
+      <div class="mock-row">
+        <div class="gauge"><span class="lab">TSI &mdash; turistički</span><span class="val">00</span><span class="d flat">■ 0,0</span><div class="bar"><i style="width:62%"></i></div></div>
+        <div class="gauge"><span class="lab">OSG &mdash; opći</span><span class="val">00</span><span class="d flat">■ 0,0</span><div class="bar"><i style="width:55%"></i></div></div>
+        <div class="gauge"><span class="lab">Gastronomija</span><span class="val">00</span><span class="d up">▲ 0,0</span><div class="bar"><i style="width:70%"></i></div></div>
+        <div class="gauge"><span class="lab">Smještaj</span><span class="val">00</span><span class="d down">▼ 0,0</span><div class="bar"><i style="width:48%"></i></div></div>
+        <div class="gauge"><span class="lab">Promet i parking</span><span class="val">&mdash;</span><span class="d flat">n &lt; 5</span><div class="bar"><i style="width:0%"></i></div></div>
+      </div>
+      <h4>Toplinska mapa &mdash; kategorija × tjedan</h4>
+      <div class="hm">
+        <div class="h">kat.</div><div class="h">T−3</div><div class="h">T−2</div><div class="h">T−1</div><div class="h">T</div><div class="h">n</div>
+        <div class="h" style="text-align:left">Gastro</div><div>00</div><div>00</div><div>00</div><div>00</div><div>00</div>
+        <div class="h" style="text-align:left">Smještaj</div><div>00</div><div>00</div><div>00</div><div>00</div><div>00</div>
+        <div class="h" style="text-align:left">Događanja</div><div>00</div><div>00</div><div>&mdash;</div><div>00</div><div>00</div>
+      </div>
+      <p class="note" style="margin-top:12px">Nule i crtice su rezervirana mjesta. Stvarne vrijednosti nastaju tek prvim pokretanjem agenta; crtica označava kategoriju ispod praga objave.</p>
+    </div>
+  </div>
+
+  <h3>Pristupačnost i UX pravila</h3>
+  <ul>
+    <li>Kontrast teksta najmanje 4,5 : 1, a velikih brojki najmanje 3 : 1 (WCAG 2.2 AA).</li>
+    <li>Nijedna informacija ne smije ovisiti isključivo o boji: uz svaku boju ide simbol (▲ ▼ ■) i riječ.</li>
+    <li>Divergentna paleta za sentiment mora ostati čitljiva pri deuteranopiji — provjeriti simulacijom prije puštanja u rad.</li>
+    <li>Grafikoni imaju tekstualni opis i tablični ekvivalent podataka ispod (sklopivo) — to rješava i čitače zaslona i ispis.</li>
+    <li>Tipografija: jedan stupac teksta do 70 znakova, brojke tabularne, ista veličina za istu vrstu podatka kroz cijeli izvještaj.</li>
+    <li>Ispis na A4 mora dati upotrebljiv dokument — dio čitatelja izvještaj čita na papiru.</li>
+  </ul>
+</section>
+
+<section id="s7">
+  <div class="sec-head"><span class="num">07</span><h2 class="sec">Struktura PowerPoint prezentacije</h2></div>
+  <p>Jedanaest slajdova, generiranih iz istih podataka kao HTML, u predložak TZ-a. Svaki slajd ima naslov koji je <em>tvrdnja</em>, a ne naziv teme — prezentacija se čita i bez govornika.</p>
+  <div class="tw"><table>
+    <thead><tr><th>#</th><th>Slajd</th><th>Sadržaj</th><th>Vizualni element</th></tr></thead>
+    <tbody>
+      <tr><td class="num">1</td><td>Naslovnica</td><td>Naziv, analizirano razdoblje (pon–ned), datum izrade, broj analiziranih jedinica, verzija metodologije</td><td>Logo TZ-a, jedna fotografija grada iz vlastite arhive</td></tr>
+      <tr><td class="num">2</td><td>Izvršni sažetak</td><td>5–7 uvida, svaki s pokazateljem i smjerom</td><td>Numerirana lista s oznakama smjera</td></tr>
+      <tr><td class="num">3</td><td>Glavni indeksi</td><td>TSI i OSG, promjena prema prošlom tjednu i četverotjednom prosjeku, ocjena pouzdanosti</td><td>Dvije velike brojke + sparkline od 12 tjedana</td></tr>
+      <tr><td class="num">4</td><td>Indeksi po kategorijama</td><td>Osam kategorija s n i pouzdanošću; izostavljene kategorije jasno navedene</td><td>Vodoravni stupčasti grafikon, sortiran po promjeni</td></tr>
+      <tr><td class="num">5</td><td>Što je diglo sentiment</td><td>Tri pozitivna pokretača s dokazom i volumenom</td><td>Tri kartice + po jedan anonimizirani citat</td></tr>
+      <tr><td class="num">6</td><td>Što je spustilo sentiment</td><td>Tri negativna pokretača s dokazom i volumenom</td><td>Tri kartice + po jedan anonimizirani citat</td></tr>
+      <tr><td class="num">7</td><td>Gastronomija i smještaj</td><td>Ocjene naspram tekstualnog sentimenta, ponavljajući prigovori, promjena broja recenzija</td><td>Dvije kolone, raspršeni dijagram ocjena u odnosu na sentiment</td></tr>
+      <tr><td class="num">8</td><td>Destinacija u širem smislu</td><td>Sadržaji, događanja, promet, parking, komunalne teme, sigurnost, pristupačnost</td><td>Toplinska mapa s brojkama u ćelijama</td></tr>
+      <tr><td class="num">9</td><td>Rizici i prilike</td><td>Nova upozorenja s ozbiljnošću i rokom reakcije; prilike prepoznate iz neispunjenih očekivanja</td><td>Matrica 2×2: vjerojatnost × učinak</td></tr>
+      <tr><td class="num">10</td><td>Taktičke preporuke (7–30 dana)</td><td>Do pet aktivnosti s prioritetom, nositeljem, rokom i KPI-jem</td><td>Tablica</td></tr>
+      <tr><td class="num">11</td><td>Strateške preporuke (3–12 mjeseci)</td><td>Do četiri smjera s očekivanim učinkom i složenošću; zadnji blok: metodologija i ograničenja</td><td>Tablica + podnožje s napomenom o uzorku</td></tr>
+    </tbody>
+    <caption>Ako je tjedan bez upozorenja, slajd 9 se ne izostavlja nego izrijekom navodi „nema novih rizika iznad praga“ — izostanak slajda čitatelj tumači kao propust sustava.</caption>
+  </table></div>
+</section>
+<section id="s8">
+  <div class="sec-head"><span class="num">08</span><h2 class="sec">Model strateških i taktičkih preporuka</h2></div>
+  <p>Preporuka nastaje isključivo iz nalaza. Nalaz nastaje isključivo iz spominjanja koja imaju dokaznu osnovu. Lanac je obavezan i provjerljiv: <code>mention → nalaz → preporuka → KPI</code>.</p>
+
+  <h3>8.1 Obavezna polja preporuke</h3>
+  <dl class="spec">
+    <dt>Problem ili prilika</dt><dd>Jedna rečenica, bez stručnog žargona, razumljiva članu turističkog vijeća.</dd>
+    <dt>Dokaz</dt><dd>Broj spominjanja, razdoblje, izvori i najviše tri anonimizirana citata s poveznicama gdje je dopušteno.</dd>
+    <dt>Pokazatelj</dt><dd>Konkretna vrijednost koja je preporuku pokrenula (npr. pad kategorijskog indeksa, porast udjela negativnih, upozorenje o volumenu).</dd>
+    <dt>Predložena aktivnost</dt><dd>Konkretan, izvediv korak — ne „poboljšati komunikaciju“, nego što točno, gdje i za koga.</dd>
+    <dt>Prioritet</dt><dd><span class="chip no">HITNO</span> <span class="chip cond">VISOK</span> <span class="chip neu">SREDNJI</span> <span class="chip ok">NIZAK</span> &mdash; izračunat, pa ljudski potvrđen.</dd>
+    <dt>Očekivani učinak</dt><dd>Na koji indeks ili pokazatelj i u kojem smjeru; ako se ne može procijeniti, navodi se „nepoznato“.</dd>
+    <dt>Složenost</dt><dd>S (do 5 radnih dana i unutar ovlasti TZ-a), M (do 30 dana ili traži partnera), L (proračun, natječaj ili odluka Grada).</dd>
+    <dt>Nositelj</dt><dd>Prijedlog: TZ ured, Grad, komunalno poduzeće, organizator događanja, ugostitelj, prijevoznik. TZ potvrđuje ili mijenja.</dd>
+    <dt>Rok</dt><dd>Konkretan datum za hitno i taktičko; tromjesečje za strateško.</dd>
+    <dt>KPI</dt><dd>Mjerljiv, s polaznom vrijednošću iz tjedna nastanka preporuke i ciljanim rokom provjere.</dd>
+  </dl>
+
+  <h3>8.2 Izračun prioriteta</h3>
+  <div class="panel formula"><pre>
+<b>P</b> = (U · 0,40) + (I · 0,30) + (V · 0,20) + (E · 0,10)
+
+ U  hitnost      1–5   koliko brzo šteta raste ako se ne reagira
+ I  učinak       1–5   procijenjeni utjecaj na indeks × broj pogođenih posjetitelja
+ V  vjerodostojnost 1–5  veličina uzorka i broj neovisnih izvora koji potvrđuju nalaz
+ E  izvedivost   1–5   obrnuto proporcionalno složenosti i ovisnosti o trećima
+
+ P ≥ 4,2 → HITNO     3,4–4,1 → VISOK     2,5–3,3 → SREDNJI     &lt; 2,5 → NIZAK
+
+Pravilo nadjačavanja: nalaz s ozbiljnošću "hitno" iz upozorenja o sigurnosti,
+zdravstvenoj ispravnosti ili reputacijskoj krizi <b>uvijek</b> ide u HITNO,
+neovisno o izračunu.
+</pre></div>
+
+  <h3>8.3 Tri odvojena horizonta</h3>
+  <div class="tw"><table>
+    <thead><tr><th>Horizont</th><th>Okidač</th><th>Tipičan sadržaj</th><th>Tko odlučuje</th></tr></thead>
+    <tbody>
+      <tr><th scope="row"><span class="chip no">HITNO</span> Krizna reakcija</th><td>Upozorenje razine „hitno“: skok negativnosti, sigurnosni ili zdravstveni incident, viralna negativna objava s velikim dosegom</td><td>Provjera činjenica, javni odgovor ili demanti, izravan kontakt s objektom ili organizatorom, obavijest Gradu, praćenje u dnevnom ritmu dok se ne smiri</td><td>Direktor TZ-a istog radnog dana</td></tr>
+      <tr><th scope="row"><span class="chip cond">7–30 DANA</span> Taktički</th><td>Ponavljajući prigovor s dovoljnim uzorkom ili pad kategorijskog indeksa izvan intervala pouzdanosti</td><td>Ispravak informacija na web-u i kartama, dopuna signalizacije, odgovori na recenzije, kratka obuka za objekte, prilagodba najave događanja, mikro-kampanja za prepoznatu prednost</td><td>TZ ured, tjedni operativni sastanak</td></tr>
+      <tr><th scope="row"><span class="chip neu">3–12 MJESECI</span> Strateški</th><td>Trend potvrđen kroz najmanje osam tjedana ili strukturni jaz koji se ponavlja kroz kategorije</td><td>Program razvoja proizvoda (npr. povezivanje baštine u zaokruženu ponudu), ulaganje u pristupačnost, sustav kvalitete za ugostitelje i smještaj, plan parkiranja i signalizacije, godišnja komunikacijska strategija, proširenje first-party mjerenja</td><td>Turističko vijeće i Grad, uz proračunsku odluku</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="panel flag">
+    <h4>Kontrola protiv preporuka bez pokrića</h4>
+    <p>Agent <strong>ne smije</strong> generirati preporuku ako je <code>n &lt; 5</code> u kategoriji, ako nalaz počiva na jednom izvoru, ili ako je nalaz već bio predmet preporuke u posljednja četiri tjedna bez promjene stanja (tada se stara preporuka <em>eskalira</em> s bilješkom „bez pomaka N tjedana“, umjesto da se generira nova). Preporuke se prije slanja pojavljuju u redu za potvrdu — TZ ih može odobriti, izmijeniti ili odbaciti, a odbačene ulaze u skup za učenje.</p>
+  </div>
+</section>
+
+<section id="s9">
+  <div class="sec-head"><span class="num">09</span><h2 class="sec">Sigurnost, privatnost i usklađenost</h2></div>
+
+  <h3>9.1 Zaštita osobnih podataka</h3>
+  <div class="tw"><table>
+    <thead><tr><th>Pitanje</th><th>Postupak</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">Obrađuju li se osobni podaci?</th><td>Da. Javno objavljena recenzija s korisničkim imenom je osobni podatak. Sustav se od početka projektira kao obrada osobnih podataka, ne kao „rad s javnim podacima“.</td></tr>
+      <tr><th scope="row">Pravna osnova</th><td>Legitimni interes (čl. 6. st. 1. t. f Opće uredbe) uz pisanu procjenu ravnoteže interesa. Za first-party anketu: privola, s jasnom informacijom prije ispunjavanja.</td></tr>
+      <tr><th scope="row">Minimizacija</th><td>Ne prikuplja se profil autora, povijest objava, lokacija ni bilo koji podatak koji nije nužan za mjerenje sentimenta o destinaciji.</td></tr>
+      <tr><th scope="row">Pseudonimizacija</th><td>Korisničko ime se pri unosu zamjenjuje HMAC hashom sa soli koja se čuva odvojeno. Originalno ime ne ulazi u bazu ni u izvještaj.</td></tr>
+      <tr><th scope="row">Anonimizacija citata</th><td>Najviše 25 riječi, bez imena, naziva objekta kada nije nužan, datuma boravka i bilo kojeg detalja koji bi omogućio prepoznavanje osobe. Prednost ima parafraza.</td></tr>
+      <tr><th scope="row">Posebne kategorije</th><td>Zdravstveni, vjerski, politički i drugi osjetljivi podaci ne obrađuju se; ako se pojave u tekstu, zapis se izuzima iz analize.</td></tr>
+      <tr><th scope="row">Rokovi čuvanja</th><td>Sirovi tekst 90 dana; izvedena spominjanja i indeksi trajno u agregiranom obliku; zahtjev za brisanjem izvršava se na temelju hasha autora ili poveznice.</td></tr>
+      <tr><th scope="row">Prava ispitanika</th><td>Objavljena kontakt-točka i postupak odgovora u roku; evidencija radnji obrade prema čl. 30.; procjena učinka (DPIA) ako opseg praćenja to zahtijeva.</td></tr>
+      <tr><th scope="row">Nadzorno tijelo</th><td>Agencija za zaštitu osobnih podataka; dokumentacija spremna za uvid.</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>9.2 Poštovanje uvjeta korištenja i autorskih prava</h3>
+  <ul>
+    <li><strong>Nema zaobilaženja.</strong> Ne zaobilaze se prijava, paywall, CAPTCHA, ograničenja učestalosti ni bilo koja tehnička zaštita. Izvor koji to zahtijeva jednostavno se ne koristi.</li>
+    <li><strong><code>robots.txt</code> i uvjeti po izvoru.</strong> Provjera prije uključivanja i ponovna provjera tromjesečno; datum provjere bilježi se u manifestu izvora.</li>
+    <li><strong>Prepoznatljiv agent.</strong> Vlastiti <code>User-Agent</code> s nazivom projekta i kontaktom, uz ograničenje učestalosti i eksponencijalno odustajanje kod pogrešaka.</li>
+    <li><strong>Rezerva prava na rudarenje teksta.</strong> Poštuju se izražene rezervacije prava izdavača (opt-out) u skladu s propisima o autorskom pravu.</li>
+    <li><strong>Bez pohrane gdje nije dopušteno.</strong> Za izvore koji ograničavaju pohranu recenzija čuvaju se samo poveznica, datum, ocjena, izvedeni rezultati i hash; tekst se ne zadržava.</li>
+    <li><strong>Atribucija.</strong> Obavezne oznake i poveznice natrag prema uvjetima pojedine platforme; licencna atribucija za otvorene podatke o objektima.</li>
+    <li><strong>Interna upotreba.</strong> Izvještaj je interni dokument TZ-a; javna objava pojedinačnih citata traži dodatnu provjeru dopuštenosti.</li>
+  </ul>
+
+  <h3>9.3 Tehnička sigurnost i granice automatizacije</h3>
+  <ul>
+    <li>Tajne isključivo u upravitelju tajni; nikad u kodu, izvještaju ni evidenciji.</li>
+    <li>Pristup izvještajima i sučelju za provjeru samo imenovanim osobama, s dvofaktorskom prijavom.</li>
+    <li>Načelo najmanjih ovlasti za pristup bazi; odvojeni računi za čitanje i pisanje.</li>
+    <li>Odlazna komunikacija ograničena na popis dopuštenih domena izvora.</li>
+    <li><strong>Nadzor nad rezultatom:</strong> nijedan javni istup, odgovor na recenziju ni objava ne nastaje automatski. Agent predlaže, čovjek objavljuje.</li>
+    <li><strong>Transparentnost:</strong> u izvještaju stoji da su ocjene rezultat automatizirane analize s poznatom pogreškom, uz navedenu točnost klasifikacije iz zadnje provjere.</li>
+  </ul>
+</section>
+
+<section id="s10">
+  <div class="sec-head"><span class="num">10</span><h2 class="sec">Fazni plan implementacije</h2></div>
+  <p>Procjene su u čovjek-danima za jednog iskusnog inženjera uz povremeno sudjelovanje osobe iz TZ-a. Svaka faza završava nečim upotrebljivim.</p>
+  <div class="tw"><table>
+    <thead><tr><th>Faza</th><th>Sadržaj</th><th>Rezultat</th><th class="num">Trajanje</th><th>Složenost</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">F0 &middot; Izvidnica</th><td>Popis i pravna provjera izvora, <code>robots.txt</code>, uvjeti, procjena legitimnog interesa, registar objekata iz otvorenih podataka, četverotjedno baseline brojanje volumena</td><td>Potvrđen popis izvora i realna slika volumena; odluka o dizajnu prozora agregacije</td><td class="num">8–12 d</td><td><span class="chip ok">niska</span></td></tr>
+      <tr><th scope="row">F1 &middot; Kostur</th><td>Registar izvora, adapteri za RSS i WordPress REST, normalizacija, dedupikacija, filtar relevantnosti, baza, evidencija izvođenja, tjedni raspored</td><td>Agent svaki ponedjeljak puni bazu relevantnim objavama; još bez sentimenta</td><td class="num">10–15 d</td><td><span class="chip cond">srednja</span></td></tr>
+      <tr><th scope="row">F2 &middot; Analiza</th><td>Jezik i prijevod, aspektna segmentacija, model sentimenta, zlatni skup od 300 ručno označenih spominjanja, mjerenje točnosti</td><td>Izmjerena kvaliteta klasifikacije; objavljena makro-F1 vrijednost</td><td class="num">12–18 d</td><td><span class="chip no">visoka</span></td></tr>
+      <tr><th scope="row">F3 &middot; Bodovanje i izvještaj</th><td>Formule indeksa, pragovi, intervali pouzdanosti, anomalije, HTML predložak, slanje e-pošte</td><td>Prvi stvarni tjedni HTML izvještaj u rukama TZ-a</td><td class="num">10–14 d</td><td><span class="chip cond">srednja</span></td></tr>
+      <tr><th scope="row">F4 &middot; Prezentacija i preporuke</th><td>Generiranje PPTX-a u predlošku TZ-a, motor preporuka, sučelje za ljudsku provjeru i potvrdu</td><td>Potpun tjedni paket: HTML + PPTX + potvrđene preporuke</td><td class="num">10–14 d</td><td><span class="chip cond">srednja</span></td></tr>
+      <tr><th scope="row">F5 &middot; Proširenje izvora</th><td>Recenzijski API-ji uz kvote, YouTube, vlastiti kanali, first-party anketa s QR kodom, uključivanje ugostitelja</td><td>Znatno veći i kvalitetniji uzorak, osobito za gastronomiju i smještaj</td><td class="num">8–12 d</td><td><span class="chip cond">srednja</span></td></tr>
+      <tr><th scope="row">F6 &middot; Kalibracija</th><td>Ponovno podešavanje modela na zlatnom skupu, kalibracija <code>m</code> i pondera, uvođenje godišnje usporedbe, nadzorne obavijesti</td><td>Stabilan sustav s dokumentiranom točnošću i povijesnom usporedbom</td><td class="num">6–10 d</td><td><span class="chip cond">srednja</span></td></tr>
+    </tbody>
+    <caption>Ukupno približno 64–95 čovjek-dana do potpune funkcionalnosti. Najranija korisna isporuka (kraj F3) dostižna je za oko 40–60 dana rada. Faze F5 i F6 mogu teći usporedno.</caption>
+  </table></div>
+  <p>Preporučeni redoslijed uvođenja izvora prati omjer vrijednosti i rizika: prvo vlastiti i službeni izvori, zatim lokalni mediji, pa recenzijski API-ji s kvotama, i tek na kraju izvori koji traže pravnu provjeru. Time sustav ranije postaje koristan, a pravni rizik ostaje pod kontrolom.</p>
+</section>
+
+<section id="s11">
+  <div class="sec-head"><span class="num">11</span><h2 class="sec">Rizici, ograničenja i kontrola kvalitete</h2></div>
+
+  <h3>11.1 Registar rizika</h3>
+  <div class="tw"><table>
+    <thead><tr><th>Rizik</th><th>Učinak</th><th>Mjera</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">Premalen tjedni volumen</th><td>Indeksi šume; lažni trendovi</td><td>Pragovi objave, četverotjedni pomični prosjeci, intervali pouzdanosti, izričito „nedovoljno podataka“</td></tr>
+      <tr><th scope="row">Pristranost uzorka prema medijima</th><td>Mjeri se ton novinara umjesto doživljaja posjetitelja</td><td>Odvojeni indeksi OSG i TSI; turistički sloj isključivo iz objava o iskustvu</td></tr>
+      <tr><th scope="row">Platforma promijeni uvjete ili ugasi pristup</th><td>Prekid vremenskog niza</td><td>Modularni adapteri, oznaka promjene metodologije u izvještaju, nikad tiha zamjena izvora</td></tr>
+      <tr><th scope="row">Model griješi na hrvatskoj ironiji i sarkazmu</th><td>Pogrešan predznak nalaza</td><td>Označavanje niže pouzdanosti, prioritet u ručnoj provjeri, objavljena izmjerena točnost</td></tr>
+      <tr><th scope="row">Manipulacija recenzijama</th><td>Umjetni skok ili pad ocjene objekta</td><td>Kvote po autoru i objektu, detekcija obrazaca, Bayesovo stezanje, upozorenje na sumnjiv obrazac</td></tr>
+      <tr><th scope="row">Sezonalnost tumačena kao pad</th><td>Pogrešne preporuke izvan sezone</td><td>Usporedba s istim razdobljem prethodne godine čim postane dostupna; do tada izričita ograda</td></tr>
+      <tr><th scope="row">Vanjski čimbenici (vrijeme, radovi, nesreća)</th><td>Sentiment pada bez veze s ponudom</td><td>Vremenski podaci i kalendar radova kao kontrolne varijable u interpretaciji</td></tr>
+      <tr><th scope="row">Pravna pritužba zbog obrade ili citata</th><td>Zaustavljanje projekta</td><td>Procjena legitimnog interesa, pseudonimizacija, kratki citati, kontakt-točka, dokumentirani postupci</td></tr>
+      <tr><th scope="row">Prekomjerno povjerenje u brojke</th><td>Odluke na temelju šuma</td><td>Ocjena pouzdanosti uz svaki broj, pravilo tumačenja od 3 boda, obavezno poglavlje o ograničenjima</td></tr>
+      <tr><th scope="row">Tiho gašenje agenta</th><td>Izvještaj izostane, nitko ne primijeti</td><td>Vanjski nadzor „mrtve ruke“; izostanak izvještaja pokreće obavijest administratoru</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>11.2 Kontrola kvalitete</h3>
+  <div class="tw"><table>
+    <thead><tr><th>Kontrola</th><th>Ritam</th><th>Prag</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">Ručna provjera stratificiranog uzorka</th><td>Tjedno, 50–60 spominjanja iz svih kategorija i razina pouzdanosti</td><td>Makro-F1 za sentiment ≥ 0,75; točnost relevantnosti ≥ 0,90</td></tr>
+      <tr><th scope="row">Dvostruko označavanje</th><td>Mjesečno, na 20 % uzorka</td><td>Slaganje ocjenjivača (Cohenova kapa) ≥ 0,60; ispod toga se popravljaju upute, ne model</td></tr>
+      <tr><th scope="row">Provjera dedupikacije</th><td>Tjedno, automatski izvještaj</td><td>Udio lažnih duplikata ispod 2 %</td></tr>
+      <tr><th scope="row">Provjera dostupnosti izvora</th><td>Pri svakom izvođenju</td><td>Svaki izvor bez zapisa dva tjedna zaredom pokreće upozorenje</td></tr>
+      <tr><th scope="row">Nadzor pomaka modela</th><td>Mjesečno</td><td>Pad makro-F1 za više od 0,05 pokreće ponovno podešavanje</td></tr>
+      <tr><th scope="row">Reprodukcija indeksa</th><td>Tromjesečno</td><td>Ručni izračun jednog kategorijskog indeksa mora se poklopiti s objavljenim na dvije decimale</td></tr>
+      <tr><th scope="row">Povratna veza TZ-a</th><td>Uz svaki izvještaj</td><td>Oznaka „koristan / nekoristan“ po uvidu; uvidi trajno ocijenjeni kao nekorisni izbacuju se iz predloška</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>11.3 Trajna ograničenja koja se ne mogu ukloniti</h3>
+  <ul>
+    <li>Analiziraju se samo <strong>javno objavljeni</strong> sadržaji. Posjetitelji koji ništa ne objave — a to je velika većina — nisu zastupljeni. First-party anketa je jedini način da se taj jaz djelomično zatvori.</li>
+    <li>Najveće recenzijske platforme za smještaj nemaju besplatan i dopušten pristup, pa je sloj smještaja sustavno slabije pokriven od gastronomije.</li>
+    <li>Meta platforme nisu dostupne za praćenje tuđih javnih objava, što uklanja jedan od najvećih kanala hrvatske javne rasprave.</li>
+    <li>Tjedni indeks za grad ove veličine je <strong>signal, ne mjerenje</strong>. Za odluke o proračunu treba tromjesečni pogled, ne tjedni.</li>
+    <li>Uzročnost se ne mjeri. Sustav pokazuje da je nešto poraslo ili palo i uz što se to vremenski poklapa — zašto, utvrđuje čovjek.</li>
+  </ul>
+</section>
+
+<footer>
+  <p><strong>Sentiment Radar Slavonski Brod</strong> &middot; funkcionalna i tehnička specifikacija, verzija 1.0. Dokument opisuje sustav koji još nije izgrađen; ne sadrži nijedan stvaran rezultat analize. Sve brojke u prikazima sučelja su rezervirana mjesta. Nazivi konkretnih modela, kvote API-ja i uvjeti korištenja provjeravaju se u Fazi 0 jer se mijenjaju bez najave.</p>
+</footer>
+</main>
+</div>
+</div>
+
+<script>
+(function(){
+  var links = Array.prototype.slice.call(document.querySelectorAll('nav.toc a'));
+  var map = {};
+  links.forEach(function(a){ map[a.getAttribute('href').slice(1)] = a; });
+  var secs = Array.prototype.slice.call(document.querySelectorAll('main section'));
+  if (!('IntersectionObserver' in window) || !secs.length) return;
+  var visible = {};
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ visible[e.target.id] = e.isIntersecting ? e.intersectionRatio : 0; });
+    var best = null, bestV = 0;
+    secs.forEach(function(s){ var v = visible[s.id] || 0; if (v > bestV){ bestV = v; best = s.id; } });
+    if (!best) return;
+    links.forEach(function(a){ a.classList.remove('on'); a.removeAttribute('aria-current'); });
+    if (map[best]) { map[best].classList.add('on'); map[best].setAttribute('aria-current','true'); }
+  }, { rootMargin: '-10% 0px -70% 0px', threshold: [0, 0.25, 0.5, 1] });
+  secs.forEach(function(s){ io.observe(s); });
+  if (map.s0) map.s0.classList.add('on');
+})();
+</script>
