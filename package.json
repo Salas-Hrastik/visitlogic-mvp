@@ -10,5 +10,13 @@
         "formidable": "^3.5.1",
         "openai": "^4.77.0",
         "playwright": "^1.52.0"
+    },
+    "devDependencies": {
+        "docx": "^9.0.0",
+        "cheerio": "^1.2.0"
+    },
+    "scripts": {
+        "sentiment": "node scripts/sentiment-sb/run.mjs",
+        "sentiment:docx": "node scripts/sentiment-sb/build-docx.cjs"
     }
 }
