@@ -1,0 +1,993 @@
+{
+ "_UPOZORENJE": "SINTETIČKI TESTNI PODACI. Ne odnose se ni na jedan stvarni objekt u Slavonskom Brodu. Služe isključivo za provjeru da kod za sloj ocjena radi bez Google API ključa. Nikada se ne smiju prikazati kao rezultat analize.",
+ "_izvor": "generirano lokalno, 2026-09-11",
+ "objekti": [
+  {
+   "place_id": "FIXTURE_Ugostiteljski objekt01",
+   "naziv": "Ugostiteljski objekt-01 (sintetički primjer)",
+   "kategorija": "G",
+   "ocjena": 4.3,
+   "broj_ocjena": 20,
+   "recenzije": [
+    {
+     "ocjena": 5,
+     "tekst": "Prekrasan ambijent uz rijeku, konobari srdačni. Rado se vraćamo.",
+     "jezik": "hr",
+     "vrijeme": "2026-09-11T12:00:00Z"
+    },
+    {
+     "ocjena": 4,
+     "tekst": "Ugodno mjesto za obitelj, imaju i dječji kutak. Kava izvrsna.",
+     "jezik": "hr",
+     "vrijeme": "2026-09-07T12:00:00Z"
+    },
+    {
+     "ocjena": 4,
+     "tekst": "Hrana odlična, osoblje ljubazno i brzo. Cijene sasvim korektne za ovu kvalitetu.",
+     "jezik": "hr",
+     "vrijeme": "2026-09-09T12:00:00Z"
+    }
+   ]
+  },
+  {
+   "place_id": "FIXTURE_Ugostiteljski objekt02",
+   "naziv": "Ugostiteljski objekt-02 (sintetički primjer)",
+   "kategorija": "G",
+   "ocjena": 4.2,
+   "broj_ocjena": 295,
+   "recenzije": [
+    {
+     "ocjena": 4,
+     "tekst": "Ugodno mjesto za obitelj, imaju i dječji kutak. Kava izvrsna.",
+     "jezik": "hr",
+     "vrijeme": "2026-09-08T12:00:00Z"
+    },
+    {
+     "ocjena": 5,
+     "tekst": "Hrana je stvarno dobra, ali usluga spora i parking je problem.",
+     "jezik": "hr",
+     "vrijeme": "2026-09-03T12:00:00Z"
+    }
+   ]
+  },
+  {
+   "place_id": "FIXTURE_Ugostiteljski objekt03",
+   "naziv": "Ugostiteljski objekt-03 (sintetički primjer)",
+   "kategorija": "G",
+   "ocjena": 4.4,
+   "broj_ocjena": 182,
+   "recenzije": [
+    {
+     "ocjena": 4,
+     "tekst": "Domaća kuhinja na visokoj razini, porcije velike. Preporučujem svakome.",
+     "jezik": "hr",
+     "vrijeme": "2026-09-07T12:00:00Z"
+    },
+    {
+     "ocjena": 5,
+     "tekst": "Domaća kuhinja na visokoj razini, porcije velike. Preporučujem svakome.",
+     "jezik": "hr",
+     "vrijeme": "2026-09-01T12:00:00Z"
+    },
+    {
+     "ocjena": 4,
+     "tekst": "Ugodno mjesto za obitelj, imaju i dječji kutak. Kava izvrsna.",
+     "jezik": "hr",
+     "vrijeme": "2026-09-07T12:00:00Z"
+    }
+   ]
+  },
+  {
+   "place_id": "FIXTURE_Ugostiteljski objekt04",
+   "naziv": "Ugostiteljski objekt-04 (sintetički primjer)",
+   "kategorija": "G",
+   "ocjena": 3.3,
+   "broj_ocjena": 158,
+   "recenzije": [
+    {
+     "ocjena": 3,
+     "tekst": "Lijep prostor i ljubazno osoblje, no cijene su podigli previše.",
+     "jezik": "hr",
+     "vrijeme": "2026-09-02T12:00:00Z"
+    },
+    {
+     "ocjena": 4,
+     "tekst": "Preskupo za ono što se dobije. Hrana mlaka, ambijent bučan.",
+     "jezik": "hr",
+     "vrijeme": "2026-09-02T12:00:00Z"
+    },
+    {
+     "ocjena": 3,
+     "tekst": "Hrana je stvarno dobra, ali usluga spora i parking je problem.",
+     "jezik": "hr",
+     "vrijeme": "2026-09-08T12:00:00Z"
+    },
+    {
+     "ocjena": 3,
+     "tekst": "Sanitarni čvor prljav, stolovi neuredni. Nećemo ponovno.",
+     "jezik": "hr",
+     "vrijeme": "2026-09-06T12:00:00Z"
+    },
+    {
+     "ocjena": 4,
+     "tekst": "Sanitarni čvor prljav, stolovi neuredni. Nećemo ponovno.",
+     "jezik": "hr",
+     "vrijeme": "2026-09-11T12:00:00Z"
+    }
+   ]
+  },
+  {
+   "place_id": "FIXTURE_Ugostiteljski objekt05",
+   "naziv": "Ugostiteljski objekt-05 (sintetički primjer)",
+   "kategorija": "G",
+   "ocjena": 4.3,
+   "broj_ocjena": 319,
+   "recenzije": [
+    {
+     "ocjena": 4,
+     "tekst": "Prekrasan ambijent uz rijeku, konobari srdačni. Rado se vraćamo.",
+     "jezik": "hr",
+     "vrijeme": "2026-09-07T12:00:00Z"
+    },
+    {
+     "ocjena": 4,
+     "tekst": "Ugodno mjesto za obitelj, imaju i dječji kutak. Kava izvrsna.",
+     "jezik": "hr",
+     "vrijeme": "2026-09-06T12:00:00Z"
+    }
+   ]
+  },
+  {
+   "place_id": "FIXTURE_Ugostiteljski objekt06",
+   "naziv": "Ugostiteljski objekt-06 (sintetički primjer)",
+   "kategorija": "G",
+   "ocjena": 4.6,
+   "broj_ocjena": 36,
+   "recenzije": [
+    {
+     "ocjena": 4,
+     "tekst": "Lijep prostor i ljubazno osoblje, no cijene su podigli previše.",
+     "jezik": "hr",
+     "vrijeme": "2026-09-02T12:00:00Z"
+    },
+    {
+     "ocjena": 5,
+     "tekst": "Ugodno mjesto za obitelj, imaju i dječji kutak. Kava izvrsna.",
+     "jezik": "hr",
+     "vrijeme": "2026-09-06T12:00:00Z"
+    }
+   ]
+  },
+  {
+   "place_id": "FIXTURE_Ugostiteljski objekt07",
+   "naziv": "Ugostiteljski objekt-07 (sintetički primjer)",
+   "kategorija": "G",
+   "ocjena": 3.6,
+   "broj_ocjena": 263,
+   "recenzije": [
+    {
+     "ocjena": 3,
+     "tekst": "Sve pohvale za uslugu, čisto i uredno. Parkiranje u blizini bez problema.",
+     "jezik": "hr",
+     "vrijeme": "2026-09-03T12:00:00Z"
+    },
+    {
+     "ocjena": 4,
+     "tekst": "Soba čista i udobna, doručak skroman. Lokacija odlična.",
+     "jezik": "hr",
+     "vrijeme": "2026-09-10T12:00:00Z"
+    },
+    {
+     "ocjena": 3,
+     "tekst": "Soba čista i udobna, doručak skroman. Lokacija odlična.",
+     "jezik": "hr",
+     "vrijeme": "2026-09-04T12:00:00Z"
+    },
+    {
+     "ocjena": 4,
+     "tekst": "Prekrasan ambijent uz rijeku, konobari srdačni. Rado se vraćamo.",
+     "jezik": "hr",
+     "vrijeme": "2026-09-02T12:00:00Z"
+    }
+   ]
+  },
+  {
+   "place_id": "FIXTURE_Ugostiteljski objekt08",
+   "naziv": "Ugostiteljski objekt-08 (sintetički primjer)",
+   "kategorija": "G",
+   "ocjena": 4.5,
+   "broj_ocjena": 64,
+   "recenzije": [
+    {
+     "ocjena": 5,
+     "tekst": "Sve pohvale za uslugu, čisto i uredno. Parkiranje u blizini bez problema.",
+     "jezik": "hr",
+     "vrijeme": "2026-09-07T12:00:00Z"
+    },
+    {
+     "ocjena": 5,
+     "tekst": "Sve pohvale za uslugu, čisto i uredno. Parkiranje u blizini bez problema.",
+     "jezik": "hr",
+     "vrijeme": "2026-09-09T12:00:00Z"
+    }
+   ]
+  },
+  {
+   "place_id": "FIXTURE_Ugostiteljski objekt09",
+   "naziv": "Ugostiteljski objekt-09 (sintetički primjer)",
+   "kategorija": "G",
+   "ocjena": 4.7,
+   "broj_ocjena": 13,
+   "recenzije": [
+    {
+     "ocjena": 5,
+     "tekst": "Ugodno mjesto za obitelj, imaju i dječji kutak. Kava izvrsna.",
+     "jezik": "hr",
+     "vrijeme": "2026-09-11T12:00:00Z"
+    }
+   ]
+  },
+  {
+   "place_id": "FIXTURE_Ugostiteljski objekt10",
+   "naziv": "Ugostiteljski objekt-10 (sintetički primjer)",
+   "kategorija": "G",
+   "ocjena": 3.8,
+   "broj_ocjena": 158,
+   "recenzije": [
+    {
+     "ocjena": 5,
+     "tekst": "Hrana je stvarno dobra, ali usluga spora i parking je problem.",
+     "jezik": "hr",
+     "vrijeme": "2026-09-05T12:00:00Z"
+    },
+    {
+     "ocjena": 4,
+     "tekst": "Prekrasan ambijent uz rijeku, konobari srdačni. Rado se vraćamo.",
+     "jezik": "hr",
+     "vrijeme": "2026-09-02T12:00:00Z"
+    },
+    {
+     "ocjena": 4,
+     "tekst": "Domaća kuhinja na visokoj razini, porcije velike. Preporučujem svakome.",
+     "jezik": "hr",
+     "vrijeme": "2026-09-09T12:00:00Z"
+    },
+    {
+     "ocjena": 4,
+     "tekst": "Prekrasan ambijent uz rijeku, konobari srdačni. Rado se vraćamo.",
+     "jezik": "hr",
+     "vrijeme": "2026-09-03T12:00:00Z"
+    }
+   ]
+  },
+  {
+   "place_id": "FIXTURE_Ugostiteljski objekt11",
+   "naziv": "Ugostiteljski objekt-11 (sintetički primjer)",
+   "kategorija": "G",
+   "ocjena": 4.1,
+   "broj_ocjena": 279,
+   "recenzije": [
+    {
+     "ocjena": 3,
+     "tekst": "Lijep prostor i ljubazno osoblje, no cijene su podigli previše.",
+     "jezik": "hr",
+     "vrijeme": "2026-09-06T12:00:00Z"
+    }
+   ]
+  },
+  {
+   "place_id": "FIXTURE_Ugostiteljski objekt12",
+   "naziv": "Ugostiteljski objekt-12 (sintetički primjer)",
+   "kategorija": "G",
+   "ocjena": 4.7,
+   "broj_ocjena": 165,
+   "recenzije": [
+    {
+     "ocjena": 5,
+     "tekst": "Ugodno mjesto za obitelj, imaju i dječji kutak. Kava izvrsna.",
+     "jezik": "hr",
+     "vrijeme": "2026-09-02T12:00:00Z"
+    },
+    {
+     "ocjena": 5,
+     "tekst": "Hrana odlična, osoblje ljubazno i brzo. Cijene sasvim korektne za ovu kvalitetu.",
+     "jezik": "hr",
+     "vrijeme": "2026-09-09T12:00:00Z"
+    }
+   ]
+  },
+  {
+   "place_id": "FIXTURE_Ugostiteljski objekt13",
+   "naziv": "Ugostiteljski objekt-13 (sintetički primjer)",
+   "kategorija": "G",
+   "ocjena": 4.5,
+   "broj_ocjena": 73,
+   "recenzije": [
+    {
+     "ocjena": 4,
+     "tekst": "Hrana je stvarno dobra, ali usluga spora i parking je problem.",
+     "jezik": "hr",
+     "vrijeme": "2026-09-10T12:00:00Z"
+    },
+    {
+     "ocjena": 5,
+     "tekst": "Prekrasan ambijent uz rijeku, konobari srdačni. Rado se vraćamo.",
+     "jezik": "hr",
+     "vrijeme": "2026-09-04T12:00:00Z"
+    },
+    {
+     "ocjena": 5,
+     "tekst": "Sve pohvale za uslugu, čisto i uredno. Parkiranje u blizini bez problema.",
+     "jezik": "hr",
+     "vrijeme": "2026-09-11T12:00:00Z"
+    },
+    {
+     "ocjena": 4,
+     "tekst": "Ugodno mjesto za obitelj, imaju i dječji kutak. Kava izvrsna.",
+     "jezik": "hr",
+     "vrijeme": "2026-09-04T12:00:00Z"
+    }
+   ]
+  },
+  {
+   "place_id": "FIXTURE_Ugostiteljski objekt14",
+   "naziv": "Ugostiteljski objekt-14 (sintetički primjer)",
+   "kategorija": "G",
+   "ocjena": 3.6,
+   "broj_ocjena": 181,
+   "recenzije": [
+    {
+     "ocjena": 4,
+     "tekst": "Hrana je stvarno dobra, ali usluga spora i parking je problem.",
+     "jezik": "hr",
+     "vrijeme": "2026-09-01T12:00:00Z"
+    }
+   ]
+  },
+  {
+   "place_id": "FIXTURE_Ugostiteljski objekt15",
+   "naziv": "Ugostiteljski objekt-15 (sintetički primjer)",
+   "kategorija": "G",
+   "ocjena": 3.3,
+   "broj_ocjena": 331,
+   "recenzije": [
+    {
+     "ocjena": 4,
+     "tekst": "Čekali smo jelo skoro sat vremena, a osoblje neljubazno. Razočaranje.",
+     "jezik": "hr",
+     "vrijeme": "2026-09-02T12:00:00Z"
+    }
+   ]
+  },
+  {
+   "place_id": "FIXTURE_Ugostiteljski objekt16",
+   "naziv": "Ugostiteljski objekt-16 (sintetički primjer)",
+   "kategorija": "G",
+   "ocjena": 4.1,
+   "broj_ocjena": 150,
+   "recenzije": [
+    {
+     "ocjena": 4,
+     "tekst": "Hrana je stvarno dobra, ali usluga spora i parking je problem.",
+     "jezik": "hr",
+     "vrijeme": "2026-09-10T12:00:00Z"
+    },
+    {
+     "ocjena": 5,
+     "tekst": "Hrana je stvarno dobra, ali usluga spora i parking je problem.",
+     "jezik": "hr",
+     "vrijeme": "2026-09-07T12:00:00Z"
+    },
+    {
+     "ocjena": 4,
+     "tekst": "Hrana je stvarno dobra, ali usluga spora i parking je problem.",
+     "jezik": "hr",
+     "vrijeme": "2026-09-06T12:00:00Z"
+    },
+    {
+     "ocjena": 5,
+     "tekst": "Lijep prostor i ljubazno osoblje, no cijene su podigli previše.",
+     "jezik": "hr",
+     "vrijeme": "2026-09-01T12:00:00Z"
+    }
+   ]
+  },
+  {
+   "place_id": "FIXTURE_Ugostiteljski objekt17",
+   "naziv": "Ugostiteljski objekt-17 (sintetički primjer)",
+   "kategorija": "G",
+   "ocjena": 4.3,
+   "broj_ocjena": 338,
+   "recenzije": [
+    {
+     "ocjena": 5,
+     "tekst": "Domaća kuhinja na visokoj razini, porcije velike. Preporučujem svakome.",
+     "jezik": "hr",
+     "vrijeme": "2026-09-02T12:00:00Z"
+    }
+   ]
+  },
+  {
+   "place_id": "FIXTURE_Ugostiteljski objekt18",
+   "naziv": "Ugostiteljski objekt-18 (sintetički primjer)",
+   "kategorija": "G",
+   "ocjena": 3.6,
+   "broj_ocjena": 105,
+   "recenzije": [
+    {
+     "ocjena": 3,
+     "tekst": "Lijep prostor i ljubazno osoblje, no cijene su podigli previše.",
+     "jezik": "hr",
+     "vrijeme": "2026-09-08T12:00:00Z"
+    },
+    {
+     "ocjena": 4,
+     "tekst": "Hrana je stvarno dobra, ali usluga spora i parking je problem.",
+     "jezik": "hr",
+     "vrijeme": "2026-09-09T12:00:00Z"
+    },
+    {
+     "ocjena": 4,
+     "tekst": "Soba čista i udobna, doručak skroman. Lokacija odlična.",
+     "jezik": "hr",
+     "vrijeme": "2026-09-01T12:00:00Z"
+    },
+    {
+     "ocjena": 3,
+     "tekst": "Prekrasan ambijent uz rijeku, konobari srdačni. Rado se vraćamo.",
+     "jezik": "hr",
+     "vrijeme": "2026-09-08T12:00:00Z"
+    },
+    {
+     "ocjena": 4,
+     "tekst": "Lijep prostor i ljubazno osoblje, no cijene su podigli previše.",
+     "jezik": "hr",
+     "vrijeme": "2026-09-03T12:00:00Z"
+    }
+   ]
+  },
+  {
+   "place_id": "FIXTURE_Ugostiteljski objekt19",
+   "naziv": "Ugostiteljski objekt-19 (sintetički primjer)",
+   "kategorija": "G",
+   "ocjena": 3.8,
+   "broj_ocjena": 207,
+   "recenzije": [
+    {
+     "ocjena": 3,
+     "tekst": "Sve pohvale za uslugu, čisto i uredno. Parkiranje u blizini bez problema.",
+     "jezik": "hr",
+     "vrijeme": "2026-09-09T12:00:00Z"
+    },
+    {
+     "ocjena": 3,
+     "tekst": "Sve pohvale za uslugu, čisto i uredno. Parkiranje u blizini bez problema.",
+     "jezik": "hr",
+     "vrijeme": "2026-09-05T12:00:00Z"
+    },
+    {
+     "ocjena": 4,
+     "tekst": "Hrana je stvarno dobra, ali usluga spora i parking je problem.",
+     "jezik": "hr",
+     "vrijeme": "2026-09-09T12:00:00Z"
+    }
+   ]
+  },
+  {
+   "place_id": "FIXTURE_Ugostiteljski objekt20",
+   "naziv": "Ugostiteljski objekt-20 (sintetički primjer)",
+   "kategorija": "G",
+   "ocjena": 3.3,
+   "broj_ocjena": 168,
+   "recenzije": [
+    {
+     "ocjena": 3,
+     "tekst": "Rezervacija nije bila upisana, nitko se nije ispričao. Loše organizirano.",
+     "jezik": "hr",
+     "vrijeme": "2026-09-09T12:00:00Z"
+    }
+   ]
+  },
+  {
+   "place_id": "FIXTURE_Ugostiteljski objekt21",
+   "naziv": "Ugostiteljski objekt-21 (sintetički primjer)",
+   "kategorija": "G",
+   "ocjena": 3.5,
+   "broj_ocjena": 268,
+   "recenzije": [
+    {
+     "ocjena": 4,
+     "tekst": "Hrana je stvarno dobra, ali usluga spora i parking je problem.",
+     "jezik": "hr",
+     "vrijeme": "2026-09-11T12:00:00Z"
+    }
+   ]
+  },
+  {
+   "place_id": "FIXTURE_Ugostiteljski objekt22",
+   "naziv": "Ugostiteljski objekt-22 (sintetički primjer)",
+   "kategorija": "G",
+   "ocjena": 4.7,
+   "broj_ocjena": 214,
+   "recenzije": [
+    {
+     "ocjena": 4,
+     "tekst": "Soba čista i udobna, doručak skroman. Lokacija odlična.",
+     "jezik": "hr",
+     "vrijeme": "2026-09-10T12:00:00Z"
+    }
+   ]
+  },
+  {
+   "place_id": "FIXTURE_Smještajni objekt01",
+   "naziv": "Smještajni objekt-01 (sintetički primjer)",
+   "kategorija": "S",
+   "ocjena": 3.6,
+   "broj_ocjena": 49,
+   "recenzije": [
+    {
+     "ocjena": 4,
+     "tekst": "Ugodno mjesto za obitelj, imaju i dječji kutak. Kava izvrsna.",
+     "jezik": "hr",
+     "vrijeme": "2026-09-05T12:00:00Z"
+    },
+    {
+     "ocjena": 3,
+     "tekst": "Soba čista i udobna, doručak skroman. Lokacija odlična.",
+     "jezik": "hr",
+     "vrijeme": "2026-09-05T12:00:00Z"
+    },
+    {
+     "ocjena": 4,
+     "tekst": "Soba čista i udobna, doručak skroman. Lokacija odlična.",
+     "jezik": "hr",
+     "vrijeme": "2026-09-08T12:00:00Z"
+    },
+    {
+     "ocjena": 3,
+     "tekst": "Hrana je stvarno dobra, ali usluga spora i parking je problem.",
+     "jezik": "hr",
+     "vrijeme": "2026-09-10T12:00:00Z"
+    }
+   ]
+  },
+  {
+   "place_id": "FIXTURE_Smještajni objekt02",
+   "naziv": "Smještajni objekt-02 (sintetički primjer)",
+   "kategorija": "S",
+   "ocjena": 4.8,
+   "broj_ocjena": 59,
+   "recenzije": [
+    {
+     "ocjena": 4,
+     "tekst": "Ugodno mjesto za obitelj, imaju i dječji kutak. Kava izvrsna.",
+     "jezik": "hr",
+     "vrijeme": "2026-09-06T12:00:00Z"
+    }
+   ]
+  },
+  {
+   "place_id": "FIXTURE_Smještajni objekt03",
+   "naziv": "Smještajni objekt-03 (sintetički primjer)",
+   "kategorija": "S",
+   "ocjena": 4.7,
+   "broj_ocjena": 133,
+   "recenzije": [
+    {
+     "ocjena": 5,
+     "tekst": "Sve pohvale za uslugu, čisto i uredno. Parkiranje u blizini bez problema.",
+     "jezik": "hr",
+     "vrijeme": "2026-09-05T12:00:00Z"
+    },
+    {
+     "ocjena": 4,
+     "tekst": "Ugodno mjesto za obitelj, imaju i dječji kutak. Kava izvrsna.",
+     "jezik": "hr",
+     "vrijeme": "2026-09-09T12:00:00Z"
+    },
+    {
+     "ocjena": 5,
+     "tekst": "Hrana odlična, osoblje ljubazno i brzo. Cijene sasvim korektne za ovu kvalitetu.",
+     "jezik": "hr",
+     "vrijeme": "2026-09-03T12:00:00Z"
+    }
+   ]
+  },
+  {
+   "place_id": "FIXTURE_Smještajni objekt04",
+   "naziv": "Smještajni objekt-04 (sintetički primjer)",
+   "kategorija": "S",
+   "ocjena": 3.9,
+   "broj_ocjena": 62,
+   "recenzije": [
+    {
+     "ocjena": 4,
+     "tekst": "Lijep prostor i ljubazno osoblje, no cijene su podigli previše.",
+     "jezik": "hr",
+     "vrijeme": "2026-09-06T12:00:00Z"
+    },
+    {
+     "ocjena": 4,
+     "tekst": "Soba čista i udobna, doručak skroman. Lokacija odlična.",
+     "jezik": "hr",
+     "vrijeme": "2026-09-09T12:00:00Z"
+    },
+    {
+     "ocjena": 3,
+     "tekst": "Hrana je stvarno dobra, ali usluga spora i parking je problem.",
+     "jezik": "hr",
+     "vrijeme": "2026-09-07T12:00:00Z"
+    },
+    {
+     "ocjena": 3,
+     "tekst": "Hrana odlična, osoblje ljubazno i brzo. Cijene sasvim korektne za ovu kvalitetu.",
+     "jezik": "hr",
+     "vrijeme": "2026-09-03T12:00:00Z"
+    },
+    {
+     "ocjena": 3,
+     "tekst": "Domaća kuhinja na visokoj razini, porcije velike. Preporučujem svakome.",
+     "jezik": "hr",
+     "vrijeme": "2026-09-08T12:00:00Z"
+    }
+   ]
+  },
+  {
+   "place_id": "FIXTURE_Smještajni objekt05",
+   "naziv": "Smještajni objekt-05 (sintetički primjer)",
+   "kategorija": "S",
+   "ocjena": 4.3,
+   "broj_ocjena": 226,
+   "recenzije": [
+    {
+     "ocjena": 5,
+     "tekst": "Hrana odlična, osoblje ljubazno i brzo. Cijene sasvim korektne za ovu kvalitetu.",
+     "jezik": "hr",
+     "vrijeme": "2026-09-03T12:00:00Z"
+    },
+    {
+     "ocjena": 4,
+     "tekst": "Domaća kuhinja na visokoj razini, porcije velike. Preporučujem svakome.",
+     "jezik": "hr",
+     "vrijeme": "2026-09-03T12:00:00Z"
+    },
+    {
+     "ocjena": 4,
+     "tekst": "Hrana odlična, osoblje ljubazno i brzo. Cijene sasvim korektne za ovu kvalitetu.",
+     "jezik": "hr",
+     "vrijeme": "2026-09-01T12:00:00Z"
+    },
+    {
+     "ocjena": 5,
+     "tekst": "Hrana je stvarno dobra, ali usluga spora i parking je problem.",
+     "jezik": "hr",
+     "vrijeme": "2026-09-11T12:00:00Z"
+    },
+    {
+     "ocjena": 5,
+     "tekst": "Ugodno mjesto za obitelj, imaju i dječji kutak. Kava izvrsna.",
+     "jezik": "hr",
+     "vrijeme": "2026-09-07T12:00:00Z"
+    }
+   ]
+  },
+  {
+   "place_id": "FIXTURE_Smještajni objekt06",
+   "naziv": "Smještajni objekt-06 (sintetički primjer)",
+   "kategorija": "S",
+   "ocjena": 4.8,
+   "broj_ocjena": 87,
+   "recenzije": [
+    {
+     "ocjena": 5,
+     "tekst": "Hrana je stvarno dobra, ali usluga spora i parking je problem.",
+     "jezik": "hr",
+     "vrijeme": "2026-09-01T12:00:00Z"
+    },
+    {
+     "ocjena": 5,
+     "tekst": "Domaća kuhinja na visokoj razini, porcije velike. Preporučujem svakome.",
+     "jezik": "hr",
+     "vrijeme": "2026-09-07T12:00:00Z"
+    }
+   ]
+  },
+  {
+   "place_id": "FIXTURE_Smještajni objekt07",
+   "naziv": "Smještajni objekt-07 (sintetički primjer)",
+   "kategorija": "S",
+   "ocjena": 4.6,
+   "broj_ocjena": 135,
+   "recenzije": [
+    {
+     "ocjena": 4,
+     "tekst": "Hrana odlična, osoblje ljubazno i brzo. Cijene sasvim korektne za ovu kvalitetu.",
+     "jezik": "hr",
+     "vrijeme": "2026-09-01T12:00:00Z"
+    },
+    {
+     "ocjena": 4,
+     "tekst": "Hrana je stvarno dobra, ali usluga spora i parking je problem.",
+     "jezik": "hr",
+     "vrijeme": "2026-09-08T12:00:00Z"
+    },
+    {
+     "ocjena": 4,
+     "tekst": "Prekrasan ambijent uz rijeku, konobari srdačni. Rado se vraćamo.",
+     "jezik": "hr",
+     "vrijeme": "2026-09-11T12:00:00Z"
+    }
+   ]
+  },
+  {
+   "place_id": "FIXTURE_Smještajni objekt08",
+   "naziv": "Smještajni objekt-08 (sintetički primjer)",
+   "kategorija": "S",
+   "ocjena": 3.8,
+   "broj_ocjena": 176,
+   "recenzije": [
+    {
+     "ocjena": 4,
+     "tekst": "Domaća kuhinja na visokoj razini, porcije velike. Preporučujem svakome.",
+     "jezik": "hr",
+     "vrijeme": "2026-09-09T12:00:00Z"
+    },
+    {
+     "ocjena": 4,
+     "tekst": "Soba čista i udobna, doručak skroman. Lokacija odlična.",
+     "jezik": "hr",
+     "vrijeme": "2026-09-01T12:00:00Z"
+    },
+    {
+     "ocjena": 3,
+     "tekst": "Lijep prostor i ljubazno osoblje, no cijene su podigli previše.",
+     "jezik": "hr",
+     "vrijeme": "2026-09-05T12:00:00Z"
+    }
+   ]
+  },
+  {
+   "place_id": "FIXTURE_Smještajni objekt09",
+   "naziv": "Smještajni objekt-09 (sintetički primjer)",
+   "kategorija": "S",
+   "ocjena": 3.6,
+   "broj_ocjena": 313,
+   "recenzije": [
+    {
+     "ocjena": 3,
+     "tekst": "Lijep prostor i ljubazno osoblje, no cijene su podigli previše.",
+     "jezik": "hr",
+     "vrijeme": "2026-09-09T12:00:00Z"
+    },
+    {
+     "ocjena": 3,
+     "tekst": "Soba čista i udobna, doručak skroman. Lokacija odlična.",
+     "jezik": "hr",
+     "vrijeme": "2026-09-01T12:00:00Z"
+    },
+    {
+     "ocjena": 4,
+     "tekst": "Hrana odlična, osoblje ljubazno i brzo. Cijene sasvim korektne za ovu kvalitetu.",
+     "jezik": "hr",
+     "vrijeme": "2026-09-09T12:00:00Z"
+    },
+    {
+     "ocjena": 3,
+     "tekst": "Prekrasan ambijent uz rijeku, konobari srdačni. Rado se vraćamo.",
+     "jezik": "hr",
+     "vrijeme": "2026-09-02T12:00:00Z"
+    }
+   ]
+  },
+  {
+   "place_id": "FIXTURE_Atrakcija01",
+   "naziv": "Atrakcija-01 (sintetički primjer)",
+   "kategorija": "A",
+   "ocjena": 4.9,
+   "broj_ocjena": 177,
+   "recenzije": [
+    {
+     "ocjena": 5,
+     "tekst": "Hrana odlična, osoblje ljubazno i brzo. Cijene sasvim korektne za ovu kvalitetu.",
+     "jezik": "hr",
+     "vrijeme": "2026-09-05T12:00:00Z"
+    },
+    {
+     "ocjena": 5,
+     "tekst": "Sve pohvale za uslugu, čisto i uredno. Parkiranje u blizini bez problema.",
+     "jezik": "hr",
+     "vrijeme": "2026-09-05T12:00:00Z"
+    },
+    {
+     "ocjena": 5,
+     "tekst": "Prekrasan ambijent uz rijeku, konobari srdačni. Rado se vraćamo.",
+     "jezik": "hr",
+     "vrijeme": "2026-09-07T12:00:00Z"
+    },
+    {
+     "ocjena": 5,
+     "tekst": "Prekrasan ambijent uz rijeku, konobari srdačni. Rado se vraćamo.",
+     "jezik": "hr",
+     "vrijeme": "2026-09-05T12:00:00Z"
+    },
+    {
+     "ocjena": 5,
+     "tekst": "Hrana odlična, osoblje ljubazno i brzo. Cijene sasvim korektne za ovu kvalitetu.",
+     "jezik": "hr",
+     "vrijeme": "2026-09-04T12:00:00Z"
+    }
+   ]
+  },
+  {
+   "place_id": "FIXTURE_Atrakcija02",
+   "naziv": "Atrakcija-02 (sintetički primjer)",
+   "kategorija": "A",
+   "ocjena": 4.4,
+   "broj_ocjena": 304,
+   "recenzije": [
+    {
+     "ocjena": 4,
+     "tekst": "Sve pohvale za uslugu, čisto i uredno. Parkiranje u blizini bez problema.",
+     "jezik": "hr",
+     "vrijeme": "2026-09-11T12:00:00Z"
+    },
+    {
+     "ocjena": 5,
+     "tekst": "Sve pohvale za uslugu, čisto i uredno. Parkiranje u blizini bez problema.",
+     "jezik": "hr",
+     "vrijeme": "2026-09-03T12:00:00Z"
+    },
+    {
+     "ocjena": 4,
+     "tekst": "Domaća kuhinja na visokoj razini, porcije velike. Preporučujem svakome.",
+     "jezik": "hr",
+     "vrijeme": "2026-09-11T12:00:00Z"
+    },
+    {
+     "ocjena": 5,
+     "tekst": "Hrana odlična, osoblje ljubazno i brzo. Cijene sasvim korektne za ovu kvalitetu.",
+     "jezik": "hr",
+     "vrijeme": "2026-09-04T12:00:00Z"
+    },
+    {
+     "ocjena": 5,
+     "tekst": "Prekrasan ambijent uz rijeku, konobari srdačni. Rado se vraćamo.",
+     "jezik": "hr",
+     "vrijeme": "2026-09-03T12:00:00Z"
+    }
+   ]
+  },
+  {
+   "place_id": "FIXTURE_Atrakcija03",
+   "naziv": "Atrakcija-03 (sintetički primjer)",
+   "kategorija": "A",
+   "ocjena": 4.0,
+   "broj_ocjena": 133,
+   "recenzije": [
+    {
+     "ocjena": 4,
+     "tekst": "Hrana odlična, osoblje ljubazno i brzo. Cijene sasvim korektne za ovu kvalitetu.",
+     "jezik": "hr",
+     "vrijeme": "2026-09-11T12:00:00Z"
+    },
+    {
+     "ocjena": 4,
+     "tekst": "Soba čista i udobna, doručak skroman. Lokacija odlična.",
+     "jezik": "hr",
+     "vrijeme": "2026-09-08T12:00:00Z"
+    },
+    {
+     "ocjena": 4,
+     "tekst": "Hrana je stvarno dobra, ali usluga spora i parking je problem.",
+     "jezik": "hr",
+     "vrijeme": "2026-09-01T12:00:00Z"
+    },
+    {
+     "ocjena": 4,
+     "tekst": "Hrana odlična, osoblje ljubazno i brzo. Cijene sasvim korektne za ovu kvalitetu.",
+     "jezik": "hr",
+     "vrijeme": "2026-09-04T12:00:00Z"
+    }
+   ]
+  },
+  {
+   "place_id": "FIXTURE_Atrakcija04",
+   "naziv": "Atrakcija-04 (sintetički primjer)",
+   "kategorija": "A",
+   "ocjena": 4.2,
+   "broj_ocjena": 273,
+   "recenzije": [
+    {
+     "ocjena": 5,
+     "tekst": "Hrana je stvarno dobra, ali usluga spora i parking je problem.",
+     "jezik": "hr",
+     "vrijeme": "2026-09-02T12:00:00Z"
+    },
+    {
+     "ocjena": 4,
+     "tekst": "Lijep prostor i ljubazno osoblje, no cijene su podigli previše.",
+     "jezik": "hr",
+     "vrijeme": "2026-09-09T12:00:00Z"
+    },
+    {
+     "ocjena": 4,
+     "tekst": "Lijep prostor i ljubazno osoblje, no cijene su podigli previše.",
+     "jezik": "hr",
+     "vrijeme": "2026-09-09T12:00:00Z"
+    },
+    {
+     "ocjena": 4,
+     "tekst": "Soba čista i udobna, doručak skroman. Lokacija odlična.",
+     "jezik": "hr",
+     "vrijeme": "2026-09-03T12:00:00Z"
+    }
+   ]
+  },
+  {
+   "place_id": "FIXTURE_Atrakcija05",
+   "naziv": "Atrakcija-05 (sintetički primjer)",
+   "kategorija": "A",
+   "ocjena": 4.7,
+   "broj_ocjena": 251,
+   "recenzije": [
+    {
+     "ocjena": 5,
+     "tekst": "Prekrasan ambijent uz rijeku, konobari srdačni. Rado se vraćamo.",
+     "jezik": "hr",
+     "vrijeme": "2026-09-05T12:00:00Z"
+    },
+    {
+     "ocjena": 5,
+     "tekst": "Ugodno mjesto za obitelj, imaju i dječji kutak. Kava izvrsna.",
+     "jezik": "hr",
+     "vrijeme": "2026-09-04T12:00:00Z"
+    },
+    {
+     "ocjena": 5,
+     "tekst": "Hrana odlična, osoblje ljubazno i brzo. Cijene sasvim korektne za ovu kvalitetu.",
+     "jezik": "hr",
+     "vrijeme": "2026-09-04T12:00:00Z"
+    },
+    {
+     "ocjena": 5,
+     "tekst": "Domaća kuhinja na visokoj razini, porcije velike. Preporučujem svakome.",
+     "jezik": "hr",
+     "vrijeme": "2026-09-02T12:00:00Z"
+    }
+   ]
+  },
+  {
+   "place_id": "FIXTURE_Atrakcija06",
+   "naziv": "Atrakcija-06 (sintetički primjer)",
+   "kategorija": "A",
+   "ocjena": 4.1,
+   "broj_ocjena": 126,
+   "recenzije": [
+    {
+     "ocjena": 3,
+     "tekst": "Prekrasan ambijent uz rijeku, konobari srdačni. Rado se vraćamo.",
+     "jezik": "hr",
+     "vrijeme": "2026-09-07T12:00:00Z"
+    },
+    {
+     "ocjena": 4,
+     "tekst": "Lijep prostor i ljubazno osoblje, no cijene su podigli previše.",
+     "jezik": "hr",
+     "vrijeme": "2026-09-04T12:00:00Z"
+    },
+    {
+     "ocjena": 5,
+     "tekst": "Sve pohvale za uslugu, čisto i uredno. Parkiranje u blizini bez problema.",
+     "jezik": "hr",
+     "vrijeme": "2026-09-10T12:00:00Z"
+    },
+    {
+     "ocjena": 5,
+     "tekst": "Hrana odlična, osoblje ljubazno i brzo. Cijene sasvim korektne za ovu kvalitetu.",
+     "jezik": "hr",
+     "vrijeme": "2026-09-10T12:00:00Z"
+    }
+   ]
+  }
+ ]
+}

@@ -69,12 +69,13 @@ function trakaIndeksa(k, v) {
       <span class="sredina"></span>
       <i class="${poz?'poz':'neg'}" style="left:${lijevo}%;width:${sirina/2}%"></i></div></td>
     <td class="num sitno">${v.n}</td>
-    <td class="sitno">${e(v.status)} &middot; ${v.izvora} izv. &middot; CI ${br(v.ci[0])}&ndash;${br(v.ci[1])}</td></tr>`;
+    <td class="sitno">${e(v.status)} &middot; ${v.izvora} izv. &middot; CI ${br(v.ci[0])}&ndash;${br(v.ci[1])}${
+      v.ocjene ? ` &middot; <b>tekst ${br(v.tekstualni)} / ocjene ${br(v.ocjene.RS)}</b> (&alpha;=${br(v.alfa,2)})` : ''}</td></tr>`;
 }
 
-export async function izvjestaj({ log = console.log } = {}) {
+export async function izvjestaj({ log = console.log, fixture = false } = {}) {
   const dir = path.join(ROOT, 'data/sentiment-sb');
-  const a = JSON.parse(await fs.readFile(path.join(dir, 'analysis-latest.json'), 'utf8'));
+  const a = JSON.parse(await fs.readFile(path.join(dir, fixture ? 'analysis-fixture.json' : 'analysis-latest.json'), 'utf8'));
   const zlatni = JSON.parse(await fs.readFile(path.join(dir, 'gold-sample.json'), 'utf8'));
 
   const kraj = new Date(a.prozor.kraj);
@@ -124,7 +125,7 @@ export async function izvjestaj({ log = console.log } = {}) {
   const html = renderaj({ a, zlatni, kraj, pocetak, tekuci, stavkiUProzoru, relOk, relevantni, katOk,
                           pPrior, pBez, prior, bezPriora, negativna, pozitivna, osg, delta, serije,
                           ukupnoPregleda, prethodnih7, graf: linijskiGraf(serije), trakaIndeksa });
-  const izlaz = path.join(ROOT, 'docs/dashboard-slavonski-brod.html');
+  const izlaz = path.join(ROOT, a.fixture ? 'docs/dashboard-demo-sloj-ocjena.html' : 'docs/dashboard-slavonski-brod.html');
   await fs.writeFile(izlaz, html);
   log(`Izvjestaj: ${izlaz} (${(html.length/1024).toFixed(0)} kB)`);
   return izlaz;
@@ -261,6 +262,12 @@ footer{border-top:1px solid var(--rule-2);margin-top:44px;padding-top:16px;font-
 @media (max-width:520px){ .citat{grid-template-columns:1fr} .traka-c{display:none} }
 </style>
 <div class="wrap">
+${a.fixture ? `<div class="panel crit" style="margin-top:20px">
+  <h3>Demonstracija, ne izvještaj</h3>
+  <p>Sloj ocjena u ovom prikazu dolazi iz <b>sintetičkog testnog skupa</b>, a ne s Google Places API-ja.
+  Nazivi objekata su izmišljeni i ne odnose se ni na jedan stvarni objekt u Slavonskom Brodu.
+  Svrha je pokazati kako izvještaj izgleda kada sloj ocjena postoji. Medijski dio (kategorije O, B, P, D, K)
+  i dalje je stvaran.</p></div>` : ''}
 <header class="top">
   <p class="eyebrow">Prva probna iteracija &middot; stvarni podaci, bez simulacije</p>
   <h1>Sentiment Radar Slavonski Brod</h1>
@@ -302,6 +309,30 @@ footer{border-top:1px solid var(--rule-2);margin-top:44px;padding-top:16px;font-
   </table></div>
   <p class="sitno">Kategorije bez vrijednosti nisu „nula“ nego <em>neizmjereno</em>. Gastronomija, smještaj i turističke informacije prazne su jer u ovoj iteraciji nema nijednog recenzijskog izvora &mdash; to je ograničenje okvira uzorkovanja, ne nalaz o gradu.</p>
 </section>
+
+${a.sloj_ocjena ? `<section>
+  <div class="sec-head"><h2>2b &middot; Sloj ocjena (${e(a.sloj_ocjena.izvor === 'FIXTURE' ? 'sintetički testni skup' : 'Google Places API')})</h2>
+  <p>Brojčane ocjene i tekst recenzija odvojeni su i tek onda kombinirani ponderom &alpha;, kako specifikacija propisuje.</p></div>
+  <div class="grid">
+    <div class="tile glavni"><p class="k">Objekata u registru</p><p class="v">${a.sloj_ocjena.objekata}</p>
+      <p class="sub">Ugostiteljstvo, smještaj i atrakcije s barem jednom ocjenom.</p></div>
+    <div class="tile"><p class="k">Recenzija u obradi</p><p class="v">${a.sloj_ocjena.recenzija}</p>
+      <p class="sub">Place Details vraća najviše 5 recenzija po objektu po pozivu.</p></div>
+    <div class="tile"><p class="k">Spominjanja iz recenzija</p><p class="v">${a.spominjanja.filter(m=>m.iz_recenzije).length}</p>
+      <p class="sub">Recenzije kraće od 20 znakova se preskaču.</p></div>
+  </div>
+  <div class="tw"><table>
+    <thead><tr><th>Kategorija</th><th class="num">Objekata</th><th class="num">Ukupno ocjena</th><th class="num">Prosjek (1&ndash;5)</th><th class="num">Podindeks ocjena</th><th class="num">Podindeks teksta</th></tr></thead>
+    <tbody>${Object.entries(kat).filter(([,v])=>v.ocjene).map(([k,v]) => `<tr>
+      <th scope="row">${e(KATEGORIJE[k].naziv)}</th>
+      <td class="num">${v.ocjene.objekata}</td><td class="num">${v.ocjene.ukupno_ocjena}</td>
+      <td class="num">${br(v.ocjene.R,2)}</td><td class="num"><b>${br(v.ocjene.RS)}</b></td>
+      <td class="num">${br(v.tekstualni)}</td></tr>`).join('')}</tbody>
+  </table></div>
+  <p class="sitno">Prosjek po objektu prolazi Bayesovo stezanje prema prosjeku kategorije (m = 20), a doprinos jednog objekta ograničen je na 25 % težine kategorije &mdash; tako tri recenzije ne mogu pomaknuti indeks.</p>
+  <div class="panel flag"><h3>Zašto ovdje nema popisa objekata s ocjenama</h3>
+  <p>Uvjeti Google Places API-ja izrijekom zabranjuju pohranu dohvaćenog sadržaja, uz iznimku identifikatora <code>place_id</code>. Zato se na disk zapisuju samo izvedeni agregati, a popis najslabijih i najboljih objekata ne pohranjuje se uz stvarne Google podatke. Za rad s pojedinačnim objektima postoji dopušten put: <b>Google Business Profile API</b>, kojim objekt sam daje pristup svojim recenzijama.</p></div>
+</section>` : ''}
 
 <section>
   <div class="sec-head"><h2>3 &middot; Interes za destinaciju</h2><p>Dnevni pregledi članka „Slavonski Brod“ na Wikipediji, 60 dana. Jedini izvor s potpunim vremenskim nizom.</p></div>

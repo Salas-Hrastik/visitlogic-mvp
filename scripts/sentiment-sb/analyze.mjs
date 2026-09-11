@@ -25,6 +25,11 @@ const ROOT = path.resolve(import.meta.dirname, '../..');
 const RAZRED_KVALITETE = { sbplus:0.80, brodportal:0.80, grad_sb:0.85, gdelt:0.40 };
 const PONDERI_OSG = { O:0.40, K:0.20, P:0.15, B:0.10, D:0.075, A:0.075 };
 const PRAG_PUNO = 15, PRAG_INDIKATIVNO = 5;
+/* Udio brojcanih ocjena u kategorijskom indeksu (spec. 4.2).
+   Ostatak nosi tekstualni sentiment. Kategorije koje ovdje ne postoje
+   racunaju se iskljucivo iz teksta. */
+const ALFA = { G: 0.50, S: 0.50, A: 0.35 };
+const M_PRIOR = 20;   // pretpostavljeni broj ocjena za Bayesovo stezanje
 /* Prior dosega izvora (prihvati objavu hiperlokalnog portala i kad grad nije imenovan).
    ISKLJUCEN na temelju mjerenja na zlatnom uzorku od 25 spominjanja (2026-09-11):
    preciznost relevantnosti s priorom 0,50 (5/10) naspram 0,93 (14/15) bez njega.
@@ -122,6 +127,34 @@ function winsoriziraj(v) {
   return v.map(x => Math.max(lo, Math.min(hi, x)));
 }
 
+/* ---------- podindeks brojcanih ocjena (spec. 4.2) ----------
+   R_obj = (n·prosjek + m·mu) / (n + m), gdje je mu krossekcijski prosjek
+   kategorije tezinski po broju ocjena. Prior nije pretpostavljena konstanta
+   nego se cita iz istog tjedna, pa se model ne oslanja na izmisljenu vrijednost.
+   Doprinos jednog objekta ogranicen je na 25 % tezine kategorije (spec. 4.3). */
+function indeksOcjena(objekti, kategorija) {
+  const u = (objekti || []).filter(o => o.kategorija === kategorija && o.ocjena != null && o.broj_ocjena > 0);
+  if (u.length < 3) return null;
+  const ukupnoOcjena = u.reduce((s, o) => s + o.broj_ocjena, 0);
+  const mu = u.reduce((s, o) => s + o.ocjena * o.broj_ocjena, 0) / ukupnoOcjena;
+  const kapa = 0.25 * ukupnoOcjena;
+  const red = u.map(o => ({
+    place_id: o.place_id, naziv: o.naziv, ocjena: o.ocjena, broj_ocjena: o.broj_ocjena,
+    R: (o.broj_ocjena * o.ocjena + M_PRIOR * mu) / (o.broj_ocjena + M_PRIOR),
+    w: Math.min(o.broj_ocjena, kapa)
+  }));
+  const sw = red.reduce((s, x) => s + x.w, 0);
+  const R = red.reduce((s, x) => s + x.w * x.R, 0) / sw;
+  const RS = 100 * (R - 1) / 4;                       // ljestvica 1-5 -> 0-100
+  const sortirani = [...red].sort((a, b) => a.R - b.R);
+  return {
+    RS: +RS.toFixed(1), R: +R.toFixed(2), mu: +mu.toFixed(2),
+    objekata: u.length, ukupno_ocjena: ukupnoOcjena,
+    najslabiji: sortirani.slice(0, 3).map(x => ({ naziv: x.naziv, ocjena: x.ocjena, n: x.broj_ocjena })),
+    najbolji: sortirani.slice(-3).reverse().map(x => ({ naziv: x.naziv, ocjena: x.ocjena, n: x.broj_ocjena }))
+  };
+}
+
 function indeks(spominjanja) {
   const n = spominjanja.length;
   if (n === 0) return { vrijednost:null, n:0, izvora:0, pouzdanost:'nema', ci:[null,null], udio_neg:null, udio_poz:null, status:'nedovoljno' };
@@ -143,7 +176,7 @@ function indeks(spominjanja) {
   };
 }
 
-export async function analiziraj({ log = console.log } = {}) {
+export async function analiziraj({ log = console.log, ocjene = null } = {}) {
   const dir = path.join(ROOT, 'data/sentiment-sb');
   const sirovo = JSON.parse(await fs.readFile(path.join(dir, 'raw-latest.json'), 'utf8'));
   const kraj = new Date(sirovo.dohvaceno).getTime();
@@ -188,10 +221,44 @@ export async function analiziraj({ log = console.log } = {}) {
     }
   }
 
+  /* Recenzije iz sloja ocjena ulaze kao spominjanja u svoju kategoriju.
+     Tekst recenzije NE zavrsava na disku (uvjeti Places API-ja) - cuva se
+     samo izvedeni polaritet i duljina. */
+  let izRecenzija = 0;
+  for (const o of ocjene || []) {
+    for (const r of o.recenzije || []) {
+      if (!r.tekst || r.tekst.length < 20) continue;
+      const sent = sentiment(r.tekst);
+      spominjanja.push({
+        item_url: null, izvor_id: 'places', naslov: null, objekt: o.naziv,
+        objavljeno: r.vrijeme || sirovo.dohvaceno, tjedan: 0, kategorija: o.kategorija,
+        polaritet: +sent.polaritet.toFixed(3), pouzdanost_modela: +sent.pouzdanost.toFixed(3),
+        mjesovito: sent.mjesovito, ironija: !!sent.ironija, pogodaka: sent.pogodaka,
+        relevantnost: 1, geo_prior: false, rezervna_kategorija: false,
+        tezina: +(sent.pouzdanost * 0.90).toFixed(4),      // q = 0,90 za recenzijske platforme
+        citat: null, iz_recenzije: true, duljina: r.tekst.length
+      });
+      izRecenzija++;
+    }
+  }
+  if (izRecenzija) log(`  iz recenzija: ${izRecenzija} spominjanja`);
+
   /* KORAK 09: agregacija */
   const tekuci = spominjanja.filter(m => m.tjedan === 0);
   const poKategoriji = {};
-  for (const k of Object.keys(KATEGORIJE)) poKategoriji[k] = indeks(tekuci.filter(m => m.kategorija === k));
+  for (const k of Object.keys(KATEGORIJE)) {
+    const ts = indeks(spominjanja.filter(m => m.tjedan === 0 && m.kategorija === k));
+    const rs = indeksOcjena(ocjene, k);
+    const alfa = rs ? (ALFA[k] ?? 0) : 0;
+    let vrijednost = ts.vrijednost;
+    if (rs && alfa > 0) {
+      vrijednost = ts.vrijednost === null ? +rs.RS.toFixed(1)          // nema teksta -> samo ocjene
+                 : +(alfa * rs.RS + (1 - alfa) * ts.vrijednost).toFixed(1);
+    }
+    poKategoriji[k] = { ...ts, vrijednost,
+      tekstualni: ts.vrijednost, ocjene: rs, alfa: rs ? (ts.vrijednost === null ? 1 : alfa) : 0,
+      status: vrijednost === null ? ts.status : (rs || ts.n >= PRAG_PUNO ? 'puno' : ts.status) };
+  }
 
   const povijest = [0,1,2,3].map(tj => {
     const sk = spominjanja.filter(m => m.tjedan === tj);
@@ -224,8 +291,11 @@ export async function analiziraj({ log = console.log } = {}) {
         obrazlozenje:`Udio negativnih spominjanja u kategoriji "${KATEGORIJE[k].naziv}" iznosi ${(v.udio_neg*100).toFixed(0)} % (n=${v.n}).` });
   }
 
+  const jeFixture = (ocjene && ocjene._izvor === 'FIXTURE') || false;
   const rezultat = {
     run_id: sirovo.run_id, izradeno: new Date().toISOString(),
+    fixture: jeFixture,
+    _upozorenje: jeFixture ? 'SADRŽI SINTETIČKE PODATKE IZ FIXTUREA. Nije rezultat stvarne analize.' : undefined,
     prozor: { kraj: sirovo.dohvaceno, duljina_dana: 7, napomena: 'Pomicni prozor od 7 dana, a ne pon-ned: dohvat pokriva samo naslovnice portala.' },
     konfiguracija: { prior_dosega_izvora: PRIOR_UKLJUCEN },
     statusi: sirovo.statusi,
@@ -234,10 +304,29 @@ export async function analiziraj({ log = console.log } = {}) {
     indeksi: { OSG: { vrijednost: OSG, koristene_kategorije: koristene, izostavljene_kategorije: izostavljene },
                TSI: { vrijednost: null, razlog: 'Nema recenzijskih izvora u iteraciji 1 \u2014 turistički sloj se ne može izračunati.' },
                po_kategoriji: poKategoriji },
-    povijest, upozorenja, spominjanja,
+    povijest, upozorenja,
+    spominjanja: spominjanja.map(m => m.iz_recenzije ? { ...m, citat: null, objekt: null } : m),
+    sloj_ocjena: ocjene ? {
+      izvor: ocjene._izvor || 'google_places',
+      objekata: ocjene.length,
+      recenzija: ocjene.reduce((s, o) => s + (o.recenzije?.length || 0), 0),
+      napomena: 'Pohranjene su samo izvedene vrijednosti. Ocjene po objektu i tekst recenzija nisu zapisani na disk.'
+    } : null,
     pageviews: sirovo.pageviews
   };
-  await fs.writeFile(path.join(dir, 'analysis-latest.json'), JSON.stringify(rezultat, null, 1));
+  /* Uvjeti Places API-ja zabranjuju pohranu sadrzaja (osim place_id-a).
+     Popis najboljih i najslabijih objekata s ocjenama je reprodukcija tog
+     sadrzaja, pa se kod stvarnih Google podataka NE zapisuje na disk -
+     ostaju samo izvedeni agregati. Kod fixturea se cuva jer nije Googleov. */
+  if (ocjene && ocjene._izvor === 'google_places') {
+    for (const v of Object.values(rezultat.indeksi.po_kategoriji)) {
+      if (v.ocjene) { delete v.ocjene.najslabiji; delete v.ocjene.najbolji; }
+    }
+  }
+  // Fixture se NIKADA ne zapisuje preko stvarnih rezultata.
+  const ime = jeFixture ? 'analysis-fixture.json' : 'analysis-latest.json';
+  await fs.writeFile(path.join(dir, ime), JSON.stringify(rezultat, null, 1));
+  if (jeFixture) log('  NAPOMENA: rezultat zapisan u analysis-fixture.json (sintetički podaci)');
   log(`Analiza: ${spominjanja.length} spominjanja, OSG=${OSG}, upozorenja=${upozorenja.length}`);
   return rezultat;
 }

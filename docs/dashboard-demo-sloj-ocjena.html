@@ -101,7 +101,12 @@ footer{border-top:1px solid var(--rule-2);margin-top:44px;padding-top:16px;font-
 @media (max-width:520px){ .citat{grid-template-columns:1fr} .traka-c{display:none} }
 </style>
 <div class="wrap">
-
+<div class="panel crit" style="margin-top:20px">
+  <h3>Demonstracija, ne izvještaj</h3>
+  <p>Sloj ocjena u ovom prikazu dolazi iz <b>sintetičkog testnog skupa</b>, a ne s Google Places API-ja.
+  Nazivi objekata su izmišljeni i ne odnose se ni na jedan stvarni objekt u Slavonskom Brodu.
+  Svrha je pokazati kako izvještaj izgleda kada sloj ocjena postoji. Medijski dio (kategorije O, B, P, D, K)
+  i dalje je stvaran.</p></div>
 <header class="top">
   <p class="eyebrow">Prva probna iteracija &middot; stvarni podaci, bez simulacije</p>
   <h1>Sentiment Radar Slavonski Brod</h1>
@@ -116,20 +121,20 @@ footer{border-top:1px solid var(--rule-2);margin-top:44px;padding-top:16px;font-
 
 <section>
   <div class="sec-head"><h2>1 &middot; Izvršni sažetak</h2><p>Nalazi generirani iz izračunatih vrijednosti, ne iz predloška.</p></div>
-  <ol class="uvidi"><li><span>U prozoru od sedam dana pipeline je zadržao <b>24 objava</b> iz <b>4 od 5 izvora</b>, iz kojih je nastalo <b>28 aspektnih spominjanja</b>. To je premalen uzorak za pouzdane kategorijske ocjene i to je glavni nalaz ove iteracije.</span></li><li><span>Opći sentiment grada (OSG) iznosi <b>53,8 / 100</b>, ali je izračunat samo iz kategorija O, B &mdash; ostale (K, P, D, A) nisu prešle prag objave, pa su ponderi renormalizirani.</span></li><li><span>Turistički sentiment (TSI) <b>nije izračunat</b>. Nema recenzijskih izvora u iteraciji 1 — turistički sloj se ne može izračunati. Bez recenzijskih izvora agent mjeri ton lokalnih medija, a ne doživljaj posjetitelja.</span></li><li><span>Najniža kategorija je <b>Sigurnost</b> (24,2, n=5, udio negativnih 100 %). To je očekivana posljedica toga što lokalni mediji redovito izvještavaju o nesrećama i prekršajima &mdash; <b>nije</b> pokazatelj percepcije sigurnosti kod posjetitelja.</span></li><li><span>Ručna provjera uzorka od 25 spominjanja daje preciznost relevantnosti <b>76 %</b>, ispod cilja od 90 % iz specifikacije. Uzrok je izoliran i mjerljiv (vidi poglavlje o kvaliteti).</span></li><li><span>Interes za grad na Wikipediji u zadnjih 7 dana: <b>1560 pregleda</b> (prethodnih 7 dana: 1555). Jedini izvor u ovoj iteraciji s potpunim i nepristranim vremenskim nizom.</span></li><li><span>Izvor <b>GDELT 2.0 DOC API</b> bio je nedostupan; sustav je nastavio rad i to zabilježio kao upozorenje, umjesto da prekine izvođenje.</span></li></ol>
+  <ol class="uvidi"><li><span>U prozoru od sedam dana pipeline je zadržao <b>25 objava</b> iz <b>4 od 5 izvora</b>, iz kojih je nastalo <b>137 aspektnih spominjanja</b>. To je premalen uzorak za pouzdane kategorijske ocjene i to je glavni nalaz ove iteracije.</span></li><li><span>Opći sentiment grada (OSG) iznosi <b>56,7 / 100</b>, ali je izračunat samo iz kategorija O, B, A &mdash; ostale (K, P, D) nisu prešle prag objave, pa su ponderi renormalizirani.</span></li><li><span>Turistički sentiment (TSI) <b>nije izračunat</b>. Nema recenzijskih izvora u iteraciji 1 — turistički sloj se ne može izračunati. Bez recenzijskih izvora agent mjeri ton lokalnih medija, a ne doživljaj posjetitelja.</span></li><li><span>Najniža kategorija je <b>Sigurnost</b> (24,2, n=5, udio negativnih 100 %). To je očekivana posljedica toga što lokalni mediji redovito izvještavaju o nesrećama i prekršajima &mdash; <b>nije</b> pokazatelj percepcije sigurnosti kod posjetitelja.</span></li><li><span>Ručna provjera uzorka od 25 spominjanja daje preciznost relevantnosti <b>76 %</b>, ispod cilja od 90 % iz specifikacije. Uzrok je izoliran i mjerljiv (vidi poglavlje o kvaliteti).</span></li><li><span>Interes za grad na Wikipediji u zadnjih 7 dana: <b>1560 pregleda</b> (prethodnih 7 dana: 1555). Jedini izvor u ovoj iteraciji s potpunim i nepristranim vremenskim nizom.</span></li><li><span>Izvor <b>GDELT 2.0 DOC API</b> bio je nedostupan; sustav je nastavio rad i to zabilježio kao upozorenje, umjesto da prekine izvođenje.</span></li></ol>
 </section>
 
 <section>
   <div class="sec-head"><h2>2 &middot; Indeksi</h2><p>Ljestvica 0&ndash;100; 50 je neutralno. Prag objave: n &ge; 5 za vrijednost, n &ge; 15 za punu pouzdanost.</p></div>
   <div class="grid">
     <div class="tile glavni"><p class="k">OSG &mdash; opći sentiment grada</p>
-      <p class="v">53,8<small> / 100</small></p>
-      <p class="sub">Iz kategorija: O, B. Izostavljeno zbog praga: K, P, D, A.</p></div>
+      <p class="v">56,7<small> / 100</small></p>
+      <p class="sub">Iz kategorija: O, B, A. Izostavljeno zbog praga: K, P, D.</p></div>
     <div class="tile"><p class="k">TSI &mdash; turistički sentiment</p>
       <p class="v" style="color:var(--ink-3)">&mdash;</p>
       <p class="sub">Nema recenzijskih izvora u iteraciji 1 — turistički sloj se ne može izračunati.</p></div>
     <div class="tile"><p class="k">Promjena prema prethodnih 7 dana</p>
-      <p class="v">-2,1</p>
+      <p class="v">+12,7</p>
       <p class="sub">Ukupni tekstualni sentiment. <b>Oprez:</b> prethodni prozor ima samo n=7 spominjanja jer dohvat pokriva naslovnice, pa je stariji tjedan sustavno podzastupljen. Promjena ispod 3 boda tumači se kao stabilno.</p></div>
     <div class="tile"><p class="k">Interes (Wikipedia, 7 dana)</p>
       <p class="v">1560</p>
@@ -140,15 +145,24 @@ footer{border-top:1px solid var(--rule-2);margin-top:44px;padding-top:16px;font-
   <div class="tw"><table>
     <thead><tr><th>Kategorija</th><th>Indeks</th><th>Odstupanje od neutralnog (50)</th><th class="num">n</th><th>Napomena</th></tr></thead>
     <tbody><tr><th scope="row">Gastronomija</th>
-      <td class="num"><span class="nema">nedovoljno podataka</span></td>
-      <td class="traka-c"><div class="traka prazna"><span class="sredina"></span></div></td>
-      <td class="num sitno">0</td><td class="sitno">nijedno spominjanje u prozoru</td></tr><tr><th scope="row">Smještaj</th>
-      <td class="num"><span class="nema">nedovoljno podataka</span></td>
-      <td class="traka-c"><div class="traka prazna"><span class="sredina"></span></div></td>
-      <td class="num sitno">0</td><td class="sitno">nijedno spominjanje u prozoru</td></tr><tr><th scope="row">Atrakcije i baština</th>
-      <td class="num"><span class="nema">nedovoljno podataka</span></td>
-      <td class="traka-c"><div class="traka prazna"><span class="sredina"></span></div></td>
-      <td class="num sitno">3</td><td class="sitno">n = 3, ispod praga objave (5)</td></tr><tr><th scope="row">Događanja</th>
+    <td class="num"><b>68,5</b> <span class="smjer poz">▲ iznad neutralnog</span></td>
+    <td class="traka-c"><div class="traka" title="68,5 / 100">
+      <span class="sredina"></span>
+      <i class="poz" style="left:50%;width:18.5%"></i></div></td>
+    <td class="num sitno">53</td>
+    <td class="sitno">puno &middot; 1 izv. &middot; CI 59,2&ndash;66,7 &middot; <b>tekst 63,1 / ocjene 74,0</b> (&alpha;=0,50)</td></tr><tr><th scope="row">Smještaj</th>
+    <td class="num"><b>73,2</b> <span class="smjer poz">▲ iznad neutralnog</span></td>
+    <td class="traka-c"><div class="traka" title="73,2 / 100">
+      <span class="sredina"></span>
+      <i class="poz" style="left:50%;width:23.200000000000003%"></i></div></td>
+    <td class="num sitno">30</td>
+    <td class="sitno">puno &middot; 1 izv. &middot; CI 64,6&ndash;71,4 &middot; <b>tekst 68,2 / ocjene 78,2</b> (&alpha;=0,50)</td></tr><tr><th scope="row">Atrakcije i baština</th>
+    <td class="num"><b>75,7</b> <span class="smjer poz">▲ iznad neutralnog</span></td>
+    <td class="traka-c"><div class="traka" title="75,7 / 100">
+      <span class="sredina"></span>
+      <i class="poz" style="left:50%;width:25.700000000000003%"></i></div></td>
+    <td class="num sitno">29</td>
+    <td class="sitno">puno &middot; 3 izv. &middot; CI 67,2&ndash;72,9 &middot; <b>tekst 70,5 / ocjene 85,4</b> (&alpha;=0,35)</td></tr><tr><th scope="row">Događanja</th>
       <td class="num"><span class="nema">nedovoljno podataka</span></td>
       <td class="traka-c"><div class="traka prazna"><span class="sredina"></span></div></td>
       <td class="num sitno">4</td><td class="sitno">n = 4, ispod praga objave (5)</td></tr><tr><th scope="row">Komunalno i javni prostor</th>
@@ -163,7 +177,7 @@ footer{border-top:1px solid var(--rule-2);margin-top:44px;padding-top:16px;font-
       <span class="sredina"></span>
       <i class="neg" style="left:24.2%;width:25.8%"></i></div></td>
     <td class="num sitno">5</td>
-    <td class="sitno">indikativno &middot; 2 izv. &middot; CI 17,5&ndash;32,9</td></tr><tr><th scope="row">Informacije i pristupačnost</th>
+    <td class="sitno">indikativno &middot; 2 izv. &middot; CI 17,6&ndash;32,9</td></tr><tr><th scope="row">Informacije i pristupačnost</th>
       <td class="num"><span class="nema">nedovoljno podataka</span></td>
       <td class="traka-c"><div class="traka prazna"><span class="sredina"></span></div></td>
       <td class="num sitno">0</td><td class="sitno">nijedno spominjanje u prozoru</td></tr><tr><th scope="row">Opći gradski sentiment</th>
@@ -172,12 +186,42 @@ footer{border-top:1px solid var(--rule-2);margin-top:44px;padding-top:16px;font-
       <span class="sredina"></span>
       <i class="poz" style="left:50%;width:11.200000000000003%"></i></div></td>
     <td class="num sitno">12</td>
-    <td class="sitno">indikativno &middot; 2 izv. &middot; CI 55,8&ndash;66,7</td></tr></tbody>
+    <td class="sitno">indikativno &middot; 2 izv. &middot; CI 55,8&ndash;66,0</td></tr></tbody>
   </table></div>
   <p class="sitno">Kategorije bez vrijednosti nisu „nula“ nego <em>neizmjereno</em>. Gastronomija, smještaj i turističke informacije prazne su jer u ovoj iteraciji nema nijednog recenzijskog izvora &mdash; to je ograničenje okvira uzorkovanja, ne nalaz o gradu.</p>
 </section>
 
-
+<section>
+  <div class="sec-head"><h2>2b &middot; Sloj ocjena (sintetički testni skup)</h2>
+  <p>Brojčane ocjene i tekst recenzija odvojeni su i tek onda kombinirani ponderom &alpha;, kako specifikacija propisuje.</p></div>
+  <div class="grid">
+    <div class="tile glavni"><p class="k">Objekata u registru</p><p class="v">37</p>
+      <p class="sub">Ugostiteljstvo, smještaj i atrakcije s barem jednom ocjenom.</p></div>
+    <div class="tile"><p class="k">Recenzija u obradi</p><p class="v">109</p>
+      <p class="sub">Place Details vraća najviše 5 recenzija po objektu po pozivu.</p></div>
+    <div class="tile"><p class="k">Spominjanja iz recenzija</p><p class="v">109</p>
+      <p class="sub">Recenzije kraće od 20 znakova se preskaču.</p></div>
+  </div>
+  <div class="tw"><table>
+    <thead><tr><th>Kategorija</th><th class="num">Objekata</th><th class="num">Ukupno ocjena</th><th class="num">Prosjek (1&ndash;5)</th><th class="num">Podindeks ocjena</th><th class="num">Podindeks teksta</th></tr></thead>
+    <tbody><tr>
+      <th scope="row">Gastronomija</th>
+      <td class="num">22</td><td class="num">3987</td>
+      <td class="num">3,96</td><td class="num"><b>74,0</b></td>
+      <td class="num">63,1</td></tr><tr>
+      <th scope="row">Smještaj</th>
+      <td class="num">9</td><td class="num">1240</td>
+      <td class="num">4,13</td><td class="num"><b>78,2</b></td>
+      <td class="num">68,2</td></tr><tr>
+      <th scope="row">Atrakcije i baština</th>
+      <td class="num">6</td><td class="num">1264</td>
+      <td class="num">4,42</td><td class="num"><b>85,4</b></td>
+      <td class="num">70,5</td></tr></tbody>
+  </table></div>
+  <p class="sitno">Prosjek po objektu prolazi Bayesovo stezanje prema prosjeku kategorije (m = 20), a doprinos jednog objekta ograničen je na 25 % težine kategorije &mdash; tako tri recenzije ne mogu pomaknuti indeks.</p>
+  <div class="panel flag"><h3>Zašto ovdje nema popisa objekata s ocjenama</h3>
+  <p>Uvjeti Google Places API-ja izrijekom zabranjuju pohranu dohvaćenog sadržaja, uz iznimku identifikatora <code>place_id</code>. Zato se na disk zapisuju samo izvedeni agregati, a popis najslabijih i najboljih objekata ne pohranjuje se uz stvarne Google podatke. Za rad s pojedinačnim objektima postoji dopušten put: <b>Google Business Profile API</b>, kojim objekt sam daje pristup svojim recenzijama.</p></div>
+</section>
 
 <section>
   <div class="sec-head"><h2>3 &middot; Interes za destinaciju</h2><p>Dnevni pregledi članka „Slavonski Brod“ na Wikipediji, 60 dana. Jedini izvor s potpunim vremenskim nizom.</p></div>
@@ -230,11 +274,11 @@ footer{border-top:1px solid var(--rule-2);margin-top:44px;padding-top:16px;font-
       <div><a href="https://brodportal.hr/clanak/street-food-festival-neno-belan-upotpunio-40393" target="_blank" rel="noopener">STREET FOOD FESTIVAL: Neno Belan rasplesao Tvrđavu Brod</a>
       <span class="meta">Događanja + Atrakcije i baština &middot; brodportal &middot; 05. 09. 2026.</span></div></li><li class="citat poz">
       <span class="pol">+0,32</span>
-      <div><a href="https://sbplus.hr/sport/slavonski-brod-najuspjesniji-kajakaski-grad-u-hrvatskoj-61898" target="_blank" rel="noopener">Slavonski Brod - najuspješniji kajakaški grad u Hrvatskoj</a>
-      <span class="meta">Opći gradski sentiment &middot; sbplus &middot; 08. 09. 2026.</span></div></li><li class="citat poz">
+      <div><a href="" target="_blank" rel="noopener"></a>
+      <span class="meta">Gastronomija + Smještaj + Atrakcije i baština &middot; places &middot; 11. 09. 2026.</span></div></li><li class="citat poz">
       <span class="pol">+0,32</span>
-      <div><a href="https://brodportal.hr/clanak/tambura-samica-ponovno-uva-tradiciju-u-donjim-andrijevcima-40398" target="_blank" rel="noopener">Tambura samica ponovno čuva tradiciju u Donjim Andrijevcima</a>
-      <span class="meta">Događanja &middot; brodportal &middot; 06. 09. 2026.</span></div></li></ul>
+      <div><a href="https://sbplus.hr/sport/slavonski-brod-najuspjesniji-kajakaski-grad-u-hrvatskoj-61898" target="_blank" rel="noopener">Slavonski Brod - najuspješniji kajakaški grad u Hrvatskoj</a>
+      <span class="meta">Opći gradski sentiment &middot; sbplus &middot; 08. 09. 2026.</span></div></li></ul>
 </section>
 
 <section>
@@ -242,6 +286,8 @@ footer{border-top:1px solid var(--rule-2);margin-top:44px;padding-top:16px;font-
   <div class="panel flag">
       <h3><span class="chip warn">SREDNJE</span> izvor nedostupan</h3>
       <p>Izvor &quot;GDELT 2.0 DOC API&quot; nije odgovorio: HTTP 503. Indeksi su izračunati bez njega.</p></div><div class="panel crit">
+      <h3><span class="chip bad">VISOKO</span> razina</h3>
+      <p>Ukupni tekstualni sentiment promijenio se za +12.7 boda u odnosu na prethodnih 7 dana.</p></div><div class="panel crit">
       <h3><span class="chip bad">VISOKO</span> negativnost</h3>
       <p>Udio negativnih spominjanja u kategoriji &quot;Sigurnost&quot; iznosi 100 % (n=5).</p></div>
 </section>
@@ -269,7 +315,7 @@ footer{border-top:1px solid var(--rule-2);margin-top:44px;padding-top:16px;font-
   </table></div>
   <h3>Lijevak obrade</h3>
   <div class="lijevak">
-    <div><span class="f" style="width:100%">Dohvaćeno stavki</span><span class="lab">99</span></div><div><span class="f" style="width:94.94949494949495%">Nakon dedupikacije</span><span class="lab">94</span></div><div><span class="f" style="width:75.75757575757575%">S poznatim datumom</span><span class="lab">75</span></div><div><span class="f" style="width:31.313131313131315%">Prošlo filtar relevantnosti</span><span class="lab">31</span></div><div><span class="f" style="width:24.242424242424242%">U prozoru od 7 dana</span><span class="lab">24</span></div>
+    <div><span class="f" style="width:100%">Dohvaćeno stavki</span><span class="lab">99</span></div><div><span class="f" style="width:94.94949494949495%">Nakon dedupikacije</span><span class="lab">94</span></div><div><span class="f" style="width:75.75757575757575%">S poznatim datumom</span><span class="lab">75</span></div><div><span class="f" style="width:31.313131313131315%">Prošlo filtar relevantnosti</span><span class="lab">31</span></div><div><span class="f" style="width:25.252525252525253%">U prozoru od 7 dana</span><span class="lab">25</span></div>
   </div>
   <p class="sitno">Od 99 dohvaćenih stavki: 5 duplikata, 19 bez datuma objave (statične stranice s naslovnice Grada), 44 odbačeno kao nerelevantno za grad. Od zadržanih, 16 nije imalo jasnu temu pa je svrstano u opći gradski sentiment.</p>
 </section>
@@ -294,7 +340,7 @@ footer{border-top:1px solid var(--rule-2);margin-top:44px;padding-top:16px;font-
         <tr><th scope="row">Prihvaćeno priorom</th><td class="num">10</td><td class="num"><b>50 %</b></td><td class="sitno">Propušta kolumne o drugim gradovima, lifestyle sadržaj i županijske teme.</td></tr>
       </tbody>
     </table></div>
-    <p>Prior je zato <b>isključen u ovoj iteraciji</b>. Cijena je manji uzorak (28 umjesto 44 stavke), dobitak je preciznost s 76 % na oko 93 %. Trajno rješenje nije ni jedno ni drugo, nego prolaz 2 iz specifikacije: povezivanje spominjanja s registrom objekata po nazivu i koordinatama.</p>
+    <p>Prior je zato <b>isključen u ovoj iteraciji</b>. Cijena je manji uzorak (137 umjesto 44 stavke), dobitak je preciznost s 76 % na oko 93 %. Trajno rješenje nije ni jedno ni drugo, nego prolaz 2 iz specifikacije: povezivanje spominjanja s registrom objekata po nazivu i koordinatama.</p>
   </div>
 </section>
 
@@ -330,7 +376,7 @@ footer{border-top:1px solid var(--rule-2);margin-top:44px;padding-top:16px;font-
   <div class="panel crit">
     <h3>Što ovaj izvještaj ne dokazuje</h3>
     <ul>
-      <li>Uzorak je <b>24 objava</b> iz tri lokalna izvora. To nije reprezentativan presjek javnog mnijenja, nego presjek uređivačkog izbora tri redakcije.</li>
+      <li>Uzorak je <b>25 objava</b> iz tri lokalna izvora. To nije reprezentativan presjek javnog mnijenja, nego presjek uređivačkog izbora tri redakcije.</li>
       <li>Klasifikator sentimenta je leksički i <b>nije validiran na hrvatskom skupu za sentiment</b>. Specifikacija ga navodi kao pričuvu, ne kao preporučeni pristup.</li>
       <li>Prozor je pomičnih 7 dana, a ne ponedjeljak&ndash;nedjelja, jer dohvat pokriva samo naslovnice portala.</li>
       <li>Nijedan recenzijski izvor nije uključen, pa gastronomija, smještaj i informacije nemaju nijedno spominjanje.</li>
