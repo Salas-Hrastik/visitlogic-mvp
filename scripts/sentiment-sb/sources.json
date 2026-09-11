@@ -1,0 +1,74 @@
+{
+  "_napomena": "Registar izvora. Novi izvor = novi unos; pipeline se ne mijenja. Vidi docs/sentiment-agent-slavonski-brod.html, pogl. 5.4.",
+  "izvori": [
+    {
+      "id": "sbplus",
+      "naziv": "SBplus (plusportal.hr)",
+      "tip": "html_listing",
+      "aktivan": true,
+      "url": "https://sbplus.hr/",
+      "razred_kvalitete": 0.80,
+      "dopusta_pohranu_teksta": false,
+      "robots_provjeren": "2026-09-11",
+      "robots_biljeska": "Disallow: /article-preview, /cookie-policy/, /?query= - clanci nisu zabranjeni",
+      "ogranicenje": { "razmak_ms": 1300, "max_clanaka": 45 },
+      "selektori": { "link": "/(?:[a-z0-9-]+)/(?:[a-z0-9-]{10,90}-\\d{4,7})$" }
+    },
+    {
+      "id": "brodportal",
+      "naziv": "Brodportal",
+      "tip": "html_listing",
+      "aktivan": true,
+      "url": "https://brodportal.hr/",
+      "razred_kvalitete": 0.80,
+      "dopusta_pohranu_teksta": false,
+      "robots_provjeren": "2026-09-11",
+      "robots_biljeska": "robots.txt ne postoji (404) - nema zabrane; primijenjeno konzervativno ogranicenje",
+      "ogranicenje": { "razmak_ms": 1500, "max_clanaka": 30 },
+      "selektori": { "link": "/clanak/[a-z0-9-]{10,90}-\\d{4,7}$" }
+    },
+    {
+      "id": "grad_sb",
+      "naziv": "Grad Slavonski Brod (sluzbene objave)",
+      "tip": "html_listing",
+      "aktivan": true,
+      "url": "https://www.slavonski-brod.hr/",
+      "razred_kvalitete": 0.85,
+      "dopusta_pohranu_teksta": true,
+      "robots_provjeren": "2026-09-11",
+      "robots_biljeska": "Joomla robots.txt - zabranjeni samo sustavski direktoriji",
+      "ogranicenje": { "razmak_ms": 1500, "max_clanaka": 25 },
+      "selektori": { "link": "^/(?!gradska-uprava-2|komponente|component)[a-z0-9-]+/[a-z0-9-]{10,90}$" }
+    },
+    {
+      "id": "wikimedia_pageviews",
+      "naziv": "Wikimedia Pageviews API",
+      "tip": "api_json",
+      "aktivan": true,
+      "url": "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article",
+      "razred_kvalitete": 1.00,
+      "dopusta_pohranu_teksta": true,
+      "robots_provjeren": "2026-09-11",
+      "robots_biljeska": "Sluzbeni javni API, bez kljuca",
+      "ogranicenje": { "razmak_ms": 500 },
+      "clanci": [
+        { "wiki": "hr.wikipedia", "naslov": "Slavonski_Brod" },
+        { "wiki": "en.wikipedia", "naslov": "Slavonski_Brod" },
+        { "wiki": "de.wikipedia", "naslov": "Slavonski_Brod" }
+      ]
+    },
+    {
+      "id": "gdelt",
+      "naziv": "GDELT 2.0 DOC API",
+      "tip": "api_json",
+      "aktivan": true,
+      "url": "https://api.gdeltproject.org/api/v2/doc/doc",
+      "razred_kvalitete": 0.40,
+      "dopusta_pohranu_teksta": false,
+      "robots_provjeren": "2026-09-11",
+      "robots_biljeska": "Javni API bez kljuca; ogranicenje 1 zahtjev / 5 s po IP-u",
+      "ogranicenje": { "razmak_ms": 6000 },
+      "upit": "\"Slavonski Brod\""
+    }
+  ]
+}

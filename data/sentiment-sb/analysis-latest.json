@@ -1,0 +1,1642 @@
+{
+ "run_id": "2026-09-11T09-37-25-074Z",
+ "izradeno": "2026-09-11T09:42:03.308Z",
+ "prozor": {
+  "kraj": "2026-09-11T09:42:03.164Z",
+  "duljina_dana": 7,
+  "napomena": "Pomicni prozor od 7 dana, a ne pon-ned: dohvat pokriva samo naslovnice portala."
+ },
+ "konfiguracija": {
+  "prior_dosega_izvora": false
+ },
+ "statusi": [
+  {
+   "izvor_id": "sbplus",
+   "naziv": "SBplus (plusportal.hr)",
+   "status": "ok",
+   "broj": 45,
+   "ms": 125413
+  },
+  {
+   "izvor_id": "brodportal",
+   "naziv": "Brodportal",
+   "status": "ok",
+   "broj": 30,
+   "ms": 58507
+  },
+  {
+   "izvor_id": "grad_sb",
+   "naziv": "Grad Slavonski Brod (sluzbene objave)",
+   "status": "ok",
+   "broj": 24,
+   "ms": 59181
+  },
+  {
+   "izvor_id": "wikimedia_pageviews",
+   "naziv": "Wikimedia Pageviews API",
+   "status": "ok",
+   "broj": 3,
+   "ms": 1879
+  },
+  {
+   "izvor_id": "gdelt",
+   "naziv": "GDELT 2.0 DOC API",
+   "status": "nedostupan",
+   "broj": 0,
+   "ms": 33109,
+   "greska": "HTTP 503"
+  }
+ ],
+ "obrada": {
+  "ulaznih": 99,
+  "duplikata": 5,
+  "bez_datuma": 19,
+  "odbaceno_relevantnost": 44,
+  "bez_jasne_teme": 16,
+  "prihvaceno_priorom": 0,
+  "u_prozoru": 28,
+  "spominjanja_ukupno": 35
+ },
+ "indeksi": {
+  "OSG": {
+   "vrijednost": 53.8,
+   "koristene_kategorije": [
+    "O",
+    "B"
+   ],
+   "izostavljene_kategorije": [
+    "K",
+    "P",
+    "D",
+    "A"
+   ]
+  },
+  "TSI": {
+   "vrijednost": null,
+   "razlog": "Nema recenzijskih izvora u iteraciji 1 — turistički sloj se ne može izračunati."
+  },
+  "po_kategoriji": {
+   "G": {
+    "vrijednost": null,
+    "n": 0,
+    "izvora": 0,
+    "pouzdanost": "nema",
+    "ci": [
+     null,
+     null
+    ],
+    "udio_neg": null,
+    "udio_poz": null,
+    "status": "nedovoljno"
+   },
+   "S": {
+    "vrijednost": null,
+    "n": 0,
+    "izvora": 0,
+    "pouzdanost": "nema",
+    "ci": [
+     null,
+     null
+    ],
+    "udio_neg": null,
+    "udio_poz": null,
+    "status": "nedovoljno"
+   },
+   "A": {
+    "vrijednost": null,
+    "n": 3,
+    "izvora": 2,
+    "pouzdanost": "niska",
+    "ci": [
+     50,
+     61.9
+    ],
+    "udio_neg": 0,
+    "udio_poz": 0.333,
+    "status": "nedovoljno"
+   },
+   "D": {
+    "vrijednost": null,
+    "n": 4,
+    "izvora": 1,
+    "pouzdanost": "niska",
+    "ci": [
+     46.3,
+     67.9
+    ],
+    "udio_neg": 0.25,
+    "udio_poz": 0.75,
+    "status": "nedovoljno"
+   },
+   "K": {
+    "vrijednost": null,
+    "n": 0,
+    "izvora": 0,
+    "pouzdanost": "nema",
+    "ci": [
+     null,
+     null
+    ],
+    "udio_neg": null,
+    "udio_poz": null,
+    "status": "nedovoljno"
+   },
+   "P": {
+    "vrijednost": null,
+    "n": 4,
+    "izvora": 2,
+    "pouzdanost": "niska",
+    "ci": [
+     27.8,
+     55.8
+    ],
+    "udio_neg": 0.5,
+    "udio_poz": 0,
+    "status": "nedovoljno"
+   },
+   "B": {
+    "vrijednost": 24.2,
+    "n": 5,
+    "izvora": 2,
+    "pouzdanost": "srednja",
+    "ci": [
+     17.4,
+     33.6
+    ],
+    "udio_neg": 1,
+    "udio_poz": 0,
+    "status": "indikativno"
+   },
+   "I": {
+    "vrijednost": null,
+    "n": 0,
+    "izvora": 0,
+    "pouzdanost": "nema",
+    "ci": [
+     null,
+     null
+    ],
+    "udio_neg": null,
+    "udio_poz": null,
+    "status": "nedovoljno"
+   },
+   "O": {
+    "vrijednost": 61.2,
+    "n": 12,
+    "izvora": 2,
+    "pouzdanost": "srednja",
+    "ci": [
+     55.7,
+     66
+    ],
+    "udio_neg": 0,
+    "udio_poz": 0.417,
+    "status": "indikativno"
+   }
+  }
+ },
+ "povijest": [
+  {
+   "tjedan": 0,
+   "vrijednost": 49.6,
+   "n": 28,
+   "izvora": 2,
+   "pouzdanost": "visoka",
+   "ci": [
+    43.1,
+    55.6
+   ],
+   "udio_neg": 0.286,
+   "udio_poz": 0.321,
+   "status": "puno"
+  },
+  {
+   "tjedan": 1,
+   "vrijednost": 51.7,
+   "n": 7,
+   "izvora": 2,
+   "pouzdanost": "srednja",
+   "ci": [
+    44.3,
+    62.1
+   ],
+   "udio_neg": 0.143,
+   "udio_poz": 0.429,
+   "status": "indikativno"
+  },
+  {
+   "tjedan": 2,
+   "vrijednost": null,
+   "n": 0,
+   "izvora": 0,
+   "pouzdanost": "nema",
+   "ci": [
+    null,
+    null
+   ],
+   "udio_neg": null,
+   "udio_poz": null,
+   "status": "nedovoljno"
+  },
+  {
+   "tjedan": 3,
+   "vrijednost": null,
+   "n": 0,
+   "izvora": 0,
+   "pouzdanost": "nema",
+   "ci": [
+    null,
+    null
+   ],
+   "udio_neg": null,
+   "udio_poz": null,
+   "status": "nedovoljno"
+  }
+ ],
+ "upozorenja": [
+  {
+   "tip": "izvor_nedostupan",
+   "ozbiljnost": "srednje",
+   "kategorija": "-",
+   "obrazlozenje": "Izvor \"GDELT 2.0 DOC API\" nije odgovorio: HTTP 503. Indeksi su izračunati bez njega."
+  },
+  {
+   "tip": "negativnost",
+   "ozbiljnost": "visoko",
+   "kategorija": "B",
+   "obrazlozenje": "Udio negativnih spominjanja u kategoriji \"Sigurnost\" iznosi 100 % (n=5)."
+  }
+ ],
+ "spominjanja": [
+  {
+   "item_url": "https://sbplus.hr/kultura/kako-su-zivjeli-i-radili-ljudi-koji-su-izgradili-citavo-stoljece-61943",
+   "izvor_id": "sbplus",
+   "naslov": "Kako su živjeli i radili ljudi koji su izgradili čitavo stoljeće?",
+   "objavljeno": "2026-09-11T09:00:00+02:00",
+   "tjedan": 0,
+   "kategorija": "O",
+   "polaritet": 0,
+   "pouzdanost_modela": 0.2,
+   "mjesovito": false,
+   "ironija": false,
+   "pogodaka": 0,
+   "relevantnost": 0.85,
+   "geo_prior": false,
+   "rezervna_kategorija": true,
+   "tezina": 0.1594,
+   "citat": "Kako su živjeli i radili ljudi koji su izgradili čitavo stoljeće?"
+  },
+  {
+   "item_url": "https://sbplus.hr/politika/komisija-ju-pitala-a-gdje-je-muz-pa-ga-je-pokazala-61939",
+   "izvor_id": "sbplus",
+   "naslov": "Komisija ju pitala - A gdje je muž?! Pa ga je pokazala!",
+   "objavljeno": "2026-09-10T14:30:00+02:00",
+   "tjedan": 0,
+   "kategorija": "O",
+   "polaritet": 0,
+   "pouzdanost_modela": 0.2,
+   "mjesovito": false,
+   "ironija": false,
+   "pogodaka": 0,
+   "relevantnost": 0.85,
+   "geo_prior": false,
+   "rezervna_kategorija": true,
+   "tezina": 0.1554,
+   "citat": "Komisija ju pitala - A gdje je muž?! Pa ga je pokazala!"
+  },
+  {
+   "item_url": "https://sbplus.hr/najave/na-jedan-dan-postani-knjiznicar-61941",
+   "izvor_id": "sbplus",
+   "naslov": "Na jedan dan postani knjižničar!",
+   "objavljeno": "2026-09-10T12:21:00+02:00",
+   "tjedan": 0,
+   "kategorija": "A",
+   "polaritet": 0,
+   "pouzdanost_modela": 0.2,
+   "mjesovito": false,
+   "ironija": false,
+   "pogodaka": 0,
+   "relevantnost": 0.85,
+   "geo_prior": false,
+   "rezervna_kategorija": false,
+   "tezina": 0.1549,
+   "citat": "Na jedan dan postani knjižničar!"
+  },
+  {
+   "item_url": "https://sbplus.hr/najave/disco-u-kazamatima-zatvara-ljeto-u-tvrdavi-brod-61927",
+   "izvor_id": "sbplus",
+   "naslov": "Disco u kazamatima zatvara „Ljeto u Tvrđavi Brod“",
+   "objavljeno": "2026-09-09T12:15:00+02:00",
+   "tjedan": 0,
+   "kategorija": "A",
+   "polaritet": 0,
+   "pouzdanost_modela": 0.2,
+   "mjesovito": false,
+   "ironija": false,
+   "pogodaka": 0,
+   "relevantnost": 0.85,
+   "geo_prior": false,
+   "rezervna_kategorija": false,
+   "tezina": 0.1499,
+   "citat": "Disco u kazamatima zatvara „Ljeto u Tvrđavi Brod“"
+  },
+  {
+   "item_url": "https://sbplus.hr/najave/pocele-prijave-za-tecaj-ronjenja-u-slavonskom-brodu-61784",
+   "izvor_id": "sbplus",
+   "naslov": "Počele prijave za tečaj ronjenja u Slavonskom Brodu",
+   "objavljeno": "2026-09-07T12:20:00+02:00",
+   "tjedan": 0,
+   "kategorija": "O",
+   "polaritet": 0,
+   "pouzdanost_modela": 0.2,
+   "mjesovito": false,
+   "ironija": false,
+   "pogodaka": 0,
+   "relevantnost": 1,
+   "geo_prior": false,
+   "rezervna_kategorija": true,
+   "tezina": 0.1403,
+   "citat": "Počele prijave za tečaj ronjenja u Slavonskom Brodu"
+  },
+  {
+   "item_url": "https://sbplus.hr/politika/turudic-u-brodu-sve-cu-istraziti-ne-znam-odakle-mu-hrabrost-61920",
+   "izvor_id": "sbplus",
+   "naslov": "Turudić u Brodu: 'Sve ću istražiti... ne znam odakle mu hrabrost!'",
+   "objavljeno": "2026-09-08T19:49:00+02:00",
+   "tjedan": 0,
+   "kategorija": "O",
+   "polaritet": 0,
+   "pouzdanost_modela": 0.2,
+   "mjesovito": false,
+   "ironija": false,
+   "pogodaka": 0,
+   "relevantnost": 0.85,
+   "geo_prior": false,
+   "rezervna_kategorija": true,
+   "tezina": 0.1465,
+   "citat": "Turudić u Brodu: 'Sve ću istražiti... ne znam odakle mu hrabrost!'"
+  },
+  {
+   "item_url": "https://sbplus.hr/gospodarstvo/prvo-radnicima-pa-drzavi-a-meni-sto-ostane-kako-sam-zavrsio-na-listi-srama-61904",
+   "izvor_id": "sbplus",
+   "naslov": "'Prvo radnicima, pa državi, a meni što ostane!'",
+   "objavljeno": "2026-09-07T14:00:00+02:00",
+   "tjedan": 0,
+   "kategorija": "O",
+   "polaritet": 0,
+   "pouzdanost_modela": 0.2,
+   "mjesovito": false,
+   "ironija": false,
+   "pogodaka": 0,
+   "relevantnost": 0.85,
+   "geo_prior": false,
+   "rezervna_kategorija": true,
+   "tezina": 0.1407,
+   "citat": "'Prvo radnicima, pa državi, a meni što ostane!'"
+  },
+  {
+   "item_url": "https://sbplus.hr/gospodarstvo/duspara-rijesit-cemo-se-kamiona-koji-prolaze-kroz-grad-61917",
+   "izvor_id": "sbplus",
+   "naslov": "Duspara: 'Riješit ćemo se kamiona koji prolaze kroz grad!'",
+   "objavljeno": "2026-09-08T14:14:00+02:00",
+   "tjedan": 0,
+   "kategorija": "P",
+   "polaritet": 0,
+   "pouzdanost_modela": 0.2,
+   "mjesovito": false,
+   "ironija": false,
+   "pogodaka": 0,
+   "relevantnost": 0.85,
+   "geo_prior": false,
+   "rezervna_kategorija": false,
+   "tezina": 0.1454,
+   "citat": "Duspara: 'Riješit ćemo se kamiona koji prolaze kroz grad!'"
+  },
+  {
+   "item_url": "https://sbplus.hr/politika/umirovljenik-javno-preko-plusportala-poklanja-staz-drzavi-61916",
+   "izvor_id": "sbplus",
+   "naslov": "Umirovljenik javno - preko PlusPortala - poklanja staž državi",
+   "objavljeno": "2026-09-09T09:00:00+02:00",
+   "tjedan": 0,
+   "kategorija": "O",
+   "polaritet": 0.241,
+   "pouzdanost_modela": 0.5,
+   "mjesovito": false,
+   "ironija": false,
+   "pogodaka": 2,
+   "relevantnost": 0.85,
+   "geo_prior": false,
+   "rezervna_kategorija": true,
+   "tezina": 0.3731,
+   "citat": "Umirovljenik javno - preko PlusPortala - poklanja staž državi"
+  },
+  {
+   "item_url": "https://sbplus.hr/sport/slavonski-brod-najuspjesniji-kajakaski-grad-u-hrvatskoj-61898",
+   "izvor_id": "sbplus",
+   "naslov": "Slavonski Brod - najuspješniji kajakaški grad u Hrvatskoj",
+   "objavljeno": "2026-09-08T09:00:00+02:00",
+   "tjedan": 0,
+   "kategorija": "O",
+   "polaritet": 0.318,
+   "pouzdanost_modela": 0.4,
+   "mjesovito": false,
+   "ironija": false,
+   "pogodaka": 1,
+   "relevantnost": 0.95,
+   "geo_prior": false,
+   "rezervna_kategorija": true,
+   "tezina": 0.2888,
+   "citat": "Slavonski Brod - najuspješniji kajakaški grad u Hrvatskoj"
+  },
+  {
+   "item_url": "https://sbplus.hr/sport/ovo-su-pobjednici-utrke-koja-se-prvo-trci-srcem-a-tek-onda-nogama-61892",
+   "izvor_id": "sbplus",
+   "naslov": "Ovo su pobjednici utrke koja se prvo trči srcem, a tek onda nogama",
+   "objavljeno": "2026-09-06T15:49:00+02:00",
+   "tjedan": 0,
+   "kategorija": "O",
+   "polaritet": 0.568,
+   "pouzdanost_modela": 0.7,
+   "mjesovito": false,
+   "ironija": false,
+   "pogodaka": 4,
+   "relevantnost": 0.85,
+   "geo_prior": false,
+   "rezervna_kategorija": true,
+   "tezina": 0.4775,
+   "citat": "Ovo su pobjednici utrke koja se prvo trči srcem, a tek onda nogama"
+  },
+  {
+   "item_url": "https://sbplus.hr/sport/dva-kluba-iz-slav-broda-marsonia-i-olimpik-osvojili-po-26-medalja-61824",
+   "izvor_id": "sbplus",
+   "naslov": "Dva kluba iz Slav. Broda, Marsonia i Olimpik, osvojili po 26 medalja",
+   "objavljeno": "2026-08-30T20:49:00+02:00",
+   "tjedan": 1,
+   "kategorija": "O",
+   "polaritet": 0,
+   "pouzdanost_modela": 0.2,
+   "mjesovito": false,
+   "ironija": false,
+   "pogodaka": 0,
+   "relevantnost": 1,
+   "geo_prior": false,
+   "rezervna_kategorija": true,
+   "tezina": 0.109,
+   "citat": "Dva kluba iz Slav. Broda, Marsonia i Olimpik, osvojili po 26 medalja"
+  },
+  {
+   "item_url": "https://sbplus.hr/kultura/vrata-sirom-otvorena-za-nove-clanove-61903",
+   "izvor_id": "sbplus",
+   "naslov": "Vrata širom otvorena za nove članove!",
+   "objavljeno": "2026-09-07T17:01:00+02:00",
+   "tjedan": 0,
+   "kategorija": "O",
+   "polaritet": 0.273,
+   "pouzdanost_modela": 0.5,
+   "mjesovito": false,
+   "ironija": false,
+   "pogodaka": 2,
+   "relevantnost": 0.85,
+   "geo_prior": false,
+   "rezervna_kategorija": true,
+   "tezina": 0.3531,
+   "citat": "Vrata širom otvorena za nove članove!"
+  },
+  {
+   "item_url": "https://sbplus.hr/kultura/cetvrti-dan-jednom-rijecju-predivno-61873",
+   "izvor_id": "sbplus",
+   "naslov": "Četvrti dan jednom riječju: Predivno!",
+   "objavljeno": "2026-09-04T08:59:00+02:00",
+   "tjedan": 1,
+   "kategorija": "O",
+   "polaritet": 0.386,
+   "pouzdanost_modela": 0.4,
+   "mjesovito": false,
+   "ironija": false,
+   "pogodaka": 1,
+   "relevantnost": 0.85,
+   "geo_prior": false,
+   "rezervna_kategorija": true,
+   "tezina": 0.253,
+   "citat": "Četvrti dan jednom riječju: Predivno!"
+  },
+  {
+   "item_url": "https://sbplus.hr/zivot/to-je-najgori-oblik-nasilja-jer-je-zakonit-61928",
+   "izvor_id": "sbplus",
+   "naslov": "'To je najgori oblik nasilja jer je - zakonit!'",
+   "objavljeno": "2026-09-09T14:00:00+02:00",
+   "tjedan": 0,
+   "kategorija": "B",
+   "polaritet": -0.386,
+   "pouzdanost_modela": 0.4,
+   "mjesovito": false,
+   "ironija": false,
+   "pogodaka": 1,
+   "relevantnost": 0.9,
+   "geo_prior": false,
+   "rezervna_kategorija": false,
+   "tezina": 0.3005,
+   "citat": "'To je najgori oblik nasilja jer je - zakonit!'"
+  },
+  {
+   "item_url": "https://brodportal.hr/clanak/uloio-140000-eura-u-kriptovalute-pa-shvatio-da-je-prevaren-40423",
+   "izvor_id": "brodportal",
+   "naslov": "Uložio 140.000 eura u kriptovalute pa shvatio da je prevaren",
+   "objavljeno": "2026-09-10T13:00:00+02:00",
+   "tjedan": 0,
+   "kategorija": "D",
+   "polaritet": -0.316,
+   "pouzdanost_modela": 0.85,
+   "mjesovito": false,
+   "ironija": false,
+   "pogodaka": 10,
+   "relevantnost": 0.85,
+   "geo_prior": false,
+   "rezervna_kategorija": false,
+   "tezina": 0.3295,
+   "citat": "Uložio 140.000 eura u kriptovalute pa shvatio da je prevaren"
+  },
+  {
+   "item_url": "https://brodportal.hr/clanak/uloio-140000-eura-u-kriptovalute-pa-shvatio-da-je-prevaren-40423",
+   "izvor_id": "brodportal",
+   "naslov": "Uložio 140.000 eura u kriptovalute pa shvatio da je prevaren",
+   "objavljeno": "2026-09-10T13:00:00+02:00",
+   "tjedan": 0,
+   "kategorija": "B",
+   "polaritet": -0.316,
+   "pouzdanost_modela": 0.85,
+   "mjesovito": false,
+   "ironija": false,
+   "pogodaka": 10,
+   "relevantnost": 0.85,
+   "geo_prior": false,
+   "rezervna_kategorija": false,
+   "tezina": 0.3295,
+   "citat": "Uložio 140.000 eura u kriptovalute pa shvatio da je prevaren"
+  },
+  {
+   "item_url": "https://brodportal.hr/clanak/boi-stie-u-rujnu-police-u-slavonskom-brodu-ve-pune-blagdanskim-ukrasima-40418",
+   "izvor_id": "brodportal",
+   "naslov": "BOŽIĆ STIŽE U RUJNU?! Police u Slavonskom Brodu već pune božićnih ukrasa",
+   "objavljeno": "2026-09-09T16:00:00+02:00",
+   "tjedan": 0,
+   "kategorija": "O",
+   "polaritet": 0.159,
+   "pouzdanost_modela": 0.4,
+   "mjesovito": false,
+   "ironija": false,
+   "pogodaka": 1,
+   "relevantnost": 0.95,
+   "geo_prior": false,
+   "rezervna_kategorija": true,
+   "tezina": 0.3013,
+   "citat": "BOŽIĆ STIŽE U RUJNU?! Police u Slavonskom Brodu već pune božićnih ukrasa"
+  },
+  {
+   "item_url": "https://brodportal.hr/clanak/osnovna-kola-antun-mihanovi-potie-odrive-navike-meu-najmlaima-40415",
+   "izvor_id": "brodportal",
+   "naslov": "Osnovna škola “Antun Mihanović” potiče održive navike među najmlađima",
+   "objavljeno": "2026-09-09T12:00:00+02:00",
+   "tjedan": 0,
+   "kategorija": "O",
+   "polaritet": 0.227,
+   "pouzdanost_modela": 0.4,
+   "mjesovito": false,
+   "ironija": false,
+   "pogodaka": 1,
+   "relevantnost": 0.85,
+   "geo_prior": false,
+   "rezervna_kategorija": true,
+   "tezina": 0.2997,
+   "citat": "Osnovna škola “Antun Mihanović” potiče održive navike među najmlađima"
+  },
+  {
+   "item_url": "https://brodportal.hr/clanak/nakon-godina-ekanja-poinje-gradnja-vane-prometne-poveznice-u-slavonskom-brodu-40414",
+   "izvor_id": "brodportal",
+   "naslov": "Nakon godina čekanja počinje gradnja važne prometne poveznice u Slavonskom Brodu",
+   "objavljeno": "2026-09-08T14:03:00+02:00",
+   "tjedan": 0,
+   "kategorija": "P",
+   "polaritet": 0.186,
+   "pouzdanost_modela": 0.85,
+   "mjesovito": false,
+   "ironija": false,
+   "pogodaka": 6,
+   "relevantnost": 1,
+   "geo_prior": false,
+   "rezervna_kategorija": false,
+   "tezina": 0.6179,
+   "citat": "Nakon godina čekanja počinje gradnja važne prometne poveznice u Slavonskom Brodu"
+  },
+  {
+   "item_url": "https://brodportal.hr/clanak/otvorene-prijave-za-izlagae-na-29-katarinskom-sajmu-u-slavonskom-brodu-40386",
+   "izvor_id": "brodportal",
+   "naslov": "Otvorene prijave za izlagače na 29. Katarinskom sajmu u Slavonskom Brodu",
+   "objavljeno": "2026-09-05T17:00:00+02:00",
+   "tjedan": 0,
+   "kategorija": "D",
+   "polaritet": 0.38,
+   "pouzdanost_modela": 0.85,
+   "mjesovito": false,
+   "ironija": false,
+   "pogodaka": 6,
+   "relevantnost": 1,
+   "geo_prior": false,
+   "rezervna_kategorija": false,
+   "tezina": 0.5619,
+   "citat": "Otvorene prijave za izlagače na 29. Katarinskom sajmu u Slavonskom Brodu"
+  },
+  {
+   "item_url": "https://brodportal.hr/clanak/zbog-donacijske-utrke-u-subotu-privremeno-se-zatvara-splavarska-ulica-40364",
+   "izvor_id": "brodportal",
+   "naslov": "Zbog donacijske utrke u subotu privremeno se zatvara Splavarska ulica",
+   "objavljeno": "2026-09-02T15:00:00+02:00",
+   "tjedan": 1,
+   "kategorija": "O",
+   "polaritet": 0,
+   "pouzdanost_modela": 0.56,
+   "mjesovito": true,
+   "ironija": false,
+   "pogodaka": 4,
+   "relevantnost": 0.95,
+   "geo_prior": false,
+   "rezervna_kategorija": true,
+   "tezina": 0.3344,
+   "citat": "Zbog donacijske utrke u subotu privremeno se zatvara Splavarska ulica"
+  },
+  {
+   "item_url": "https://brodportal.hr/clanak/hrvatski-olimpijci-okupili-se-u-slavonskom-brodu-40361",
+   "izvor_id": "brodportal",
+   "naslov": "Hrvatski olimpijci okupili se u Slavonskom Brodu",
+   "objavljeno": "2026-09-02T11:00:00+02:00",
+   "tjedan": 1,
+   "kategorija": "D",
+   "polaritet": 0.118,
+   "pouzdanost_modela": 0.6,
+   "mjesovito": false,
+   "ironija": false,
+   "pogodaka": 3,
+   "relevantnost": 1,
+   "geo_prior": false,
+   "rezervna_kategorija": false,
+   "tezina": 0.3563,
+   "citat": "Hrvatski olimpijci okupili se u Slavonskom Brodu"
+  },
+  {
+   "item_url": "https://brodportal.hr/clanak/rujan-na-trnici-jo-mirie-na-ljeto-40392",
+   "izvor_id": "brodportal",
+   "naslov": "Rujan na tržnici još miriše na ljeto",
+   "objavljeno": "2026-09-05T12:00:00+02:00",
+   "tjedan": 0,
+   "kategorija": "O",
+   "polaritet": 0,
+   "pouzdanost_modela": 0.2,
+   "mjesovito": false,
+   "ironija": false,
+   "pogodaka": 0,
+   "relevantnost": 0.9,
+   "geo_prior": false,
+   "rezervna_kategorija": true,
+   "tezina": 0.1313,
+   "citat": "Rujan na tržnici još miriše na ljeto"
+  },
+  {
+   "item_url": "https://brodportal.hr/clanak/zbog-velianja-ratnih-zloinaca-ostaje-bez-dozvole-za-boravak-40417",
+   "izvor_id": "brodportal",
+   "naslov": "Zbog veličanja ratnih zločinaca ostaje bez dozvole za boravak",
+   "objavljeno": "2026-09-09T16:00:00+02:00",
+   "tjedan": 0,
+   "kategorija": "B",
+   "polaritet": -0.747,
+   "pouzdanost_modela": 0.85,
+   "mjesovito": false,
+   "ironija": false,
+   "pogodaka": 8,
+   "relevantnost": 0.85,
+   "geo_prior": false,
+   "rezervna_kategorija": false,
+   "tezina": 0.6403,
+   "citat": "Zbog veličanja ratnih zločinaca ostaje bez dozvole za boravak"
+  },
+  {
+   "item_url": "https://brodportal.hr/clanak/policija-pojaano-nadzire-promet-u-tjedan-dana-481-prekraj-40407",
+   "izvor_id": "brodportal",
+   "naslov": "Policija pojačano nadzire promet: u tjedan dana 481 prekršaj",
+   "objavljeno": "2026-09-08T08:52:00+02:00",
+   "tjedan": 0,
+   "kategorija": "B",
+   "polaritet": -0.308,
+   "pouzdanost_modela": 0.85,
+   "mjesovito": false,
+   "ironija": false,
+   "pogodaka": 11,
+   "relevantnost": 0.85,
+   "geo_prior": false,
+   "rezervna_kategorija": false,
+   "tezina": 0.3067,
+   "citat": "Policija pojačano nadzire promet: u tjedan dana 481 prekršaj"
+  },
+  {
+   "item_url": "https://brodportal.hr/clanak/policija-pojaano-nadzire-promet-u-tjedan-dana-481-prekraj-40407",
+   "izvor_id": "brodportal",
+   "naslov": "Policija pojačano nadzire promet: u tjedan dana 481 prekršaj",
+   "objavljeno": "2026-09-08T08:52:00+02:00",
+   "tjedan": 0,
+   "kategorija": "P",
+   "polaritet": -0.308,
+   "pouzdanost_modela": 0.85,
+   "mjesovito": false,
+   "ironija": false,
+   "pogodaka": 11,
+   "relevantnost": 0.85,
+   "geo_prior": false,
+   "rezervna_kategorija": false,
+   "tezina": 0.3067,
+   "citat": "Policija pojačano nadzire promet: u tjedan dana 481 prekršaj"
+  },
+  {
+   "item_url": "https://brodportal.hr/clanak/teko-ozlijeen-motociklist-u-podcrkavlju-40401",
+   "izvor_id": "brodportal",
+   "naslov": "Teško ozlijeđen motociklist u Podcrkavlju",
+   "objavljeno": "2026-09-07T10:00:00+02:00",
+   "tjedan": 0,
+   "kategorija": "B",
+   "polaritet": -0.584,
+   "pouzdanost_modela": 0.85,
+   "mjesovito": false,
+   "ironija": false,
+   "pogodaka": 7,
+   "relevantnost": 0.85,
+   "geo_prior": false,
+   "rezervna_kategorija": false,
+   "tezina": 0.2973,
+   "citat": "Teško ozlijeđen motociklist u Podcrkavlju"
+  },
+  {
+   "item_url": "https://brodportal.hr/clanak/teko-ozlijeen-motociklist-u-podcrkavlju-40401",
+   "izvor_id": "brodportal",
+   "naslov": "Teško ozlijeđen motociklist u Podcrkavlju",
+   "objavljeno": "2026-09-07T10:00:00+02:00",
+   "tjedan": 0,
+   "kategorija": "P",
+   "polaritet": -0.584,
+   "pouzdanost_modela": 0.85,
+   "mjesovito": false,
+   "ironija": false,
+   "pogodaka": 7,
+   "relevantnost": 0.85,
+   "geo_prior": false,
+   "rezervna_kategorija": false,
+   "tezina": 0.2973,
+   "citat": "Teško ozlijeđen motociklist u Podcrkavlju"
+  },
+  {
+   "item_url": "https://brodportal.hr/clanak/tambura-samica-ponovno-uva-tradiciju-u-donjim-andrijevcima-40398",
+   "izvor_id": "brodportal",
+   "naslov": "Tambura samica ponovno čuva tradiciju u Donjim Andrijevcima",
+   "objavljeno": "2026-09-06T16:00:00+02:00",
+   "tjedan": 0,
+   "kategorija": "D",
+   "polaritet": 0.315,
+   "pouzdanost_modela": 0.6,
+   "mjesovito": false,
+   "ironija": false,
+   "pogodaka": 3,
+   "relevantnost": 0.85,
+   "geo_prior": false,
+   "rezervna_kategorija": false,
+   "tezina": 0.4094,
+   "citat": "Tambura samica ponovno čuva tradiciju u Donjim Andrijevcima"
+  },
+  {
+   "item_url": "https://brodportal.hr/clanak/street-food-festival-neno-belan-upotpunio-40393",
+   "izvor_id": "brodportal",
+   "naslov": "STREET FOOD FESTIVAL: Neno Belan rasplesao Tvrđavu Brod",
+   "objavljeno": "2026-09-05T13:00:00+02:00",
+   "tjedan": 0,
+   "kategorija": "D",
+   "polaritet": 0.328,
+   "pouzdanost_modela": 0.6,
+   "mjesovito": false,
+   "ironija": false,
+   "pogodaka": 3,
+   "relevantnost": 0.95,
+   "geo_prior": false,
+   "rezervna_kategorija": false,
+   "tezina": 0.1972,
+   "citat": "STREET FOOD FESTIVAL: Neno Belan rasplesao Tvrđavu Brod"
+  },
+  {
+   "item_url": "https://brodportal.hr/clanak/street-food-festival-neno-belan-upotpunio-40393",
+   "izvor_id": "brodportal",
+   "naslov": "STREET FOOD FESTIVAL: Neno Belan rasplesao Tvrđavu Brod",
+   "objavljeno": "2026-09-05T13:00:00+02:00",
+   "tjedan": 0,
+   "kategorija": "A",
+   "polaritet": 0.328,
+   "pouzdanost_modela": 0.6,
+   "mjesovito": false,
+   "ironija": false,
+   "pogodaka": 3,
+   "relevantnost": 0.95,
+   "geo_prior": false,
+   "rezervna_kategorija": false,
+   "tezina": 0.1972,
+   "citat": "STREET FOOD FESTIVAL: Neno Belan rasplesao Tvrđavu Brod"
+  },
+  {
+   "item_url": "https://brodportal.hr/clanak/danas-poinje-street-food-weekend-u-tvravi-brod-etiri-dana-hrane-glazbe-i-dobre-zabave-40378",
+   "izvor_id": "brodportal",
+   "naslov": "Započeo je Street Food Weekend u Tvrđavi Brod: Pogledajte što donosi četverodnevni program",
+   "objavljeno": "2026-09-03T19:00:00+02:00",
+   "tjedan": 1,
+   "kategorija": "A",
+   "polaritet": 0.273,
+   "pouzdanost_modela": 0.5,
+   "mjesovito": false,
+   "ironija": false,
+   "pogodaka": 2,
+   "relevantnost": 0.85,
+   "geo_prior": false,
+   "rezervna_kategorija": false,
+   "tezina": 0.1551,
+   "citat": "Započeo je Street Food Weekend u Tvrđavi Brod: Pogledajte što donosi četverodnevni program"
+  },
+  {
+   "item_url": "https://brodportal.hr/clanak/danas-poinje-street-food-weekend-u-tvravi-brod-etiri-dana-hrane-glazbe-i-dobre-zabave-40378",
+   "izvor_id": "brodportal",
+   "naslov": "Započeo je Street Food Weekend u Tvrđavi Brod: Pogledajte što donosi četverodnevni program",
+   "objavljeno": "2026-09-03T19:00:00+02:00",
+   "tjedan": 1,
+   "kategorija": "D",
+   "polaritet": 0.273,
+   "pouzdanost_modela": 0.5,
+   "mjesovito": false,
+   "ironija": false,
+   "pogodaka": 2,
+   "relevantnost": 0.85,
+   "geo_prior": false,
+   "rezervna_kategorija": false,
+   "tezina": 0.1551,
+   "citat": "Započeo je Street Food Weekend u Tvrđavi Brod: Pogledajte što donosi četverodnevni program"
+  },
+  {
+   "item_url": "https://brodportal.hr/clanak/hod-za-ivot-12-rujna-u-slavonskom-brodu-40365",
+   "izvor_id": "brodportal",
+   "naslov": "Hod za život 12. rujna u Slavonskom Brodu",
+   "objavljeno": "2026-09-02T17:00:00+02:00",
+   "tjedan": 1,
+   "kategorija": "O",
+   "polaritet": -0.313,
+   "pouzdanost_modela": 0.85,
+   "mjesovito": false,
+   "ironija": false,
+   "pogodaka": 8,
+   "relevantnost": 1,
+   "geo_prior": false,
+   "rezervna_kategorija": true,
+   "tezina": 0.5089,
+   "citat": "Hod za život 12. rujna u Slavonskom Brodu"
+  }
+ ],
+ "pageviews": [
+  {
+   "wiki": "hr.wikipedia",
+   "naslov": "Slavonski_Brod",
+   "dani": [
+    {
+     "dan": "20260713",
+     "pregledi": 75
+    },
+    {
+     "dan": "20260714",
+     "pregledi": 77
+    },
+    {
+     "dan": "20260715",
+     "pregledi": 74
+    },
+    {
+     "dan": "20260716",
+     "pregledi": 74
+    },
+    {
+     "dan": "20260717",
+     "pregledi": 102
+    },
+    {
+     "dan": "20260718",
+     "pregledi": 60
+    },
+    {
+     "dan": "20260719",
+     "pregledi": 82
+    },
+    {
+     "dan": "20260720",
+     "pregledi": 73
+    },
+    {
+     "dan": "20260721",
+     "pregledi": 77
+    },
+    {
+     "dan": "20260722",
+     "pregledi": 97
+    },
+    {
+     "dan": "20260723",
+     "pregledi": 83
+    },
+    {
+     "dan": "20260724",
+     "pregledi": 86
+    },
+    {
+     "dan": "20260725",
+     "pregledi": 88
+    },
+    {
+     "dan": "20260726",
+     "pregledi": 92
+    },
+    {
+     "dan": "20260727",
+     "pregledi": 99
+    },
+    {
+     "dan": "20260728",
+     "pregledi": 70
+    },
+    {
+     "dan": "20260729",
+     "pregledi": 87
+    },
+    {
+     "dan": "20260730",
+     "pregledi": 93
+    },
+    {
+     "dan": "20260731",
+     "pregledi": 100
+    },
+    {
+     "dan": "20260801",
+     "pregledi": 84
+    },
+    {
+     "dan": "20260802",
+     "pregledi": 82
+    },
+    {
+     "dan": "20260803",
+     "pregledi": 81
+    },
+    {
+     "dan": "20260804",
+     "pregledi": 87
+    },
+    {
+     "dan": "20260805",
+     "pregledi": 84
+    },
+    {
+     "dan": "20260806",
+     "pregledi": 79
+    },
+    {
+     "dan": "20260807",
+     "pregledi": 65
+    },
+    {
+     "dan": "20260808",
+     "pregledi": 83
+    },
+    {
+     "dan": "20260809",
+     "pregledi": 101
+    },
+    {
+     "dan": "20260810",
+     "pregledi": 179
+    },
+    {
+     "dan": "20260811",
+     "pregledi": 85
+    },
+    {
+     "dan": "20260812",
+     "pregledi": 98
+    },
+    {
+     "dan": "20260813",
+     "pregledi": 76
+    },
+    {
+     "dan": "20260814",
+     "pregledi": 75
+    },
+    {
+     "dan": "20260815",
+     "pregledi": 93
+    },
+    {
+     "dan": "20260816",
+     "pregledi": 95
+    },
+    {
+     "dan": "20260817",
+     "pregledi": 95
+    },
+    {
+     "dan": "20260818",
+     "pregledi": 101
+    },
+    {
+     "dan": "20260819",
+     "pregledi": 93
+    },
+    {
+     "dan": "20260820",
+     "pregledi": 102
+    },
+    {
+     "dan": "20260821",
+     "pregledi": 88
+    },
+    {
+     "dan": "20260822",
+     "pregledi": 100
+    },
+    {
+     "dan": "20260823",
+     "pregledi": 103
+    },
+    {
+     "dan": "20260824",
+     "pregledi": 74
+    },
+    {
+     "dan": "20260825",
+     "pregledi": 107
+    },
+    {
+     "dan": "20260826",
+     "pregledi": 91
+    },
+    {
+     "dan": "20260827",
+     "pregledi": 91
+    },
+    {
+     "dan": "20260828",
+     "pregledi": 83
+    },
+    {
+     "dan": "20260829",
+     "pregledi": 77
+    },
+    {
+     "dan": "20260830",
+     "pregledi": 120
+    },
+    {
+     "dan": "20260831",
+     "pregledi": 78
+    },
+    {
+     "dan": "20260901",
+     "pregledi": 89
+    },
+    {
+     "dan": "20260902",
+     "pregledi": 83
+    },
+    {
+     "dan": "20260903",
+     "pregledi": 64
+    },
+    {
+     "dan": "20260904",
+     "pregledi": 101
+    },
+    {
+     "dan": "20260905",
+     "pregledi": 113
+    },
+    {
+     "dan": "20260906",
+     "pregledi": 94
+    },
+    {
+     "dan": "20260907",
+     "pregledi": 95
+    },
+    {
+     "dan": "20260908",
+     "pregledi": 72
+    },
+    {
+     "dan": "20260909",
+     "pregledi": 84
+    },
+    {
+     "dan": "20260910",
+     "pregledi": 82
+    }
+   ]
+  },
+  {
+   "wiki": "en.wikipedia",
+   "naslov": "Slavonski_Brod",
+   "dani": [
+    {
+     "dan": "20260713",
+     "pregledi": 111
+    },
+    {
+     "dan": "20260714",
+     "pregledi": 106
+    },
+    {
+     "dan": "20260715",
+     "pregledi": 182
+    },
+    {
+     "dan": "20260716",
+     "pregledi": 109
+    },
+    {
+     "dan": "20260717",
+     "pregledi": 105
+    },
+    {
+     "dan": "20260718",
+     "pregledi": 91
+    },
+    {
+     "dan": "20260719",
+     "pregledi": 89
+    },
+    {
+     "dan": "20260720",
+     "pregledi": 85
+    },
+    {
+     "dan": "20260721",
+     "pregledi": 85
+    },
+    {
+     "dan": "20260722",
+     "pregledi": 110
+    },
+    {
+     "dan": "20260723",
+     "pregledi": 91
+    },
+    {
+     "dan": "20260724",
+     "pregledi": 70
+    },
+    {
+     "dan": "20260725",
+     "pregledi": 96
+    },
+    {
+     "dan": "20260726",
+     "pregledi": 101
+    },
+    {
+     "dan": "20260727",
+     "pregledi": 97
+    },
+    {
+     "dan": "20260728",
+     "pregledi": 85
+    },
+    {
+     "dan": "20260729",
+     "pregledi": 93
+    },
+    {
+     "dan": "20260730",
+     "pregledi": 85
+    },
+    {
+     "dan": "20260731",
+     "pregledi": 72
+    },
+    {
+     "dan": "20260801",
+     "pregledi": 89
+    },
+    {
+     "dan": "20260802",
+     "pregledi": 94
+    },
+    {
+     "dan": "20260803",
+     "pregledi": 82
+    },
+    {
+     "dan": "20260804",
+     "pregledi": 91
+    },
+    {
+     "dan": "20260805",
+     "pregledi": 79
+    },
+    {
+     "dan": "20260806",
+     "pregledi": 76
+    },
+    {
+     "dan": "20260807",
+     "pregledi": 88
+    },
+    {
+     "dan": "20260808",
+     "pregledi": 79
+    },
+    {
+     "dan": "20260809",
+     "pregledi": 88
+    },
+    {
+     "dan": "20260810",
+     "pregledi": 107
+    },
+    {
+     "dan": "20260811",
+     "pregledi": 91
+    },
+    {
+     "dan": "20260812",
+     "pregledi": 67
+    },
+    {
+     "dan": "20260813",
+     "pregledi": 73
+    },
+    {
+     "dan": "20260814",
+     "pregledi": 62
+    },
+    {
+     "dan": "20260815",
+     "pregledi": 84
+    },
+    {
+     "dan": "20260816",
+     "pregledi": 109
+    },
+    {
+     "dan": "20260817",
+     "pregledi": 94
+    },
+    {
+     "dan": "20260818",
+     "pregledi": 88
+    },
+    {
+     "dan": "20260819",
+     "pregledi": 90
+    },
+    {
+     "dan": "20260820",
+     "pregledi": 80
+    },
+    {
+     "dan": "20260821",
+     "pregledi": 76
+    },
+    {
+     "dan": "20260822",
+     "pregledi": 90
+    },
+    {
+     "dan": "20260823",
+     "pregledi": 84
+    },
+    {
+     "dan": "20260824",
+     "pregledi": 90
+    },
+    {
+     "dan": "20260825",
+     "pregledi": 68
+    },
+    {
+     "dan": "20260826",
+     "pregledi": 70
+    },
+    {
+     "dan": "20260827",
+     "pregledi": 86
+    },
+    {
+     "dan": "20260828",
+     "pregledi": 87
+    },
+    {
+     "dan": "20260829",
+     "pregledi": 84
+    },
+    {
+     "dan": "20260830",
+     "pregledi": 93
+    },
+    {
+     "dan": "20260831",
+     "pregledi": 89
+    },
+    {
+     "dan": "20260901",
+     "pregledi": 82
+    },
+    {
+     "dan": "20260902",
+     "pregledi": 75
+    },
+    {
+     "dan": "20260903",
+     "pregledi": 74
+    },
+    {
+     "dan": "20260904",
+     "pregledi": 77
+    },
+    {
+     "dan": "20260905",
+     "pregledi": 92
+    },
+    {
+     "dan": "20260906",
+     "pregledi": 68
+    },
+    {
+     "dan": "20260907",
+     "pregledi": 92
+    },
+    {
+     "dan": "20260908",
+     "pregledi": 76
+    },
+    {
+     "dan": "20260909",
+     "pregledi": 68
+    },
+    {
+     "dan": "20260910",
+     "pregledi": 87
+    }
+   ]
+  },
+  {
+   "wiki": "de.wikipedia",
+   "naslov": "Slavonski_Brod",
+   "dani": [
+    {
+     "dan": "20260713",
+     "pregledi": 53
+    },
+    {
+     "dan": "20260714",
+     "pregledi": 42
+    },
+    {
+     "dan": "20260715",
+     "pregledi": 43
+    },
+    {
+     "dan": "20260716",
+     "pregledi": 46
+    },
+    {
+     "dan": "20260717",
+     "pregledi": 41
+    },
+    {
+     "dan": "20260718",
+     "pregledi": 62
+    },
+    {
+     "dan": "20260719",
+     "pregledi": 67
+    },
+    {
+     "dan": "20260720",
+     "pregledi": 53
+    },
+    {
+     "dan": "20260721",
+     "pregledi": 51
+    },
+    {
+     "dan": "20260722",
+     "pregledi": 63
+    },
+    {
+     "dan": "20260723",
+     "pregledi": 63
+    },
+    {
+     "dan": "20260724",
+     "pregledi": 38
+    },
+    {
+     "dan": "20260725",
+     "pregledi": 55
+    },
+    {
+     "dan": "20260726",
+     "pregledi": 66
+    },
+    {
+     "dan": "20260727",
+     "pregledi": 47
+    },
+    {
+     "dan": "20260728",
+     "pregledi": 66
+    },
+    {
+     "dan": "20260729",
+     "pregledi": 49
+    },
+    {
+     "dan": "20260730",
+     "pregledi": 50
+    },
+    {
+     "dan": "20260731",
+     "pregledi": 47
+    },
+    {
+     "dan": "20260801",
+     "pregledi": 61
+    },
+    {
+     "dan": "20260802",
+     "pregledi": 49
+    },
+    {
+     "dan": "20260803",
+     "pregledi": 67
+    },
+    {
+     "dan": "20260804",
+     "pregledi": 55
+    },
+    {
+     "dan": "20260805",
+     "pregledi": 52
+    },
+    {
+     "dan": "20260806",
+     "pregledi": 42
+    },
+    {
+     "dan": "20260807",
+     "pregledi": 50
+    },
+    {
+     "dan": "20260808",
+     "pregledi": 64
+    },
+    {
+     "dan": "20260809",
+     "pregledi": 68
+    },
+    {
+     "dan": "20260810",
+     "pregledi": 65
+    },
+    {
+     "dan": "20260811",
+     "pregledi": 45
+    },
+    {
+     "dan": "20260812",
+     "pregledi": 39
+    },
+    {
+     "dan": "20260813",
+     "pregledi": 64
+    },
+    {
+     "dan": "20260814",
+     "pregledi": 43
+    },
+    {
+     "dan": "20260815",
+     "pregledi": 44
+    },
+    {
+     "dan": "20260816",
+     "pregledi": 71
+    },
+    {
+     "dan": "20260817",
+     "pregledi": 56
+    },
+    {
+     "dan": "20260818",
+     "pregledi": 72
+    },
+    {
+     "dan": "20260819",
+     "pregledi": 55
+    },
+    {
+     "dan": "20260820",
+     "pregledi": 51
+    },
+    {
+     "dan": "20260821",
+     "pregledi": 54
+    },
+    {
+     "dan": "20260822",
+     "pregledi": 64
+    },
+    {
+     "dan": "20260823",
+     "pregledi": 106
+    },
+    {
+     "dan": "20260824",
+     "pregledi": 77
+    },
+    {
+     "dan": "20260825",
+     "pregledi": 61
+    },
+    {
+     "dan": "20260826",
+     "pregledi": 38
+    },
+    {
+     "dan": "20260827",
+     "pregledi": 44
+    },
+    {
+     "dan": "20260828",
+     "pregledi": 68
+    },
+    {
+     "dan": "20260829",
+     "pregledi": 54
+    },
+    {
+     "dan": "20260830",
+     "pregledi": 68
+    },
+    {
+     "dan": "20260831",
+     "pregledi": 46
+    },
+    {
+     "dan": "20260901",
+     "pregledi": 40
+    },
+    {
+     "dan": "20260902",
+     "pregledi": 38
+    },
+    {
+     "dan": "20260903",
+     "pregledi": 63
+    },
+    {
+     "dan": "20260904",
+     "pregledi": 45
+    },
+    {
+     "dan": "20260905",
+     "pregledi": 52
+    },
+    {
+     "dan": "20260906",
+     "pregledi": 48
+    },
+    {
+     "dan": "20260907",
+     "pregledi": 49
+    },
+    {
+     "dan": "20260908",
+     "pregledi": 51
+    },
+    {
+     "dan": "20260909",
+     "pregledi": 55
+    },
+    {
+     "dan": "20260910",
+     "pregledi": 59
+    }
+   ]
+  }
+ ]
+}

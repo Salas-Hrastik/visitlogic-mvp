@@ -1,0 +1,56 @@
+name: Tjedna analiza sentimenta - Slavonski Brod
+
+on:
+  schedule:
+    # Ponedjeljkom u 04:00 UTC (06:00 po lokalnom vremenu ljeti).
+    - cron: '0 4 * * 1'
+  workflow_dispatch:
+
+jobs:
+  sentiment:
+    name: Prikupi, analiziraj i izradi izvjestaj
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repozitorija
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Postavi Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Pokreni agenta
+        run: node scripts/sentiment-sb/run.mjs
+
+      - name: Provjeri promjene
+        id: promjene
+        run: |
+          if git diff --quiet data/sentiment-sb docs/dashboard-slavonski-brod.html; then
+            echo "changed=false" >> $GITHUB_OUTPUT
+            echo "Nema promjena."
+          else
+            echo "changed=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Commitaj rezultate
+        if: steps.promjene.outputs.changed == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/sentiment-sb docs/dashboard-slavonski-brod.html
+          git commit -m "Tjedna analiza sentimenta Slavonski Brod $(date -u +%Y-%m-%d)"
+          git push
+
+      - name: Objavi izvjestaj kao artefakt
+        uses: actions/upload-artifact@v4
+        with:
+          name: sentiment-izvjestaj
+          path: |
+            docs/dashboard-slavonski-brod.html
+            data/sentiment-sb/analysis-latest.json
+          retention-days: 90

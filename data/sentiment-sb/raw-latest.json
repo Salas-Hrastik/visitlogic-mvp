@@ -1,0 +1,1576 @@
+{
+ "run_id": "2026-09-11T09-37-25-074Z",
+ "dohvaceno": "2026-09-11T09:42:03.164Z",
+ "statusi": [
+  {
+   "izvor_id": "sbplus",
+   "naziv": "SBplus (plusportal.hr)",
+   "status": "ok",
+   "broj": 45,
+   "ms": 125413
+  },
+  {
+   "izvor_id": "brodportal",
+   "naziv": "Brodportal",
+   "status": "ok",
+   "broj": 30,
+   "ms": 58507
+  },
+  {
+   "izvor_id": "grad_sb",
+   "naziv": "Grad Slavonski Brod (sluzbene objave)",
+   "status": "ok",
+   "broj": 24,
+   "ms": 59181
+  },
+  {
+   "izvor_id": "wikimedia_pageviews",
+   "naziv": "Wikimedia Pageviews API",
+   "status": "ok",
+   "broj": 3,
+   "ms": 1879
+  },
+  {
+   "izvor_id": "gdelt",
+   "naziv": "GDELT 2.0 DOC API",
+   "status": "nedostupan",
+   "broj": 0,
+   "ms": 33109,
+   "greska": "HTTP 503"
+  }
+ ],
+ "stavke": [
+  {
+   "izvor_id": "sbplus",
+   "url": "https://sbplus.hr/politika/cetveronoznim-ljubimcima-zabranjeno-pracenje-djece-u-skolu-61945",
+   "naslov": "Četveronožnim ljubimcima zabranjeno praćenje djece u školu",
+   "tekst": "Četveronožnim ljubimcima zabranjeno praćenje djece u školu. Sve vlasnike pasa mole za odgovornost i razumijevanje te da svojim postupcima ne ugrožavaju sigurnost djece.",
+   "objavljeno": "2026-09-11T11:00:00+02:00",
+   "rubrika": "politika"
+  },
+  {
+   "izvor_id": "sbplus",
+   "url": "https://sbplus.hr/kultura/kako-su-zivjeli-i-radili-ljudi-koji-su-izgradili-citavo-stoljece-61943",
+   "naslov": "Kako su živjeli i radili ljudi koji su izgradili čitavo stoljeće?",
+   "tekst": "Kako su živjeli i radili ljudi koji su izgradili čitavo stoljeće?. - Kad su se vratili kući nakon ogromnog posla koji su odradili na nekom od svjetskih gradilišta, s onim što su tamo zaradili, monteri su gradili svoje kuće, svoja sela i svoj grad Slavonski Brod. - zaključio je ravnatelj Muzeja Hrvoje Špicer, odavši tom rečenicom najveće 'Hvala!' monterima na čijim su 'leđima' uistinu živjele ne samo njihove obitelji, nego i čitave sredine.",
+   "objavljeno": "2026-09-11T09:00:00+02:00",
+   "rubrika": "kultura"
+  },
+  {
+   "izvor_id": "sbplus",
+   "url": "https://sbplus.hr/politika/prijaviti-se-mogu-bolesnici-viseclane-obitelji-zrtve-nasilja-61942",
+   "naslov": "Prijaviti se mogu bolesnici, višečlane obitelji, žrtve nasilja...",
+   "tekst": "Prijaviti se mogu bolesnici, višečlane obitelji, žrtve nasilja.... Važno je napomenuti da je poziv otvoren do iskorištenja predviđenih sredstava ili najkasnije do 31. prosinca ove godine, pa je najbolje požuriti s predajom zahtjeva.",
+   "objavljeno": "2026-09-11T07:00:00+02:00",
+   "rubrika": "politika"
+  },
+  {
+   "izvor_id": "sbplus",
+   "url": "https://sbplus.hr/politika/zupanija-izgubila-osnovnoskolaca-koliko-opcina-sibinj-ima-stanovnika-61936",
+   "naslov": "Županija izgubila osnovnoškolaca koliko Općina Sibinj ima stanovnika",
+   "tekst": "Županija izgubila osnovnoškolaca koliko Općina Sibinj ima stanovnika. Broj učenika osnovnih škola smanjio se u Hrvatskoj od početka školske godine 2011./2012. do početka školske godine 2024./2025. za 45.889 (13,5 %), govore podatci Državnog zavoda za statistiku. Istodobno se njihov broj u Brodsko-posavskoj županiji smanjio za 5.073 (34,7 %) odnosno približno za broj stanovnika Općine Sibinj.",
+   "objavljeno": "2026-09-10T20:00:00+02:00",
+   "rubrika": "politika"
+  },
+  {
+   "izvor_id": "sbplus",
+   "url": "https://sbplus.hr/politika/vozilo-nije-luksuz-evo-tko-moze-ostvariti-sufinanciranje-za-kupnju-61937",
+   "naslov": "Vozilo nije luksuz. Evo tko može ostvariti sufinanciranje za kupnju...",
+   "tekst": "Vozilo nije luksuz. Evo tko može ostvariti sufinanciranje za kupnju.... Iz Ministarstva su poručili kako će u sljedećih godinu dana procijeniti opravdanost daljnjeg razvoja mjere kao trajnog oblika podrške velikim hrvatskim obiteljima.",
+   "objavljeno": "2026-09-10T17:30:00+02:00",
+   "rubrika": "politika"
+  },
+  {
+   "izvor_id": "sbplus",
+   "url": "https://sbplus.hr/politika/komisija-ju-pitala-a-gdje-je-muz-pa-ga-je-pokazala-61939",
+   "naslov": "Komisija ju pitala - A gdje je muž?! Pa ga je pokazala!",
+   "tekst": "Komisija ju pitala - A gdje je muž?! Pa ga je pokazala!. - Imala sam dojam da im baš i nije bilo pravo. Kao da ih je tih šest sati nekako mučilo. A onda je stiglo i pitanje: „A što ćete vi sa 6 sati asistencije, s obzirom na to da Ante ide u vrtić, vi ste na statusu, a imate i muža?!“ - ispričala je šokantan susret s članicama Komisije hrabra Brođanka, Marica Mikulić.",
+   "objavljeno": "2026-09-10T14:30:00+02:00",
+   "rubrika": "politika"
+  },
+  {
+   "izvor_id": "sbplus",
+   "url": "https://sbplus.hr/najave/na-jedan-dan-postani-knjiznicar-61941",
+   "naslov": "Na jedan dan postani knjižničar!",
+   "tekst": "Na jedan dan postani knjižničar!. Iz Gradske knjižnice u Slavonskom Brodu pozivaju sve koje zanima što rade knjižničari u knjižnici ili su barem nekad poželjeli sjesti s druge strane pulta, skenirati knjige i lupiti pečat.",
+   "objavljeno": "2026-09-10T12:21:00+02:00",
+   "rubrika": "najave"
+  },
+  {
+   "izvor_id": "sbplus",
+   "url": "https://sbplus.hr/najave/disco-u-kazamatima-zatvara-ljeto-u-tvrdavi-brod-61927",
+   "naslov": "Disco u kazamatima zatvara „Ljeto u Tvrđavi Brod“",
+   "tekst": "Disco u kazamatima zatvara „Ljeto u Tvrđavi Brod“. Tvrđava Brod će ovaj petak, 11. rujna, ugostiti veliko finale ljetnog programa – Disco u kazamatima počinje u 20 sati u istočnim kazamatima i donosi glazbeni ispraćaj ovogodišnjeg „Ljeta u Tvrđavi Brod\". Za ples i dobru zabavu pobrinut će se DJ Bartek, čiji će mix glazbe zaokružiti ljeto kakvo pamtimo. Ulaz je besplatan, a dobra atmosfera zagarantirana.",
+   "objavljeno": "2026-09-09T12:15:00+02:00",
+   "rubrika": "najave"
+  },
+  {
+   "izvor_id": "sbplus",
+   "url": "https://sbplus.hr/najave/pocele-prijave-za-tecaj-ronjenja-u-slavonskom-brodu-61784",
+   "naslov": "Počele prijave za tečaj ronjenja u Slavonskom Brodu",
+   "tekst": "Počele prijave za tečaj ronjenja u Slavonskom Brodu. Klub podvodnih aktivnosti Marsonia iz Slavonskog Broda organizira još jedan tečaj ronjenja. Prijaviti se možete do 10. rujna 2026., odnosno navedenog dana do 19 sati kada počinje tečaj u prostorijama Kluba podvodnih aktivnosti Marsonia Slavonski Brod, Ivana Meštrovića 1. Ondje  možete dobiti sve potrebne informacija o terminima nastave, praktičnih vježbi i dr., a vaš dolazak vas ne obvezuje na sam tečaj. - Dođite upoznajte naš klub koji je nekoliko godina proglašen jednim od najboljih ronilačkih klubova u Hrvatskoj. Dođite se i pobliže upoznati s ronjenjem, jer će vas kroz cijeli tečaj voditi iskusni instruktori i voditelji ronjenja te s KPA Marsonia uđite u ronilačke avanture. - poručili su iz Kluba.",
+   "objavljeno": "2026-09-07T12:20:00+02:00",
+   "rubrika": "najave"
+  },
+  {
+   "izvor_id": "sbplus",
+   "url": "https://sbplus.hr/najave/humanitarni-kviz-za-najsiromasniju-djecu-svijeta-61902",
+   "naslov": "Humanitarni kviz za najsiromašniju djecu svijeta",
+   "tekst": "Humanitarni kviz za najsiromašniju djecu svijeta. K.L.I.K.A. je pripremila raznovrsne kategorije, od opće kulture i povijesti, preko filma i glazbe pa sve do sporta i lokalnih zanimljivosti.",
+   "objavljeno": "2026-09-07T12:16:00+02:00",
+   "rubrika": "najave"
+  },
+  {
+   "izvor_id": "sbplus",
+   "url": "https://sbplus.hr/najave/miroslav-skoro-i-berde-bend-nastupaju-za-dan-opcine-61932",
+   "naslov": "Miroslav Škoro i Berde Band nastupaju za Dan Općine",
+   "tekst": "Miroslav Škoro i Berde Band nastupaju za Dan Općine. - Pripremite se za večer tradicije, tambure i vrhunske zabave! Dođite proslaviti s nama 40. berbu, uz miris jeseni, dobro vino i pjesmu do kasno u noć! - stoji u pozivu organizatora.",
+   "objavljeno": "2026-09-07T12:10:00+02:00",
+   "rubrika": "najave"
+  },
+  {
+   "izvor_id": "sbplus",
+   "url": "https://sbplus.hr/politika/turudic-u-brodu-sve-cu-istraziti-ne-znam-odakle-mu-hrabrost-61920",
+   "naslov": "Turudić u Brodu: 'Sve ću istražiti... ne znam odakle mu hrabrost!'",
+   "tekst": "Turudić u Brodu: 'Sve ću istražiti... ne znam odakle mu hrabrost!'. Turudić je danas i službeno potvrdio kako je riječ o osobnom automobilu u vlasništvu Mirele Šmital, zamjenice županijske državne odvjetnice u Slavonskom Brodu.",
+   "objavljeno": "2026-09-08T19:49:00+02:00",
+   "rubrika": "politika"
+  },
+  {
+   "izvor_id": "sbplus",
+   "url": "https://sbplus.hr/zivot/nisam-bogat-ali-mozda-iza-sebe-ostavljam-nesto-vrjednije-61935",
+   "naslov": "'Nisam bogat. Ali možda iza sebe ostavljam nešto vrjednije'",
+   "tekst": "'Nisam bogat. Ali možda iza sebe ostavljam nešto vrjednije'. Umirovljen je prije nekoliko dana pa se dojmovi još nisu slegli, ali nije to bitno jer Željko Parlov ne ide nigdje. Sada će samo imati više vremena za film, glazbu, knjige i ostale stvari koje voli, a koje je oduvijek nesebično dijelio zajednici u koju je, kako sam kaže, došao kao 'dotepenac'.",
+   "objavljeno": "2026-09-10T09:16:00+02:00",
+   "rubrika": "zivot"
+  },
+  {
+   "izvor_id": "sbplus",
+   "url": "https://sbplus.hr/gospodarstvo/prvo-radnicima-pa-drzavi-a-meni-sto-ostane-kako-sam-zavrsio-na-listi-srama-61904",
+   "naslov": "'Prvo radnicima, pa državi, a meni što ostane!'",
+   "tekst": "'Prvo radnicima, pa državi, a meni što ostane!'. Obitelj Oroz već 15 godina posluje bez mrlje, a radnike drže kao kap vode na dlanu. No, otkrivamo kako ih je priprema za otvaranje novog objekta brze prehrane u Slavonskom Brodu, uz stroga pravila administracije, lansirala na ozloglašenu 'crnu listu poslodavaca koji ne isplaćuju plaće.",
+   "objavljeno": "2026-09-07T14:00:00+02:00",
+   "rubrika": "gospodarstvo"
+  },
+  {
+   "izvor_id": "sbplus",
+   "url": "https://sbplus.hr/gospodarstvo/duspara-rijesit-cemo-se-kamiona-koji-prolaze-kroz-grad-61917",
+   "naslov": "Duspara: 'Riješit ćemo se kamiona koji prolaze kroz grad!'",
+   "tekst": "Duspara: 'Riješit ćemo se kamiona koji prolaze kroz grad!'. Ministra Olega Butkovića u Slavonskom su Brodu danas zajedno dočekali brodsko-posavski župan Danijel Marušić i slavonskobrodski gradonačelnik Mirko Duspara. Na sjevernom ulazu u Đuro Đaković zonu složili su se kako je spoj sa Sjevernom veznom cestom jedan od najvažnijih projekata kada je gradska prometna infrastruktura u pitanju.",
+   "objavljeno": "2026-09-08T14:14:00+02:00",
+   "rubrika": "gospodarstvo"
+  },
+  {
+   "izvor_id": "sbplus",
+   "url": "https://sbplus.hr/najave/koracanski-dukati-najavljuju-posavsku-vecer-u-bukovlju-61770",
+   "naslov": "Koraćanski dukati najavljuju Posavsku večer u Bukovlju",
+   "tekst": "Koraćanski dukati najavljuju Posavsku večer u Bukovlju. KUD Koraćanski dukati organizira večer tradicije, pjesme i zajedništva. Posavska večer bit će održana 12. rujna u sali u Bukovlju i svi su pozvani - poručuju organizatori. Izvornu glazbu izvodi grupa Bistri Izbor, a narodnu glazbu Mustafa Mehić. Detalje pronađite na plakatu u nastavku.",
+   "objavljeno": "2026-09-07T12:00:00+02:00",
+   "rubrika": "najave"
+  },
+  {
+   "izvor_id": "sbplus",
+   "url": "https://sbplus.hr/politika/brodsko-posavska-zupanija-gubi-predstavnicu-u-saboru-61938",
+   "naslov": "Brodsko-posavska županija gubi predstavnicu u Saboru",
+   "tekst": "Brodsko-posavska županija gubi predstavnicu u Saboru. Slavonka Ivana Ribarić Majanović je 2024. godine osvojila šest puta više glasova od Marka Kričke, daleko poznatijeg i visoko pozicioniranog člana Stranke.",
+   "objavljeno": "2026-09-10T11:27:00+02:00",
+   "rubrika": "politika"
+  },
+  {
+   "izvor_id": "sbplus",
+   "url": "https://sbplus.hr/gospodarstvo/skola-raspisala-vise-od-20-natjecaja-za-posao-61924",
+   "naslov": "Škola raspisala više od 20 natječaja za posao",
+   "tekst": "Škola raspisala više od 20 natječaja za posao. U moru oglasa za nastavnike strukovnih predmeta i modula, našao se i jedan za nastavnika engleskog jezika te voditelja računovodstva.",
+   "objavljeno": "2026-09-09T12:00:00+02:00",
+   "rubrika": "gospodarstvo"
+  },
+  {
+   "izvor_id": "sbplus",
+   "url": "https://sbplus.hr/zivot/drukcije/nema-toga-sto-sam-planirao-a-da-nisam-barem-zapoceo-55237",
+   "naslov": "'Nema toga što sam planirao, a da nisam barem započeo'",
+   "tekst": "'Nema toga što sam planirao, a da nisam barem započeo'. Na kraju još jedne godine, PlusPortal donosi velike videorazgovore s tri slavonska gradonačelnika. Danas razgovaramo s jedinim od njih koji se od politike oprašta i neće biti kandidat na sljedećim lokalnim izborima - dr. Željkom Glavićem.",
+   "objavljeno": "2024-12-31T07:00:00+01:00",
+   "rubrika": "zivot"
+  },
+  {
+   "izvor_id": "sbplus",
+   "url": "https://sbplus.hr/zivot/drukcije/cetiri-godine-sutim-jedva-cekam-trenutak-kad-cu-moci-reci-sve-55080",
+   "naslov": "'Četiri godine šutim. Jedva čekam trenutak kad ću moći reći sve.'",
+   "tekst": "'Četiri godine šutim. Jedva čekam trenutak kad ću moći reći sve.'. Na kraju još jedne godine, PlusPortal donosi velike videorazgovore s tri slavonska gradonačelnika. Danas je na redu novogradiški - Vinko Grgić.",
+   "objavljeno": "2024-12-30T07:00:00+01:00",
+   "rubrika": "zivot"
+  },
+  {
+   "izvor_id": "sbplus",
+   "url": "https://sbplus.hr/zivot/drukcije/mirko-duspara-od-mene-se-ocekuje-da-nastavim-55051",
+   "naslov": "Mirko Duspara: 'Od mene se očekuje da nastavim'",
+   "tekst": "Mirko Duspara: 'Od mene se očekuje da nastavim'. PlusPortal donosi ekskluzivan godišnji razgovor s gradonačelnikom grada Slavonskog Broda, doktorom Mirkom Dusparom.",
+   "objavljeno": "2024-12-27T07:00:00+01:00",
+   "rubrika": "zivot"
+  },
+  {
+   "izvor_id": "sbplus",
+   "url": "https://sbplus.hr/zivot/drukcije/ove-su-tri-stvari-moja-osobna-zelja-za-grad-51363",
+   "naslov": "'Ove su tri stvari moja osobna želja za grad'",
+   "tekst": "'Ove su tri stvari moja osobna želja za grad'. Požeška Gradska knjižnica - jedna od najljepših u Hrvatskoj - bila je mjesto ovogodišnjeg zanimljivog razgovora s gradonačelnikom Željkom Glavićem koji nam je otkrio koliko je zadovoljan dosad odrađenim u svom mandatu te što bi još svakako želio dovršiti.",
+   "objavljeno": "2023-12-29T07:00:00+01:00",
+   "rubrika": "zivot"
+  },
+  {
+   "izvor_id": "sbplus",
+   "url": "https://sbplus.hr/zivot/drukcije/strojnog-parka-kakvog-ovdje-imamo-nema-od-beca-do-istanbula-51362",
+   "naslov": "'Strojnog parka kakvog ovdje imamo nema od Beča do Istanbula'",
+   "tekst": "'Strojnog parka kakvog ovdje imamo nema od Beča do Istanbula'. U Centru kompetencija za napredno inženjerstvo - lokaciji sadašnjosti i budućnosti u Novoj Gradišci - snimljen je ovogodišnji PlusPortalov razgovor s novogradiškim gradonačelnikom Vinkom Grgićem.",
+   "objavljeno": "2023-12-28T07:00:00+01:00",
+   "rubrika": "zivot"
+  },
+  {
+   "izvor_id": "sbplus",
+   "url": "https://sbplus.hr/politika/biootpad-skrivena-kocnica-energetske-oporabe-u-regiji-61922",
+   "naslov": "Biootpad: skrivena kočnica energetske oporabe u regiji",
+   "tekst": "Biootpad: skrivena kočnica energetske oporabe u regiji. Što boljim izdvajanjem biootpada smanjuje se udio mokrog i slabo gorivog materijala, što povoljno utječe i na izravnu termičku obradu miješanoga komunalnog otpada i na proizvodnju RDF-a u postrojenjima za mehaničko-biološku obradu otpada...",
+   "objavljeno": "2026-09-09T20:00:00+02:00",
+   "rubrika": "politika"
+  },
+  {
+   "izvor_id": "sbplus",
+   "url": "https://sbplus.hr/politika/umirovljenik-javno-preko-plusportala-poklanja-staz-drzavi-61916",
+   "naslov": "Umirovljenik javno - preko PlusPortala - poklanja staž državi",
+   "tekst": "Umirovljenik javno - preko PlusPortala - poklanja staž državi. Nakon lutanja po institucijama i borbe s administracijom, Brođaninu je staž priznat, ali samo na papiru. Još uvijek nije ostvario zasluženo povećanje mirovine. Od donošenja dodatne dokumentacije je odustao jer mu čitava procedura već počinje sličiti na scenarij iz teatra apsurda pa se staža - poručio je s naslovnice našeg portala - odriče u korist države.",
+   "objavljeno": "2026-09-09T09:00:00+02:00",
+   "rubrika": "politika"
+  },
+  {
+   "izvor_id": "sbplus",
+   "url": "https://sbplus.hr/gospodarstvo/tko-su-poslodavci-koji-ne-isplacuju-place-u-bpz-imamo-popis-61869",
+   "naslov": "Tko su poslodavci koji ne isplaćuju plaće u BPŽ? Imamo popis...",
+   "tekst": "Tko su poslodavci koji ne isplaćuju plaće u BPŽ? Imamo popis.... Ako ste ikada bili na razgovoru za posao prilikom kojeg vam je poslodavac kao jednu od pozitivnih strana rada na radnom mjestu za koje ste se prijavili istaknuo redovnu plaću, ili ste od nekoga čuli da mu se to dogodilo, ne trebate se previše čuditi. Jer i u 21. stoljeću postoje oni koji smatraju da je opravdano ne platiti radnika za njegov rad.",
+   "objavljeno": "2026-09-05T18:00:00+02:00",
+   "rubrika": "gospodarstvo"
+  },
+  {
+   "izvor_id": "sbplus",
+   "url": "https://sbplus.hr/gospodarstvo/pocele-prijave-za-poduzetnicke-stipendije-i-uplift-akademiju-61829",
+   "naslov": "Počele prijave za poduzetničke stipendije i Uplift akademiju",
+   "tekst": "Počele prijave za poduzetničke stipendije i Uplift akademiju. Prijave za novu sezonu Uplift akademije otvorene su od 31. kolovoza do 30. rujna, a prijaviti se mogu mikro, mali i srednji poduzetnici iz svih djelatnosti.",
+   "objavljeno": "2026-08-31T19:00:00+02:00",
+   "rubrika": "gospodarstvo"
+  },
+  {
+   "izvor_id": "sbplus",
+   "url": "https://sbplus.hr/sport/dogadaj-tjedna-u-donjim-andrijevcima-61912",
+   "naslov": "Događaj tjedna u Donjim Andrijevcima",
+   "tekst": "Događaj tjedna u Donjim Andrijevcima. U srijedu, 9. rujna u Donjim se Andrijevcima igra šesnaestina finala Super sport Hrvatskog nogometnog kupa, a u goste Tomislavu stiže prvoligaš Lokomotiva iz Zagreba, Na nogometnu scenu stupa novi (stari) BSK, a nestaje (privremeno) Vinogorac.",
+   "objavljeno": "2026-09-08T19:03:00+02:00",
+   "rubrika": "sport"
+  },
+  {
+   "izvor_id": "sbplus",
+   "url": "https://sbplus.hr/sport/vanjski-gradski-bazeni-su-prestali-s-radom-a-otvoreni-su-unutrasnji-61918",
+   "naslov": "Vanjski gradski bazeni su prestali s radom, a otvoreni su unutrašnji",
+   "tekst": "Vanjski gradski bazeni su prestali s radom, a otvoreni su unutrašnji. Radno vrijeme ostaje nepromijenjeno – radnim danima bazeni su otvoreni od 6.30 do 22 sata, dok vikendom i blagdanima rade od 8 do 20 sati.",
+   "objavljeno": "2026-09-08T14:00:00+02:00",
+   "rubrika": "sport"
+  },
+  {
+   "izvor_id": "sbplus",
+   "url": "https://sbplus.hr/sport/slavonski-brod-najuspjesniji-kajakaski-grad-u-hrvatskoj-61898",
+   "naslov": "Slavonski Brod - najuspješniji kajakaški grad u Hrvatskoj",
+   "tekst": "Slavonski Brod - najuspješniji kajakaški grad u Hrvatskoj. Iz 'Marsonije' su poručili kako nije riječ o uspjehu pojedinca, već zajedničkom postignuću sportaša, trenera i roditelja.",
+   "objavljeno": "2026-09-08T09:00:00+02:00",
+   "rubrika": "sport"
+  },
+  {
+   "izvor_id": "sbplus",
+   "url": "https://sbplus.hr/sport/sutra-na-klasijama-pocinje-liga-malog-nogometa-61880",
+   "naslov": "Sutra na Klasijama počinje Liga malog nogometa",
+   "tekst": "Sutra na Klasijama počinje Liga malog nogometa. Liga malog nogometa 1976 okuplja ekipe, vraća nogomet na Klasije i stvara nove uspomene.",
+   "objavljeno": "2026-09-06T17:30:00+02:00",
+   "rubrika": "sport"
+  },
+  {
+   "izvor_id": "sbplus",
+   "url": "https://sbplus.hr/sport/ovo-su-pobjednici-utrke-koja-se-prvo-trci-srcem-a-tek-onda-nogama-61892",
+   "naslov": "Ovo su pobjednici utrke koja se prvo trči srcem, a tek onda nogama",
+   "tekst": "Ovo su pobjednici utrke koja se prvo trči srcem, a tek onda nogama. Bitno je sudjelovati, a ne pobijediti! - ponekad može zvučati kao floskula i lažno optimistična poruka gubitnicima, no donacijsku utrku u Slavonskom Brodu većina uistinu trči iz plemenitog cilja. Lijepo je, ipak, vidjeti kakve su rezultate ostvarili oni koji su uspješno završili utrke od čak 10 i pet kilometara.",
+   "objavljeno": "2026-09-06T15:49:00+02:00",
+   "rubrika": "sport"
+  },
+  {
+   "izvor_id": "sbplus",
+   "url": "https://sbplus.hr/sport/donjoandrijevcani-melju-sve-pred-sobom-61889",
+   "naslov": "Donjoandrijevčani melju sve pred sobom",
+   "tekst": "Donjoandrijevčani melju sve pred sobom. Tomislav je i u 3. kolu 3. NL-istok bio uvjerljiv i s maksimalnim učinkom drži vrh tablice.",
+   "objavljeno": "2026-09-06T09:11:00+02:00",
+   "rubrika": "sport"
+  },
+  {
+   "izvor_id": "sbplus",
+   "url": "https://sbplus.hr/sport/uvjerljive-pobjede-tomislava-i-svacica-61825",
+   "naslov": "Uvjerljive pobjede Tomislava i Svačića",
+   "tekst": "Uvjerljive pobjede Tomislava i Svačića. U nedjeljnim utakmicama 2. kola 3. NL-istok, domaće momčadi nastavile su subotnji niz domaćih pobjeda, a najuvjerljiviji su bili Tomislav i Svačić.",
+   "objavljeno": "2026-08-31T08:00:00+02:00",
+   "rubrika": "sport"
+  },
+  {
+   "izvor_id": "sbplus",
+   "url": "https://sbplus.hr/sport/dva-kluba-iz-slav-broda-marsonia-i-olimpik-osvojili-po-26-medalja-61824",
+   "naslov": "Dva kluba iz Slav. Broda, Marsonia i Olimpik, osvojili po 26 medalja",
+   "tekst": "Dva kluba iz Slav. Broda, Marsonia i Olimpik, osvojili po 26 medalja. U nastavku donosimo plasmane dvaju slavonskobrodskih klubova nakon šest kola Hrvatske kajakaške lige...",
+   "objavljeno": "2026-08-30T20:49:00+02:00",
+   "rubrika": "sport"
+  },
+  {
+   "izvor_id": "sbplus",
+   "url": "https://sbplus.hr/kolumne/gospicko-smece-koje-nitko-nece-61881",
+   "naslov": "Gospićko smeće koje nitko neće",
+   "tekst": "Gospićko smeće koje nitko neće. Po(r)uka tjedna Drage Hedla glasi: Političari strahuju od punih trgova, a građani od praznih džepova!",
+   "objavljeno": "2026-09-06T14:00:00+02:00",
+   "rubrika": "kolumne"
+  },
+  {
+   "izvor_id": "sbplus",
+   "url": "https://sbplus.hr/kolumne/odgajamo-li-djecu-za-petice-ili-za-zivot-61878",
+   "naslov": "Odgajamo li djecu za petice ili za život?",
+   "tekst": "Odgajamo li djecu za petice ili za život?. Želimo li djecu koja znaju sve odgovore? Ili želimo djecu koja znaju postaviti pravo pitanje? Želimo li djecu koja se boje pogriješiti? Ili djecu koja razumiju da se iz pogreške može nešto naučiti? Želimo li djecu koja će se boriti samo za sebe? Ili djecu koja će znati pružiti ruku drugome?",
+   "objavljeno": "2026-09-04T20:00:00+02:00",
+   "rubrika": "kolumne"
+  },
+  {
+   "izvor_id": "sbplus",
+   "url": "https://sbplus.hr/kolumne/zasto-svi-brodsko-posavski-grado-nacelnici-trebaju-biti-hdz-ovci-61859",
+   "naslov": "Zašto svi brodsko-posavski (grado)načelnici trebaju biti HDZ-ovci?",
+   "tekst": "Zašto svi brodsko-posavski (grado)načelnici trebaju biti HDZ-ovci?. Pojas za spašavanje Bašiću je bacila prijateljska Brodsko-posavska županija koja će ubuduće pomagati onima koji žele koristiti Inkubator te sufinancirati njihove troškove kao korisnika tih usluga.",
+   "objavljeno": "2026-09-03T09:01:00+02:00",
+   "rubrika": "kolumne"
+  },
+  {
+   "izvor_id": "sbplus",
+   "url": "https://sbplus.hr/kultura/na-mjestu-okupljanja-nekadasnjih-gimnazijalaca-zasvirali-novi-klinci-61929",
+   "naslov": "Na mjestu okupljanja nekadašnjih gimnazijalaca, zasvirali novi klinci",
+   "tekst": "Na mjestu okupljanja nekadašnjih gimnazijalaca, zasvirali novi klinci. Fotografija nekadašnjeg 4.h razreda brodske gimnazije, koji je pohađao i sam Krešo, i danas stoji na zidu i podsjeća na neka druga vremena koja su organizatori uspjeli ponovno probuditi.",
+   "objavljeno": "2026-09-09T19:00:00+02:00",
+   "rubrika": "kultura"
+  },
+  {
+   "izvor_id": "sbplus",
+   "url": "https://sbplus.hr/kultura/vrata-sirom-otvorena-za-nove-clanove-61903",
+   "naslov": "Vrata širom otvorena za nove članove!",
+   "tekst": "Vrata širom otvorena za nove članove!. Na ovaj način Gradska knjižnica Slavonski Brod nastavlja s aktivnostima kojima je cilj privući nove korisnike i potaknuti mlade na čitanje, a prilika za besplatno učlanjenje traje do kraja listopada.",
+   "objavljeno": "2026-09-07T17:01:00+02:00",
+   "rubrika": "kultura"
+  },
+  {
+   "izvor_id": "sbplus",
+   "url": "https://sbplus.hr/kultura/lako-ti-je-andrijevce-poznati-po-samici-i-curi-sokici-61890",
+   "naslov": "'Lako ti je Andrijevce poznati - po samici i curi Šokici'",
+   "tekst": "'Lako ti je Andrijevce poznati - po samici i curi Šokici'. Tema 28. izdanja Državne smotre svirača na tamburi samici bila je 'Naši stari Šokci i Šokice' - po dijelu pjesme 'Naša grana ne smije propasti' autorice Mande Oršolić iz Županje.",
+   "objavljeno": "2026-09-06T10:00:00+02:00",
+   "rubrika": "kultura"
+  },
+  {
+   "izvor_id": "sbplus",
+   "url": "https://sbplus.hr/kultura/cetvrti-dan-jednom-rijecju-predivno-61873",
+   "naslov": "Četvrti dan jednom riječju: Predivno!",
+   "tekst": "Četvrti dan jednom riječju: Predivno!. Gotovo je! Nema povratka! Slavonskobrodska publika trajno je inficirana ljubavlju prema kazalištu. Odgojio ju je Festival amaterskih kazališta koji se već 19 dugih godina održava u rujnu. Nije bilo lako, ali navika je tu, a s brojem posjetitelja neumoljivo rastu i očekivanja pa organizatori već počinju s pripremama za jubilarno izdanje.",
+   "objavljeno": "2026-09-04T08:59:00+02:00",
+   "rubrika": "kultura"
+  },
+  {
+   "izvor_id": "sbplus",
+   "url": "https://sbplus.hr/kultura/je-li-na-dubini-vecoj-od-sedam-metara-kostur-skrivenog-diva-61855",
+   "naslov": "Je li na dubini većoj od sedam metara kostur skrivenog diva?",
+   "tekst": "Je li na dubini većoj od sedam metara kostur skrivenog diva?. Primjenom suvremenih metoda u kanalu Glogovica otkrivene su anomalije na dubini od sedam metara, što otvara mogućnost pronalaska preostalih dijelova kostura skrivenog diva (stepskog mamuta) starog više od 96 tisuća godina.",
+   "objavljeno": "2026-09-02T15:00:00+02:00",
+   "rubrika": "kultura"
+  },
+  {
+   "izvor_id": "sbplus",
+   "url": "https://sbplus.hr/zivot/to-je-najgori-oblik-nasilja-jer-je-zakonit-61928",
+   "naslov": "'To je najgori oblik nasilja jer je - zakonit!'",
+   "tekst": "'To je najgori oblik nasilja jer je - zakonit!'. Slavonskobrodski pedijatar Martin Martinović već je godinama svojevrsno zaštitno lice Hoda za život u Slavonskom Brodu. Danas je ponovio kako dvojbi oko toga kad počinje život - ni kao liječnik ni kao vjernik - nema.",
+   "objavljeno": "2026-09-09T14:00:00+02:00",
+   "rubrika": "zivot"
+  },
+  {
+   "izvor_id": "sbplus",
+   "url": "https://sbplus.hr/zivot/slavonija-svoju-tradiciju-nosi-s-ponosom-61908",
+   "naslov": "Slavonija svoju tradiciju nosi s ponosom",
+   "tekst": "Slavonija svoju tradiciju nosi s ponosom. Tradicija nije samo ono što čuvamo od zaborava već i ono što iznova stvaramo, prilagođavamo vremenu u kojem živimo i s ponosom prenosimo budućim generacijama. Upravo je takva bila prva modna revija „U susret jeseni: Niti tradicije u Kuzmanovim dvorima“, održana u Štitaru, gdje su se nasljeđe Slavonije, domaće tkano platno i suvremeni modni dizajn poput pletera spojili u priču koja pokazuje da tradicijska baština u 21. stoljeće ima svoje poklonike.",
+   "objavljeno": "2026-09-08T07:00:00+02:00",
+   "rubrika": "zivot"
+  },
+  {
+   "izvor_id": "brodportal",
+   "url": "https://brodportal.hr/clanak/pikado-turnir-povodom-35-obljetnice-osnutka-hz-a-brodsko-posavske-upanije-40426",
+   "naslov": "Pikado turnir povodom 35. obljetnice osnutka HČZ-a Brodsko-posavske županije",
+   "tekst": "Pikado turnir povodom 35. obljetnice osnutka HČZ-a Brodsko-posavske županije. Povodom obilježavanja 35. obljetnice osnutka Hrvatskog časničkog zbora , Hrvatski časnički zbor Brodsko-posavske županije organizirao je pikado turnir koji je održan 10. rujna 2026. godine u prostoru Veterana 3. gardijske brigade „ Kune “ u Scotehu. Turnir je okupio 12 igrača s područja Brodsko-posavske županije, a natjecalo se u disciplini 301. Na početku turnira predsjednik HČZ-a Brodsko-posavske županije Željko Hrnić pozdravio je sve sudionike i goste te odao počast svim poginulim, nestalim i umrlim hrvatskim braniteljima, kao i svim sudionicima Domovinskog rata koji su stradali ili preminuli na različitim bojištima diljem Hrvatske. Turnir je potom otvorio predsjednik HČZ-a Brodsko-posavske županije Željko Hrnić. Glavni sudac turnira bio je Mato Opačak , uz zamjenika suca Peru Bubala . Za osvojeno prvo mjesto uručen je pokal, dok su drugoplasirani i trećeplasirani natjecatelji nagrađeni srebrnim i brončanim odličjem. Za sve sudionike osigurane su i majice s grbom Hrvatskog časničkog zbora. Nagrade je uručio dopredsjednik HČZ-a Brodsko-posavske županije Mato Opačak. Najuspješniji na turniru bio je Zvonko Kljaić , koji je osvojio prvo mjesto i pokal. Drugo mjesto pripalo je Željku Hrniću , dok je treće mjesto osvojio Alen Tekić . Nakon završetka natjecanja sudionici i gosti druženje su nastavili uz prigodni domjenak. Organizacijom pikado turnira Hrvatski časnički zbor Brodsko-posavske županije nastavio je obilježavanje vrijedne 35. obljetnice svojega osnutka, uz druženje, sp",
+   "objavljeno": "2026-09-11T08:36:00+02:00",
+   "rubrika": "clanak"
+  },
+  {
+   "izvor_id": "brodportal",
+   "url": "https://brodportal.hr/clanak/lokomotiva-pola-kroz-donje-andrijevce-40422",
+   "naslov": "Lokomotiva prošla kroz Donje Andrijevce",
+   "tekst": "Lokomotiva prošla kroz Donje Andrijevce. Nakon uvjerljive pobjede sa 4:0 nad pulskim Uljanikom, nogometaši Tomislava u Donjim Andrijevcima su u 16.-ini finala Kupa Hrvatske ugostili Lokomotivu iz Zagreba. Poznato je da su domaći vodeća momčad u prvenstvu Treće lige – istok i da su na svom terenu vrlo uvjerljivi. Naravno gosti iz Zagreba su imali ulogu favorita jer su član HNL, dok je Tomislav u 3 lige nižem stupnju natjecanja. Atmosfera i ozračje prije utakmice bilo je odlično i bio je to još jedan pravi praznik nogometa na istoku Brodsko – posavske županije. Tako se na utakmici okupilo više od 1000 gledatelja u kojoj je član SuperSport HNL-a zagrebačka Lokomotiva s 2:0 slavila pobjedu nad domaćim Tomislavom iz Donjih Andrijevaca. Kao i prije 2 godine kada je posljednji put prvoligaš gostovao u Donjim Andrijevcima u Kupu Hrvatske rezultat je bio isti, a tada je slavila pulska Istra. Domaći su nastupili bez standardnog stopera Mihaela Pudić i pričuvnog vratara Gabriela Buholca, dok od ranije nema duže vremena ozlijeđenih Matea Marčetića i Josipa Čuića. Kod Zagrepčana nije bilo: Leona Belcara, Marka Vešovića, Ivana Katića, Marija Šituma, Jakova Vasilja i kapetana Marka Pajača. Gostujući trener malo je rotirao momčad koja je odigrala dobro te je na kraju bez podcjenjivanja upisala pobjedu i prolaz dalje u kupu. Vrlo brzo već u 6. minuti Lokomotiva je došla u vodstvo od 1:0. Slobodni udarac izveo je Marijan Čabraja koji je ubacio loptu pred gol, a tamo se najbolje snašao Noel Đurković koji je bio precizan za vodstvo Zag",
+   "objavljeno": "2026-09-10T16:00:00+02:00",
+   "rubrika": "clanak"
+  },
+  {
+   "izvor_id": "brodportal",
+   "url": "https://brodportal.hr/clanak/uloio-140000-eura-u-kriptovalute-pa-shvatio-da-je-prevaren-40423",
+   "naslov": "Uložio 140.000 eura u kriptovalute pa shvatio da je prevaren",
+   "tekst": "Uložio 140.000 eura u kriptovalute pa shvatio da je prevaren. Još jedan građanin s područja Brodsko-posavske županije prijavio je policiji prijevaru povezanu s ulaganjem u kriptovalute. Riječ je o 50-godišnjaku kojega su kontaktirale nepoznate osobe, predstavile se kao stručnjaci za trgovanje kriptovalutama te ga uvjerile da će ulaganjem ostvariti veliku zaradu. Prema njihovim uputama, u više je navrata uplatio novac, ukupno oko 140.000 eura . Nakon toga shvatio je da je prevaren te slučaj prijavio policiji. Policijski službenici nastavljaju kriminalističko istraživanje s ciljem pronalaska počinitelja, a Općinskom državnom odvjetništvu u Slavonskom Brodu bit će dostavljeno posebno izvješće kao dopuna kaznenoj prijavi. Iz policije ponovno upozoravaju građane da budu oprezni prema nepoznatim osobama koje se predstavljaju kao investicijski stručnjaci i obećavaju brzu i veliku zaradu. Detaljne savjete i upute kako izbjeći investicijske prijevare pogledajte na web stranicama Ministarstva unutarnjih poslova - link: Web heroj- ULOVIMO LIKA S WEBA KOJI TVOJE € VREBA. Prije 2 h Sport Pikado turnir povodom 35. obljetnice osnutka HČZ-a Brodsko-posavske županije Prije 3 h Prije 20 h Najnovije iz rubrike: Crna kronika Crna kronika Uhićena dvojica krijumčara na autocesti A3, prevozili strane državljane Prije 1 dana Prije 2 dana Crna kronika Policija pojačano nadzire promet: u tjedan dana 481 prekršaj Prije 3 dana",
+   "objavljeno": "2026-09-10T13:00:00+02:00",
+   "rubrika": "clanak"
+  },
+  {
+   "izvor_id": "brodportal",
+   "url": "https://brodportal.hr/clanak/najgizdavija-okica-je-hana-elepirovi-iz-davora-a-pratilja-je-veronika-fuki-iz-bickog-sela-40421",
+   "naslov": "Najgizdavija Šokica je Hana Ćelepirović iz Davora, a pratilja je Veronika Fukšić iz Bickog Sela",
+   "tekst": "Najgizdavija Šokica je Hana Ćelepirović iz Davora, a pratilja je Veronika Fukšić iz Bickog Sela. Četverodnevna glazbeno-folklorna manifestacija Zlatne žice Slavonije završena je velikom smotrom folklora pod nazivom ''Oj, Požego sve ti je na glasu'' , te izborom Najgizdavije Šokice 2026. Najgizdavija Šokica je Hana Ćelepirović iz Davora, prva pratilja Andreja Komarec iz Rokovaca , a druga pratilja Veronika Fukšić iz Bickog Sela . Organizatori su im dodijelili prigodne poklone i nagrade. U izboru su još sudjelovale su Antonija Perković iz Bickog Sela , Iva Ereš iz Ivankova , Kiara Drahotusky iz Vrbja , Dora Nikičić iz Oriovca , Lucija Klaić iz Starih Perkovaca , Tamara Stipić iz Požege i Tena Josipović iz Biškupaca . Na smotri su Folklorni ansambl Sesvetska sela, Folklorni ansambl Broda iz Slavonskog Broda, Dječja skupina Folklornog ansambla Požega, HKUD „Slavonija“ iz Jakšića i Folklorna skupina Hrvatskog kulturnog društva „Napredak“ podružnica Kreševo(B i H). Smotra je donijela pjesmu i ples, tradicijske običaje i bogatstvo narodnih nošnji. Bio je to susret generacija, krajeva i različitih tradicijskih izraza, ali i prilika da se pokaže koliko je hrvatska folklorna baština raznolika i bogata. Najnovije vijesti Brodsko-posavska županija Brodsko-posavska županija objavila javni poziv: Evo tko može ostvariti jednokratnu novčanu pomoć Prije 2 h Prije 3 h Sport Lokomotiva prošla kroz Donje Andrijevce Prije 20 h Prije 23 h Najnovije iz rubrike: Brodsko-posavska županija Brodsko-posavska županija Brodsko-posavska županija objavila javni poziv: Evo tko može ostvariti jednokratnu",
+   "objavljeno": "2026-09-10T12:00:00+02:00",
+   "rubrika": "clanak"
+  },
+  {
+   "izvor_id": "brodportal",
+   "url": "https://brodportal.hr/clanak/uhiena-dvojica-krijumara-na-autocesti-a3-prevozili-strane-dravljane-40419",
+   "naslov": "Uhićena dvojica krijumčara na autocesti A3, prevozili strane državljane",
+   "tekst": "Uhićena dvojica krijumčara na autocesti A3, prevozili strane državljane. Policijski službenici Policijske uprave brodsko-posavske u dva su odvojena slučaja spriječili nezakonite prelaske državne granice te uhitili dvojicu muškaraca osumnjičenih za krijumčarenje stranih državljana. Prvi slučaj zabilježen je 8. rujna u ranim jutarnjim satima na području autoceste A3. Policija je zaustavila osobni automobil, nakon čega je iz vozila i prtljažnika počelo bježati više stranih državljana. Policijski službenici ubrzo su ih sustigli i priveli u policijsku postaju. Utvrđeno je da su osobe nezakonito ušle u Republiku Hrvatsku, dok je automobilom upravljao 35-godišnji državljanin Srbije. On je uhićen zbog sumnje da je iz koristoljublja, prema dogovoru s nepoznatom osobom, strane državljane prevozio do dogovorene lokacije. Kriminalističkim istraživanjem utvrđeno je i da je 35-godišnjak koristio krivotvorenu belgijsku vozačku dozvolu, zbog čega protiv njega slijedi i kaznena prijava zbog krivotvorenja isprave. Automobil mu je privremeno oduzet, a uz kaznenu prijavu predan je pritvorskom nadzorniku. Drugi slučaj dogodio se 9. rujna, također u ranim jutarnjim satima na autocesti A3. Policijski službenici zaustavili su teretni automobil kojim je upravljao 46-godišnji državljanin Srbije. U unutrašnjosti vozila pronađeno je više stranih državljana koji su nezakonito ušli u Hrvatsku i Europsku uniju. Vozač je uhićen, a protiv njega će nakon dovršetka kriminalističkog istraživanja biti podnesena kaznena prijava nadležnom državnom odvjetništvu te će biti predan pritvor",
+   "objavljeno": "2026-09-10T08:35:00+02:00",
+   "rubrika": "clanak"
+  },
+  {
+   "izvor_id": "brodportal",
+   "url": "https://brodportal.hr/clanak/boi-stie-u-rujnu-police-u-slavonskom-brodu-ve-pune-blagdanskim-ukrasima-40418",
+   "naslov": "BOŽIĆ STIŽE U RUJNU?! Police u Slavonskom Brodu već pune božićnih ukrasa",
+   "tekst": "BOŽIĆ STIŽE U RUJNU?! Police u Slavonskom Brodu već pune božićnih ukrasa. Današnji dan, 9. rujna, po kalendaru još uvijek označava ljeto, no čini se da trgovci već razmišljaju o Božiću. Već početkom tjedna u brodskim trgovačkim centrima primijetili smo police ispunjene božićnim asortimanom u pojedinim trgovinama, od kuglica i ukrasa do lampica i prigodnih dekoracija. Dok mnogi još uživaju u posljednjim danima ljeta, blagdanska atmosfera polako zauzima svoje mjesto u trgovinama. A da Božić više nije samo zimska priča, pokazuje i Zagreb, gdje postoji specijalizirana trgovina posvećena isključivo božićnom asortimanu i otvorena tijekom cijele godine . Ideja za trgovinu nastala je po uzoru na jednu sličnu trgovinu u New Yorku, gdje blagdanska atmosfera također traje cijele godine. Čini se da granica između ljeta i Božića postaje sve tanja. No, što vi kažete, je li početak rujna prerano za božićne ukrase ili vam je drago što blagdanski asortiman stiže sve ranije? Prije 2 h Sport Pikado turnir povodom 35. obljetnice osnutka HČZ-a Brodsko-posavske županije Prije 3 h Prije 20 h Crna kronika Uložio 140.000 eura u kriptovalute pa shvatio da je prevaren Prije 23 h 04. 09. 2026. Tema Svjetski dan spolnog zdravlja: Važno je reagirati na vrijeme, ali i testirati se bez simptoma 04. 09. 2026. 04. 09. 2026. Tema Danas kreću prijave za 38 milijuna eura bespovratnih sredstava 02. 09. 2026.",
+   "objavljeno": "2026-09-09T16:00:00+02:00",
+   "rubrika": "clanak"
+  },
+  {
+   "izvor_id": "brodportal",
+   "url": "https://brodportal.hr/clanak/osnovna-kola-antun-mihanovi-potie-odrive-navike-meu-najmlaima-40415",
+   "naslov": "Osnovna škola “Antun Mihanović” potiče održive navike među najmlađima",
+   "tekst": "Osnovna škola “Antun Mihanović” potiče održive navike među najmlađima. Nacionalna zaklada za razvoj civilnoga društva napravila je novi iskorak u provedbi programa “Činimo dobro Otiskom srca” i poticanju svijesti o važnosti ostvarivanja UN-ovih ciljeva održivog razvoja među djecom i mladima. U želji da se vrijednosti održivosti, odgovornosti i zdravih životnih navika usvajaju od najranije dobi, razvijena je nova Izvannastavna aktivnost “Usvajanje održivih navika” , namijenjena učenicima trećih razreda osnovnih škola. Provedba te izvannastavne aktivnosti počela je 7. rujna ove godine u prvih 13 zainteresiranih škola u cijeloj zemlji. U aktivnost je uključeno gotovo 400 učenika, a provodit će se kontinuirano tijekom cijele ove školske godine. Jedna od ustanova s područja Slavonije koja je uključena u ovaj program je Osnovna škola ''Antun Mihanović'' iz Slavonskog Broda, nositelj provedbe je Snježana Vinarić , a Nacionalna zaklada za razvoj civilnog društva za tu namjenu im je izdvojila šest tisuća eura. U listopadu protekle godine Nacionalna zaklada dobila je pozitivno mišljenje Ministarstva znanosti, obrazovanja I mladih za uključivanje Izvannastavne aktivnosti „Usvajanje održivih navika” u rad s učenicima trećih razreda osnovnih škola. Cilj aktivnosti je potaknuti učenike na razvoj i postupno usvajanje zdravih, odgovornih i održivih životnih navika. Kroz iskustveno, istraživačko i suradničko učenje učenici razvijaju praktična znanja i vještine, kritičko mišljenje, odgovornost i sposobnost donošenja informiranih odluka. Pritom uče povezivati svak",
+   "objavljeno": "2026-09-09T12:00:00+02:00",
+   "rubrika": "clanak"
+  },
+  {
+   "izvor_id": "brodportal",
+   "url": "https://brodportal.hr/clanak/nakon-godina-ekanja-poinje-gradnja-vane-prometne-poveznice-u-slavonskom-brodu-40414",
+   "naslov": "Nakon godina čekanja počinje gradnja važne prometne poveznice u Slavonskom Brodu",
+   "tekst": "Nakon godina čekanja počinje gradnja važne prometne poveznice u Slavonskom Brodu. 5 U Slavonskom Brodu danas je obilježen početak realizacije važnog infrastrukturnog projekta, izgradnje državne ceste DC431 , kojom će se Sjeverna vezna cesta povezati sa sjevernim ulazom u Industrijsku zonu „Đuro Đaković“ . Početku radova nazočili su potpredsjednik Vlade i ministar mora, prometa i infrastrukture Oleg Butković , predstavnici Hrvatskih cesta , Grada Slavonskog Broda i Brodsko posavske županije . Radove će izvoditi STRABAG d.o.o. , a vrijednost ugovora iznosi 3.153.721,15 eura bez PDV-a . Rok za završetak radova je devet mjeseci. Nova prometnica bit će duga oko 420 metara, a projekt uključuje i izgradnju kružnog toka te mosta duljine 43 metra. DC431 povezat će Sjevernu veznu cestu, cestovni prijelaz „Čaplja“ i sjeverni ulaz u Industrijsku zonu „Đuro Đaković“ , uz spoj na Kumičićevu ulicu. Nova prometna veza trebala bi poboljšati povezanost gospodarske zone s glavnim prometnim pravcima, olakšati prometovanje i rasteretiti postojeće gradske prometnice. Projekt bi trebao pridonijeti i stvaranju boljih uvjeta za razvoj gospodarstva i poslovanje tvrtki unutar Industrijske zone. Na realizaciju projekta čekalo se nekoliko godina. Za izvođenje radova 2023. godine bio je odabran PZC Brod d.o.o. , s ponudom vrijednom oko 1,38 milijuna eura bez PDV-a. Ugovor je naknadno raskinut zbog poslovnih poteškoća izvođača, a nakon provedenog novog postupka javne nabave posao je povjeren STRABAG-u. Ako radovi budu tekli prema planu, nova prometna poveznica trebala bi biti završena u",
+   "objavljeno": "2026-09-08T14:03:00+02:00",
+   "rubrika": "clanak"
+  },
+  {
+   "izvor_id": "brodportal",
+   "url": "https://brodportal.hr/clanak/otvorene-prijave-za-izlagae-na-29-katarinskom-sajmu-u-slavonskom-brodu-40386",
+   "naslov": "Otvorene prijave za izlagače na 29. Katarinskom sajmu u Slavonskom Brodu",
+   "tekst": "Otvorene prijave za izlagače na 29. Katarinskom sajmu u Slavonskom Brodu. Slavonski Brod i ove će godine biti domaćin Katarinskog sajma, tradicionalne manifestacije koja okuplja obrtnike, poduzetnike, proizvođače i brojne posjetitelje. 29. Katarinski sajam – sajam obrtništva, malog i srednjeg poduzetništva održat će se od 20. do 22. studenoga 2026. godine , u unutarnjem i vanjskom prostoru Sportske dvorane Vijuš. Organizator sajma je Grad Slavonski Brod , dok je izvršni organizator Brod-Turist d.o.o. Prijave za izlagače su otvorene, a poziv je upućen svim zainteresiranim obrtnicima, poduzetnicima, proizvođačima i drugim izlagačima koji svoje proizvode i usluge žele predstaviti brojnim posjetiteljima. Katarinski sajam iz godine u godinu privlači velik broj izlagača i posjetitelja te predstavlja priliku za promociju poslovanja, predstavljanje ponude, sklapanje novih kontakata i povezivanje lokalnih proizvođača i poduzetnika. Sajam će trajati tri dana, od petka 20. do nedjelje 22. studenoga, a zainteresirani izlagači mogu se prijaviti za sudjelovanje na ovogodišnjem izdanju. Prije 2 h Sport Pikado turnir povodom 35. obljetnice osnutka HČZ-a Brodsko-posavske županije Prije 3 h Prije 20 h Crna kronika Uložio 140.000 eura u kriptovalute pa shvatio da je prevaren Prije 23 h Prije 2 dana Slavonski Brod Nakon godina čekanja počinje gradnja važne prometne poveznice u Slavonskom Brodu Prije 3 dana Prije 6 dana Slavonski Brod Zbog donacijske utrke u subotu privremeno se zatvara Splavarska ulica 02. 09. 2026.",
+   "objavljeno": "2026-09-05T17:00:00+02:00",
+   "rubrika": "clanak"
+  },
+  {
+   "izvor_id": "brodportal",
+   "url": "https://brodportal.hr/clanak/ciglarske-bare-mjesto-koje-i-danas-uva-nae-uspomene-40394",
+   "naslov": "Ciglarske bare: mjesto koje i danas čuva naše uspomene",
+   "tekst": "Ciglarske bare: mjesto koje i danas čuva naše uspomene. 46 Postoje mjesta koja danas možda izgledaju sasvim drugačije nego nekada, ali u ljudima još uvijek bude iste slike. Ciglarske bare jedno su od takvih mjesta. Dio ovog popodneva proveli smo u šetnji do bara, prisjećajući se nekih ljepših i jednostavnijih vremena. Vremena kada su ljetni dani bili ispunjeni kupačima, ribičima, dječjom grajom i druženjem. Roštiljalo se, ispijale su se kave i poneko „pivce“, a sve je to pratila priroda, cvrkut ptica, cvrčanje cvrčaka te bogatstvo biljnog i životinjskog svijeta. Za mnoge su bare bile mjesto susreta, pa i jedno od onih mjesta na koja se odlazilo za Praznik rada, s obitelji ili društvom. Danas je puno tiše. Tek pokoji ribič i dalje dolazi, neki od njih možda upravo oni koji desetljećima čuvaju svoju malu tradiciju. Tu su i poneki mladići koji tek stvaraju vlastite uspomene. I možda je upravo to ono najljepše, što svako vrijeme ostavi nešto svoje. Ciglarske bare za nekoga su voda i priroda, za nekoga mjesto za pecanje, a za nekoga cijelo jedno djetinjstvo. Zato danas ne govorimo o tome što bi bare trebale biti. Ne govorimo o planovima ni raspravama. Govorimo o uspomenama. O onim običnim, jednostavnim druženjima koja su nam nekada značila sve. Pa vas pitamo: Ako ste mladost provodili na Ciglarskim barama, što najviše pamtite? Kupanje, pecanje, Praznik rada, roštilj, društvo… ili možda neku osobu i priču koju nikada niste zaboravili? Možda zajedno možemo sačuvati barem ono što nam nitko ne može oduzeti, USPOMENE. Prije 2 h Sport Pikado",
+   "objavljeno": "2026-09-05T15:48:00+02:00",
+   "rubrika": "clanak"
+  },
+  {
+   "izvor_id": "brodportal",
+   "url": "https://brodportal.hr/clanak/zbog-donacijske-utrke-u-subotu-privremeno-se-zatvara-splavarska-ulica-40364",
+   "naslov": "Zbog donacijske utrke u subotu privremeno se zatvara Splavarska ulica",
+   "tekst": "Zbog donacijske utrke u subotu privremeno se zatvara Splavarska ulica. Foto: TZ područja ''Slavonski Brod - Posavina'' U subotu, 5. rujna, u Slavonskom Brodu održat će se donacijska utrka „Znanjem i prevencijom do zdravlja“ , u organizaciji Lige protiv raka Brodsko-posavske županije i Ultramaraton kluba Mazator. Zbog održavanja utrke, od 15 do 23 sata bit će zatvoren promet u Splavarskoj ulici, na dionici od Bazena Slavonski Brod do Športsko-rekreacijskog centra Poloj, kao i na prometnicama s istočne strane Športske dvorane Vijuš i Bazena Slavonski Brod. Građane se moli da svoja vozila s prostora utrke uklone do 15 sati te za razumijevanje zbog privremene regulacije prometa. Prije 2 h Sport Pikado turnir povodom 35. obljetnice osnutka HČZ-a Brodsko-posavske županije Prije 3 h Prije 20 h Crna kronika Uložio 140.000 eura u kriptovalute pa shvatio da je prevaren Prije 23 h Prije 2 dana Slavonski Brod Nakon godina čekanja počinje gradnja važne prometne poveznice u Slavonskom Brodu Prije 3 dana Prije 6 dana Slavonski Brod Ciglarske bare: mjesto koje i danas čuva naše uspomene Prije 6 dana",
+   "objavljeno": "2026-09-02T15:00:00+02:00",
+   "rubrika": "clanak"
+  },
+  {
+   "izvor_id": "brodportal",
+   "url": "https://brodportal.hr/clanak/hrvatski-olimpijci-okupili-se-u-slavonskom-brodu-40361",
+   "naslov": "Hrvatski olimpijci okupili se u Slavonskom Brodu",
+   "tekst": "Hrvatski olimpijci okupili se u Slavonskom Brodu. 9 Slavonski Brod jučer je ugostio članove Hrvatskog kluba olimpijaca. U gradu je održana redovna sjednica Upravnog odbora Kluba, kojom je predsjedao predsjednik Milivoj Bebić, a na kojoj se razgovaralo i o pokretanju podružnice Hrvatskog kluba olimpijaca u Slavonskom Brodu. Sjednici su nazočili brojni bivši hrvatski olimpijci, među kojima Danira Bilić Nakić , Franjo Arapović , Vjekoslav Šafranić , Josip Reić , Tomislav Paškvalin , Vladimir Šola , Petar Metličić , Nikša Kaleb , Boško Čavka , Ana Kera i Anđa Jelavić , kao i brodska olimpijka Kornelija Kvesić , na čiju se inicijativu sastanak održao upravo u Slavonskom Brodu. Cilj pokretanja podružnice bio bi povezivanje i podrška mladim sportašima, njihovom razvoju te stvaranju boljih uvjeta za ostvarivanje sportskih rezultata. Kornelija Kvesić sudjelovala je na Olimpijskim igrama u Seulu 1988. godine, gdje je s hrvatskom reprezentacijom osvojila srebrnu medalju u košarci. Uz sjednicu Upravnog odbora, članovi Hrvatskog kluba olimpijaca susreli su se i s predstavnicima Grada Slavonskog Broda te Turističke zajednice područja „Slavonski Brod-Posavina“, koja je bila domaćin susreta. Prije 2 h Sport Pikado turnir povodom 35. obljetnice osnutka HČZ-a Brodsko-posavske županije Prije 3 h Prije 20 h Crna kronika Uložio 140.000 eura u kriptovalute pa shvatio da je prevaren Prije 23 h Prije 2 dana Slavonski Brod Nakon godina čekanja počinje gradnja važne prometne poveznice u Slavonskom Brodu Prije 3 dana Prije 6 dana Slavonski Brod Ciglar",
+   "objavljeno": "2026-09-02T11:00:00+02:00",
+   "rubrika": "clanak"
+  },
+  {
+   "izvor_id": "brodportal",
+   "url": "https://brodportal.hr/clanak/prvi-dan-kole-obiljeen-u-klokoeviku-sapcima-trnjanima-i-zadubravlju-40405",
+   "naslov": "Prvi dan škole obilježen u Klokočeviku, Sapcima, Trnjanima i Zadubravlju",
+   "tekst": "Prvi dan škole obilježen u Klokočeviku, Sapcima, Trnjanima i Zadubravlju. Početak nove školske godine donio je puno veselja, uzbuđenja i osmijeha učenicima u Klokočeviku, Sapcima, Trnjanima i Zadubravlju. Školska zvona ponovno su zazvonila, a za najmlađe učenike počelo je novo i uzbudljivo razdoblje ispunjeno učenjem, druženjem i novim iskustvima. Posebno je svečano bilo za ukupno 33 prvašića . U Klokočeviku i Sapcima je prvi put krenulo 23 učenika, dok je još 10 prvašića svoj veliki dan obilježilo u Trnjanima i Zadubravlju. Slavonsko-brodska televizija i ove godine početak školske godine obilježava u sklopu projekta „Sigurno u prometu“ , usmjerenog na najmlađe sudionike u prometu i njihovu sigurnost na putu do škole. U sklopu projekta prvašići u Klokočeviku i Sapcima, te u Trnjanima i Zadubravlj, dobili su prigodne poklone čime im je prvi školski dan dodatno uljepšan i ostao u lijepom sjećanju. Projekt „Sigurno u prometu“ podržali su pokrovitelji poklon paketa Boso, Seklo i Pekara Brod , dok je važnost projekta prepoznala i Općina Garčin , uz načelnika Josipa Vidakovića , koja se pridružila aktivnostima posvećenima sigurnosti i dobrobiti najmlađih. Prvi dan škole važan je trenutak za svako dijete, posebno za prvašiće koji otvaraju novo poglavlje svog života. Uz podršku roditelja, učitelja, lokalne zajednice i partnera, njihov početak školovanja može biti još sigurniji, veseliji i ispunjen lijepim uspomenama. Prvašićima u Klokočeviku, Sapcima, Trnjanima, Zadubravlju i svima ostalima koji su danas prvi puta sjeli u školske klupe, želimo puno novih p",
+   "objavljeno": "2026-09-07T11:40:00+02:00",
+   "rubrika": "clanak"
+  },
+  {
+   "izvor_id": "brodportal",
+   "url": "https://brodportal.hr/clanak/bui-i-vlaovi-u-drugom-krugu-za-gradonaelnika-nove-gradike-40400",
+   "naslov": "Bušić i Vlaović u drugom krugu za gradonačelnika Nove Gradiške",
+   "tekst": "Bušić i Vlaović u drugom krugu za gradonačelnika Nove Gradiške. Birači Nove Gradiške odlučili su da će se u drugom krugu izbora za gradonačelnika 20. rujna sučeliti HDZ-ov Bruno Bušić i nezavisna kandidatkinja Sabina Vlaović. Prema neslužbenim rezultatima, u drugi krug ulaze nekadašnja zamjenica bivšeg gradonačelnika Vinka Grgića i 29-godišnji Bušić, koji je i na prošlim izborima u svibnju bio kandidat za zamjenika gradonačelnika. Tko će preuzeti vođenje Nove Gradiške odlučit će građani u drugom krugu. Prije 2 h Sport Pikado turnir povodom 35. obljetnice osnutka HČZ-a Brodsko-posavske županije Prije 3 h Prije 20 h Crna kronika Uložio 140.000 eura u kriptovalute pa shvatio da je prevaren Prije 23 h Prije 2 h Brodsko-posavska županija Najgizdavija Šokica je Hana Ćelepirović iz Davora, a pratilja je Veronika Fukšić iz Bickog Sela Prije 1 dana Prije 3 dana Brodsko-posavska županija Prvi dan škole obilježen u Klokočeviku, Sapcima, Trnjanima i Zadubravlju Prije 4 dana",
+   "objavljeno": "2026-09-07T08:00:00+02:00",
+   "rubrika": "clanak"
+  },
+  {
+   "izvor_id": "brodportal",
+   "url": "https://brodportal.hr/clanak/dario-zurovec-podrao-brunu-buia-s-29-godina-postao-sam-gradonaelnik-sada-je-red-na-njega-40379",
+   "naslov": "Dario Zurovec podržao Brunu Bušića: „S 29 godina postao sam gradonačelnik, sada je red na njega“",
+   "tekst": "Dario Zurovec podržao Brunu Bušića: „S 29 godina postao sam gradonačelnik, sada je red na njega“. U Novoj Gradiški danas je gradonačelnik Svete Nedelje Dario Zurovec dao podršku Bruni Bušiću, kandidatu Hrvatske demokratske zajednice za gradonačelnika, i njegovom „Timu ZA grad“. Zurovec je istaknuo kako je i sam s 29 godina postao gradonačelnik te da su mladost, energija i spremnost na donošenje odluka bili važni u razvoju Svete Nedelje. „Pokazali smo kako mladost i dobra energija mogu biti dobitna kombinacija te kako se grad može pretvoriti u jednu od najboljih sredina za život i poslovanje u Hrvatskoj“, poručio je Zurovec. Dodao je kako je Sveta Nedelja svoj model upravljanja gradila na poreznom rasterećenju, poticanju poduzetništva, privlačenju ulaganja i učinkovitijoj gradskoj upravi. „Iznimno mi je drago što mogu dati podršku mladom Bruni Bušiću za gradonačelnika Nove Gradiške. Vjerujem da mlad čovjek, uz kvalitetan tim, jasnu viziju i energiju, može pokrenuti pozitivne promjene. Sa 29 godina postao sam gradonačelnik Svete Nedelje i pokazao da mladost može biti prednost. Vjerujem da će Bruno Bušić u nedjelju isto tako s 29 godina postati gradonačelnik“, rekao je Zurovec. Bušić je zahvalio Zurovcu na podršci, istaknuvši kako Nova Gradiška može učiti od uspješnih gradova, ali pritom razvijati vlastita rješenja. „Tim ZA grad“ najavljuje učinkovitiju gradsku upravu, manje administrativnih prepreka za poduzetnike i investitore te veća ulaganja u infrastrukturu, obrazovanje i sadržaje za sve generacije. Susret je zaključen porukom kako Nova Gradiška ima gospodarski potencij",
+   "objavljeno": "2026-09-04T16:00:00+02:00",
+   "rubrika": "clanak"
+  },
+  {
+   "izvor_id": "brodportal",
+   "url": "https://brodportal.hr/clanak/svjetski-dan-ljepote-5-malih-rituala-zbog-kojih-se-osjeamo-ljepe-40406",
+   "naslov": "SVJETSKI DAN LJEPOTE: 6 malih rituala zbog kojih se osjećamo ljepše",
+   "tekst": "SVJETSKI DAN LJEPOTE: 6 malih rituala zbog kojih se osjećamo ljepše. Ljepota nije uvijek stvar skupih tretmana, savršene frizure ili pune kozmetičke torbice. Ponekad je dovoljno nekoliko malih rituala kojima posvetimo malo vremena sebi. Osim što mogu učiniti da izgledamo svježije, takvi trenuci mogu nam pomoći da se osjećamo bolje i zadovoljnije. Čišćenje lica, hidratantna krema i nekoliko minuta bez žurbe mogu biti odličan početak dana. Jednostavna rutina njege pomaže nam da se osjećamo svježe i uređeno, a jutro započnemo s malo više vremena za sebe. Bilo da je riječ o omiljenoj frizuri, maski za kosu ili jednostavnom feniranju, uređena kosa često odmah podigne raspoloženje. Ne mora biti riječ o posebnoj prigodi – ponekad je dovoljno nekoliko minuta posvećenih sebi. Par kapi parfema ili mirisnog losiona mali su detalji koji mogu uljepšati svakodnevicu. Omiljeni miris može biti jednostavan način da se osjećamo dotjerano i dobro u vlastitoj koži. Kava u miru, kratka šetnja, omiljena glazba ili nekoliko minuta bez mobitela mogu biti mali predah od svakodnevnih obaveza. Ne treba puno vremena da nakratko usporimo i napunimo baterije. Možda zvuči jednostavno, ali kvalitetan san, odmor i iskren osmijeh često su najbolji „beauty tretman“. Kada smo odmorni i dobro raspoloženi, to se vidi i na našem licu. Ljepota nije samo ono što vidimo u ogledalu. Važno je i kako se osjećamo sami sa sobom. Kada prihvatimo svoje male nesavršenosti, njegujemo samopouzdanje i pronađemo zadovoljstvo u sebi, i naš se izgled nekako čini ljepšim. Upravo zato briga o sebi ni",
+   "objavljeno": "2026-09-09T08:00:00+02:00",
+   "rubrika": "clanak"
+  },
+  {
+   "izvor_id": "brodportal",
+   "url": "https://brodportal.hr/clanak/mozak-pamti-vie-nego-to-mislimo-male-svakodnevne-navike-koje-mu-gode-40412",
+   "naslov": "MOZAK PAMTI VIŠE NEGO ŠTO MISLIMO: Male svakodnevne navike koje mu gode",
+   "tekst": "MOZAK PAMTI VIŠE NEGO ŠTO MISLIMO: Male svakodnevne navike koje mu gode. Koliko ste danas spavali? Jeste li prošetali, pojeli nešto kvalitetno ili barem nakratko odložili mobitel? Sve to možda izgleda kao običan dio dana, ali upravo takve male navike mogu imati važnu ulogu u zdravlju našeg mozga. Nova znanstvena izjava American Heart Association ističe da se na zdravlje mozga ne može gledati samo kroz genetiku i godine. Važni su i način života, san, mentalno zdravlje, prehrana, kretanje, društveni odnosi i okoliš. Ako ste se ikada nakon loše noći osjećali kao da vam je mozak „na pola snage”, razlog postoji. Kvalitetan san važan je za pamćenje, pažnju, donošenje odluka i mentalni oporavak. Zato redovit odlazak na spavanje može biti jedna od najjednostavnijih navika za bolji osjećaj tijekom dana. Ne morate svaki dan provesti sat vremena u teretani. Šetnja, vožnja bicikla, stepenice ili jednostavno manje sjedenja tijekom dana mogu biti dobar način da ubacimo više kretanja u svakodnevicu. American Heart Association posebno upozorava da dugo sjedenje nije dobro za zdravlje te potiče češće prekidanje sjedilačkog vremena. Ono što jedemo povezano je i sa zdravljem crijeva, a znanstvenici sve više proučavaju vezu između crijeva i mozga. Više vlakana, voća, povrća i cjelovitih namirnica te fermentirane namirnice poput jogurta i kefira mogu podržavati zdrav mikrobiom. Stres je dio života, ali problem može nastati kada postane svakodnevno stanje. Kratka šetnja, nekoliko minuta mira, razgovor s bliskom osobom ili aktivnost u kojoj uživamo mogu biti jednostavni",
+   "objavljeno": "2026-09-08T14:00:00+02:00",
+   "rubrika": "clanak"
+  },
+  {
+   "izvor_id": "brodportal",
+   "url": "https://brodportal.hr/clanak/ria-s-povrem-i-piletinom-jednostavan-ruak-za-posao-40399",
+   "naslov": "Riža s povrćem i piletinom – jednostavan ručak za posao",
+   "tekst": "Riža s povrćem i piletinom – jednostavan ručak za posao. Tražite ideju za ručak koji možete pripremiti unaprijed i bez problema ponijeti na posao? Riža s piletinom i povrćem jednostavan je, zasitan i praktičan obrok koji možete prilagoditi namirnicama koje već imate kod kuće. sol i papar 1 žličica mljevene slatke paprike malo češnjaka peršin ili mladi luk, po želji Rižu skuhajte prema uputama na pakiranju. Pileća prsa narežite na manje komade, začinite solju, paprom i mljevenom paprikom pa ih kratko popržite na maslinovu ulju. Dodajte nasjeckani luk, mrkvu, papriku i tikvicu te sve zajedno pirjajte nekoliko minuta. Povrće ne treba biti potpuno mekano – najbolje je kada ostane lagano hrskavo. Kada su piletina i povrće gotovi, dodajte kuhanu rižu i sve dobro promiješajte. Po želji dodajte malo češnjaka i svježeg peršina ili mladog luka. Obrok ostavite da se kratko ohladi, zatim ga spremite u posudu s poklopcem i ponesite na posao. Ovaj ručak možete pripremiti večer ranije, a povrće slobodno prilagoditi sezoni i vlastitom ukusu. Za dodatnu svježinu uz rižu možete ponijeti i malu salatu. Jednostavno, ukusno i bez puno vremena provedenog u kuhinji idealno za radni dan. Prije 2 h Sport Pikado turnir povodom 35. obljetnice osnutka HČZ-a Brodsko-posavske županije Prije 3 h Prije 20 h Crna kronika Uložio 140.000 eura u kriptovalute pa shvatio da je prevaren Prije 23 h 03. 09. 2026. Gastro Nedjeljno jutro bez žurbe: ovaj chia puding pripremite već večeras 29. 08. 2026. 26. 08. 2026. Gastro Sezona je smokava: Isprobajte jednostavnu salatu s p",
+   "objavljeno": "2026-09-06T18:00:00+02:00",
+   "rubrika": "clanak"
+  },
+  {
+   "izvor_id": "brodportal",
+   "url": "https://brodportal.hr/clanak/rujan-na-trnici-jo-mirie-na-ljeto-40392",
+   "naslov": "Rujan na tržnici još miriše na ljeto",
+   "tekst": "Rujan na tržnici još miriše na ljeto. 22 Rujan je stigao, ali ljetne temperature još uvijek diktiraju gradski ritam. To se dobro vidi i na slavonskobrodskoj tržnici, gdje su jutros ponovno prevladavale lagane, ljetne kombinacije. Haljinice, prozračni komadi i ležeran, ali dotjeran stil obilježili su jutarnji đir. Iako je riječ o svakodnevnom odlasku na tržnicu, mnogi su i ovog jutra pokazali da se i za običan subotnji šoping može izgledati poput prave gradske špice. Visoke temperature očito će još neko vrijeme odgađati jesensku garderobu, a Brođani zasad uživaju u produženom ljetu. Prije 2 h Sport Pikado turnir povodom 35. obljetnice osnutka HČZ-a Brodsko-posavske županije Prije 3 h Prije 20 h Crna kronika Uložio 140.000 eura u kriptovalute pa shvatio da je prevaren Prije 23 h 22. 08. 2026. Đir po gradu Subotnji đir uz Savu 08. 08. 2026. 01. 08. 2026. Đir po gradu Ljetna subota ponovno ispunila Korzo šetačima 25. 07. 2026.",
+   "objavljeno": "2026-09-05T12:00:00+02:00",
+   "rubrika": "clanak"
+  },
+  {
+   "izvor_id": "brodportal",
+   "url": "https://brodportal.hr/clanak/japansko-hodanje-novi-je-fitness-hit-treba-vam-samo-30-minuta-40376",
+   "naslov": "Japansko hodanje novi je fitness hit: Treba vam samo 30 minuta",
+   "tekst": "Japansko hodanje novi je fitness hit: Treba vam samo 30 minuta. Ako vam se ne ide u teretanu, a ipak želite ubaciti više kretanja u svakodnevicu, novi-stari fitness trend mogao bi biti upravo za vas. „Japansko hodanje“ posljednjih mjeseci sve je popularnije na društvenim mrežama, a zapravo je riječ o jednostavnom intervalnom hodanju koje su japanski znanstvenici proučavali godinama. Pravila su jednostavna! Tri minute hodate bržim tempom, zatim tri minute usporite. Taj se ritam ponavlja pet puta, odnosno ukupno traje oko 30 minuta. Za brži dio dovoljno je ubrzati toliko da osjetite da radite, dok je sporiji dio namijenjen odmoru u hodu. Prednost je što ne trebate posebnu opremu, članstvo u teretani ni kompliciran trening. Dovoljne su udobne tenisice, malo vremena i ruta po kvartu, parku ili uz Savu. Za razliku od obične šetnje istim tempom, izmjena brzog i sporog hodanja tijelu daje dodatni izazov, a upravo je jednostavnost jedan od razloga zbog kojih je ovaj način vježbanja postao toliko zanimljiv ljubiteljima fitnessa. Možda je zato vrijeme da sljedeću šetnju ne odradite samo „laganini“.. Uključite štopericu i pokušajte tri minute ubrzati. Tko zna, možda vam obična šetnja postane novi omiljeni trening! Prije 2 h Sport Pikado turnir povodom 35. obljetnice osnutka HČZ-a Brodsko-posavske županije Prije 3 h Prije 20 h Crna kronika Uložio 140.000 eura u kriptovalute pa shvatio da je prevaren Prije 23 h Prije 3 dana Zdravlje Ne treba vam teretana: Ove vježbe možete raditi kod kuće 30. 08. 2026. 29. 08. 2026. Zdravlje Spavate osam sati, a budit",
+   "objavljeno": "2026-09-05T10:00:00+02:00",
+   "rubrika": "clanak"
+  },
+  {
+   "izvor_id": "brodportal",
+   "url": "https://brodportal.hr/clanak/zbog-velianja-ratnih-zloinaca-ostaje-bez-dozvole-za-boravak-40417",
+   "naslov": "Zbog veličanja ratnih zločinaca ostaje bez dozvole za boravak",
+   "tekst": "Zbog veličanja ratnih zločinaca ostaje bez dozvole za boravak. Policija je dovršila kriminalističko istraživanje nad 41-godišnjim državljaninom Bosne i Hercegovine zbog sumnje u počinjenje prekršaja iz Zakona o prekršajima protiv javnog reda i mira te Zakona o strancima. Utvrđeno je da je 41-godišnjak putem društvenih mreža objavio simbole i tekstove kojima se veličaju ratni zločinci, čime je, prema policijskim navodima, izazvao uznemirenost i nelagodu kod građana te vrijeđao nacionalne osjećaje građana Republike Hrvatske. Protiv njega policija podnosi optužni prijedlog Općinskom sudu u Slavonskom Brodu zbog počinjenog prekršaja. Osim prekršajnog postupka, doneseno je i rješenje kojim mu je, sukladno Zakonu o strancima, ukinuta dozvola za boravak i rad u Hrvatskoj. Određen mu je rok od sedam dana za napuštanje Republike Hrvatske i Europskog gospodarskog prostora. Prije 2 h Sport Pikado turnir povodom 35. obljetnice osnutka HČZ-a Brodsko-posavske županije Prije 3 h Prije 20 h Crna kronika Uložio 140.000 eura u kriptovalute pa shvatio da je prevaren Prije 23 h Prije 23 h Crna kronika Uhićena dvojica krijumčara na autocesti A3, prevozili strane državljane Prije 1 dana Prije 3 dana Crna kronika Teško ozlijeđen motociklist u Podcrkavlju Prije 4 dana",
+   "objavljeno": "2026-09-09T16:00:00+02:00",
+   "rubrika": "clanak"
+  },
+  {
+   "izvor_id": "brodportal",
+   "url": "https://brodportal.hr/clanak/policija-pojaano-nadzire-promet-u-tjedan-dana-481-prekraj-40407",
+   "naslov": "Policija pojačano nadzire promet: u tjedan dana 481 prekršaj",
+   "tekst": "Policija pojačano nadzire promet: u tjedan dana 481 prekršaj. Policijski službenici Policijske uprave brodsko-posavske nastavljaju s pojačanim nadzorom prometa, a podaci za protekli tjedan ponovno pokazuju koliko je oprez i odgovorno ponašanje za volanom važno. Od 31. kolovoza do 6. rujna policija je kontrolirala 690 vozila te utvrdila ukupno 481 prometni prekršaj . Najviše prekršaja odnosilo se na nepropisnu brzinu – njih 186 . Zabilježena su i 73 prekršaja nekorištenja sigurnosnog pojasa, 28 slučajeva nepropisnog korištenja mobitela tijekom vožnje te 15 prekršaja upravljanja vozilom pod utjecajem alkohola. Među ostalim prekršajima policija je evidentirala i nekorištenje zaštitne kacige, nepropisno pretjecanje i obilaženje, nepoštivanje prednosti prolaska te tehničku neispravnost vozila. Najveća koncentracija alkohola iznosila je 1,91 promila , a izmjerena je 2. rujna oko 20.10 sati vozaču osobnog automobila u Novoj Kapeli. Ni brzina nije izostala. U Slavonskom Brodu, na Zapadnoj veznoj cesti, 2. rujna oko 23.55 sati zabilježena je brzina od 127 kilometara na sat kroz naselje . Još veća brzina zabilježena je na autocesti A3 – 200 kilometara na sat , 3. rujna oko 18.15 sati. Policija i dalje poziva sve sudionike u prometu na odgovorno ponašanje, posebno na poštivanje ograničenja brzine, korištenje sigurnosnog pojasa, izbjegavanje mobitela tijekom vožnje i potpunu apstinenciju od alkohola za volanom. Pojačani nadzor prometa nastavit će se i u narednom razdoblju, s posebnim naglaskom na četiri glavna uzroka najtežih prometnih nesreća – br",
+   "objavljeno": "2026-09-08T08:52:00+02:00",
+   "rubrika": "clanak"
+  },
+  {
+   "izvor_id": "brodportal",
+   "url": "https://brodportal.hr/clanak/teko-ozlijeen-motociklist-u-podcrkavlju-40401",
+   "naslov": "Teško ozlijeđen motociklist u Podcrkavlju",
+   "tekst": "Teško ozlijeđen motociklist u Podcrkavlju. Teška prometna nesreća dogodila se 6. rujna oko 15 sati na državnoj cesti D53 u Podcrkavlju. Prema policijskom očevidu, 49-godišnji motociklist zbog neprilagođene brzine izgubio je nadzor nad motociklom, pao na kolnik i udario u metalno postolje prometnog znaka. Teško je ozlijeđen te je nakon pružene pomoći prevezen u slavonskobrodsku bolnicu, gdje je zadržan na liječenju. Protiv njega slijedi obavezni prekršajni nalog. Prije 2 h Sport Pikado turnir povodom 35. obljetnice osnutka HČZ-a Brodsko-posavske županije Prije 3 h Prije 20 h Crna kronika Uložio 140.000 eura u kriptovalute pa shvatio da je prevaren Prije 23 h Prije 23 h Crna kronika Uhićena dvojica krijumčara na autocesti A3, prevozili strane državljane Prije 1 dana Prije 2 dana Crna kronika Policija pojačano nadzire promet: u tjedan dana 481 prekršaj Prije 3 dana",
+   "objavljeno": "2026-09-07T10:00:00+02:00",
+   "rubrika": "clanak"
+  },
+  {
+   "izvor_id": "brodportal",
+   "url": "https://brodportal.hr/clanak/teka-prometna-nesrea-na-a3-dvije-osobe-teko-ozlijeene-jedna-lake-40395",
+   "naslov": "Teška prometna nesreća na A3: Dvije osobe teško ozlijeđene, jedna lakše",
+   "tekst": "Teška prometna nesreća na A3: Dvije osobe teško ozlijeđene, jedna lakše. VELIKA KOPANICA – Na autocesti A3, na području općine Velika Kopanica, u nedjelju 6. rujna oko 00:10 sati dogodila se teška prometna nesreća u kojoj su dvije osobe zadobile teške, a jedna lakše tjelesne ozljede. Prema rezultatima policijskog očevida, 61-godišnji vozač osobnog automobila slovenskih registarskih oznaka nije se držao svoje strane kretanja. Automobil je pritom počeo nekontrolirano zanositi, nakon čega je s kolnika sletio na travnatu površinu sa sjeverne strane autoceste. Tom je prilikom udario u središnju metalnu zaštitnu ogradu i stup, nakon čega se vozilom vratio na kolnik. U nastavku nekontroliranog kretanja ponovno je sletio s kolnika, ovaj put na travnatu površinu s južne strane, gdje se automobil zaustavio dijelom na travnatoj površini, a dijelom na zaustavnoj prometnoj traci. U nesreći su teško ozlijeđeni 61-godišnji vozač i 46-godišnji putnik , dok je 64-godišnji putnik lakše ozlijeđen . Svi su prevezeni u bolnicu u Slavonskom Brodu, gdje su zadržani na daljnjem liječenju. Za vrijeme trajanja policijskog očevida promet se na mjestu nesreće odvijao desnom prometnom trakom, uz povremene prekide. Promet je u potpunosti normaliziran oko 3:15 sati. Policijski službenici protiv 61-godišnjeg vozača podnose kaznenu prijavu Općinskom državnom odvjetništvu u Slavonskom Brodu zbog sumnje u počinjenje kaznenog djela izazivanja prometne nesreće u cestovnom prometu . Prije 2 h Sport Pikado turnir povodom 35. obljetnice osnutka HČZ-a Brodsko-posavske županije Prije 3 h ",
+   "objavljeno": "2026-09-06T10:12:00+02:00",
+   "rubrika": "clanak"
+  },
+  {
+   "izvor_id": "brodportal",
+   "url": "https://brodportal.hr/clanak/tambura-samica-ponovno-uva-tradiciju-u-donjim-andrijevcima-40398",
+   "naslov": "Tambura samica ponovno čuva tradiciju u Donjim Andrijevcima",
+   "tekst": "Tambura samica ponovno čuva tradiciju u Donjim Andrijevcima. 16 DONJI ANDRIJEVCI – U Donjim Andrijevcima danas se održava 28. državna smotra svirača na tamburi samici „Oj, samice, drvo javorovo, ’ko te sviro nikad ne bolovo“ . Ovogodišnja smotra posvećena je „Našim starim Šokcima i Šokicama“ , a okupila je samičare iz različitih krajeva Hrvatske i šire. Uz nastupe svirača, program donosi i predstavljanje Šokaca i Šokica, koji će govoriti o identitetu i posebnostima Slavonaca. Smotru organizira KUD „Tomislav“ Donji Andrijevci , koji već 28 godina čuva tradiciju tambure samice i okuplja zaljubljenike u ovu vrijednu slavonsku baštinu. Prije 2 h Sport Pikado turnir povodom 35. obljetnice osnutka HČZ-a Brodsko-posavske županije Prije 3 h Prije 20 h Crna kronika Uložio 140.000 eura u kriptovalute pa shvatio da je prevaren Prije 23 h Prije 5 dana Događaji STREET FOOD FESTIVAL: Neno Belan rasplesao Tvrđavu Brod Prije 6 dana 03. 09. 2026. Događaji Hod za život 12. rujna u Slavonskom Brodu 02. 09. 2026.",
+   "objavljeno": "2026-09-06T16:00:00+02:00",
+   "rubrika": "clanak"
+  },
+  {
+   "izvor_id": "brodportal",
+   "url": "https://brodportal.hr/clanak/staroslatiniko-ljeto-okupilo-ljubitelje-folklora-pjesme-i-tradicije-40397",
+   "naslov": "Staroslatiničko ljeto okupilo ljubitelje folklora, pjesme i tradicije",
+   "tekst": "Staroslatiničko ljeto okupilo ljubitelje folklora, pjesme i tradicije. 10 STARI SLATINIK – U Starom Slatiniku održano je još jedno izdanje tradicionalne folklorne manifestacije „Staroslatiničko ljeto“ , koje je i ove godine okupilo ljubitelje narodnih običaja, pjesme, plesa i tradicijske kulture. Pod sloganom „Dođite, podržite, uživajte!“ , posjetitelji su imali priliku uživati u bogatom kulturno-umjetničkom programu i nastupima čak pet kulturno-umjetničkih društava . Manifestacija je održana kod Društvenog doma „Dr. Ante Starčević“ , a cilj joj je očuvanje i njegovanje izvornog narodnog blaga slavonskog kraja. Poseban naglasak stavljen je na tradicijske pjesme i plesove, kao i na raskošne narodne nošnje koje su još jednom pokazale bogatstvo kulturne baštine ovoga kraja. Brojni izvođači svojim su nastupima publici približili tradiciju i običaje koje generacije prenose s koljena na koljeno, a večer je protekla u znaku pjesme, druženja i dobrog raspoloženja. „Staroslatiničko ljeto“ , poznato i kao „Slatničko ljeto“ , organizira Općina Brodski Stupnik uz podršku Turističke zajednice Meridiana Slavonica. Nakon folklornih nastupa uslijedilo je druženje i zabava uz tamburaše, čime je ova tradicionalna manifestacija ponovno spojila očuvanje kulturne baštine s veseljem i zajedništvom. Staroslatiničko ljeto tako je još jednom potvrdilo kako tradicija i danas ima svoje posebno mjesto u životu lokalne zajednice kroz pjesmu, ples, nošnje i susret ljudi koji čuvaju ono što su im ostavili njihovi preci. Prije 2 h Sport Pikado turnir povodom 35. obljetnice osn",
+   "objavljeno": "2026-09-06T14:00:00+02:00",
+   "rubrika": "clanak"
+  },
+  {
+   "izvor_id": "brodportal",
+   "url": "https://brodportal.hr/clanak/street-food-festival-neno-belan-upotpunio-40393",
+   "naslov": "STREET FOOD FESTIVAL: Neno Belan rasplesao Tvrđavu Brod",
+   "tekst": "STREET FOOD FESTIVAL: Neno Belan rasplesao Tvrđavu Brod. 13 Treće izdanje Street Food Weekenda u slavonskobrodskoj Tvrđavi i ove se godine pokazalo kao pravi pogodak. Uz bogatu gastroponudu sedam izlagača, festivalsko pivo i dobru atmosferu, večer je sinoć bila rezervirana i za glazbeni nastup Nene Belana . Popularni hrvatski glazbenik svojim je nastupom dodatno podigao raspoloženje u Tvrđavi, a brojni posjetitelji uživali su u njegovim poznatim pjesmama i opuštenoj festivalskoj večeri. Belan se tako nakon dvije godine ponovno susreo sa slavonskobrodskom publikom, budući da je svoj posljednji nastup u Slavonskom Brodu prije ovogodišnjeg imao 2024. godine . Spoj dobre hrane, festivalskog piva i glazbe još se jednom pokazao kao dobitna kombinacija, a Tvrđava Brod bila je mjesto okupljanja brojnih ljubitelja dobre zabave. Prije 2 h Sport Pikado turnir povodom 35. obljetnice osnutka HČZ-a Brodsko-posavske županije Prije 3 h Prije 20 h Crna kronika Uložio 140.000 eura u kriptovalute pa shvatio da je prevaren Prije 23 h Prije 5 dana Događaji Staroslatiničko ljeto okupilo ljubitelje folklora, pjesme i tradicije Prije 5 dana 03. 09. 2026. Događaji Hod za život 12. rujna u Slavonskom Brodu 02. 09. 2026.",
+   "objavljeno": "2026-09-05T13:00:00+02:00",
+   "rubrika": "clanak"
+  },
+  {
+   "izvor_id": "brodportal",
+   "url": "https://brodportal.hr/clanak/danas-poinje-street-food-weekend-u-tvravi-brod-etiri-dana-hrane-glazbe-i-dobre-zabave-40378",
+   "naslov": "Započeo je Street Food Weekend u Tvrđavi Brod: Pogledajte što donosi četverodnevni program",
+   "tekst": "Započeo je Street Food Weekend u Tvrđavi Brod: Pogledajte što donosi četverodnevni program. Tvrđava Brod danas otvara vrata trećeg izdanja Street Food Weekenda, koji će od 3. do 6. rujna ponuditi spoj dobre hrane, glazbe i druženja. Tijekom četiri dana posjetitelje očekuje raznovrstan program, uz brojne gastro specijalitete i glazbene nastupe. Festival je započeo danas, u četvrtak 3. rujna, u 16 sati, kada su se otvarila vrata Tvrđave Brod. Odmah nakon otvorenja, atmosferu je svojim glazbenim odabirom dodatno upotpuniti DJ Sladoled . Program se nastavlja u petak, 4. rujna. DJ Sladoled nastupa od podneva, dok je u 16 sati na rasporedu radionica hrvatske street food kuhinje koju vodi Marija Gregurić . Večernji dio programa rezerviran je za koncert Nene Belana , koji počinje u 21 sat. Subota, 5. rujna, donosi glazbeni program od 11 sati, kada ponovno nastupa DJ Sladoled. U večernjim satima, s početkom u 21 sat, posjetitelje očekuje nastup Ring – ABBA Tribute Banda . Završni dan festivala, nedjelja 6. rujna, počinje u podne uz DJ Lea i njegov vinilni set. U 16 sati na rasporedu je natjecanje u jedenju ljutih papričica, dok će u 18 sati biti proglašeno najbolje jelo ovogodišnjeg izdanja Street Food Weekenda. Tijekom sva četiri dana festivala za gastronomsku ponudu bit će zaduženo sedam izlagača: Medonja, Matija Bogdan, Full Circle by Marko Palfi, Škartoc ljubavi, Grof Lovski, MC Zalogaji by Marija Gregurić te Šmek & Snack. Posjetitelji će tako imati priliku kušati različite street food specijalitete i kreativne interpretacije poznatih okusa, a upravo će gastronomska ponu",
+   "objavljeno": "2026-09-03T19:00:00+02:00",
+   "rubrika": "clanak"
+  },
+  {
+   "izvor_id": "brodportal",
+   "url": "https://brodportal.hr/clanak/hod-za-ivot-12-rujna-u-slavonskom-brodu-40365",
+   "naslov": "Hod za život 12. rujna u Slavonskom Brodu",
+   "tekst": "Hod za život 12. rujna u Slavonskom Brodu. Nastavlja se tradicija. Grad Slavonski Brod će u subotu 12. rujna ove godine ponovo biti domaćin Hoda za život, obitelj i Hrvatsku koji okuplja veliki broj građana. Tradicionalni Hod za život miroljubivi je pohod građana u znak potpore svakom rođenom i nerođenom djetetu, njegovoj majci, ocu i svakoj obitelji. Cilj je skretanje pozornosti na poštivanje svakoga ljudskog života od začeća do prirodne smrti. Pravo na život temeljno je ljudsko pravo i preduvjet svakog drugog ljudskog i građanskog prava. Vizija organizatora je Hrvatska u kojoj se svaki ljudski život od začeća do prirodne smrti poštuje i štiti. Organizatori u dvadesetak naših gradova tijekom javnog okupljanja građana i miroljubivog hoda namjeravaju osvijestiti lokalne zajednice i širu javnost na značenje zakonske i svake druge zaštite ljudskog života od začeća do prirodne smrti te ih potaknuti na donošenje mjera za povoljne društvene i ekonomske uvjete za svaku trudnicu, majku, oca i obitelji. -Tražimo društvenu, zakonsku i svaku drugu zaštitu ljudskog života od začeća do prirodne smrti – poručuju iz Udruge “U ime obitelji” koja je organizator Hoda za život. Prije 2 h Sport Pikado turnir povodom 35. obljetnice osnutka HČZ-a Brodsko-posavske županije Prije 3 h Prije 20 h Crna kronika Uložio 140.000 eura u kriptovalute pa shvatio da je prevaren Prije 23 h Prije 5 dana Događaji Staroslatiničko ljeto okupilo ljubitelje folklora, pjesme i tradicije Prije 5 dana Prije 6 dana Događaji Započeo je Street Food Weekend u Tvrđav",
+   "objavljeno": "2026-09-02T17:00:00+02:00",
+   "rubrika": "clanak"
+  },
+  {
+   "izvor_id": "brodportal",
+   "url": "https://brodportal.hr/clanak/kolo-voze-djeca-slobodnica-zaplesala-uz-pjesmu-i-tradiciju-40347",
+   "naslov": "„Kolo voze djeca”: Slobodnica zaplesala uz pjesmu i tradiciju",
+   "tekst": "„Kolo voze djeca”: Slobodnica zaplesala uz pjesmu i tradiciju. 20 Narodne nošnje, pjesma, ples i dječji osmijesi ispunili su Slobodnicu, gdje je održana treća dječja folklorna manifestacija „Kolo voze djeca”, u organizaciji KUD-a Šokica Slobodnica . Manifestacija je okupila dječje folklorne skupine iz Sibinja, Beravaca, Babine Grede i Vrpolja, uz domaćine iz Slobodnice. Svaka je skupina pripremila svoj program, od plesova i igara do recitacija, a posebna pažnja bila je usmjerena na zajedničko druženje i igru. Predsjednica KUD-a Šokica Slobodnica Klara Lucić istaknula je kako je ovo treće izdanje manifestacije, koja je od početka zamišljena kao susret najmlađih folkloraša. „Imamo četiri gosta, Sibinj, Beravce, Babinu Gredu i Vrpolje, a tu su i naši mališani iz Slobodnice. Svaki je pripremio nešto - plesove, igre i recitacije, a uvijek bude zanimljivo”, kazala je Klara. U središtu manifestacije upravo je - igra. Cilj je, poručuju organizatori, zajedničko sudjelovanje, druženje i stvaranje lijepih uspomena. Interesa među djecom za folklor, čini se, ne nedostaje. U KUD-u Šokica trenutačno je oko 30 članova, a generacije se izmjenjuju. Stariji odlaze, dok stižu novi, među kojima su i najmlađi od svega četiri ili pet godina. Upravo su oni, kaže predsjednica KUD-a, posebno ponosni kada obuku narodnu nošnju i pokažu što su naučili. „Djeca se bolje odazivaju nego odrasli. Svi vole doći, igrati se, zabaviti, jesti i družiti se”, istaknula je. A upravo takvi susreti pokazuju kako se ljubav prema folkloru i tradiciji može graditi od najranije dobi. ",
+   "objavljeno": "2026-08-31T18:00:00+02:00",
+   "rubrika": "clanak"
+  },
+  {
+   "izvor_id": "grad_sb",
+   "url": "https://www.slavonski-brod.hr/sbinfo-2/grb-i-zastava",
+   "naslov": "Simboli grada",
+   "tekst": "Simboli grada. Oblik grba je polukružni štit. Na plavome preko srebrne/bijele grede zlatna/žuta čaplja s ribom u kljunu i rotulusom u podignutoj desnoj nozi. U gornjem desnom kutu pet šesterokrakih zlatnih/žutih zvijezda (tri, dva). Ukoliko se grb koristi s nazivom grada naziv se nalazi polukružno ispod štita. ZASTAVA Zastava je bijela, odnosno boje prirodne svile. Grb grada nalazi se u sredini zastave. Veličina zastave izrađuje se u omjeru 1:2, a za jarbol 2:6. Svečana zastava Grada je omjera 1:2 izrađena na svili prirodne boje, dvostruka, ravnih rubova, bez obruba, s grbom izrađenim od svile kombinirane vezom ili u zlatovezu. Obrasci za podnošenje zahtjeva, zamolbi i sl. Pravo na pristup informaciji ostvaruje se podnošenjem zahtjeva Mobilna aplikaciju za brže rješavanje komunalnih problema Brže i učinkovitije rješavanje predmeta koji se vode u upravnim odjelima Grada. Imate li ideje, prijedloge, pitanja o područjima za koja se brine grad Slavonski Brod. Za još bolju komunikaciju obitelji i dječjeg vrtića. Pohvale, prijedlozi i pritužbe. Sudjelujte u kreiranju gradskog proračuna ITU mehanizam 2021.-2027. ITU mehanizam 2014.-2020. Projekti sufinancirani iz Europskog socijalnog fonda Unajmi bicikl putem terminala, mobilne aplikacije ili pametne kartice i uživaj u vožnji! Trg Ivane Brlić-Mažuranić, Brodska Tvrđava Status vašeg predmeta možete provjeriti unosom korisničkog pina Ostavite Vašu poruku na besplatnom info broju Izjava o pristupačnosti │ Kontakti │ Pristup informacijama Vukovarska 1",
+   "objavljeno": null,
+   "rubrika": "sbinfo-2"
+  },
+  {
+   "izvor_id": "grad_sb",
+   "url": "https://www.slavonski-brod.hr/sbinfo-2/zemljopisni-polozaj",
+   "naslov": "Zemljopisni položaj",
+   "tekst": "Zemljopisni položaj. 45 stupnjeva 15 minuta Istočna zemljopisna dužina: 18 stupnjeva 00 minuta Najniža nadmorska visina: 50,10 km2 Prosječna gustoća naseljenosti: umjereno kontinentalna Prijava poreza na nekretnine Obrasci za podnošenje zahtjeva, zamolbi i sl. Pravo na pristup informaciji ostvaruje se podnošenjem zahtjeva Mobilna aplikaciju za brže rješavanje komunalnih problema Brže i učinkovitije rješavanje predmeta koji se vode u upravnim odjelima Grada. Imate li ideje, prijedloge, pitanja o područjima za koja se brine grad Slavonski Brod. Za još bolju komunikaciju obitelji i dječjeg vrtića. Pohvale, prijedlozi i pritužbe. Sudjelujte u kreiranju gradskog proračuna ITU mehanizam 2021.-2027. ITU mehanizam 2014.-2020. Projekti sufinancirani iz Europskog socijalnog fonda Unajmi bicikl putem terminala, mobilne aplikacije ili pametne kartice i uživaj u vožnji! Trg Ivane Brlić-Mažuranić, Brodska Tvrđava Status vašeg predmeta možete provjeriti unosom korisničkog pina Ostavite Vašu poruku na besplatnom info broju Izjava o pristupačnosti │ Kontakti │ Pristup informacijama Vukovarska 1 , HR-35000 Slavonski Brod Tel: +385 (0)35 217 000 Radno vrijeme Gradske uprave: Ponedjeljak - Petak od 7.00 do 15.00 sati Besplatni info telefon: 0800 200 217",
+   "objavljeno": null,
+   "rubrika": "sbinfo-2"
+  },
+  {
+   "izvor_id": "grad_sb",
+   "url": "https://www.slavonski-brod.hr/sbinfo-2/brod-u-slici",
+   "naslov": "Brod u slici",
+   "tekst": "Brod u slici. Obrasci za podnošenje zahtjeva, zamolbi i sl. Pravo na pristup informaciji ostvaruje se podnošenjem zahtjeva Mobilna aplikaciju za brže rješavanje komunalnih problema Brže i učinkovitije rješavanje predmeta koji se vode u upravnim odjelima Grada. Imate li ideje, prijedloge, pitanja o područjima za koja se brine grad Slavonski Brod. Za još bolju komunikaciju obitelji i dječjeg vrtića. Pohvale, prijedlozi i pritužbe. Sudjelujte u kreiranju gradskog proračuna ITU mehanizam 2021.-2027. ITU mehanizam 2014.-2020. Projekti sufinancirani iz Europskog socijalnog fonda Unajmi bicikl putem terminala, mobilne aplikacije ili pametne kartice i uživaj u vožnji! Trg Ivane Brlić-Mažuranić, Brodska Tvrđava Status vašeg predmeta možete provjeriti unosom korisničkog pina Ostavite Vašu poruku na besplatnom info broju Izjava o pristupačnosti │ Kontakti │ Pristup informacijama Vukovarska 1 , HR-35000 Slavonski Brod Tel: +385 (0)35 217 000 Radno vrijeme Gradske uprave: Ponedjeljak - Petak od 7.00 do 15.00 sati Besplatni info telefon: 0800 200 217",
+   "objavljeno": null,
+   "rubrika": "sbinfo-2"
+  },
+  {
+   "izvor_id": "grad_sb",
+   "url": "https://www.slavonski-brod.hr/sbinfo-2/gospodarstvo",
+   "naslov": "Gospodarstvo",
+   "tekst": "Gospodarstvo. Obrasci za podnošenje zahtjeva, zamolbi i sl. Pravo na pristup informaciji ostvaruje se podnošenjem zahtjeva Mobilna aplikaciju za brže rješavanje komunalnih problema Brže i učinkovitije rješavanje predmeta koji se vode u upravnim odjelima Grada. Imate li ideje, prijedloge, pitanja o područjima za koja se brine grad Slavonski Brod. Za još bolju komunikaciju obitelji i dječjeg vrtića. Pohvale, prijedlozi i pritužbe. Sudjelujte u kreiranju gradskog proračuna ITU mehanizam 2021.-2027. ITU mehanizam 2014.-2020. Projekti sufinancirani iz Europskog socijalnog fonda Unajmi bicikl putem terminala, mobilne aplikacije ili pametne kartice i uživaj u vožnji! Trg Ivane Brlić-Mažuranić, Brodska Tvrđava Status vašeg predmeta možete provjeriti unosom korisničkog pina Ostavite Vašu poruku na besplatnom info broju Izjava o pristupačnosti │ Kontakti │ Pristup informacijama Vukovarska 1 , HR-35000 Slavonski Brod Tel: +385 (0)35 217 000 Radno vrijeme Gradske uprave: Ponedjeljak - Petak od 7.00 do 15.00 sati Besplatni info telefon: 0800 200 217",
+   "objavljeno": null,
+   "rubrika": "sbinfo-2"
+  },
+  {
+   "izvor_id": "grad_sb",
+   "url": "https://www.slavonski-brod.hr/sbinfo-2/kultura-i-obrazovanje",
+   "naslov": "Kultura i obrazovanje",
+   "tekst": "Kultura i obrazovanje. Obrasci za podnošenje zahtjeva, zamolbi i sl. Pravo na pristup informaciji ostvaruje se podnošenjem zahtjeva Mobilna aplikaciju za brže rješavanje komunalnih problema Brže i učinkovitije rješavanje predmeta koji se vode u upravnim odjelima Grada. Imate li ideje, prijedloge, pitanja o područjima za koja se brine grad Slavonski Brod. Za još bolju komunikaciju obitelji i dječjeg vrtića. Pohvale, prijedlozi i pritužbe. Sudjelujte u kreiranju gradskog proračuna ITU mehanizam 2021.-2027. ITU mehanizam 2014.-2020. Projekti sufinancirani iz Europskog socijalnog fonda Unajmi bicikl putem terminala, mobilne aplikacije ili pametne kartice i uživaj u vožnji! Trg Ivane Brlić-Mažuranić, Brodska Tvrđava Status vašeg predmeta možete provjeriti unosom korisničkog pina Ostavite Vašu poruku na besplatnom info broju Izjava o pristupačnosti │ Kontakti │ Pristup informacijama Vukovarska 1 , HR-35000 Slavonski Brod Tel: +385 (0)35 217 000 Radno vrijeme Gradske uprave: Ponedjeljak - Petak od 7.00 do 15.00 sati Besplatni info telefon: 0800 200 217",
+   "objavljeno": null,
+   "rubrika": "sbinfo-2"
+  },
+  {
+   "izvor_id": "grad_sb",
+   "url": "https://www.slavonski-brod.hr/gradska-uprava/gradonacelnik",
+   "naslov": "Gradonačelnik",
+   "tekst": "Gradonačelnik. Mirko Duspara, dr. med., rođen je 21. kolovoza 1961. godine u Derventi (otac Anto, majka Ivka). Zbog boljih životnih prilika, s navršenih godinu i pol dana, s obitelji se seli u Gornju Vrbu gdje završava svoje osnovno školovanje, a potom upisuje i završava srednjoškolski Zdravstveni smjer u slavonskobrodskoj Gimnaziji. Nakon srednje škole, od 1980. do 1981. godine služi vojni rok, a potom odlazi na studij u Banja Luku gdje 1987. godine završava Medicinski fakultet kao liječnik, doktor medicine. Odmah po završetku studija zapošljava se u Medicinskom centru Slavonski Brod gdje obavlja poslove liječnika hitne medicinske službe. Od 1991. godine radi na Službi za anesteziju, reanimaciju i intenzivno liječenje Opće bolnice „Dr. Josip Benčević“. U Domovinskom ratu pripadnik je Saniteta, 139. i 108. brigade Hrvatske vojske. Bio je liječnik prve crte (kirurško-anesteziološke medicinske ekipe) u Specijalnoj policiji, a kao ratni dragovoljac sudjelovao je i u „Bljesku“ te drugim akcijama i prošao je bojišta u Bosanskoj Posavini, istočnoj i zapadnoj Slavoniji, Karlovcu, na Velebitu i Prevlaci. Po završetku rata, 1996. godine u Zagrebu usavršava svoje zvanje kao specijalist anestezije, reanimacije i intenzivnog liječenja. Uz to, bio je predsjednik Sindikata liječnika u Slavonskom Brodu i član Glavnog odbora Hrvatskog liječničkog sindikata. Od 1996. do 2012. član je Hrvatske stranke prava. Dana 10. lipnja 2005. godine na 2. sjednici Gradskog vijeća po prvi puta povjereno mu je mjesto grado",
+   "objavljeno": null,
+   "rubrika": "gradska-uprava"
+  },
+  {
+   "izvor_id": "grad_sb",
+   "url": "https://www.slavonski-brod.hr/gradska-uprava/upravni-odjeli",
+   "naslov": "Upravni odjeli",
+   "tekst": "Upravni odjeli. Za upravljanje i obavljanje djelatnosti od značenja za Grad, kao što su komunalne djelatnosti, izgradnja i upravljanje infrastrukturom, promet, prostorno uređenje i zaštita okoliša, gospodarenje nekretninama u vlasništvu Grada, kultura, zaštita i očuvanje kulturnih dobara, obrazovanje, šport, tehnička kultura i javno zdravlje, predškolski odgoj i obrazovanje, gospodarstvo, turizam, socijalna skrb, proračun, financije i funkcioniranje gradske uprave, unutarnja revizija i pravno zastupanje ustrojavaju se slijedeće jedinice: Radom upravnog odjela upravlja pročelnik, jedinicom unutarnje revizije voditelj, službom pravnog zastupanja pročelnik službe. Cjenik usluge punjenja električnih vozila Upute za izdavanje povlaštenih mjesečnih karti za parkiranje Novo radno vrijeme Novčana naknada za novorođenče Ostvarivanje prava i na božićnicu Sportska Dvorana Vijuš, Gradski bazeni, Trg Ivane Brlić Mažuranić (Korzo), Tvrđava Brod, ŠRC Poloj, Autobusni kolodvor Informacije o mogućnostima za mlade na jednom mjestu Oprema za prvo novorođeno dijete Vrijednost opreme iznosi 698,99 EUR Jedinstvene demografske mjere u Hrvatskoj 2021.-2025. Mandatno izvješće 2017.-2021. Obrasci za podnošenje zahtjeva, zamolbi i sl. Pravo na pristup informaciji ostvaruje se podnošenjem zahtjeva Mobilna aplikaciju za brže rješavanje komunalnih problema Brže i učinkovitije rješavanje predmeta koji se vode u upravnim odjelima Grada. Imate li ideje, prijedloge, pitanja o područjima za koja se brine grad Slavonski Brod. ",
+   "objavljeno": null,
+   "rubrika": "gradska-uprava"
+  },
+  {
+   "izvor_id": "grad_sb",
+   "url": "https://www.slavonski-brod.hr/gradska-uprava/gradsko-vijece",
+   "naslov": "Gradsko vijeće",
+   "tekst": "Gradsko vijeće. Gradsko Vijeće predstavničko je tijelo koje u Slavonskom Brodu broji 21 člana čiji članovi zastupaju interese svih građana Slavonskog Broda. Glavna uloga Gradskog Vijeća je da mehanizmom glasovanja bude kontrolni čimbenik kod donošenja odluka s kojima pred njih izlazi Gradonačelnik. Cjenik usluge punjenja električnih vozila Upute za izdavanje povlaštenih mjesečnih karti za parkiranje Novo radno vrijeme Novčana naknada za novorođenče Ostvarivanje prava i na božićnicu Sportska Dvorana Vijuš, Gradski bazeni, Trg Ivane Brlić Mažuranić (Korzo), Tvrđava Brod, ŠRC Poloj, Autobusni kolodvor Informacije o mogućnostima za mlade na jednom mjestu Oprema za prvo novorođeno dijete Vrijednost opreme iznosi 698,99 EUR Jedinstvene demografske mjere u Hrvatskoj 2021.-2025. Mandatno izvješće 2017.-2021. Obrasci za podnošenje zahtjeva, zamolbi i sl. Pravo na pristup informaciji ostvaruje se podnošenjem zahtjeva Mobilna aplikaciju za brže rješavanje komunalnih problema Brže i učinkovitije rješavanje predmeta koji se vode u upravnim odjelima Grada. Imate li ideje, prijedloge, pitanja o područjima za koja se brine grad Slavonski Brod. Za još bolju komunikaciju obitelji i dječjeg vrtića. Pohvale, prijedlozi i pritužbe. Sudjelujte u kreiranju gradskog proračuna ITU mehanizam 2021.-2027. ITU mehanizam 2014.-2020. Projekti sufinancirani iz Europskog socijalnog fonda Unajmi bicikl putem terminala, mobilne aplikacije ili pametne kartice i uživaj u vožnji! Trg Ivane Brlić-Mažuranić, Brodska Tvrđava Status",
+   "objavljeno": null,
+   "rubrika": "gradska-uprava"
+  },
+  {
+   "izvor_id": "grad_sb",
+   "url": "https://www.slavonski-brod.hr/gradska-trg-drustva/geotermalni-izvori-brod-d-o-o",
+   "naslov": "Geotermalni izvori Brod d.o.o.",
+   "tekst": "Geotermalni izvori Brod d.o.o.. Geotermalni izvori Brod d.o.o. Trg pobjede 5 35000 Slavonski Brod Tel: 035/405-703 mail: Ova e-mail adresa je zaštićena od spambota. Potrebno je omogućiti JavaScript da je vidite. Grad Slavonski Brod je iskazao interes za pronalaženjem i polivalentnim korištenjem geotermalne vode i s tim ciljem je od Hrvatskog geološkog instituta naručio izradu „Studije o mogućnostima pronalaženja geotermalne vode za polivalentno korištenje u gradu Slavonskom Brodu“ koja je izrađena i prezentirana u ožujku 2020. godine (Borović, Pavičić). U zaključku studije navodi se da je opravdano očekivati da u podzemlju na prostoru grada Slavonskog Broda postoje geotermalni vodonosnici o kojima bi trebalo prikupiti više podataka nekom od metoda površinskih geofizičkih ispitivanja. Odlučeno je da se provedu istraživanja metodom magnetotolurskog sondiranja. Geofizička istraživanja provedena su na prostoru grada Slavonskog Broda u srpnju 2020. godine, a u prosincu 2020. godine izrađen je Elaborat o provedenim geofizičkim istraživanjima na području grada Slavonskog Broda. U srpnju 2022. godine izrađena je Studija procjene geotermalnog potencijala na području grada Slavonskog Broda (Geotermalna Energija d.o.o., Kolbah, Bilić, Škrlec) u kojoj se nakon izvršene analize geološke građe, procjene proizvodnih i energetskih mogućnosti i ekonomsko-financijske ocjene rentabilnosti projekata, upućuje na opravdanost nastavka istraživanja u cilju definiranja geotermalnog ležišta na području grada Slavonskog Broda čija bi",
+   "objavljeno": null,
+   "rubrika": "gradska-trg-drustva"
+  },
+  {
+   "izvor_id": "grad_sb",
+   "url": "https://www.slavonski-brod.hr/sbinfo/grb-i-zastava",
+   "naslov": "Simboli grada",
+   "tekst": "Simboli grada. Oblik grba je polukružni štit. Na plavome preko srebrne/bijele grede zlatna/žuta čaplja s ribom u kljunu i rotulusom u podignutoj desnoj nozi. U gornjem desnom kutu pet šesterokrakih zlatnih/žutih zvijezda (tri, dva). Ukoliko se grb koristi s nazivom grada naziv se nalazi polukružno ispod štita. ZASTAVA Zastava je bijela, odnosno boje prirodne svile. Grb grada nalazi se u sredini zastave. Veličina zastave izrađuje se u omjeru 1:2, a za jarbol 2:6. Svečana zastava Grada je omjera 1:2 izrađena na svili prirodne boje, dvostruka, ravnih rubova, bez obruba, s grbom izrađenim od svile kombinirane vezom ili u zlatovezu. Prijava za izgubljene/napuštene pse na području Grada Slavonskog Broda Parking Upute za izdavanje povlaštenih mjesečnih karti za parkiranje Novo radno vrijeme Novčana naknada za novorođenče Ostvarivanje prava i na božićnicu Sportska Dvorana Vijuš, Gradski bazeni, Trg Ivane Brlić Mažuranić (Korzo), Tvrđava Brod, ŠRC Poloj, Autobusni kolodvor Informacije o mogućnostima za mlade na jednom mjestu Oprema za prvo novorođeno dijete Vrijednost opreme iznosi 698,99 EUR Jedinstvene demografske mjere u Hrvatskoj 2021.-2025. Mandatno izvješće 2017.-2021. Obrasci za podnošenje zahtjeva, zamolbi i sl. Pravo na pristup informaciji ostvaruje se podnošenjem zahtjeva Mobilna aplikaciju za brže rješavanje komunalnih problema Brže i učinkovitije rješavanje predmeta koji se vode u upravnim odjelima Grada. Imate li ideje, prijedloge, pitanja o područjima za koja se brine grad Slavonski Br",
+   "objavljeno": null,
+   "rubrika": "sbinfo"
+  },
+  {
+   "izvor_id": "grad_sb",
+   "url": "https://www.slavonski-brod.hr/sbinfo/zemljopisni-polozaj",
+   "naslov": "Zemljopisni položaj",
+   "tekst": "Zemljopisni položaj. 45 stupnjeva 15 minuta Istočna zemljopisna dužina: 18 stupnjeva 00 minuta Najniža nadmorska visina: 50,10 km2 Prosječna gustoća naseljenosti: umjereno kontinentalna Porez na potrošnju Prijava za izgubljene/napuštene pse na području Grada Slavonskog Broda Parking Upute za izdavanje povlaštenih mjesečnih karti za parkiranje Novo radno vrijeme Novčana naknada za novorođenče Ostvarivanje prava i na božićnicu Sportska Dvorana Vijuš, Gradski bazeni, Trg Ivane Brlić Mažuranić (Korzo), Tvrđava Brod, ŠRC Poloj, Autobusni kolodvor Informacije o mogućnostima za mlade na jednom mjestu Oprema za prvo novorođeno dijete Vrijednost opreme iznosi 698,99 EUR Jedinstvene demografske mjere u Hrvatskoj 2021.-2025. Mandatno izvješće 2017.-2021. Obrasci za podnošenje zahtjeva, zamolbi i sl. Pravo na pristup informaciji ostvaruje se podnošenjem zahtjeva Mobilna aplikaciju za brže rješavanje komunalnih problema Brže i učinkovitije rješavanje predmeta koji se vode u upravnim odjelima Grada. Imate li ideje, prijedloge, pitanja o područjima za koja se brine grad Slavonski Brod. Za još bolju komunikaciju obitelji i dječjeg vrtića. Pohvale, prijedlozi i pritužbe. Sudjelujte u kreiranju gradskog proračuna ITU mehanizam 2021.-2027. ITU mehanizam 2014.-2020. Projekti sufinancirani iz Europskog socijalnog fonda Unajmi bicikl putem terminala, mobilne aplikacije ili pametne kartice i uživaj u vožnji! Trg Ivane Brlić-Mažuranić, Brodska Tvrđava Status vašeg predmeta možete provjeriti unosom korisničkog pina Ostav",
+   "objavljeno": null,
+   "rubrika": "sbinfo"
+  },
+  {
+   "izvor_id": "grad_sb",
+   "url": "https://www.slavonski-brod.hr/sbinfo/brod-u-slici",
+   "naslov": "Brod u slici",
+   "tekst": "Brod u slici. Prijava za izgubljene/napuštene pse na području Grada Slavonskog Broda Parking Upute za izdavanje povlaštenih mjesečnih karti za parkiranje Novo radno vrijeme Novčana naknada za novorođenče Ostvarivanje prava i na božićnicu Sportska Dvorana Vijuš, Gradski bazeni, Trg Ivane Brlić Mažuranić (Korzo), Tvrđava Brod, ŠRC Poloj, Autobusni kolodvor Informacije o mogućnostima za mlade na jednom mjestu Oprema za prvo novorođeno dijete Vrijednost opreme iznosi 698,99 EUR Jedinstvene demografske mjere u Hrvatskoj 2021.-2025. Mandatno izvješće 2017.-2021. Obrasci za podnošenje zahtjeva, zamolbi i sl. Pravo na pristup informaciji ostvaruje se podnošenjem zahtjeva Mobilna aplikaciju za brže rješavanje komunalnih problema Brže i učinkovitije rješavanje predmeta koji se vode u upravnim odjelima Grada. Imate li ideje, prijedloge, pitanja o područjima za koja se brine grad Slavonski Brod. Za još bolju komunikaciju obitelji i dječjeg vrtića. Pohvale, prijedlozi i pritužbe. Sudjelujte u kreiranju gradskog proračuna ITU mehanizam 2021.-2027. ITU mehanizam 2014.-2020. Projekti sufinancirani iz Europskog socijalnog fonda Unajmi bicikl putem terminala, mobilne aplikacije ili pametne kartice i uživaj u vožnji! Trg Ivane Brlić-Mažuranić, Brodska Tvrđava Status vašeg predmeta možete provjeriti unosom korisničkog pina Ostavite Vašu poruku na besplatnom info broju Izjava o pristupačnosti │ Kontakti │ Pristup informacijama Vukovarska 1 , HR-35000 Slavonski Brod Tel: +385 (0)35 217 000 Radno vrijeme Gradske",
+   "objavljeno": null,
+   "rubrika": "sbinfo"
+  },
+  {
+   "izvor_id": "grad_sb",
+   "url": "https://www.slavonski-brod.hr/sbinfo/gradski-prijevoz",
+   "naslov": " Grad Slavonski Brod produljio rok provedbe Pilot projekta",
+   "tekst": " Grad Slavonski Brod produljio rok provedbe Pilot projekta. Zbog velikog interesa građana za besplatni javni gradski prijevoz, Grad Slavonski Brod produljuje rok provedbe Pilot projekta do 31. prosinca 2024. Nakon tri mjeseca unutar kojega je Grad omogućio besplatan prijevoz za građane i posjetitelje na području grada, utvrđeno je da je interes za navedenu uslugu velik, stoga je Grad Slavonski Brod produljio rok provedbe pilot projekta besplatnoga gradskog prijevoza. Podsjetimo, od 1. travnja 2024. javni gradski prijevoz organiziran je u osam linija. Osma uvedena linija je tzv. kružna linija koja nadopunjuje najfrekventnije lokacije u gradu, odnosno uži centar grada; od Korza, tržnice, bolnice, Doma zdravlja na Plavom polju, Svačićeve ulice kod trgovačkih centara te trgovačkog centra i graničnog prijelaza u Ulici Josipa Rimca. Tom se linijom postiže učestalost polazaka za građane te se povezuje s ostalim gradskim linijama na terminalu javnog gradskog prijevoza koji se nalazi na Trgu hrvatskog proljeća, iza postojeće prodavaonice. Terminal je početna i završna točka svih linija gradskog prijevoza. Novim linijama obuhvaćen je i dio Mjesnog odbora „Dr. Ante Starčević“, odnosno Branimirova ulica, Naselje Marka Majstorovića, Ulica Vida Došena i Ulica Josipa Bašića koje postaju sastavni dio Linije 4 (Šestinac). Linija 3. i Linija 5. povezuju Ulicu Petra Svačića, Dom zdravlja i Ulicu Josipa Rimca (granični prijelaz i trgovački centar). Vozni red nove LINIJE 0 : Kružna linija – Terminal – Grad – Terminal LINIJA 1 : Terminal – Brodsko Vinogorj",
+   "objavljeno": null,
+   "rubrika": "sbinfo"
+  },
+  {
+   "izvor_id": "grad_sb",
+   "url": "https://www.slavonski-brod.hr/sbinfo/gospodarstvo",
+   "naslov": "Gospodarstvo",
+   "tekst": "Gospodarstvo. Prijava za izgubljene/napuštene pse na području Grada Slavonskog Broda Parking Upute za izdavanje povlaštenih mjesečnih karti za parkiranje Novo radno vrijeme Novčana naknada za novorođenče Ostvarivanje prava i na božićnicu Sportska Dvorana Vijuš, Gradski bazeni, Trg Ivane Brlić Mažuranić (Korzo), Tvrđava Brod, ŠRC Poloj, Autobusni kolodvor Informacije o mogućnostima za mlade na jednom mjestu Oprema za prvo novorođeno dijete Vrijednost opreme iznosi 698,99 EUR Jedinstvene demografske mjere u Hrvatskoj 2021.-2025. Mandatno izvješće 2017.-2021. Obrasci za podnošenje zahtjeva, zamolbi i sl. Pravo na pristup informaciji ostvaruje se podnošenjem zahtjeva Mobilna aplikaciju za brže rješavanje komunalnih problema Brže i učinkovitije rješavanje predmeta koji se vode u upravnim odjelima Grada. Imate li ideje, prijedloge, pitanja o područjima za koja se brine grad Slavonski Brod. Za još bolju komunikaciju obitelji i dječjeg vrtića. Pohvale, prijedlozi i pritužbe. Sudjelujte u kreiranju gradskog proračuna ITU mehanizam 2021.-2027. ITU mehanizam 2014.-2020. Projekti sufinancirani iz Europskog socijalnog fonda Unajmi bicikl putem terminala, mobilne aplikacije ili pametne kartice i uživaj u vožnji! Trg Ivane Brlić-Mažuranić, Brodska Tvrđava Status vašeg predmeta možete provjeriti unosom korisničkog pina Ostavite Vašu poruku na besplatnom info broju Izjava o pristupačnosti │ Kontakti │ Pristup informacijama Vukovarska 1 , HR-35000 Slavonski Brod Tel: +385 (0)35 217 000 Radno vrijeme Gradske",
+   "objavljeno": null,
+   "rubrika": "sbinfo"
+  },
+  {
+   "izvor_id": "grad_sb",
+   "url": "https://www.slavonski-brod.hr/sbinfo/kultura-i-obrazovanje",
+   "naslov": "Kultura i obrazovanje",
+   "tekst": "Kultura i obrazovanje. Prijava za izgubljene/napuštene pse na području Grada Slavonskog Broda Parking Upute za izdavanje povlaštenih mjesečnih karti za parkiranje Novo radno vrijeme Novčana naknada za novorođenče Ostvarivanje prava i na božićnicu Sportska Dvorana Vijuš, Gradski bazeni, Trg Ivane Brlić Mažuranić (Korzo), Tvrđava Brod, ŠRC Poloj, Autobusni kolodvor Informacije o mogućnostima za mlade na jednom mjestu Oprema za prvo novorođeno dijete Vrijednost opreme iznosi 698,99 EUR Jedinstvene demografske mjere u Hrvatskoj 2021.-2025. Mandatno izvješće 2017.-2021. Obrasci za podnošenje zahtjeva, zamolbi i sl. Pravo na pristup informaciji ostvaruje se podnošenjem zahtjeva Mobilna aplikaciju za brže rješavanje komunalnih problema Brže i učinkovitije rješavanje predmeta koji se vode u upravnim odjelima Grada. Imate li ideje, prijedloge, pitanja o područjima za koja se brine grad Slavonski Brod. Za još bolju komunikaciju obitelji i dječjeg vrtića. Pohvale, prijedlozi i pritužbe. Sudjelujte u kreiranju gradskog proračuna ITU mehanizam 2021.-2027. ITU mehanizam 2014.-2020. Projekti sufinancirani iz Europskog socijalnog fonda Unajmi bicikl putem terminala, mobilne aplikacije ili pametne kartice i uživaj u vožnji! Trg Ivane Brlić-Mažuranić, Brodska Tvrđava Status vašeg predmeta možete provjeriti unosom korisničkog pina Ostavite Vašu poruku na besplatnom info broju Izjava o pristupačnosti │ Kontakti │ Pristup informacijama Vukovarska 1 , HR-35000 Slavonski Brod Tel: +385 (0)35 217 000 Radno vrijeme Gradske",
+   "objavljeno": null,
+   "rubrika": "sbinfo"
+  },
+  {
+   "izvor_id": "grad_sb",
+   "url": "https://www.slavonski-brod.hr/gradska-uprava/statut-grada",
+   "naslov": "Statut Grada Slavonskog Broda",
+   "tekst": "Statut Grada Slavonskog Broda. ( „Službeni vjesnik Brodsko-posavske županije“ 6/09., 13/10. i „Službeni glasnik Grada Slavonskog Broda“ 4/12., 5/12. 6/13. 5/14., 4/18. i 12/21.) Ovim Statutom se podrobnije uređuje samoupravni djelokrug Grada Slavonskog Broda, njegova obilježja, javna priznanja, ustrojstvo, ovlasti i način rada tijela Grada Slavonskog Broda, način obavljanja poslova, oblici neposrednog sudjelovanja građana u odlučivanju, provođenje referenduma u pitanjima iz samoupravnog djelokruga, mjesna samouprava, ustrojstvo i rad javnih službi, suradnja s drugim jedinicama lokalne i područne (regionalne) samouprave, te druga pitanja od važnosti za ostvarivanje prava i obveza Grada Slavonskog Broda. Grad Slavonski Brod je jedinica lokalne samouprave. Naziv, područje i sjedište Grada Slavonskog Broda određeni su zakonom. Grad Slavonski Brod obuhvaća područje naselja Slavonski Brod, Brodski Varoš i Podvinje. Granica Grada Slavonskog Broda počinje na jugozapadu od rijeke Save i ide granicom katastarske općine Brodski Varoš, katastarske općine Kaniža, na sjeveru katastarskom općinom Brodsko Vinogorje i katastarskom općinom Podvinje, ide granicama katastarske općine Slavonski Brod i katastarske općine Vrba na istoku i izlazi na rijeku Savu. Posebnom odlukom Gradsko vijeće će podrobnije utvrditi granice Grada. Granice Grada Slavonskog Broda mogu se mijenjati na način i po postupku propisanim zakonom. Sjedište Grada je u Slavonskom Brodu, Vukovarska 1. Grad Slavonski Brod ima status velikog grada. Tijela i upr",
+   "objavljeno": null,
+   "rubrika": "gradska-uprava"
+  },
+  {
+   "izvor_id": "grad_sb",
+   "url": "https://www.slavonski-brod.hr/gradska-uprava/mjesni-odbori",
+   "naslov": "Mjesni odbori",
+   "tekst": "Mjesni odbori. Na području grada Slavonskog Broda osnovani su mjesni odbori kao oblik neposrednog sudjelovanja građana u odlučivanju o lokalnim poslovima od neposrednog i svakodnevnog utjecaja na život i rad građana. Područje mjesnih odbora utvrđuje se posebnom odlukom koju donosi Gradsko vijeće. U ostvarivanju svojih prava mjesni odbor je dužan uvažavati interes grada Slavonskog Broda u cjelini. - Abecedni popis ulica, trgova i naselja u mjesnim odborima grada Slavonskog Broda (pdf) Službena komunikacija sa Gradom Slavonskim Brodom odvija se putem službene elektroničke pošte Ova e-mail adresa je zaštićena od spambota. Potrebno je omogućiti JavaScript da je vidite. Na području grada djeluje 16 mjesnih odbora: Cjenik usluge punjenja električnih vozila Upute za izdavanje povlaštenih mjesečnih karti za parkiranje Novo radno vrijeme Novčana naknada za novorođenče Ostvarivanje prava i na božićnicu Sportska Dvorana Vijuš, Gradski bazeni, Trg Ivane Brlić Mažuranić (Korzo), Tvrđava Brod, ŠRC Poloj, Autobusni kolodvor Informacije o mogućnostima za mlade na jednom mjestu Oprema za prvo novorođeno dijete Vrijednost opreme iznosi 698,99 EUR Jedinstvene demografske mjere u Hrvatskoj 2021.-2025. Mandatno izvješće 2017.-2021. Obrasci za podnošenje zahtjeva, zamolbi i sl. Pravo na pristup informaciji ostvaruje se podnošenjem zahtjeva Mobilna aplikaciju za brže rješavanje komunalnih problema Brže i učinkovitije rješavanje predmeta koji se vode u upravnim odjelima Grada. Imate li ideje, prijedloge, pitanja o",
+   "objavljeno": null,
+   "rubrika": "gradska-uprava"
+  },
+  {
+   "izvor_id": "grad_sb",
+   "url": "https://www.slavonski-brod.hr/gradska-uprava/gradske-ustanove",
+   "naslov": "Gradske ustanove",
+   "tekst": "Gradske ustanove. GRADSKA KNJIŽNICA v.d ravnateljica: Ružica Bobovečki, prof. Trg Stjepana Miletića 12 35000 Slavonski Brod Tel. 035 446 512, 446 963 web: www.gksb.hr GALERIJA UMJETNINA Ravnateljica: Romana Tekić, dipl.pov.umj i komp. knjiž. Starčevićeva 8 35000 Slavonski Brod Tel. 035 447 680, 448 749 web: www.gugsb.hr KAZALIŠNO-KONCERTNA DVORANA “Ivana Brlić Mažuranić” Ravnateljica: Sanja Nuhanović, prof. Trg Stjepana Miletića 12 35000 Slavonski Brod Tel. 035 449 275, 449 276 web: www.kkd-ibm.hr DJEČJI VRTIĆ “IVANA BRLIĆ-MAŽURANIĆ” Ravnateljica Zorana Butorac Naselje Andrija Hebrang 11/1 35000 Slavonski Brod Tel: 035 446 014, Fax: 408-166 e-mail: Ova e-mail adresa je zaštićena od spambota. Potrebno je omogućiti JavaScript da je vidite. web: www.djecji-vrtici-sb.hr DJEČJI VRTIĆ “POTJEH” Ravnateljica Marina Matković Moslovačka 42 35000 Slavonski Brod Tel: 035 890 14 35 e-mail: Ova e-mail adresa je zaštićena od spambota. Potrebno je omogućiti JavaScript da je vidite. web: http://dv-potjeh.hr JAVNA VATROGASNA POSTROJBA Zapovjednik: Ivan Vuleta, dipl.ing. Ulica Kaje Adžić bb 35000 Slavonski Brod Tel: 035 446 093 Fax: 035 446 125 e-mail: Ova e-mail adresa je zaštićena od spambota. Potrebno je omogućiti JavaScript da je vidite. web: ww.vatrogasci-sb.com Cjenik usluge punjenja električnih vozila Upute za izdavanje povlaštenih mjesečnih karti za parkiranje Novo radno vrijeme Novčana naknada za novorođenče Ostvarivanje prava i na božićnicu Sportska Dvorana Vijuš, Gradski bazeni, Trg Ivane Brlić Mažura",
+   "objavljeno": null,
+   "rubrika": "gradska-uprava"
+  },
+  {
+   "izvor_id": "grad_sb",
+   "url": "https://www.slavonski-brod.hr/gradska-uprava/javni-pozivi-natjecaji",
+   "naslov": "Javni pozivi i natječaji",
+   "tekst": "Javni pozivi i natječaji. Stranica 1 od 37 Graditeljstvo Porez na potrošnju Prijava za izgubljene/napuštene pse na području Grada Slavonskog Broda Parking Upute za izdavanje povlaštenih mjesečnih karti za parkiranje Novo radno vrijeme Novčana naknada za novorođenče Ostvarivanje prava i na božićnicu Sportska Dvorana Vijuš, Gradski bazeni, Trg Ivane Brlić Mažuranić (Korzo), Tvrđava Brod, ŠRC Poloj, Autobusni kolodvor Informacije o mogućnostima za mlade na jednom mjestu Oprema za prvo novorođeno dijete Vrijednost opreme iznosi 698,99 EUR Jedinstvene demografske mjere u Hrvatskoj 2021.-2025. Mandatno izvješće 2017.-2021. Obrasci za podnošenje zahtjeva, zamolbi i sl. Pravo na pristup informaciji ostvaruje se podnošenjem zahtjeva Mobilna aplikaciju za brže rješavanje komunalnih problema Brže i učinkovitije rješavanje predmeta koji se vode u upravnim odjelima Grada. Imate li ideje, prijedloge, pitanja o područjima za koja se brine grad Slavonski Brod. Za još bolju komunikaciju obitelji i dječjeg vrtića. Pohvale, prijedlozi i pritužbe. Sudjelujte u kreiranju gradskog proračuna ITU mehanizam 2021.-2027. ITU mehanizam 2014.-2020. Projekti sufinancirani iz Europskog socijalnog fonda Unajmi bicikl putem terminala, mobilne aplikacije ili pametne kartice i uživaj u vožnji! Trg Ivane Brlić-Mažuranić, Brodska Tvrđava Status vašeg predmeta možete provjeriti unosom korisničkog pina Ostavite Vašu poruku na besplatnom info broju Izjava o pristupačnosti │ Kontakti │ Pristup informacijama Vukovarska 1 , HR-35000 Slavonski ",
+   "objavljeno": null,
+   "rubrika": "gradska-uprava"
+  },
+  {
+   "izvor_id": "grad_sb",
+   "url": "https://www.slavonski-brod.hr/gradska-uprava/javna-priznanja-grada",
+   "naslov": "Javna priznanja Grada Slavonskog Broda",
+   "tekst": "Javna priznanja Grada Slavonskog Broda. Grad Slavonski Brod dodjeljuje javna priznanja i nagrade onima koji su svojim osobnim uspjesima u radu i djelovanju pridonijeli razvoju i boljitku grada Slavonskog Broda, promicanju njegovih vrijednosti, položaja i ugleda u zemlji i svijetu. Javna priznanja Grada Slavonskog Broda su: Povelja počasnog građanina grada Slavonskog Broda Počasnim građaninom grada Slavonskog Broda može se proglasiti osoba zaslužna za stvaranje i promicanje vrijednosti, položaja i ugleda grada Slavonskog Broda, dugogodišnju suradnju i potporu na unapređivanju potreba grada i građana te izuzetan doprinos razvoju grada ili pojedinih njegovih djelatnosti. Kriteriji za dodjelu javnih priznanja i nagrada: Postupak za dodjelu javnih priznanja i nagrada Grad Slavonski Brod provodi svake godine objavom Javnog poziva za predlaganje kandidata za dodjelu javnih priznanja i nagrada.Prijedlog za dodjelu javnih priznanja i nagrada mogu dati sve fizičke i pravne osobe po objavi Javnog poziva. Javna priznanja i nagrade uručuju se na svečanom prijemu povodom Dana grada Slavonskog Broda, 16. svibnja (blagdan svetog Ivana Nepomuka - zaštitnik grada Slavonskog Broda). Cjenik usluge punjenja električnih vozila Upute za izdavanje povlaštenih mjesečnih karti za parkiranje Novo radno vrijeme Novčana naknada za novorođenče Ostvarivanje prava i na božićnicu Sportska Dvorana Vijuš, Gradski bazeni, Trg Ivane Brlić Mažuranić (Korzo), Tvrđava Brod, ŠRC Poloj, Autobusni kolodvor Informacije o mogućnostima za mlade na jednom mjest",
+   "objavljeno": null,
+   "rubrika": "gradska-uprava"
+  },
+  {
+   "izvor_id": "grad_sb",
+   "url": "https://www.slavonski-brod.hr/gradska-uprava/knjiga-pocasnih-gradana",
+   "naslov": "Knjiga počasnih građana",
+   "tekst": "Knjiga počasnih građana. Prijava za izgubljene/napuštene pse na području Grada Slavonskog Broda Parking Upute za izdavanje povlaštenih mjesečnih karti za parkiranje Novo radno vrijeme Novčana naknada za novorođenče Ostvarivanje prava i na božićnicu Sportska Dvorana Vijuš, Gradski bazeni, Trg Ivane Brlić Mažuranić (Korzo), Tvrđava Brod, ŠRC Poloj, Autobusni kolodvor Informacije o mogućnostima za mlade na jednom mjestu Oprema za prvo novorođeno dijete Vrijednost opreme iznosi 698,99 EUR Jedinstvene demografske mjere u Hrvatskoj 2021.-2025. Mandatno izvješće 2017.-2021. Obrasci za podnošenje zahtjeva, zamolbi i sl. Pravo na pristup informaciji ostvaruje se podnošenjem zahtjeva Mobilna aplikaciju za brže rješavanje komunalnih problema Brže i učinkovitije rješavanje predmeta koji se vode u upravnim odjelima Grada. Imate li ideje, prijedloge, pitanja o područjima za koja se brine grad Slavonski Brod. Za još bolju komunikaciju obitelji i dječjeg vrtića. Pohvale, prijedlozi i pritužbe. Sudjelujte u kreiranju gradskog proračuna ITU mehanizam 2021.-2027. ITU mehanizam 2014.-2020. Projekti sufinancirani iz Europskog socijalnog fonda Unajmi bicikl putem terminala, mobilne aplikacije ili pametne kartice i uživaj u vožnji! Trg Ivane Brlić-Mažuranić, Brodska Tvrđava Status vašeg predmeta možete provjeriti unosom korisničkog pina Ostavite Vašu poruku na besplatnom info broju Izjava o pristupačnosti │ Kontakti │ Pristup informacijama Vukovarska 1 , HR-35000 Slavonski Brod Tel: +385 (0)35 217 000 Radno vrijeme Gradske",
+   "objavljeno": null,
+   "rubrika": "gradska-uprava"
+  },
+  {
+   "izvor_id": "grad_sb",
+   "url": "https://www.slavonski-brod.hr/gradska-uprava/odnosi-s-javnoscu",
+   "naslov": "Odnosi s javnošću",
+   "tekst": "Odnosi s javnošću. Cjenik usluge punjenja električnih vozila Upute za izdavanje povlaštenih mjesečnih karti za parkiranje Novo radno vrijeme Novčana naknada za novorođenče Ostvarivanje prava i na božićnicu Sportska Dvorana Vijuš, Gradski bazeni, Trg Ivane Brlić Mažuranić (Korzo), Tvrđava Brod, ŠRC Poloj, Autobusni kolodvor Informacije o mogućnostima za mlade na jednom mjestu Oprema za prvo novorođeno dijete Vrijednost opreme iznosi 698,99 EUR Jedinstvene demografske mjere u Hrvatskoj 2021.-2025. Mandatno izvješće 2017.-2021. Obrasci za podnošenje zahtjeva, zamolbi i sl. Pravo na pristup informaciji ostvaruje se podnošenjem zahtjeva Mobilna aplikaciju za brže rješavanje komunalnih problema Brže i učinkovitije rješavanje predmeta koji se vode u upravnim odjelima Grada. Imate li ideje, prijedloge, pitanja o područjima za koja se brine grad Slavonski Brod. Za još bolju komunikaciju obitelji i dječjeg vrtića. Pohvale, prijedlozi i pritužbe. Sudjelujte u kreiranju gradskog proračuna ITU mehanizam 2021.-2027. ITU mehanizam 2014.-2020. Projekti sufinancirani iz Europskog socijalnog fonda Unajmi bicikl putem terminala, mobilne aplikacije ili pametne kartice i uživaj u vožnji! Trg Ivane Brlić-Mažuranić, Brodska Tvrđava Status vašeg predmeta možete provjeriti unosom korisničkog pina Ostavite Vašu poruku na besplatnom info broju Izjava o pristupačnosti │ Kontakti │ Pristup informacijama Vukovarska 1 , HR-35000 Slavonski Brod Tel: +385 (0)35 217 000 Radno vrijeme Gradske uprave: Ponedjeljak - Petak od 7.00 ",
+   "objavljeno": null,
+   "rubrika": "gradska-uprava"
+  },
+  {
+   "izvor_id": "grad_sb",
+   "url": "https://www.slavonski-brod.hr/gradska-uprava/savjetovanje-s-javnoscu",
+   "naslov": "Savjetovanje s javnošću",
+   "tekst": "Savjetovanje s javnošću. Cjenik usluge punjenja električnih vozila Upute za izdavanje povlaštenih mjesečnih karti za parkiranje Novo radno vrijeme Novčana naknada za novorođenče Ostvarivanje prava i na božićnicu Sportska Dvorana Vijuš, Gradski bazeni, Trg Ivane Brlić Mažuranić (Korzo), Tvrđava Brod, ŠRC Poloj, Autobusni kolodvor Informacije o mogućnostima za mlade na jednom mjestu Oprema za prvo novorođeno dijete Vrijednost opreme iznosi 698,99 EUR Jedinstvene demografske mjere u Hrvatskoj 2021.-2025. Mandatno izvješće 2017.-2021. Obrasci za podnošenje zahtjeva, zamolbi i sl. Pravo na pristup informaciji ostvaruje se podnošenjem zahtjeva Mobilna aplikaciju za brže rješavanje komunalnih problema Brže i učinkovitije rješavanje predmeta koji se vode u upravnim odjelima Grada. Imate li ideje, prijedloge, pitanja o područjima za koja se brine grad Slavonski Brod. Za još bolju komunikaciju obitelji i dječjeg vrtića. Pohvale, prijedlozi i pritužbe. Sudjelujte u kreiranju gradskog proračuna ITU mehanizam 2021.-2027. ITU mehanizam 2014.-2020. Projekti sufinancirani iz Europskog socijalnog fonda Unajmi bicikl putem terminala, mobilne aplikacije ili pametne kartice i uživaj u vožnji! Trg Ivane Brlić-Mažuranić, Brodska Tvrđava Status vašeg predmeta možete provjeriti unosom korisničkog pina Ostavite Vašu poruku na besplatnom info broju Izjava o pristupačnosti │ Kontakti │ Pristup informacijama Vukovarska 1 , HR-35000 Slavonski Brod Tel: +385 (0)35 217 000 Radno vrijeme Gradske uprave: Ponedjeljak - Petak od 7.00 ",
+   "objavljeno": null,
+   "rubrika": "gradska-uprava"
+  },
+  {
+   "izvor_id": "grad_sb",
+   "url": "https://www.slavonski-brod.hr/gradska-uprava/vizija-misija-i-ciljevi",
+   "naslov": "Vizija, misija i ciljevi Grada Slavonskog Broda",
+   "tekst": "Vizija, misija i ciljevi Grada Slavonskog Broda. Cjenik usluge punjenja električnih vozila Upute za izdavanje povlaštenih mjesečnih karti za parkiranje Novo radno vrijeme Novčana naknada za novorođenče Ostvarivanje prava i na božićnicu Sportska Dvorana Vijuš, Gradski bazeni, Trg Ivane Brlić Mažuranić (Korzo), Tvrđava Brod, ŠRC Poloj, Autobusni kolodvor Informacije o mogućnostima za mlade na jednom mjestu Oprema za prvo novorođeno dijete Vrijednost opreme iznosi 698,99 EUR Jedinstvene demografske mjere u Hrvatskoj 2021.-2025. Mandatno izvješće 2017.-2021. Obrasci za podnošenje zahtjeva, zamolbi i sl. Pravo na pristup informaciji ostvaruje se podnošenjem zahtjeva Mobilna aplikaciju za brže rješavanje komunalnih problema Brže i učinkovitije rješavanje predmeta koji se vode u upravnim odjelima Grada. Imate li ideje, prijedloge, pitanja o područjima za koja se brine grad Slavonski Brod. Za još bolju komunikaciju obitelji i dječjeg vrtića. Pohvale, prijedlozi i pritužbe. Sudjelujte u kreiranju gradskog proračuna ITU mehanizam 2021.-2027. ITU mehanizam 2014.-2020. Projekti sufinancirani iz Europskog socijalnog fonda Unajmi bicikl putem terminala, mobilne aplikacije ili pametne kartice i uživaj u vožnji! Trg Ivane Brlić-Mažuranić, Brodska Tvrđava Status vašeg predmeta možete provjeriti unosom korisničkog pina Ostavite Vašu poruku na besplatnom info broju Izjava o pristupačnosti │ Kontakti │ Pristup informacijama Vukovarska 1 , HR-35000 Slavonski Brod Tel: +385 (0)35 217 000 Radno vrijeme Gradske uprave: Ponedjeljak - Petak od 7.00 ",
+   "objavljeno": null,
+   "rubrika": "gradska-uprava"
+  }
+ ],
+ "pageviews": [
+  {
+   "wiki": "hr.wikipedia",
+   "naslov": "Slavonski_Brod",
+   "dani": [
+    {
+     "dan": "20260713",
+     "pregledi": 75
+    },
+    {
+     "dan": "20260714",
+     "pregledi": 77
+    },
+    {
+     "dan": "20260715",
+     "pregledi": 74
+    },
+    {
+     "dan": "20260716",
+     "pregledi": 74
+    },
+    {
+     "dan": "20260717",
+     "pregledi": 102
+    },
+    {
+     "dan": "20260718",
+     "pregledi": 60
+    },
+    {
+     "dan": "20260719",
+     "pregledi": 82
+    },
+    {
+     "dan": "20260720",
+     "pregledi": 73
+    },
+    {
+     "dan": "20260721",
+     "pregledi": 77
+    },
+    {
+     "dan": "20260722",
+     "pregledi": 97
+    },
+    {
+     "dan": "20260723",
+     "pregledi": 83
+    },
+    {
+     "dan": "20260724",
+     "pregledi": 86
+    },
+    {
+     "dan": "20260725",
+     "pregledi": 88
+    },
+    {
+     "dan": "20260726",
+     "pregledi": 92
+    },
+    {
+     "dan": "20260727",
+     "pregledi": 99
+    },
+    {
+     "dan": "20260728",
+     "pregledi": 70
+    },
+    {
+     "dan": "20260729",
+     "pregledi": 87
+    },
+    {
+     "dan": "20260730",
+     "pregledi": 93
+    },
+    {
+     "dan": "20260731",
+     "pregledi": 100
+    },
+    {
+     "dan": "20260801",
+     "pregledi": 84
+    },
+    {
+     "dan": "20260802",
+     "pregledi": 82
+    },
+    {
+     "dan": "20260803",
+     "pregledi": 81
+    },
+    {
+     "dan": "20260804",
+     "pregledi": 87
+    },
+    {
+     "dan": "20260805",
+     "pregledi": 84
+    },
+    {
+     "dan": "20260806",
+     "pregledi": 79
+    },
+    {
+     "dan": "20260807",
+     "pregledi": 65
+    },
+    {
+     "dan": "20260808",
+     "pregledi": 83
+    },
+    {
+     "dan": "20260809",
+     "pregledi": 101
+    },
+    {
+     "dan": "20260810",
+     "pregledi": 179
+    },
+    {
+     "dan": "20260811",
+     "pregledi": 85
+    },
+    {
+     "dan": "20260812",
+     "pregledi": 98
+    },
+    {
+     "dan": "20260813",
+     "pregledi": 76
+    },
+    {
+     "dan": "20260814",
+     "pregledi": 75
+    },
+    {
+     "dan": "20260815",
+     "pregledi": 93
+    },
+    {
+     "dan": "20260816",
+     "pregledi": 95
+    },
+    {
+     "dan": "20260817",
+     "pregledi": 95
+    },
+    {
+     "dan": "20260818",
+     "pregledi": 101
+    },
+    {
+     "dan": "20260819",
+     "pregledi": 93
+    },
+    {
+     "dan": "20260820",
+     "pregledi": 102
+    },
+    {
+     "dan": "20260821",
+     "pregledi": 88
+    },
+    {
+     "dan": "20260822",
+     "pregledi": 100
+    },
+    {
+     "dan": "20260823",
+     "pregledi": 103
+    },
+    {
+     "dan": "20260824",
+     "pregledi": 74
+    },
+    {
+     "dan": "20260825",
+     "pregledi": 107
+    },
+    {
+     "dan": "20260826",
+     "pregledi": 91
+    },
+    {
+     "dan": "20260827",
+     "pregledi": 91
+    },
+    {
+     "dan": "20260828",
+     "pregledi": 83
+    },
+    {
+     "dan": "20260829",
+     "pregledi": 77
+    },
+    {
+     "dan": "20260830",
+     "pregledi": 120
+    },
+    {
+     "dan": "20260831",
+     "pregledi": 78
+    },
+    {
+     "dan": "20260901",
+     "pregledi": 89
+    },
+    {
+     "dan": "20260902",
+     "pregledi": 83
+    },
+    {
+     "dan": "20260903",
+     "pregledi": 64
+    },
+    {
+     "dan": "20260904",
+     "pregledi": 101
+    },
+    {
+     "dan": "20260905",
+     "pregledi": 113
+    },
+    {
+     "dan": "20260906",
+     "pregledi": 94
+    },
+    {
+     "dan": "20260907",
+     "pregledi": 95
+    },
+    {
+     "dan": "20260908",
+     "pregledi": 72
+    },
+    {
+     "dan": "20260909",
+     "pregledi": 84
+    },
+    {
+     "dan": "20260910",
+     "pregledi": 82
+    }
+   ]
+  },
+  {
+   "wiki": "en.wikipedia",
+   "naslov": "Slavonski_Brod",
+   "dani": [
+    {
+     "dan": "20260713",
+     "pregledi": 111
+    },
+    {
+     "dan": "20260714",
+     "pregledi": 106
+    },
+    {
+     "dan": "20260715",
+     "pregledi": 182
+    },
+    {
+     "dan": "20260716",
+     "pregledi": 109
+    },
+    {
+     "dan": "20260717",
+     "pregledi": 105
+    },
+    {
+     "dan": "20260718",
+     "pregledi": 91
+    },
+    {
+     "dan": "20260719",
+     "pregledi": 89
+    },
+    {
+     "dan": "20260720",
+     "pregledi": 85
+    },
+    {
+     "dan": "20260721",
+     "pregledi": 85
+    },
+    {
+     "dan": "20260722",
+     "pregledi": 110
+    },
+    {
+     "dan": "20260723",
+     "pregledi": 91
+    },
+    {
+     "dan": "20260724",
+     "pregledi": 70
+    },
+    {
+     "dan": "20260725",
+     "pregledi": 96
+    },
+    {
+     "dan": "20260726",
+     "pregledi": 101
+    },
+    {
+     "dan": "20260727",
+     "pregledi": 97
+    },
+    {
+     "dan": "20260728",
+     "pregledi": 85
+    },
+    {
+     "dan": "20260729",
+     "pregledi": 93
+    },
+    {
+     "dan": "20260730",
+     "pregledi": 85
+    },
+    {
+     "dan": "20260731",
+     "pregledi": 72
+    },
+    {
+     "dan": "20260801",
+     "pregledi": 89
+    },
+    {
+     "dan": "20260802",
+     "pregledi": 94
+    },
+    {
+     "dan": "20260803",
+     "pregledi": 82
+    },
+    {
+     "dan": "20260804",
+     "pregledi": 91
+    },
+    {
+     "dan": "20260805",
+     "pregledi": 79
+    },
+    {
+     "dan": "20260806",
+     "pregledi": 76
+    },
+    {
+     "dan": "20260807",
+     "pregledi": 88
+    },
+    {
+     "dan": "20260808",
+     "pregledi": 79
+    },
+    {
+     "dan": "20260809",
+     "pregledi": 88
+    },
+    {
+     "dan": "20260810",
+     "pregledi": 107
+    },
+    {
+     "dan": "20260811",
+     "pregledi": 91
+    },
+    {
+     "dan": "20260812",
+     "pregledi": 67
+    },
+    {
+     "dan": "20260813",
+     "pregledi": 73
+    },
+    {
+     "dan": "20260814",
+     "pregledi": 62
+    },
+    {
+     "dan": "20260815",
+     "pregledi": 84
+    },
+    {
+     "dan": "20260816",
+     "pregledi": 109
+    },
+    {
+     "dan": "20260817",
+     "pregledi": 94
+    },
+    {
+     "dan": "20260818",
+     "pregledi": 88
+    },
+    {
+     "dan": "20260819",
+     "pregledi": 90
+    },
+    {
+     "dan": "20260820",
+     "pregledi": 80
+    },
+    {
+     "dan": "20260821",
+     "pregledi": 76
+    },
+    {
+     "dan": "20260822",
+     "pregledi": 90
+    },
+    {
+     "dan": "20260823",
+     "pregledi": 84
+    },
+    {
+     "dan": "20260824",
+     "pregledi": 90
+    },
+    {
+     "dan": "20260825",
+     "pregledi": 68
+    },
+    {
+     "dan": "20260826",
+     "pregledi": 70
+    },
+    {
+     "dan": "20260827",
+     "pregledi": 86
+    },
+    {
+     "dan": "20260828",
+     "pregledi": 87
+    },
+    {
+     "dan": "20260829",
+     "pregledi": 84
+    },
+    {
+     "dan": "20260830",
+     "pregledi": 93
+    },
+    {
+     "dan": "20260831",
+     "pregledi": 89
+    },
+    {
+     "dan": "20260901",
+     "pregledi": 82
+    },
+    {
+     "dan": "20260902",
+     "pregledi": 75
+    },
+    {
+     "dan": "20260903",
+     "pregledi": 74
+    },
+    {
+     "dan": "20260904",
+     "pregledi": 77
+    },
+    {
+     "dan": "20260905",
+     "pregledi": 92
+    },
+    {
+     "dan": "20260906",
+     "pregledi": 68
+    },
+    {
+     "dan": "20260907",
+     "pregledi": 92
+    },
+    {
+     "dan": "20260908",
+     "pregledi": 76
+    },
+    {
+     "dan": "20260909",
+     "pregledi": 68
+    },
+    {
+     "dan": "20260910",
+     "pregledi": 87
+    }
+   ]
+  },
+  {
+   "wiki": "de.wikipedia",
+   "naslov": "Slavonski_Brod",
+   "dani": [
+    {
+     "dan": "20260713",
+     "pregledi": 53
+    },
+    {
+     "dan": "20260714",
+     "pregledi": 42
+    },
+    {
+     "dan": "20260715",
+     "pregledi": 43
+    },
+    {
+     "dan": "20260716",
+     "pregledi": 46
+    },
+    {
+     "dan": "20260717",
+     "pregledi": 41
+    },
+    {
+     "dan": "20260718",
+     "pregledi": 62
+    },
+    {
+     "dan": "20260719",
+     "pregledi": 67
+    },
+    {
+     "dan": "20260720",
+     "pregledi": 53
+    },
+    {
+     "dan": "20260721",
+     "pregledi": 51
+    },
+    {
+     "dan": "20260722",
+     "pregledi": 63
+    },
+    {
+     "dan": "20260723",
+     "pregledi": 63
+    },
+    {
+     "dan": "20260724",
+     "pregledi": 38
+    },
+    {
+     "dan": "20260725",
+     "pregledi": 55
+    },
+    {
+     "dan": "20260726",
+     "pregledi": 66
+    },
+    {
+     "dan": "20260727",
+     "pregledi": 47
+    },
+    {
+     "dan": "20260728",
+     "pregledi": 66
+    },
+    {
+     "dan": "20260729",
+     "pregledi": 49
+    },
+    {
+     "dan": "20260730",
+     "pregledi": 50
+    },
+    {
+     "dan": "20260731",
+     "pregledi": 47
+    },
+    {
+     "dan": "20260801",
+     "pregledi": 61
+    },
+    {
+     "dan": "20260802",
+     "pregledi": 49
+    },
+    {
+     "dan": "20260803",
+     "pregledi": 67
+    },
+    {
+     "dan": "20260804",
+     "pregledi": 55
+    },
+    {
+     "dan": "20260805",
+     "pregledi": 52
+    },
+    {
+     "dan": "20260806",
+     "pregledi": 42
+    },
+    {
+     "dan": "20260807",
+     "pregledi": 50
+    },
+    {
+     "dan": "20260808",
+     "pregledi": 64
+    },
+    {
+     "dan": "20260809",
+     "pregledi": 68
+    },
+    {
+     "dan": "20260810",
+     "pregledi": 65
+    },
+    {
+     "dan": "20260811",
+     "pregledi": 45
+    },
+    {
+     "dan": "20260812",
+     "pregledi": 39
+    },
+    {
+     "dan": "20260813",
+     "pregledi": 64
+    },
+    {
+     "dan": "20260814",
+     "pregledi": 43
+    },
+    {
+     "dan": "20260815",
+     "pregledi": 44
+    },
+    {
+     "dan": "20260816",
+     "pregledi": 71
+    },
+    {
+     "dan": "20260817",
+     "pregledi": 56
+    },
+    {
+     "dan": "20260818",
+     "pregledi": 72
+    },
+    {
+     "dan": "20260819",
+     "pregledi": 55
+    },
+    {
+     "dan": "20260820",
+     "pregledi": 51
+    },
+    {
+     "dan": "20260821",
+     "pregledi": 54
+    },
+    {
+     "dan": "20260822",
+     "pregledi": 64
+    },
+    {
+     "dan": "20260823",
+     "pregledi": 106
+    },
+    {
+     "dan": "20260824",
+     "pregledi": 77
+    },
+    {
+     "dan": "20260825",
+     "pregledi": 61
+    },
+    {
+     "dan": "20260826",
+     "pregledi": 38
+    },
+    {
+     "dan": "20260827",
+     "pregledi": 44
+    },
+    {
+     "dan": "20260828",
+     "pregledi": 68
+    },
+    {
+     "dan": "20260829",
+     "pregledi": 54
+    },
+    {
+     "dan": "20260830",
+     "pregledi": 68
+    },
+    {
+     "dan": "20260831",
+     "pregledi": 46
+    },
+    {
+     "dan": "20260901",
+     "pregledi": 40
+    },
+    {
+     "dan": "20260902",
+     "pregledi": 38
+    },
+    {
+     "dan": "20260903",
+     "pregledi": 63
+    },
+    {
+     "dan": "20260904",
+     "pregledi": 45
+    },
+    {
+     "dan": "20260905",
+     "pregledi": 52
+    },
+    {
+     "dan": "20260906",
+     "pregledi": 48
+    },
+    {
+     "dan": "20260907",
+     "pregledi": 49
+    },
+    {
+     "dan": "20260908",
+     "pregledi": 51
+    },
+    {
+     "dan": "20260909",
+     "pregledi": 55
+    },
+    {
+     "dan": "20260910",
+     "pregledi": 59
+    }
+   ]
+  }
+ ]
+}
