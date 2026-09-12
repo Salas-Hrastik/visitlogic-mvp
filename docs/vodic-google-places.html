@@ -181,6 +181,11 @@ gcloud services list --enabled --project=<span class="kom">ID-VAŠEG-PROJEKTA</s
     <div class="panel dobro">
       <h3>Put A &mdash; kroz GitHub, bez ijedne naredbe <span style="font-family:var(--mono);font-size:11px;color:var(--poz)">PREPORUČENO</span></h3>
       <p>Ne treba vam ni terminal, ni Node, ni kopija repozitorija na računalu. Sve se izvodi na GitHubovim poslužiteljima.</p>
+      <div class="panel oprez" style="margin-top:0">
+        <h3>Preduvjet: grana mora biti spojena u <code>main</code></h3>
+        <p>GitHub prikazuje gumb <b>Run workflow</b> samo za workflowe koji postoje na <b>glavnoj grani</b>. Njihova dokumentacija to kaže izrijekom: <em>„This event will only trigger a workflow run if the workflow file exists on the default branch.“</em> Dok je posao samo na grani <code>claude/brave-wozniak-so9hwt</code>, gumba nema.</p>
+        <p style="margin-bottom:0">Zato prvo otvorite <b>Pull request</b> s te grane u <code>main</code> i spojite ga. Time se aktivira i tjedni raspored &mdash; što je ionako cilj, a bez ključa se sloj ocjena jednostavno preskače, pa spajanje ništa ne kvari.</p>
+      </div>
       <ol>
         <li><b>Spremite ključ kao tajnu.</b> U repozitoriju: <b>Settings → Secrets and variables → Actions → New repository secret</b>.<br>
           Name: <code>GOOGLE_MAPS_API_KEY</code> &nbsp;·&nbsp; Secret: vaš ključ &nbsp;·&nbsp; <b>Add secret</b>.</li>
@@ -306,9 +311,9 @@ GOOGLE_MAPS_API_KEY=AIza<span class="kom">…vaš ključ…</span> npm run senti
     </ol>
     <p>Workflow već čita tu tajnu. Ako je ne postavite, agent radi kao i dosad — samo bez sloja ocjena.</p>
     <h3>Spojite granu</h3>
-    <p>Raspored se pokreće <b>samo s glavne grane</b>. Dok je posao na grani <code>claude/brave-wozniak-so9hwt</code>, tjedno pokretanje neće krenuti. Nakon spajanja u <code>main</code> agent se pokreće ponedjeljkom u 04:00 UTC.</p>
-    <h3>Isprobajte ručno prije spajanja</h3>
-    <p>U kartici <b>Actions</b> odaberite <b>„Tjedna analiza sentimenta — Slavonski Brod“</b> pa <b>Run workflow</b>. Ručno pokretanje radi i s grane, pa možete provjeriti da tajna i ključ rade u GitHub okruženju prije nego što išta spojite.</p>
+    <p>Ako ste išli <b>Putom A</b>, granu ste već spojili &mdash; to je bio preduvjet za gumb <b>Run workflow</b>. Ako ste išli Putom B, spojite je sada: raspored se pokreće samo s glavne grane. Nakon spajanja agent kreće ponedjeljkom u 04:00 UTC.</p>
+    <h3>Isprobajte ručno</h3>
+    <p>U kartici <b>Actions</b> odaberite <b>„Tjedna analiza sentimenta — Slavonski Brod“</b> pa <b>Run workflow</b>. Kad je workflow jednom na glavnoj grani, ručno ga možete pokrenuti i s bilo koje druge grane, pa provjeru ne morate čekati do ponedjeljka.</p>
     <div class="panel dobro">
       <p style="margin-bottom:0">Nakon uspješnog izvođenja workflow sam commita osvježene podatke i izvještaj, a datoteke prilaže i kao artefakt koji možete preuzeti iz sučelja GitHub Actions.</p>
     </div>
