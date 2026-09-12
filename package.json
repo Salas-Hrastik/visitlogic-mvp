@@ -17,6 +17,8 @@
     },
     "scripts": {
         "sentiment": "node scripts/sentiment-sb/run.mjs",
-        "sentiment:docx": "node scripts/sentiment-sb/build-docx.cjs"
+        "sentiment:docx": "node scripts/sentiment-sb/build-docx.cjs",
+        "sentiment:check-key": "node scripts/sentiment-sb/check-key.mjs",
+        "sentiment:discover": "node scripts/sentiment-sb/discover-places.mjs"
     }
 }

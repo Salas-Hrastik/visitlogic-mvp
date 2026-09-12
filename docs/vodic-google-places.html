@@ -1,0 +1,296 @@
+<title>Uključivanje Google Places API-ja</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --paper:#F2F5F4; --povrsina:#FFFFFF; --povrsina-2:#E8EDEB; --povrsina-3:#DDE4E1;
+  --ink:#131A1F; --ink-2:#41505A; --ink-3:#6C7C85; --rule:#D5DEDA; --rule-2:#B9C6C1;
+  --accent:#1F4E6B; --ochre:#B0782F;
+  --poz:#2C7A4B; --warn:#A87512; --neg:#9E3524;
+  --poz-soft:#E1F0E6; --warn-soft:#F7EDD6; --neg-soft:#F7E3DF;
+  --serif:"Newsreader",Georgia,serif; --sans:"Public Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#0E1418; --povrsina:#151D22; --povrsina-2:#1C262B; --povrsina-3:#243036;
+  --ink:#E6EDEA; --ink-2:#AEBEC4; --ink-3:#84959D; --rule:#293539; --rule-2:#3A4A50;
+  --accent:#7DB2D2; --ochre:#D5A45F; --poz:#62B685; --warn:#D4A63E; --neg:#E07E6C;
+  --poz-soft:#16261D; --warn-soft:#272016; --neg-soft:#2A1B18;
+}}
+:root[data-theme="dark"]{
+  --paper:#0E1418; --povrsina:#151D22; --povrsina-2:#1C262B; --povrsina-3:#243036;
+  --ink:#E6EDEA; --ink-2:#AEBEC4; --ink-3:#84959D; --rule:#293539; --rule-2:#3A4A50;
+  --accent:#7DB2D2; --ochre:#D5A45F; --poz:#62B685; --warn:#D4A63E; --neg:#E07E6C;
+  --poz-soft:#16261D; --warn-soft:#272016; --neg-soft:#2A1B18;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:15.5px;line-height:1.62}
+.wrap{max-width:820px;margin:0 auto;padding-inline:20px;padding-block:0 72px}
+a{color:var(--accent)} a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+h1{font-family:var(--serif);font-weight:500;font-size:clamp(1.9rem,5.4vw,2.9rem);line-height:1.1;letter-spacing:-.015em;margin:0 0 12px;text-wrap:balance}
+p{margin:0 0 13px;max-width:68ch} ul,ol{max-width:68ch;padding-left:20px} li{margin-bottom:6px}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ochre);margin:0 0 12px}
+header.top{border-bottom:2px solid var(--ink);padding-block:38px 20px;margin-bottom:28px}
+.uvod{font-family:var(--serif);font-size:1.14rem;line-height:1.55;color:var(--ink-2);max-width:60ch;margin:0}
+.top-meta{display:flex;flex-wrap:wrap;gap:5px 24px;font-family:var(--mono);font-size:11.5px;color:var(--ink-3);margin-top:18px}
+.top-meta b{color:var(--ink-2);font-weight:500}
+
+.korak{margin:0 0 34px;padding-top:18px;border-top:1px solid var(--rule-2)}
+.korak-glava{display:grid;grid-template-columns:40px 1fr;gap:14px;align-items:start;margin-bottom:10px}
+.korak-broj{font-family:var(--mono);font-size:12px;color:var(--paper);background:var(--accent);border-radius:3px;padding:5px 0;text-align:center;margin-top:3px}
+.korak h2{font-family:var(--serif);font-weight:500;font-size:1.42rem;line-height:1.22;margin:0;letter-spacing:-.01em}
+.korak h2 .vrijeme{display:block;font-family:var(--mono);font-size:11px;color:var(--ink-3);letter-spacing:.06em;margin-top:5px;font-style:normal}
+.korak-tijelo{padding-left:54px}
+@media (max-width:560px){ .korak-tijelo{padding-left:0} }
+h3{font-size:.94rem;font-weight:700;margin:20px 0 7px}
+code{font-family:var(--mono);font-size:.87em;background:var(--povrsina-2);padding:1px 5px;border-radius:3px}
+pre{font-family:var(--mono);font-size:12.5px;line-height:1.65;background:var(--povrsina-2);border:1px solid var(--rule);border-left:3px solid var(--accent);border-radius:3px;padding:12px 14px;overflow-x:auto;margin:12px 0}
+pre .kom{color:var(--ink-3)}
+.panel{background:var(--povrsina);border:1px solid var(--rule);border-radius:4px;padding:15px 17px;margin:14px 0}
+.panel>:last-child{margin-bottom:0}
+.panel.oprez{border-left:3px solid var(--warn);background:var(--warn-soft)}
+.panel.dobro{border-left:3px solid var(--poz);background:var(--poz-soft)}
+.panel.stop{border-left:3px solid var(--neg);background:var(--neg-soft)}
+.panel h3{margin-top:0}
+.vidjet{background:var(--povrsina);border:1px dashed var(--rule-2);border-radius:3px;padding:11px 13px;margin:12px 0;font-size:14px;color:var(--ink-2)}
+.vidjet b{color:var(--ink)}
+.oko{display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;color:var(--ochre);margin-bottom:6px}
+.sitno{font-size:12.5px;color:var(--ink-3);font-variant-numeric:tabular-nums}
+.tw{overflow-x:auto;border:1px solid var(--rule);border-radius:4px;background:var(--povrsina);margin:14px 0}
+table{border-collapse:collapse;width:100%;font-size:13.5px;min-width:520px}
+th,td{text-align:left;padding:9px 13px;border-bottom:1px solid var(--rule);vertical-align:top;line-height:1.45}
+thead th{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);font-weight:500;background:var(--povrsina-2)}
+tbody tr:last-child td,tbody tr:last-child th{border-bottom:none}
+tbody th{font-weight:600}
+.num{font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+ul.provjera{list-style:none;padding:0;margin:12px 0}
+ul.provjera li{display:grid;grid-template-columns:24px 1fr;gap:9px;margin-bottom:8px;font-size:14.5px}
+ul.provjera li::before{content:"☐";font-family:var(--mono);font-size:15px;color:var(--ink-3)}
+footer{border-top:1px solid var(--rule-2);margin-top:40px;padding-top:16px;font-size:12.5px;color:var(--ink-3)}
+</style>
+<div class="wrap">
+<header class="top">
+  <p class="eyebrow">Postavljanje &middot; Sentiment Radar Slavonski Brod</p>
+  <h1>Uključivanje Google Places API-ja</h1>
+  <p class="uvod">Pet koraka od praznog Google računa do prvog tjednog izvještaja s pokazateljima za gastronomiju, smještaj i atrakcije. Uz svaki korak piše što ćete vidjeti na ekranu i što učiniti ako ne vidite to.</p>
+  <div class="top-meta">
+    <span><b>Vrijeme:</b> oko 25 minuta</span>
+    <span><b>Trošak:</b> 0 USD unutar besplatne kvote</span>
+    <span><b>Potrebno:</b> Google račun i platna kartica</span>
+    <span><b>Provjereno:</b> 12. rujna 2026.</span>
+  </div>
+</header>
+
+<div class="panel oprez">
+  <h3>Prije nego počnete: kartica da, naplata ne</h3>
+  <p>Google traži <b>aktivan naplatni račun s valjanom karticom</b> čak i za korištenje isključivo unutar besplatne kvote. Kartica se ne tereti dok ne prijeđete besplatni opseg. U koraku 5 postavit ćete dvostruku zaštitu — proračunsko upozorenje kod Googlea i tvrdu granicu u samom kodu — tako da prekoračenje nije moguće bez vašeg znanja.</p>
+  <p style="margin-bottom:0">Ako je vaša adresa naplate u Hrvatskoj, primjenjuju se <b>EEA uvjeti korištenja</b> Google Maps Platforme (na snazi od 8. srpnja 2025.). Dostupnost pojedinih funkcija razlikuje se po regijama.</p>
+</div>
+
+<section class="korak">
+  <div class="korak-glava"><span class="korak-broj">01</span>
+    <h2>Napravite projekt u Google Cloudu<span class="vrijeme">≈ 5 MINUTA</span></h2></div>
+  <div class="korak-tijelo">
+    <p>Otvorite <a href="https://console.cloud.google.com/" target="_blank" rel="noopener">console.cloud.google.com</a> i prijavite se Google računom. Najbolje računom turističke zajednice, ne privatnim — projekt i naplata ostaju vezani uz taj račun.</p>
+    <ol>
+      <li>Na vrhu stranice kliknite birač projekta (pokraj natpisa „Google Cloud“).</li>
+      <li><b>New project</b>.</li>
+      <li>Naziv: <code>sentiment-radar-sb</code>. Organizaciju ostavite kako jest.</li>
+      <li><b>Create</b>, pa pričekajte obavijest i kliknite <b>Select project</b>.</li>
+    </ol>
+    <div class="vidjet"><span class="oko">VIDJET ĆETE</span><span>Naziv projekta u gornjoj traci i <b>Project ID</b> na nadzornoj ploči — nešto poput <code>sentiment-radar-sb-472913</code>. Zapišite ga; koristit će vam u koraku 5.</span></div>
+  </div>
+</section>
+
+<section class="korak">
+  <div class="korak-glava"><span class="korak-broj">02</span>
+    <h2>Povežite naplatni račun<span class="vrijeme">≈ 5 MINUTA</span></h2></div>
+  <div class="korak-tijelo">
+    <p>U izborniku lijevo idite na <b>Billing</b>. Ako još nemate naplatni račun, Google će ponuditi da ga otvorite.</p>
+    <ol>
+      <li>Unesite podatke o organizaciji i karticu.</li>
+      <li>Kad je račun otvoren, provjerite da je <b>povezan s projektom</b> <code>sentiment-radar-sb</code>. Na stranici Billing mora pisati naziv projekta, a ne „This project has no billing account“.</li>
+    </ol>
+    <div class="panel stop" style="margin-top:14px">
+      <h3>Najčešća zapreka</h3>
+      <p style="margin-bottom:0">Ako ste otvorili naplatni račun, ali ga niste <em>povezali</em> s projektom, svi pozivi vraćaju grešku. Skripta za provjeru u koraku 4 to prepoznaje i doslovno vam kaže: <em>„Projekt nema aktivan naplatni račun.“</em></p>
+    </div>
+  </div>
+</section>
+
+<section class="korak">
+  <div class="korak-glava"><span class="korak-broj">03</span>
+    <h2>Uključite Places API i napravite ključ<span class="vrijeme">≈ 5 MINUTA</span></h2></div>
+  <div class="korak-tijelo">
+    <h3>Uključivanje API-ja</h3>
+    <ol>
+      <li>Izbornik <b>APIs &amp; Services → Library</b>.</li>
+      <li>U tražilicu upišite <code>Places API (New)</code>. Pazite: postoji i stariji <em>Places API</em> bez oznake „(New)“ — treba vam onaj s <b>(New)</b>.</li>
+      <li>Otvorite ga i kliknite <b>Enable</b>.</li>
+    </ol>
+    <h3>Izrada ključa</h3>
+    <ol>
+      <li><b>APIs &amp; Services → Credentials</b>.</li>
+      <li><b>Create credentials → API key</b>.</li>
+      <li>Google prikaže ključ u skočnom prozoru. Kopirajte ga odmah — počinje s <code>AIza</code> i ima oko 39 znakova.</li>
+      <li>Kliknite <b>Edit API key</b> i odmah ga ograničite (sljedeći odjeljak).</li>
+    </ol>
+    <h3>Ograničavanje ključa</h3>
+    <p>Neograničen ključ može svatko tko ga vidi koristiti na vaš trošak. Google izrijekom preporučuje ograničavanje.</p>
+    <div class="tw"><table>
+      <thead><tr><th>Postavka</th><th>Što odabrati</th><th>Zašto</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">API restrictions</th><td><b>Restrict key</b> → označite samo <b>Places API (New)</b></td><td>Ključ tada ne može pozvati nijednu drugu Googleovu uslugu, pa i ako procuri, šteta je ograničena na ovaj jedan API</td></tr>
+        <tr><th scope="row">Application restrictions</th><td>Za pokretanje na vlastitom računalu: <b>IP addresses</b> i vaša javna adresa.<br>Za GitHub Actions: ostavite <b>None</b></td><td>GitHub-ovi poslužitelji mijenjaju IP adresu pri svakom pokretanju, pa ograničenje po IP-u ondje blokira i vaše legitimne pozive</td></tr>
+      </tbody>
+    </table></div>
+    <div class="panel oprez">
+      <p style="margin-bottom:0"><b>Ako ostavljate „None“:</b> ključ je zaštićen samo ograničenjem na Places API i tajnošću. Zato nikada ne ide u kôd ni u commit, nego isključivo u GitHub Secrets (korak 5). Repozitorij već ima <code>.env</code> u <code>.gitignore</code>.</p>
+    </div>
+  </div>
+</section>
+<section class="korak">
+  <div class="korak-glava"><span class="korak-broj">04</span>
+    <h2>Provjerite ključ prije nego potroši kvotu<span class="vrijeme">≈ 2 MINUTE</span></h2></div>
+  <div class="korak-tijelo">
+    <p>Ne pokrećite odmah otkrivanje objekata. Prvo pokrenite provjeru — troši <b>dva poziva</b> i točno vam kaže što ne valja ako nešto ne valja.</p>
+    <pre><span class="kom"># u mapi repozitorija, na vlastitom računalu</span>
+git checkout claude/brave-wozniak-so9hwt
+npm install
+
+GOOGLE_MAPS_API_KEY=AIza<span class="kom">…vaš ključ…</span> npm run sentiment:check-key</pre>
+    <div class="vidjet"><span class="oko">VIDJET ĆETE</span><span>Kad je sve ispravno:
+      <br><code>✓ Ključ je postavljen (AIzaSy…w4K2, 39 znakova).</code>
+      <br><code>✓ Text Search radi. Pronađeno: „Tvrđava Brod“…</code>
+      <br><code>✓ Place Details radi. Ocjena: …, broj ocjena: …, recenzija u odgovoru: 5.</code><br><span style="font-size:12.5px;color:var(--ink-3)">Stvarne vrijednosti ispisat će vaš terminal; ovdje nisu navedene jer ih nemamo izmjerene. Broj 5 je stvaran &mdash; toliko recenzija Place Details najviše vraća.</span></span></div>
+    <p>Ako nešto ne radi, skripta ispisuje Googleov odgovor i <b>uputu što točno popraviti</b>:</p>
+    <div class="tw"><table>
+      <thead><tr><th>Poruka u odgovoru</th><th>Što je uzrok</th><th>Rješenje</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">API key not valid</th><td>Ključ je krivo kopiran ili pripada drugom projektu</td><td>Kopirajte ga ponovno iz <b>Credentials</b>; mora početi s <code>AIza</code></td></tr>
+        <tr><th scope="row">SERVICE_DISABLED</th><td>Places API (New) nije uključen</td><td>Korak 3, prvi dio — pazite da niste uključili stari <em>Places API</em> bez „(New)“</td></tr>
+        <tr><th scope="row">API_KEY_SERVICE_BLOCKED</th><td>Ograničenje ključa ne obuhvaća Places API</td><td><b>Credentials → vaš ključ → API restrictions</b> → dodajte <b>Places API (New)</b></td></tr>
+        <tr><th scope="row">billing / BILLING_DISABLED</th><td>Projekt nije povezan s naplatnim računom</td><td>Korak 2</td></tr>
+        <tr><th scope="row">PERMISSION_DENIED</th><td>Najčešće IP ograničenje, a poziv dolazi s drugog stroja</td><td>Uskladite <b>Application restrictions</b> sa strojem s kojeg pokrećete</td></tr>
+      </tbody>
+    </table></div>
+    <div class="panel oprez">
+      <p style="margin-bottom:0">Promjena ograničenja ključa <b>ne djeluje trenutno</b> — Googleu ponekad treba nekoliko minuta. Ako ste upravo nešto promijenili, a greška je ista, pričekajte pet minuta pa pokrenite provjeru ponovno.</p>
+    </div>
+  </div>
+</section>
+
+<section class="korak">
+  <div class="korak-glava"><span class="korak-broj">05</span>
+    <h2>Izgradite registar objekata<span class="vrijeme">≈ 3 MINUTE, JEDNOKRATNO</span></h2></div>
+  <div class="korak-tijelo">
+    <p>Ovaj korak pokrećete <b>samo jednom</b>. Traži objekte u Slavonskom Brodu i sprema njihove <code>place_id</code> oznake. Google dopušta trajno čuvanje <code>place_id</code>-a, pa se otkrivanje ne mora ponavljati.</p>
+    <pre>GOOGLE_MAPS_API_KEY=AIza<span class="kom">…</span> npm run sentiment:discover</pre>
+    <div class="vidjet"><span class="oko">VIDJET ĆETE</span><span>Devet redaka napretka (restorani, kafići, pizzerije, slastičarnice, hoteli, apartmani, hosteli, znamenitosti, Tvrđava), pa sažetak:
+      <br><code>Registar: <span class="kom">N</span> objekata.</code>
+      <br><code>Tjedni dohvat: ~<span class="kom">N×4,33</span> poziva mjesečno; besplatno 1000; naplativo 0 (~$0/mj).</code>
+      <br><span style="font-size:12.5px;color:var(--ink-3)">Koliko će objekata biti, pokazat će tek pokretanje &mdash; nemamo provjeren broj ugostiteljskih objekata u Slavonskom Brodu na Google Mapsu.</span></span></div>
+    <p>Rezultat je datoteka <code>data/sentiment-sb/place-registry.json</code>. Sadrži samo naziv, tip, koordinate i <code>place_id</code> — <b>nijednu ocjenu ni recenziju</b>, jer uvjeti Places API-ja zabranjuju njihovu pohranu.</p>
+    <h3>Provjerite pokrivenost i dopunite</h3>
+    <p>Text Search vraća ograničen broj rezultata po upitu, pa registar neće biti potpun iz prve. Otvorite datoteku i pogledajte nedostaje li neki važan objekt. Dodatne upite dopisujete u <code>scripts/sentiment-sb/discover-places.mjs</code>, u popis <code>UPITI</code>:</p>
+    <pre>const UPITI = [
+  { upit: 'restorani u Slavonskom Brodu', kategorija: 'G' },
+  <span class="kom">// dodajte npr.:</span>
+  { upit: 'pekarnice u Slavonskom Brodu', kategorija: 'G' },
+  { upit: 'konobe Slavonski Brod',        kategorija: 'G' },
+  { upit: 'kuće za odmor Slavonski Brod', kategorija: 'S' }
+];</pre>
+    <p>Ponovno pokretanje ne stvara duplikate — objekt koji je već u registru se preskače.</p>
+    <div class="panel dobro">
+      <h3>Kategorije koje smijete koristiti</h3>
+      <p style="margin-bottom:0"><code>G</code> gastronomija &middot; <code>S</code> smještaj &middot; <code>A</code> atrakcije i baština. Samo te tri imaju udio brojčanih ocjena u indeksu (α = 0,50 / 0,50 / 0,35). Ostale kategorije računaju se isključivo iz teksta.</p>
+    </div>
+  </div>
+</section>
+
+<section class="korak">
+  <div class="korak-glava"><span class="korak-broj">06</span>
+    <h2>Pokrenite prvi puni ciklus<span class="vrijeme">≈ 6 MINUTA</span></h2></div>
+  <div class="korak-tijelo">
+    <pre>GOOGLE_MAPS_API_KEY=AIza<span class="kom">…</span> npm run sentiment</pre>
+    <p>Agent prolazi sve korake: prikuplja medije, dohvaća ocjene, analizira i generira izvještaj u <code>docs/dashboard-slavonski-brod.html</code>. Otvorite ga u pregledniku.</p>
+    <div class="vidjet"><span class="oko">VIDJET ĆETE</span><span>Novu sekciju <b>„2b · Sloj ocjena“</b> te kategorije <b>Gastronomija, Smještaj i Atrakcije</b> s pravim brojkama umjesto oznake „nedovoljno podataka“. U tablici kategorija pokraj svake stoji rastav u obliku <code>tekst 63,1 / ocjene 74,0 (α=0,50)</code> (brojke iz demonstracije na testnom skupu).</span></div>
+    <h3>Zaštita od prekoračenja</h3>
+    <p>U kodu postoji tvrda granica od <b>230 poziva po izvođenju</b> (<code>SB_MAX_POZIVA</code>). Ako registar naraste preko toga, agent obradi prvih 230 i ispiše upozorenje umjesto da tiho probije kvotu.</p>
+    <div class="tw"><table>
+      <thead><tr><th>Objekata u registru</th><th class="num">Poziva mjesečno</th><th class="num">Naplativo</th><th class="num">Trošak</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">do 231</th><td class="num">do 1.000</td><td class="num">0</td><td class="num">0 USD</td></tr>
+        <tr><th scope="row">300</th><td class="num">1.299</td><td class="num">299</td><td class="num">7,48 USD</td></tr>
+        <tr><th scope="row">400</th><td class="num">1.732</td><td class="num">732</td><td class="num">18,30 USD</td></tr>
+      </tbody>
+    </table></div>
+    <p class="sitno">Place Details Enterprise + Atmosphere: 1.000 poziva mjesečno bez naplate, zatim 25 USD za 1.000. Cjenik provjeren 11. 09. 2026.</p>
+    <div class="panel oprez">
+      <h3>Postavite i proračunsko upozorenje</h3>
+      <p style="margin-bottom:0">Neovisno o granici u kodu: <b>Billing → Budgets &amp; alerts → Create budget</b>, iznos npr. 5 USD, s obavijesti na 50 % i 100 %. Tako dobivate e-poštu i ako nešto krene po zlu izvan ovog agenta.</p>
+    </div>
+  </div>
+</section>
+
+<section class="korak">
+  <div class="korak-glava"><span class="korak-broj">07</span>
+    <h2>Uključite tjedni automatski ciklus<span class="vrijeme">≈ 3 MINUTE</span></h2></div>
+  <div class="korak-tijelo">
+    <h3>Spremite ključ kao tajnu</h3>
+    <ol>
+      <li>U repozitoriju na GitHubu: <b>Settings → Secrets and variables → Actions</b>.</li>
+      <li><b>New repository secret</b>.</li>
+      <li>Name: <code>GOOGLE_MAPS_API_KEY</code> &nbsp;·&nbsp; Secret: vaš ključ.</li>
+      <li><b>Add secret</b>.</li>
+    </ol>
+    <p>Workflow već čita tu tajnu. Ako je ne postavite, agent radi kao i dosad — samo bez sloja ocjena.</p>
+    <h3>Spojite granu</h3>
+    <p>Raspored se pokreće <b>samo s glavne grane</b>. Dok je posao na grani <code>claude/brave-wozniak-so9hwt</code>, tjedno pokretanje neće krenuti. Nakon spajanja u <code>main</code> agent se pokreće ponedjeljkom u 04:00 UTC.</p>
+    <h3>Isprobajte ručno prije spajanja</h3>
+    <p>U kartici <b>Actions</b> odaberite <b>„Tjedna analiza sentimenta — Slavonski Brod“</b> pa <b>Run workflow</b>. Ručno pokretanje radi i s grane, pa možete provjeriti da tajna i ključ rade u GitHub okruženju prije nego što išta spojite.</p>
+    <div class="panel dobro">
+      <p style="margin-bottom:0">Nakon uspješnog izvođenja workflow sam commita osvježene podatke i izvještaj, a datoteke prilaže i kao artefakt koji možete preuzeti iz sučelja GitHub Actions.</p>
+    </div>
+  </div>
+</section>
+
+<section class="korak">
+  <div class="korak-glava"><span class="korak-broj">08</span>
+    <h2>Što nakon prvog tjedna<span class="vrijeme">TRAJNO</span></h2></div>
+  <div class="korak-tijelo">
+    <p>Sloj ocjena rješava prazne kategorije, ali ne rješava sve. Redoslijed sljedećih koraka po omjeru koristi i truda:</p>
+    <ol>
+      <li><b>Google Business Profile API</b> za objekte koji sami daju pristup. Jedini put do <em>svih</em> recenzija jednog objekta i jedini kod kojeg smijete pohraniti tekst. Places vraća najviše pet recenzija po pozivu.</li>
+      <li><b>Vlastita anketa s QR kodom</b> u turističkom uredu, na Tvrđavi i na događanjima. Pravno najčišći izvor i jedini koji pokriva posjetitelje koji ništa ne objave — a to je velika većina.</li>
+      <li><b>Registar objekata kao geo-filtar.</b> Kad postoji, zamjenjuje pravilo koje je u prvoj iteraciji davalo preciznost 0,50 i podiže je iznad 0,90.</li>
+      <li><b>Model za hrvatski sentiment</b> umjesto leksičkog MVP-a. Tek kad prva tri koraka daju dovoljan uzorak za podešavanje.</li>
+    </ol>
+    <div class="panel stop">
+      <h3>Dvije stvari koje se ne rade</h3>
+      <p style="margin-bottom:0">Struganje Google Mapsa protivno je uvjetima korištenja i neće biti implementirano. Pohrana ocjena i teksta recenzija na disk također — zato agent zapisuje samo izvedene agregate. Iznimka je Business Profile, gdje objekt sam daje pristup svojim podacima.</p>
+    </div>
+  </div>
+</section>
+
+<section class="korak">
+  <div class="korak-glava"><span class="korak-broj">✓</span><h2>Popis za provjeru</h2></div>
+  <div class="korak-tijelo">
+    <ul class="provjera">
+      <li>Projekt <code>sentiment-radar-sb</code> postoji i zapisan je Project ID</li>
+      <li>Naplatni račun je otvoren i <b>povezan s projektom</b></li>
+      <li>Uključen je <b>Places API (New)</b>, ne stari Places API</li>
+      <li>Ključ je izrađen i ograničen na Places API (New)</li>
+      <li><code>npm run sentiment:check-key</code> prolazi s tri kvačice</li>
+      <li><code>npm run sentiment:discover</code> je pokrenut jednom i registar ima objekte</li>
+      <li>Proračunsko upozorenje postavljeno na 5 USD</li>
+      <li>Tajna <code>GOOGLE_MAPS_API_KEY</code> spremljena u GitHub Secrets</li>
+      <li>Workflow ručno pokrenut i prošao</li>
+      <li>Grana spojena u <code>main</code> da se raspored aktivira</li>
+    </ul>
+  </div>
+</section>
+
+<footer>
+  <p>Vodič za projekt <b>Sentiment Radar Slavonski Brod</b>. Koraci u Google Cloud sučelju provjereni su prema službenoj dokumentaciji 12. rujna 2026.; Google povremeno mijenja raspored sučelja, pa ako se naziv gumba razlikuje, tražite ga po funkciji, a ne po točnom nazivu. Cijene i kvote provjerene su u službenom cjeniku 11. rujna 2026. i mogu se promijeniti bez najave.</p>
+</footer>
+</div>

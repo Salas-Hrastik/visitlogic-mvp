@@ -34,6 +34,28 @@ const MASKA_TRAZI = 'places.id,places.displayName,places.primaryType,places.loca
 
 const spava = ms => new Promise(r => setTimeout(r, ms));
 
+/* Gornja granica poziva po jednom izvodjenju. Stiti od toga da narastao
+   registar tiho probije besplatnu kvotu. Nadjacava se s SB_MAX_POZIVA. */
+export const MAX_POZIVA = Number(process.env.SB_MAX_POZIVA || 230);
+
+/** Prevodi Googleove greske u uputu sto tocno treba popraviti. */
+export function objasniGresku(poruka) {
+  const p = String(poruka);
+  if (/API key not valid|API_KEY_INVALID/i.test(p))
+    return 'Ključ nije valjan. Provjerite jeste li kopirali cijeli ključ (počinje s "AIza") i da pripada ovom projektu.';
+  if (/SERVICE_DISABLED|has not been used in project|is disabled/i.test(p))
+    return 'Places API (New) nije uključen u projektu. Cloud Console → APIs & Services → Enable APIs → "Places API (New)" → Enable.';
+  if (/API_KEY_SERVICE_BLOCKED|blocked/i.test(p))
+    return 'Ključ ima ograničenje koje ne dopušta Places API. Cloud Console → Credentials → vaš ključ → API restrictions → dodajte "Places API (New)".';
+  if (/billing|BILLING_DISABLED/i.test(p))
+    return 'Projekt nema aktivan naplatni račun. Cloud Console → Billing → povežite projekt s naplatnim računom (besplatna kvota i dalje vrijedi).';
+  if (/PERMISSION_DENIED|REQUEST_DENIED|403/i.test(p))
+    return 'Zahtjev odbijen. Najčešći uzroci: ključ ograničen na IP adrese (a poziv dolazi s drugog stroja) ili API nije uključen.';
+  if (/RESOURCE_EXHAUSTED|429|quota/i.test(p))
+    return 'Prekoračena kvota. Pričekajte ili povisite ograničenje u Cloud Console → APIs & Services → Places API → Quotas.';
+  return 'Nepoznata greška — cijeli odgovor je ispisan iznad.';
+}
+
 async function poziv(url, { kljuc, maska, tijelo = null, timeout = 20000 }) {
   const ctrl = new AbortController();
   const t = setTimeout(() => ctrl.abort(), timeout);
@@ -95,7 +117,9 @@ export async function ucitajRegistar() {
  */
 export async function dohvatiOcjene({ kljuc, registar, log = console.log, razmak = 250 }) {
   const out = [];
-  for (const o of registar.objekti) {
+  if (registar.objekti.length > MAX_POZIVA)
+    log(`  UPOZORENJE: registar ima ${registar.objekti.length} objekata, a granica po izvođenju je ${MAX_POZIVA}. Obrađujem prvih ${MAX_POZIVA}. Povisite s SB_MAX_POZIVA ako želite više (pazite na kvotu).`);
+  for (const o of registar.objekti.slice(0, MAX_POZIVA)) {
     try {
       const p = await poziv(`${BAZA}/places/${encodeURIComponent(o.place_id)}`, { kljuc, maska: MASKA_DETALJI });
       out.push({

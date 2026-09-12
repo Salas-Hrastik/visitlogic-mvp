@@ -25,6 +25,13 @@ jobs:
           node-version: '20'
 
       - name: Pokreni agenta
+        env:
+          # Postavlja se u Settings -> Secrets and variables -> Actions -> New repository secret.
+          # Ako tajna ne postoji, varijabla je prazna i sloj ocjena se preskace -
+          # agent i dalje radi, samo bez gastronomije, smjestaja i atrakcija.
+          GOOGLE_MAPS_API_KEY: ${{ secrets.GOOGLE_MAPS_API_KEY }}
+          # Gornja granica poziva po izvodjenju, stiti besplatnu kvotu.
+          SB_MAX_POZIVA: '230'
         run: node scripts/sentiment-sb/run.mjs
 
       - name: Provjeri promjene
