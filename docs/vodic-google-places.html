@@ -177,11 +177,44 @@ gcloud services list --enabled --project=<span class="kom">ID-VAŠEG-PROJEKTA</s
     <h2>Provjerite ključ prije nego potroši kvotu<span class="vrijeme">≈ 2 MINUTE</span></h2></div>
   <div class="korak-tijelo">
     <p>Ne pokrećite odmah otkrivanje objekata. Prvo pokrenite provjeru — troši <b>dva poziva</b> i točno vam kaže što ne valja ako nešto ne valja.</p>
-    <pre><span class="kom"># u mapi repozitorija, na vlastitom računalu</span>
+
+    <div class="panel dobro">
+      <h3>Put A &mdash; kroz GitHub, bez ijedne naredbe <span style="font-family:var(--mono);font-size:11px;color:var(--poz)">PREPORUČENO</span></h3>
+      <p>Ne treba vam ni terminal, ni Node, ni kopija repozitorija na računalu. Sve se izvodi na GitHubovim poslužiteljima.</p>
+      <ol>
+        <li><b>Spremite ključ kao tajnu.</b> U repozitoriju: <b>Settings → Secrets and variables → Actions → New repository secret</b>.<br>
+          Name: <code>GOOGLE_MAPS_API_KEY</code> &nbsp;·&nbsp; Secret: vaš ključ &nbsp;·&nbsp; <b>Add secret</b>.</li>
+        <li><b>Pokrenite provjeru.</b> Kartica <b>Actions</b> → u popisu lijevo odaberite <b>„Otkrij objekte (Google Places) — ručno“</b> → gumb <b>Run workflow</b>.<br>
+          Grana: <code>claude/brave-wozniak-so9hwt</code> &nbsp;·&nbsp; Što napraviti: <b>samo-provjeri-kljuc</b> → <b>Run workflow</b>.</li>
+        <li><b>Pogledajte rezultat.</b> Kliknite na pokrenuti posao pa na korak <b>„Provjeri ključ“</b>. Ondje piše isto što bi pisalo u terminalu — tri kvačice ili točna uputa što popraviti.</li>
+      </ol>
+      <p style="margin-bottom:0">Kad provjera prođe, pokrenite isti workflow ponovno, ovaj put s izborom <b>provjeri-i-otkrij-objekte</b>. On izgradi registar, ispiše sažetak s brojem objekata i procjenom kvote, i <b>sam ga commita</b> u repozitorij. Time je korak 5 gotov i preskačete ga.</p>
+    </div>
+
+    <div class="panel">
+      <h3>Put B &mdash; lokalno, u terminalu</h3>
+      <p>Samo ako želite raditi na vlastitom računalu. Treba vam <a href="https://git-scm.com/downloads" target="_blank" rel="noopener">git</a> i <a href="https://nodejs.org/" target="_blank" rel="noopener">Node.js 20 ili noviji</a>.</p>
+      <p><b>Najvažnije:</b> prvo morate <em>preuzeti</em> repozitorij i ući u njegovu mapu. Naredbe se ne izvode bilo gdje — ako ih pokrenete u pogrešnoj mapi, git javlja <code>fatal: not a git repository</code>, a <code>npm install</code> instalira pakete nekog drugog projekta.</p>
+      <pre><span class="kom"># 1. odaberite mapu u koju želite spremiti projekt</span>
+cd ~/Documents
+
+<span class="kom"># 2. preuzmite repozitorij (jednom)</span>
+git clone https://github.com/Salas-Hrastik/visitlogic-mvp.git
+
+<span class="kom"># 3. UĐITE u mapu projekta — ovaj korak se najčešće preskoči</span>
+cd visitlogic-mvp
+
+<span class="kom"># 4. prebacite se na granu s agentom</span>
 git checkout claude/brave-wozniak-so9hwt
+
+<span class="kom"># 5. instalirajte ovisnosti (sada u pravoj mapi)</span>
 npm install
 
+<span class="kom"># 6. provjerite ključ</span>
 GOOGLE_MAPS_API_KEY=AIza<span class="kom">…vaš ključ…</span> npm run sentiment:check-key</pre>
+      <p>Da provjerite jeste li u pravoj mapi, prije svega pokrenite <code>pwd</code> (mora završavati s <code>/visitlogic-mvp</code>) i <code>ls</code> (mora se vidjeti <code>package.json</code> i mapa <code>scripts</code>).</p>
+      <p style="margin-bottom:0">Ako je repozitorij privatan, <code>git clone</code> će tražiti prijavu. Najjednostavnije je instalirati <a href="https://cli.github.com/" target="_blank" rel="noopener">GitHub CLI</a> pa <code>gh auth login</code> i <code>gh repo clone Salas-Hrastik/visitlogic-mvp</code>. Ako vam to zapinje, upotrijebite Put A &mdash; ne gubi se ništa.</p>
+    </div>
     <div class="vidjet"><span class="oko">VIDJET ĆETE</span><span>Kad je sve ispravno:
       <br><code>✓ Ključ je postavljen (AIzaSy…w4K2, 39 znakova).</code>
       <br><code>✓ Text Search radi. Pronađeno: „Tvrđava Brod“…</code>
@@ -195,6 +228,9 @@ GOOGLE_MAPS_API_KEY=AIza<span class="kom">…vaš ključ…</span> npm run senti
         <tr><th scope="row">API_KEY_SERVICE_BLOCKED</th><td>Ograničenje ključa ne obuhvaća Places API</td><td><b>Credentials → vaš ključ → API restrictions</b> → dodajte <b>Places API (New)</b></td></tr>
         <tr><th scope="row">billing / BILLING_DISABLED</th><td>Projekt nije povezan s naplatnim računom</td><td>Korak 2</td></tr>
         <tr><th scope="row">PERMISSION_DENIED</th><td>Najčešće IP ograničenje, a poziv dolazi s drugog stroja</td><td>Uskladite <b>Application restrictions</b> sa strojem s kojeg pokrećete</td></tr>
+        <tr><th scope="row"><code>fatal: not a git repository</code></th><td>Niste u mapi repozitorija &mdash; naredba je pokrenuta u nekoj drugoj mapi</td><td>Put B, koraci 2 i 3: <code>git clone</code> pa <code>cd visitlogic-mvp</code>. Provjerite s <code>pwd</code>.</td></tr>
+        <tr><th scope="row"><code>npm install</code> instalira nepoznate pakete</th><td>Isti uzrok &mdash; <code>npm</code> je našao tuđi <code>package.json</code> u toj mapi</td><td>Bezopasno. Uđite u mapu projekta i pokrenite ponovno; u ispisu mora pisati <code>valpovo-chatbot</code>.</td></tr>
+        <tr><th scope="row">EBADENGINE upozorenje</th><td>Projekt navodi Node 20, a vi imate noviji</td><td>Samo upozorenje, ne greška. Skripte rade na Node 20 i novijem.</td></tr>
       </tbody>
     </table></div>
     <div class="panel oprez">
@@ -207,6 +243,7 @@ GOOGLE_MAPS_API_KEY=AIza<span class="kom">…vaš ključ…</span> npm run senti
   <div class="korak-glava"><span class="korak-broj">05</span>
     <h2>Izgradite registar objekata<span class="vrijeme">≈ 3 MINUTE, JEDNOKRATNO</span></h2></div>
   <div class="korak-tijelo">
+    <div class="panel dobro"><p style="margin-bottom:0">Ako ste išli <b>Putom A</b> i pokrenuli workflow s izborom <b>provjeri-i-otkrij-objekte</b>, ovaj korak je već obavljen &mdash; registar je izgrađen i commitan. Prijeđite na korak 6.</p></div>
     <p>Ovaj korak pokrećete <b>samo jednom</b>. Traži objekte u Slavonskom Brodu i sprema njihove <code>place_id</code> oznake. Google dopušta trajno čuvanje <code>place_id</code>-a, pa se otkrivanje ne mora ponavljati.</p>
     <pre>GOOGLE_MAPS_API_KEY=AIza<span class="kom">…</span> npm run sentiment:discover</pre>
     <div class="vidjet"><span class="oko">VIDJET ĆETE</span><span>Devet redaka napretka (restorani, kafići, pizzerije, slastičarnice, hoteli, apartmani, hosteli, znamenitosti, Tvrđava), pa sažetak:

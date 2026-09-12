@@ -1,0 +1,87 @@
+name: Otkrij objekte (Google Places) - rucno
+
+# Pokrece se ISKLJUCIVO rucno, iz kartice Actions.
+# Sluzi da se cijelo postavljanje Google Places sloja obavi bez terminala.
+on:
+  workflow_dispatch:
+    inputs:
+      radnja:
+        description: 'Sto napraviti'
+        required: true
+        default: 'samo-provjeri-kljuc'
+        type: choice
+        options:
+          - samo-provjeri-kljuc
+          - provjeri-i-otkrij-objekte
+
+jobs:
+  otkrivanje:
+    name: Provjera kljuca i izgradnja registra
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repozitorija
+        uses: actions/checkout@v4
+
+      - name: Postavi Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Provjeri je li tajna postavljena
+        env:
+          GOOGLE_MAPS_API_KEY: ${{ secrets.GOOGLE_MAPS_API_KEY }}
+        run: |
+          if [ -z "$GOOGLE_MAPS_API_KEY" ]; then
+            echo "::error::Tajna GOOGLE_MAPS_API_KEY nije postavljena."
+            echo "Postavite je: Settings -> Secrets and variables -> Actions -> New repository secret"
+            echo "Name: GOOGLE_MAPS_API_KEY    Secret: vas kljuc (pocinje s AIza)"
+            exit 1
+          fi
+          echo "Tajna je postavljena (duljina: ${#GOOGLE_MAPS_API_KEY} znakova)."
+
+      - name: Provjeri kljuc (trosi 2 poziva)
+        env:
+          GOOGLE_MAPS_API_KEY: ${{ secrets.GOOGLE_MAPS_API_KEY }}
+        run: node scripts/sentiment-sb/check-key.mjs
+
+      - name: Otkrij objekte i izgradi registar
+        if: inputs.radnja == 'provjeri-i-otkrij-objekte'
+        env:
+          GOOGLE_MAPS_API_KEY: ${{ secrets.GOOGLE_MAPS_API_KEY }}
+        run: node scripts/sentiment-sb/discover-places.mjs
+
+      - name: Sazetak registra
+        if: inputs.radnja == 'provjeri-i-otkrij-objekte'
+        run: |
+          FILE=data/sentiment-sb/place-registry.json
+          if [ ! -f "$FILE" ]; then echo "::error::Registar nije nastao."; exit 1; fi
+          node -e "
+            const r = require('./data/sentiment-sb/place-registry.json');
+            const po = r.objekti.reduce((a,o)=>(a[o.kategorija]=(a[o.kategorija]||0)+1,a),{});
+            const red = Object.entries(po).map(([k,v]) => '| ' + ({G:'Gastronomija',S:'Smjestaj',A:'Atrakcije'}[k]||k) + ' | ' + v + ' |').join('\n');
+            const poziva = Math.round(r.objekti.length * 4.33);
+            const naplativo = Math.max(0, poziva - 1000);
+            console.log('## Registar objekata\n');
+            console.log('Ukupno: **' + r.objekti.length + '** objekata\n');
+            console.log('| Kategorija | Objekata |');
+            console.log('|---|---|');
+            console.log(red + '\n');
+            console.log('Tjedni dohvat: ~' + poziva + ' poziva mjesecno; besplatno 1000; naplativo ' + naplativo + ' (~\$' + (naplativo/1000*25).toFixed(2) + '/mj).');
+          " >> $GITHUB_STEP_SUMMARY
+
+      - name: Commitaj registar
+        if: inputs.radnja == 'provjeri-i-otkrij-objekte'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/sentiment-sb/place-registry.json
+          if git diff --cached --quiet; then
+            echo "Registar nije promijenjen - nema sto commitati."
+          else
+            git commit -m "Registar objekata za Google Places sloj $(date -u +%Y-%m-%d)"
+            git push
+            echo "Registar commitan."
+          fi
