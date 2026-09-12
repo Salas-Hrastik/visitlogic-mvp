@@ -42,7 +42,7 @@ header.top{border-bottom:2px solid var(--ink);padding-block:38px 20px;margin-bot
 .korak-tijelo{padding-left:54px}
 @media (max-width:560px){ .korak-tijelo{padding-left:0} }
 h3{font-size:.94rem;font-weight:700;margin:20px 0 7px}
-code{font-family:var(--mono);font-size:.87em;background:var(--povrsina-2);padding:1px 5px;border-radius:3px}
+code{font-family:var(--mono);font-size:.87em;background:var(--povrsina-2);padding:1px 5px;border-radius:3px;overflow-wrap:anywhere}
 pre{font-family:var(--mono);font-size:12.5px;line-height:1.65;background:var(--povrsina-2);border:1px solid var(--rule);border-left:3px solid var(--accent);border-radius:3px;padding:12px 14px;overflow-x:auto;margin:12px 0}
 pre .kom{color:var(--ink-3)}
 .panel{background:var(--povrsina);border:1px solid var(--rule);border-radius:4px;padding:15px 17px;margin:14px 0}
@@ -122,11 +122,20 @@ footer{border-top:1px solid var(--rule-2);margin-top:40px;padding-top:16px;font-
     <h2>Uključite Places API i napravite ključ<span class="vrijeme">≈ 5 MINUTA</span></h2></div>
   <div class="korak-tijelo">
     <h3>Uključivanje API-ja</h3>
-    <ol>
-      <li>Izbornik <b>APIs &amp; Services → Library</b>.</li>
-      <li>U tražilicu upišite <code>Places API (New)</code>. Pazite: postoji i stariji <em>Places API</em> bez oznake „(New)“ — treba vam onaj s <b>(New)</b>.</li>
-      <li>Otvorite ga i kliknite <b>Enable</b>.</li>
-    </ol>
+    <p>Najsigurnije je preskočiti pretraživanje i otići izravno na stranicu servisa:</p>
+    <pre>https://console.cloud.google.com/apis/library/places.googleapis.com</pre>
+    <p>Provjerite da je gore odabran pravi projekt, pa kliknite <b>Enable</b>. Alternativno: <b>APIs &amp; Services → Library</b> i upišite <code>Places API (New)</code>.</p>
+    <div class="panel oprez">
+      <h3>Dva API-ja gotovo istog imena</h3>
+      <div class="tw"><table>
+        <thead><tr><th>Naziv u sučelju</th><th>Naziv servisa</th><th>Treba li vam</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Places API <b>(New)</b></th><td><code>places.googleapis.com</code></td><td><b>Da</b> — agent poziva <code>places.googleapis.com/v1/…</code></td></tr>
+          <tr><th scope="row">Places API</th><td><code>places-backend.googleapis.com</code></td><td>Ne — stara inačica</td></tr>
+        </tbody>
+      </table></div>
+      <p style="margin-bottom:0">Naziv servisa je pouzdaniji od naziva u sučelju jer ga Google mijenja rjeđe. Vidjet ćete ga i u svakoj poruci o grešci, u polju <code>metadata.service</code>.</p>
+    </div>
     <h3>Izrada ključa</h3>
     <ol>
       <li><b>APIs &amp; Services → Credentials</b>.</li>
@@ -143,6 +152,21 @@ footer{border-top:1px solid var(--rule-2);margin-top:40px;padding-top:16px;font-
         <tr><th scope="row">Application restrictions</th><td>Za pokretanje na vlastitom računalu: <b>IP addresses</b> i vaša javna adresa.<br>Za GitHub Actions: ostavite <b>None</b></td><td>GitHub-ovi poslužitelji mijenjaju IP adresu pri svakom pokretanju, pa ograničenje po IP-u ondje blokira i vaše legitimne pozive</td></tr>
       </tbody>
     </table></div>
+    <div class="panel stop">
+      <h3>Ako u popisu „Restrict key“ nema Places API (New)</h3>
+      <p>To nije kvar nego posljedica redoslijeda: <b>popis prikazuje samo API-je koji su već uključeni u tom projektu.</b> Ako se stavka ne pojavljuje, API još nije uključen — ili je uključen u <em>drugom</em> projektu.</p>
+      <p>Redom:</p>
+      <ol>
+        <li>Provjerite je li gore u traci odabran isti projekt u kojem radite ključ.</li>
+        <li>Otvorite <code>https://console.cloud.google.com/apis/library/places.googleapis.com</code> i kliknite <b>Enable</b>. Ako piše <b>Manage</b> umjesto <b>Enable</b>, već je uključen.</li>
+        <li>Provjerite popis uključenih: <b>APIs &amp; Services → Enabled APIs &amp; services</b>. Ondje mora stajati <b>Places API (New)</b>.</li>
+        <li>Vratite se na <b>Credentials</b> i <b>osvježite stranicu</b> (Ctrl+F5). Popis se puni pri učitavanju, pa novo uključeni API ne vidite bez ponovnog učitavanja. Googleu zna trebati minuta-dvije.</li>
+      </ol>
+      <p>Alternativa preko naredbenog retka, ako imate <code>gcloud</code>:</p>
+      <pre>gcloud services enable places.googleapis.com --project=<span class="kom">ID-VAŠEG-PROJEKTA</span>
+gcloud services list --enabled --project=<span class="kom">ID-VAŠEG-PROJEKTA</span> | grep places</pre>
+      <p style="margin-bottom:0"><b>Ako ni nakon toga ne uspijete:</b> privremeno ostavite <b>Don't restrict key</b>, pokrenite provjeru iz koraka 4 da potvrdite da sve ostalo radi, pa se vratite na ograničavanje. Neograničen ključ ne držite dulje nego što morate i nikako ga ne stavljajte u repozitorij.</p>
+    </div>
     <div class="panel oprez">
       <p style="margin-bottom:0"><b>Ako ostavljate „None“:</b> ključ je zaštićen samo ograničenjem na Places API i tajnošću. Zato nikada ne ide u kôd ni u commit, nego isključivo u GitHub Secrets (korak 5). Repozitorij već ima <code>.env</code> u <code>.gitignore</code>.</p>
     </div>

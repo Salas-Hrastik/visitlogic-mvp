@@ -7,7 +7,7 @@
  *
  * Pokretanje: GOOGLE_MAPS_API_KEY=... node scripts/sentiment-sb/check-key.mjs
  */
-import { objasniGresku, procjenaKvote } from './places.mjs';
+import { objasniGresku, procjenaKvote, izvuciPoveznicu, SERVIS } from './places.mjs';
 
 const kljuc = process.env.GOOGLE_MAPS_API_KEY;
 const ok = t => console.log(`  \x1b[32m✓\x1b[0m ${t}`);
@@ -43,7 +43,10 @@ const a = await zovi('https://places.googleapis.com/v1/places:searchText',
 if (!a.ok) {
   ne(`HTTP ${a.status}`);
   console.log('  Odgovor:', a.tekst.slice(0, 400));
-  console.log(`\n  \x1b[33mŠto napraviti:\x1b[0m ${objasniGresku(a.tekst)}\n`);
+  console.log(`\n  \x1b[33mŠto napraviti:\x1b[0m ${objasniGresku(a.tekst)}`);
+  const veza = izvuciPoveznicu(a.tekst);
+  if (veza) console.log(`  \x1b[36mGoogle nudi izravnu poveznicu:\x1b[0m ${veza}`);
+  console.log(`  \x1b[36mStranica za uključivanje:\x1b[0m https://console.cloud.google.com/apis/library/${SERVIS}\n`);
   process.exit(1);
 }
 const pa = JSON.parse(a.tekst);

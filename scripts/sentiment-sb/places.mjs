@@ -38,15 +38,35 @@ const spava = ms => new Promise(r => setTimeout(r, ms));
    registar tiho probije besplatnu kvotu. Nadjacava se s SB_MAX_POZIVA. */
 export const MAX_POZIVA = Number(process.env.SB_MAX_POZIVA || 230);
 
+/** Servis Places API-ja (New) - potvrdjeno iz Googleova odgovora na gresku. */
+export const SERVIS = 'places.googleapis.com';
+
+/** Iz Googleova odgovora vadi poveznicu za ukljucivanje API-ja, ako je ima. */
+export function izvuciPoveznicu(poruka) {
+  const m = String(poruka).match(/https?:\/\/console\.(?:developers|cloud)\.google\.com\/[^\s"'\\]+/);
+  return m ? m[0] : null;
+}
+
+/** Iz Googleova odgovora vadi broj projekta, ako je naveden. */
+export function izvuciProjekt(poruka) {
+  const m = String(poruka).match(/project[\s:=]+(\d{6,})/i);
+  return m ? m[1] : null;
+}
+
 /** Prevodi Googleove greske u uputu sto tocno treba popraviti. */
 export function objasniGresku(poruka) {
   const p = String(poruka);
   if (/API key not valid|API_KEY_INVALID/i.test(p))
     return 'Ključ nije valjan. Provjerite jeste li kopirali cijeli ključ (počinje s "AIza") i da pripada ovom projektu.';
-  if (/SERVICE_DISABLED|has not been used in project|is disabled/i.test(p))
-    return 'Places API (New) nije uključen u projektu. Cloud Console → APIs & Services → Enable APIs → "Places API (New)" → Enable.';
+  if (/SERVICE_DISABLED|has not been used in project|is disabled/i.test(p)) {
+    const projekt = izvuciProjekt(p);
+    return 'Places API (New) nije uključen u projektu. Otvorite izravno: '
+      + `https://console.cloud.google.com/apis/library/${SERVIS}`
+      + (projekt ? `?project=${projekt}` : '') + ' pa kliknite Enable.';
+  }
   if (/API_KEY_SERVICE_BLOCKED|blocked/i.test(p))
-    return 'Ključ ima ograničenje koje ne dopušta Places API. Cloud Console → Credentials → vaš ključ → API restrictions → dodajte "Places API (New)".';
+    return 'Ključ ima ograničenje koje ne dopušta Places API. Cloud Console → Credentials → vaš ključ → API restrictions → dodajte "Places API (New)". '
+      + `Ako se u popisu ne pojavljuje, API još nije uključen: https://console.cloud.google.com/apis/library/${SERVIS}`;
   if (/billing|BILLING_DISABLED/i.test(p))
     return 'Projekt nema aktivan naplatni račun. Cloud Console → Billing → povežite projekt s naplatnim računom (besplatna kvota i dalje vrijedi).';
   if (/PERMISSION_DENIED|REQUEST_DENIED|403/i.test(p))
