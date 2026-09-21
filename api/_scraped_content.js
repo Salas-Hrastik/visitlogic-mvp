@@ -1,5 +1,5 @@
 // AUTO-GENERATED — ne editiraj ručno!
-// Zadnje skrapanje: 2026-09-14 06:10 UTC
+// Zadnje skrapanje: 2026-09-21 06:10 UTC
 // Izvor: tz.valpovo.hr, valpovo.hr
 // GitHub Actions job: scrape-valpovo (dnevno u 6:00 UTC)
 //
@@ -9,14 +9,22 @@
 
 export const scrapedContent = {
   "meta": {
-    "zadnje_azuriranje": "2026-09-14T06:10:16.364Z",
+    "zadnje_azuriranje": "2026-09-21T06:10:08.694Z",
     "izvori": [
       "https://tz.valpovo.hr",
       "https://valpovo.hr"
     ],
-    "broj_dogadanja": 30
+    "broj_dogadanja": 29
   },
   "novosti_tz": [
+    {
+      "naslov": "8. Dani Matije Petra Katančića",
+      "datum": "ruj 18, 2026",
+      "datum_iso": "2026-09-18",
+      "kratki_opis": "Matija Petar Katančić (1750-1825) najistaknutiji je hrvatski erudit s kraja 18. i početka 19. stoljeća koji je svojim znanstvenim i stručnim radom pokrivao široko ...",
+      "link": "https://tz.valpovo.hr/2026/09/18/8-dani-matije-petra-katancica/",
+      "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/09/Banner-Dani-MPK-2026.jpg"
+    },
     {
       "naslov": "URBAN & 4 ZAKLJUČILI JOŠ JEDAN SJAJAN VALPOVO CRAFT BEER FEST",
       "datum": "ruj 13, 2026",
@@ -88,17 +96,27 @@ export const scrapedContent = {
       "kratki_opis": "Konjogojska udruga Valpovštine, u suradnji s Gradom Valpovom i Turističkom zajednicom Grada Valpova, organizira manifestaciju „Tradicija u pokretu“, koja će se održati u subotu, ...",
       "link": "https://tz.valpovo.hr/2026/08/21/manifestacija-tradicija-u-pokretu/",
       "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/08/781680653_1068570845561809_809382827192533482_n.jpg"
-    },
-    {
-      "naslov": "PREDSTAVNICI GRADA VALPOVA GOSTOVALI NA 22. EKO ETNO GACKOJ U OTOČCU",
-      "datum": "kol 14, 2026",
-      "datum_iso": "2026-08-14",
-      "kratki_opis": "Otočac je 24. i 25. srpnja bio domaćin 22. izdanja manifestacije Eko Etno Gacka, jedne od najvećih i najposjećenijih manifestacija na području Ličko-senjske županije. ...",
-      "link": "https://tz.valpovo.hr/2026/08/14/predstavnici-grada-valpova-gostovali-na-22-eko-etno-gackoj-u-otoccu/",
-      "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/08/773240449_1038636265651067_5742519568724130035_n.jpg"
     }
   ],
   "novosti_grad": [
+    {
+      "naslov": "[Streljački klub Valpovo – prvaci Hrvatske] PRVENSTVO HRVATSKE: 25 m PIŠTOLJ I REVOLVER VELIKOG KALIBRA",
+      "datum": "18. 09. 2026.",
+      "kratki_opis": "",
+      "link": "https://valpovo.hr/2026/09/18/streljacki-klub-valpovo-prvaci-hrvatske-prvenstvo-hrvatske-25-m-pistolj-i-revolver-velikog-kalibra/"
+    },
+    {
+      "naslov": "Gradonačelnik poželio prvašićima sretan početak školovanja",
+      "datum": "18. 09. 2026.",
+      "kratki_opis": "",
+      "link": "https://valpovo.hr/2026/09/18/gradonacelnik-pozelio-prvasicima-sretan-pocetak-skolovanja/"
+    },
+    {
+      "naslov": "Obavijest o privremenom zatvaranju ceste dana 19. rujna 2026. godine",
+      "datum": "16. 09. 2026.",
+      "kratki_opis": "Povodom održavanja 14. Međunarodnog rukometnog memorijala „Zlatko Ivić – Čiva“, dana 19. rujna 2026. godine, u vremenu od 7:30 do 17:00 sati, privremeno će biti zatvoren dio ceste u Ulici dr. Franje T",
+      "link": "https://valpovo.hr/2026/09/16/obavijest-o-privremenom-zatvaranju-ceste-dana-19-rujna-2026-godine/"
+    },
     {
       "naslov": "URBAN & 4 ZAKLJUČILI JOŠ JEDAN SJAJAN VALPOVO CRAFT BEER FEST",
       "datum": "13. 09. 2026.",
@@ -122,18 +140,6 @@ export const scrapedContent = {
       "datum": "09. 09. 2026.",
       "kratki_opis": "",
       "link": "https://valpovo.hr/2026/09/09/poziv-na-preuzimanje-paketa/"
-    },
-    {
-      "naslov": "Zapisnik o javnom otvaranju ponuda i Odluka o prihvatu najboljih ponuditelja – Craft Beer Fest 2026",
-      "datum": "08. 09. 2026.",
-      "kratki_opis": "Zapisnik o javnom otvaranju ponuda Odluka o prihvatu najpovoljnijeg ponuditelja",
-      "link": "https://valpovo.hr/2026/09/08/zapisnik-o-javnom-otvaranju-ponuda-i-odluka-o-prihvatu-najboljih-ponuditelja-craft-beer-fest-2026/"
-    },
-    {
-      "naslov": "Poziv građanima na provjeru podataka u Središnjem registru stanovništva",
-      "datum": "07. 09. 2026.",
-      "kratki_opis": "",
-      "link": "https://valpovo.hr/2026/09/07/poziv-gradanima-na-provjeru-podataka-u-sredisnjem-registru-stanovnistva/"
     }
   ],
   "manifestacije_aktualne": [
@@ -234,12 +240,12 @@ export const scrapedContent = {
       "naziv": "MEĐUNARODNI DAN MUZEJA U MUZEJU VALPOVŠTINE 18. SVIBNJA 2026. GODINE",
       "datum_od": "2026-05-18",
       "datum_do": "2026-05-18",
-      "datum_tekst": "18. SVIBNJA 2026",
-      "vrijeme": "",
+      "datum_tekst": "18. 05. 2026.",
+      "vrijeme": "19:00",
       "opis": "Kao i dosadašnjih godina Muzej Valpovštine će se i 2026. godine uključiti u obilježavanje Međunarodnog dana muzeja koji se ove godine odvija pod krilaticom „Muzeji ujedinjuju podijeljeni svijet“. Muzej je ovu manifestaciju odlučio iskoristiti kao priliku da sv",
       "link": "https://valpovo.hr/events/medunarodni-dan-muzeja-u-muzeju-valpovstine-18-svibnja-2026-godine/",
       "izvor": "valpovo.hr",
-      "IMAGE_URL": ""
+      "IMAGE_URL": "https://valpovo.hr/wp-content/uploads/2026/05/324234324.jpg"
     },
     {
       "naziv": "Grad Valpovo i Savjet mladih Grada Valpova organiziraju obilježavanje Svjetskog dana multiple skleroze",
@@ -272,30 +278,30 @@ export const scrapedContent = {
       "opis": "Valpovački poduzetnički centar tradicionalno organizira još jedan Sajam antikviteta. Sajam će se održati u subotu, 23. svibnja 2026. od 09:00 sati na tržnici Agropark. Osim antikviteta i unikatnih starina, na sajmu će se moći pronaći i domaći proizvodi naših l",
       "link": "https://valpovo.hr/events/sajam-antikviteta-u-agroparku-4/",
       "izvor": "valpovo.hr",
-      "IMAGE_URL": "https://valpovo.hr/wp-content/uploads/2026/04/sajam-izrada-plakat-antikviteta-obrtnistvo-i-slicno.jpg",
+      "IMAGE_URL": "",
       "link_alt": "https://valpovo.hr/events/sajam-antikviteta-u-agroparku-3/"
     },
     {
       "naziv": "ČOBANIJADA U HARKANOVCIMA 2026.",
       "datum_od": "2026-05-23",
       "datum_do": "2026-05-23",
-      "datum_tekst": "23. 05. 2026.",
-      "vrijeme": "16:00",
+      "datum_tekst": "23. svibnja 2026",
+      "vrijeme": "",
       "opis": "Harkanovci će u subotu, 23. svibnja 2026. godine, biti domaćin jedne od najveselijih i najmirisnijih manifestacija ovoga kraja – Čobanijade u Harkanovcima, koja će okupiti natjecateljske ekipe, posjetitelje i ljubitelje slavonske gastronomije. Manifestaciju za",
       "link": "https://valpovo.hr/events/cobanijada-u-harkanovcima-2026/",
       "izvor": "valpovo.hr",
-      "IMAGE_URL": "https://valpovo.hr/wp-content/uploads/2026/04/Plakat-Harkanovci.jpg"
+      "IMAGE_URL": ""
     },
     {
       "naziv": "Predstavljanje zbirke poezije „Bela kod Barbe” Josipa Štajmahera",
       "datum_od": "2026-05-26",
       "datum_do": "2026-05-26",
-      "datum_tekst": "26. 05. 2026.",
-      "vrijeme": "19:00",
+      "datum_tekst": "26. svibnja 2026",
+      "vrijeme": "",
       "opis": "Gradska knjižnica i čitaonica Valpovo organizira predstavljanje zbirke poezije „Bela kod Barbe“ autora Josip Štajmaher, koje će se održati u utorak, 26. svibnja 2026. godine s početkom u 19 sati u Memorijalnom centru Matije Petra Katančića u Valpovu. Nova zbir",
       "link": "https://valpovo.hr/events/predstavljanje-zbirke-poezije-bela-kod-barbe-josipa-stajmahera/",
       "izvor": "valpovo.hr",
-      "IMAGE_URL": "https://valpovo.hr/wp-content/uploads/2026/05/bela-kod-barbe-josip-stajmaher.jpg"
+      "IMAGE_URL": ""
     },
     {
       "naziv": "Zagrebački komorni orkestar u Valpovu koncertom „Glazba nas spaja“",
@@ -309,26 +315,15 @@ export const scrapedContent = {
       "IMAGE_URL": "https://valpovo.hr/wp-content/uploads/2026/05/plakat-zagrebacki-komorni-orkestar-2026.jpg"
     },
     {
-      "naziv": "Predstavljanje Udruge „Zeleni brijeg“ u Valpovu",
-      "datum_od": "2026-06-17",
-      "datum_do": "2026-06-17",
-      "datum_tekst": "17. 06. 2026.",
-      "vrijeme": "19:00",
-      "opis": "Gradska knjižnica i čitaonica organizira predstavljanje novoosnovane Udruge „Zeleni brijeg“ koja svojim djelovanjem želi poticati druženje, međugeneracijsku suradnju, očuvanje kulturne baštine, razvoj kulturnih i umjetničkih sadržaja te promicanje ekološke osv",
-      "link": "https://valpovo.hr/events/predstavljanje-udruge-zeleni-brijeg-u-valpovu/",
-      "izvor": "valpovo.hr",
-      "IMAGE_URL": "https://valpovo.hr/wp-content/uploads/2026/06/zeleni-brijeg-plakat.jpg"
-    },
-    {
       "naziv": "100 godina Valpovke",
       "datum_od": "2026-06-20",
       "datum_do": "2026-06-20",
-      "datum_tekst": "20. 06. 2026.",
-      "vrijeme": "18:00",
+      "datum_tekst": "20. lipnja 2026",
+      "vrijeme": "",
       "opis": "U subotu, 20. lipnja 2026. s početkom u 18:00 sati, u Sportskom parku Valpovo odigrat će se revijalna utakmica veterana NK Valpovke i veterana Hrvatske nogometne reprezentacije povodom 100 godina kluba. Ulaz: 5 €.",
       "link": "https://valpovo.hr/events/100-godina-valpovke/",
       "izvor": "valpovo.hr",
-      "IMAGE_URL": "https://valpovo.hr/wp-content/uploads/2026/06/100-godina-nk-valpovke-fb-plakat-nk-valpovka-hrvatska-reprezentacija-veterani.jpg"
+      "IMAGE_URL": ""
     },
     {
       "naziv": "SMOTRA AMATERSKOG KULTURNOG STVARALAŠTVA / 58. LJETO VALPOVAČKO (22. – 28.6.2026.)",
@@ -345,35 +340,24 @@ export const scrapedContent = {
       "naziv": "OBILJEŽAVANJE 35. OBLJETNICE OSNUTKA 107. BRIGADE ZNG",
       "datum_od": "2026-06-30",
       "datum_do": "2026-06-30",
-      "datum_tekst": "30. 06. 2026.",
-      "vrijeme": "16:30",
+      "datum_tekst": "30. lipnja 2026",
+      "vrijeme": "",
       "opis": "U utorak, 30. lipnja 2026. godine, održat će se obilježavanje 35. obljetnice osnutka 107. brigade ZNG. Tim povodom bit će upriličen prigodan program kojim će se odati počast poginulim, nestalim i preminulim hrvatskim braniteljima. PROGRAM Utorak, 30. lipnja 20",
       "link": "https://valpovo.hr/events/obiljezavanje-35-obljetnice-osnutka-107-brigade-zng/",
       "izvor": "valpovo.hr",
-      "IMAGE_URL": "https://valpovo.hr/wp-content/uploads/2026/06/107-brigada-plakat-2026.jpg"
+      "IMAGE_URL": ""
     },
     {
       "naziv": "12. REUNITED FESTIVAL \\ 03. – 04. srpnja 2026",
       "datum_od": "2026-07-03",
-      "datum_do": "2026-07-05",
-      "datum_tekst": "03. - 05. 07. 2026.",
-      "vrijeme": "20:00 - 4:00",
+      "datum_do": "2026-07-04",
+      "datum_tekst": "03. – 04. srpnja 2026",
+      "vrijeme": "",
       "opis": "Udruga Revolution Valpovo predstavlja: 12. REUNITED FESTIVAL Music / Art / D.I.Y. / Soundsystem festival Dvorac Prandau-Norman, Valpovo Valpovo će 3. i 4. srpnja 2026. godine ponovno postati središte alternativne kulture, glazbe i kreativnog izražavanja. Dvana",
       "link": "https://valpovo.hr/events/2-reunited-festival/",
       "izvor": "valpovo.hr",
-      "IMAGE_URL": "https://valpovo.hr/wp-content/uploads/2026/06/REUNITED-PLAKAT-2026.jpg",
+      "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/06/REUNITED-PLAKAT-2026.jpg",
       "link_alt": "https://tz.valpovo.hr/2026/07/01/12-reunited-festival-03-04-srpnja-2026/"
-    },
-    {
-      "naziv": "FILMSKI EVENT U DVORCU PRANDAU-NORMANN: „260 DANA“ STIŽE U VALPOVO",
-      "datum_od": "2026-07-10",
-      "datum_do": "2026-07-10",
-      "datum_tekst": "10. 07. 2026.",
-      "vrijeme": "20:30",
-      "opis": "U sklopu kulturnih događanja ovog ljeta, Valpovo će ugostiti poseban filmski događaj pod vedrim nebom. U impresivnom ambijentu dvorca Prandau-Normann bit će prikazan film „260 dana“, potresna i inspirativna priča temeljena na istinitim događajima. Filmska proj",
-      "link": "https://valpovo.hr/events/filmski-event-u-dvorcu-prandau-normann-260-dana-stize-u-valpovo/",
-      "izvor": "valpovo.hr",
-      "IMAGE_URL": "https://valpovo.hr/wp-content/uploads/2026/06/filmski-event-2026.jpg"
     },
     {
       "naziv": "6. ROCK’A’RAJ FEST – „UNDER THE GINKO EDITION“ STIŽE U VALPOVO!",
@@ -537,6 +521,18 @@ export const scrapedContent = {
       "izvor": "valpovo.hr",
       "IMAGE_URL": "https://valpovo.hr/wp-content/uploads/2026/08/781680653_1068570845561809_809382827192533482_n.jpg",
       "link_alt": "https://tz.valpovo.hr/2026/08/21/manifestacija-tradicija-u-pokretu/"
+    },
+    {
+      "naziv": "8. Dani Matije Petra Katančića",
+      "datum_od": "2026-09-24",
+      "datum_do": "2026-09-26",
+      "datum_tekst": "24. - 26. 09. 2026.",
+      "vrijeme": "18:30",
+      "opis": "Matija Petar Katančić (1750-1825) najistaknutiji je hrvatski erudit s kraja 18. i početka 19. stoljeća koji je svojim znanstvenim i stručnim radom pokrivao široko polje tadašnjih humanističkih znanosti. Grad Valpovo, Turistička zajednica Grada Valpova i Hrvats",
+      "link": "https://valpovo.hr/events/8-dani-matije-petra-katancica/",
+      "izvor": "valpovo.hr",
+      "IMAGE_URL": "https://valpovo.hr/wp-content/uploads/2026/09/Banner-Dani-MPK-2026.jpg",
+      "link_alt": "https://tz.valpovo.hr/2026/09/18/8-dani-matije-petra-katancica/"
     },
     {
       "naziv": "Valpovo pokreće veliki ekološki projekt: Zajedničkim snagama do titule najčišćeg grada u Hrvatskoj",
