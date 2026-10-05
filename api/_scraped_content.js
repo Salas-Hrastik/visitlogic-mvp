@@ -1,5 +1,5 @@
 // AUTO-GENERATED — ne editiraj ručno!
-// Zadnje skrapanje: 2026-09-28 06:08 UTC
+// Zadnje skrapanje: 2026-10-05 06:08 UTC
 // Izvor: tz.valpovo.hr, valpovo.hr
 // GitHub Actions job: scrape-valpovo (dnevno u 6:00 UTC)
 //
@@ -9,14 +9,46 @@
 
 export const scrapedContent = {
   "meta": {
-    "zadnje_azuriranje": "2026-09-28T06:08:18.449Z",
+    "zadnje_azuriranje": "2026-10-05T06:08:05.116Z",
     "izvori": [
       "https://tz.valpovo.hr",
       "https://valpovo.hr"
     ],
-    "broj_dogadanja": 27
+    "broj_dogadanja": 26
   },
   "novosti_tz": [
+    {
+      "naslov": "BRAČNI PAROVI OBILJEŽILI ZLATNI PIR U SKLOPU 6. VALPOVAČKE STAZE ZDRAVLJA",
+      "datum": "lis 04, 2026",
+      "datum_iso": "2026-10-04",
+      "kratki_opis": "U sklopu manifestacije 6. Valpovačka staza zdravlja, jučer je u Restoranu Park u Valpovu održano svečano darivanje bračnih parova koji ove godine obilježavaju 50 ...",
+      "link": "https://tz.valpovo.hr/2026/10/04/bracni-parovi-obiljezili-zlatni-pir-u-sklopu-6-valpovacke-staze-zdravlja/",
+      "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/10/830633028_2290340078170808_1607990166519848649_n-50-godina-braka-obljetnice-2026.jpg"
+    },
+    {
+      "naslov": "ODRŽANA 6. VALPOVAČKA STAZA ZDRAVLJA",
+      "datum": "lis 04, 2026",
+      "datum_iso": "2026-10-04",
+      "kratki_opis": "Lijepo ranojesensko prijepodne jučer je dio sugrađana, pretežito starije životne dobi, iskoristilo za sudjelovanje u programu Valpovačke staze zdravlja. Manifestacija je to koja je ...",
+      "link": "https://tz.valpovo.hr/2026/10/04/odrzana-6-valpovacka-staza-zdravlja/",
+      "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/10/834392362_2160583111193784_2443324705551224146_n-6-valpovacka-staza-zdravlja-2026.jpg"
+    },
+    {
+      "naslov": "OBILJEŽAVANJE MEĐUNARODNOG DANA RIJEKE DRAVE NA ODMORIŠTU LABOV U NARDU",
+      "datum": "ruj 29, 2026",
+      "datum_iso": "2026-09-29",
+      "kratki_opis": "Udruga Labov Nard, Turistička zajednica Grada Valpova i Grad Valpovo pozivaju sve građane i posjetitelje na obilježavanje Međunarodnog dana rijeke Drave koje će se ...",
+      "link": "https://tz.valpovo.hr/2026/09/29/obiljezavanje-medunarodnog-dana-rijeke-drave-na-odmoristu-labov-u-nardu/",
+      "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/09/828311736_1430978402325187_5496990021114614856_n.jpg"
+    },
+    {
+      "naslov": "OBITELJSKA PREDSTAVA: „ LUKA MODRIĆ: MOJA IGRA “",
+      "datum": "ruj 29, 2026",
+      "datum_iso": "2026-09-29",
+      "kratki_opis": "Ustanova za kulturne djelatnosti „Ante Evetović Miroljub“ Valpovo i BOSS TEATAR Vam donose OBITELJSKU PREDSTAVU: „ LUKA MODRIĆ: MOJA IGRA “ Vrijeme: Utorak, 20.10.2026. ...",
+      "link": "https://tz.valpovo.hr/2026/09/29/obiteljska-predstava-luka-modric-moja-igra/",
+      "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/09/LUKA-MODRIC-FB.jpg"
+    },
     {
       "naslov": "ŠESTA VALPOVAČKA STAZA ZDRAVLJA",
       "datum": "ruj 24, 2026",
@@ -64,64 +96,50 @@ export const scrapedContent = {
       "kratki_opis": "Ustanova za kulturne djelatnosti „Ante Evetović Miroljub“ Valpovo i TEATAR KEREKESH Vam donose HIT KOMEDIJU: „ LJUBAF “ Vrijeme: Ponedjeljak, 28.9.2026. u 19:30 sati ...",
       "link": "https://tz.valpovo.hr/2026/09/07/hit-komedija-ljubaf/",
       "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/09/Kerekesh_Ljubaf_Plakat.jpg"
-    },
-    {
-      "naslov": "KINO POD ZVIJEZDAMA 2026.",
-      "datum": "ruj 05, 2026",
-      "datum_iso": "2026-09-05",
-      "kratki_opis": "Jučer je obilježeno još jedno, već tradicionalno, Kino pod zvijezdama u organizaciji Savjeta mladih Grada Valpova i Turističke zajednice Grada Valpova! Ovoga puta okupili ...",
-      "link": "https://tz.valpovo.hr/2026/09/05/kino-pod-zvijezdama-2026/",
-      "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/09/kino-pod-zvjezdama-2026-6.jpg"
-    },
-    {
-      "naslov": "KINO POD ZVIJEZDAMA 2026. U VALPOVU",
-      "datum": "ruj 01, 2026",
-      "datum_iso": "2026-09-01",
-      "kratki_opis": "Gdje provesti zadnji vikend prije škole? U dobrom društvu, uz film i večer pod zvijezdama. Pridružite nam se na Kinu pod zvijezdama i provedite ...",
-      "link": "https://tz.valpovo.hr/2026/09/01/kino-pod-zvijezdama-2026-u-valpovu/",
-      "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/09/carobno-drvo.jpg"
-    },
-    {
-      "naslov": "31. FIŠIJADA U NARDU OKUPILA BROJNE EKIPE I POSJETITELJE",
-      "datum": "kol 31, 2026",
-      "datum_iso": "2026-08-31",
-      "kratki_opis": "U organizaciji Turističke zajednice Grada Valpova, Grada Valpova te u suradnji s Udrugom „Labov“ Nard, KUD-om „Kolo“ Nard, DVD-om Nard, Pikado klubom „Drava“ Nard ...",
-      "link": "https://tz.valpovo.hr/2026/08/31/31-fisijada-u-nardu-okupila-brojne-ekipe-i-posjetitelje/",
-      "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/08/3B9A0286-31-fisijada-u-nardu-2026.jpg"
-    },
-    {
-      "naslov": "KUD „Šokadija“ Ladimirevci obilježava 50 godina djelovanja",
-      "datum": "kol 24, 2026",
-      "datum_iso": "2026-08-24",
-      "kratki_opis": "Kulturno-umjetničko društvo „Šokadija“ Ladimirevci ove će godine svečano obilježiti 50. obljetnicu djelovanja bogatim četverodnevnim programom koji će se održavati od 3. do 6. rujna ...",
-      "link": "https://tz.valpovo.hr/2026/08/24/kud-sokadija-ladimirevci-obiljezava-50-godina-djelovanja/",
-      "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/08/784981965_1070577245361169_3275599581815036770_n.jpg"
     }
   ],
   "novosti_grad": [
     {
-      "naslov": "BESPLATNE PRIPREME ZA MATURU!",
-      "datum": "21. 09. 2026.",
+      "naslov": "IN MEMORIAM: Dragan Skelac",
+      "datum": "04. 10. 2026.",
       "kratki_opis": "",
-      "link": "https://valpovo.hr/2026/09/21/besplatne-pripreme-za-maturu-3/"
+      "link": "https://valpovo.hr/2026/10/04/in-memoriam-dragan-skelac/"
     },
     {
-      "naslov": "[Streljački klub Valpovo – prvaci Hrvatske] PRVENSTVO HRVATSKE: 25 m PIŠTOLJ I REVOLVER VELIKOG KALIBRA",
-      "datum": "18. 09. 2026.",
+      "naslov": "BRAČNI PAROVI OBILJEŽILI ZLATNI PIR U SKLOPU 6. VALPOVAČKE STAZE ZDRAVLJA",
+      "datum": "04. 10. 2026.",
       "kratki_opis": "",
-      "link": "https://valpovo.hr/2026/09/18/streljacki-klub-valpovo-prvaci-hrvatske-prvenstvo-hrvatske-25-m-pistolj-i-revolver-velikog-kalibra/"
+      "link": "https://valpovo.hr/2026/10/04/bracni-parovi-obiljezili-zlatni-pir-u-sklopu-6-valpovacke-staze-zdravlja/"
     },
     {
-      "naslov": "Gradonačelnik poželio prvašićima sretan početak školovanja",
-      "datum": "18. 09. 2026.",
+      "naslov": "ODRŽANA 6. VALPOVAČKA STAZA ZDRAVLJA",
+      "datum": "04. 10. 2026.",
       "kratki_opis": "",
-      "link": "https://valpovo.hr/2026/09/18/gradonacelnik-pozelio-prvasicima-sretan-pocetak-skolovanja/"
+      "link": "https://valpovo.hr/2026/10/04/odrzana-6-valpovacka-staza-zdravlja/"
     },
     {
-      "naslov": "Obavijest o privremenom zatvaranju ceste dana 19. rujna 2026. godine",
-      "datum": "16. 09. 2026.",
-      "kratki_opis": "Povodom održavanja 14. Međunarodnog rukometnog memorijala „Zlatko Ivić – Čiva“, dana 19. rujna 2026. godine, u vremenu od 7:30 do 17:00 sati, privremeno će biti zatvoren dio ceste u Ulici dr. Franje T",
-      "link": "https://valpovo.hr/2026/09/16/obavijest-o-privremenom-zatvaranju-ceste-dana-19-rujna-2026-godine/"
+      "naslov": "Započela kapitalna ulaganja u ulici Kraljevci: Nova cesta, odvodnja i javna rasvjeta",
+      "datum": "03. 10. 2026.",
+      "kratki_opis": "",
+      "link": "https://valpovo.hr/2026/10/03/zapocela-kapitalna-ulaganja-u-ulici-kraljevci-nova-cesta-odvodnja-i-javna-rasvjeta/"
+    },
+    {
+      "naslov": "Šareni kazetofon u srcu Valpova: Oslikan prvi mural u sklopu projekta “Valpovo – Najčišći grad u Hrvatskoj”",
+      "datum": "02. 10. 2026.",
+      "kratki_opis": "",
+      "link": "https://valpovo.hr/2026/10/02/sareni-kazetofon-u-srcu-valpova-oslikan-prvi-mural-u-sklopu-projekta-valpovo-najcisci-grad-u-hrvatskoj/"
+    },
+    {
+      "naslov": "Mobilna ambulanta na području Grada Valpova – listopad 2026.",
+      "datum": "02. 10. 2026.",
+      "kratki_opis": "",
+      "link": "https://valpovo.hr/2026/10/02/mobilna-ambulanta-na-podrucju-grada-valpova-listopad-2026/"
+    },
+    {
+      "naslov": "Podizanje pedagoškog standarda: U tijeku opremanje Dječjeg vrtića Maza u Valpovu",
+      "datum": "01. 10. 2026.",
+      "kratki_opis": "",
+      "link": "https://valpovo.hr/2026/10/01/podizanje-pedagoskog-standarda-u-tijeku-opremanje-djecjeg-vrtica-maza-u-valpovu/"
     }
   ],
   "manifestacije_aktualne": [
@@ -241,26 +259,15 @@ export const scrapedContent = {
       "IMAGE_URL": ""
     },
     {
-      "naziv": "Predstavljanje Udruge „Zeleni brijeg“ u Valpovu",
-      "datum_od": "2026-06-17",
-      "datum_do": "2026-06-17",
-      "datum_tekst": "17. 06. 2026.",
-      "vrijeme": "19:00",
-      "opis": "Gradska knjižnica i čitaonica organizira predstavljanje novoosnovane Udruge „Zeleni brijeg“ koja svojim djelovanjem želi poticati druženje, međugeneracijsku suradnju, očuvanje kulturne baštine, razvoj kulturnih i umjetničkih sadržaja te promicanje ekološke osv",
-      "link": "https://valpovo.hr/events/predstavljanje-udruge-zeleni-brijeg-u-valpovu/",
-      "izvor": "valpovo.hr",
-      "IMAGE_URL": "https://valpovo.hr/wp-content/uploads/2026/06/zeleni-brijeg-plakat.jpg"
-    },
-    {
       "naziv": "100 godina Valpovke",
       "datum_od": "2026-06-20",
       "datum_do": "2026-06-20",
-      "datum_tekst": "20. 06. 2026.",
-      "vrijeme": "18:00",
+      "datum_tekst": "20. lipnja 2026",
+      "vrijeme": "",
       "opis": "U subotu, 20. lipnja 2026. s početkom u 18:00 sati, u Sportskom parku Valpovo odigrat će se revijalna utakmica veterana NK Valpovke i veterana Hrvatske nogometne reprezentacije povodom 100 godina kluba. Ulaz: 5 €.",
       "link": "https://valpovo.hr/events/100-godina-valpovke/",
       "izvor": "valpovo.hr",
-      "IMAGE_URL": "https://valpovo.hr/wp-content/uploads/2026/06/100-godina-nk-valpovke-fb-plakat-nk-valpovka-hrvatska-reprezentacija-veterani.jpg"
+      "IMAGE_URL": ""
     },
     {
       "naziv": "SMOTRA AMATERSKOG KULTURNOG STVARALAŠTVA / 58. LJETO VALPOVAČKO (22. – 28.6.2026.)",
@@ -277,35 +284,23 @@ export const scrapedContent = {
       "naziv": "OBILJEŽAVANJE 35. OBLJETNICE OSNUTKA 107. BRIGADE ZNG",
       "datum_od": "2026-06-30",
       "datum_do": "2026-06-30",
-      "datum_tekst": "30. 06. 2026.",
-      "vrijeme": "16:30",
+      "datum_tekst": "30. lipnja 2026",
+      "vrijeme": "",
       "opis": "U utorak, 30. lipnja 2026. godine, održat će se obilježavanje 35. obljetnice osnutka 107. brigade ZNG. Tim povodom bit će upriličen prigodan program kojim će se odati počast poginulim, nestalim i preminulim hrvatskim braniteljima. PROGRAM Utorak, 30. lipnja 20",
       "link": "https://valpovo.hr/events/obiljezavanje-35-obljetnice-osnutka-107-brigade-zng/",
       "izvor": "valpovo.hr",
-      "IMAGE_URL": "https://valpovo.hr/wp-content/uploads/2026/06/107-brigada-plakat-2026.jpg"
+      "IMAGE_URL": ""
     },
     {
       "naziv": "12. REUNITED FESTIVAL \\ 03. – 04. srpnja 2026",
       "datum_od": "2026-07-03",
-      "datum_do": "2026-07-05",
-      "datum_tekst": "03. - 05. 07. 2026.",
-      "vrijeme": "20:00 - 4:00",
+      "datum_do": "2026-07-04",
+      "datum_tekst": "03. – 04. srpnja 2026",
+      "vrijeme": "",
       "opis": "Udruga Revolution Valpovo predstavlja: 12. REUNITED FESTIVAL Music / Art / D.I.Y. / Soundsystem festival Dvorac Prandau-Norman, Valpovo Valpovo će 3. i 4. srpnja 2026. godine ponovno postati središte alternativne kulture, glazbe i kreativnog izražavanja. Dvana",
       "link": "https://valpovo.hr/events/2-reunited-festival/",
       "izvor": "valpovo.hr",
-      "IMAGE_URL": "https://valpovo.hr/wp-content/uploads/2026/06/REUNITED-PLAKAT-2026.jpg",
-      "link_alt": "https://tz.valpovo.hr/2026/07/01/12-reunited-festival-03-04-srpnja-2026/"
-    },
-    {
-      "naziv": "FILMSKI EVENT U DVORCU PRANDAU-NORMANN: „260 DANA“ STIŽE U VALPOVO",
-      "datum_od": "2026-07-10",
-      "datum_do": "2026-07-10",
-      "datum_tekst": "10. 07. 2026.",
-      "vrijeme": "20:30",
-      "opis": "U sklopu kulturnih događanja ovog ljeta, Valpovo će ugostiti poseban filmski događaj pod vedrim nebom. U impresivnom ambijentu dvorca Prandau-Normann bit će prikazan film „260 dana“, potresna i inspirativna priča temeljena na istinitim događajima. Filmska proj",
-      "link": "https://valpovo.hr/events/filmski-event-u-dvorcu-prandau-normann-260-dana-stize-u-valpovo/",
-      "izvor": "valpovo.hr",
-      "IMAGE_URL": "https://valpovo.hr/wp-content/uploads/2026/06/filmski-event-2026.jpg"
+      "IMAGE_URL": ""
     },
     {
       "naziv": "6. ROCK’A’RAJ FEST – „UNDER THE GINKO EDITION“ STIŽE U VALPOVO!",
@@ -323,12 +318,12 @@ export const scrapedContent = {
       "naziv": "Zbog najave lošeg vremena koncert Eurochestries Croatia 2026 seli u Centar kulture “Matija Petar Katančić” Valpovo",
       "datum_od": "2026-07-19",
       "datum_do": "2026-07-19",
-      "datum_tekst": "19. 07. 2026.",
-      "vrijeme": "20:00",
+      "datum_tekst": "19.7.2026",
+      "vrijeme": "",
       "opis": "Zbog najave nepovoljnih vremenskih uvjeta, koncert u sklopu međunarodnog festivala mladih glazbenika Eurochestries Croatia 2026 neće se održati na otvorenom u Dvorcu Prandau-Normann. Program će se u nedjelju, 19.7.2026. s početkom u 20:00 sati, održati u velik",
       "link": "https://valpovo.hr/events/eurochestries-u-valpovu/",
       "izvor": "valpovo.hr",
-      "IMAGE_URL": "https://valpovo.hr/wp-content/uploads/2026/07/eurochestries-2026-novo-centar-kulture.jpg",
+      "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/07/eurochestries-2026-novo-centar-kulture.jpg",
       "link_alt": "https://tz.valpovo.hr/2026/07/18/zbog-najave-loseg-vremena-koncert-eurochestries-croatia-2026-seli-u-centar-kulture-matija-petar-katancic-valpovo/"
     },
     {
@@ -378,29 +373,6 @@ export const scrapedContent = {
       "link_alt": "https://tz.valpovo.hr/2026/08/07/pjescani-rock-tok-vol-2-prije-smo-se-tu-kupali-sad-se-rocka/"
     },
     {
-      "naziv": "„Bajkovita knjižnica” -ljetne radionice/pričaonice za djecu u Gradskoj knjižnici i čitaonici Valpovo",
-      "datum_od": "2026-08-24",
-      "datum_do": "2026-08-24",
-      "datum_tekst": "24. 08. 2026.",
-      "vrijeme": "8:00 - 18:00",
-      "opis": "Gradska knjižnica i čitaonica Valpovo u kolovozu nastavlja s programom „Bajkovita knjižnica“, ciklusom kreativnih radionica i pričaonica namijenjenih djeci predškolske i mlađe školske dobi. Radionice će se održavati svakog ponedjeljka u kolovozu – 3., 10., 17.",
-      "link": "https://valpovo.hr/events/bajkovita-knjiznica-ljetne-radionice-pricaonice-za-djecu-u-gradskoj-knjiznici-i-citaonici-valpovo/",
-      "izvor": "valpovo.hr",
-      "IMAGE_URL": "https://valpovo.hr/wp-content/uploads/2026/07/radionice-kolovoz.jpg"
-    },
-    {
-      "naziv": "31. FIŠIJADA U NARDU",
-      "datum_od": "2026-08-29",
-      "datum_do": "2026-08-29",
-      "datum_tekst": "29. 08. 2026.",
-      "vrijeme": "16:30",
-      "opis": "Već 31 godinu, tijekom ljetnih mjeseci, održava se „Fišijada u Nardu“ – natjecanje u kuhanju ribljeg paprikaša. Ova tradicionalna manifestacija prema kojoj je Grad Valpovo dobio svoju prepoznatljivost, svake godine bilježi konstantan rast posjećenosti. Naime, ",
-      "link": "https://valpovo.hr/events/31-fisijada-u-nardu/",
-      "izvor": "valpovo.hr",
-      "IMAGE_URL": "https://valpovo.hr/wp-content/uploads/2026/08/fisijada-2026-nard-baner.jpg",
-      "link_alt": "https://tz.valpovo.hr/2026/08/07/31-fisijada-u-nardu/"
-    },
-    {
       "naziv": "31. FIŠIJADA U NARDU OKUPILA BROJNE EKIPE I POSJETITELJE",
       "datum_od": "2026-08-29",
       "datum_do": "2026-08-29",
@@ -410,6 +382,17 @@ export const scrapedContent = {
       "link": "https://tz.valpovo.hr/2026/08/31/31-fisijada-u-nardu-okupila-brojne-ekipe-i-posjetitelje/",
       "izvor": "tz.valpovo.hr",
       "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/08/3B9A0286-31-fisijada-u-nardu-2026.jpg"
+    },
+    {
+      "naziv": "31. FIŠIJADA U NARDU",
+      "datum_od": "2026-08-29",
+      "datum_do": "2026-08-29",
+      "datum_tekst": "29. kolovoza 2026",
+      "vrijeme": "",
+      "opis": "Već 31 godinu, tijekom ljetnih mjeseci, održava se „Fišijada u Nardu“ – natjecanje u kuhanju ribljeg paprikaša. Ova tradicionalna manifestacija prema kojoj je Grad Valpovo dobio svoju prepoznatljivost, svake godine bilježi konstantan rast posjećenosti. Naime, ",
+      "link": "https://tz.valpovo.hr/2026/08/07/31-fisijada-u-nardu/",
+      "izvor": "tz.valpovo.hr",
+      "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/08/fisijada-2026-nard-baner.jpg"
     },
     {
       "naziv": "ŠESTA VALPOVAČKA STAZA ZDRAVLJA",
@@ -427,12 +410,12 @@ export const scrapedContent = {
       "naziv": "KUD „Šokadija“ Ladimirevci obilježava 50 godina djelovanja",
       "datum_od": "2026-09-03",
       "datum_do": "2026-09-06",
-      "datum_tekst": "03. - 06. 09. 2026.",
+      "datum_tekst": "od 3. do 6. rujna 2026",
       "vrijeme": "",
       "opis": "Kulturno-umjetničko društvo „Šokadija“ Ladimirevci ove će godine svečano obilježiti 50. obljetnicu djelovanja bogatim četverodnevnim programom koji će se održavati od 3. do 6. rujna 2026. godine. Jubilej pola stoljeća rada, očuvanja tradicije, pjesme, plesa i ",
       "link": "https://valpovo.hr/events/kud-sokadija-ladimirevci-obiljezava-50-godina-djelovanja/",
       "izvor": "valpovo.hr",
-      "IMAGE_URL": "https://valpovo.hr/wp-content/uploads/2026/08/784981965_1070577245361169_3275599581815036770_n.jpg",
+      "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/08/784981965_1070577245361169_3275599581815036770_n.jpg",
       "link_alt": "https://tz.valpovo.hr/2026/08/24/kud-sokadija-ladimirevci-obiljezava-50-godina-djelovanja/"
     },
     {
@@ -518,6 +501,18 @@ export const scrapedContent = {
       "link_alt": "https://tz.valpovo.hr/2026/09/07/hit-komedija-ljubaf/"
     },
     {
+      "naziv": "OBILJEŽAVANJE MEĐUNARODNOG DANA RIJEKE DRAVE NA ODMORIŠTU LABOV U NARDU",
+      "datum_od": "2026-10-03",
+      "datum_do": "2026-10-03",
+      "datum_tekst": "03. 10. 2026.",
+      "vrijeme": "11:00",
+      "opis": "Udruga Labov Nard, Turistička zajednica Grada Valpova i Grad Valpovo pozivaju sve građane i posjetitelje na obilježavanje Međunarodnog dana rijeke Drave koje će se održati u subotu, 3. listopada 2026. godine od 11:00 sati na Odmorištu Labov u Nardu. Posjetitel",
+      "link": "https://valpovo.hr/events/obiljezavanje-medunarodnog-dana-rijeke-drave-na-odmoristu-labov-u-nardu/",
+      "izvor": "valpovo.hr",
+      "IMAGE_URL": "https://valpovo.hr/wp-content/uploads/2026/09/828311736_1430978402325187_5496990021114614856_n.jpg",
+      "link_alt": "https://tz.valpovo.hr/2026/09/29/obiljezavanje-medunarodnog-dana-rijeke-drave-na-odmoristu-labov-u-nardu/"
+    },
+    {
       "naziv": "VALPOVČANKA EVELINA BARTOLOVIĆ PREDSTAVLJA OSJEČKO-BARANJSKU ŽUPANIJU NA 26. IZBORU ZA NAJUZORNIJU HRVATSKU SEOSKU ŽENU",
       "datum_od": "2026-10-03",
       "datum_do": "2026-10-03",
@@ -527,6 +522,18 @@ export const scrapedContent = {
       "link": "https://tz.valpovo.hr/2026/07/06/valpovcanka-evelina-bartolovic-predstavlja-osjecko-baranjsku-zupaniju-na-26-izboru-za-najuzorniju-hrvatsku-seosku-zenu/",
       "izvor": "tz.valpovo.hr",
       "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/07/evelina-bartolovic-uzorna-seoska-zena1.jpg"
+    },
+    {
+      "naziv": "OBITELJSKA PREDSTAVA: „ LUKA MODRIĆ: MOJA IGRA “",
+      "datum_od": "2026-10-20",
+      "datum_do": "2026-10-20",
+      "datum_tekst": "20. 10. 2026.",
+      "vrijeme": "19:30",
+      "opis": "Ustanova za kulturne djelatnosti „Ante Evetović Miroljub“ Valpovo i BOSS TEATAR Vam donose OBITELJSKU PREDSTAVU: „ LUKA MODRIĆ: MOJA IGRA “ Vrijeme: Utorak, 20.10.2026. u 19:30 sati Mjesto: Centar kulture „Matija Petar Katančić“ Valpovo Pretprodaja ulaznica: E",
+      "link": "https://valpovo.hr/events/obiteljska-predstava-luka-modric-moja-igra/",
+      "izvor": "valpovo.hr",
+      "IMAGE_URL": "https://valpovo.hr/wp-content/uploads/2026/09/LUKA-MODRIC-FB.jpg",
+      "link_alt": "https://tz.valpovo.hr/2026/09/29/obiteljska-predstava-luka-modric-moja-igra/"
     }
   ]
 };
