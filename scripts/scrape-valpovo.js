@@ -84,19 +84,36 @@ async function fetchWithPlaywright(url) {
 }
 
 async function fetchHtml(url) {
-  // Pokušaj 1: Node fetch
-  try {
-    const res = await fetch(url, {
-      headers: FETCH_HEADERS,
-      signal: AbortSignal.timeout(20000),
-    });
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    return await res.text();
-  } catch (e) {
-    console.warn(`⚠️  fetch nije uspio za ${url}: ${e.message} — pokušavam Playwright...`);
+  // Pokušaj 1: Node fetch, s jednim ponovnim pokušajem za 429
+  for (let attempt = 0; attempt < 2; attempt++) {
+    try {
+      const res = await fetch(url, {
+        headers: FETCH_HEADERS,
+        signal: AbortSignal.timeout(20000),
+      });
+      if (res.status === 429) {
+        if (attempt === 0) {
+          const wait = 3000 + Math.floor(Math.random() * 2000);
+          console.warn(`⚠️  429 za ${url} — čekam ${wait}ms pa pokušavam još jednom...`);
+          await sleep(wait);
+          continue;
+        }
+        // Drugi 429 zaredom — Playwright ne pomaže (IP blok), preskoči
+        console.warn(`⚠️  429 (2x) za ${url} — preskačem Playwright (IP rate-limit)`);
+        return null;
+      }
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      return await res.text();
+    } catch (e) {
+      if (attempt === 0 && e.message.includes('429')) {
+        continue; // loop handles the wait above
+      }
+      console.warn(`⚠️  fetch nije uspio za ${url}: ${e.message} — pokušavam Playwright...`);
+      break;
+    }
   }
 
-  // Pokušaj 2: Playwright Chromium headless
+  // Pokušaj 2: Playwright Chromium headless (samo za non-429 greške)
   return await fetchWithPlaywright(url);
 }
 
@@ -114,8 +131,12 @@ async function fetchJson(url) {
   }
 }
 
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 // Ograničeni paralelizam — da ne zatrpamo web stranice grada
-async function pool(items, size, fn) {
+async function pool(items, size, fn, delayMs = 0) {
   const queue = [...items];
   const workers = Array.from({ length: Math.min(size, queue.length) }, async () => {
     while (queue.length) {
@@ -125,6 +146,7 @@ async function pool(items, size, fn) {
       } catch (e) {
         console.warn(`⚠️  obrada stavke nije uspjela: ${e.message}`);
       }
+      if (delayMs && queue.length) await sleep(delayMs);
     }
   });
   await Promise.all(workers);
@@ -427,18 +449,19 @@ async function scrapeManifestacije() {
     const pageHtml = await fetchHtml(link);
     if (!pageHtml) {
       items.push({ naziv: naziv.substring(0, 100), datum: '', opis: '', link });
-      continue;
+    } else {
+      const $p = load(pageHtml);
+      const datum = clean($p('.post-date a, .post-date, time').first().text(), 40);
+      const opis = clean($p('.entry-content p, .post-content p, article p').first().text(), 250);
+      items.push({
+        naziv: naziv.substring(0, 100),
+        datum,
+        opis,
+        link,
+        IMAGE_URL: imgUrl,
+      });
     }
-    const $p = load(pageHtml);
-    const datum = clean($p('.post-date a, .post-date, time').first().text(), 40);
-    const opis = clean($p('.entry-content p, .post-content p, article p').first().text(), 250);
-    items.push({
-      naziv: naziv.substring(0, 100),
-      datum,
-      opis,
-      link,
-      IMAGE_URL: imgUrl,
-    });
+    await sleep(800);
   }
 
   console.log(`✅ Manifestacije: ${items.length} stavki`);
@@ -460,7 +483,7 @@ async function scrapeDogadanjaGrad() {
 
   const items = [];
 
-  await pool(posts, 5, async (p) => {
+  await pool(posts, 2, async (p) => {
     const naziv = clean(p.title?.rendered, 140);
     if (!naziv) return;
 
@@ -500,11 +523,12 @@ async function scrapeDogadanjaGrad() {
       izvor: 'valpovo.hr',
       IMAGE_URL: img,
     });
-  });
+  }, 1200);
 
   console.log(`✅ Događanja (valpovo.hr): ${items.length} s datumom / ${posts.length} pregledano`);
   return items;
 }
+
 
 // ─── Događanja s datumima — tz.valpovo.hr (objave) ──────────────────────────
 
