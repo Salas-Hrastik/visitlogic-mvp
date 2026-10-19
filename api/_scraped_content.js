@@ -1,5 +1,5 @@
 // AUTO-GENERATED — ne editiraj ručno!
-// Zadnje skrapanje: 2026-10-19 06:17 UTC
+// Zadnje skrapanje: 2026-10-19 12:42 UTC
 // Izvor: tz.valpovo.hr, valpovo.hr
 // GitHub Actions job: scrape-valpovo (dnevno u 6:00 UTC)
 //
@@ -9,12 +9,12 @@
 
 export const scrapedContent = {
   "meta": {
-    "zadnje_azuriranje": "2026-10-19T06:17:33.454Z",
+    "zadnje_azuriranje": "2026-10-19T12:42:39.677Z",
     "izvori": [
       "https://tz.valpovo.hr",
       "https://valpovo.hr"
     ],
-    "broj_dogadanja": 28
+    "broj_dogadanja": 30
   },
   "novosti_tz": [
     {
@@ -100,6 +100,18 @@ export const scrapedContent = {
   ],
   "novosti_grad": [
     {
+      "naslov": "Poezija, vino i gitara – večer za pamćenje u Gradskoj knjižnici i čitaonici Valpovo",
+      "datum": "19. 10. 2026.",
+      "kratki_opis": "",
+      "link": "https://valpovo.hr/2026/10/19/poezija-vino-i-gitara-vecer-za-pamcenje-u-gradskoj-knjiznici-i-citaonici-valpovo/"
+    },
+    {
+      "naslov": "Održano drugo izdanje “Buvljaka bez novca” u Valpovu: Zabilježen napredak u razmjeni sezonske odjeće",
+      "datum": "19. 10. 2026.",
+      "kratki_opis": "",
+      "link": "https://valpovo.hr/2026/10/19/odrzano-drugo-izdanje-buvljaka-bez-novca-u-valpovu-zabiljezen-napredak-u-razmjeni-sezonske-odjece/"
+    },
+    {
       "naslov": "U Gradskoj knjižnici i čitaonici Valpovo otvoren Mjesec hrvatske knjige 2026.",
       "datum": "16. 10. 2026.",
       "kratki_opis": "",
@@ -122,18 +134,6 @@ export const scrapedContent = {
       "datum": "14. 10. 2026.",
       "kratki_opis": "",
       "link": "https://valpovo.hr/2026/10/14/zapoceo-edukativni-ciklus-projekta-valpovo-najcisci-grad-u-hrvatskoj/"
-    },
-    {
-      "naslov": "OBAVIJEST O ZABRANI SPALJIVANJA BILJNOG I DRUGOG OTPADA",
-      "datum": "07. 10. 2026.",
-      "kratki_opis": "",
-      "link": "https://valpovo.hr/2026/10/07/obavijest-o-zabrani-spaljivanja-biljnog-i-drugog-otpada/"
-    },
-    {
-      "naslov": "Zlatna žutica vinove loze (Grapevine flavesceence doree)",
-      "datum": "06. 10. 2026.",
-      "kratki_opis": "Obavještavamo vinogradare i ostale zainteresirane građane da u prilogu mogu pronaći informativni letak o zlatnoj žutici vinove loze te kontakte nadležnih savjetnika za Osječko-baranjsku županiju. Zlat",
-      "link": "https://valpovo.hr/2026/10/06/zlatna-zutica-vinove-loze-grapevine-flavesceence-doree/"
     }
   ],
   "manifestacije_aktualne": [
@@ -231,6 +231,50 @@ export const scrapedContent = {
   ],
   "dogadanja": [
     {
+      "naziv": "Predstavljanje zbirke poezije „Bela kod Barbe” Josipa Štajmahera",
+      "datum_od": "2026-05-26",
+      "datum_do": "2026-05-26",
+      "datum_tekst": "26. svibnja 2026",
+      "vrijeme": "",
+      "opis": "Gradska knjižnica i čitaonica Valpovo organizira predstavljanje zbirke poezije „Bela kod Barbe“ autora Josip Štajmaher, koje će se održati u utorak, 26. svibnja 2026. godine s početkom u 19 sati u Memorijalnom centru Matije Petra Katančića u Valpovu. Nova zbir",
+      "link": "https://valpovo.hr/events/predstavljanje-zbirke-poezije-bela-kod-barbe-josipa-stajmahera/",
+      "izvor": "valpovo.hr",
+      "IMAGE_URL": ""
+    },
+    {
+      "naziv": "Zagrebački komorni orkestar u Valpovu koncertom „Glazba nas spaja“",
+      "datum_od": "2026-05-29",
+      "datum_do": "2026-05-29",
+      "datum_tekst": "29. svibnja 2026",
+      "vrijeme": "",
+      "opis": "Ustanova za kulturne djelatnosti „Ante Evetović Miroljub“ Valpovo poziva ljubitelje klasične glazbe na koncert Zagrebačkog komornog orkestra pod nazivom „Glazba nas spaja“, koji će se održati u petak, 29. svibnja 2026. godine s početkom u 19:30 sati u Župnoj c",
+      "link": "https://valpovo.hr/events/zagrebacki-komorni-orkestar-u-valpovu-koncertom-glazba-nas-spaja/",
+      "izvor": "valpovo.hr",
+      "IMAGE_URL": ""
+    },
+    {
+      "naziv": "100 godina Valpovke",
+      "datum_od": "2026-06-20",
+      "datum_do": "2026-06-20",
+      "datum_tekst": "20. lipnja 2026",
+      "vrijeme": "",
+      "opis": "U subotu, 20. lipnja 2026. s početkom u 18:00 sati, u Sportskom parku Valpovo odigrat će se revijalna utakmica veterana NK Valpovke i veterana Hrvatske nogometne reprezentacije povodom 100 godina kluba. Ulaz: 5 €.",
+      "link": "https://valpovo.hr/events/100-godina-valpovke/",
+      "izvor": "valpovo.hr",
+      "IMAGE_URL": ""
+    },
+    {
+      "naziv": "SMOTRA AMATERSKOG KULTURNOG STVARALAŠTVA / 58. LJETO VALPOVAČKO (22. – 28.6.2026.)",
+      "datum_od": "2026-06-28",
+      "datum_do": "2026-06-28",
+      "datum_tekst": "28.6.2026",
+      "vrijeme": "",
+      "opis": "PONEDJELJAK, 22.6.2026. Odmorište Labov, Nard 08:00 sati: LIKOVNA KOLONIJA LJETA VALPOVAČKOG 2026. (ORGANIZATOR: SLOBODANKA GRIVA ŠOKAC, ak. slik.) Centar kulture „Matija Petar Katančić“ Valpovo (Velika dvorana) 20:00 sati: KONCERT OTVORENJA LJETA VALPOVAČKOG:",
+      "link": "https://valpovo.hr/events/smotra-amaterskog-kulturnog-stvaralastva-58-ljeto-valpovacko-22-28-6-2026/",
+      "izvor": "valpovo.hr",
+      "IMAGE_URL": ""
+    },
+    {
       "naziv": "OBILJEŽAVANJE 35. OBLJETNICE OSNUTKA 107. BRIGADE ZNG",
       "datum_od": "2026-06-30",
       "datum_do": "2026-06-30",
@@ -323,29 +367,6 @@ export const scrapedContent = {
       "link_alt": "https://tz.valpovo.hr/2026/08/07/pjescani-rock-tok-vol-2-prije-smo-se-tu-kupali-sad-se-rocka/"
     },
     {
-      "naziv": "„Bajkovita knjižnica” -ljetne radionice/pričaonice za djecu u Gradskoj knjižnici i čitaonici Valpovo",
-      "datum_od": "2026-08-24",
-      "datum_do": "2026-08-24",
-      "datum_tekst": "24. 08. 2026.",
-      "vrijeme": "8:00 - 18:00",
-      "opis": "Gradska knjižnica i čitaonica Valpovo u kolovozu nastavlja s programom „Bajkovita knjižnica“, ciklusom kreativnih radionica i pričaonica namijenjenih djeci predškolske i mlađe školske dobi. Radionice će se održavati svakog ponedjeljka u kolovozu – 3., 10., 17.",
-      "link": "https://valpovo.hr/events/bajkovita-knjiznica-ljetne-radionice-pricaonice-za-djecu-u-gradskoj-knjiznici-i-citaonici-valpovo/",
-      "izvor": "valpovo.hr",
-      "IMAGE_URL": "https://valpovo.hr/wp-content/uploads/2026/07/radionice-kolovoz.jpg"
-    },
-    {
-      "naziv": "31. FIŠIJADA U NARDU",
-      "datum_od": "2026-08-29",
-      "datum_do": "2026-08-29",
-      "datum_tekst": "29. 08. 2026.",
-      "vrijeme": "16:30",
-      "opis": "Već 31 godinu, tijekom ljetnih mjeseci, održava se „Fišijada u Nardu“ – natjecanje u kuhanju ribljeg paprikaša. Ova tradicionalna manifestacija prema kojoj je Grad Valpovo dobio svoju prepoznatljivost, svake godine bilježi konstantan rast posjećenosti. Naime, ",
-      "link": "https://valpovo.hr/events/31-fisijada-u-nardu/",
-      "izvor": "valpovo.hr",
-      "IMAGE_URL": "https://valpovo.hr/wp-content/uploads/2026/08/fisijada-2026-nard-baner.jpg",
-      "link_alt": "https://tz.valpovo.hr/2026/08/07/31-fisijada-u-nardu/"
-    },
-    {
       "naziv": "31. FIŠIJADA U NARDU OKUPILA BROJNE EKIPE I POSJETITELJE",
       "datum_od": "2026-08-29",
       "datum_do": "2026-08-29",
@@ -357,144 +378,121 @@ export const scrapedContent = {
       "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/08/3B9A0286-31-fisijada-u-nardu-2026.jpg"
     },
     {
-      "naziv": "ŠESTA VALPOVAČKA STAZA ZDRAVLJA",
-      "datum_od": "2026-09-03",
-      "datum_do": "2026-09-03",
-      "datum_tekst": "03. 09. 2026.",
-      "vrijeme": "10:00",
-      "opis": "Povodom obilježavanja Međunarodnog dana starijih osoba (1. listopada), Turistička zajednica Grada Valpova i Grad Valpovo, u suradnji s Gradskim društvom Crvenog križa Valpovo i HKUD-om „Valpovo 1905“, pozivaju sve građane i goste – osobito starije sugrađane – ",
-      "link": "https://valpovo.hr/events/sesta-valpovacka-staza-zdravlja/",
-      "izvor": "valpovo.hr",
-      "IMAGE_URL": "https://valpovo.hr/wp-content/uploads/2026/09/Turisticka-zajednica-valpovacka-staza-zdravlja-2026-face2.jpg",
-      "link_alt": "https://tz.valpovo.hr/2026/09/24/sesta-valpovacka-staza-zdravlja/"
+      "naziv": "31. FIŠIJADA U NARDU",
+      "datum_od": "2026-08-29",
+      "datum_do": "2026-08-29",
+      "datum_tekst": "29. kolovoza 2026",
+      "vrijeme": "",
+      "opis": "Već 31 godinu, tijekom ljetnih mjeseci, održava se „Fišijada u Nardu“ – natjecanje u kuhanju ribljeg paprikaša. Ova tradicionalna manifestacija prema kojoj je Grad Valpovo dobio svoju prepoznatljivost, svake godine bilježi konstantan rast posjećenosti. Naime, ",
+      "link": "https://tz.valpovo.hr/2026/08/07/31-fisijada-u-nardu/",
+      "izvor": "tz.valpovo.hr",
+      "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/08/fisijada-2026-nard-baner.jpg"
     },
     {
       "naziv": "KUD „Šokadija“ Ladimirevci obilježava 50 godina djelovanja",
       "datum_od": "2026-09-03",
       "datum_do": "2026-09-06",
-      "datum_tekst": "03. - 06. 09. 2026.",
+      "datum_tekst": "od 3. do 6. rujna 2026",
       "vrijeme": "",
       "opis": "Kulturno-umjetničko društvo „Šokadija“ Ladimirevci ove će godine svečano obilježiti 50. obljetnicu djelovanja bogatim četverodnevnim programom koji će se održavati od 3. do 6. rujna 2026. godine. Jubilej pola stoljeća rada, očuvanja tradicije, pjesme, plesa i ",
       "link": "https://valpovo.hr/events/kud-sokadija-ladimirevci-obiljezava-50-godina-djelovanja/",
       "izvor": "valpovo.hr",
-      "IMAGE_URL": "https://valpovo.hr/wp-content/uploads/2026/08/784981965_1070577245361169_3275599581815036770_n.jpg",
+      "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/08/784981965_1070577245361169_3275599581815036770_n.jpg",
       "link_alt": "https://tz.valpovo.hr/2026/08/24/kud-sokadija-ladimirevci-obiljezava-50-godina-djelovanja/"
     },
     {
       "naziv": "KINO POD ZVIJEZDAMA 2026. U VALPOVU",
       "datum_od": "2026-09-04",
       "datum_do": "2026-09-04",
-      "datum_tekst": "04. 09. 2026.",
-      "vrijeme": "19:30",
+      "datum_tekst": "4. rujna 2026",
+      "vrijeme": "",
       "opis": "Gdje provesti zadnji vikend prije škole? U dobrom društvu, uz film i večer pod zvijezdama. Pridružite nam se na Kinu pod zvijezdama i provedite posljednje dane ljeta u opuštenoj atmosferi. „Čarobno drvo“ 4. rujna 2026. 19:30 sati Dvorac Prandau-Normann (ispod ",
       "link": "https://valpovo.hr/events/kino-pod-zvijezdama-2026-u-valpovu/",
       "izvor": "valpovo.hr",
-      "IMAGE_URL": "https://valpovo.hr/wp-content/uploads/2026/09/carobno-drvo.jpg",
+      "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/09/carobno-drvo.jpg",
       "link_alt": "https://tz.valpovo.hr/2026/09/01/kino-pod-zvijezdama-2026-u-valpovu/"
     },
     {
       "naziv": "CRAFT BEER FEST VALPOVO 2026. – VRAĆA SE NAJVEĆI PIVSKO-GLAZBENI VIKEND U VALPOVU!",
       "datum_od": "2026-09-11",
       "datum_do": "2026-09-12",
-      "datum_tekst": "11. - 12. 09. 2026.",
-      "vrijeme": "19:00",
+      "datum_tekst": "11. i 12. rujna 2026",
+      "vrijeme": "",
       "opis": "Valpovo će 11. i 12. rujna 2026. godine ponovno postati središte vrhunskog craft piva, dobre glazbe i odlične zabave. U prekrasnom ambijentu Dvorca Prandau-Normann održat će se osmo izdanje manifestacije Craft Beer Fest Valpovo, koja iz godine u godinu okuplja",
       "link": "https://valpovo.hr/events/craft-beer-fest-valpovo-2026-vraca-se-najveci-pivsko-glazbeni-vikend-u-valpovu/",
       "izvor": "valpovo.hr",
-      "IMAGE_URL": "https://valpovo.hr/wp-content/uploads/2026/09/8-craft-beer-cover-2026.jpg",
+      "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/09/8-craft-beer-cover-2026.jpg",
       "link_alt": "https://tz.valpovo.hr/2026/09/07/craft-beer-fest-valpovo-2026-vraca-se-najveci-pivsko-glazbeni-vikend-u-valpovu/"
     },
     {
       "naziv": "20. Valpovački sajam obrtništva i malog poduzetništva",
       "datum_od": "2026-09-19",
       "datum_do": "2026-09-19",
-      "datum_tekst": "19. 09. 2026.",
-      "vrijeme": "10:00",
+      "datum_tekst": "19.rujna 2026",
+      "vrijeme": "",
       "opis": "Valpovački poduzetnički centar organizira 20. Valpovački sajam obrtništva i malog poduzetništva koji će se održati 19.rujna 2026. godine od 10:00 sati ispred dvorca Prandau-Normann. Suorganizatori sajma su Grad Valpovo, Udruženje obrtnika grada Valpova i Turis",
       "link": "https://valpovo.hr/events/20-valpovacki-sajam-obrtnistva-i-malog-poduzetnistva/",
       "izvor": "valpovo.hr",
-      "IMAGE_URL": "https://valpovo.hr/wp-content/uploads/2026/09/20_valpovacki_sajam_2026-COVER-SAJAM-OBRTNISTVA-I-MALOG-PODUZETNISTVA.jpg"
+      "IMAGE_URL": ""
     },
     {
       "naziv": "MANIFESTACIJA “TRADICIJA U POKRETU”",
       "datum_od": "2026-09-19",
       "datum_do": "2026-09-19",
-      "datum_tekst": "19. 09. 2026.",
-      "vrijeme": "10:00 - 14:00",
+      "datum_tekst": "19. rujna 2026",
+      "vrijeme": "",
       "opis": "Konjogojska udruga Valpovštine, u suradnji s Gradom Valpovom i Turističkom zajednicom Grada Valpova, organizira manifestaciju „Tradicija u pokretu“, koja će se održati u subotu, 19. rujna 2026. godine, od 10:00 do 14:00 sati u valpovačkom parku kod platane. Ov",
       "link": "https://valpovo.hr/events/manifestacija-tradicija-u-pokretu/",
       "izvor": "valpovo.hr",
-      "IMAGE_URL": "https://valpovo.hr/wp-content/uploads/2026/08/781680653_1068570845561809_809382827192533482_n.jpg",
+      "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/08/781680653_1068570845561809_809382827192533482_n.jpg",
       "link_alt": "https://tz.valpovo.hr/2026/08/21/manifestacija-tradicija-u-pokretu/"
     },
     {
       "naziv": "8. Dani Matije Petra Katančića",
       "datum_od": "2026-09-24",
-      "datum_do": "2026-09-26",
-      "datum_tekst": "24. - 26. 09. 2026.",
-      "vrijeme": "18:30",
+      "datum_do": "2026-09-24",
+      "datum_tekst": "24. rujna",
+      "vrijeme": "",
       "opis": "Matija Petar Katančić (1750-1825) najistaknutiji je hrvatski erudit s kraja 18. i početka 19. stoljeća koji je svojim znanstvenim i stručnim radom pokrivao široko polje tadašnjih humanističkih znanosti. Grad Valpovo, Turistička zajednica Grada Valpova i Hrvats",
-      "link": "https://valpovo.hr/events/8-dani-matije-petra-katancica/",
-      "izvor": "valpovo.hr",
-      "IMAGE_URL": "https://valpovo.hr/wp-content/uploads/2026/09/Banner-Dani-MPK-2026.jpg",
-      "link_alt": "https://tz.valpovo.hr/2026/09/18/8-dani-matije-petra-katancica/"
-    },
-    {
-      "naziv": "Valpovo pokreće veliki ekološki projekt: Zajedničkim snagama do titule najčišćeg grada u Hrvatskoj",
-      "datum_od": "2026-09-26",
-      "datum_do": "2026-09-26",
-      "datum_tekst": "26. 09. 2026.",
-      "vrijeme": "10:00",
-      "opis": "Od ovog rujna, ulice, škole, trgovi i sportska igrališta našeg grada postaju središte jedne od najambicioznijih i najsveobuhvatnijih ekoloških inicijativa u regiji. Pod jasnom i odvažnom vizijom “Valpovo – Najčišći grad u Hrvatskoj”, s početkom nove školske go",
-      "link": "https://valpovo.hr/events/valpovo-pokrece-veliki-ekoloski-projekt-zajednickim-snagama-do-titule-najcisceg-grada-u-hrvatskoj/",
-      "izvor": "valpovo.hr",
-      "IMAGE_URL": "https://valpovo.hr/wp-content/uploads/2026/09/valpovo-najcisci-grad.jpg"
+      "link": "https://tz.valpovo.hr/2026/09/18/8-dani-matije-petra-katancica/",
+      "izvor": "tz.valpovo.hr",
+      "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/09/Banner-Dani-MPK-2026.jpg"
     },
     {
       "naziv": "HIT KOMEDIJA „ LJUBAF “",
       "datum_od": "2026-09-28",
       "datum_do": "2026-09-28",
-      "datum_tekst": "28. 09. 2026.",
-      "vrijeme": "19:30",
+      "datum_tekst": "28.9.2026",
+      "vrijeme": "",
       "opis": "Ustanova za kulturne djelatnosti „Ante Evetović Miroljub“ Valpovo i TEATAR KEREKESH Vam donose HIT KOMEDIJU: „ LJUBAF “ Vrijeme: Ponedjeljak, 28.9.2026. u 19:30 sati Mjesto: Centar kulture „Matija Petar Katančić“ Valpovo Pretprodaja ulaznica: Edukacijsko-inter",
       "link": "https://valpovo.hr/events/hit-komedija-ljubaf/",
       "izvor": "valpovo.hr",
-      "IMAGE_URL": "https://valpovo.hr/wp-content/uploads/2026/09/Kerekesh_Ljubaf_Plakat.jpg",
+      "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/09/Kerekesh_Ljubaf_Plakat.jpg",
       "link_alt": "https://tz.valpovo.hr/2026/09/07/hit-komedija-ljubaf/"
+    },
+    {
+      "naziv": "ŠESTA VALPOVAČKA STAZA ZDRAVLJA",
+      "datum_od": "2026-10-01",
+      "datum_do": "2026-10-01",
+      "datum_tekst": "1. listopada",
+      "vrijeme": "",
+      "opis": "Povodom obilježavanja Međunarodnog dana starijih osoba (1. listopada), Turistička zajednica Grada Valpova i Grad Valpovo, u suradnji s Gradskim društvom Crvenog križa Valpovo i HKUD-om „Valpovo 1905“, pozivaju sve građane i goste – osobito starije sugrađane – ",
+      "link": "https://valpovo.hr/events/sesta-valpovacka-staza-zdravlja/",
+      "izvor": "valpovo.hr",
+      "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/09/Turisticka-zajednica-valpovacka-staza-zdravlja-2026-face2.jpg",
+      "link_alt": "https://tz.valpovo.hr/2026/09/24/sesta-valpovacka-staza-zdravlja/"
     },
     {
       "naziv": "OBILJEŽAVANJE MEĐUNARODNOG DANA RIJEKE DRAVE NA ODMORIŠTU LABOV U NARDU",
       "datum_od": "2026-10-03",
       "datum_do": "2026-10-03",
-      "datum_tekst": "03. 10. 2026.",
-      "vrijeme": "11:00",
+      "datum_tekst": "3. listopada 2026",
+      "vrijeme": "",
       "opis": "Udruga Labov Nard, Turistička zajednica Grada Valpova i Grad Valpovo pozivaju sve građane i posjetitelje na obilježavanje Međunarodnog dana rijeke Drave koje će se održati u subotu, 3. listopada 2026. godine od 11:00 sati na Odmorištu Labov u Nardu. Posjetitel",
       "link": "https://valpovo.hr/events/obiljezavanje-medunarodnog-dana-rijeke-drave-na-odmoristu-labov-u-nardu/",
       "izvor": "valpovo.hr",
-      "IMAGE_URL": "https://valpovo.hr/wp-content/uploads/2026/09/828311736_1430978402325187_5496990021114614856_n.jpg",
+      "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/09/828311736_1430978402325187_5496990021114614856_n.jpg",
       "link_alt": "https://tz.valpovo.hr/2026/09/29/obiljezavanje-medunarodnog-dana-rijeke-drave-na-odmoristu-labov-u-nardu/"
-    },
-    {
-      "naziv": "Mjesec hrvatske knjige u Valpovu: izložba Gorana Dojkića i predstavljanje zbirke poezije „Pitanja starija od mene”",
-      "datum_od": "2026-10-15",
-      "datum_do": "2026-10-15",
-      "datum_tekst": "15. 10. 2026.",
-      "vrijeme": "18:00 - 20:00",
-      "opis": "Gradska knjižnica i čitaonica Valpovo ovogodišnji Mjesec hrvatske knjige, koji se održava od 15. listopada do 15. studenoga pod sloganom „Od priča do otkrića“, otvara s dva kulturna događanja koji će spojiti fotografiju, književnost i poeziju. Prvi dio program",
-      "link": "https://valpovo.hr/events/mjesec-hrvatske-knjige-u-valpovu-izlozba-gorana-dojkica-i-predstavljanje-zbirke-poezije-pitanja-starija-od-mene/",
-      "izvor": "valpovo.hr",
-      "IMAGE_URL": "https://valpovo.hr/wp-content/uploads/2026/10/15.listopada-najava-plakat.jpg"
-    },
-    {
-      "naziv": "Mjesec hrvatske knjige 2026. u Gradskoj knjižnici i čitaonici Valpovo: „Od priča do otkrića“",
-      "datum_od": "2026-10-15",
-      "datum_do": "2026-10-15",
-      "datum_tekst": "15. 10. 2026.",
-      "vrijeme": "",
-      "opis": "Gradska knjižnica i čitaonica Valpovo i ove se godine uključuje u obilježavanje Mjeseca hrvatske knjige, nacionalne manifestacije posvećene promicanju knjige i čitanja, koja se održava od 15. listopada do 15. studenoga 2026. godine. Ovogodišnji Mjesec hrvatske",
-      "link": "https://valpovo.hr/events/mjesec-hrvatske-knjige-2026-u-gradskoj-knjiznici-i-citaonici-valpovo-od-prica-do-otkrica/",
-      "izvor": "valpovo.hr",
-      "IMAGE_URL": "https://valpovo.hr/wp-content/uploads/2026/10/Mjesec-hrvatske-knjige-2026.-–-Valpovo-final.jpg"
     },
     {
       "naziv": "„Poezija, vino i gitara” donosi večer stihova, glazbe i vinskih okusa u Valpovu",
@@ -511,23 +509,45 @@ export const scrapedContent = {
       "naziv": "Priprema za zimu: Novo izdanje “Buvljaka bez novca” donosi razmjenu jesenske i zimske garderobe",
       "datum_od": "2026-10-17",
       "datum_do": "2026-10-17",
-      "datum_tekst": "17. 10. 2026.",
-      "vrijeme": "10:00",
+      "datum_tekst": "17. listopada 2026",
+      "vrijeme": "",
       "opis": "VALPOVO – U sklopu kampanje “Valpovo – Najčišći grad u Hrvatskoj”, iduće subote, 17. listopada 2026. godine, održat će se drugo izdanje “Buvljaka bez novca”. Događaj će se odvijati u prostoru Agroparka Valpovo u vremenu od 10:00 do 12:00 sati. Nakon probnog ru",
       "link": "https://valpovo.hr/events/priprema-za-zimu-novo-izdanje-buvljaka-bez-novca-donosi-razmjenu-jesenske-i-zimske-garderobe/",
       "izvor": "valpovo.hr",
-      "IMAGE_URL": "https://valpovo.hr/wp-content/uploads/2026/10/Buvljak-listopad-2026.jpg"
+      "IMAGE_URL": ""
+    },
+    {
+      "naziv": "Mjesec hrvatske knjige u Valpovu: izložba Gorana Dojkića i predstavljanje zbirke poezije „Pitanja starija od mene”",
+      "datum_od": "2026-10-15",
+      "datum_do": "2026-11-15",
+      "datum_tekst": "od 15. listopada do 15. studenoga",
+      "vrijeme": "",
+      "opis": "Gradska knjižnica i čitaonica Valpovo ovogodišnji Mjesec hrvatske knjige, koji se održava od 15. listopada do 15. studenoga pod sloganom „Od priča do otkrića“, otvara s dva kulturna događanja koji će spojiti fotografiju, književnost i poeziju. Prvi dio program",
+      "link": "https://valpovo.hr/events/mjesec-hrvatske-knjige-u-valpovu-izlozba-gorana-dojkica-i-predstavljanje-zbirke-poezije-pitanja-starija-od-mene/",
+      "izvor": "valpovo.hr",
+      "IMAGE_URL": ""
+    },
+    {
+      "naziv": "Mjesec hrvatske knjige 2026. u Gradskoj knjižnici i čitaonici Valpovo: „Od priča do otkrića“",
+      "datum_od": "2026-10-15",
+      "datum_do": "2026-11-15",
+      "datum_tekst": "od 15. listopada do 15. studenoga 2026",
+      "vrijeme": "",
+      "opis": "Gradska knjižnica i čitaonica Valpovo i ove se godine uključuje u obilježavanje Mjeseca hrvatske knjige, nacionalne manifestacije posvećene promicanju knjige i čitanja, koja se održava od 15. listopada do 15. studenoga 2026. godine. Ovogodišnji Mjesec hrvatske",
+      "link": "https://valpovo.hr/events/mjesec-hrvatske-knjige-2026-u-gradskoj-knjiznici-i-citaonici-valpovo-od-prica-do-otkrica/",
+      "izvor": "valpovo.hr",
+      "IMAGE_URL": ""
     },
     {
       "naziv": "OBITELJSKA PREDSTAVA: „ LUKA MODRIĆ: MOJA IGRA “",
       "datum_od": "2026-10-20",
       "datum_do": "2026-10-20",
-      "datum_tekst": "20. 10. 2026.",
-      "vrijeme": "19:30",
+      "datum_tekst": "20.10.2026",
+      "vrijeme": "",
       "opis": "Ustanova za kulturne djelatnosti „Ante Evetović Miroljub“ Valpovo i BOSS TEATAR Vam donose OBITELJSKU PREDSTAVU: „ LUKA MODRIĆ: MOJA IGRA “ Vrijeme: Utorak, 20.10.2026. u 19:30 sati Mjesto: Centar kulture „Matija Petar Katančić“ Valpovo Pretprodaja ulaznica: E",
       "link": "https://valpovo.hr/events/obiteljska-predstava-luka-modric-moja-igra/",
       "izvor": "valpovo.hr",
-      "IMAGE_URL": "https://valpovo.hr/wp-content/uploads/2026/09/LUKA-MODRIC-FB.jpg",
+      "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/09/LUKA-MODRIC-FB.jpg",
       "link_alt": "https://tz.valpovo.hr/2026/09/29/obiteljska-predstava-luka-modric-moja-igra/"
     },
     {
