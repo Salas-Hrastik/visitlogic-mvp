@@ -1,5 +1,5 @@
 // AUTO-GENERATED — ne editiraj ručno!
-// Zadnje skrapanje: 2026-10-19 12:42 UTC
+// Zadnje skrapanje: 2026-10-21 11:30 UTC
 // Izvor: tz.valpovo.hr, valpovo.hr
 // GitHub Actions job: scrape-valpovo (dnevno u 6:00 UTC)
 //
@@ -9,12 +9,12 @@
 
 export const scrapedContent = {
   "meta": {
-    "zadnje_azuriranje": "2026-10-19T12:42:39.677Z",
+    "zadnje_azuriranje": "2026-10-21T11:30:09.190Z",
     "izvori": [
       "https://tz.valpovo.hr",
       "https://valpovo.hr"
     ],
-    "broj_dogadanja": 30
+    "broj_dogadanja": 29
   },
   "novosti_tz": [
     {
@@ -230,17 +230,6 @@ export const scrapedContent = {
     }
   ],
   "dogadanja": [
-    {
-      "naziv": "Predstavljanje zbirke poezije „Bela kod Barbe” Josipa Štajmahera",
-      "datum_od": "2026-05-26",
-      "datum_do": "2026-05-26",
-      "datum_tekst": "26. svibnja 2026",
-      "vrijeme": "",
-      "opis": "Gradska knjižnica i čitaonica Valpovo organizira predstavljanje zbirke poezije „Bela kod Barbe“ autora Josip Štajmaher, koje će se održati u utorak, 26. svibnja 2026. godine s početkom u 19 sati u Memorijalnom centru Matije Petra Katančića u Valpovu. Nova zbir",
-      "link": "https://valpovo.hr/events/predstavljanje-zbirke-poezije-bela-kod-barbe-josipa-stajmahera/",
-      "izvor": "valpovo.hr",
-      "IMAGE_URL": ""
-    },
     {
       "naziv": "Zagrebački komorni orkestar u Valpovu koncertom „Glazba nas spaja“",
       "datum_od": "2026-05-29",
@@ -517,6 +506,18 @@ export const scrapedContent = {
       "IMAGE_URL": ""
     },
     {
+      "naziv": "OBITELJSKA PREDSTAVA: „ LUKA MODRIĆ: MOJA IGRA “",
+      "datum_od": "2026-10-20",
+      "datum_do": "2026-10-20",
+      "datum_tekst": "20.10.2026",
+      "vrijeme": "",
+      "opis": "Ustanova za kulturne djelatnosti „Ante Evetović Miroljub“ Valpovo i BOSS TEATAR Vam donose OBITELJSKU PREDSTAVU: „ LUKA MODRIĆ: MOJA IGRA “ Vrijeme: Utorak, 20.10.2026. u 19:30 sati Mjesto: Centar kulture „Matija Petar Katančić“ Valpovo Pretprodaja ulaznica: E",
+      "link": "https://valpovo.hr/events/obiteljska-predstava-luka-modric-moja-igra/",
+      "izvor": "valpovo.hr",
+      "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/09/LUKA-MODRIC-FB.jpg",
+      "link_alt": "https://tz.valpovo.hr/2026/09/29/obiteljska-predstava-luka-modric-moja-igra/"
+    },
+    {
       "naziv": "Mjesec hrvatske knjige u Valpovu: izložba Gorana Dojkića i predstavljanje zbirke poezije „Pitanja starija od mene”",
       "datum_od": "2026-10-15",
       "datum_do": "2026-11-15",
@@ -537,18 +538,6 @@ export const scrapedContent = {
       "link": "https://valpovo.hr/events/mjesec-hrvatske-knjige-2026-u-gradskoj-knjiznici-i-citaonici-valpovo-od-prica-do-otkrica/",
       "izvor": "valpovo.hr",
       "IMAGE_URL": ""
-    },
-    {
-      "naziv": "OBITELJSKA PREDSTAVA: „ LUKA MODRIĆ: MOJA IGRA “",
-      "datum_od": "2026-10-20",
-      "datum_do": "2026-10-20",
-      "datum_tekst": "20.10.2026",
-      "vrijeme": "",
-      "opis": "Ustanova za kulturne djelatnosti „Ante Evetović Miroljub“ Valpovo i BOSS TEATAR Vam donose OBITELJSKU PREDSTAVU: „ LUKA MODRIĆ: MOJA IGRA “ Vrijeme: Utorak, 20.10.2026. u 19:30 sati Mjesto: Centar kulture „Matija Petar Katančić“ Valpovo Pretprodaja ulaznica: E",
-      "link": "https://valpovo.hr/events/obiteljska-predstava-luka-modric-moja-igra/",
-      "izvor": "valpovo.hr",
-      "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/09/LUKA-MODRIC-FB.jpg",
-      "link_alt": "https://tz.valpovo.hr/2026/09/29/obiteljska-predstava-luka-modric-moja-igra/"
     },
     {
       "naziv": "Književna večer s Ivanom Šojat u Valpovu",
