@@ -1,5 +1,5 @@
 // AUTO-GENERATED — ne editiraj ručno!
-// Zadnje skrapanje: 2026-10-21 11:30 UTC
+// Zadnje skrapanje: 2026-10-22 11:30 UTC
 // Izvor: tz.valpovo.hr, valpovo.hr
 // GitHub Actions job: scrape-valpovo (dnevno u 6:00 UTC)
 //
@@ -9,14 +9,22 @@
 
 export const scrapedContent = {
   "meta": {
-    "zadnje_azuriranje": "2026-10-21T11:30:09.190Z",
+    "zadnje_azuriranje": "2026-10-22T11:30:23.544Z",
     "izvori": [
       "https://tz.valpovo.hr",
       "https://valpovo.hr"
     ],
-    "broj_dogadanja": 29
+    "broj_dogadanja": 30
   },
   "novosti_tz": [
+    {
+      "naslov": "HIT KOMEDIJA: „ VRATA DO “",
+      "datum": "lis 22, 2026",
+      "datum_iso": "2026-10-22",
+      "kratki_opis": "Ustanova za kulturne djelatnosti „Ante Evetović Miroljub“ Valpovo i TEATAR EXIT Vam donose HIT KOMEDIJU: „ VRATA DO “ Vrijeme: Utorak, 10.11.2026. u 19:30 ...",
+      "link": "https://tz.valpovo.hr/2026/10/22/hit-komedija-vrata-do/",
+      "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/10/Velika-stavka-VRATA-DO_letak_1.jpg"
+    },
     {
       "naslov": "KONCERT: ANTE MILIĆ / klavir",
       "datum": "lis 15, 2026",
@@ -88,14 +96,6 @@ export const scrapedContent = {
       "kratki_opis": "Prvi dan osmoga po redu Valpovo Craft Beer Festa u prekrasnom ambijentu dvorca Prandau-Normann, okupio je ljubitelje craft piva koji su uživali u bogatoj ...",
       "link": "https://tz.valpovo.hr/2026/09/12/odlican-pocetak-8-valpovo-craft-beer-festa/",
       "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/09/3B9A0816-8-craft-beer-fest-2026-prvi-dan.jpg"
-    },
-    {
-      "naslov": "CRAFT BEER FEST VALPOVO 2026. – VRAĆA SE NAJVEĆI PIVSKO-GLAZBENI VIKEND U VALPOVU!",
-      "datum": "ruj 07, 2026",
-      "datum_iso": "2026-09-07",
-      "kratki_opis": "Valpovo će 11. i 12. rujna 2026. godine ponovno postati središte vrhunskog craft piva, dobre glazbe i odlične zabave. U prekrasnom ambijentu Dvorca Prandau-Normann ...",
-      "link": "https://tz.valpovo.hr/2026/09/07/craft-beer-fest-valpovo-2026-vraca-se-najveci-pivsko-glazbeni-vikend-u-valpovu/",
-      "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/09/8-craft-beer-cover-2026.jpg"
     }
   ],
   "novosti_grad": [
@@ -231,17 +231,6 @@ export const scrapedContent = {
   ],
   "dogadanja": [
     {
-      "naziv": "Zagrebački komorni orkestar u Valpovu koncertom „Glazba nas spaja“",
-      "datum_od": "2026-05-29",
-      "datum_do": "2026-05-29",
-      "datum_tekst": "29. svibnja 2026",
-      "vrijeme": "",
-      "opis": "Ustanova za kulturne djelatnosti „Ante Evetović Miroljub“ Valpovo poziva ljubitelje klasične glazbe na koncert Zagrebačkog komornog orkestra pod nazivom „Glazba nas spaja“, koji će se održati u petak, 29. svibnja 2026. godine s početkom u 19:30 sati u Župnoj c",
-      "link": "https://valpovo.hr/events/zagrebacki-komorni-orkestar-u-valpovu-koncertom-glazba-nas-spaja/",
-      "izvor": "valpovo.hr",
-      "IMAGE_URL": ""
-    },
-    {
       "naziv": "100 godina Valpovke",
       "datum_od": "2026-06-20",
       "datum_do": "2026-06-20",
@@ -294,8 +283,7 @@ export const scrapedContent = {
       "opis": "Ovog ljeta Rock’a’raj okreće novu stranicu i donosi nešto drugačije izdanje! Šesto izdanje valpovačkog rock festivala održat će se 18. srpnja 2026. godine od 19 sati, u posebnom ambijentu ispod valpovačkog ginka, ispred dvorca Prandau-Normann u Valpovu. „Under",
       "link": "https://valpovo.hr/events/6-rockaraj-fest-under-the-ginko-edition-stize-u-valpovo/",
       "izvor": "valpovo.hr",
-      "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/07/rokaraj-2026-fb-neww.jpg",
-      "link_alt": "https://tz.valpovo.hr/2026/07/11/6-rockaraj-fest-under-the-ginko-edition-stize-u-valpovo/"
+      "IMAGE_URL": ""
     },
     {
       "naziv": "Zbog najave lošeg vremena koncert Eurochestries Croatia 2026 seli u Centar kulture “Matija Petar Katančić” Valpovo",
@@ -487,12 +475,12 @@ export const scrapedContent = {
       "naziv": "„Poezija, vino i gitara” donosi večer stihova, glazbe i vinskih okusa u Valpovu",
       "datum_od": "2026-10-17",
       "datum_do": "2026-10-17",
-      "datum_tekst": "17. 10. 2026.",
-      "vrijeme": "18:30",
+      "datum_tekst": "17. listopada",
+      "vrijeme": "",
       "opis": "U subotu, 17. listopada, u Multimediji Gradske knjižnice i čitaonice Valpovo, u sklopu Mjeseca hrvatske knjige 2026., održat će se glazbeno – poetski program „Poezija, vino i gitara”, koji donosi spoj najljepših stihova hrvatske književnosti, glazbenih izvedbi",
       "link": "https://valpovo.hr/events/poezija-vino-i-gitara-donosi-vecer-stihova-glazbe-i-vinskih-okusa-u-valpovu/",
       "izvor": "valpovo.hr",
-      "IMAGE_URL": "https://valpovo.hr/wp-content/uploads/2026/10/Poezija-vino-i-gitara-u-Valpovu-poster.jpg"
+      "IMAGE_URL": ""
     },
     {
       "naziv": "Priprema za zimu: Novo izdanje “Buvljaka bez novca” donosi razmjenu jesenske i zimske garderobe",
@@ -518,6 +506,17 @@ export const scrapedContent = {
       "link_alt": "https://tz.valpovo.hr/2026/09/29/obiteljska-predstava-luka-modric-moja-igra/"
     },
     {
+      "naziv": "Književna večer s Ivanom Šojat u Valpovu",
+      "datum_od": "2026-10-21",
+      "datum_do": "2026-10-21",
+      "datum_tekst": "21. 10. 2026.",
+      "vrijeme": "17:30",
+      "opis": "Gradska knjižnica i čitaonica Valpovo poziva sve ljubitelje književnosti na susret s Ivanom Šojat, jednom od istaknutih suvremenih hrvatskih književnica. Ivana Šojat, rođena Osječanka, književnica je i prevoditeljica čiji književni opus obuhvaća romane, poezij",
+      "link": "https://valpovo.hr/events/knjizevna-vecer-s-ivanom-sojat-u-valpovu/",
+      "izvor": "valpovo.hr",
+      "IMAGE_URL": "https://valpovo.hr/wp-content/uploads/2026/10/Ivana-Sojat-plakat.jpg"
+    },
+    {
       "naziv": "Mjesec hrvatske knjige u Valpovu: izložba Gorana Dojkića i predstavljanje zbirke poezije „Pitanja starija od mene”",
       "datum_od": "2026-10-15",
       "datum_do": "2026-11-15",
@@ -540,27 +539,39 @@ export const scrapedContent = {
       "IMAGE_URL": ""
     },
     {
-      "naziv": "Književna večer s Ivanom Šojat u Valpovu",
-      "datum_od": "2026-10-21",
-      "datum_do": "2026-10-21",
-      "datum_tekst": "21. 10. 2026.",
-      "vrijeme": "17:30",
-      "opis": "Gradska knjižnica i čitaonica Valpovo poziva sve ljubitelje književnosti na susret s Ivanom Šojat, jednom od istaknutih suvremenih hrvatskih književnica. Ivana Šojat, rođena Osječanka, književnica je i prevoditeljica čiji književni opus obuhvaća romane, poezij",
-      "link": "https://valpovo.hr/events/knjizevna-vecer-s-ivanom-sojat-u-valpovu/",
-      "izvor": "valpovo.hr",
-      "IMAGE_URL": "https://valpovo.hr/wp-content/uploads/2026/10/Ivana-Sojat-plakat.jpg"
-    },
-    {
       "naziv": "KONCERT: ANTE MILIĆ / klavir",
       "datum_od": "2026-10-23",
       "datum_do": "2026-10-23",
-      "datum_tekst": "23. 10. 2026.",
-      "vrijeme": "19:30",
+      "datum_tekst": "23. listopada 2026",
+      "vrijeme": "",
       "opis": "Ustanova za kulturne djelatnosti „Ante Evetović Miroljub“ Valpovo Vam donosi: KONCERT ANTE MILIĆ klavir Vrijeme: Petak, 23. listopada 2026. godine u 19:30 sati Mjesto: Kapelica Sv. Trojstva dvorca Prandau-Normann, Valpovo BESPLATAN ULAZ! PROGRAM: Mozart minore",
       "link": "https://valpovo.hr/events/koncert-ante-milic-klavir-2/",
       "izvor": "valpovo.hr",
-      "IMAGE_URL": "https://valpovo.hr/wp-content/uploads/2026/10/2.-Plakat-Ante-Milic.jpg",
+      "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/10/2.-Plakat-Ante-Milic.jpg",
       "link_alt": "https://tz.valpovo.hr/2026/10/15/koncert-ante-milic-klavir-2/"
+    },
+    {
+      "naziv": "Najava radionice: „Ravnopravnost spolova u sportu“ u Edukacijsko-interpretacijskom centru Valpovo",
+      "datum_od": "2026-10-28",
+      "datum_do": "2026-10-28",
+      "datum_tekst": "28. 10. 2026.",
+      "vrijeme": "17:00",
+      "opis": "VALPOVO / U srijedu, 28. listopada 2026. godine, s početkom u 17:00 sati, Edukacijsko-interpretacijski centar Valpovo ugostit će edukativnu radionicu na temu „Ravnopravnost spolova u sportu“. Događaj je namijenjen lokalnim trenerima, sportskim radnicima te cje",
+      "link": "https://valpovo.hr/events/najava-radionice-ravnopravnost-spolova-u-sportu-u-edukacijsko-interpretacijskom-centru-valpovo/",
+      "izvor": "valpovo.hr",
+      "IMAGE_URL": "https://valpovo.hr/wp-content/uploads/2026/10/ravnopravnost-spolova.png"
+    },
+    {
+      "naziv": "HIT KOMEDIJA: „ VRATA DO “",
+      "datum_od": "2026-11-10",
+      "datum_do": "2026-11-10",
+      "datum_tekst": "10. 11. 2026.",
+      "vrijeme": "19:30 - 20:30",
+      "opis": "Ustanova za kulturne djelatnosti „Ante Evetović Miroljub“ Valpovo i TEATAR EXIT Vam donose HIT KOMEDIJU: „ VRATA DO “ Vrijeme: Utorak, 10.11.2026. u 19:30 sati Mjesto: Centar kulture „Matija Petar Katančić“ Valpovo Pretprodaja ulaznica: Edukacijsko-interpretac",
+      "link": "https://valpovo.hr/events/hit-komedija-vrata-do/",
+      "izvor": "valpovo.hr",
+      "IMAGE_URL": "https://valpovo.hr/wp-content/uploads/2026/10/Velika-stavka-VRATA-DO_letak_1.jpg",
+      "link_alt": "https://tz.valpovo.hr/2026/10/22/hit-komedija-vrata-do/"
     }
   ]
 };
