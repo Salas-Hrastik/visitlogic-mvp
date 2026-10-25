@@ -1,5 +1,5 @@
 // AUTO-GENERATED — ne editiraj ručno!
-// Zadnje skrapanje: 2026-10-24 10:39 UTC
+// Zadnje skrapanje: 2026-10-25 11:04 UTC
 // Izvor: tz.valpovo.hr, valpovo.hr
 // GitHub Actions job: scrape-valpovo (dnevno u 6:00 UTC)
 //
@@ -9,12 +9,12 @@
 
 export const scrapedContent = {
   "meta": {
-    "zadnje_azuriranje": "2026-10-24T10:39:43.499Z",
+    "zadnje_azuriranje": "2026-10-25T11:04:02.074Z",
     "izvori": [
       "https://tz.valpovo.hr",
       "https://valpovo.hr"
     ],
-    "broj_dogadanja": 29
+    "broj_dogadanja": 30
   },
   "novosti_tz": [
     {
@@ -99,6 +99,12 @@ export const scrapedContent = {
     }
   ],
   "novosti_grad": [
+    {
+      "naslov": "Od malih istraživača svemira do srednjoškolaca: sadržajan tjedan u Gradskoj knjižnici i čitaonici Valpovo",
+      "datum": "24. 10. 2026.",
+      "kratki_opis": "",
+      "link": "https://valpovo.hr/2026/10/25/od-malih-istrazivaca-svemira-do-srednjoskolaca-sadrzajan-tjedan-u-gradskoj-knjiznici-i-citaonici-valpovo/"
+    },
     {
       "naslov": "Obavijest o ekološkom i sigurnom odlaganju ambalaže – Jednokratni spremnici za helij",
       "datum": "23. 10. 2026.",
@@ -230,6 +236,17 @@ export const scrapedContent = {
     }
   ],
   "dogadanja": [
+    {
+      "naziv": "100 godina Valpovke",
+      "datum_od": "2026-06-20",
+      "datum_do": "2026-06-20",
+      "datum_tekst": "20. lipnja 2026",
+      "vrijeme": "",
+      "opis": "U subotu, 20. lipnja 2026. s početkom u 18:00 sati, u Sportskom parku Valpovo odigrat će se revijalna utakmica veterana NK Valpovke i veterana Hrvatske nogometne reprezentacije povodom 100 godina kluba. Ulaz: 5 €.",
+      "link": "https://valpovo.hr/events/100-godina-valpovke/",
+      "izvor": "valpovo.hr",
+      "IMAGE_URL": ""
+    },
     {
       "naziv": "SMOTRA AMATERSKOG KULTURNOG STVARALAŠTVA / 58. LJETO VALPOVAČKO (22. – 28.6.2026.)",
       "datum_od": "2026-06-28",
@@ -495,17 +512,6 @@ export const scrapedContent = {
       "link_alt": "https://tz.valpovo.hr/2026/09/29/obiteljska-predstava-luka-modric-moja-igra/"
     },
     {
-      "naziv": "Književna večer s Ivanom Šojat u Valpovu",
-      "datum_od": "2026-10-21",
-      "datum_do": "2026-10-21",
-      "datum_tekst": "21. 10. 2026.",
-      "vrijeme": "17:30",
-      "opis": "Gradska knjižnica i čitaonica Valpovo poziva sve ljubitelje književnosti na susret s Ivanom Šojat, jednom od istaknutih suvremenih hrvatskih književnica. Ivana Šojat, rođena Osječanka, književnica je i prevoditeljica čiji književni opus obuhvaća romane, poezij",
-      "link": "https://valpovo.hr/events/knjizevna-vecer-s-ivanom-sojat-u-valpovu/",
-      "izvor": "valpovo.hr",
-      "IMAGE_URL": "https://valpovo.hr/wp-content/uploads/2026/10/Ivana-Sojat-plakat.jpg"
-    },
-    {
       "naziv": "KONCERT: ANTE MILIĆ / klavir",
       "datum_od": "2026-10-23",
       "datum_do": "2026-10-23",
@@ -549,6 +555,17 @@ export const scrapedContent = {
       "link": "https://valpovo.hr/events/najava-radionice-ravnopravnost-spolova-u-sportu-u-edukacijsko-interpretacijskom-centru-valpovo/",
       "izvor": "valpovo.hr",
       "IMAGE_URL": "https://valpovo.hr/wp-content/uploads/2026/10/ravnopravnost-spolova.png"
+    },
+    {
+      "naziv": "Jasen Boko u Valpovu predstavlja knjigu „Tragovima Odiseja”",
+      "datum_od": "2026-10-29",
+      "datum_do": "2026-10-29",
+      "datum_tekst": "29. 10. 2026.",
+      "vrijeme": "18:00",
+      "opis": "Gradska knjižnica i čitaonica Valpovo organizira predstavljanje knjige „Tragovima Odiseja” hrvatskog putopisca i dramaturga Jasena Boke, koje će se održati u četvrtak, 29. listopada 2026. godine, s početkom u 18:00 sati, u prostoru Multimedije Gradske knjižnic",
+      "link": "https://valpovo.hr/events/jasen-boko-u-valpovu-predstavlja-knjigu-tragovima-odiseja/",
+      "izvor": "valpovo.hr",
+      "IMAGE_URL": "https://valpovo.hr/wp-content/uploads/2026/10/Promocija-knjige-Tragovima-Odiseja-plakat.jpg"
     },
     {
       "naziv": "HIT KOMEDIJA: „ VRATA DO “",
