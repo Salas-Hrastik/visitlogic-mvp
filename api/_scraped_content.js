@@ -1,5 +1,5 @@
 // AUTO-GENERATED — ne editiraj ručno!
-// Zadnje skrapanje: 2026-10-26 12:36 UTC
+// Zadnje skrapanje: 2026-10-27 11:54 UTC
 // Izvor: tz.valpovo.hr, valpovo.hr
 // GitHub Actions job: scrape-valpovo (dnevno u 6:00 UTC)
 //
@@ -9,7 +9,7 @@
 
 export const scrapedContent = {
   "meta": {
-    "zadnje_azuriranje": "2026-10-26T12:36:40.891Z",
+    "zadnje_azuriranje": "2026-10-27T11:54:12.527Z",
     "izvori": [
       "https://tz.valpovo.hr",
       "https://valpovo.hr"
@@ -100,6 +100,12 @@ export const scrapedContent = {
   ],
   "novosti_grad": [
     {
+      "naslov": "Edukativna radionica o Nikoli Tesli za predškolce u Gradskoj knjižnici i čitaonici Valpovo",
+      "datum": "26. 10. 2026.",
+      "kratki_opis": "",
+      "link": "https://valpovo.hr/2026/10/26/edukativna-radionica-o-nikoli-tesli-za-predskolce-u-gradskoj-knjiznici-i-citaonici-valpovo/"
+    },
+    {
       "naslov": "Od malih istraživača svemira do srednjoškolaca: sadržajan tjedan u Gradskoj knjižnici i čitaonici Valpovo",
       "datum": "24. 10. 2026.",
       "kratki_opis": "",
@@ -128,12 +134,6 @@ export const scrapedContent = {
       "datum": "19. 10. 2026.",
       "kratki_opis": "",
       "link": "https://valpovo.hr/2026/10/19/odrzano-drugo-izdanje-buvljaka-bez-novca-u-valpovu-zabiljezen-napredak-u-razmjeni-sezonske-odjece/"
-    },
-    {
-      "naslov": "U Gradskoj knjižnici i čitaonici Valpovo otvoren Mjesec hrvatske knjige 2026.",
-      "datum": "16. 10. 2026.",
-      "kratki_opis": "",
-      "link": "https://valpovo.hr/2026/10/16/u-gradskoj-knjiznici-i-citaonici-valpovo-otvoren-mjesec-hrvatske-knjige-2026/"
     }
   ],
   "manifestacije_aktualne": [
