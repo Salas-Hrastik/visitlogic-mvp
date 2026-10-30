@@ -1,5 +1,5 @@
 // AUTO-GENERATED — ne editiraj ručno!
-// Zadnje skrapanje: 2026-10-29 12:39 UTC
+// Zadnje skrapanje: 2026-10-30 12:30 UTC
 // Izvor: tz.valpovo.hr, valpovo.hr
 // GitHub Actions job: scrape-valpovo (dnevno u 6:00 UTC)
 //
@@ -9,7 +9,7 @@
 
 export const scrapedContent = {
   "meta": {
-    "zadnje_azuriranje": "2026-10-29T12:39:06.079Z",
+    "zadnje_azuriranje": "2026-10-30T12:30:26.207Z",
     "izvori": [
       "https://tz.valpovo.hr",
       "https://valpovo.hr"
@@ -17,6 +17,14 @@ export const scrapedContent = {
     "broj_dogadanja": 29
   },
   "novosti_tz": [
+    {
+      "naslov": "TURISTIČKOJ ZAJEDNICI GRADA VALPOVA ODOBRENA SREDSTVA ZA SADNJU 13 SADNICA STABALA U OKVIRU PROJEKTA „HRVATSKA PRIRODNO ",
+      "datum": "lis 30, 2026",
+      "datum_iso": "2026-10-30",
+      "kratki_opis": "U okviru Projekta poticanja razvoja održivog turizma „Hrvatska prirodno tvoja“, koji provodi Hrvatska turistička zajednica, Turistička zajednica Grada Valpova i ove je godine sudjelovala ...",
+      "link": "https://tz.valpovo.hr/2026/10/30/turistickoj-zajednici-grada-valpova-odobrena-sredstva-za-sadnju-13-sadnica-stabala-u-okviru-projekta-hrvatska-prirodno-tvoja/",
+      "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/10/867176489_1130849892667237_6989820430562475406_n-sadnja-sadnica-hrvatska-prirodna-tvoja-tz-valpovo.jpg"
+    },
     {
       "naslov": "HIT KOMEDIJA: „ VRATA DO “",
       "datum": "lis 22, 2026",
@@ -88,52 +96,44 @@ export const scrapedContent = {
       "kratki_opis": "Drugi i završni dan 8. Valpovo Craft Beer Festa započeo je tradicionalnom Pivskom miljom na kojoj su najuspješniji sudionici bili Damir Markota, koji je ...",
       "link": "https://tz.valpovo.hr/2026/09/13/urban-4-zakljucili-jos-jedan-sjajan-valpovo-craft-beer-fest/",
       "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/09/3B9A2208-8-craft-beer-fest-2026-drugi-dan.jpg"
-    },
-    {
-      "naslov": "ODLIČAN POČETAK 8. VALPOVO CRAFT BEER FESTA!",
-      "datum": "ruj 12, 2026",
-      "datum_iso": "2026-09-12",
-      "kratki_opis": "Prvi dan osmoga po redu Valpovo Craft Beer Festa u prekrasnom ambijentu dvorca Prandau-Normann, okupio je ljubitelje craft piva koji su uživali u bogatoj ...",
-      "link": "https://tz.valpovo.hr/2026/09/12/odlican-pocetak-8-valpovo-craft-beer-festa/",
-      "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/09/3B9A0816-8-craft-beer-fest-2026-prvi-dan.jpg"
     }
   ],
   "novosti_grad": [
+    {
+      "naslov": "TURISTIČKOJ ZAJEDNICI GRADA VALPOVA ODOBRENA SREDSTVA ZA SADNJU 13 SADNICA STABALA U OKVIRU PROJEKTA „HRVATSKA PRIRODNO ",
+      "datum": "30. 10. 2026.",
+      "kratki_opis": "",
+      "link": "https://valpovo.hr/2026/10/30/turistickoj-zajednici-grada-valpova-odobrena-sredstva-za-sadnju-13-sadnica-stabala-u-okviru-projekta-hrvatska-prirodno-tvoja/"
+    },
+    {
+      "naslov": "Jasen Boko u Valpovu predstavio putopis „Tragovima Odiseja“",
+      "datum": "30. 10. 2026.",
+      "kratki_opis": "",
+      "link": "https://valpovo.hr/2026/10/30/jasen-boko-u-valpovu-predstavio-putopis-tragovima-odiseja/"
+    },
+    {
+      "naslov": "Grad Valpovo poziva građane na donaciju božićne jelke",
+      "datum": "30. 10. 2026.",
+      "kratki_opis": "Grad Valpovo poziva sve građane grada Valpova i prigradskih naselja koji žele donirati božićnu jelku za ukrašavanje javnih površina da se jave na broj telefona: 031/656-207 najkasnije do ponedjeljka, ",
+      "link": "https://valpovo.hr/2026/10/30/grad-valpovo-poziva-gradane-na-donaciju-bozicne-jelke/"
+    },
+    {
+      "naslov": "Umirovljenici Jastrebarskog i Valpova zajedno u Valpovu",
+      "datum": "30. 10. 2026.",
+      "kratki_opis": "",
+      "link": "https://valpovo.hr/2026/10/30/umirovljenici-jastrebarskog-i-valpova-zajedno-u-valpovu/"
+    },
+    {
+      "naslov": "Uspješno održana radionica o ravnopravnosti spolova u sportu u Valpovu",
+      "datum": "30. 10. 2026.",
+      "kratki_opis": "",
+      "link": "https://valpovo.hr/2026/10/30/uspjesno-odrzana-radionica-o-ravnopravnosti-spolova-u-sportu-u-valpovu/"
+    },
     {
       "naslov": "Edukativna radionica o Nikoli Tesli za predškolce u Gradskoj knjižnici i čitaonici Valpovo",
       "datum": "26. 10. 2026.",
       "kratki_opis": "",
       "link": "https://valpovo.hr/2026/10/26/edukativna-radionica-o-nikoli-tesli-za-predskolce-u-gradskoj-knjiznici-i-citaonici-valpovo/"
-    },
-    {
-      "naslov": "Od malih istraživača svemira do srednjoškolaca: sadržajan tjedan u Gradskoj knjižnici i čitaonici Valpovo",
-      "datum": "24. 10. 2026.",
-      "kratki_opis": "",
-      "link": "https://valpovo.hr/2026/10/25/od-malih-istrazivaca-svemira-do-srednjoskolaca-sadrzajan-tjedan-u-gradskoj-knjiznici-i-citaonici-valpovo/"
-    },
-    {
-      "naslov": "Obavijest o ekološkom i sigurnom odlaganju ambalaže – Jednokratni spremnici za helij",
-      "datum": "23. 10. 2026.",
-      "kratki_opis": "",
-      "link": "https://valpovo.hr/2026/10/23/obavijest-o-ekoloskom-i-sigurnom-odlaganju-ambalaze-jednokratni-spremnici-za-helij/"
-    },
-    {
-      "naslov": "U Gradskoj knjižnici i čitaonici Valpovo održana književna večer s Ivanom Šojat",
-      "datum": "22. 10. 2026.",
-      "kratki_opis": "",
-      "link": "https://valpovo.hr/2026/10/22/u-gradskoj-knjiznici-i-citaonici-valpovo-odrzana-knjizevna-vecer-s-ivanom-sojat/"
-    },
-    {
-      "naslov": "Poezija, vino i gitara – večer za pamćenje u Gradskoj knjižnici i čitaonici Valpovo",
-      "datum": "19. 10. 2026.",
-      "kratki_opis": "",
-      "link": "https://valpovo.hr/2026/10/19/poezija-vino-i-gitara-vecer-za-pamcenje-u-gradskoj-knjiznici-i-citaonici-valpovo/"
-    },
-    {
-      "naslov": "Održano drugo izdanje “Buvljaka bez novca” u Valpovu: Zabilježen napredak u razmjeni sezonske odjeće",
-      "datum": "19. 10. 2026.",
-      "kratki_opis": "",
-      "link": "https://valpovo.hr/2026/10/19/odrzano-drugo-izdanje-buvljaka-bez-novca-u-valpovu-zabiljezen-napredak-u-razmjeni-sezonske-odjece/"
     }
   ],
   "manifestacije_aktualne": [
@@ -285,17 +285,6 @@ export const scrapedContent = {
       "izvor": "valpovo.hr",
       "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/07/eurochestries-2026-novo-centar-kulture.jpg",
       "link_alt": "https://tz.valpovo.hr/2026/07/18/zbog-najave-loseg-vremena-koncert-eurochestries-croatia-2026-seli-u-centar-kulture-matija-petar-katancic-valpovo/"
-    },
-    {
-      "naziv": "EUROCHESTRIES U VALPOVU!",
-      "datum_od": "2026-07-19",
-      "datum_do": "2026-07-19",
-      "datum_tekst": "19. srpnja",
-      "vrijeme": "",
-      "opis": "Asocijacija Eurochestries, sa sjedištem u Francuskoj, osnovana je 1989. godine. Okuplja mladež klasične provenijencije iz cijeloga svijeta te organizira festivale, kongrese i kampove s ciljem povezivanja mladih glazbenika, dirigenata i organizatora festivala i",
-      "link": "https://tz.valpovo.hr/2026/07/16/eurochestries-u-valpovu/",
-      "izvor": "tz.valpovo.hr",
-      "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/07/euroochestries-valpovo.jpg"
     },
     {
       "naziv": "PREDSTAVNICI GRADA VALPOVA GOSTOVALI NA 22. EKO ETNO GACKOJ U OTOČCU",
@@ -510,12 +499,23 @@ export const scrapedContent = {
       "naziv": "Najava radionice: „Ravnopravnost spolova u sportu“ u Edukacijsko-interpretacijskom centru Valpovo",
       "datum_od": "2026-10-28",
       "datum_do": "2026-10-28",
-      "datum_tekst": "28. 10. 2026.",
-      "vrijeme": "17:00",
+      "datum_tekst": "28. listopada 2026",
+      "vrijeme": "",
       "opis": "VALPOVO / U srijedu, 28. listopada 2026. godine, s početkom u 17:00 sati, Edukacijsko-interpretacijski centar Valpovo ugostit će edukativnu radionicu na temu „Ravnopravnost spolova u sportu“. Događaj je namijenjen lokalnim trenerima, sportskim radnicima te cje",
       "link": "https://valpovo.hr/events/najava-radionice-ravnopravnost-spolova-u-sportu-u-edukacijsko-interpretacijskom-centru-valpovo/",
       "izvor": "valpovo.hr",
-      "IMAGE_URL": "https://valpovo.hr/wp-content/uploads/2026/10/ravnopravnost-spolova.png"
+      "IMAGE_URL": ""
+    },
+    {
+      "naziv": "Jasen Boko u Valpovu predstavlja knjigu „Tragovima Odiseja”",
+      "datum_od": "2026-10-29",
+      "datum_do": "2026-10-29",
+      "datum_tekst": "29. 10. 2026.",
+      "vrijeme": "18:00",
+      "opis": "Gradska knjižnica i čitaonica Valpovo organizira predstavljanje knjige „Tragovima Odiseja” hrvatskog putopisca i dramaturga Jasena Boke, koje će se održati u četvrtak, 29. listopada 2026. godine, s početkom u 18:00 sati, u prostoru Multimedije Gradske knjižnic",
+      "link": "https://valpovo.hr/events/jasen-boko-u-valpovu-predstavlja-knjigu-tragovima-odiseja/",
+      "izvor": "valpovo.hr",
+      "IMAGE_URL": "https://valpovo.hr/wp-content/uploads/2026/10/Promocija-knjige-Tragovima-Odiseja-plakat.jpg"
     },
     {
       "naziv": "Mjesec hrvatske knjige u Valpovu: izložba Gorana Dojkića i predstavljanje zbirke poezije „Pitanja starija od mene”",
@@ -540,15 +540,15 @@ export const scrapedContent = {
       "IMAGE_URL": ""
     },
     {
-      "naziv": "Jasen Boko u Valpovu predstavlja knjigu „Tragovima Odiseja”",
-      "datum_od": "2026-10-29",
-      "datum_do": "2026-10-29",
-      "datum_tekst": "29. 10. 2026.",
+      "naziv": "„Kroz dvije pukotine u kvantni svijet”: predavanje doc.dr.sc. Denisa Stanića u Gradskoj knjižnici i čitaonici Valpovo",
+      "datum_od": "2026-11-05",
+      "datum_do": "2026-11-05",
+      "datum_tekst": "05. 11. 2026.",
       "vrijeme": "18:00",
-      "opis": "Gradska knjižnica i čitaonica Valpovo organizira predstavljanje knjige „Tragovima Odiseja” hrvatskog putopisca i dramaturga Jasena Boke, koje će se održati u četvrtak, 29. listopada 2026. godine, s početkom u 18:00 sati, u prostoru Multimedije Gradske knjižnic",
-      "link": "https://valpovo.hr/events/jasen-boko-u-valpovu-predstavlja-knjigu-tragovima-odiseja/",
+      "opis": "Gradska knjižnica i čitaonica Valpovo organizira još jedno zanimljivo predavanje u sklopu Mjeseca hrvatske knjige 2026. pod nazivom „Kroz dvije pukotine u kvantni svijet”, koje će održati doc. dr. sc. Denis Stanić. Predavanje će publiku uvesti u svijet kvantne",
+      "link": "https://valpovo.hr/events/kroz-dvije-pukotine-u-kvantni-svijet-predavanje-doc-dr-sc-denisa-stanica-u-gradskoj-knjiznici-i-citaonici-valpovo/",
       "izvor": "valpovo.hr",
-      "IMAGE_URL": "https://valpovo.hr/wp-content/uploads/2026/10/Promocija-knjige-Tragovima-Odiseja-plakat.jpg"
+      "IMAGE_URL": "https://valpovo.hr/wp-content/uploads/2026/10/Kroz-dvije-pukotine-u-kvantni-svijet-–-plakat.jpg"
     },
     {
       "naziv": "HIT KOMEDIJA: „ VRATA DO “",
