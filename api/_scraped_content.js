@@ -1,5 +1,5 @@
 // AUTO-GENERATED — ne editiraj ručno!
-// Zadnje skrapanje: 2026-10-30 12:30 UTC
+// Zadnje skrapanje: 2026-10-31 11:59 UTC
 // Izvor: tz.valpovo.hr, valpovo.hr
 // GitHub Actions job: scrape-valpovo (dnevno u 6:00 UTC)
 //
@@ -9,12 +9,12 @@
 
 export const scrapedContent = {
   "meta": {
-    "zadnje_azuriranje": "2026-10-30T12:30:26.207Z",
+    "zadnje_azuriranje": "2026-10-31T11:59:11.740Z",
     "izvori": [
       "https://tz.valpovo.hr",
       "https://valpovo.hr"
     ],
-    "broj_dogadanja": 29
+    "broj_dogadanja": 30
   },
   "novosti_tz": [
     {
@@ -551,15 +551,26 @@ export const scrapedContent = {
       "IMAGE_URL": "https://valpovo.hr/wp-content/uploads/2026/10/Kroz-dvije-pukotine-u-kvantni-svijet-–-plakat.jpg"
     },
     {
+      "naziv": "Predstavljanje knjige „Jestive gljive u Hrvatskoj” autora Željka Križevca u Gradskoj knjižnici i čitaonici Valpovo",
+      "datum_od": "2026-11-06",
+      "datum_do": "2026-11-06",
+      "datum_tekst": "06. 11. 2026.",
+      "vrijeme": "18:00",
+      "opis": "Gradska knjižnica i čitaonica Valpovo poziva Vas na još jedno zanimljivo događanje koje se održava u sklopu Mjeseca hrvatske knjige 2026., a ovog puta radi se o predstavljanju knjige „Jestive gljive u Hrvatskoj” profesora i mikologa Željka Križevca. Predstavlj",
+      "link": "https://valpovo.hr/events/predstavljanje-knjige-jestive-gljive-u-hrvatskoj-autora-zeljka-krizevca-u-gradskoj-knjiznici-i-citaonici-valpovo/",
+      "izvor": "valpovo.hr",
+      "IMAGE_URL": "https://valpovo.hr/wp-content/uploads/2026/10/Predstavljanje-knjige-Jestive-gljive-u-Hrvatskoj-1.jpg"
+    },
+    {
       "naziv": "HIT KOMEDIJA: „ VRATA DO “",
       "datum_od": "2026-11-10",
       "datum_do": "2026-11-10",
-      "datum_tekst": "10. 11. 2026.",
-      "vrijeme": "19:30 - 20:30",
+      "datum_tekst": "10.11.2026",
+      "vrijeme": "",
       "opis": "Ustanova za kulturne djelatnosti „Ante Evetović Miroljub“ Valpovo i TEATAR EXIT Vam donose HIT KOMEDIJU: „ VRATA DO “ Vrijeme: Utorak, 10.11.2026. u 19:30 sati Mjesto: Centar kulture „Matija Petar Katančić“ Valpovo Pretprodaja ulaznica: Edukacijsko-interpretac",
       "link": "https://valpovo.hr/events/hit-komedija-vrata-do/",
       "izvor": "valpovo.hr",
-      "IMAGE_URL": "https://valpovo.hr/wp-content/uploads/2026/10/Velika-stavka-VRATA-DO_letak_1.jpg",
+      "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/10/Velika-stavka-VRATA-DO_letak_1.jpg",
       "link_alt": "https://tz.valpovo.hr/2026/10/22/hit-komedija-vrata-do/"
     }
   ]
