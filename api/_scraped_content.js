@@ -1,5 +1,5 @@
 // AUTO-GENERATED — ne editiraj ručno!
-// Zadnje skrapanje: 2026-11-02 06:17 UTC
+// Zadnje skrapanje: 2026-11-02 15:14 UTC
 // Izvor: tz.valpovo.hr, valpovo.hr
 // GitHub Actions job: scrape-valpovo (dnevno u 6:00 UTC)
 //
@@ -9,7 +9,7 @@
 
 export const scrapedContent = {
   "meta": {
-    "zadnje_azuriranje": "2026-11-02T06:17:31.658Z",
+    "zadnje_azuriranje": "2026-11-02T15:14:39.906Z",
     "izvori": [
       "https://tz.valpovo.hr",
       "https://valpovo.hr"
@@ -98,14 +98,7 @@ export const scrapedContent = {
       "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/09/3B9A2208-8-craft-beer-fest-2026-drugi-dan.jpg"
     }
   ],
-  "novosti_grad": [
-    {
-      "naslov": "TURISTIČKOJ ZAJEDNICI GRADA VALPOVA ODOBRENA SREDSTVA ZA SADNJU 13 SADNICA STABALA U OKVIRU PROJEKTA „HRVATSKA PRIRODNO ",
-      "datum": "30. 10. 2026.",
-      "kratki_opis": "",
-      "link": "https://valpovo.hr/2026/10/30/turistickoj-zajednici-grada-valpova-odobrena-sredstva-za-sadnju-13-sadnica-stabala-u-okviru-projekta-hrvatska-prirodno-tvoja/"
-    }
-  ],
+  "novosti_grad": [],
   "manifestacije_aktualne": [
     {
       "naziv": "DJEČJI GRADSKI KARNEVAL",
