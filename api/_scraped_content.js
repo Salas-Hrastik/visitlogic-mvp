@@ -1,5 +1,5 @@
 // AUTO-GENERATED — ne editiraj ručno!
-// Zadnje skrapanje: 2026-11-01 12:57 UTC
+// Zadnje skrapanje: 2026-11-02 06:17 UTC
 // Izvor: tz.valpovo.hr, valpovo.hr
 // GitHub Actions job: scrape-valpovo (dnevno u 6:00 UTC)
 //
@@ -9,7 +9,7 @@
 
 export const scrapedContent = {
   "meta": {
-    "zadnje_azuriranje": "2026-11-01T12:57:09.939Z",
+    "zadnje_azuriranje": "2026-11-02T06:17:31.658Z",
     "izvori": [
       "https://tz.valpovo.hr",
       "https://valpovo.hr"
@@ -104,36 +104,6 @@ export const scrapedContent = {
       "datum": "30. 10. 2026.",
       "kratki_opis": "",
       "link": "https://valpovo.hr/2026/10/30/turistickoj-zajednici-grada-valpova-odobrena-sredstva-za-sadnju-13-sadnica-stabala-u-okviru-projekta-hrvatska-prirodno-tvoja/"
-    },
-    {
-      "naslov": "Jasen Boko u Valpovu predstavio putopis „Tragovima Odiseja“",
-      "datum": "30. 10. 2026.",
-      "kratki_opis": "",
-      "link": "https://valpovo.hr/2026/10/30/jasen-boko-u-valpovu-predstavio-putopis-tragovima-odiseja/"
-    },
-    {
-      "naslov": "Grad Valpovo poziva građane na donaciju božićne jelke",
-      "datum": "30. 10. 2026.",
-      "kratki_opis": "Grad Valpovo poziva sve građane grada Valpova i prigradskih naselja koji žele donirati božićnu jelku za ukrašavanje javnih površina da se jave na broj telefona: 031/656-207 najkasnije do ponedjeljka, ",
-      "link": "https://valpovo.hr/2026/10/30/grad-valpovo-poziva-gradane-na-donaciju-bozicne-jelke/"
-    },
-    {
-      "naslov": "Umirovljenici Jastrebarskog i Valpova zajedno u Valpovu",
-      "datum": "30. 10. 2026.",
-      "kratki_opis": "",
-      "link": "https://valpovo.hr/2026/10/30/umirovljenici-jastrebarskog-i-valpova-zajedno-u-valpovu/"
-    },
-    {
-      "naslov": "Uspješno održana radionica o ravnopravnosti spolova u sportu u Valpovu",
-      "datum": "30. 10. 2026.",
-      "kratki_opis": "",
-      "link": "https://valpovo.hr/2026/10/30/uspjesno-odrzana-radionica-o-ravnopravnosti-spolova-u-sportu-u-valpovu/"
-    },
-    {
-      "naslov": "Edukativna radionica o Nikoli Tesli za predškolce u Gradskoj knjižnici i čitaonici Valpovo",
-      "datum": "26. 10. 2026.",
-      "kratki_opis": "",
-      "link": "https://valpovo.hr/2026/10/26/edukativna-radionica-o-nikoli-tesli-za-predskolce-u-gradskoj-knjiznici-i-citaonici-valpovo/"
     }
   ],
   "manifestacije_aktualne": [
