@@ -1,5 +1,5 @@
 // AUTO-GENERATED — ne editiraj ručno!
-// Zadnje skrapanje: 2026-11-02 15:14 UTC
+// Zadnje skrapanje: 2026-11-03 13:54 UTC
 // Izvor: tz.valpovo.hr, valpovo.hr
 // GitHub Actions job: scrape-valpovo (dnevno u 6:00 UTC)
 //
@@ -9,7 +9,7 @@
 
 export const scrapedContent = {
   "meta": {
-    "zadnje_azuriranje": "2026-11-02T15:14:39.906Z",
+    "zadnje_azuriranje": "2026-11-03T13:54:14.233Z",
     "izvori": [
       "https://tz.valpovo.hr",
       "https://valpovo.hr"
@@ -98,7 +98,14 @@ export const scrapedContent = {
       "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/09/3B9A2208-8-craft-beer-fest-2026-drugi-dan.jpg"
     }
   ],
-  "novosti_grad": [],
+  "novosti_grad": [
+    {
+      "naslov": "Uspješno završen projekt: Dječji vrtić Maza u Valpovu opremljen za viši pedagoški standard",
+      "datum": "03. 11. 2026.",
+      "kratki_opis": "",
+      "link": "https://valpovo.hr/2026/11/03/uspjesno-zavrsen-projekt-djecji-vrtic-maza-u-valpovu-opremljen-za-visi-pedagoski-standard/"
+    }
+  ],
   "manifestacije_aktualne": [
     {
       "naziv": "DJEČJI GRADSKI KARNEVAL",
