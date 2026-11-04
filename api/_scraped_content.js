@@ -1,5 +1,5 @@
 // AUTO-GENERATED — ne editiraj ručno!
-// Zadnje skrapanje: 2026-11-03 13:54 UTC
+// Zadnje skrapanje: 2026-11-04 14:02 UTC
 // Izvor: tz.valpovo.hr, valpovo.hr
 // GitHub Actions job: scrape-valpovo (dnevno u 6:00 UTC)
 //
@@ -9,7 +9,7 @@
 
 export const scrapedContent = {
   "meta": {
-    "zadnje_azuriranje": "2026-11-03T13:54:14.233Z",
+    "zadnje_azuriranje": "2026-11-04T14:02:59.983Z",
     "izvori": [
       "https://tz.valpovo.hr",
       "https://valpovo.hr"
@@ -99,6 +99,12 @@ export const scrapedContent = {
     }
   ],
   "novosti_grad": [
+    {
+      "naslov": "Uspješno završen ciklus edukacija u vrtićima: Projekt “Valpovo – Najčišći grad u Hrvatskoj” u studenom donosi novi buvlj",
+      "datum": "04. 11. 2026.",
+      "kratki_opis": "",
+      "link": "https://valpovo.hr/2026/11/04/uspjesno-zavrsen-ciklus-edukacija-u-vrticima-projekt-valpovo-najcisci-grad-u-hrvatskoj-u-studenom-donosi-novi-buvljak-i-programe-za-srednjoskolce/"
+    },
     {
       "naslov": "Uspješno završen projekt: Dječji vrtić Maza u Valpovu opremljen za viši pedagoški standard",
       "datum": "03. 11. 2026.",
