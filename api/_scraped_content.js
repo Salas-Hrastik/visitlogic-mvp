@@ -1,5 +1,5 @@
 // AUTO-GENERATED — ne editiraj ručno!
-// Zadnje skrapanje: 2026-11-04 14:02 UTC
+// Zadnje skrapanje: 2026-11-05 14:24 UTC
 // Izvor: tz.valpovo.hr, valpovo.hr
 // GitHub Actions job: scrape-valpovo (dnevno u 6:00 UTC)
 //
@@ -9,7 +9,7 @@
 
 export const scrapedContent = {
   "meta": {
-    "zadnje_azuriranje": "2026-11-04T14:02:59.983Z",
+    "zadnje_azuriranje": "2026-11-05T14:24:29.106Z",
     "izvori": [
       "https://tz.valpovo.hr",
       "https://valpovo.hr"
@@ -99,6 +99,12 @@ export const scrapedContent = {
     }
   ],
   "novosti_grad": [
+    {
+      "naslov": "[IZ MEDIJA – GRADONAČELNIK.HR] Valpovo među rekorderima po ulaganju u obitelji i djecu: Izdvajanja povećali za čak 433 p",
+      "datum": "05. 11. 2026.",
+      "kratki_opis": "",
+      "link": "https://valpovo.hr/2026/11/05/iz-medija-gradonacelnik-hr-valpovo-medu-rekorderima-po-ulaganju-u-obitelji-i-djecu-izdvajanja-povecali-za-cak-433-posto-vrtic-prosirili-za-91-malisana/"
+    },
     {
       "naslov": "Uspješno završen ciklus edukacija u vrtićima: Projekt “Valpovo – Najčišći grad u Hrvatskoj” u studenom donosi novi buvlj",
       "datum": "04. 11. 2026.",
