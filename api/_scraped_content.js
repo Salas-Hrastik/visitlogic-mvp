@@ -1,5 +1,5 @@
 // AUTO-GENERATED — ne editiraj ručno!
-// Zadnje skrapanje: 2026-11-05 14:24 UTC
+// Zadnje skrapanje: 2026-11-06 13:59 UTC
 // Izvor: tz.valpovo.hr, valpovo.hr
 // GitHub Actions job: scrape-valpovo (dnevno u 6:00 UTC)
 //
@@ -9,7 +9,7 @@
 
 export const scrapedContent = {
   "meta": {
-    "zadnje_azuriranje": "2026-11-05T14:24:29.106Z",
+    "zadnje_azuriranje": "2026-11-06T13:59:37.805Z",
     "izvori": [
       "https://tz.valpovo.hr",
       "https://valpovo.hr"
@@ -99,6 +99,18 @@ export const scrapedContent = {
     }
   ],
   "novosti_grad": [
+    {
+      "naslov": "/OŠ Matije Petra Katančića VALPOVO/ OBILAZAK GRADILIŠTA",
+      "datum": "06. 11. 2026.",
+      "kratki_opis": "VALPOVO – Gradonačelnik Matko Šutalo, u društvu županice Nataše Tramišak, obišao je danas gradilište Osnovne škole Matije Petra Katančića, gdje su u tijeku radovi na rekonstrukciji i dogradnji školsko",
+      "link": "https://valpovo.hr/2026/11/06/os-matije-petra-katancica-valpovo-obilazak-gradilista/"
+    },
+    {
+      "naslov": "IN MEMORIAM – MARIN SRAKIĆ",
+      "datum": "05. 11. 2026.",
+      "kratki_opis": "",
+      "link": "https://valpovo.hr/2026/11/05/in-memoriam-marin-srakic/"
+    },
     {
       "naslov": "[IZ MEDIJA – GRADONAČELNIK.HR] Valpovo među rekorderima po ulaganju u obitelji i djecu: Izdvajanja povećali za čak 433 p",
       "datum": "05. 11. 2026.",
