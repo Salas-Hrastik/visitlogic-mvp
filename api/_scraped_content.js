@@ -1,5 +1,5 @@
 // AUTO-GENERATED — ne editiraj ručno!
-// Zadnje skrapanje: 2026-11-06 13:59 UTC
+// Zadnje skrapanje: 2026-11-07 12:43 UTC
 // Izvor: tz.valpovo.hr, valpovo.hr
 // GitHub Actions job: scrape-valpovo (dnevno u 6:00 UTC)
 //
@@ -9,7 +9,7 @@
 
 export const scrapedContent = {
   "meta": {
-    "zadnje_azuriranje": "2026-11-06T13:59:37.805Z",
+    "zadnje_azuriranje": "2026-11-07T12:43:52.241Z",
     "izvori": [
       "https://tz.valpovo.hr",
       "https://valpovo.hr"
@@ -99,6 +99,12 @@ export const scrapedContent = {
     }
   ],
   "novosti_grad": [
+    {
+      "naslov": "Znanost koja oblikuje naš svijet: doc.dr.sc. Denis Stanić održao predavanje o kvantnoj fizici u Gradskoj knjižnici i čit",
+      "datum": "06. 11. 2026.",
+      "kratki_opis": "",
+      "link": "https://valpovo.hr/2026/11/06/znanost-koja-oblikuje-nas-svijet-doc-dr-sc-denis-stanic-odrzao-predavanje-o-kvantnoj-fizici-u-gradskoj-knjiznici-i-citaonici-valpovo/"
+    },
     {
       "naslov": "/OŠ Matije Petra Katančića VALPOVO/ OBILAZAK GRADILIŠTA",
       "datum": "06. 11. 2026.",
