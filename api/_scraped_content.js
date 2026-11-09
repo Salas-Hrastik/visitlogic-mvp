@@ -1,5 +1,5 @@
 // AUTO-GENERATED — ne editiraj ručno!
-// Zadnje skrapanje: 2026-11-07 12:43 UTC
+// Zadnje skrapanje: 2026-11-09 06:12 UTC
 // Izvor: tz.valpovo.hr, valpovo.hr
 // GitHub Actions job: scrape-valpovo (dnevno u 6:00 UTC)
 //
@@ -9,7 +9,7 @@
 
 export const scrapedContent = {
   "meta": {
-    "zadnje_azuriranje": "2026-11-07T12:43:52.241Z",
+    "zadnje_azuriranje": "2026-11-09T06:12:39.151Z",
     "izvori": [
       "https://tz.valpovo.hr",
       "https://valpovo.hr"
@@ -100,6 +100,12 @@ export const scrapedContent = {
   ],
   "novosti_grad": [
     {
+      "naslov": "Večer posvećena gljivama i gastronomiji: predstavljena knjiga „Jestive gljive u Hrvatskoj” Željka Križevca",
+      "datum": "07. 11. 2026.",
+      "kratki_opis": "",
+      "link": "https://valpovo.hr/2026/11/07/vecer-posvecena-gljivama-i-gastronomiji-predstavljena-knjiga-jestive-gljive-u-hrvatskoj-zeljka-krizevca/"
+    },
+    {
       "naslov": "Znanost koja oblikuje naš svijet: doc.dr.sc. Denis Stanić održao predavanje o kvantnoj fizici u Gradskoj knjižnici i čit",
       "datum": "06. 11. 2026.",
       "kratki_opis": "",
@@ -128,12 +134,6 @@ export const scrapedContent = {
       "datum": "04. 11. 2026.",
       "kratki_opis": "",
       "link": "https://valpovo.hr/2026/11/04/uspjesno-zavrsen-ciklus-edukacija-u-vrticima-projekt-valpovo-najcisci-grad-u-hrvatskoj-u-studenom-donosi-novi-buvljak-i-programe-za-srednjoskolce/"
-    },
-    {
-      "naslov": "Uspješno završen projekt: Dječji vrtić Maza u Valpovu opremljen za viši pedagoški standard",
-      "datum": "03. 11. 2026.",
-      "kratki_opis": "",
-      "link": "https://valpovo.hr/2026/11/03/uspjesno-zavrsen-projekt-djecji-vrtic-maza-u-valpovu-opremljen-za-visi-pedagoski-standard/"
     }
   ],
   "manifestacije_aktualne": [
