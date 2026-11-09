@@ -1,5 +1,5 @@
 // AUTO-GENERATED — ne editiraj ručno!
-// Zadnje skrapanje: 2026-11-09 06:12 UTC
+// Zadnje skrapanje: 2026-11-09 15:43 UTC
 // Izvor: tz.valpovo.hr, valpovo.hr
 // GitHub Actions job: scrape-valpovo (dnevno u 6:00 UTC)
 //
@@ -9,7 +9,7 @@
 
 export const scrapedContent = {
   "meta": {
-    "zadnje_azuriranje": "2026-11-09T06:12:39.151Z",
+    "zadnje_azuriranje": "2026-11-09T15:43:46.316Z",
     "izvori": [
       "https://tz.valpovo.hr",
       "https://valpovo.hr"
@@ -17,6 +17,14 @@ export const scrapedContent = {
     "broj_dogadanja": 17
   },
   "novosti_tz": [
+    {
+      "naslov": "PREMIJERA DOKUMENTARNOG FILMA: „SRCE VUKOVARA“",
+      "datum": "stu 09, 2026",
+      "datum_iso": "2026-11-09",
+      "kratki_opis": "Pozivamo vas na premijeru dokumentarnog filma o Vukovarskoj ratnoj bolnici 1991. godine „SRCE VUKOVARA“ Vrijeme: Nedjelja, 15.11.2026. u 19 sati Mjesto: Centar kulture „Matija ...",
+      "link": "https://tz.valpovo.hr/2026/11/09/premijera-dokumentarnog-filma-srce-vukovara/",
+      "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/11/srce-vukovara-plakat.jpg"
+    },
     {
       "naslov": "TURISTIČKOJ ZAJEDNICI GRADA VALPOVA ODOBRENA SREDSTVA ZA SADNJU 13 SADNICA STABALA U OKVIRU PROJEKTA „HRVATSKA PRIRODNO ",
       "datum": "lis 30, 2026",
@@ -88,14 +96,6 @@ export const scrapedContent = {
       "kratki_opis": "Matija Petar Katančić (1750-1825) najistaknutiji je hrvatski erudit s kraja 18. i početka 19. stoljeća koji je svojim znanstvenim i stručnim radom pokrivao široko ...",
       "link": "https://tz.valpovo.hr/2026/09/18/8-dani-matije-petra-katancica/",
       "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/09/Banner-Dani-MPK-2026.jpg"
-    },
-    {
-      "naslov": "URBAN & 4 ZAKLJUČILI JOŠ JEDAN SJAJAN VALPOVO CRAFT BEER FEST",
-      "datum": "ruj 13, 2026",
-      "datum_iso": "2026-09-13",
-      "kratki_opis": "Drugi i završni dan 8. Valpovo Craft Beer Festa započeo je tradicionalnom Pivskom miljom na kojoj su najuspješniji sudionici bili Damir Markota, koji je ...",
-      "link": "https://tz.valpovo.hr/2026/09/13/urban-4-zakljucili-jos-jedan-sjajan-valpovo-craft-beer-fest/",
-      "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/09/3B9A2208-8-craft-beer-fest-2026-drugi-dan.jpg"
     }
   ],
   "novosti_grad": [
@@ -128,12 +128,6 @@ export const scrapedContent = {
       "datum": "05. 11. 2026.",
       "kratki_opis": "",
       "link": "https://valpovo.hr/2026/11/05/iz-medija-gradonacelnik-hr-valpovo-medu-rekorderima-po-ulaganju-u-obitelji-i-djecu-izdvajanja-povecali-za-cak-433-posto-vrtic-prosirili-za-91-malisana/"
-    },
-    {
-      "naslov": "Uspješno završen ciklus edukacija u vrtićima: Projekt “Valpovo – Najčišći grad u Hrvatskoj” u studenom donosi novi buvlj",
-      "datum": "04. 11. 2026.",
-      "kratki_opis": "",
-      "link": "https://valpovo.hr/2026/11/04/uspjesno-zavrsen-ciklus-edukacija-u-vrticima-projekt-valpovo-najcisci-grad-u-hrvatskoj-u-studenom-donosi-novi-buvljak-i-programe-za-srednjoskolce/"
     }
   ],
   "manifestacije_aktualne": [
@@ -230,17 +224,6 @@ export const scrapedContent = {
     }
   ],
   "dogadanja": [
-    {
-      "naziv": "Zbog najave lošeg vremena koncert Eurochestries Croatia 2026 seli u Centar kulture “Matija Petar Katančić” Valpovo",
-      "datum_od": "2026-07-19",
-      "datum_do": "2026-07-19",
-      "datum_tekst": "19.7.2026",
-      "vrijeme": "",
-      "opis": "Zbog najave nepovoljnih vremenskih uvjeta, koncert u sklopu međunarodnog festivala mladih glazbenika Eurochestries Croatia 2026 neće se održati na otvorenom u Dvorcu Prandau-Normann. Program će se u nedjelju, 19.7.2026. s početkom u 20:00 sati, održati u velik",
-      "link": "https://tz.valpovo.hr/2026/07/18/zbog-najave-loseg-vremena-koncert-eurochestries-croatia-2026-seli-u-centar-kulture-matija-petar-katancic-valpovo/",
-      "izvor": "tz.valpovo.hr",
-      "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/07/eurochestries-2026-novo-centar-kulture.jpg"
-    },
     {
       "naziv": "PREDSTAVNICI GRADA VALPOVA GOSTOVALI NA 22. EKO ETNO GACKOJ U OTOČCU",
       "datum_od": "2026-07-24",
@@ -416,6 +399,17 @@ export const scrapedContent = {
       "link": "https://tz.valpovo.hr/2026/10/22/hit-komedija-vrata-do/",
       "izvor": "tz.valpovo.hr",
       "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/10/Velika-stavka-VRATA-DO_letak_1.jpg"
+    },
+    {
+      "naziv": "PREMIJERA DOKUMENTARNOG FILMA: „SRCE VUKOVARA“",
+      "datum_od": "2026-11-15",
+      "datum_do": "2026-11-15",
+      "datum_tekst": "15.11.2026",
+      "vrijeme": "",
+      "opis": "Pozivamo vas na premijeru dokumentarnog filma o Vukovarskoj ratnoj bolnici 1991. godine „SRCE VUKOVARA“ Vrijeme: Nedjelja, 15.11.2026. u 19 sati Mjesto: Centar kulture „Matija Petar Katančić“, Trg kralja Tomislava 2, Valpovo Scenarist i redatelj: Stipo Majić",
+      "link": "https://tz.valpovo.hr/2026/11/09/premijera-dokumentarnog-filma-srce-vukovara/",
+      "izvor": "tz.valpovo.hr",
+      "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/11/srce-vukovara-plakat.jpg"
     }
   ]
 };
