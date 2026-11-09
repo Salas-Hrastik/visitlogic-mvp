@@ -1,9 +1,9 @@
-import OpenAI from "openai";
+import Anthropic from "@anthropic-ai/sdk";
 import { db } from "./_database.js";
 import { scrapedContent } from "./_scraped_content.js";
 
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY
+const anthropic = new Anthropic({
+  apiKey: process.env.ANTHROPIC_API_KEY
 });
 
 // Ukloni IMAGE_URL polja iz konteksta — AI ih ne treba, samo povećavaju tokene
@@ -1792,21 +1792,21 @@ ${buildScrapedSection()}
     res.setHeader('Cache-Control', 'no-cache, no-transform');
     res.setHeader('X-Accel-Buffering', 'no');
 
-    const stream = await openai.chat.completions.create({
-      model: "gpt-4o-mini",
+    const stream = await anthropic.messages.create({
+      model: "claude-haiku-5-5",
+      system: systemPrompt,
       messages: [
-        { role: "system", content: systemPrompt },
         ...historyMessages,
         { role: "user", content: effectiveMessage }
       ],
-      temperature: isRecommendationQuery ? 0.5 : 0.3,
       max_tokens: category === 'opcenito' ? 900 : 500,
       stream: true
     });
 
-    for await (const chunk of stream) {
-      const content = chunk.choices[0]?.delta?.content;
-      if (content) res.write(`data: ${JSON.stringify({ t: content })}\n\n`);
+    for await (const event of stream) {
+      if (event.type === 'content_block_delta' && event.delta.type === 'text_delta') {
+        res.write(`data: ${JSON.stringify({ t: event.delta.text })}\n\n`);
+      }
     }
     res.write(`data: ${JSON.stringify({ done: true, category: category || null, suggestions: getSuggestions(category), images: extractImages(context) })}\n\n`);
     res.end();
