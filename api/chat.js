@@ -1219,7 +1219,10 @@ export default async function handler(req, res) {
     // Ako korisnik pita za radno vrijeme ili specifičan detalj → preskoči listing, pusti AI s kontekstom
     // NAPOMENA: isRecommendationQuery se više NE preskače — pre-gen sprječava halucinaciju čak i za preporuke
     const radnoVrijemeQuery = ['radno vrij','kada radi','radi li','do kada rad','od kada rad','opening hours','what time','öffnungszeiten','geöffnet','otvoreno','zatvoreno'].some(k => message.toLowerCase().includes(k));
-    const isGastroListing = category === 'gastronomija' && !radnoVrijemeQuery && !isDetailQuery && !isGeneralKnowledgeQuery && !isConversationalMode && matched;
+    const wantsPriceQuery = ['cjenik','jelovnik','cijena','cijene','koliko košta','koliko kosta','koliko stoji',
+      'menu','meni','što nude','što imaju','sto nude','sto imaju','what does it cost','how much','wie viel kostet',
+      'speisekarte','prezzo','quanto costa'].some(k => msgLower.includes(k));
+    const isGastroListing = category === 'gastronomija' && !radnoVrijemeQuery && !wantsPriceQuery && !isDetailQuery && !isGeneralKnowledgeQuery && !isConversationalMode && matched;
     if (isGastroListing) {
       const gastro = db.gastronomija || [];
 
