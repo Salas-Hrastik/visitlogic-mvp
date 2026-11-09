@@ -783,7 +783,12 @@ export default async function handler(req, res) {
       if (!faqReply && (ml.includes('ulaznic') || ml.includes('cijena ulaz') || ml.includes('koliko košta ulaz') ||
           ml.includes('koliko kosta ulaz') || ml.includes('naplaćuje li se ulaz') || ml.includes('ticket price') ||
           ml.includes('admission fee') || ml.includes('eintrittspr') ||
-          (ml.includes('koliko košta') && !ml.includes('toplice') && !ml.includes('restoran') && !ml.includes('hotel')))) {
+          (ml.includes('koliko košta') && !ml.includes('toplice') && !ml.includes('restoran') && !ml.includes('hotel') &&
+           !ml.includes('pizza') && !ml.includes('burger') && !ml.includes('jelo') && !ml.includes('piće') && !ml.includes('pice') &&
+           !ml.includes('jelovnik') && !ml.includes('cjenik') && !ml.includes('hex') && !ml.includes('jovalij') &&
+           !ml.includes('gurman') && !ml.includes('rasopaso') && !ml.includes('vesperas') && !ml.includes('čičak') && !ml.includes('cicak') &&
+           !ml.includes('pigment') && !ml.includes('roštilj') && !ml.includes('grill') && !ml.includes('kava') && !ml.includes('caffe') &&
+           !ml.includes('café') && !ml.includes('cafe')))) {
         faqReply =
           '💰 Ulaznice i cijene u Valpovu:\n\n' +
           '🌳 **Perivoj dvorca Prandau-Normann** — **Besplatno**, otvoreno cijele godine\n\n' +
