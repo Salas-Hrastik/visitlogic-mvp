@@ -1799,7 +1799,9 @@ ${buildScrapedSection()}
         ...historyMessages,
         { role: "user", content: effectiveMessage }
       ],
-      max_tokens: category === 'opcenito' ? 900 : 500,
+      max_tokens: category === 'opcenito' ? 1200 : 700,
+      thinking: { type: "disabled" },
+      output_config: { effort: "low" },
       stream: true
     });
 
