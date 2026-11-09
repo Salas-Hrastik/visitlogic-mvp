@@ -309,6 +309,9 @@ export const db = {
             "mobitel": "+385 99 579 1666",
             "radno_vrijeme": "Pon–Ned: 08:00–22:00",
             "napomena": "4.9★ (48 recenzija)",
+            "cjenovni_rang": "€€",
+            "cjenik_napomena": "Slavonska jela, roštilj, wok, pizza. Okvirne cijene: pizza 8–14 €, roštilj 12–22 €, slavonski specijaliteti 14–25 €. Za aktualni jelovnik nazovite ili pogledajte fotografije na Google Maps.",
+            "maps_url": "https://www.google.com/maps/search/?api=1&query=Restoran+Jovalija+Valpovo",
             "web": "https://tz.valpovo.hr/ugostiteljstvo/restoran-jovalija/"
         },
         {
@@ -319,13 +322,19 @@ export const db = {
             "telefon": "+385 31 651 230",
             "email": "info@restoran-park.hr",
             "radno_vrijeme": "Pon–Sub: 08:00–22:00 | Ned: 10:00–16:00",
+            "cjenovni_rang": "€€-€€€",
+            "cjenik_napomena": "Slavonska i kontinentalna kuhinja: roštilj, čobanac, riblja jela, svečani meniji. Okvirne cijene: glavna jela 14–32 €. Za aktualni jelovnik nazovite ili pogledajte fotografije na Google Maps.",
+            "maps_url": "https://www.google.com/maps/search/?api=1&query=Restoran+Park+Valpovo",
             "web": "https://restoran-park.hr"
         },
         {
             "naziv": "PIGment Burger Bar",
             "opis": "Vrhunski burgeri i moderna atmosfera u centru Valpova.",
             "adresa": "Trg kralja Tomislava 7, Valpovo",
-            "napomena": "5.0★ (29 recenzija) — burgeri, pulled pork"
+            "napomena": "5.0★ (29 recenzija) — burgeri, pulled pork",
+            "cjenovni_rang": "€€",
+            "cjenik_napomena": "Gourmet burgeri, pulled pork, pommes frites. Okvirne cijene: burger 9–15 €. Za aktualni jelovnik pogledajte fotografije na Google Maps.",
+            "maps_url": "https://www.google.com/maps/search/?api=1&query=PIGment+Burger+Bar+Valpovo"
         },
         {
             "naziv": "Bar i Pizzeria HEX",
@@ -334,6 +343,9 @@ export const db = {
             "adresa": "Trg kralja Tomislava 18, Valpovo",
             "telefon": "031/588-864",
             "radno_vrijeme": "Ned–Pon: 10:00–23:00 | Uto–Sub: 10:00–24:00 | Kuhinja: Uto–Sub 11:00–23:00, Ned–Pon 14:00–22:00",
+            "cjenovni_rang": "€€",
+            "cjenik_napomena": "Napuljska pizza, deserti (panna cotta, kolači). Okvirne cijene: pizza 8–14 €. Za aktualni cjenik nazovite 031/588-864 ili pogledajte fotografije na Google Maps.",
+            "maps_url": "https://www.google.com/maps/search/?api=1&query=Pizzeria+HEX+Valpovo",
             "web": "https://tz.valpovo.hr/ugostiteljstvo/bar-i-pizzeria-hex-valpovo/"
         },
         {
@@ -351,6 +363,8 @@ export const db = {
             "adresa": "Augusta Šenoe 107, Valpovo",
             "telefon": "031/653-077",
             "radno_vrijeme": "Objekt: Pon–Sub 13:00–21:00, Ned 14:00–21:00 | Dostava: Pon–Pet 08:30–22:00, Sub 10:00–22:00, Ned 12:30–22:00",
+            "cjenovni_rang": "€-€€",
+            "cjenik_napomena": "Pizza, roštilj, panirana jela, tjestenina. Okvirne cijene: pizza 7–11 €, roštilj 8–13 €. Za aktualni cjenik nazovite 031/653-077.",
             "maps_url": "https://www.google.com/maps/search/?api=1&query=Gurman+Valpovo",
             "web": "https://tz.valpovo.hr/ugostiteljstvo/gurman/"
         },
@@ -460,6 +474,8 @@ export const db = {
             "naziv": "Fast Food Vesperas",
             "adresa": "Ul. Zrinsko Frankopanska 48, Valpovo",
             "opis": "Burgeri, hot dog, sendviči — 4.9★ (118 recenzija)",
+            "cjenovni_rang": "€",
+            "cjenik_napomena": "Burgeri, hot dog, sendviči. Okvirne cijene: 3–8 €. Za aktualni cjenik pogledajte Google Maps (Fotografije).",
             "maps_url": "https://www.google.com/maps/search/?api=1&query=Fast+Food+Vesperas+Valpovo"
         },
         {
@@ -472,6 +488,8 @@ export const db = {
             "naziv": "RasoPaso",
             "adresa": "Strossmayerova ul. 2, Valpovo",
             "opis": "Restoran — 4.4★ (52 recenzije)",
+            "cjenovni_rang": "€€",
+            "cjenik_napomena": "Restoran. Za aktualni jelovnik i cijene pogledajte Google Maps (Fotografije) ili kontaktirajte objekt.",
             "maps_url": "https://www.google.com/maps/search/?api=1&query=RasoPaso+Valpovo"
         },
         {
@@ -479,6 +497,8 @@ export const db = {
             "adresa": "Kolodvorska ul. 3, Valpovo",
             "opis": "Pekara — 4.5★ (96 recenzija)",
             "radno_vrijeme": "Pon–Sub: 06:00–20:00",
+            "cjenovni_rang": "€",
+            "cjenik_napomena": "Kruh, peciva, burek, kroasani, kolači. Okvirne cijene: burek 1.50–3 €, kroasan 1–2 €, kruh 1.50–3 €.",
             "maps_url": "https://www.google.com/maps/search/?api=1&query=Čičak+pekara+Valpovo"
         },
         {
