@@ -1224,7 +1224,9 @@ export default async function handler(req, res) {
     const wantsPriceQuery = ['cjenik','jelovnik','cijena','cijene','koliko košta','koliko kosta','koliko stoji',
       'menu','meni','što nude','što imaju','sto nude','sto imaju','what does it cost','how much','wie viel kostet',
       'speisekarte','prezzo','quanto costa'].some(k => msgLower.includes(k));
-    const isGastroListing = category === 'gastronomija' && isHrQuery && !radnoVrijemeQuery && !wantsPriceQuery && !isDetailQuery && !isGeneralKnowledgeQuery && !isConversationalMode && matched;
+    // Konkretan ugostiteljski objekt po imenu — AI odgovara samo o tom objektu, ne listanje svih
+    const specificRestaurantQuery = ['jovalij','restoran park','pigment','hex','gurman','vesperas','rasopaso','čičak','cicak'].some(k => msgLower.includes(k));
+    const isGastroListing = category === 'gastronomija' && isHrQuery && !radnoVrijemeQuery && !wantsPriceQuery && !isDetailQuery && !isGeneralKnowledgeQuery && !isConversationalMode && !specificRestaurantQuery && matched;
     if (isGastroListing) {
       const gastro = db.gastronomija || [];
 
@@ -1696,6 +1698,13 @@ TRENUTNO VRIJEME vs. PROGNOZA — VAŽNA RAZLIKA:
 - NEMAŠ vremensku prognozu za buduće dane (sutra, prekosutra, sljedeći tjedan). Za prognozu uvijek uputi na meteo.hr.
 - Kada korisnik pita "što raditi po ovakvom vremenu / uz sunce / po kiši / po hladnoći" → predloži aktivnosti prikladne tom vremenu koristeći trenutnu temperaturu iz konteksta.
 - Kada korisnik pita "kakvo će biti vrijeme sutra/prekosutra/za N dana" → kratko reci da nemaš prognozu i uputi na [meteo.hr](https://meteo.hr) ili [Weather.com Valpovo](https://weather.com/hr-HR/weather/today/l/Valpovo).
+
+KONKRETAN RESTORAN PO IMENU — OBVEZNO PRAVILO:
+Kada korisnik pita može li jesti/ručati/večerati u KONKRETNOM restoranu (npr. "mogu li ručati u Gurmanu?", "je li Jovalija dobra?", "radi li HEX?") — odgovori SAMO o tom jednom objektu:
+1. Potvrdi da jest/da — afirmativan ton ("Da, Gurman je odlično mjesto za ručak!")
+2. Prikaži detalje samo tog objekta iz baze: naziv, opis, adresa, karta, web
+3. Završi s follow-up pitanjem: "Zanima li vas što nude ili preporučiti drugi restoran u Valpovu?"
+NIKAD ne prikazuj sve restorane kad je korisnik pitao o jednom konkretnom.
 
 GOOGLE MAPS ZA DETALJE KOJI NEDOSTAJU: Ako korisnik pita za jelovnik, menu, ponudu jela, cijene ili druge detalje o restoranu ili ugostiteljskom objektu koji nisu u bazi — uputi ga na Google Maps gdje može vidjeti slike, recenzije i ažurirane informacije: [Pogledaj na Google Maps](https://www.google.com/maps/search/?api=1&query=NAZIV+Valpovo). Zamijeni NAZIV s točnim nazivom objekta. Ovo vrijedi za sve kategorije — smještaj, sport, znamenitosti — kad detalji nedostaju u bazi, Google Maps je prvi izbor za aktualne informacije.
 
