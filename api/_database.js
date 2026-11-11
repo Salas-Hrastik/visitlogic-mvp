@@ -366,7 +366,7 @@ export const db = {
             "cjenovni_rang": "€-€€",
             "cjenik_napomena": "Pizza, roštilj, panirana jela, tjestenina. Okvirne cijene: pizza 7–11 €, roštilj 8–13 €. Za aktualni cjenik nazovite 031/653-077.",
             "maps_url": "https://www.google.com/maps/search/?api=1&query=Gurman+Valpovo",
-            "web": "https://tz.valpovo.hr/ugostiteljstvo/gurman/"
+            "web": "https://catering-gurman-valpovo.eatbu.hr/?lang=hr"
         },
         {
             "naziv": "Caffe Bar Kolaž",
