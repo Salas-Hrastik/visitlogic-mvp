@@ -261,48 +261,6 @@
             padding-bottom: 4px;
         }
 
-        .speak-btn {
-            background: none;
-            border: none;
-            cursor: pointer;
-            font-size: 26px;
-            opacity: 0.65;
-            transition: opacity 0.2s, transform 0.1s;
-            padding: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-        }
-
-        .speak-btn:hover {
-            opacity: 1;
-            background: rgba(0, 0, 0, 0.05);
-        }
-
-        .speak-btn:active {
-            transform: scale(0.9);
-        }
-
-        .speak-btn.playing {
-            color: #d32f2f;
-            animation: pulse 1.5s infinite;
-        }
-
-        @keyframes pulse {
-            0% {
-                opacity: 1;
-            }
-
-            50% {
-                opacity: 0.5;
-            }
-
-            100% {
-                opacity: 1;
-            }
-        }
-
         .mic-btn {
             background: #f0f0f0;
             border: none;
@@ -794,8 +752,6 @@
         const micBtn = document.getElementById("mic-btn");
         let isProcessing = false;
         let isRecording = false;
-        let currentAudio = null;
-        let currentSpeakerBtn = null;
         let currentWeather = null;
 
         // ── MULTILINGUALNOST — mora biti OVDJE, prije prvog poziva addMessage() ──
@@ -1005,13 +961,9 @@
                 div.innerHTML = `
                     <div class="ai-header">
                         <span style="font-size: 0.8em; opacity: 0.5; font-weight: bold;">${headerLabel}</span>
-                        <button class="speak-btn">🔊</button>
                     </div>
                     <div class="ai-content">${html}</div>
                 `;
-                div.querySelector('.speak-btn').addEventListener('click', function () {
-                    speakText(this, content);
-                });
             } else {
                 div.textContent = content;
             }
@@ -1022,86 +974,6 @@
             div.scrollIntoView({ behavior: "smooth", block: "start" });
 
             return div;
-        }
-
-        /* ── GLASOVNE FUNKCIJE ── */
-
-        // Čisti tekst za TTS: uklanja markdown, linkove → fonetski opis
-        function cleanForSpeech(text) {
-            return text
-                // Hrvatski Maps linkovi → "Otvori na mapi"
-                .replace(/\[Otvori na karti\]\([^)]+\)/g, 'Otvori na mapi.')
-                // Engleski Maps linkovi → "Open on map"
-                .replace(/\[Open on map\]\([^)]+\)/g, 'Open on map.')
-                // Njemački Maps linkovi → "Auf der Karte öffnen"
-                .replace(/\[Auf der Karte[^\]]*\]\([^)]+\)/g, 'Auf der Karte öffnen.')
-                // Hrvatski "Više informacija..." → "Više informacija na webu"
-                .replace(/\[Više informacija[^\]]*\]\([^)]+\)/g, 'Više informacija na webu.')
-                // Engleski "More information..." → "More information on the web"
-                .replace(/\[More information[^\]]*\]\([^)]+\)/g, 'More information on the web.')
-                // Njemački "Mehr Informationen..." → "Mehr Informationen im Web"
-                .replace(/\[Mehr Informationen[^\]]*\]\([^)]+\)/g, 'Mehr Informationen im Web.')
-                // Svi ostali markdown linkovi → samo label tekst (čita se label)
-                .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
-                // Ukloni markdown bold **tekst**
-                .replace(/\*\*([^*]+)\*\*/g, '$1')
-                // Ukloni emoji znakove
-                .replace(/[\u{1F300}-\u{1F9FF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}\u{1F000}-\u{1FFFF}]/gu, '')
-                // Pretvori višestruke newline u pauzu
-                .replace(/\n+/g, '. ')
-                // Ukloni višestruke razmake
-                .replace(/\s{2,}/g, ' ')
-                .trim();
-        }
-
-        async function speakText(btn, text) {
-            if (currentAudio) {
-                currentAudio.pause();
-                currentSpeakerBtn.classList.remove("playing");
-                currentSpeakerBtn.innerHTML = "🔊";
-
-                if (currentSpeakerBtn === btn) {
-                    currentAudio = null;
-                    currentSpeakerBtn = null;
-                    return;
-                }
-            }
-
-            btn.classList.add("playing");
-            btn.innerHTML = "🛑";
-            currentSpeakerBtn = btn;
-
-            // iOS Safari: Audio objekt mora biti kreiran SINHRONO unutar click handlera
-            // (prije bilo kojeg await), inače browser blokira reprodukciju
-            const audio = new Audio();
-            currentAudio = audio;
-            audio.onended = () => {
-                btn.classList.remove("playing");
-                btn.innerHTML = "🔊";
-                currentAudio = null;
-                currentSpeakerBtn = null;
-            };
-
-            try {
-                const response = await fetch("/api/speak", {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ text: cleanForSpeech(text).substring(0, 600) })
-                });
-
-                if (!response.ok) throw new Error("TTS failed");
-
-                const blob = await response.blob();
-                audio.src = URL.createObjectURL(blob);
-                await audio.play();
-
-            } catch (e) {
-                console.error("Speech error:", e);
-                btn.classList.remove("playing");
-                btn.innerHTML = "⚠️";
-                currentAudio = null;
-                currentSpeakerBtn = null;
-            }
         }
 
         let mediaRecorder;
@@ -1212,7 +1084,6 @@
             lastInputMethod = 'text';
             lastVoiceLang = null;
             if (voiceLang) currentLang = voiceLang; // ažuriraj aktivni jezik iz Whisper detekcije
-            const autoPlay = (inputMethod === 'voice'); // auto-čitaj odgovor nakon glasovnog upita
             const activeLang = currentLang;
             const text = inputEl.value.trim();
             if (!text || isProcessing) return;
@@ -1251,7 +1122,7 @@
                 const ct = response.headers.get('content-type') || '';
                 if (ct.includes('text/event-stream')) {
                     // SSE streaming — AI odgovor stiže u chunkovim
-                    await handleStream(response, activeLang, autoPlay);
+                    await handleStream(response, activeLang);
                 } else {
                     // JSON — pre-generirani odgovor (sport, smještaj, događanja, izleti)
                     const data = await response.json();
@@ -1282,7 +1153,7 @@
         }
 
         /* ── SSE STREAM HANDLER ── */
-        async function handleStream(response, lang = 'hr', autoPlay = false) {
+        async function handleStream(response, lang = 'hr') {
             const reader = response.body.getReader();
             const decoder = new TextDecoder();
             let buffer = '';
@@ -1328,15 +1199,6 @@
 
             // Finalni render kao markdown
             contentDiv.innerHTML = formatAI(fullText);
-
-            // Dodaj zvučnik gumb
-            const speakBtn = document.createElement('button');
-            speakBtn.className = 'speak-btn';
-            speakBtn.innerHTML = '🔊';
-            speakBtn.addEventListener('click', () => speakText(speakBtn, fullText));
-            msgDiv.querySelector('.ai-header').appendChild(speakBtn);
-
-            // 🔊 gumb je vidljiv — korisnik klikne kad želi čuti odgovor
 
             // Spremi u povijest
             conversationHistory.push({ role: 'assistant', content: fullText });
