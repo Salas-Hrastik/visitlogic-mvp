@@ -1,5 +1,5 @@
 // AUTO-GENERATED — ne editiraj ručno!
-// Zadnje skrapanje: 2026-11-09 15:43 UTC
+// Zadnje skrapanje: 2026-11-11 14:41 UTC
 // Izvor: tz.valpovo.hr, valpovo.hr
 // GitHub Actions job: scrape-valpovo (dnevno u 6:00 UTC)
 //
@@ -9,7 +9,7 @@
 
 export const scrapedContent = {
   "meta": {
-    "zadnje_azuriranje": "2026-11-09T15:43:46.316Z",
+    "zadnje_azuriranje": "2026-11-11T14:41:09.662Z",
     "izvori": [
       "https://tz.valpovo.hr",
       "https://valpovo.hr"
@@ -100,6 +100,18 @@ export const scrapedContent = {
   ],
   "novosti_grad": [
     {
+      "naslov": "Konkretna rješenja za inkluziju: U Valpovu uspješno održana radionica o uključivanju osoba s invaliditetom u sport",
+      "datum": "11. 11. 2026.",
+      "kratki_opis": "",
+      "link": "https://valpovo.hr/2026/11/11/konkretna-rjesenja-za-inkluziju-u-valpovu-uspjesno-odrzana-radionica-o-ukljucivanju-osoba-s-invaliditetom-u-sport/"
+    },
+    {
+      "naslov": "Večer posvećena filozofskom djelu prof.dr.sc. Vladimira Jelkića u Gradskoj knjižnici i čitaonici Valpovo",
+      "datum": "10. 11. 2026.",
+      "kratki_opis": "",
+      "link": "https://valpovo.hr/2026/11/10/vecer-posvecena-filozofskom-djelu-prof-dr-sc-vladimira-jelkica-u-gradskoj-knjiznici-i-citaonici-valpovo/"
+    },
+    {
       "naslov": "Večer posvećena gljivama i gastronomiji: predstavljena knjiga „Jestive gljive u Hrvatskoj” Željka Križevca",
       "datum": "07. 11. 2026.",
       "kratki_opis": "",
@@ -116,18 +128,6 @@ export const scrapedContent = {
       "datum": "06. 11. 2026.",
       "kratki_opis": "VALPOVO – Gradonačelnik Matko Šutalo, u društvu županice Nataše Tramišak, obišao je danas gradilište Osnovne škole Matije Petra Katančića, gdje su u tijeku radovi na rekonstrukciji i dogradnji školsko",
       "link": "https://valpovo.hr/2026/11/06/os-matije-petra-katancica-valpovo-obilazak-gradilista/"
-    },
-    {
-      "naslov": "IN MEMORIAM – MARIN SRAKIĆ",
-      "datum": "05. 11. 2026.",
-      "kratki_opis": "",
-      "link": "https://valpovo.hr/2026/11/05/in-memoriam-marin-srakic/"
-    },
-    {
-      "naslov": "[IZ MEDIJA – GRADONAČELNIK.HR] Valpovo među rekorderima po ulaganju u obitelji i djecu: Izdvajanja povećali za čak 433 p",
-      "datum": "05. 11. 2026.",
-      "kratki_opis": "",
-      "link": "https://valpovo.hr/2026/11/05/iz-medija-gradonacelnik-hr-valpovo-medu-rekorderima-po-ulaganju-u-obitelji-i-djecu-izdvajanja-povecali-za-cak-433-posto-vrtic-prosirili-za-91-malisana/"
     }
   ],
   "manifestacije_aktualne": [
