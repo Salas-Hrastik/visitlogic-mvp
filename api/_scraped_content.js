@@ -1,5 +1,5 @@
 // AUTO-GENERATED — ne editiraj ručno!
-// Zadnje skrapanje: 2026-11-11 14:41 UTC
+// Zadnje skrapanje: 2026-11-12 14:54 UTC
 // Izvor: tz.valpovo.hr, valpovo.hr
 // GitHub Actions job: scrape-valpovo (dnevno u 6:00 UTC)
 //
@@ -9,14 +9,22 @@
 
 export const scrapedContent = {
   "meta": {
-    "zadnje_azuriranje": "2026-11-11T14:41:09.662Z",
+    "zadnje_azuriranje": "2026-11-12T14:54:04.371Z",
     "izvori": [
       "https://tz.valpovo.hr",
       "https://valpovo.hr"
     ],
-    "broj_dogadanja": 17
+    "broj_dogadanja": 18
   },
   "novosti_tz": [
+    {
+      "naslov": "OKUSI SLAVONIJE I BARANJE U RESTORANU „PARK“ U VALPOVU",
+      "datum": "stu 12, 2026",
+      "datum_iso": "2026-11-12",
+      "kratki_opis": "Renomirani valpovački restoran „Park“ jedan je od restorana uvrštenih u turističko gastronomsku manifestaciju Okusi Slavonije i Baranje koja se održava od 13. do 29. ...",
+      "link": "https://tz.valpovo.hr/2026/11/12/okusi-slavonije-i-baranje-u-restoranu-park-u-valpovu/",
+      "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/11/903497739_2292670308249168_845421590555105280_n-restoran-park-valpovo.jpg"
+    },
     {
       "naslov": "PREMIJERA DOKUMENTARNOG FILMA: „SRCE VUKOVARA“",
       "datum": "stu 09, 2026",
@@ -88,17 +96,21 @@ export const scrapedContent = {
       "kratki_opis": "Povodom obilježavanja Međunarodnog dana starijih osoba (1. listopada), Turistička zajednica Grada Valpova i Grad Valpovo, u suradnji s Gradskim društvom Crvenog križa Valpovo i ...",
       "link": "https://tz.valpovo.hr/2026/09/24/sesta-valpovacka-staza-zdravlja/",
       "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/09/Turisticka-zajednica-valpovacka-staza-zdravlja-2026-face2.jpg"
-    },
-    {
-      "naslov": "8. Dani Matije Petra Katančića",
-      "datum": "ruj 18, 2026",
-      "datum_iso": "2026-09-18",
-      "kratki_opis": "Matija Petar Katančić (1750-1825) najistaknutiji je hrvatski erudit s kraja 18. i početka 19. stoljeća koji je svojim znanstvenim i stručnim radom pokrivao široko ...",
-      "link": "https://tz.valpovo.hr/2026/09/18/8-dani-matije-petra-katancica/",
-      "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/09/Banner-Dani-MPK-2026.jpg"
     }
   ],
   "novosti_grad": [
+    {
+      "naslov": "OKUSI SLAVONIJE I BARANJE U RESTORANU „PARK“ U VALPOVU",
+      "datum": "12. 11. 2026.",
+      "kratki_opis": "",
+      "link": "https://valpovo.hr/2026/11/12/okusi-slavonije-i-baranje-u-restoranu-park-u-valpovu/"
+    },
+    {
+      "naslov": "Obavijest o uklanjanju drveća u Osječkoj ulici",
+      "datum": "12. 11. 2026.",
+      "kratki_opis": "",
+      "link": "https://valpovo.hr/2026/11/12/obavijest-o-uklanjanju-drveca-u-osjeckoj-ulici/"
+    },
     {
       "naslov": "Konkretna rješenja za inkluziju: U Valpovu uspješno održana radionica o uključivanju osoba s invaliditetom u sport",
       "datum": "11. 11. 2026.",
@@ -122,12 +134,6 @@ export const scrapedContent = {
       "datum": "06. 11. 2026.",
       "kratki_opis": "",
       "link": "https://valpovo.hr/2026/11/06/znanost-koja-oblikuje-nas-svijet-doc-dr-sc-denis-stanic-odrzao-predavanje-o-kvantnoj-fizici-u-gradskoj-knjiznici-i-citaonici-valpovo/"
-    },
-    {
-      "naslov": "/OŠ Matije Petra Katančića VALPOVO/ OBILAZAK GRADILIŠTA",
-      "datum": "06. 11. 2026.",
-      "kratki_opis": "VALPOVO – Gradonačelnik Matko Šutalo, u društvu županice Nataše Tramišak, obišao je danas gradilište Osnovne škole Matije Petra Katančića, gdje su u tijeku radovi na rekonstrukciji i dogradnji školsko",
-      "link": "https://valpovo.hr/2026/11/06/os-matije-petra-katancica-valpovo-obilazak-gradilista/"
     }
   ],
   "manifestacije_aktualne": [
@@ -399,6 +405,17 @@ export const scrapedContent = {
       "link": "https://tz.valpovo.hr/2026/10/22/hit-komedija-vrata-do/",
       "izvor": "tz.valpovo.hr",
       "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/10/Velika-stavka-VRATA-DO_letak_1.jpg"
+    },
+    {
+      "naziv": "OKUSI SLAVONIJE I BARANJE U RESTORANU „PARK“ U VALPOVU",
+      "datum_od": "2026-11-13",
+      "datum_do": "2026-11-29",
+      "datum_tekst": "od 13. do 29. studenoga",
+      "vrijeme": "",
+      "opis": "Renomirani valpovački restoran „Park“ jedan je od restorana uvrštenih u turističko gastronomsku manifestaciju Okusi Slavonije i Baranje koja se održava od 13. do 29. studenoga ove godine. Tijekom dva tjedna, u sklopu nacionalne manifestacije Dani okusa hrvatsk",
+      "link": "https://tz.valpovo.hr/2026/11/12/okusi-slavonije-i-baranje-u-restoranu-park-u-valpovu/",
+      "izvor": "tz.valpovo.hr",
+      "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/11/903497739_2292670308249168_845421590555105280_n-restoran-park-valpovo.jpg"
     },
     {
       "naziv": "PREMIJERA DOKUMENTARNOG FILMA: „SRCE VUKOVARA“",
