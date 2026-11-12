@@ -976,79 +976,250 @@
             return div;
         }
 
-        let mediaRecorder;
-        let audioChunks = [];
+        // ===== GLASOVNI UNOS =====
+        // Web Speech API na svim platformama (uključujući iOS Safari 16.4+).
+        // Na iOS koristimo restart petlju (continuous=false) s akumulacijom teksta kroz cikluse
+        // i tajmerom od 2500 ms koji traje KROZ granice iOS sesija — ključ ispravnog rada.
+        // MediaRecorder + /api/transcribe (Whisper) je fallback ako Web Speech nije dostupan.
+        (function(){
+            const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+            const ua = navigator.userAgent || '';
+            const isIOS = /iPad|iPhone|iPod/.test(ua) ||
+                (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+            const canRecord = typeof MediaRecorder !== 'undefined' &&
+                !!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia);
 
-        async function toggleMic() {
-            if (isRecording) {
-                stopRecording();
-            } else {
-                startRecording();
+            const LANG_MAP = { hr:'hr-HR', en:'en-US', de:'de-DE', it:'it-IT', fr:'fr-FR', es:'es-ES' };
+            function getLang() { return LANG_MAP[currentLang] || 'hr-HR'; }
+
+            if (!SpeechRecognition && !canRecord) {
+                micBtn.style.display = "none";
+                return;
             }
-        }
 
-        async function startRecording() {
-            try {
-                const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-                mediaRecorder = new MediaRecorder(stream);
-                audioChunks = [];
+            // ---- Stanje glasovnog unosa ----
+            let voiceActive    = false;
+            let shouldSend     = false;
+            let iosBase        = '';
+            let transcript     = '';
+            let speechEndTimer = null;
+            let idleTimer      = null;
+            let currentRec     = null;
+            let useRecorder    = false;
 
-                mediaRecorder.ondataavailable = (event) => {
-                    audioChunks.push(event.data);
+            function clearTimers() {
+                if (speechEndTimer) { clearTimeout(speechEndTimer); speechEndTimer = null; }
+                if (idleTimer)      { clearTimeout(idleTimer);      idleTimer = null;      }
+            }
+
+            function resetMicUI() {
+                isRecording = false;
+                micBtn.classList.remove("recording");
+                micBtn.innerHTML = "🎤";
+                inputEl.placeholder = "Postavite pitanje...";
+            }
+
+            function finish() {
+                clearTimers();
+                shouldSend = true;
+                try { if (currentRec) currentRec.stop(); } catch(e) {}
+            }
+
+            function startListening(isRestart) {
+                if (currentRec) return;
+                if (!SpeechRecognition || useRecorder) { startRecordingCycle(); return; }
+                if (!isRestart) { transcript = ''; iosBase = ''; }
+
+                var rec = new SpeechRecognition();
+                rec.lang = getLang();
+                rec.interimResults = true;
+                rec.continuous = !isIOS;
+
+                rec.onresult = function(e) {
+                    var sessionText = '';
+                    for (var i = 0; i < e.results.length; i++) sessionText += e.results[i][0].transcript;
+                    var text = (isIOS && iosBase) ? iosBase + ' ' + sessionText : sessionText;
+                    transcript = text;
+                    inputEl.value = text;
+                    if (idleTimer) { clearTimeout(idleTimer); idleTimer = null; }
+                    if (speechEndTimer) clearTimeout(speechEndTimer);
+                    // Tajmer teče KROZ iOS cikluse — ne briše se u onend restart putanji
+                    speechEndTimer = setTimeout(finish, 2500);
                 };
 
-                mediaRecorder.onstop = async () => {
-                    const audioBlob = new Blob(audioChunks, { type: 'audio/webm' });
-                    sendToWhisper(audioBlob);
+                rec.onend = function() {
+                    currentRec = null;
+                    if (isIOS && voiceActive && !shouldSend) {
+                        // iOS restart putanja: NE diramo speechEndTimer
+                        iosBase = transcript;
+                        setTimeout(function() { if (voiceActive) startListening(true); }, 80);
+                        return;
+                    }
+                    clearTimers();
+                    var wasActive = voiceActive;
+                    voiceActive = false;
+                    shouldSend = false;
+                    resetMicUI();
+                    if (wasActive && transcript.trim()) {
+                        lastInputMethod = 'voice';
+                        lastVoiceLang = null;
+                        sendMessage();
+                    }
                 };
 
-                mediaRecorder.start();
+                rec.onerror = function(e) {
+                    clearTimers();
+                    currentRec = null;
+                    var err = (e && e.error) || 'unknown';
+                    if (err === 'not-allowed' || err === 'audio-capture') {
+                        voiceActive = false; shouldSend = false;
+                        resetMicUI();
+                        inputEl.placeholder = "Mikrofon nije dopušten";
+                        setTimeout(function() { inputEl.placeholder = "Postavite pitanje..."; }, 3000);
+                        return;
+                    }
+                    if (err === 'network' || err === 'service-not-allowed' || err === 'language-not-supported') {
+                        if (canRecord && voiceActive) { useRecorder = true; startRecordingCycle(); return; }
+                        voiceActive = false; shouldSend = false;
+                        resetMicUI();
+                        return;
+                    }
+                    if (voiceActive) {
+                        setTimeout(function() { if (voiceActive) startListening(true); }, 150);
+                    } else {
+                        voiceActive = false; shouldSend = false;
+                        resetMicUI();
+                    }
+                };
+
+                currentRec = rec;
                 isRecording = true;
                 micBtn.classList.add("recording");
                 micBtn.innerHTML = "🛑";
                 inputEl.placeholder = "Slušam...";
-            } catch (err) {
-                console.error("Mic error:", err);
-                alert("Greška s mikrofonom. Provjerite dopuštenja.");
-            }
-        }
-
-        function stopRecording() {
-            if (mediaRecorder && isRecording) {
-                mediaRecorder.stop();
-                isRecording = false;
-                micBtn.classList.remove("recording");
-                micBtn.innerHTML = "🎤";
-                inputEl.placeholder = "Obrađujem glas...";
-            }
-        }
-
-        async function sendToWhisper(blob) {
-            try {
-                const formData = new FormData();
-                formData.append('file', blob);
-
-                const response = await fetch("/api/transcribe", {
-                    method: "POST",
-                    body: formData
-                });
-
-                const data = await response.json();
-                if (data.text) {
-                    inputEl.value = data.text;
-                    inputEl.placeholder = "Postavite pitanje...";
-                    lastInputMethod = 'voice';
-                    lastVoiceLang = data.lang || null; // Whisper-detektirani jezik (en/de/it/hr)
-                    sendMessage();
-                } else {
-                    throw new Error(data.error || "Prazan tekst");
+                try {
+                    rec.start();
+                    if (!isRestart) idleTimer = setTimeout(finish, 8000);
+                } catch(ex) {
+                    currentRec = null;
+                    voiceActive = false;
+                    resetMicUI();
                 }
-            } catch (e) {
-                console.error("Whisper error:", e);
-                inputEl.placeholder = "Pokušajte ponovno...";
-                setTimeout(() => inputEl.placeholder = "Postavite pitanje...", 2000);
             }
-        }
+
+            // toggleMic() — poziva se s onclick="toggleMic()" na gumbu
+            window.toggleMic = function() {
+                if (voiceActive) { finish(); return; }
+                inputEl.value = '';
+                voiceActive = true;
+                shouldSend = false;
+                iosBase = '';
+                transcript = '';
+                useRecorder = false;
+                startListening(false);
+            };
+
+            // ---- MediaRecorder + Whisper (fallback kad Web Speech nije dostupan) ----
+            var recMr = null, recChunks = [], recStream = null, recMaxT = null, recLiveT = null;
+            var recTranscribing = false, recDone = false;
+
+            var blobToBase64 = function(blob) {
+                return new Promise(function(resolve, reject) {
+                    var fr = new FileReader();
+                    fr.onload  = function() { resolve(String(fr.result).split(',')[1] || ''); };
+                    fr.onerror = reject;
+                    fr.readAsDataURL(blob);
+                });
+            };
+            var stopRecStream = function() {
+                if (recStream) { recStream.getTracks().forEach(function(tr) { tr.stop(); }); recStream = null; }
+            };
+
+            async function transcribeBlob(blob) {
+                var audio = await blobToBase64(blob);
+                var r = await fetch('/api/transcribe', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ audio: audio, mime: blob.type, lang: currentLang })
+                });
+                var data = await r.json().catch(function() { return {}; });
+                return { ok: r.ok, text: (data.text || '').trim() };
+            }
+
+            async function livePartial() {
+                if (recTranscribing || recDone || recChunks.length === 0) return;
+                var blob = new Blob(recChunks, { type: (recMr && recMr.mimeType) || 'audio/webm' });
+                if (blob.size < 1600) return;
+                recTranscribing = true;
+                try {
+                    var res = await transcribeBlob(blob);
+                    if (res.ok && res.text && !recDone) inputEl.value = res.text;
+                } catch(e) {}
+                recTranscribing = false;
+            }
+
+            async function onRecStop() {
+                recDone = true;
+                clearInterval(recLiveT); clearTimeout(recMaxT);
+                var blob = new Blob(recChunks, { type: (recMr && recMr.mimeType) || 'audio/webm' });
+                stopRecStream();
+                voiceActive = false;
+                resetMicUI();
+                if (blob.size < 1200) {
+                    if (!inputEl.value.trim()) {
+                        inputEl.placeholder = "Ništa nije prepoznato";
+                        setTimeout(function() { inputEl.placeholder = "Postavite pitanje..."; }, 2500);
+                    }
+                    return;
+                }
+                inputEl.placeholder = "Slušam...";
+                try {
+                    var res = await transcribeBlob(blob);
+                    inputEl.placeholder = "Postavite pitanje...";
+                    if (res.ok && res.text) {
+                        inputEl.value = res.text;
+                        lastInputMethod = 'voice';
+                        lastVoiceLang = null;
+                        sendMessage();
+                    } else if (!inputEl.value.trim()) {
+                        inputEl.placeholder = "Pokušajte ponovno...";
+                        setTimeout(function() { inputEl.placeholder = "Postavite pitanje..."; }, 2000);
+                    }
+                } catch(e) { inputEl.placeholder = "Postavite pitanje..."; }
+            }
+
+            async function startRecordingCycle() {
+                if (recMr) return;
+                recDone = false; recChunks = [];
+                isRecording = true;
+                micBtn.classList.add("recording");
+                micBtn.innerHTML = "🛑";
+                inputEl.value = '';
+                inputEl.placeholder = "Slušam...";
+                try { recStream = await navigator.mediaDevices.getUserMedia({ audio: true }); }
+                catch(e) {
+                    inputEl.placeholder = "Mikrofon nije dopušten";
+                    setTimeout(function() { inputEl.placeholder = "Postavite pitanje..."; }, 3000);
+                    voiceActive = false; resetMicUI();
+                    return;
+                }
+                var mr;
+                try { mr = new MediaRecorder(recStream); }
+                catch(e) {
+                    stopRecStream(); voiceActive = false; resetMicUI();
+                    micBtn.style.display = "none";
+                    return;
+                }
+                recMr = mr;
+                mr.ondataavailable = function(e) { if (e.data && e.data.size) recChunks.push(e.data); };
+                mr.onstop = async function() { recMr = null; await onRecStop(); };
+                mr.start(1000);
+                recLiveT = setInterval(livePartial, 2500);
+                recMaxT = setTimeout(function() {
+                    if (recMr && recMr.state !== 'inactive') recMr.stop();
+                }, 30000);
+            }
+        })();
 
         /* ── TYPING ── */
         function showTyping() {
