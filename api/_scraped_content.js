@@ -1,5 +1,5 @@
 // AUTO-GENERATED — ne editiraj ručno!
-// Zadnje skrapanje: 2026-11-12 14:54 UTC
+// Zadnje skrapanje: 2026-11-13 14:18 UTC
 // Izvor: tz.valpovo.hr, valpovo.hr
 // GitHub Actions job: scrape-valpovo (dnevno u 6:00 UTC)
 //
@@ -9,7 +9,7 @@
 
 export const scrapedContent = {
   "meta": {
-    "zadnje_azuriranje": "2026-11-12T14:54:04.371Z",
+    "zadnje_azuriranje": "2026-11-13T14:18:48.876Z",
     "izvori": [
       "https://tz.valpovo.hr",
       "https://valpovo.hr"
@@ -23,7 +23,7 @@ export const scrapedContent = {
       "datum_iso": "2026-11-12",
       "kratki_opis": "Renomirani valpovački restoran „Park“ jedan je od restorana uvrštenih u turističko gastronomsku manifestaciju Okusi Slavonije i Baranje koja se održava od 13. do 29. ...",
       "link": "https://tz.valpovo.hr/2026/11/12/okusi-slavonije-i-baranje-u-restoranu-park-u-valpovu/",
-      "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/11/903497739_2292670308249168_845421590555105280_n-restoran-park-valpovo.jpg"
+      "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/11/899332140_1655802199337673_1001968785403050777_n-okusi-slavonije-i-baranje-restoran-park-valpovo.jpg"
     },
     {
       "naslov": "PREMIJERA DOKUMENTARNOG FILMA: „SRCE VUKOVARA“",
@@ -100,6 +100,12 @@ export const scrapedContent = {
   ],
   "novosti_grad": [
     {
+      "naslov": "Odluka o produljenju radnog vremena ugostiteljskih objekata u trajanju blagdana Božića i Nove godine",
+      "datum": "13. 11. 2026.",
+      "kratki_opis": "Gradonačelnik Grada Valpova donio je Odluku kojom se ugostiteljskim objektima iz skupina „Restorani“ i „Barovi“ na području Grada Valpova od 1. prosinca 2026. do 6. siječnja 2027. godine odobrava rad ",
+      "link": "https://valpovo.hr/2026/11/13/odluka-o-produljenju-radnog-vremena-ugostiteljskih-objekata-u-trajanju-blagdana-bozica-i-nove-godine/"
+    },
+    {
       "naslov": "OKUSI SLAVONIJE I BARANJE U RESTORANU „PARK“ U VALPOVU",
       "datum": "12. 11. 2026.",
       "kratki_opis": "",
@@ -128,12 +134,6 @@ export const scrapedContent = {
       "datum": "07. 11. 2026.",
       "kratki_opis": "",
       "link": "https://valpovo.hr/2026/11/07/vecer-posvecena-gljivama-i-gastronomiji-predstavljena-knjiga-jestive-gljive-u-hrvatskoj-zeljka-krizevca/"
-    },
-    {
-      "naslov": "Znanost koja oblikuje naš svijet: doc.dr.sc. Denis Stanić održao predavanje o kvantnoj fizici u Gradskoj knjižnici i čit",
-      "datum": "06. 11. 2026.",
-      "kratki_opis": "",
-      "link": "https://valpovo.hr/2026/11/06/znanost-koja-oblikuje-nas-svijet-doc-dr-sc-denis-stanic-odrzao-predavanje-o-kvantnoj-fizici-u-gradskoj-knjiznici-i-citaonici-valpovo/"
     }
   ],
   "manifestacije_aktualne": [
@@ -415,7 +415,7 @@ export const scrapedContent = {
       "opis": "Renomirani valpovački restoran „Park“ jedan je od restorana uvrštenih u turističko gastronomsku manifestaciju Okusi Slavonije i Baranje koja se održava od 13. do 29. studenoga ove godine. Tijekom dva tjedna, u sklopu nacionalne manifestacije Dani okusa hrvatsk",
       "link": "https://tz.valpovo.hr/2026/11/12/okusi-slavonije-i-baranje-u-restoranu-park-u-valpovu/",
       "izvor": "tz.valpovo.hr",
-      "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/11/903497739_2292670308249168_845421590555105280_n-restoran-park-valpovo.jpg"
+      "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/11/899332140_1655802199337673_1001968785403050777_n-okusi-slavonije-i-baranje-restoran-park-valpovo.jpg"
     },
     {
       "naziv": "PREMIJERA DOKUMENTARNOG FILMA: „SRCE VUKOVARA“",
