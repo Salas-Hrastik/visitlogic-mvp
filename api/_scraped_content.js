@@ -1,5 +1,5 @@
 // AUTO-GENERATED — ne editiraj ručno!
-// Zadnje skrapanje: 2026-11-16 06:10 UTC
+// Zadnje skrapanje: 2026-11-16 15:17 UTC
 // Izvor: tz.valpovo.hr, valpovo.hr
 // GitHub Actions job: scrape-valpovo (dnevno u 6:00 UTC)
 //
@@ -9,14 +9,22 @@
 
 export const scrapedContent = {
   "meta": {
-    "zadnje_azuriranje": "2026-11-16T06:10:52.357Z",
+    "zadnje_azuriranje": "2026-11-16T15:17:57.953Z",
     "izvori": [
       "https://tz.valpovo.hr",
       "https://valpovo.hr"
     ],
-    "broj_dogadanja": 18
+    "broj_dogadanja": 19
   },
   "novosti_tz": [
+    {
+      "naslov": "HIT KOMEDIJA: „ USPJEŠNA.HR “",
+      "datum": "stu 16, 2026",
+      "datum_iso": "2026-11-16",
+      "kratki_opis": "Ustanova za kulturne djelatnosti „Ante Evetović Miroljub“ Valpovo i KAZALIŠTE MORUZGVA Vam donose HIT KOMEDIJU: „ USPJEŠNA.HR “ Vrijeme: Ponedjeljak, 30.11.2026. u 19:30 sati ...",
+      "link": "https://tz.valpovo.hr/2026/11/16/hit-komedija-uspjesna-hr/",
+      "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/11/plakat-uspjesna-hr-plakat-kazaliste-moruzgva.jpg"
+    },
     {
       "naslov": "OKUSI SLAVONIJE I BARANJE U RESTORANU „PARK“ U VALPOVU",
       "datum": "stu 12, 2026",
@@ -88,17 +96,15 @@ export const scrapedContent = {
       "kratki_opis": "Ustanova za kulturne djelatnosti „Ante Evetović Miroljub“ Valpovo i BOSS TEATAR Vam donose OBITELJSKU PREDSTAVU: „ LUKA MODRIĆ: MOJA IGRA “ Vrijeme: Utorak, 20.10.2026. ...",
       "link": "https://tz.valpovo.hr/2026/09/29/obiteljska-predstava-luka-modric-moja-igra/",
       "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/09/LUKA-MODRIC-FB.jpg"
-    },
-    {
-      "naslov": "ŠESTA VALPOVAČKA STAZA ZDRAVLJA",
-      "datum": "ruj 24, 2026",
-      "datum_iso": "2026-09-24",
-      "kratki_opis": "Povodom obilježavanja Međunarodnog dana starijih osoba (1. listopada), Turistička zajednica Grada Valpova i Grad Valpovo, u suradnji s Gradskim društvom Crvenog križa Valpovo i ...",
-      "link": "https://tz.valpovo.hr/2026/09/24/sesta-valpovacka-staza-zdravlja/",
-      "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/09/Turisticka-zajednica-valpovacka-staza-zdravlja-2026-face2.jpg"
     }
   ],
   "novosti_grad": [
+    {
+      "naslov": "Treći “Buvljak bez novca” bilježi rekordan odaziv, a prosinačko izdanje donosi razmjenu božićnih dekoracija",
+      "datum": "16. 11. 2026.",
+      "kratki_opis": "",
+      "link": "https://valpovo.hr/2026/11/16/treci-buvljak-bez-novca-biljezi-rekordan-odaziv-a-prosinacko-izdanje-donosi-razmjenu-bozicnih-dekoracija/"
+    },
     {
       "naslov": "Obavijest o isplati jednokratne pomoći povodom blagdana Božića u 2026. godini",
       "datum": "16. 11. 2026.",
@@ -427,6 +433,17 @@ export const scrapedContent = {
       "link": "https://tz.valpovo.hr/2026/11/12/okusi-slavonije-i-baranje-u-restoranu-park-u-valpovu/",
       "izvor": "tz.valpovo.hr",
       "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/11/899332140_1655802199337673_1001968785403050777_n-okusi-slavonije-i-baranje-restoran-park-valpovo.jpg"
+    },
+    {
+      "naziv": "HIT KOMEDIJA: „ USPJEŠNA.HR “",
+      "datum_od": "2026-11-30",
+      "datum_do": "2026-11-30",
+      "datum_tekst": "30.11.2026",
+      "vrijeme": "",
+      "opis": "Ustanova za kulturne djelatnosti „Ante Evetović Miroljub“ Valpovo i KAZALIŠTE MORUZGVA Vam donose HIT KOMEDIJU: „ USPJEŠNA.HR “ Vrijeme: Ponedjeljak, 30.11.2026. u 19:30 sati Mjesto: Centar kulture „Matija Petar Katančić“ Valpovo Pretprodaja ulaznica: Edukacij",
+      "link": "https://tz.valpovo.hr/2026/11/16/hit-komedija-uspjesna-hr/",
+      "izvor": "tz.valpovo.hr",
+      "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/11/plakat-uspjesna-hr-plakat-kazaliste-moruzgva.jpg"
     }
   ]
 };
