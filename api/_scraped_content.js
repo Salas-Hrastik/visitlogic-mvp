@@ -1,5 +1,5 @@
 // AUTO-GENERATED — ne editiraj ručno!
-// Zadnje skrapanje: 2026-11-13 14:18 UTC
+// Zadnje skrapanje: 2026-11-16 06:10 UTC
 // Izvor: tz.valpovo.hr, valpovo.hr
 // GitHub Actions job: scrape-valpovo (dnevno u 6:00 UTC)
 //
@@ -9,7 +9,7 @@
 
 export const scrapedContent = {
   "meta": {
-    "zadnje_azuriranje": "2026-11-13T14:18:48.876Z",
+    "zadnje_azuriranje": "2026-11-16T06:10:52.357Z",
     "izvori": [
       "https://tz.valpovo.hr",
       "https://valpovo.hr"
@@ -100,6 +100,12 @@ export const scrapedContent = {
   ],
   "novosti_grad": [
     {
+      "naslov": "Obavijest o isplati jednokratne pomoći povodom blagdana Božića u 2026. godini",
+      "datum": "16. 11. 2026.",
+      "kratki_opis": "1. Obavijest o isplati jednokratne pomoći povodom blagdana Božića 2. Odluka o uvjetima, visini i načinu isplate jednokratne pomoći povodom blagdana Božića 3. Obrazac zahtjeva 4. Izjava o davanju privo",
+      "link": "https://valpovo.hr/2026/11/16/obavijest-o-isplati-jednokratne-pomoci-povodom-blagdana-bozica-u-2026-godini/"
+    },
+    {
       "naslov": "Odluka o produljenju radnog vremena ugostiteljskih objekata u trajanju blagdana Božića i Nove godine",
       "datum": "13. 11. 2026.",
       "kratki_opis": "Gradonačelnik Grada Valpova donio je Odluku kojom se ugostiteljskim objektima iz skupina „Restorani“ i „Barovi“ na području Grada Valpova od 1. prosinca 2026. do 6. siječnja 2027. godine odobrava rad ",
@@ -128,12 +134,6 @@ export const scrapedContent = {
       "datum": "10. 11. 2026.",
       "kratki_opis": "",
       "link": "https://valpovo.hr/2026/11/10/vecer-posvecena-filozofskom-djelu-prof-dr-sc-vladimira-jelkica-u-gradskoj-knjiznici-i-citaonici-valpovo/"
-    },
-    {
-      "naslov": "Večer posvećena gljivama i gastronomiji: predstavljena knjiga „Jestive gljive u Hrvatskoj” Željka Križevca",
-      "datum": "07. 11. 2026.",
-      "kratki_opis": "",
-      "link": "https://valpovo.hr/2026/11/07/vecer-posvecena-gljivama-i-gastronomiji-predstavljena-knjiga-jestive-gljive-u-hrvatskoj-zeljka-krizevca/"
     }
   ],
   "manifestacije_aktualne": [
@@ -407,17 +407,6 @@ export const scrapedContent = {
       "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/10/Velika-stavka-VRATA-DO_letak_1.jpg"
     },
     {
-      "naziv": "OKUSI SLAVONIJE I BARANJE U RESTORANU „PARK“ U VALPOVU",
-      "datum_od": "2026-11-13",
-      "datum_do": "2026-11-29",
-      "datum_tekst": "od 13. do 29. studenoga",
-      "vrijeme": "",
-      "opis": "Renomirani valpovački restoran „Park“ jedan je od restorana uvrštenih u turističko gastronomsku manifestaciju Okusi Slavonije i Baranje koja se održava od 13. do 29. studenoga ove godine. Tijekom dva tjedna, u sklopu nacionalne manifestacije Dani okusa hrvatsk",
-      "link": "https://tz.valpovo.hr/2026/11/12/okusi-slavonije-i-baranje-u-restoranu-park-u-valpovu/",
-      "izvor": "tz.valpovo.hr",
-      "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/11/899332140_1655802199337673_1001968785403050777_n-okusi-slavonije-i-baranje-restoran-park-valpovo.jpg"
-    },
-    {
       "naziv": "PREMIJERA DOKUMENTARNOG FILMA: „SRCE VUKOVARA“",
       "datum_od": "2026-11-15",
       "datum_do": "2026-11-15",
@@ -427,6 +416,17 @@ export const scrapedContent = {
       "link": "https://tz.valpovo.hr/2026/11/09/premijera-dokumentarnog-filma-srce-vukovara/",
       "izvor": "tz.valpovo.hr",
       "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/11/srce-vukovara-plakat.jpg"
+    },
+    {
+      "naziv": "OKUSI SLAVONIJE I BARANJE U RESTORANU „PARK“ U VALPOVU",
+      "datum_od": "2026-11-13",
+      "datum_do": "2026-11-29",
+      "datum_tekst": "od 13. do 29. studenoga",
+      "vrijeme": "",
+      "opis": "Renomirani valpovački restoran „Park“ jedan je od restorana uvrštenih u turističko gastronomsku manifestaciju Okusi Slavonije i Baranje koja se održava od 13. do 29. studenoga ove godine. Tijekom dva tjedna, u sklopu nacionalne manifestacije Dani okusa hrvatsk",
+      "link": "https://tz.valpovo.hr/2026/11/12/okusi-slavonije-i-baranje-u-restoranu-park-u-valpovu/",
+      "izvor": "tz.valpovo.hr",
+      "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/11/899332140_1655802199337673_1001968785403050777_n-okusi-slavonije-i-baranje-restoran-park-valpovo.jpg"
     }
   ]
 };
