@@ -1,5 +1,5 @@
 // AUTO-GENERATED — ne editiraj ručno!
-// Zadnje skrapanje: 2026-11-16 15:17 UTC
+// Zadnje skrapanje: 2026-11-17 15:44 UTC
 // Izvor: tz.valpovo.hr, valpovo.hr
 // GitHub Actions job: scrape-valpovo (dnevno u 6:00 UTC)
 //
@@ -9,7 +9,7 @@
 
 export const scrapedContent = {
   "meta": {
-    "zadnje_azuriranje": "2026-11-16T15:17:57.953Z",
+    "zadnje_azuriranje": "2026-11-17T15:44:25.183Z",
     "izvori": [
       "https://tz.valpovo.hr",
       "https://valpovo.hr"
@@ -17,6 +17,14 @@ export const scrapedContent = {
     "broj_dogadanja": 19
   },
   "novosti_tz": [
+    {
+      "naslov": "ADVENT U VALPOVU 2026. (28.11.2026. – 01.01.2027.)",
+      "datum": "stu 17, 2026",
+      "datum_iso": "2026-11-17",
+      "kratki_opis": "ADVENT U VALPOVU 2026. (28.11.2026. – 01.01.2027.) U organizaciji Grada Valpova, Turističke zajednice Grada Valpova, Ustanove za kulturne djelatnosti „Ante Evetović Miroljub“ Valpovo i ...",
+      "link": "https://tz.valpovo.hr/2026/11/17/advent-u-valpovu-2026-28-11-2026-01-01-2027/",
+      "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/11/fb-cover-advent-u-valpovu-2026-banner.jpg"
+    },
     {
       "naslov": "HIT KOMEDIJA: „ USPJEŠNA.HR “",
       "datum": "stu 16, 2026",
@@ -88,17 +96,15 @@ export const scrapedContent = {
       "kratki_opis": "Udruga Labov Nard, Turistička zajednica Grada Valpova i Grad Valpovo pozivaju sve građane i posjetitelje na obilježavanje Međunarodnog dana rijeke Drave koje će se ...",
       "link": "https://tz.valpovo.hr/2026/09/29/obiljezavanje-medunarodnog-dana-rijeke-drave-na-odmoristu-labov-u-nardu/",
       "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/09/828311736_1430978402325187_5496990021114614856_n.jpg"
-    },
-    {
-      "naslov": "OBITELJSKA PREDSTAVA: „ LUKA MODRIĆ: MOJA IGRA “",
-      "datum": "ruj 29, 2026",
-      "datum_iso": "2026-09-29",
-      "kratki_opis": "Ustanova za kulturne djelatnosti „Ante Evetović Miroljub“ Valpovo i BOSS TEATAR Vam donose OBITELJSKU PREDSTAVU: „ LUKA MODRIĆ: MOJA IGRA “ Vrijeme: Utorak, 20.10.2026. ...",
-      "link": "https://tz.valpovo.hr/2026/09/29/obiteljska-predstava-luka-modric-moja-igra/",
-      "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/09/LUKA-MODRIC-FB.jpg"
     }
   ],
   "novosti_grad": [
+    {
+      "naslov": "RADNI SASTANAK – VALPOVO I SOLIN",
+      "datum": "17. 11. 2026.",
+      "kratki_opis": "",
+      "link": "https://valpovo.hr/2026/11/17/radni-sastanak-valpovo-i-solin/"
+    },
     {
       "naslov": "Treći “Buvljak bez novca” bilježi rekordan odaziv, a prosinačko izdanje donosi razmjenu božićnih dekoracija",
       "datum": "16. 11. 2026.",
@@ -134,12 +140,6 @@ export const scrapedContent = {
       "datum": "11. 11. 2026.",
       "kratki_opis": "",
       "link": "https://valpovo.hr/2026/11/11/konkretna-rjesenja-za-inkluziju-u-valpovu-uspjesno-odrzana-radionica-o-ukljucivanju-osoba-s-invaliditetom-u-sport/"
-    },
-    {
-      "naslov": "Večer posvećena filozofskom djelu prof.dr.sc. Vladimira Jelkića u Gradskoj knjižnici i čitaonici Valpovo",
-      "datum": "10. 11. 2026.",
-      "kratki_opis": "",
-      "link": "https://valpovo.hr/2026/11/10/vecer-posvecena-filozofskom-djelu-prof-dr-sc-vladimira-jelkica-u-gradskoj-knjiznici-i-citaonici-valpovo/"
     }
   ],
   "manifestacije_aktualne": [
@@ -246,17 +246,6 @@ export const scrapedContent = {
       "link": "https://tz.valpovo.hr/2026/08/14/predstavnici-grada-valpova-gostovali-na-22-eko-etno-gackoj-u-otoccu/",
       "izvor": "tz.valpovo.hr",
       "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/08/773240449_1038636265651067_5742519568724130035_n.jpg"
-    },
-    {
-      "naziv": "TURNIR ODBOJKE NA PIJESKU – 5. LABOV KUP",
-      "datum_od": "2026-08-05",
-      "datum_do": "2026-08-05",
-      "datum_tekst": "5. kolovoza 2026",
-      "vrijeme": "",
-      "opis": "U srijedu, 5. kolovoza 2026. godine, na Odmorištu “Labov” u Nardu održat će se Turnir odbojke na pijesku – 5. LABOV kup. Natjecanje počinje u 10:00 sati, a igra se u formatu 3 na 3 u muškoj i ženskoj konkurenciji. Prijave će biti moguće na sam dan turnira, dok",
-      "link": "https://tz.valpovo.hr/2026/07/30/turnir-odbojke-na-pijesku-5-labov-kup/",
-      "izvor": "tz.valpovo.hr",
-      "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/07/turnir-odbojke-na-pjesku-nard-08-2026.jpg"
     },
     {
       "naziv": "PJEŠČANI ROCK TOK VOL. 2 – Prije smo se tu kupali, sad se rocka!",
@@ -433,6 +422,17 @@ export const scrapedContent = {
       "link": "https://tz.valpovo.hr/2026/11/12/okusi-slavonije-i-baranje-u-restoranu-park-u-valpovu/",
       "izvor": "tz.valpovo.hr",
       "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/11/899332140_1655802199337673_1001968785403050777_n-okusi-slavonije-i-baranje-restoran-park-valpovo.jpg"
+    },
+    {
+      "naziv": "ADVENT U VALPOVU 2026. (28.11.2026. – 01.01.2027.)",
+      "datum_od": "2026-11-28",
+      "datum_do": "2026-11-28",
+      "datum_tekst": "28.11.2026",
+      "vrijeme": "",
+      "opis": "ADVENT U VALPOVU 2026. (28.11.2026. – 01.01.2027.) U organizaciji Grada Valpova, Turističke zajednice Grada Valpova, Ustanove za kulturne djelatnosti „Ante Evetović Miroljub“ Valpovo i Valpovačkog poduzetničkog centra, od 28. studenoga 2026. do 01. siječnja 20",
+      "link": "https://tz.valpovo.hr/2026/11/17/advent-u-valpovu-2026-28-11-2026-01-01-2027/",
+      "izvor": "tz.valpovo.hr",
+      "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/11/fb-cover-advent-u-valpovu-2026-banner.jpg"
     },
     {
       "naziv": "HIT KOMEDIJA: „ USPJEŠNA.HR “",
