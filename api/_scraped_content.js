@@ -1,5 +1,5 @@
 // AUTO-GENERATED — ne editiraj ručno!
-// Zadnje skrapanje: 2026-11-17 15:44 UTC
+// Zadnje skrapanje: 2026-11-18 15:24 UTC
 // Izvor: tz.valpovo.hr, valpovo.hr
 // GitHub Actions job: scrape-valpovo (dnevno u 6:00 UTC)
 //
@@ -9,7 +9,7 @@
 
 export const scrapedContent = {
   "meta": {
-    "zadnje_azuriranje": "2026-11-17T15:44:25.183Z",
+    "zadnje_azuriranje": "2026-11-18T15:24:28.453Z",
     "izvori": [
       "https://tz.valpovo.hr",
       "https://valpovo.hr"
@@ -100,6 +100,12 @@ export const scrapedContent = {
   ],
   "novosti_grad": [
     {
+      "naslov": "U čast svim žrtvama Domovinskog rata",
+      "datum": "17. 11. 2026.",
+      "kratki_opis": "",
+      "link": "https://valpovo.hr/2026/11/17/u-cast-svim-zrtvama-domovinskog-rata/"
+    },
+    {
       "naslov": "RADNI SASTANAK – VALPOVO I SOLIN",
       "datum": "17. 11. 2026.",
       "kratki_opis": "",
@@ -134,12 +140,6 @@ export const scrapedContent = {
       "datum": "12. 11. 2026.",
       "kratki_opis": "",
       "link": "https://valpovo.hr/2026/11/12/obavijest-o-uklanjanju-drveca-u-osjeckoj-ulici/"
-    },
-    {
-      "naslov": "Konkretna rješenja za inkluziju: U Valpovu uspješno održana radionica o uključivanju osoba s invaliditetom u sport",
-      "datum": "11. 11. 2026.",
-      "kratki_opis": "",
-      "link": "https://valpovo.hr/2026/11/11/konkretna-rjesenja-za-inkluziju-u-valpovu-uspjesno-odrzana-radionica-o-ukljucivanju-osoba-s-invaliditetom-u-sport/"
     }
   ],
   "manifestacije_aktualne": [
