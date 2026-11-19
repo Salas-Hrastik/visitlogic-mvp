@@ -1,5 +1,5 @@
 // AUTO-GENERATED — ne editiraj ručno!
-// Zadnje skrapanje: 2026-11-18 15:24 UTC
+// Zadnje skrapanje: 2026-11-19 15:30 UTC
 // Izvor: tz.valpovo.hr, valpovo.hr
 // GitHub Actions job: scrape-valpovo (dnevno u 6:00 UTC)
 //
@@ -9,7 +9,7 @@
 
 export const scrapedContent = {
   "meta": {
-    "zadnje_azuriranje": "2026-11-18T15:24:28.453Z",
+    "zadnje_azuriranje": "2026-11-19T15:30:18.212Z",
     "izvori": [
       "https://tz.valpovo.hr",
       "https://valpovo.hr"
@@ -134,12 +134,6 @@ export const scrapedContent = {
       "datum": "12. 11. 2026.",
       "kratki_opis": "",
       "link": "https://valpovo.hr/2026/11/12/okusi-slavonije-i-baranje-u-restoranu-park-u-valpovu/"
-    },
-    {
-      "naslov": "Obavijest o uklanjanju drveća u Osječkoj ulici",
-      "datum": "12. 11. 2026.",
-      "kratki_opis": "",
-      "link": "https://valpovo.hr/2026/11/12/obavijest-o-uklanjanju-drveca-u-osjeckoj-ulici/"
     }
   ],
   "manifestacije_aktualne": [
