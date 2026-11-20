@@ -1,5 +1,5 @@
 // AUTO-GENERATED — ne editiraj ručno!
-// Zadnje skrapanje: 2026-11-19 15:30 UTC
+// Zadnje skrapanje: 2026-11-20 15:08 UTC
 // Izvor: tz.valpovo.hr, valpovo.hr
 // GitHub Actions job: scrape-valpovo (dnevno u 6:00 UTC)
 //
@@ -9,7 +9,7 @@
 
 export const scrapedContent = {
   "meta": {
-    "zadnje_azuriranje": "2026-11-19T15:30:18.212Z",
+    "zadnje_azuriranje": "2026-11-20T15:08:17.478Z",
     "izvori": [
       "https://tz.valpovo.hr",
       "https://valpovo.hr"
@@ -100,6 +100,12 @@ export const scrapedContent = {
   ],
   "novosti_grad": [
     {
+      "naslov": "Poziv 14. sj. G.V.2026.",
+      "datum": "20. 11. 2026.",
+      "kratki_opis": "",
+      "link": "https://valpovo.hr/2026/11/20/poziv-14-sj-g-v-2026/"
+    },
+    {
       "naslov": "U čast svim žrtvama Domovinskog rata",
       "datum": "17. 11. 2026.",
       "kratki_opis": "",
@@ -128,12 +134,6 @@ export const scrapedContent = {
       "datum": "13. 11. 2026.",
       "kratki_opis": "Gradonačelnik Grada Valpova donio je Odluku kojom se ugostiteljskim objektima iz skupina „Restorani“ i „Barovi“ na području Grada Valpova od 1. prosinca 2026. do 6. siječnja 2027. godine odobrava rad ",
       "link": "https://valpovo.hr/2026/11/13/odluka-o-produljenju-radnog-vremena-ugostiteljskih-objekata-u-trajanju-blagdana-bozica-i-nove-godine/"
-    },
-    {
-      "naslov": "OKUSI SLAVONIJE I BARANJE U RESTORANU „PARK“ U VALPOVU",
-      "datum": "12. 11. 2026.",
-      "kratki_opis": "",
-      "link": "https://valpovo.hr/2026/11/12/okusi-slavonije-i-baranje-u-restoranu-park-u-valpovu/"
     }
   ],
   "manifestacije_aktualne": [
