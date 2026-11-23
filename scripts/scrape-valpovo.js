@@ -532,6 +532,13 @@ async function scrapeDogadanjaGrad() {
 
 // ─── Događanja s datumima — tz.valpovo.hr (objave) ──────────────────────────
 
+/** Tekst programa iz objave ako ima barem 3 datumska naslova dana (DD.MM.GGGG.), inače ''. */
+function programIzTijela(html) {
+  const txt = clean(String(html || '').replace(/<style[\s\S]*?<\/style>/gi, ' '), 8000);
+  const dani = txt.match(/\b\d{1,2}\.\d{1,2}\.\d{4}\./g) || [];
+  return dani.length >= 3 ? txt : '';
+}
+
 async function scrapeDogadanjaTZ() {
   const posts = await fetchJson(
     `https://tz.valpovo.hr/wp-json/wp/v2/posts?per_page=${TZ_POSTS_LIMIT}&_embed=wp:featuredmedia`
@@ -552,8 +559,16 @@ async function scrapeDogadanjaTZ() {
     const tijelo = clean(p.content?.rendered, 4000);
     const opis = clean(p.excerpt?.rendered, 260).replace(/\s*\[…\]\s*$/, '…');
 
-    const datum = parseDatesFromText(`${naziv}. ${tijelo}`, objavljeno);
+    // Brojčani raspon u naslovu ("(28.11.2026. – 01.01.2027.)") ima prednost — opći
+    // parser iz teksta uhvati samo prvi dan višednevne manifestacije.
+    const rn = naziv.match(/(\d{1,2})\.(\d{1,2})\.(\d{4})\.?\s*[-–—]\s*(\d{1,2})\.(\d{1,2})\.(\d{4})/);
+    const datum = rn
+      ? { od: isoDate(+rn[3], +rn[2], +rn[1]), do: isoDate(+rn[6], +rn[5], +rn[4]), tekst: rn[0] }
+      : parseDatesFromText(`${naziv}. ${tijelo}`, objavljeno);
     if (!datum?.od) continue;
+
+    // Program po danima (npr. Advent): cijeli tekst objave, jer je u opisu samo uvod.
+    const program = programIzTijela(p.content?.rendered);
 
     const media = p._embedded?.['wp:featuredmedia']?.[0];
 
@@ -567,6 +582,7 @@ async function scrapeDogadanjaTZ() {
       link: p.link,
       izvor: 'tz.valpovo.hr',
       IMAGE_URL: media?.source_url || '',
+      ...(program ? { program } : {}),
     });
   }
 
