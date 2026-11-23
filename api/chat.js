@@ -249,7 +249,7 @@ function buildScrapedSection(msgLower = '') {
   const pokriva = (e) => upitDatum && e.datum_od <= upitDatum && upitDatum <= (e.datum_do || e.datum_od);
   const programi = [...uTijeku, ...buduca].filter(e => e.program && (trazi(e) || opciProgram || pokriva(e))).slice(0, 2);
   if (upitDatum) {
-    lines.push(`\nKORISNIK PITA ZA DATUM: ${danUTjednu(upitDatum)}, ${upitDatum.split('-').reverse().join('.')}. — navedi SAMO ono što se održava TOG dana (iz programa ispod i iz popisa događanja). Ako za taj dan nema ničega, to jasno reci.`);
+    lines.push(`\nKORISNIK PITA ZA DATUM: ${danUTjednu(upitDatum)}, ${upitDatum.split('-').reverse().join('.')}. — navedi SAMO ono što je za TAJ datum izričito navedeno (retci programa ispod i događanja kojima raspon obuhvaća taj datum). NE dodaj ništa što za taj datum nije izričito navedeno: ni sadržaje s drugih dana (npr. božićni sajam, klizalište, koncerte), ni općenite pretpostavke o tome što manifestacija obično nudi. Ako za taj dan nema ničega, reci samo to i uputi na službeni program.`);
   }
   for (const e of programi) {
     const retci = formatirajProgram(e.program);
@@ -258,7 +258,7 @@ function buildScrapedSection(msgLower = '') {
       const dan = retci.filter(r => r.iso === upitDatum).map(r => r.tekst);
       const napomene = retci.filter(r => r.iso === 'napomena').map(r => r.tekst);
       lines.push(`\nPROGRAM ZA TAJ DAN — ${e.naziv} (${e.link}):`);
-      lines.push(dan.length ? dan.join('\n') : 'Službeni program je potpun i za taj dan u njemu NEMA događanja — reci to jasno (ne govori da program nije dostupan).');
+      lines.push(dan.length ? dan.join('\n') : 'Službeni program je potpun i za taj dan u njemu NEMA događanja — reci to jasno (ne govori da program nije dostupan) i NE nabrajaj druge sadržaje manifestacije.');
       napomene.forEach(n => lines.push(n));
       continue;
     }
