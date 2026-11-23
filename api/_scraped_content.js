@@ -1,5 +1,5 @@
 // AUTO-GENERATED — ne editiraj ručno!
-// Zadnje skrapanje: 2026-11-20 15:08 UTC
+// Zadnje skrapanje: 2026-11-23 06:09 UTC
 // Izvor: tz.valpovo.hr, valpovo.hr
 // GitHub Actions job: scrape-valpovo (dnevno u 6:00 UTC)
 //
@@ -9,7 +9,7 @@
 
 export const scrapedContent = {
   "meta": {
-    "zadnje_azuriranje": "2026-11-20T15:08:17.478Z",
+    "zadnje_azuriranje": "2026-11-23T06:09:41.885Z",
     "izvori": [
       "https://tz.valpovo.hr",
       "https://valpovo.hr"
@@ -128,12 +128,6 @@ export const scrapedContent = {
       "datum": "16. 11. 2026.",
       "kratki_opis": "1. Obavijest o isplati jednokratne pomoći povodom blagdana Božića 2. Odluka o uvjetima, visini i načinu isplate jednokratne pomoći povodom blagdana Božića 3. Obrazac zahtjeva 4. Izjava o davanju privo",
       "link": "https://valpovo.hr/2026/11/16/obavijest-o-isplati-jednokratne-pomoci-povodom-blagdana-bozica-u-2026-godini/"
-    },
-    {
-      "naslov": "Odluka o produljenju radnog vremena ugostiteljskih objekata u trajanju blagdana Božića i Nove godine",
-      "datum": "13. 11. 2026.",
-      "kratki_opis": "Gradonačelnik Grada Valpova donio je Odluku kojom se ugostiteljskim objektima iz skupina „Restorani“ i „Barovi“ na području Grada Valpova od 1. prosinca 2026. do 6. siječnja 2027. godine odobrava rad ",
-      "link": "https://valpovo.hr/2026/11/13/odluka-o-produljenju-radnog-vremena-ugostiteljskih-objekata-u-trajanju-blagdana-bozica-i-nove-godine/"
     }
   ],
   "manifestacije_aktualne": [
