@@ -31,6 +31,92 @@ function danasIso() {
   return new Date().toISOString().substring(0, 10);
 }
 
+// Datum iz upita ("17. prosinca", "17.12.", "17.12.2026.", "sutra") → ISO ili null.
+const MJESECI_UPIT = [['siječ', 'sijec', 'januar', 'january', 'jänner', 'januar'], ['veljač', 'veljac', 'februar', 'february'],
+  ['ožuj', 'ozuj', 'march', 'märz', 'marz'], ['trav', 'april'], ['svib', 'may', 'mai'], ['lipan', 'lipnj', 'june', 'juni'],
+  ['srpan', 'srpnj', 'july', 'juli'], ['kolovoz', 'august'], ['rujan', 'rujn', 'september'], ['listopad', 'october', 'oktober'],
+  ['studen', 'november'], ['prosin', 'december', 'dezember']];
+function datumIzUpita(msgLower) {
+  const danas = danasIso();
+  const iso = (g, m, d) => (m >= 1 && m <= 12 && d >= 1 && d <= 31)
+    ? `${g}-${String(m).padStart(2, '0')}-${String(d).padStart(2, '0')}` : null;
+  const godina = (m, d) => {
+    const g = +danas.substring(0, 4);
+    const kand = iso(g, m, d);
+    // Datum koji je prošao prije više od mjesec dana → vjerojatno sljedeća godina
+    return kand && kand < iso(g, +danas.substring(5, 7) - 1 || 1, 1) ? g + 1 : g;
+  };
+  let m = msgLower.match(/\b(\d{1,2})\.\s*(\d{1,2})\.(?:\s*(\d{4}))?/);
+  if (m) return iso(m[3] ? +m[3] : godina(+m[2], +m[1]), +m[2], +m[1]);
+  m = msgLower.match(/\b(\d{1,2})\.?\s+([a-zčćšžđä]+)/);
+  if (m) {
+    const mj = MJESECI_UPIT.findIndex(lista => lista.some(k => m[2].startsWith(k))) + 1;
+    if (mj) return iso(godina(mj, +m[1]), mj, +m[1]);
+  }
+  if (/\bprekosutra\b/.test(msgLower)) return new Date(Date.now() + 2 * 86400000).toISOString().substring(0, 10);
+  if (/\bsutra\b|tomorrow|morgen\b|domani/.test(msgLower)) return new Date(Date.now() + 86400000).toISOString().substring(0, 10);
+  return null;
+}
+
+// Program po danima ("SUBOTA, 28.11.2026. Trg kralja Tomislava, Valpovo 10:00 sati: CHRISTMAS
+// GRAFFITI JAM Ispred Župne crkve … 17:30 sati: PALJENJE …") pretvara u jednoznačne retke
+// "Subota 28.11.2026. u 10:00 — NAZIV — mjesto: …". Mjesto stoji ISPRED vremena, a nazivi su
+// velikim slovima — bez ove pretvorbe model miješa mjesta i dane.
+const NASLOV_DANA_RE = /(PONEDJELJAK|UTORAK|SRIJEDA|ČETVRTAK|PETAK|SUBOTA|NEDJELJA),?\s*(\d{1,2})\.(\d{1,2})\.(\d{4})\.?/g;
+const VRIJEME_SPLIT_RE = /(\d{1,2}:\d{2}(?:\s*[–-]\s*\d{1,2}:\d{2})?)\s*(?:sati|h)?\s*:?/;
+const BEZ_MALIH_RE = /^[^a-zčćšžđ]*$/;
+
+function formatirajProgram(program) {
+  const p = String(program || '');
+  const naslovi = [...p.matchAll(NASLOV_DANA_RE)];
+  const out = [];
+  for (let i = 0; i < naslovi.length; i++) {
+    const [h, dan, d, m, g] = naslovi[i];
+    const iso = `${g}-${m.padStart(2, '0')}-${d.padStart(2, '0')}`;
+    const oznaka = `${dan.charAt(0)}${dan.slice(1).toLowerCase()} ${+d}.${+m}.${g}.`;
+    const kraj = i + 1 < naslovi.length ? naslovi[i + 1].index : p.length;
+    const tijelo = p.substring(naslovi[i].index + h.length, kraj).trim();
+    const dijelovi = tijelo.split(new RegExp(VRIJEME_SPLIT_RE.source, 'g'));
+    // Zadnji dan programa i dan bez vremena: izvorni tekst (iza njega su često napomene).
+    if (dijelovi.length < 3 || i === naslovi.length - 1) {
+      // Iza zadnjeg dana slijede opće napomene ("AUTOBUS DJEDA BOŽIĆNJAKA: 17:00 – 20:00h …")
+      // — odvajamo ih da ih model ne pripiše tom danu.
+      const nap = tijelo.match(/[A-ZČĆŠŽĐ]{3,}(?:\s+[A-ZČĆŠŽĐ]{3,}){0,2}:\s*\d{1,2}:\d{2}/);
+      const danTekst = nap ? tijelo.substring(0, nap.index).trim() : tijelo;
+      out.push({ iso, tekst: `${oznaka} (izvorni tekst, bez točnog vremena): ${danTekst}` });
+      if (nap) out.push({ iso: 'napomena', tekst: `OPĆE NAPOMENE PROGRAMA (vrijede samo za datume koji su u njima navedeni): ${tijelo.substring(nap.index).trim()}` });
+      continue;
+    }
+    let mjesto = dijelovi[0].trim();
+    for (let j = 1; j < dijelovi.length; j += 2) {
+      const rijeci = (dijelovi[j + 1] || '').trim().split(/\s+/).filter(Boolean);
+      let k = 0;
+      let zagrada = 0;
+      while (k < rijeci.length) {
+        const w = rijeci[k];
+        if (zagrada > 0 || w.startsWith('(')) {
+          zagrada += (w.match(/\(/g) || []).length - (w.match(/\)/g) || []).length;
+          k++;
+          continue;
+        }
+        if (BEZ_MALIH_RE.test(w)) { k++; continue; }
+        break;
+      }
+      const zadnji = j + 2 >= dijelovi.length;
+      // Iza zadnjeg događanja u danu nema novog mjesta → ostatak pripada nazivu.
+      const naziv = (zadnji ? rijeci : rijeci.slice(0, k)).join(' ');
+      out.push({ iso, tekst: `${oznaka} u ${dijelovi[j].replace(/\s+/g, '')} — ${naziv} — mjesto: ${mjesto || 'nije navedeno'}` });
+      const ostatak = rijeci.slice(k).join(' ').trim();
+      if (!zadnji && ostatak) mjesto = ostatak;
+    }
+  }
+  return out;
+}
+
+function danUTjednu(isoDatum) {
+  return ['nedjelja', 'ponedjeljak', 'utorak', 'srijeda', 'četvrtak', 'petak', 'subota'][new Date(isoDatum + 'T12:00:00Z').getUTCDay()];
+}
+
 // "29. kolovoza 2026." / "3. – 5. srpnja 2026." / "28. lipnja – 2. srpnja 2026."
 function formatirajRaspon(od, doDat, lang = 'hr') {
   if (!od) return '';
@@ -117,11 +203,26 @@ function buildScrapedSection(msgLower = '') {
       .filter(w => w.length > 4 && !/^(valpov|\d)/.test(w));
     return rijeci.some(w => msgLower.includes(w.substring(0, 6)));
   };
-  const opciProgram = /program|raspored|što se događa|sto se dogada|događanja|dogadanja/.test(msgLower);
-  const programi = [...uTijeku, ...buduca].filter(e => e.program && (trazi(e) || opciProgram)).slice(0, 2);
+  const opciProgram = /program|raspored|što se (?:događa|dešava|zbiva)|sto se (?:dogada|desava|zbiva)|događanj|dogadanj/.test(msgLower);
+  const upitDatum = datumIzUpita(msgLower);
+  const pokriva = (e) => upitDatum && e.datum_od <= upitDatum && upitDatum <= (e.datum_do || e.datum_od);
+  const programi = [...uTijeku, ...buduca].filter(e => e.program && (trazi(e) || opciProgram || pokriva(e))).slice(0, 2);
+  if (upitDatum) {
+    lines.push(`\nKORISNIK PITA ZA DATUM: ${danUTjednu(upitDatum)}, ${upitDatum.split('-').reverse().join('.')}. — navedi SAMO ono što se održava TOG dana (iz programa ispod i iz popisa događanja). Ako za taj dan nema ničega, to jasno reci.`);
+  }
   for (const e of programi) {
-    lines.push(`\nPROGRAM: ${e.naziv} (${e.link}) — za svaki dan navedi točno ono što piše ispod naslova tog dana:`);
-    lines.push(e.program);
+    const retci = formatirajProgram(e.program);
+    if (upitDatum && pokriva(e)) {
+      // Pitanje za jedan dan: samo retci tog dana, da model ne miješa susjedne dane.
+      const dan = retci.filter(r => r.iso === upitDatum).map(r => r.tekst);
+      const napomene = retci.filter(r => r.iso === 'napomena').map(r => r.tekst);
+      lines.push(`\nPROGRAM ZA TAJ DAN — ${e.naziv} (${e.link}):`);
+      lines.push(dan.length ? dan.join('\n') : 'Službeni program je potpun i za taj dan u njemu NEMA događanja — reci to jasno (ne govori da program nije dostupan).');
+      napomene.forEach(n => lines.push(n));
+      continue;
+    }
+    lines.push(`\nPROGRAM: ${e.naziv} (${e.link}) — svaki redak je jedno događanje (dan, vrijeme, naziv, mjesto); prepiši ih točno, ne mijenjaj mjesta ni dane:`);
+    lines.push(retci.length ? retci.map(r => r.tekst).join('\n') : e.program);
   }
 
   if (s.novosti_tz?.length) {
@@ -387,6 +488,11 @@ const TR = {
 // Vrati { context, category } — category se pamti i šalje nazad klijentu
 function getRelevantContext(message, db, lastCategory) {
   const msg = message.toLowerCase();
+
+  // Opće pitanje za konkretan datum ("što ima 29. prosinca?", "ima li čega 24.12.?") → događanja
+  if (datumIzUpita(msg) && /(?:što|sto|šta|sta)\s+(?:ima|se|je)|ima li|ima čega|ima neš|zbiva|dešava|desava|događa|dogada|happen|what's on|was ist los|was gibt/.test(msg)
+    || /djed[a-z]* (?:božićnjak|bozicnjak|mraz)|adventsk|advent\b/.test(msg))
+    return { context: CATEGORY_CONTEXTS.dogadanja(db), category: 'dogadanja' };
 
   // HR + EN + DE ključne riječi
   if (msg.includes('povijest') || msg.includes('histori') || msg.includes('osnovan') || msg.includes('općenito') || msg.includes('o gradu') || msg.includes('o valpovu') || msg.includes('stanovic') || msg.includes('stanovništv') || msg.includes('naselje') || msg.includes('geografij') || msg.includes('gospodarsk') || msg.includes('industrij') || msg.includes('poznat') || msg.includes('zanimljiv') || msg.includes('iovallium') || msg.includes('prandau') || msg.includes('rimsk') || msg.includes('osmansk') || msg.includes('gradonačelnik') || msg.includes('udaljenost')
@@ -868,8 +974,9 @@ export default async function handler(req, res) {
 
     // Događanja listing: filtriraj prošle i generiraj direktno bez AI
     // Ako korisnik pita za SPECIFIČNU manifestaciju po imenu → preskoči listing, pusti AI da odgovori konkretno
-    const specificEventQuery = ['fišijad','fisijad','matijafest','rockaraj','reunited','vašar','vasar','ljeto valpov','craft beer','staza zdravlja','festival sira','ribljeg paprikaš','ribljeg paprikas','kuhanje fiš','kuhanje fis','katančić','katancic','matija petar','matiji petru',
-      'čobanijad','cobanijad','advent','vashar','dani katančić','dani katancic','kvartet','zagreb'].some(k => msgLower.includes(k));
+    const upitniDatum = datumIzUpita(msgLower);
+    const specificEventQuery = !!upitniDatum || ['fišijad','fisijad','matijafest','rockaraj','reunited','vašar','vasar','ljeto valpov','craft beer','staza zdravlja','festival sira','ribljeg paprikaš','ribljeg paprikas','kuhanje fiš','kuhanje fis','katančić','katancic','matija petar','matiji petru',
+      'čobanijad','cobanijad','advent','božićnjak','bozicnjak','djed mraz','djeda mraz','vashar','dani katančić','dani katancic','kvartet','zagreb'].some(k => msgLower.includes(k));
     // ── NOVOSTI pre-gen blok (skrapani sadržaj s thumbnailima) ─────────────
     const wantsNovosti = ['novosti', 'vijesti', 'aktualnost', 'što je novo', 'sto je novo',
       'što se nedavno', 'što se zadnje', 'news', 'aktualno', 'najnovije']
