@@ -1,6 +1,7 @@
 import Anthropic from "@anthropic-ai/sdk";
 import { db } from "./_database.js";
 import { scrapedContent } from "./_scraped_content.js";
+import { getValpovstina } from "./_valpovstina.js";
 
 const anthropic = new Anthropic({
   apiKey: process.env.ANTHROPIC_API_KEY
@@ -166,9 +167,9 @@ function samoValpovo(tekst) {
 }
 
 /** Aktualne objave s valpovstina.info koje odgovaraju pitanju (najviše 3). */
-function valpovstinaZaUpit(msgLower) {
+function valpovstinaZaUpit(msgLower, lista) {
   const danas = danasIso();
-  const sve = (Array.isArray(scrapedContent?.valpovstina) ? scrapedContent.valpovstina : [])
+  const sve = (Array.isArray(lista) ? lista : [])
     .filter(o => (o.vrijedi_do || '') >= danas);
   if (!sve.length || !msgLower) return [];
   const stop = new Set(['koje', 'koja', 'koji', 'kada', 'gdje', 'kako', 'ima', 'li', 'je', 'su', 'za', 'na', 'se', 'od', 'do', 'što', 'sto', 'valpovo', 'valpovu', 'grad', 'sutra', 'danas']);
@@ -241,7 +242,7 @@ function klasificirajDogadanja() {
 }
 
 // Gradi sekciju s auto-skrapanim sadržajem (novosti, događanja, manifestacije)
-function buildScrapedSection(msgLower = '') {
+function buildScrapedSection(msgLower = '', valpovstinaLista = []) {
   const s = scrapedContent;
   const { prosla, uTijeku, buduca } = klasificirajDogadanja();
   if (!s || (!s.novosti_tz?.length && !s.novosti_grad?.length &&
@@ -302,7 +303,7 @@ function buildScrapedSection(msgLower = '') {
   }
 
   // SEKUNDARNI izvor valpovstina.info — samo objave koje odgovaraju pitanju (najviše 3)
-  const vs = valpovstinaZaUpit(msgLower);
+  const vs = valpovstinaZaUpit(msgLower, valpovstinaLista);
   if (vs.length) {
     lines.push('\nSEKUNDARNI IZVOR — valpovstina.info (NESLUŽBENI regionalni portal). Prednost UVIJEK imaju službeni podaci iznad (Grad Valpovo, TZ Valpovo) i baza; ako se razlikuju, vrijede službeni. Ove objave koristi SAMO ako službeni izvori nemaju traženi podatak, samo za aktualno i buduće, i svaki takav podatak OBVEZNO označi s "(izvor: [valpovstina.info](link objave))". Iz objava navodi SAMO podatke za Valpovo i njegova naselja (Ladimirevci, Nard, Šag, Harkanovci, Ivanovci, Zelčin, Marjančaci), ne za Belišće, Petrijevce ni druga mjesta:');
     for (const o of vs) {
@@ -1844,6 +1845,9 @@ export default async function handler(req, res) {
       ? `${weather.temperature}°C, vjetar ${weather.windspeed} km/h`
       : '';
 
+    // valpovstina.info uživo (pamćenje 30 min); rezerva je dnevni scrape
+    const valpovstinaLista = await getValpovstina(Array.isArray(scrapedContent?.valpovstina) ? scrapedContent.valpovstina : []);
+
     const systemPrompt = `
 KONTEKST TRENUTNOG TRENUTKA:
 - Datum: ${dateStr}
@@ -2020,7 +2024,7 @@ NIKAD ne izmišljaj nazive, adrese, telefonske brojeve lokalnih valpovačkih obj
 
 Baza podataka:
 ${JSON.stringify(stripImages(context))}
-${buildScrapedSection(msgLower)}
+${buildScrapedSection(msgLower, valpovstinaLista)}
 `;
 
     const historyMessages = Array.isArray(history)
