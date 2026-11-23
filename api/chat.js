@@ -79,7 +79,7 @@ function klasificirajDogadanja() {
 }
 
 // Gradi sekciju s auto-skrapanim sadržajem (novosti, događanja, manifestacije)
-function buildScrapedSection() {
+function buildScrapedSection(msgLower = '') {
   const s = scrapedContent;
   const { prosla, uTijeku, buduca } = klasificirajDogadanja();
   if (!s || (!s.novosti_tz?.length && !s.novosti_grad?.length &&
@@ -110,6 +110,20 @@ function buildScrapedSection() {
       prosla.slice(0, 8).forEach(e => lines.push(red(e)));
     }
   }
+  // Puni PROGRAM manifestacije (po danima) — samo za aktualne/nadolazeće manifestacije
+  // koje pitanje spominje po imenu ili kad se traži program/raspored.
+  const trazi = (e) => {
+    const rijeci = (e.naziv || '').toLowerCase().replace(/[^a-zčćđšž0-9 ]/g, ' ').split(/\s+/)
+      .filter(w => w.length > 4 && !/^(valpov|\d)/.test(w));
+    return rijeci.some(w => msgLower.includes(w.substring(0, 6)));
+  };
+  const opciProgram = /program|raspored|što se događa|sto se dogada|događanja|dogadanja/.test(msgLower);
+  const programi = [...uTijeku, ...buduca].filter(e => e.program && (trazi(e) || opciProgram)).slice(0, 2);
+  for (const e of programi) {
+    lines.push(`\nPROGRAM: ${e.naziv} (${e.link}) — za svaki dan navedi točno ono što piše ispod naslova tog dana:`);
+    lines.push(e.program);
+  }
+
   if (s.novosti_tz?.length) {
     lines.push('\nNajnovije vijesti — Turistička zajednica Valpovo:');
     s.novosti_tz.forEach(n => {
@@ -1802,7 +1816,7 @@ NIKAD ne izmišljaj nazive, adrese, telefonske brojeve lokalnih valpovačkih obj
 
 Baza podataka:
 ${JSON.stringify(stripImages(context))}
-${buildScrapedSection()}
+${buildScrapedSection(msgLower)}
 `;
 
     const historyMessages = Array.isArray(history)
@@ -1821,7 +1835,8 @@ ${buildScrapedSection()}
         ...historyMessages,
         { role: "user", content: effectiveMessage }
       ],
-      max_tokens: category === 'opcenito' ? 1200 : 700,
+      // Puni program manifestacije (blok "PROGRAM:") traži dulji odgovor.
+      max_tokens: systemPrompt.includes('\nPROGRAM: ') ? 3000 : category === 'opcenito' ? 1200 : 700,
       thinking: { type: "disabled" },
       output_config: { effort: "low" },
       stream: true

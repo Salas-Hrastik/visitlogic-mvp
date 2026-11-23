@@ -1,5 +1,5 @@
 // AUTO-GENERATED — ne editiraj ručno!
-// Zadnje skrapanje: 2026-11-23 06:09 UTC
+// Zadnje skrapanje: 2026-11-23 15:33 UTC
 // Izvor: tz.valpovo.hr, valpovo.hr
 // GitHub Actions job: scrape-valpovo (dnevno u 6:00 UTC)
 //
@@ -9,7 +9,7 @@
 
 export const scrapedContent = {
   "meta": {
-    "zadnje_azuriranje": "2026-11-23T06:09:41.885Z",
+    "zadnje_azuriranje": "2026-11-23T15:33:22.891Z",
     "izvori": [
       "https://tz.valpovo.hr",
       "https://valpovo.hr"
@@ -414,13 +414,14 @@ export const scrapedContent = {
     {
       "naziv": "ADVENT U VALPOVU 2026. (28.11.2026. – 01.01.2027.)",
       "datum_od": "2026-11-28",
-      "datum_do": "2026-11-28",
-      "datum_tekst": "28.11.2026",
+      "datum_do": "2027-01-01",
+      "datum_tekst": "28.11.2026. – 01.01.2027",
       "vrijeme": "",
       "opis": "ADVENT U VALPOVU 2026. (28.11.2026. – 01.01.2027.) U organizaciji Grada Valpova, Turističke zajednice Grada Valpova, Ustanove za kulturne djelatnosti „Ante Evetović Miroljub“ Valpovo i Valpovačkog poduzetničkog centra, od 28. studenoga 2026. do 01. siječnja 20",
       "link": "https://tz.valpovo.hr/2026/11/17/advent-u-valpovu-2026-28-11-2026-01-01-2027/",
       "izvor": "tz.valpovo.hr",
-      "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/11/fb-cover-advent-u-valpovu-2026-banner.jpg"
+      "IMAGE_URL": "https://tz.valpovo.hr/wp-content/uploads/2026/11/fb-cover-advent-u-valpovu-2026-banner.jpg",
+      "program": "ADVENT U VALPOVU 2026. (28.11.2026. – 01.01.2027.) U organizaciji Grada Valpova, Turističke zajednice Grada Valpova, Ustanove za kulturne djelatnosti „Ante Evetović Miroljub“ Valpovo i Valpovačkog poduzetničkog centra, od 28. studenoga 2026. do 01. siječnja 2027. godine održat će se programom bogata manifestacija „Advent u Valpovu 2026.“ Doživite valpovačku zimsku čaroliju! SUBOTA, 28.11.2026. Trg kralja Tomislava, Valpovo 10:00 sati: CHRISTMAS GRAFFITI JAM Ispred Župne crkve Bezgrešnog začeća Blažene Djevice Marije 17:30 sati: PALJENJE 1. ADVENTSKE SVIJEĆE (SVIJEĆA NADE) PONEDJELJAK, 30.11.2026. Centar kulture „Matija Petar Katančić“ Valpovo 19:30 sati: PREDSTAVA: USPJEŠNA.HR SRIJEDA, 02.12.2026. Kapelica Sv. Trojstva dvorca Prandau-Normann Valpovo 19:00 sati: KONCERT: EUROPSKI SUPUTNICI PETRICE KEREMPUHA PETAK, 04.12.2026. Centar kulture „Matija Petar Katančić“ Valpovo 19:00 sati: „KAPELNIČE, HVALA TI ZA SVE“ – SJEĆANJE NA STJEPANA DŽEBIĆA – KONCERT PUHAČKOG ORKESTRA DVD-a VALPOVO I OSJEČKOG PUHAČKOG ORKESTRA SUBOTA, 05.12.2026. Ispred Župne crkve Bezgrešnog začeća Blažene Djevice Marije 17:30 sati: PALJENJE 2. ADVENTSKE SVIJEĆE (SVIJEĆA MIRA) Edukacijsko – interpretacijski centar Matije Petra Katančića, Valpovo 18:00 sati: RADIONICA „LEGO MISIJA: SV. NIKOLA TREBA POMOĆ“ („EDUKIDO“ VALPOVO) Trg kralja Tomislava, Valpovo 20:00 sati: JOVALIUS NEDJELJA, 06.12.2026. Ispred Župne crkve Bezgrešnog začeća Blažene Djevice Marije, Valpovo 10:30 sati: DOLAZAK SV. NIKOLE Trg kralja Tomislava, Valpovo 17:00 sati: DJ FLEKA XMAS EDITION UTORAK, 08.12.2026. Trg kralja Tomislava, Valpovo 20:00 sati: ALLEGRO BAND OSIJEK SRIJEDA, 09.12.2026. Centar kulture „Matija Petar Katančić“ Valpovo 20:00 sati: ZLATNI DEČKI ELEKTRIČNIH NOTA GRADU VALPOVU PETAK, 11.12.2026. Edukacijsko – interpretacijski centar Matije Petra Katančića, Valpovo 18:00 sati: ADVENT ZA UMIROVLJENIKE – POSJET IZLOŽBAMA Trg kralja Tomislava, Valpovo 19:00 sati: CAPPUCCINO LIGHT BAND Gradska kavana „Katančić“ Valpovo 20:00 sati: KVIZ ZNANJA „KVIZKO“ (Od 15 do 30 godina) SUBOTA, 12.12.2026. Ispred Župne crkve Bezgrešnog začeća Blažene Djevice Marije, Valpovo 17:30 sati: PALJENJE 3. ADVENTSKE SVIJEĆE (SVIJEĆA RADOSTI) Edukacijsko – interpretacijski centar Matije Petra Katančića, Valpovo 18:00 sati: RADIONICA „SJEVERNI POL“ („EDUKIDO“ VALPOVO) Trg kralja Tomislava, Valpovo 20:00 sati: GLAZBENI ODGOJ NEDJELJA, 13.12.2026. Trg kralja Tomislava, Valpovo 18:00 sati: KONCERT ZBOROVA: DJEČJI ZBOR OŠ VALPOVO, DJEČJI ZBOR & UČENICI GLAZBENE ŠKOLE M. P. KATANČIĆA VALPOVO PONEDJELJAK, 14.12.2026. Centar kulture „Matija Petar Katančić“ Valpovo 11:30 sati: PROJEKCIJA ANIMIRANOG FILMA „ZABORAVLJENI OTOK“ (Za učenike razredne nastave OŠ Valpovo) UTORAK, 15.12.2026. Centar kulture „Matija Petar Katančić“ Valpovo 17:30 sati: BOŽIĆNA AKADEMIJA DJEČJIH VRTIĆA „MAZA“ I „MOJ BAMBI“ VALPOVO SRIJEDA, 16.12.2026. Centar kulture „Matija Petar Katančić“ Valpovo 19:00 sati: BOŽIĆNI KONCERT OSNOVNE GLAZBENE ŠKOLE M.P. KATANČIĆA VALPOVO ČETVRTAK, 17.12.2026. Trg kralja Tomislava, Valpovo 10:00 sati: DJEČJI ADVENT (Animatorski program za djecu vrtićkog uzrasta) PETAK, 18.12.2026. Centar kulture „Matija Petar Katančić“ Valpovo 11:00 sati: DJEČJA BOŽIĆNA PREDSTAVA „KRALJICA BOŽIĆA“ ( za djecu od 3 do 10 godina) 19:00 sati: BOŽIĆNA PRIREDBA OSNOVNE ŠKOLE VALPOVO Trg kralja Tomislava, Valpovo 19:00 sati: I WONDER DISCO SOUL & FUNK SHOWBAND SUBOTA, 19.12.2026. Agropark, Valpovo 10:00 sati: BOŽIĆNI SAJAM – NASTUP ČUVARI NOĆI 12:00 sati: DOLAZAK MOTO MRAZOVA – MOTO KLUB 2 GRADA Ispred Župne crkve Bezgrešnog začeća Blažene Djevice Marije 17:30 sati: PALJENJE 4. ADVENTSKE SVIJEĆE (SVIJEĆA LJUBAVI) Trg kralja Tomislava, Valpovo 20:00 sati: BLACKOUT BAND NEDJELJA, 20.12.2026. Trg kralja Tomislava, Valpovo 17:00 sati: BOŽIĆNI KONCERT MAI VALPOVO Centar kulture „Matija Petar Katančić“ Valpovo 20:00 sati: VALPOVAČKI TAMBURAŠKI ORKESTAR: KONCERT FILMSKE GLAZBE PONEDJELJAK, 21.12.2026. Ispred dvorca Prandau-Normann, Valpovo 18:00 sati: LAMPIONADA (Zajednica tehničke kulture Valpovo-Belišće) SRIJEDA, 23.12.2026. Centar kulture „Matija Petar Katančić“ Valpovo 20:00 sati: BOŽIĆNO – NOVOGODIŠNJI KONCERT OPERNOG ORKESTRA HNK OSIJEK ČETVRTAK, 24.12.2026. Agropark, Valpovo 11:30 sati: KUHANJE FIŠA I PODJELA GRAĐANIMA – MAJSTORI KOTLIĆA ŽELJKO TURALIJA & DIMNI SIGNALI VIKEND BAND SUBOTA, 26.12.2026. Trg kralja Tomislava, Valpovo 20:00 sati: AURA BAND NEDJELJA, 27.12.2026. Trg kralja Tomislava, Valpovo 17:00 sati: DJ FLEKA XMAS EDITION Župna crkva Bezgrešnog začeća Blažene Djevice Marije 19:30 sati: BOŽIĆNI KONCERT: HPD MATIJA PETAR KATANČIĆ Valpovo CPD MIR Belišće HPD DAVOR Slavonski Brod PONEDJELJAK, 28.12.2026. Trg kralja Tomislava, Valpovo 17:00 sati ŽIVE BOŽIĆNE JASLICE ČETVRTAK, 31.12.2026. Trg kralja Tomislava, Valpovo DOČEK NOVE 2027. GODINE UZ BONUS BAND OSIJEK NOVOGODIŠNJI VATROMET AUTOBUS DJEDA BOŽIĆNJAKA: 17:00 – 20:00h START@ ISPRED ŽUPNE CRKVE: UTORAK 08.12. SUBOTA 5.12., 12.12., 19.12., 26.12. NEDJELJA: 6.12., 13.12., 20.12., 27.12. GASTRO PONUDA ADVENTSKE KUĆICE NA TRGU! Plakat – Advent u Valpovu 2026. (PDF)"
     },
     {
       "naziv": "HIT KOMEDIJA: „ USPJEŠNA.HR “",
