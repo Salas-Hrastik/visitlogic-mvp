@@ -700,18 +700,74 @@ async function scrapeZupa() {
   return stranice;
 }
 
+// ─── valpovstina.info — NESLUŽBENI portal, SEKUNDARNI izvor ──────────────────
+// Samo AKTUALNE objave: zadnjih 30 dana, bez crne kronike, odnose se na Valpovo ili
+// njegova naselja i spominju datum od danas do +90 dana (najave, prekidi struje…).
+
+const VS_API = 'https://valpovstina.info/wp-json/wp/v2/posts';
+const VS_CRNA_KRONIKA = 57;
+const VS_VALPOVO_RE = /valpov|ladimirev|\bnard|\bšag\b|\bsag\b|harkanov|ivanovc|zelčin|zelcin|marjanč|marjanc/i;
+const VS_MJESECI = { siječ: 1, sijec: 1, veljač: 2, veljac: 2, ožuj: 3, ozuj: 3, trav: 4, svib: 5, lip: 6,
+  srp: 7, kolov: 8, ruj: 9, listop: 10, studen: 11, prosin: 12 };
+
+function vsDatumi(tekst, objavljeno) {
+  const g0 = +objavljeno.slice(0, 4), m0 = +objavljeno.slice(5, 7);
+  const god = (raw, m) => (raw ? +raw : m < m0 - 2 ? g0 + 1 : g0);
+  const out = new Set();
+  for (const m of tekst.matchAll(/\b(\d{1,2})\.\s?(\d{1,2})\.\s?(\d{4})?/g)) {
+    const d = isoDate(god(m[3], +m[2]), +m[2], +m[1]);
+    if (d) out.add(d);
+  }
+  for (const m of tekst.matchAll(/\b(\d{1,2})\.\s*([a-zčćšžđ]+)(?:\s+(\d{4}))?/gi)) {
+    const k = Object.keys(VS_MJESECI).find(x => m[2].toLowerCase().startsWith(x));
+    if (!k) continue;
+    const d = isoDate(god(m[3], VS_MJESECI[k]), VS_MJESECI[k], +m[1]);
+    if (d) out.add(d);
+  }
+  return [...out];
+}
+
+async function scrapeValpovstina() {
+  const danas = new Date().toISOString().slice(0, 10);
+  const horizont = new Date(Date.now() + 90 * 86400000).toISOString().slice(0, 10);
+  const after = new Date(Date.now() - 30 * 86400000).toISOString().slice(0, 19);
+  const posts = [];
+  for (let page = 1; page <= 5; page++) {
+    const batch = await fetchJson(`${VS_API}?per_page=100&page=${page}&after=${after}` +
+      `&categories_exclude=${VS_CRNA_KRONIKA}&_fields=date,link,title,content,categories`);
+    if (!Array.isArray(batch) || !batch.length) break;
+    posts.push(...batch);
+    if (batch.length < 100) break;
+  }
+  const items = [];
+  for (const p of posts) {
+    if (p.categories?.includes(VS_CRNA_KRONIKA)) continue;
+    const naslov = clean(p.title?.rendered, 160);
+    const tekst = clean(String(p.content?.rendered || '').replace(/<\/(p|li|h\d)>/gi, ' . '), 2500)
+      .replace(/(\s\.)+/g, '.');
+    if (!naslov || tekst.length < 80 || !VS_VALPOVO_RE.test(`${naslov} ${tekst}`)) continue;
+    const objavljeno = (p.date || '').slice(0, 10);
+    const buduci = vsDatumi(`${naslov} ${tekst}`, objavljeno).filter(d => d >= danas && d <= horizont).sort();
+    if (!buduci.length) continue;
+    items.push({ naslov, objavljeno, vrijedi_do: buduci[buduci.length - 1], link: p.link, tekst });
+  }
+  console.log(`✅ valpovstina.info: ${items.length} aktualnih objava o Valpovu / ${posts.length} pregledano`);
+  return items;
+}
+
 // ─── Main ────────────────────────────────────────────────────────────────────
 
 async function main() {
   console.log('🔍 Pokrećem scraping...\n');
 
-  const [novostiTZ, novostiGrad, manifestacije, dogadanjaGrad, dogadanjaTZ, zupa] = await Promise.all([
+  const [novostiTZ, novostiGrad, manifestacije, dogadanjaGrad, dogadanjaTZ, zupa, valpovstina] = await Promise.all([
     scrapeNovostiTZ(),
     scrapeNovostiGrad(),
     scrapeManifestacije(),
     scrapeDogadanjaGrad(),
     scrapeDogadanjaTZ(),
     scrapeZupa(),
+    scrapeValpovstina(),
   ]);
 
   if (_browser) await _browser.close();
@@ -730,6 +786,7 @@ async function main() {
     manifestacije_aktualne: manifestacije,
     dogadanja,
     zupa,
+    valpovstina,
   };
 
   const total = novostiTZ.length + novostiGrad.length + manifestacije.length + dogadanja.length;
