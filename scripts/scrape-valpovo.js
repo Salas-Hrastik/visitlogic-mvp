@@ -666,17 +666,52 @@ export const scrapedContent = ${JSON.stringify(data, null, 2)};
   console.log('✅ Zapisano: api/_scraped_content.js');
 }
 
+// ─── Župa Valpovo (zupavalpo.wixsite.com) — sve stranice s tekstom ──────────
+
+const ZUPA_SITEMAP = 'https://zupavalpo.wixsite.com/zupa-valpovo/pages-sitemap.xml';
+// Stranice bez korisnog teksta (galerije, rezervacije, prazni predlošci)
+const ZUPA_PRESKOCI = /\/(?:blog|book-online|fotogalerija|video-materijali|iz-zraka|copy-of-[^/]*)$/;
+const ZUPA_MAX_ZNAKOVA = 60000;
+
+async function scrapeZupa() {
+  const sitemap = await fetchHtml(ZUPA_SITEMAP);
+  const urls = [...String(sitemap || '').matchAll(/<loc>([^<]+)<\/loc>/g)]
+    .map(m => { try { return new URL(m[1].trim()).href; } catch { return null; } })
+    .filter(u => u && !ZUPA_PRESKOCI.test(u));
+  if (!urls.length) {
+    console.warn('⚠️  Župa: sitemap nije dohvaćen');
+    return [];
+  }
+
+  const stranice = [];
+  await pool(urls, 2, async (url) => {
+    const html = await fetchHtml(url);
+    if (!html) return;
+    const $ = load(html);
+    $('script, style, noscript, svg, header, footer, nav').remove();
+    const naslov = clean($('title').first().text(), 120).replace(/\s*\|\s*Zupa Valpovo\s*$/i, '');
+    const tekst = clean(($('main').html() || $('body').html() || ''), ZUPA_MAX_ZNAKOVA);
+    if (tekst.length < 150) return; // prazne stranice (npr. "Obavijesti" bez objava)
+    stranice.push({ naslov: naslov || url, link: url, tekst });
+  }, 800);
+
+  stranice.sort((a, b) => a.link.localeCompare(b.link));
+  console.log(`✅ Župa Valpovo: ${stranice.length} stranica s tekstom / ${urls.length} u sitemapu`);
+  return stranice;
+}
+
 // ─── Main ────────────────────────────────────────────────────────────────────
 
 async function main() {
   console.log('🔍 Pokrećem scraping...\n');
 
-  const [novostiTZ, novostiGrad, manifestacije, dogadanjaGrad, dogadanjaTZ] = await Promise.all([
+  const [novostiTZ, novostiGrad, manifestacije, dogadanjaGrad, dogadanjaTZ, zupa] = await Promise.all([
     scrapeNovostiTZ(),
     scrapeNovostiGrad(),
     scrapeManifestacije(),
     scrapeDogadanjaGrad(),
     scrapeDogadanjaTZ(),
+    scrapeZupa(),
   ]);
 
   if (_browser) await _browser.close();
@@ -687,13 +722,14 @@ async function main() {
   const data = {
     meta: {
       zadnje_azuriranje: new Date().toISOString(),
-      izvori: ['https://tz.valpovo.hr', 'https://valpovo.hr'],
+      izvori: ['https://tz.valpovo.hr', 'https://valpovo.hr', 'https://zupavalpo.wixsite.com/zupa-valpovo'],
       broj_dogadanja: dogadanja.length,
     },
     novosti_tz: novostiTZ,
     novosti_grad: novostiGrad,
     manifestacije_aktualne: manifestacije,
     dogadanja,
+    zupa,
   };
 
   const total = novostiTZ.length + novostiGrad.length + manifestacije.length + dogadanja.length;

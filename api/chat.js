@@ -113,6 +113,47 @@ function formatirajProgram(program) {
   return out;
 }
 
+// ── Župa Valpovo (zupavalpo.wixsite.com, skrapano u scrapedContent.zupa) ──
+// Pitanja o misama, župnom uredu, sakramentima, svećenicima, filijalama…
+const ZUPA_RE = /\bmis[aeiu]\b|misn|zornic|župn|zupn|župnik|zupnik|kapelan|vikar|svećenik|svecenik|krštenj|krstenj|krizm|pričest|pricest|vjenčanj|vjencanj|zaručni|zarucni|ispovijed|sakrament|vjeronauk|katehez|blagoslov|sprovod|pokop|kćeri milosrđ|kceri milosrd|časne sestre|casne sestre|filijal|kapelic|zvona|orgulj|molitv|stepinčev|stepincev|opatijsk|bocanjev|crkv[a-z]* (?:otvoren|radi)|otvorena crkva|mass\b|gottesdienst|messe\b/;
+
+const foldZ = (t) => t.toLowerCase().replace(/[čć]/g, 'c').replace(/š/g, 's').replace(/ž/g, 'z').replace(/đ/g, 'd');
+
+/** Najrelevantniji odlomci župnih stranica za pitanje (do ~9000 znakova). */
+function zupaKontekst(msgLower) {
+  const stranice = Array.isArray(scrapedContent?.zupa) ? scrapedContent.zupa : [];
+  if (!stranice.length) return [];
+  const stop = new Set(['koje', 'koja', 'koji', 'kada', 'gdje', 'kako', 'može', 'mogu', 'ima', 'li', 'je', 'su', 'za', 'na', 'u', 'i', 'se', 'od', 'do', 'valpovo', 'valpovu', 'župa', 'zupa']);
+  const kljucevi = foldZ(msgLower).split(/[^a-z0-9]+/).filter(w => w.length > 2 && !stop.has(w)).map(w => w.substring(0, 5));
+  const odlomci = [];
+  for (const st of stranice) {
+    const tekst = st.tekst || '';
+    for (let i = 0; i < tekst.length; i += 1400) {
+      const dio = tekst.substring(i, i + 1600);
+      const f = foldZ(dio);
+      const fn = foldZ(st.naslov || '');
+      let bod = 0;
+      for (const k of kljucevi) {
+        if (f.includes(k)) bod += 1;
+        if (fn.includes(k)) bod += 2;
+      }
+      // Župni ured (raspored misa, kontakt, radno vrijeme) — početni odlomak uvijek koristan
+      if (i === 0 && /župni ured/i.test(st.naslov)) bod += 1.5;
+      if (bod > 0) odlomci.push({ bod, naslov: st.naslov, link: st.link, dio });
+    }
+  }
+  odlomci.sort((a, b) => b.bod - a.bod);
+  const out = [];
+  let budzet = 9000;
+  for (const o of odlomci) {
+    if (o.dio.length > budzet) continue;
+    budzet -= o.dio.length;
+    out.push({ stranica: o.naslov, link: o.link, tekst: o.dio });
+    if (budzet < 800) break;
+  }
+  return out;
+}
+
 function danUTjednu(isoDatum) {
   return ['nedjelja', 'ponedjeljak', 'utorak', 'srijeda', 'četvrtak', 'petak', 'subota'][new Date(isoDatum + 'T12:00:00Z').getUTCDay()];
 }
@@ -488,6 +529,17 @@ const TR = {
 // Vrati { context, category } — category se pamti i šalje nazad klijentu
 function getRelevantContext(message, db, lastCategory) {
   const msg = message.toLowerCase();
+
+  // Župa Valpovo: mise, župni ured, sakramenti… → odlomci službenih župnih stranica
+  if (ZUPA_RE.test(msg) && !/kirvaj|proštenj|prostenj/.test(msg)) {
+    const zupa = zupaKontekst(msg);
+    if (zupa.length) {
+      return {
+        context: { grad: db.grad, zupa_valpovo: { izvor: 'Službene stranice Župe Bezgrešnog začeća BDM Valpovo (zupavalpo.wixsite.com)', odlomci: zupa } },
+        category: 'opcenito',
+      };
+    }
+  }
 
   // Opće pitanje za konkretan datum ("što ima 29. prosinca?", "ima li čega 24.12.?") → događanja
   if (datumIzUpita(msg) && /(?:što|sto|šta|sta)\s+(?:ima|se|je)|ima li|ima čega|ima neš|zbiva|dešava|desava|događa|dogada|happen|what's on|was ist los|was gibt/.test(msg)
