@@ -154,6 +154,41 @@ function zupaKontekst(msgLower) {
   return out;
 }
 
+// Objava koja nabraja i druga mjesta (npr. prekidi struje po Belišću, Petrijevcima…):
+// zadrži uvod i samo dijelove o Valpovu i njegovim naseljima.
+const VS_VALPOVO_RE = /valpov|ladimirev|\bnard|\bšag|harkanov|ivanovc|zelčin|marjanč/i;
+const VS_DRUGA_MJESTA_RE = /beliš|petrijev|bizov|brođan|brodjan|bocanjev|gat\b|tiborjan|habjanov|satnic|koška|koska|donji miholjac|osijek/i;
+function samoValpovo(tekst) {
+  if (!VS_DRUGA_MJESTA_RE.test(tekst)) return tekst;
+  const dijelovi = tekst.split(/(?<=[.,]\.)\s+|(?<=\.)\s+(?=[A-ZČĆŠŽĐ])/);
+  const zadrzi = dijelovi.filter((d, i) => i < 2 || (VS_VALPOVO_RE.test(d) && !VS_DRUGA_MJESTA_RE.test(d)) || i === dijelovi.length - 1 && !VS_DRUGA_MJESTA_RE.test(d));
+  return zadrzi.join(' ');
+}
+
+/** Aktualne objave s valpovstina.info koje odgovaraju pitanju (najviše 3). */
+function valpovstinaZaUpit(msgLower) {
+  const danas = danasIso();
+  const sve = (Array.isArray(scrapedContent?.valpovstina) ? scrapedContent.valpovstina : [])
+    .filter(o => (o.vrijedi_do || '') >= danas);
+  if (!sve.length || !msgLower) return [];
+  const stop = new Set(['koje', 'koja', 'koji', 'kada', 'gdje', 'kako', 'ima', 'li', 'je', 'su', 'za', 'na', 'se', 'od', 'do', 'što', 'sto', 'valpovo', 'valpovu', 'grad', 'sutra', 'danas']);
+  const kljucevi = foldZ(msgLower).split(/[^a-z0-9]+/).filter(w => w.length > 3 && !stop.has(w)).map(w => w.substring(0, 5));
+  // Sinonimi: pitanje svakodnevnim riječima, objava službenim jezikom
+  const SINONIMI = { kafic: ['ugost'], bar: ['ugost'], birti: ['ugost'], resto: ['ugost'], struj: ['elekt', 'isporu'], elekt: ['struj'] };
+  for (const k of [...kljucevi]) for (const [a, b] of Object.entries(SINONIMI)) if (k.startsWith(a)) kljucevi.push(...b);
+  if (!kljucevi.length) return [];
+  return sve
+    .map(o => {
+      const n = foldZ(o.naslov), t = foldZ(o.tekst);
+      const bod = kljucevi.reduce((b, k) => b + (n.includes(k) ? 2 : 0) + (t.includes(k) ? 1 : 0), 0);
+      return { o, bod };
+    })
+    .filter(x => x.bod >= 2 || (kljucevi.length <= 3 && x.bod >= 1))
+    .sort((a, b) => b.bod - a.bod)
+    .slice(0, 3)
+    .map(x => x.o);
+}
+
 function danUTjednu(isoDatum) {
   return ['nedjelja', 'ponedjeljak', 'utorak', 'srijeda', 'četvrtak', 'petak', 'subota'][new Date(isoDatum + 'T12:00:00Z').getUTCDay()];
 }
@@ -264,6 +299,16 @@ function buildScrapedSection(msgLower = '') {
     }
     lines.push(`\nPROGRAM: ${e.naziv} (${e.link}) — svaki redak je jedno događanje (dan, vrijeme, naziv, mjesto); prepiši ih točno, ne mijenjaj mjesta ni dane:`);
     lines.push(retci.length ? retci.map(r => r.tekst).join('\n') : e.program);
+  }
+
+  // SEKUNDARNI izvor valpovstina.info — samo objave koje odgovaraju pitanju (najviše 3)
+  const vs = valpovstinaZaUpit(msgLower);
+  if (vs.length) {
+    lines.push('\nSEKUNDARNI IZVOR — valpovstina.info (NESLUŽBENI regionalni portal). Prednost UVIJEK imaju službeni podaci iznad (Grad Valpovo, TZ Valpovo) i baza; ako se razlikuju, vrijede službeni. Ove objave koristi SAMO ako službeni izvori nemaju traženi podatak, samo za aktualno i buduće, i svaki takav podatak OBVEZNO označi s "(izvor: [valpovstina.info](link objave))". Iz objava navodi SAMO podatke za Valpovo i njegova naselja (Ladimirevci, Nard, Šag, Harkanovci, Ivanovci, Zelčin, Marjančaci), ne za Belišće, Petrijevce ni druga mjesta:');
+    for (const o of vs) {
+      lines.push(`• OBJAVA "${o.naslov}" (objavljeno ${o.objavljeno}) — U ODGOVORU OBAVEZNO NAPIŠI: (izvor: [valpovstina.info](${o.link}))`);
+      lines.push(`  Sadržaj: ${samoValpovo(o.tekst)}`);
+    }
   }
 
   if (s.novosti_tz?.length) {
