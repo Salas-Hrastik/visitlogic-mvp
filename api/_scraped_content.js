@@ -1,5 +1,5 @@
 // AUTO-GENERATED — ne editiraj ručno!
-// Zadnje skrapanje: 2026-11-23 16:31 UTC
+// Zadnje skrapanje: 2026-11-24 17:17 UTC
 // Izvor: tz.valpovo.hr, valpovo.hr
 // GitHub Actions job: scrape-valpovo (dnevno u 6:00 UTC)
 //
@@ -9,7 +9,7 @@
 
 export const scrapedContent = {
   "meta": {
-    "zadnje_azuriranje": "2026-11-23T16:31:22.111Z",
+    "zadnje_azuriranje": "2026-11-24T17:17:04.087Z",
     "izvori": [
       "https://tz.valpovo.hr",
       "https://valpovo.hr",
@@ -123,12 +123,6 @@ export const scrapedContent = {
       "datum": "16. 11. 2026.",
       "kratki_opis": "",
       "link": "https://valpovo.hr/2026/11/16/treci-buvljak-bez-novca-biljezi-rekordan-odaziv-a-prosinacko-izdanje-donosi-razmjenu-bozicnih-dekoracija/"
-    },
-    {
-      "naslov": "Obavijest o isplati jednokratne pomoći povodom blagdana Božića u 2026. godini",
-      "datum": "16. 11. 2026.",
-      "kratki_opis": "1. Obavijest o isplati jednokratne pomoći povodom blagdana Božića 2. Odluka o uvjetima, visini i načinu isplate jednokratne pomoći povodom blagdana Božića 3. Obrazac zahtjeva 4. Izjava o davanju privo",
-      "link": "https://valpovo.hr/2026/11/16/obavijest-o-isplati-jednokratne-pomoci-povodom-blagdana-bozica-u-2026-godini/"
     }
   ],
   "manifestacije_aktualne": [
@@ -551,17 +545,17 @@ export const scrapedContent = {
   "valpovstina": [
     {
       "naslov": "PRIPREMITE SE: Prekidi u isporuci električne energije",
+      "objavljeno": "2026-11-24",
+      "vrijedi_do": "2026-11-25",
+      "link": "https://valpovstina.info/2026/11/24/pripremite-se-prekidi-u-isporuci-elektricne-energije-76/",
+      "tekst": "VALPOVŠTINA Prema obavijesti HEP ODS-a, u srijedu, 25. studenoga 2026. godine, najavljeni su prekidi u isporuci električne energije zbog planiranih radova.. Radovi će se obavljati u :. VALPOVU , u ulicama NIKOLE TESLE 3, OSJEČKA ULICA 9-43/A nep, ULICA BANA IVANA MAŽURANIĆA 1. u vremenu od 8:30 – 10:30 sati,. PETRIJEVCIMA , u ulicama REPUBLIKE 68-108/A par, 114, TRG SV. PETRA 2-4 par, 1, MRTVAČNICA, u vremenu od 10:00 – 11:30 sati,. PETRIJEVCIMA, u Ulici STJEPANA RADIĆA 10/A-52 par. u vremenu od 8:30 – 10:00 sati.. U slučaju lošeg vremena radovi se odgađaju.."
+    },
+    {
+      "naslov": "PRIPREMITE SE: Prekidi u isporuci električne energije",
       "objavljeno": "2026-11-23",
       "vrijedi_do": "2026-11-24",
       "link": "https://valpovstina.info/2026/11/23/pripremite-se-prekidi-u-isporuci-elektricne-energije-75/",
       "tekst": "VALPOVŠTINA Prema obavijesti HEP ODS-a, u utorak, 24. studenoga 2026. godine, najavljeni su prekidi u isporuci električne energije zbog planiranih radova.. Radovi će se obavljati u :. PETRIJEVCIMA , u ulicama MATIJE GUPCA 20-32 par, MLINSKA 1-11 nep, REPUBLIKE 53., u vremenu od 8:30 – 10:00 sati,. BROĐANCIMA, u ulicama SLAVKA VIDAKOVIĆA 1-15 nep, ŠKOLSKA 2-40 par, 1-31 nep., u vremenu od 8:30 – 9:30 sati,. BELIŠĆU , u ULICI MATIJE PETRA KATANČIĆA 35-87 nep. u vremenu od 12:00 – 13:00 sati,. VALPOVU , u Ulici IVANA GORANA KOVAČIĆA 2-44 par, 1-45 nep. u vremenu od 10:30 – 11:30 sati,. VALPOVU, u ulicama HRASTIK 1-43 nep, RUDINA PANJIK 3-11 nep, ULICA EUGENA KVATERNIKA 2-66/B. u vremenu od 11:30 – 12:30 sati,. BELIŠĆU, u Ulici PETRA PRERADOVIĆA 3-31 nep, 35-51 nep., u vremenu od 10:00 – 11:30 sati.. U slučaju lošeg vremena radovi se odgađaju.."
-    },
-    {
-      "naslov": "PRIPREMITE SE: Prekidi u isporuci električne energije",
-      "objavljeno": "2026-11-22",
-      "vrijedi_do": "2026-11-23",
-      "link": "https://valpovstina.info/2026/11/22/pripremite-se-prekidi-u-isporuci-elektricne-energije-74/",
-      "tekst": "VALPOVŠTINA Prema obavijesti HEP ODS-a, u ponedjeljak, 23. studenoga 2026. godine, najavljeni su prekidi u isporuci električne energije zbog planiranih radova.. Radovi će se obavljati u :. PETRIJEVCIMA , u Ulici STJEPANA RADIĆA 10/A-52 par., u vremenu od 8:30 – 10:30 sati.. U slučaju lošeg vremena radovi se odgađaju.."
     },
     {
       "naslov": "Župni običajnik župe Valpovo izišao je iz tiska",
