@@ -1,5 +1,5 @@
 // AUTO-GENERATED — ne editiraj ručno!
-// Zadnje skrapanje: 2026-11-24 17:17 UTC
+// Zadnje skrapanje: 2026-11-25 16:59 UTC
 // Izvor: tz.valpovo.hr, valpovo.hr
 // GitHub Actions job: scrape-valpovo (dnevno u 6:00 UTC)
 //
@@ -9,7 +9,7 @@
 
 export const scrapedContent = {
   "meta": {
-    "zadnje_azuriranje": "2026-11-24T17:17:04.087Z",
+    "zadnje_azuriranje": "2026-11-25T16:59:11.893Z",
     "izvori": [
       "https://tz.valpovo.hr",
       "https://valpovo.hr",
@@ -101,6 +101,18 @@ export const scrapedContent = {
   ],
   "novosti_grad": [
     {
+      "naslov": "Obavijest o privremenom zatvaranju ceste",
+      "datum": "25. 11. 2026.",
+      "kratki_opis": "",
+      "link": "https://valpovo.hr/2026/11/25/obavijest-o-privremenom-zatvaranju-ceste-2/"
+    },
+    {
+      "naslov": "Valpovački gimnazijalci učili kako prepoznati “zelene laži”: Održane dvije edukacije o greenwashingu",
+      "datum": "25. 11. 2026.",
+      "kratki_opis": "",
+      "link": "https://valpovo.hr/2026/11/25/valpovacki-gimnazijalci-ucili-kako-prepoznati-zelene-lazi-odrzane-dvije-edukacije-o-greenwashingu/"
+    },
+    {
       "naslov": "Poziv 14. sj. G.V.2026.",
       "datum": "20. 11. 2026.",
       "kratki_opis": "",
@@ -111,18 +123,6 @@ export const scrapedContent = {
       "datum": "17. 11. 2026.",
       "kratki_opis": "",
       "link": "https://valpovo.hr/2026/11/17/u-cast-svim-zrtvama-domovinskog-rata/"
-    },
-    {
-      "naslov": "RADNI SASTANAK – VALPOVO I SOLIN",
-      "datum": "17. 11. 2026.",
-      "kratki_opis": "",
-      "link": "https://valpovo.hr/2026/11/17/radni-sastanak-valpovo-i-solin/"
-    },
-    {
-      "naslov": "Treći “Buvljak bez novca” bilježi rekordan odaziv, a prosinačko izdanje donosi razmjenu božićnih dekoracija",
-      "datum": "16. 11. 2026.",
-      "kratki_opis": "",
-      "link": "https://valpovo.hr/2026/11/16/treci-buvljak-bez-novca-biljezi-rekordan-odaziv-a-prosinacko-izdanje-donosi-razmjenu-bozicnih-dekoracija/"
     }
   ],
   "manifestacije_aktualne": [
@@ -545,17 +545,52 @@ export const scrapedContent = {
   "valpovstina": [
     {
       "naslov": "PRIPREMITE SE: Prekidi u isporuci električne energije",
+      "objavljeno": "2026-11-25",
+      "vrijedi_do": "2026-11-26",
+      "link": "https://valpovstina.info/2026/11/25/pripremite-se-prekidi-u-isporuci-elektricne-energije-77/",
+      "tekst": "VALPOVŠTINA Prema obavijesti HEP ODS-a, u četvrtak, 26. studenoga 2026. godine, najavljeni su prekidi u isporuci električne energije zbog planiranih radova.. Radovi će se obavljati u :. PETRIJEVCIMA , u ulicama KAPELICA 2-26 par, 1-19 nep, 39, STJEPANA RADIĆA 10/A-112/A par, 13-133 nep. u vremenu od 8:00 – 14:00 sati,. VALPOVU , u Ulici ZRINSKO FRANKOPANSKA 28-48 par, 21/B-59 nep. u vremenu od 11:00 – 12:30 sati,. VALPOVU , u ulicama ISTARSKA ULICA 2-22 par, 1-43 nep, OPATIJSKA ULICA 2-22 par. u vremenu od 9:30 – 10:30 sati,. BELIŠĆE, VALPOVO. BELIŠĆE : ULICA KRALJA TOMISLAVA 2-50 par, ULICA PETRA ZRINSKOG 115-127 nep, ULICA ZINKE KUNC 3-33 nep, I. ZAJCA 10,. VALPOVO: ULICA JOSIPA JURJA STROSSMAYERA 89. – u vremenu od 8:30 – 9:30 sati.. U slučaju lošeg vremena radovi se odgađaju.."
+    },
+    {
+      "naslov": "S NAMA U KINO BESPLATNO: Raspored filmskih predstava",
+      "objavljeno": "2026-11-25",
+      "vrijedi_do": "2026-11-29",
+      "link": "https://valpovstina.info/2026/11/25/s-nama-u-kino-besplatno-raspored-filmskih-predstava-12/",
+      "tekst": "VALPOVO Kino korner Centra za kulturu Matija Petar Katančić u Valpovu, našim vjernim čitateljima i ove će kino sezone poklanjati po tri besplatne ulaznice za kino predstavu.. Da biste postali dobitnikom besplatne ulaznice, potrebno je popuniti prijavu i imati malo sreće, jer imena dobitnika se izvlače programom Random.org.. RASPORED PRIKAZIVANJA FILMOVA ZA VIKEND 27.-29. STUDENOG. Petak, subota i nedjelja u 16:00 sati. „Hexe: Kraljevstvo čarolije“. Žanr: Animirani, SINKRONIZIRANO!. U kinima od: 26.11.2026.. Trajanje: 110 minuta. Uloge : Pero Juričić, Amanda Prenkaj, Frano Mašković. Sadržaj: Prorečeno je da će obična djevojka postati izuzetna vještica i spasiti svijet čarolije od zla! Upoznajte Billie, živahnu i nekonvencionalnu tinejdžericu, koja iznenada otkriva da posjeduje tajanstvene čarobne moći. Nakon što ih slučajno oslobodi, njezin se život nepovratno mijenja te se, sa svojom opreznom mamom Alice, otiskuje na nezaboravno putovanje iz mirnoga predgrađa u Hexe – tajanstveno kraljevstvo vještica ispunjeno čarolijama, neobičnim bićima, ali i opasnostima. Hoće li Billie naučiti kontrolirati svoje moći i otkriti koje sve tajne skriva ovo začarano kraljevstvo? Spakirajte maštu i krenite na čarobno putovanje!. Petak, subota i nedjelja u 19:00 sati. Dozvola za nove Fockere. Žanr: Komedija. U kinima od: 26.11.2026.. Trajanje: 105 min. Uloge: Ben Stiller, Robert De Niro, Ariana Grande. Sadržaj: Krug povjerenja upravo je postao još veći! Ben Stiller i dvostruki oskarovac Robert De Niro još jednom udružuju snage u novom nastavku jedne od najuspješnijih franšiza svih vremena, a pridružuje im se i glazbena i glumačka zvijezda Ariana Grande. Godinama nakon posljednjeg susreta obitelji Focker i Byrnes, Greg Focker ponovno se nađe usred niza urnebesnih nesporazuma, obiteljskih sukoba i neugodnih situacija kada nova generacija zakuca na vrata. Dok Jack Byrnes i dalje budnim okom nadzire svoju obitelj, Greg će još jednom morati dokazati da zaslužuje mjesto u legendarnom “krugu povjerenja”. Nova filmska avantura vraća prepoznatljiv humor, nezaboravne likove i kaotične obiteljske odnose koji su serijal Dozvola za brak (Meet the Parents) učinili globalnim hitom.. Važna obavijest prijaviteljima:. Uvažavamo samo jednu prijavu po prijavitelju. Dakle, nije potrebno višekratno prijavljivanje, dapače, sve prijavitelje koji se budu prijavljivali više puta, diskvalificirat ćemo.. Prijava za besplatne ulaznice: klik. Ulaznice po cijeni od 3,50 EUR za p"
+    },
+    {
+      "naslov": "Obavijest o privremenom zatvaranju ceste",
+      "objavljeno": "2026-11-25",
+      "vrijedi_do": "2026-12-23",
+      "link": "https://valpovstina.info/2026/11/25/obavijest-o-privremenom-zatvaranju-ceste-3/",
+      "tekst": "VALPOVO Gradska uprava Grada Valpova ovim putem obavještava javnost o novoj regulaciji prometa.. Radi nastavka izvođenja građevinskih radova u sklopu projekta rekonstrukcije Osječke ulice u Valpovu privremeno će se zatvoriti za sav promet dio Osječke ulice na dionici od Ulice bana Josipa Jelačića do križanja Osječke ulice s Ulicom bana Ivana Mažuranića.. Obilazak za sva vozila je OSJEČKA ULICA → SUNČANA ULICA → ULICA KRALJEVCI → ULICA IVE LOLE RIBARA. Privremena regulacija prometa bit će na snazi do 23. prosinca 2026. godine.."
+    },
+    {
+      "naslov": "Otvorenje Adventa u Belišću",
+      "objavljeno": "2026-11-25",
+      "vrijedi_do": "2026-11-28",
+      "link": "https://valpovstina.info/2026/11/25/otvorenje-adventa-u-beliscu/",
+      "tekst": "BELIŠĆE Turistička zajednica Grada Belišća uz podršku suorganizatora poziva vas u subotu, 28. studenoga, na svečano otvorenje Adventa u Belišću, kojim započinje mjesec ispunjen radošću, druženjem i pravim božićnim ugođajem.. Program počinje u 17 sati paljenjem prve adventske svijeće, a blagdansku atmosferu upotpunit će koncert Igora Delača i benda, fotografiranje u Foto kutku Djeda Božićnjaka te bogata ponuda hrane, pića i ostalih proizvoda naših izlagača.. Dođite s obitelji i prijateljima, uživajte u blagdanskom ozračju i zajedno s nama zakoračite u najljepše doba godine!. https://valpovstina.info/wp-content/uploads/2026/11/IGOR-Delac.mp4"
+    },
+    {
+      "naslov": "Poziv na preuzimanje paketa u okviru projekta „Humanitarni paketi GDCK-a Virovitica i partnera“",
+      "objavljeno": "2026-11-25",
+      "vrijedi_do": "2026-12-02",
+      "link": "https://valpovstina.info/2026/11/25/39313/",
+      "tekst": "VALPOVŠTINA Gradsko društvo Crvenog križa Virovitica s partnerima, od kojih je i Gradsko društvo Crvenog križa Valpovo partner te djeluje na području Valpovštine, provode projekt “Humanitarni paketi GDCK-a Virovitica i partnera“.. Hrvatski Crveni križ Gradsko društvo Crvenog križa Valpovo poziva korisnike koji su ostvarili pravo na pakete na preuzimanje paketa hrane i higijene. Paketi se besplatno dijele u okviru europskog projekta „Humanitarni paketi GDCK-a Virovitica i partnera“. Ponedjeljak, 30. studenoga 2026.. BELIŠĆE – od 9:00 sati, ispred prostorija Matice umirovljenika grada Belišća, Vijenac Josipa Jurja Strossmayera 67, za područje Grada Belišća s pripadajućim naseljima.. BISTRINCI – od 9:00 sati, u prostoru Društvenog doma, Marka Oreškovića 16A.. Utorak, 1. prosinca 2026.. IVANOVCI – od 8:30 sati, ispred Društvenog doma Ivanovci, P. Preradovića 60, za korisnike iz Ivanovaca, Marjančaca, Zelčina i Harkanovaca.. BIZOVAC – od 9:15 sati, ispred Edukativnog centra Bizovac, Kralja Tomislava 136, za područje Općine Bizovac s pripadajućim naseljima.. PETRIJEVCI – od 9:45 sati, ispred Lovačkog doma, Kolodvorska 1, za područje Općine Petrijevci s pripadajućim naseljima.. Srijeda, 2. prosinca 2026.. VALPOVO – od 8:00, Ulica bana Jelačića 143, za područje Grada Valpova s pripadajućim naseljima.. Važne napomene za korisnike. Molimo korisnike da na preuzimanje paketa ponesu osobnu iskaznicu. Korisnici koji još nisu dostavili potrebnu dokumentaciju trebaju donijeti:. kopije osobnih iskaznica svih punoljetnih članova kućanstva. potvrde Porezne uprave o visini primanja za razdoblje od 12 mjeseci za sve punoljetne članove kućanstva, neovisno o tome imaju li primanja. odgovarajuće dokaze o statusu i primanjima: rješenje o nacionalnoj naknadi za starije osobe ili zajamčenoj minimalnoj naknadi, odrezak mirovine, potvrdu o nezaposlenosti ili druge odgovarajuće potvrde.. Molimo korisnike da po paket dođu na mjesto kojem pripadaju. U slučaju dolaska na drugo mjesto podjele, prednost imaju korisnici s tog područja.. Broj paketa je ograničen, stoga preporučujemo dolazak na početak podjele. Paketi se dijele do isteka zaliha. Hvala na razumijevanju.. Projekt „Humanitarni paketi GDCK-a Virovitica i partnera“ provodi Gradsko društvo Crvenog križa Virovitica s partnerima, među kojima je i Gradsko društvo Crvenog križa Valpovo. Ukupna vrijednost projekta iznosi 6.946.412,16 eura, a u cijelosti je financiran bespovratnim sredstvima Europskog socijalnog fonda pl"
+    },
+    {
+      "naslov": "PET GODINA GLAZBENE ČAROLIJE: Big Band Osijek velikim koncertom u Kulturnom centru u Osijeku slavi veliki jubilej!",
+      "objavljeno": "2026-11-25",
+      "vrijedi_do": "2026-12-06",
+      "link": "https://valpovstina.info/2026/11/25/pet-godina-glazbene-carolije-big-band-osijek-velikim-koncertom-u-kulturnom-centru-u-osijeku-slavi-veliki-jubilej/",
+      "tekst": "OSIJEK Povodom pete obljetnice uspješnog djelovanja, Big Band Osijek organizira veliki slavljenički koncert pod nazivom „MOJ OSIJEK U RITMU JAZZ-a”, koji će se održati u nedjelju 6. prosinca u 20:00 sati u prekrasnom prostoru Koncertne dvorane Franjo Krežma u Kulturnom centru u Osijeku.. Publika će imati priliku uživati u bogatom večernjem programu u trajanju od 90 minuta, kroz koji će orkestar izvesti svoje najdraže skladbe – pomno birane aranžmane jazz, swing, funk i pop standarda koji najbolje opisuju njihovo petogodišnje glazbeno putovanje. Big Band Osijek poznat je u cijeloj Valpovštini nakon što je dva puta otvarao Advent u Belišću i više puta nastupao na koncertima u Valpovu.. Osnovan s jasnim ciljem promicanja, razvoja i popularizacije jazz, swing, funk te popularne i filmske glazbe u Osijeku, Slavoniji i široj regiji, Big Band Osijek okuplja profesionalne glazbenike, profesore glazbe i iznimne instrumentaliste iz cijele regije. Djelujući u klasičnoj big band formaciji (saksofoni, tromboni, trube i ritam sekcija) uz prateće vokalne soliste, ovaj orkestar se svojim prepoznatljivim, energičnim zvukom duboko urezao u srca publike. Kako bi petu obljetnicu proslavili u najboljem mogućem tonu i na pozornici podijelili strast prema glazbi, pridružit će im se i ugledni glazbeni gosti: sjajna solistica opere HNK Ivana Medić, istaknuti saksofonist Jazz orkestra HRT-a Mario Bočić, te sastavi Persone i RitmOS. Ne propustite priliku biti dio ove slavljeničke večeri, podržati domaće umjetnike i zajedno s njima zaplesati u ritmu njihovih (i vaših) omiljenih pjesama. Ulaznice možete kupiti na ovom linku: https://core-event.co/events/moj-osijek-u-ritmu-jazza-9411/."
+    },
+    {
+      "naslov": "PRIPREMITE SE: Prekidi u isporuci električne energije",
       "objavljeno": "2026-11-24",
       "vrijedi_do": "2026-11-25",
       "link": "https://valpovstina.info/2026/11/24/pripremite-se-prekidi-u-isporuci-elektricne-energije-76/",
       "tekst": "VALPOVŠTINA Prema obavijesti HEP ODS-a, u srijedu, 25. studenoga 2026. godine, najavljeni su prekidi u isporuci električne energije zbog planiranih radova.. Radovi će se obavljati u :. VALPOVU , u ulicama NIKOLE TESLE 3, OSJEČKA ULICA 9-43/A nep, ULICA BANA IVANA MAŽURANIĆA 1. u vremenu od 8:30 – 10:30 sati,. PETRIJEVCIMA , u ulicama REPUBLIKE 68-108/A par, 114, TRG SV. PETRA 2-4 par, 1, MRTVAČNICA, u vremenu od 10:00 – 11:30 sati,. PETRIJEVCIMA, u Ulici STJEPANA RADIĆA 10/A-52 par. u vremenu od 8:30 – 10:00 sati.. U slučaju lošeg vremena radovi se odgađaju.."
-    },
-    {
-      "naslov": "PRIPREMITE SE: Prekidi u isporuci električne energije",
-      "objavljeno": "2026-11-23",
-      "vrijedi_do": "2026-11-24",
-      "link": "https://valpovstina.info/2026/11/23/pripremite-se-prekidi-u-isporuci-elektricne-energije-75/",
-      "tekst": "VALPOVŠTINA Prema obavijesti HEP ODS-a, u utorak, 24. studenoga 2026. godine, najavljeni su prekidi u isporuci električne energije zbog planiranih radova.. Radovi će se obavljati u :. PETRIJEVCIMA , u ulicama MATIJE GUPCA 20-32 par, MLINSKA 1-11 nep, REPUBLIKE 53., u vremenu od 8:30 – 10:00 sati,. BROĐANCIMA, u ulicama SLAVKA VIDAKOVIĆA 1-15 nep, ŠKOLSKA 2-40 par, 1-31 nep., u vremenu od 8:30 – 9:30 sati,. BELIŠĆU , u ULICI MATIJE PETRA KATANČIĆA 35-87 nep. u vremenu od 12:00 – 13:00 sati,. VALPOVU , u Ulici IVANA GORANA KOVAČIĆA 2-44 par, 1-45 nep. u vremenu od 10:30 – 11:30 sati,. VALPOVU, u ulicama HRASTIK 1-43 nep, RUDINA PANJIK 3-11 nep, ULICA EUGENA KVATERNIKA 2-66/B. u vremenu od 11:30 – 12:30 sati,. BELIŠĆU, u Ulici PETRA PRERADOVIĆA 3-31 nep, 35-51 nep., u vremenu od 10:00 – 11:30 sati.. U slučaju lošeg vremena radovi se odgađaju.."
     },
     {
       "naslov": "Župni običajnik župe Valpovo izišao je iz tiska",
