@@ -1,5 +1,5 @@
 // AUTO-GENERATED — ne editiraj ručno!
-// Zadnje skrapanje: 2026-11-25 16:59 UTC
+// Zadnje skrapanje: 2026-11-26 16:39 UTC
 // Izvor: tz.valpovo.hr, valpovo.hr
 // GitHub Actions job: scrape-valpovo (dnevno u 6:00 UTC)
 //
@@ -9,7 +9,7 @@
 
 export const scrapedContent = {
   "meta": {
-    "zadnje_azuriranje": "2026-11-25T16:59:11.893Z",
+    "zadnje_azuriranje": "2026-11-26T16:39:16.145Z",
     "izvori": [
       "https://tz.valpovo.hr",
       "https://valpovo.hr",
@@ -545,6 +545,27 @@ export const scrapedContent = {
   "valpovstina": [
     {
       "naslov": "PRIPREMITE SE: Prekidi u isporuci električne energije",
+      "objavljeno": "2026-11-26",
+      "vrijedi_do": "2026-11-27",
+      "link": "https://valpovstina.info/2026/11/26/pripremite-se-prekidi-u-isporuci-elektricne-energije-78/",
+      "tekst": "VALPOVŠTINA Prema obavijesti HEP ODS-a, u petak, 27. studenoga 2026. godine, najavljeni su prekidi u isporuci električne energije zbog planiranih radova.. Radovi će se obavljati u :. BIZOVCU, u ulicama AUGUSTA ŠENOE 31, ULICA KARDINALA ALOJZIJA STEPINCA 100/A, ULICA KRALJA TOMISLAVA 288-372 par, ULICA MATIJE PETRA KATANČIĆA 1-7 nep., u vremenu od 8:30 – 10:00 sati.. U slučaju lošeg vremena radovi se odgađaju.."
+    },
+    {
+      "naslov": "PRIJAVE ZA BOŽIĆNI SAJAM",
+      "objavljeno": "2026-11-26",
+      "vrijedi_do": "2026-12-19",
+      "link": "https://valpovstina.info/2026/11/26/prijave-za-bozicni-sajam/",
+      "tekst": "VALPOVO U sklopu manifestacije „Advent u Valpovu 2026.“ Valpovački poduzetnički centar u suradnji s Gradom Valpovom i Turističkom zajednicom organizira Božićni sajam koji će se održati u subotu, 19. prosinca u Agroparku.. Svi zainteresirani se mogu prijaviti ma broj telefona 099 162 4947 ili na mail adresu martina.skelac@vpc.hr. Zakup štandova provodit će se sukladno Odluci o određivanju cijena Agroparka.."
+    },
+    {
+      "naslov": "Obavijest o akcijama dobrovoljnog darivanja krvi",
+      "objavljeno": "2026-11-26",
+      "vrijedi_do": "2026-12-04",
+      "link": "https://valpovstina.info/2026/11/26/obavijest-o-akcijama-dobrovoljnog-darivanja-krvi-2/",
+      "tekst": "VALPOVŠTINA Gradsko društvo Crvenog križa Valpovo i Klinički zavod za transfuzijsku medicinu KBC Osijek organiziraju redovite akcije dobrovoljnog darivanja krvi.. Akcije će se održati u :. Petak, 4. prosinca 2026. godine. Dobrovoljno vatrogasno društvo Belišće (Željeznička ul. 11, Belišće), od 10:00 do 15:00 sati. Lječilište Bizovačke toplice (Sunčana ul. 39, Bizovac ), od 16:30 do 18:00 sati. Krv je jedinstveni lijek koji se ne može proizvesti ni na jedan drugi, umjetan način. Darivanjem krvi postajete član jedne velike obitelji koju prate načela dobrovoljnosti, solidarnosti, besplatnosti i anonimnosti. Darivatelj krvi je karika koja veže bolesnika sa zajednicom i putu k ozdravljenju.. Pozivaju se svi ljudi potaknuti plemenitošću da odvoje petnaest minuta i spase do tri života!. Zahvaljujemo se svim učestalim darivateljima krvi kojima je darivanje krvi već tradicija i način života te pozivamo sve one koji još nisu pošli ovim putem da se ohrabre i daruju ono najvrijednije – svoju krv!."
+    },
+    {
+      "naslov": "PRIPREMITE SE: Prekidi u isporuci električne energije",
       "objavljeno": "2026-11-25",
       "vrijedi_do": "2026-11-26",
       "link": "https://valpovstina.info/2026/11/25/pripremite-se-prekidi-u-isporuci-elektricne-energije-77/",
@@ -584,13 +605,6 @@ export const scrapedContent = {
       "vrijedi_do": "2026-12-06",
       "link": "https://valpovstina.info/2026/11/25/pet-godina-glazbene-carolije-big-band-osijek-velikim-koncertom-u-kulturnom-centru-u-osijeku-slavi-veliki-jubilej/",
       "tekst": "OSIJEK Povodom pete obljetnice uspješnog djelovanja, Big Band Osijek organizira veliki slavljenički koncert pod nazivom „MOJ OSIJEK U RITMU JAZZ-a”, koji će se održati u nedjelju 6. prosinca u 20:00 sati u prekrasnom prostoru Koncertne dvorane Franjo Krežma u Kulturnom centru u Osijeku.. Publika će imati priliku uživati u bogatom večernjem programu u trajanju od 90 minuta, kroz koji će orkestar izvesti svoje najdraže skladbe – pomno birane aranžmane jazz, swing, funk i pop standarda koji najbolje opisuju njihovo petogodišnje glazbeno putovanje. Big Band Osijek poznat je u cijeloj Valpovštini nakon što je dva puta otvarao Advent u Belišću i više puta nastupao na koncertima u Valpovu.. Osnovan s jasnim ciljem promicanja, razvoja i popularizacije jazz, swing, funk te popularne i filmske glazbe u Osijeku, Slavoniji i široj regiji, Big Band Osijek okuplja profesionalne glazbenike, profesore glazbe i iznimne instrumentaliste iz cijele regije. Djelujući u klasičnoj big band formaciji (saksofoni, tromboni, trube i ritam sekcija) uz prateće vokalne soliste, ovaj orkestar se svojim prepoznatljivim, energičnim zvukom duboko urezao u srca publike. Kako bi petu obljetnicu proslavili u najboljem mogućem tonu i na pozornici podijelili strast prema glazbi, pridružit će im se i ugledni glazbeni gosti: sjajna solistica opere HNK Ivana Medić, istaknuti saksofonist Jazz orkestra HRT-a Mario Bočić, te sastavi Persone i RitmOS. Ne propustite priliku biti dio ove slavljeničke večeri, podržati domaće umjetnike i zajedno s njima zaplesati u ritmu njihovih (i vaših) omiljenih pjesama. Ulaznice možete kupiti na ovom linku: https://core-event.co/events/moj-osijek-u-ritmu-jazza-9411/."
-    },
-    {
-      "naslov": "PRIPREMITE SE: Prekidi u isporuci električne energije",
-      "objavljeno": "2026-11-24",
-      "vrijedi_do": "2026-11-25",
-      "link": "https://valpovstina.info/2026/11/24/pripremite-se-prekidi-u-isporuci-elektricne-energije-76/",
-      "tekst": "VALPOVŠTINA Prema obavijesti HEP ODS-a, u srijedu, 25. studenoga 2026. godine, najavljeni su prekidi u isporuci električne energije zbog planiranih radova.. Radovi će se obavljati u :. VALPOVU , u ulicama NIKOLE TESLE 3, OSJEČKA ULICA 9-43/A nep, ULICA BANA IVANA MAŽURANIĆA 1. u vremenu od 8:30 – 10:30 sati,. PETRIJEVCIMA , u ulicama REPUBLIKE 68-108/A par, 114, TRG SV. PETRA 2-4 par, 1, MRTVAČNICA, u vremenu od 10:00 – 11:30 sati,. PETRIJEVCIMA, u Ulici STJEPANA RADIĆA 10/A-52 par. u vremenu od 8:30 – 10:00 sati.. U slučaju lošeg vremena radovi se odgađaju.."
     },
     {
       "naslov": "Župni običajnik župe Valpovo izišao je iz tiska",
