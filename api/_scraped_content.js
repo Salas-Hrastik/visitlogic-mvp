@@ -1,5 +1,5 @@
 // AUTO-GENERATED — ne editiraj ručno!
-// Zadnje skrapanje: 2026-11-26 16:39 UTC
+// Zadnje skrapanje: 2026-11-28 15:17 UTC
 // Izvor: tz.valpovo.hr, valpovo.hr
 // GitHub Actions job: scrape-valpovo (dnevno u 6:00 UTC)
 //
@@ -9,7 +9,7 @@
 
 export const scrapedContent = {
   "meta": {
-    "zadnje_azuriranje": "2026-11-26T16:39:16.145Z",
+    "zadnje_azuriranje": "2026-11-28T15:17:45.776Z",
     "izvori": [
       "https://tz.valpovo.hr",
       "https://valpovo.hr",
@@ -101,6 +101,24 @@ export const scrapedContent = {
   ],
   "novosti_grad": [
     {
+      "naslov": "ZAVRŠEN PRVI DIO TEČAJA FOTOGRAFIJE ZA UMIROVLJENIKE",
+      "datum": "27. 11. 2026.",
+      "kratki_opis": "",
+      "link": "https://valpovo.hr/2026/11/27/zavrsen-prvi-dio-tecaja-fotografije-za-umirovljenike/"
+    },
+    {
+      "naslov": "Mobilna ambulanta na području Grada Valpova – prosinac 2026.",
+      "datum": "27. 11. 2026.",
+      "kratki_opis": "",
+      "link": "https://valpovo.hr/2026/11/27/mobilna-ambulanta-na-podrucju-grada-valpova-prosinac-2026/"
+    },
+    {
+      "naslov": "Prijave za Božićni sajam u Agroparku",
+      "datum": "27. 11. 2026.",
+      "kratki_opis": "",
+      "link": "https://valpovo.hr/2026/11/27/prijave-za-bozicni-sajam-u-agroparku/"
+    },
+    {
       "naslov": "Obavijest o privremenom zatvaranju ceste",
       "datum": "25. 11. 2026.",
       "kratki_opis": "",
@@ -111,18 +129,6 @@ export const scrapedContent = {
       "datum": "25. 11. 2026.",
       "kratki_opis": "",
       "link": "https://valpovo.hr/2026/11/25/valpovacki-gimnazijalci-ucili-kako-prepoznati-zelene-lazi-odrzane-dvije-edukacije-o-greenwashingu/"
-    },
-    {
-      "naslov": "Poziv 14. sj. G.V.2026.",
-      "datum": "20. 11. 2026.",
-      "kratki_opis": "",
-      "link": "https://valpovo.hr/2026/11/20/poziv-14-sj-g-v-2026/"
-    },
-    {
-      "naslov": "U čast svim žrtvama Domovinskog rata",
-      "datum": "17. 11. 2026.",
-      "kratki_opis": "",
-      "link": "https://valpovo.hr/2026/11/17/u-cast-svim-zrtvama-domovinskog-rata/"
     }
   ],
   "manifestacije_aktualne": [
@@ -544,11 +550,25 @@ export const scrapedContent = {
   ],
   "valpovstina": [
     {
-      "naslov": "PRIPREMITE SE: Prekidi u isporuci električne energije",
-      "objavljeno": "2026-11-26",
-      "vrijedi_do": "2026-11-27",
-      "link": "https://valpovstina.info/2026/11/26/pripremite-se-prekidi-u-isporuci-elektricne-energije-78/",
-      "tekst": "VALPOVŠTINA Prema obavijesti HEP ODS-a, u petak, 27. studenoga 2026. godine, najavljeni su prekidi u isporuci električne energije zbog planiranih radova.. Radovi će se obavljati u :. BIZOVCU, u ulicama AUGUSTA ŠENOE 31, ULICA KARDINALA ALOJZIJA STEPINCA 100/A, ULICA KRALJA TOMISLAVA 288-372 par, ULICA MATIJE PETRA KATANČIĆA 1-7 nep., u vremenu od 8:30 – 10:00 sati.. U slučaju lošeg vremena radovi se odgađaju.."
+      "naslov": "CHRISTMAS GRAFFITI JAM: Atraktivan početak Adventa u Valpovu",
+      "objavljeno": "2026-11-28",
+      "vrijedi_do": "2026-12-08",
+      "link": "https://valpovstina.info/2026/11/28/christmas-graffiti-jam-atraktivan-pocetak-adventa-u-valpovu/",
+      "tekst": "VALPOVO U skladu s tradicijom danas prijepodne započela je valpovačka zimska čarolija.. Petu godinu zaredom okupili su se grafiteri koji će svojim entuzijazmom, talentom i bojama oslikati božićne motive koji će upotpuniti stilizirano seoce na središnjem valpovačkom trgu u danima adventa. Šteta što je vrijeme u skladu s godišnjim dobom pa ne pruža ugodnije okruženje za rad i šetnju na otvorenom, a svejedno, ako uhvatite vremena prošećite malo do trga da im date podršku.. Kako nas je izvijestio organizator, u ekipi je osam veličanstvenih:. Alen Miler (Mr.P), Kutina, Vedran Bjelobradić (Rebus), Osijek, Marko Janković (Blaze) Zagreb, Matija Vnučec (Matek), Garešnica, Nenad Krahulec (Skel) Osijek, Srđan Toth (Moler) Osijek, Tomislav Moravek (Mor), Valpovo i Davor Šokac (Sedam), Valpovo, a za glazbu je zadužen MEFA iz Udruge REVOLUTION.. Bit će to skladna završnica uređenja središta grada za kalendarski kraj godine kojeg uz iščekivanje Božića i Nove godine zaokružuje i Dan grada 8. prosinca.. Pripreme su započele već prije nekoliko dana pa je pred župnom crkvom niknuo stilizirani adventski vijenac u kojem će večeras biti zapaljena prva svijeća – svijeća NADE, a cijelom dužinom trga brojni svijetleći ukrasi koji će večeras bljesnuti punim sjajem.."
+    },
+    {
+      "naslov": "Započelo modelarstvo u OŠ Valpovo",
+      "objavljeno": "2026-11-27",
+      "vrijedi_do": "2026-12-04",
+      "link": "https://valpovstina.info/2026/11/27/zapocelo-modelarstvo-u-os-valpovo/",
+      "tekst": "VALPOVO I ove godine s velikim se uspjehom provodi program modelarstva u osnovnim školama na području Valpovštine.. Ovogodišnje modelarstvo zajednički su organizirali Centar tehničke kulture Valpovo–Belišće te predani nastavnici tehničke kulture Biljana Pantoš, Ivo Grgić i Velimir Kunzinam.. Zadatak svakog učenika bio je izraditi vlastiti tehnički model od kvalitetne šperploče debljine tri milimetra. Na samom početku radionice svaki je polaznik dobio svoj tehnički nacrt koji je trebalo pažljivo proučiti. Prvi praktični korak bio je precizno izrezivanje pojedinih dijelova modela na sigurnom Unimat stroju.. Rad na strojevima učenicima je pružio dragocjeno iskustvo i upoznao ih s osnovama moderne obrade materijala. Nakon uspješno obavljene strojne obrade slijedio je nešto zahtjevniji i strpljiviji dio posla koji je uključivao ručni rad. Učenici su morali pažljivo brusiti rubove svih izrezanih dijelova koristeći brusne daščice i razne rašpe. U ovoj fazi naglasak je bio na uklanjanju svih sitnih nepravilnosti i temeljitoj pripremi elemenata za završno sastavljanje. U posljednjoj, ujedno i najuzbudljivijoj fazi, svaki je učenik samostalno montirao i spajao svoj model u funkcionalnu cjelinu.. Učenicima su tijekom cijelog procesa izrade nesebično pomagali iskusni mentori Marijan Antolović i Dragan Francuz. Njihovo bogato znanje i stručno vodstvo značajno su doprinijeli visokoj kvaliteti svih izvedenih učeničkih modela. Ovogodišnji ciklus modelarstva započeo je u Osnovnoj školi „Ivana Kukuljevića“ u Belišću te u područnoj osnovnoj školi u Veliškovcima. Program je na tim lokacijama privukao iznimno velik broj zainteresiranih sudionika u radionicama koje su se održavale tijekom veljače i ožujka. U tom je razdoblju u kreativnom radu sudjelovalo čak 193 učenika iz ukupno trinaest razrednih odjela, od petog do osmog razreda.. Modelarstvo u Osnovnoj školi „Matije Petra Katančića“ u Valpovu započelo je 23. studenoga i trajat će sve do 4. prosinca 2026. godine. Već u prvom tjednu provođenja ovaj je zanimljivi program uspješno odrađen u šest razrednih odjela, također od petog do osmog razreda. U tim valpovačkim radionicama svoje je vještine i kreativnost već pokazalo ukupno 107 vrijednih učenika. Svi oni s velikim su entuzijazmom prihvatili izazov i uspješno savladali sve korake izrade svojih modela. Sljedeći tjedan modelarstvo će se prema planu nastaviti i u preostalim razrednim odjelima valpovačke škole. Očekuje se da će i nadolazeći dani donijeti jednako velik odazi"
+    },
+    {
+      "naslov": "Mobilna ambulanta na području Grada Valpova – prosinac 2026.",
+      "objavljeno": "2026-11-27",
+      "vrijedi_do": "2026-12-29",
+      "link": "https://valpovstina.info/2026/11/27/mobilna-ambulanta-na-podrucju-grada-valpova-prosinac-2026/",
+      "tekst": "VALPOVŠTINA Mobilna ambulanta Doma zdravlja Osječko-baranjske županije tijekom prosinca dolazit će u naselja na području Grada Valpova sukladno iskazanom interesu Grada i rasporedu.. U nastavku donosimo raspored i lokacije dolazaka mobilne ambulante Doma zdravlja Osječko-baranjske županije za prosinac 2026.. 📍 Lokacija u svim navedenim naseljima: društveni dom. 📅 Utorak, 1. prosinca • Harkanovci – 8:00–9:00 • Zelčin – 9:15–11:00 • Marjančaci – 11:45–14:00. 📅 Utorak, 8. prosinca • Nard – 8:00–10:00 • Šag – 12:00–14:00. 📅 Utorak, 15. prosinca • Harkanovci – 8:00–9:00 • Zelčin – 9:15–10:00 • Ivanovci – 10:45–12:15. 📅 Utorak, 22. prosinca • Nard – 8:00–10:00 • Ladimirevci – 12:45–14:00. 📅 Utorak, 29. prosinca • Harkanovci – 8:00–9:00 • Zelčin – 9:15–11:00 • Marjančaci – 11:15–14:00."
     },
     {
       "naslov": "PRIJAVE ZA BOŽIĆNI SAJAM",
@@ -565,18 +585,11 @@ export const scrapedContent = {
       "tekst": "VALPOVŠTINA Gradsko društvo Crvenog križa Valpovo i Klinički zavod za transfuzijsku medicinu KBC Osijek organiziraju redovite akcije dobrovoljnog darivanja krvi.. Akcije će se održati u :. Petak, 4. prosinca 2026. godine. Dobrovoljno vatrogasno društvo Belišće (Željeznička ul. 11, Belišće), od 10:00 do 15:00 sati. Lječilište Bizovačke toplice (Sunčana ul. 39, Bizovac ), od 16:30 do 18:00 sati. Krv je jedinstveni lijek koji se ne može proizvesti ni na jedan drugi, umjetan način. Darivanjem krvi postajete član jedne velike obitelji koju prate načela dobrovoljnosti, solidarnosti, besplatnosti i anonimnosti. Darivatelj krvi je karika koja veže bolesnika sa zajednicom i putu k ozdravljenju.. Pozivaju se svi ljudi potaknuti plemenitošću da odvoje petnaest minuta i spase do tri života!. Zahvaljujemo se svim učestalim darivateljima krvi kojima je darivanje krvi već tradicija i način života te pozivamo sve one koji još nisu pošli ovim putem da se ohrabre i daruju ono najvrijednije – svoju krv!."
     },
     {
-      "naslov": "PRIPREMITE SE: Prekidi u isporuci električne energije",
-      "objavljeno": "2026-11-25",
-      "vrijedi_do": "2026-11-26",
-      "link": "https://valpovstina.info/2026/11/25/pripremite-se-prekidi-u-isporuci-elektricne-energije-77/",
-      "tekst": "VALPOVŠTINA Prema obavijesti HEP ODS-a, u četvrtak, 26. studenoga 2026. godine, najavljeni su prekidi u isporuci električne energije zbog planiranih radova.. Radovi će se obavljati u :. PETRIJEVCIMA , u ulicama KAPELICA 2-26 par, 1-19 nep, 39, STJEPANA RADIĆA 10/A-112/A par, 13-133 nep. u vremenu od 8:00 – 14:00 sati,. VALPOVU , u Ulici ZRINSKO FRANKOPANSKA 28-48 par, 21/B-59 nep. u vremenu od 11:00 – 12:30 sati,. VALPOVU , u ulicama ISTARSKA ULICA 2-22 par, 1-43 nep, OPATIJSKA ULICA 2-22 par. u vremenu od 9:30 – 10:30 sati,. BELIŠĆE, VALPOVO. BELIŠĆE : ULICA KRALJA TOMISLAVA 2-50 par, ULICA PETRA ZRINSKOG 115-127 nep, ULICA ZINKE KUNC 3-33 nep, I. ZAJCA 10,. VALPOVO: ULICA JOSIPA JURJA STROSSMAYERA 89. – u vremenu od 8:30 – 9:30 sati.. U slučaju lošeg vremena radovi se odgađaju.."
-    },
-    {
       "naslov": "S NAMA U KINO BESPLATNO: Raspored filmskih predstava",
       "objavljeno": "2026-11-25",
       "vrijedi_do": "2026-11-29",
       "link": "https://valpovstina.info/2026/11/25/s-nama-u-kino-besplatno-raspored-filmskih-predstava-12/",
-      "tekst": "VALPOVO Kino korner Centra za kulturu Matija Petar Katančić u Valpovu, našim vjernim čitateljima i ove će kino sezone poklanjati po tri besplatne ulaznice za kino predstavu.. Da biste postali dobitnikom besplatne ulaznice, potrebno je popuniti prijavu i imati malo sreće, jer imena dobitnika se izvlače programom Random.org.. RASPORED PRIKAZIVANJA FILMOVA ZA VIKEND 27.-29. STUDENOG. Petak, subota i nedjelja u 16:00 sati. „Hexe: Kraljevstvo čarolije“. Žanr: Animirani, SINKRONIZIRANO!. U kinima od: 26.11.2026.. Trajanje: 110 minuta. Uloge : Pero Juričić, Amanda Prenkaj, Frano Mašković. Sadržaj: Prorečeno je da će obična djevojka postati izuzetna vještica i spasiti svijet čarolije od zla! Upoznajte Billie, živahnu i nekonvencionalnu tinejdžericu, koja iznenada otkriva da posjeduje tajanstvene čarobne moći. Nakon što ih slučajno oslobodi, njezin se život nepovratno mijenja te se, sa svojom opreznom mamom Alice, otiskuje na nezaboravno putovanje iz mirnoga predgrađa u Hexe – tajanstveno kraljevstvo vještica ispunjeno čarolijama, neobičnim bićima, ali i opasnostima. Hoće li Billie naučiti kontrolirati svoje moći i otkriti koje sve tajne skriva ovo začarano kraljevstvo? Spakirajte maštu i krenite na čarobno putovanje!. Petak, subota i nedjelja u 19:00 sati. Dozvola za nove Fockere. Žanr: Komedija. U kinima od: 26.11.2026.. Trajanje: 105 min. Uloge: Ben Stiller, Robert De Niro, Ariana Grande. Sadržaj: Krug povjerenja upravo je postao još veći! Ben Stiller i dvostruki oskarovac Robert De Niro još jednom udružuju snage u novom nastavku jedne od najuspješnijih franšiza svih vremena, a pridružuje im se i glazbena i glumačka zvijezda Ariana Grande. Godinama nakon posljednjeg susreta obitelji Focker i Byrnes, Greg Focker ponovno se nađe usred niza urnebesnih nesporazuma, obiteljskih sukoba i neugodnih situacija kada nova generacija zakuca na vrata. Dok Jack Byrnes i dalje budnim okom nadzire svoju obitelj, Greg će još jednom morati dokazati da zaslužuje mjesto u legendarnom “krugu povjerenja”. Nova filmska avantura vraća prepoznatljiv humor, nezaboravne likove i kaotične obiteljske odnose koji su serijal Dozvola za brak (Meet the Parents) učinili globalnim hitom.. Važna obavijest prijaviteljima:. Uvažavamo samo jednu prijavu po prijavitelju. Dakle, nije potrebno višekratno prijavljivanje, dapače, sve prijavitelje koji se budu prijavljivali više puta, diskvalificirat ćemo.. Prijava za besplatne ulaznice: klik. Ulaznice po cijeni od 3,50 EUR za p"
+      "tekst": "VALPOVO Kino korner Centra za kulturu Matija Petar Katančić u Valpovu, našim vjernim čitateljima i ove će kino sezone poklanjati po tri besplatne ulaznice za kino predstavu.. Da biste postali dobitnikom besplatne ulaznice, potrebno je popuniti prijavu i imati malo sreće, jer imena dobitnika se izvlače programom Random.org.. RASPORED PRIKAZIVANJA FILMOVA ZA VIKEND 27.-29. STUDENOG. Petak, subota i nedjelja u 16:00 sati. „Hexe: Kraljevstvo čarolije“. Žanr: Animirani, SINKRONIZIRANO!. U kinima od: 26.11.2026.. Trajanje: 110 minuta. Uloge : Pero Juričić, Amanda Prenkaj, Frano Mašković. Sadržaj: Prorečeno je da će obična djevojka postati izuzetna vještica i spasiti svijet čarolije od zla! Upoznajte Billie, živahnu i nekonvencionalnu tinejdžericu, koja iznenada otkriva da posjeduje tajanstvene čarobne moći. Nakon što ih slučajno oslobodi, njezin se život nepovratno mijenja te se, sa svojom opreznom mamom Alice, otiskuje na nezaboravno putovanje iz mirnoga predgrađa u Hexe – tajanstveno kraljevstvo vještica ispunjeno čarolijama, neobičnim bićima, ali i opasnostima. Hoće li Billie naučiti kontrolirati svoje moći i otkriti koje sve tajne skriva ovo začarano kraljevstvo? Spakirajte maštu i krenite na čarobno putovanje!. Petak, subota i nedjelja u 19:00 sati. Dozvola za nove Fockere. Žanr: Komedija. U kinima od: 26.11.2026.. Trajanje: 105 min. Uloge: Ben Stiller, Robert De Niro, Ariana Grande. Sadržaj: Krug povjerenja upravo je postao još veći! Ben Stiller i dvostruki oskarovac Robert De Niro još jednom udružuju snage u novom nastavku jedne od najuspješnijih franšiza svih vremena, a pridružuje im se i glazbena i glumačka zvijezda Ariana Grande. Godinama nakon posljednjeg susreta obitelji Focker i Byrnes, Greg Focker ponovno se nađe usred niza urnebesnih nesporazuma, obiteljskih sukoba i neugodnih situacija kada nova generacija zakuca na vrata. Dok Jack Byrnes i dalje budnim okom nadzire svoju obitelj, Greg će još jednom morati dokazati da zaslužuje mjesto u legendarnom “krugu povjerenja”. Nova filmska avantura vraća prepoznatljiv humor, nezaboravne likove i kaotične obiteljske odnose koji su serijal Dozvola za brak (Meet the Parents) učinili globalnim hitom.. Važna obavijest prijaviteljima:. Uvažavamo samo jednu prijavu po prijavitelju. Dakle, nije potrebno višekratno prijavljivanje, dapače, sve prijavitelje koji se budu prijavljivali više puta, diskvalificirat ćemo.. Prijava za besplatne ulaznice: klik. Dobitinici besplatnih ulaznica su: "
     },
     {
       "naslov": "Obavijest o privremenom zatvaranju ceste",
